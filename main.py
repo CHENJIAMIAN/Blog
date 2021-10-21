@@ -87,10 +87,10 @@ def bundle_summary_section():
 def bundle_pinned_issues_section():
     global Blog
 
-    pinned_label = Blog.get_label(':+1:置顶')
+    pinned_label = Blog.get_label('置顶')
     pinned_issues = Blog.get_issues(labels=(pinned_label,))
 
-    pinned_issues_section = '\n## 置顶 :thumbsup: \n'
+    pinned_issues_section = '\n## 置顶 \n'
 
     for issue in pinned_issues:
         pinned_issues_section += format_issue(issue)
@@ -119,9 +119,9 @@ def format_issue_with_labels(issue: Issue):
 def bundle_new_created_section():
     global Blog
 
-    new_5_created_issues = Blog.get_issues()[:5]
+    new_5_created_issues = Blog.get_issues()
 
-    new_created_section = '## 最新 :new: \n'
+    new_created_section = '## 所有 \n'
 
     for issue in new_5_created_issues:
         new_created_section += format_issue_with_labels(issue)
@@ -138,7 +138,7 @@ def bundle_list_by_labels_section():
     # WordCloudGenerator(Blog).generate()
 
     list_by_labels_section = """
-## 分类  :card_file_box: 
+## 分类
 """
 
     all_labels = Blog.get_labels()
@@ -169,7 +169,7 @@ def bundle_list_by_labels_section():
 
 def bundle_cover_image_section() -> str:
     global Blog
-    cover_label = Blog.get_label(':framed_picture:封面')
+    cover_label = Blog.get_label('封面')
     if cover_label is None:
         return ''
     cover_issues = Blog.get_issues(labels=(cover_label,))
