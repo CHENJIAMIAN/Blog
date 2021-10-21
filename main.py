@@ -145,7 +145,7 @@ def bundle_list_by_labels_section():
 
     list_by_labels_section = """
 ## 分类  :card_file_box: 
-""" % (wordcloud_image_url,)
+"""
 
     all_labels = Blog.get_labels()
 
