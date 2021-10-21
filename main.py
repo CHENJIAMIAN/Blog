@@ -108,7 +108,8 @@ def format_issue_with_labels(issue: Issue):
         labels_str += '[%s](https://github.com/%s/Blog/labels/%s), ' % (
             label.name, username, urllib.parse.quote(label.name))
 
-    body_summary = issue.body[:150]
+    body_summary = ''
+    # issue.body[:150]
 
     return '''
 #### [{0}]({1}) {2} 
