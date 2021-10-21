@@ -108,16 +108,12 @@ def format_issue_with_labels(issue: Issue):
         labels_str += '[%s](https://github.com/%s/Blog/labels/%s), ' % (
             label.name, username, urllib.parse.quote(label.name))
 
-    body_summary = ''
     # issue.body[:150]
 
     return '''
-#### [{0}]({1})
-{2} 
-{5}
+#### [{0}]({1}) {2} 
 
-'''.format(issue.title, issue.html_url, sup('%s :speech_balloon:' % issue.comments), issue.created_at, labels_str[:-2],
-           body_summary)
+'''.format(issue.title, issue.html_url, sup('%s :speech_balloon:' % issue.comments), issue.created_at, labels_str[:-2])
 
 
 def bundle_new_created_section():
