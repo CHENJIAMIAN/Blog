@@ -112,16 +112,10 @@ def format_issue_with_labels(issue: Issue):
     # issue.body[:150]
 
     return '''
-#### [{0}]({1}) {2} 
-
-\t {3}
-
-:label: : {4}
-
+#### [{0}]({1})  {3}
+{2} 
 {5}
-
 [更多>>>]({1})
-
 ---
 
 '''.format(issue.title, issue.html_url, sup('%s :speech_balloon:' % issue.comments), issue.created_at, labels_str[:-2],
