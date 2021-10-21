@@ -3,7 +3,7 @@
 <p align='center'>
     <img src="https://badgen.net/badge/labels/3"/>
     <img src="https://badgen.net/github/issues/CHENJIAMIAN/Blog"/>
-    <img src="https://badgen.net/badge/last-commit/2021-10-21 06:50:12"/>
+    <img src="https://badgen.net/badge/last-commit/2021-10-21 06:51:46"/>
     <img src="https://badgen.net/github/forks/CHENJIAMIAN/Blog"/>
     <img src="https://badgen.net/github/stars/CHENJIAMIAN/Blog"/>
     <img src="https://badgen.net/github/watchers/CHENJIAMIAN/Blog"/>
@@ -57,8 +57,9 @@
 </details>
 
 <details>
-<summary>开源	<sup>0:newspaper:</sup></summary>
+<summary>开源	<sup>1:newspaper:</sup></summary>
 
+- [GeoServer-Beginners-Guide](https://github.com/CHENJIAMIAN/Blog/issues/10)  <sup>0 :speech_balloon:</sup>  	 
 
 
 </details>
@@ -69,4 +70,11 @@
 
 
 </details>
+
+
+# 开源项目
+
+
+| [GeoServer-Beginners-Guide](https://github.com/CHENJIAMIAN/GeoServer-Beginners-Guide) | 在线电子书, 可用谷歌翻译 | ![](https://badgen.net/github/stars/CHENJIAMIAN/GeoServer-Beginners-Guide) ![](https://badgen.net/github/forks/CHENJIAMIAN/GeoServer-Beginners-Guide) ![](https://badgen.net/github/watchers/CHENJIAMIAN/GeoServer-Beginners-Guide) |
+| --- | --- | --- |
 
