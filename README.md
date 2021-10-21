@@ -1,9 +1,9 @@
 
 
 <p align='center'>
-    <img src="https://badgen.net/badge/labels/12"/>
+    <img src="https://badgen.net/badge/labels/3"/>
     <img src="https://badgen.net/github/issues/CHENJIAMIAN/Blog"/>
-    <img src="https://badgen.net/badge/last-commit/2021-10-21 04:45:57"/>
+    <img src="https://badgen.net/badge/last-commit/2021-10-21 06:05:33"/>
     <img src="https://badgen.net/github/forks/CHENJIAMIAN/Blog"/>
     <img src="https://badgen.net/github/stars/CHENJIAMIAN/Blog"/>
     <img src="https://badgen.net/github/watchers/CHENJIAMIAN/Blog"/>
@@ -20,7 +20,7 @@
 ## 置顶 :thumbsup: 
 ## 最新 :new: 
 
-#### [test](https://github.com/CHENJIAMIAN/Blog/issues/9) <sup>1 :speech_balloon:</sup> 
+#### [test](https://github.com/CHENJIAMIAN/Blog/issues/9) <sup>2 :speech_balloon:</sup> 
 
 	 2021-10-21 03:47:46
 
@@ -103,69 +103,6 @@
 
 <details>
 <summary>:framed_picture:封面	<sup>0:newspaper:</sup></summary>
-
-
-
-</details>
-
-<details>
-<summary>bug	<sup>0:newspaper:</sup></summary>
-
-
-
-</details>
-
-<details>
-<summary>documentation	<sup>0:newspaper:</sup></summary>
-
-
-
-</details>
-
-<details>
-<summary>duplicate	<sup>0:newspaper:</sup></summary>
-
-
-
-</details>
-
-<details>
-<summary>enhancement	<sup>0:newspaper:</sup></summary>
-
-
-
-</details>
-
-<details>
-<summary>good first issue	<sup>0:newspaper:</sup></summary>
-
-
-
-</details>
-
-<details>
-<summary>help wanted	<sup>0:newspaper:</sup></summary>
-
-
-
-</details>
-
-<details>
-<summary>invalid	<sup>0:newspaper:</sup></summary>
-
-
-
-</details>
-
-<details>
-<summary>question	<sup>0:newspaper:</sup></summary>
-
-
-
-</details>
-
-<details>
-<summary>wontfix	<sup>0:newspaper:</sup></summary>
 
 
 
