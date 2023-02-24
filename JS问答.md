@@ -8,7 +8,7 @@
 
 需要注意的是，虽然在某些情况下可以使用数字作为属性名来访问窗口对象的属性，但这种做法并不是标准的JavaScript语法，不应该在生产环境中使用。正确的做法是使用正常的JavaScript属性访问语法，例如window.frames[0]来访问窗口中的文档。
 
-## AMD打包（bundle)后解析：
+## UMD打包（bundle)后解析：
 ``` js
 /*
 这是一个使用立即执行函数表达式（Immediately Invoked Function Expression, IIFE）来定义模块的常见方式，用于将一个模块的代码封装在一个私有作用域中，并将其暴露为一个公共的接口。
@@ -26,4 +26,23 @@
 // true
 window.THRxxxxEE
 // {AAA: 111}
+```
+
+## UMD打包（bundle)后解析2：
+
+``` js
+function(e) {
+    "function" == typeof define && define.amd ? define([], (function() {
+        return TWEEN
+    }
+    )) : "undefined" != typeof module && "object" == typeof exports ? module.exports = TWEEN : void 0 !== e && (e.TWEEN = TWEEN)
+}(this)
+
+/*
+这段代码是一个自执行函数，用于将 TWEEN 对象导出为一个模块。它使用了 UMD（Universal Module Definition）规范，该规范允许将模块同时用于浏览器和 Node.js 等环境。
+
+在这个例子中，代码首先检查是否存在 define 函数，如果存在，则将 TWEEN 对象作为一个 AMD 模块导出，该模块不依赖其他模块。如果不存在 define 函数，则继续检查是否存在 module 和 exports 对象，如果存在，则将 TWEEN 对象作为一个 CommonJS 模块导出。最后，如果 define 函数和 module 和 exports 对象都不存在，则将 TWEEN 对象暴露到全局作用域中，使其可以在浏览器中使用。
+
+需要注意的是，这段代码的目的是将 TWEEN 对象导出为一个模块，以便其他模块或应用程序可以使用它。导出模块的方式可以有多种，UMD 只是其中一种。
+*/
 ```
