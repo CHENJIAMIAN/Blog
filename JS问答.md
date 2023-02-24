@@ -1,4 +1,29 @@
-## _regeneratorRuntime
+## babel 的 _classCallCheck
+`_classCallCheck` 是 JavaScript 中一个常用的类辅助函数。它通常与类一起使用，在转换为 ES5 代码时用于提供更好的错误消息，以防止在没有使用 `new` 关键字创建类实例时创建实例。
+
+以下是 `_classCallCheck` 的使用示例：
+
+```
+javascriptCopy codefunction _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var MyClass = function MyClass() {
+  _classCallCheck(this, MyClass);
+};
+
+var myInstance = new MyClass();
+var myBrokenInstance = MyClass(); // 抛出 TypeError
+
+```
+
+在上面的示例中，`_classCallCheck` 用于确保只能使用 `new` 关键字调用 `MyClass` 构造函数。如果尝试在没有 `new` 的情况下调用 `MyClass`，则会抛出 `TypeError` 并显示更详细的错误消息。
+
+请注意，`_classCallCheck` 通常不是直接由开发人员使用的，而是由转译器（如 Babel）在目标 ES5 或更低版本中自动插入的。
+
+## babel 的 _regeneratorRuntime
 `_regeneratorRuntime` 是一个运行时库（Runtime Library），它是为了支持 JavaScript 中的 Generator 和 Async/Await 而产生的。在旧版的浏览器或者 Node.js 环境下，这些语法无法被原生支持，需要使用这个运行时库来进行转译和支持。
 
 在代码中， `_regeneratorRuntime` 实际上是一个全局变量，用于存放该运行时库的实现代码，因此在使用 Generator 和 Async/Await 时，会通过调用这个全局变量来执行相关代码。
