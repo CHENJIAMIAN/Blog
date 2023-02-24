@@ -3,7 +3,7 @@
 <p align='center'>
     <img src="https://badgen.net/badge/labels/3"/>
     <img src="https://badgen.net/github/issues/CHENJIAMIAN/Blog"/>
-    <img src="https://badgen.net/badge/last-commit/2023-02-24 03:33:26"/>
+    <img src="https://badgen.net/badge/last-commit/2023-02-24 05:53:38"/>
     <img src="https://badgen.net/github/forks/CHENJIAMIAN/Blog"/>
     <img src="https://badgen.net/github/stars/CHENJIAMIAN/Blog"/>
     <img src="https://badgen.net/github/watchers/CHENJIAMIAN/Blog"/>
