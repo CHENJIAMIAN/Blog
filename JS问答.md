@@ -1,3 +1,78 @@
+## _regeneratorRuntime
+`_regeneratorRuntime` 是一个运行时库（Runtime Library），它是为了支持 JavaScript 中的 Generator 和 Async/Await 而产生的。在旧版的浏览器或者 Node.js 环境下，这些语法无法被原生支持，需要使用这个运行时库来进行转译和支持。
+
+在代码中， `_regeneratorRuntime` 实际上是一个全局变量，用于存放该运行时库的实现代码，因此在使用 Generator 和 Async/Await 时，会通过调用这个全局变量来执行相关代码。
+
+在一些项目中，如果需要使用 Generator 或 Async/Await，可以通过引入相关的 Polyfill 或 Babel 插件来进行转译和支持，这样就不需要手动引入 `_regeneratorRuntime` 了。
+
+## _regeneratorRuntime用法举例
+下面是一个使用 `_regeneratorRuntime` 的示例：
+
+```javascript
+// 引入 runtime 库
+var _regeneratorRuntime = require("babel-runtime/regenerator").default;
+
+// 使用 async/await 函数
+async function myAsyncFunction() {
+  try {
+    var result1 = await somePromise();
+    var result2 = await anotherPromise(result1);
+    return result2;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// 将 async 函数转换成普通函数
+var myAsyncFunctionGen = _regeneratorRuntime.mark(function _callee() {
+  var result1, result2, error;
+  return _regeneratorRuntime.wrap(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.prev = 0;
+          _context.next = 3;
+          return somePromise();
+
+        case 3:
+          result1 = _context.sent;
+          _context.next = 6;
+          return anotherPromise(result1);
+
+        case 6:
+          result2 = _context.sent;
+          return _context.abrupt("return", result2);
+
+        case 10:
+          _context.prev = 10;
+          _context.t0 = _context["catch"](0);
+          error = _context.t0;
+          console.log(error);
+
+        case 14:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, _callee, null, [[0, 10]]);
+});
+
+// 执行普通函数
+var myAsyncFunctionGenResult = myAsyncFunctionGen();
+myAsyncFunctionGenResult.next().value.then(function (result1) {
+  myAsyncFunctionGenResult.next(result1).value.then(function (result2) {
+    console.log(result2);
+  });
+});
+
+```
+
+在上面的示例中，我们定义了一个 async 函数 `myAsyncFunction`，它使用了两个 `await` 关键字来等待两个 Promise 的返回值。然后，我们使用 `_regeneratorRuntime` 来将这个 async 函数转换成了普通的 generator 函数 `myAsyncFunctionGen`。
+
+在转换后的代码中，我们可以看到，在 generator 函数中使用了 `_context.next` 和 `_context.sent` 来模拟 async/await 语法。然后，我们使用 `myAsyncFunctionGen()` 来执行这个普通函数，并使用 `myAsyncFunctionGenResult.next().value` 来获取它的第一个 yield 值，即 `somePromise()` 函数的返回值。接着，我们再调用 `myAsyncFunctionGenResult.next(result1).value` 来获取下一个 yield 值，即 `anotherPromise(result1)` 函数的返回值，并打印出来。
+
+这样，我们就成功地使用 `_regeneratorRuntime` 来将 async/await 函数转换成了普通函数，从而在旧版的浏览器或者 Node.js 环境下也能够支持这些语法了。
+
 ## 浏览器上的window对象上key为0，或1，或2的对象是怎么来的
 
 在浏览器中，窗口对象（window对象）的属性可以是任何有效的JavaScript标识符，包括数字。
