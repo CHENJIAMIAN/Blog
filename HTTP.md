@@ -1,3 +1,24 @@
+## \<script>加载脚步可以修改请求头的referer吗
+
+在 script 标签中加载的脚本是不可以修改请求头的 referer 字段的。在浏览器中，script 标签加载的资源是通过 GET 请求获取的，并且浏览器会自动添加 referer 字段，该字段的值为当前页面的地址，无法修改。
+
+如果需要修改 referer 字段，可以考虑使用 XMLHttpRequest 对象发送 AJAX 请求，并手动设置请求头 referer 的值。例如：
+
+```javascript
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/api', true);
+xhr.setRequestHeader('Referer', 'http://example.com');
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+    // 处理响应
+  }
+};
+xhr.send();
+
+```
+
+需要注意的是，修改 referer 字段可能会引发安全问题，应慎重使用。
+
 ## \:authority：open.uino.com
 
 "\:authority" 是 HTTP/2 中的一个伪头（pseudo-header），用于标识请求目标的权威名称。它表示请求的 URI 的 "Authority" 部分，通常是主机名和端口号。在 HTTP/1.1 中，这个值通常出现在 "Host" 请求头字段中，而在 HTTP/2 中，则使用 "\:authority" 伪头字段。因此，"\:authority: open.uino.com" 表示请求的目标是 "open.uino.com" 这个主机，并且使用默认的端口号（80 或 443）。
