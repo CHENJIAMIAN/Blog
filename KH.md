@@ -13,3 +13,16 @@
 *   培训资料和知识库
 
 体系文件的编制和维护是组织或系统管理的一项重要工作，能够帮助组织或系统更好地实现目标和任务，提高效率和质量，确保一致性和稳定性。
+
+## IPD概念
+*   IPD: Integrated Product Development, 集成产品开发
+*   CDCP: Concept Development and Control Plan, 概念开发和控制计划
+*   PDCP: Product Development and Control Plan, 产品开发和控制计划
+*   ADCP: Advanced Development and Control Plan, 先进开发和控制计划
+*   LDCP: Life-cycle Development and Control Plan, 生命周期开发和控制计划
+*   TR: Technical Review, 技术评审
+*   NPI: New Product Introduction, 新产品导入
+*   PLM: Product Lifecycle Management, 产品生命周期管理
+*   PDT: Product Development Team, 产品开发团队
+*   ITM: Idea To Market, 从机会到商业变现
+
