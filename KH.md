@@ -25,6 +25,7 @@
 *   PLM: Product Lifecycle Management, 产品生命周期管理
 *   PDT: Product Development Team, 产品开发团队
 *   ITM: Idea To Market, 从机会到商业变现
+*   GA: General Availability，意思是产品向公众发布
 ## 用一个例子来举例IPD的整个流程，让我一看就能知道IPD是什么
 
 用一个例子来说明IPD的整个流程。假设您是一家智能手机制造商，您想开发一款新的产品来满足市场和客户的需求。您可以按照以下步骤来进行IPD产品开发流程：
