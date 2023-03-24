@@ -16,16 +16,43 @@
 
 ## IPD概念
 *   IPD: Integrated Product Development, 集成产品开发
+    *   ITM: Idea To Market, 从机会到商业变现
+    *   NPI: New Product Introduction, 新产品导入
+    *   PLM: Product Lifecycle Management, 产品生命周期管理
+    *   IPMT: Integrated Project Management Team，项目管理团队，由建设方、投资方、项目管理方和其他参与各方代表组成，负责协调和监督项目的实施
+        *   PDT: Product Development Team, 产品开发团队
 *   CDCP: Concept Development and Control Plan, 概念开发和控制计划
 *   PDCP: Product Development and Control Plan, 产品开发和控制计划
 *   ADCP: Advanced Development and Control Plan, 先进开发和控制计划
-*   LDCP: Life-cycle Development and Control Plan, 生命周期开发和控制计划
-*   TR: Technical Review, 技术评审
-*   NPI: New Product Introduction, 新产品导入
-*   PLM: Product Lifecycle Management, 产品生命周期管理
-*   PDT: Product Development Team, 产品开发团队
-*   ITM: Idea To Market, 从机会到商业变现
 *   GA: General Availability，意思是产品向公众发布
+*   LDCP: Launch Development and Control Plan, 发布开发与控制计划
+*   TR: Technical Review, 技术评审
+    *   TR1：产品需求和概念评审
+    *   TR2：需求分解和规格评审&#x20;
+    *   TR3：总体方案评审
+    *   TR4：模块/系统评审&#x20;
+    *   TR5：样机评审&#x20;
+    *   TR6：小批量评审
+*   LPDT是领导型产品开发团队，由各个PDT的经理组成，负责协调各个PDT之间的资源和沟通；
+*   FPDT是财务型产品开发团队，由PDT的财务代表组成，负责管理项目的成本和收益；
+*   RDPDT是研发型产品开发团队，由PDT的开发代表组成，负责实施技术方案和模块设计；
+*   TSPDT是技术支持型产品开发团队，由PDT的技术支援代表组成，负责提供技术服务和培训；
+*   MNPDT是制造型产品开发团队，由PDT的制造代表组成，负责生产工艺和转产准备；
+*   PROPDT是采购型产品开发团队，由PDT的采购代表组成，负责供应链管理和物料控制；
+*   MKPDT是市场型产品开发团队，由PDT的市场代表组成，负责市场调研和营销策划；
+*   EE是硬件工程师，负责电路设计和硬件测试；
+*   TE(测试工程师）
+*   SWE是软件工程师，负责软件编程和软件测试；
+*   ME是结构工程师，负责机械设计和结构测试；
+*   IDE是工业设计师，负责外观设计和用户体验；
+*   MOPS是市场运营专员，负责市场推广和销售支持；
+*   PP是项目计划员，负责项目进度管理和风险控制；
+*   AME是先进制造工程师，负责新工艺研究和验证；
+*   TSS是技术服务专员，负责客户培训和售后服务；
+*   PRO是项目经理/主管/总监/副总裁等高级职位，负责整个项目或部门或公司的决策和领导；
+*   ESP是额外支持人员（Extra Support Personnel），指在某些特定阶段或任务中需要参与协助的其他人员。例如：法务、审计、品牌、公关等。
+
+
 ## 用一个例子来举例IPD的整个流程，让我一看就能知道IPD是什么
 
 用一个例子来说明IPD的整个流程。假设您是一家智能手机制造商，您想开发一款新的产品来满足市场和客户的需求。您可以按照以下步骤来进行IPD产品开发流程：
