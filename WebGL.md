@@ -17,6 +17,17 @@
 3.  Perspective矩阵用于projection transformation和perspective division，转化后我们将得到NDC。
 4.  最后，我们使用`gl.viewport`来将NDC映射到视图坐标上，其原型为`gl.viewport(minX, minY, width, height)`。
 
+## 摄像头与投影与矩阵
+*   WebGL中是没有摄像头的，但是我们可以使用MVMatrix创建一个；
+*   3D图形经过了很多次变换才被显示在屏幕上，这些变换用一个4\*4的矩阵表示；
+*   变换都是仿射变换，WebGL通过三个矩阵Modle-View Matrix， Perspective Matrix以及Normal Matrix以及一个WebGL操作gl.viewport()来加以实现；
+*   所有的仿射变换都是通过4维数组来变换的，因此我们需要扩充一维w。向量的w值总是0，而点的w值则是1；
+*   看WebGL场景时，我们一般都是面向z轴负方向，但是我们也可以通过改变Model-View matrix来改变它；
+*   Camera Matrix是Model-View matrix的逆矩阵，它们的操作是相反的。我们有两种视角——上帝视角和第一人称视角；
+*   当进行仿射变换时，法线需要被特别对待。我们需要从Model-View matrix中计算出新的Normal matrix；
+*   Perspective决定了两种基本投影方式：即透视投影和正视投影。
+
+
 ## 什么是切线空间
 切线空间（Tangent Space）是一种坐标系统，用于表达表面几何特征和材质属性。在三维计算机图形学中，通常将一个几何体的每个三角形面片都映射到这个切线空间中，从而能够方便地计算出这个面片上每个像素的法线向量以及材质纹理的值。
 
