@@ -1,3 +1,13 @@
+## 摄像头矩阵转换的WebGL的实现
+![](http://gtms03.alicdn.com/tps/i3/T1iuOQFD8aXXaoRwcK-1084-564.png) 
+在WebGL中，我们使用3个矩阵以及一个WebGL方法来实现前面说到的5个变换：
+
+1.  Model-View矩阵包括了model和view变换。
+2.  Normal矩阵通过先对Model-View矩阵求逆再置换的方式获得。
+3.  Perspective矩阵用于projection transformation和perspective division，转化后我们将得到NDC。
+4.  最后，我们使用`gl.viewport`来将NDC映射到视图坐标上，其原型为`gl.viewport(minX, minY, width, height)`。
+
+
 ## 什么是切线空间
 切线空间（Tangent Space）是一种坐标系统，用于表达表面几何特征和材质属性。在三维计算机图形学中，通常将一个几何体的每个三角形面片都映射到这个切线空间中，从而能够方便地计算出这个面片上每个像素的法线向量以及材质纹理的值。
 
