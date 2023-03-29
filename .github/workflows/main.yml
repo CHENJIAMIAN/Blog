@@ -1,6 +1,6 @@
 name: CI
 
-on: [push, issues, issue_comment]
+on: [issues, issue_comment]
 
 jobs:
   build:
