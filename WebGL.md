@@ -1,11 +1,23 @@
 ## 摄像头矩阵转换的WebGL的实现
-![](http://gtms03.alicdn.com/tps/i3/T1iuOQFD8aXXaoRwcK-1084-564.png) 
+
+[![](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67)](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67) &#x20;
+
+*   Theory:
+
+    *   ObjectCoordinates    ModelTransform ViewTransform          ProjectionTransform PerspectiveDivision               ViewportTransform                Viewport(Canvas)Coordinates
+*   WebGL:
+
+    *   ObjectCoordinates    Model -ViewMatrix                               PerspectiveMatrix                                                 gl.viewport Viewport(Canvas)Coordinates
+    *   NormalVectors          NommalMatrix                                     TransformedNormal Vectors
+
 在WebGL中，我们使用3个矩阵以及一个WebGL方法来实现前面说到的5个变换：
 
 1.  Model-View矩阵包括了model和view变换。
 2.  Normal矩阵通过先对Model-View矩阵求逆再置换的方式获得。
 3.  Perspective矩阵用于projection transformation和perspective division，转化后我们将得到NDC。
 4.  最后，我们使用`gl.viewport`来将NDC映射到视图坐标上，其原型为`gl.viewport(minX, minY, width, height)`。
+
+
 
 
 ## 什么是切线空间
