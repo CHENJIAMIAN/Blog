@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "25b9d61068d71185",
+        "id": "4e9f5cb292239f88",
         "type": "tabs",
         "children": [
           {
-            "id": "5ee8ac25775a4b21",
+            "id": "4da3a7ee19aaa3f7",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -154,7 +154,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "5ee8ac25775a4b21",
+  "active": "6323b2f6898b32c7",
   "lastOpenFiles": [
     "前端.md",
     "Markdown 使用指南.md",
