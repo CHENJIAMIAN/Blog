@@ -11,8 +11,12 @@
             "id": "4da3a7ee19aaa3f7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "前端.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "前端.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "前端.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "前端.md"
+              }
             }
           },
           {
@@ -154,7 +162,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6323b2f6898b32c7",
+  "active": "4da3a7ee19aaa3f7",
   "lastOpenFiles": [
     "前端.md",
     "Markdown 使用指南.md",
