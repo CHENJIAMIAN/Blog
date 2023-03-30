@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "eb2d75c664c52fbb",
+        "id": "25b9d61068d71185",
         "type": "tabs",
         "children": [
           {
-            "id": "1bf7926c82154fa9",
+            "id": "5ee8ac25775a4b21",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -128,6 +128,14 @@
               "type": "git-view",
               "state": {}
             }
+          },
+          {
+            "id": "777c4cadf66f9b9d",
+            "type": "leaf",
+            "state": {
+              "type": "git-history-view",
+              "state": {}
+            }
           }
         ],
         "currentTab": 4
@@ -146,10 +154,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "1bf7926c82154fa9",
+  "active": "5ee8ac25775a4b21",
   "lastOpenFiles": [
-    "Markdown 使用指南.md",
     "前端.md",
+    "Markdown 使用指南.md",
     "HTTP.md"
   ]
 }
