@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "4e9f5cb292239f88",
+        "id": "87675846bea164f6",
         "type": "tabs",
         "children": [
           {
-            "id": "4da3a7ee19aaa3f7",
+            "id": "91c475633003659e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端.md",
+                "file": "ChatGPT随笔.md",
                 "mode": "source",
                 "source": false
               }
@@ -78,6 +78,7 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
+        "dimension": 25.460992907801415,
         "children": [
           {
             "id": "5e55221e27be587d",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "前端.md",
+                "file": "ChatGPT随笔.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "前端.md",
+                "file": "ChatGPT随笔.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -116,16 +117,6 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
-            }
-          },
-          {
-            "id": "a7974b07fd2b2c15",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "前端.md"
               }
             }
           },
@@ -146,7 +137,24 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
+      },
+      {
+        "id": "62cca7b24132f3d3",
+        "type": "tabs",
+        "dimension": 74.53900709219859,
+        "children": [
+          {
+            "id": "a7974b07fd2b2c15",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "ChatGPT随笔.md"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
@@ -162,10 +170,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4da3a7ee19aaa3f7",
+  "active": "91c475633003659e",
   "lastOpenFiles": [
+    "WebGL.md",
+    "ThreeJS.md",
+    "HTTP.md",
+    "ChatGPT随笔.md",
     "前端.md",
-    "Markdown 使用指南.md",
-    "HTTP.md"
+    "Markdown 使用指南.md"
   ]
 }
