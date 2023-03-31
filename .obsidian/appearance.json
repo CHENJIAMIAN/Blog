@@ -1,5 +1,9 @@
 {
   "accentColor": "",
   "cssTheme": "",
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "translucency": false,
+  "nativeMenus": false,
+  "showViewHeader": true,
+  "baseFontSize": 18
 }

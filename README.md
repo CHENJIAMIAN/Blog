@@ -83,3 +83,5 @@
 | [GeoServer-Beginners-Guide](https://github.com/CHENJIAMIAN/GeoServer-Beginners-Guide) | 在线电子书, 可用谷歌翻译 | ![](https://badgen.net/github/stars/CHENJIAMIAN/GeoServer-Beginners-Guide) ![](https://badgen.net/github/forks/CHENJIAMIAN/GeoServer-Beginners-Guide) ![](https://badgen.net/github/watchers/CHENJIAMIAN/GeoServer-Beginners-Guide) |
 | --- | --- | --- |
 
+[我写的油猴脚本们](https://greasyfork.org/zh-CN/users/969000-s-%E7%BB%9F%E4%B8%80%E4%B8%96%E7%95%8C-v)
+

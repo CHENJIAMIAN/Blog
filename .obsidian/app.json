@@ -1,1 +1,7 @@
-{}
+{
+  "strictLineBreaks": false,
+  "readableLineLength": false,
+  "showLineNumber": true,
+  "rightToLeft": false,
+  "spellcheck": false
+}
