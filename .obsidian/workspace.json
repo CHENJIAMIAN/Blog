@@ -4,15 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "bfd4d5d97a227190",
+        "id": "ba3cb6fd7ab9d000",
         "type": "tabs",
         "children": [
           {
-            "id": "64c1dd8c3955af9e",
+            "id": "6eb2fc8861a62705",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "HTML CSS.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
         ]
@@ -44,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "我",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,11 +66,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 506.5
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -74,7 +80,7 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
-        "dimension": 85.1063829787234,
+        "dimension": 85.81560283687944,
         "children": [
           {
             "id": "5e55221e27be587d",
@@ -82,6 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "HTML CSS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "HTML CSS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,14 +144,16 @@
       {
         "id": "62cca7b24132f3d3",
         "type": "tabs",
-        "dimension": 14.893617021276595,
+        "dimension": 14.184397163120568,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "HTML CSS.md"
+              }
             }
           }
         ]
@@ -163,14 +173,22 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "64c1dd8c3955af9e",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
+    "Python/【python】Flask web.md",
+    "【通用】Git.md",
+    "AI产品导航.md",
+    "投资 保险/1 买房.md",
+    "Python/跨域.md",
+    "Python/7月29日.md",
+    "WebGL.md",
+    "GIS OL Geoserver PostGIS.md",
+    "Markdown编辑器.md",
     "WebPack.md",
     "1 杂/《TCP IP 详解：协议》 2019年7月23日.md",
     "1 杂/《深入理解计算机系统》 《编码》.md",
     "1 杂/AE PS EXCEL.md",
     "Node.js.md",
-    "GIS OL Geoserver PostGIS.md",
     "投资 保险/0 保险.md",
     "投资 保险/股票 基本.md",
     "Vue2 源码.md",
@@ -180,18 +198,10 @@
     "KH.md",
     "☁.md",
     "【网络】WS TCP IP HTTP POST GET.md",
-    "WebGL.md",
     "BIM-QA.md",
     "BIM.md",
     "办理资料.zip",
     "Web 3D.md",
-    "Vue3.md",
-    "React.md",
-    "Markdown编辑器.md",
-    "JS-TS.md",
-    "JS.md",
-    "JS 进阶.md",
-    "HTML CSS.md",
     "我的资源",
     "投资 保险/images/FA93C31063DD433F8A8B6220A89235AE.png",
     "投资 保险/images/F57ACCC24AC6401FA4BC50A7718E2409.png",
