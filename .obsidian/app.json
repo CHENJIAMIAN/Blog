@@ -3,5 +3,6 @@
   "readableLineLength": false,
   "showLineNumber": true,
   "rightToLeft": false,
-  "spellcheck": false
+  "spellcheck": false,
+  "defaultViewMode": "preview"
 }

@@ -17,7 +17,6 @@ Scene//是一个Cesium应用程序的根对象，它包含用于场景渲染和�
 ```
 
 
-
 ```javascript
 多源//来源于遥感影像、摄像头、问卷调查、手机信令、GPS追踪等
 异构//结构化数据, 非结构化数据, 时空数据
@@ -291,7 +290,7 @@ Viewer
 ```
 
 
-
+## 实践
 ```javascript
 概念
     Cesium ion是一个提供瓦片图和3D地理空间数据的平台
@@ -321,7 +320,30 @@ Viewer
         glb//gltf，也就是直接将 glTF 模型文件作为瓦片内容文件
         
     cesium可以读取tileset中的{"geometricError":180.82317494275}用来干什么
-        tileset 中的几何误差信息，如果几何误差较低，Cesium 可能加载更多的瓦片，以获得更高精度的图形。如果几何误差较高，Cesium 可能加载更少的瓦片，以提高性能,确定瓦片的加载方式
+	    一般单位是米（m），每个子tile孙子tile都有这个值，越精细的值越小，孙子的这个值比它爹小
+        tileset 中的几何误差信息，如果几何误差较低，Cesium 可能加载更多的瓦片，以获得更高精度的图形。
+        如果几何误差较高，Cesium 可能加载更少的瓦片，以提高性能,确定瓦片的加载方式
+        //在webgl层级决定三角形剖分的程度
+        
+	整体代表什么，每个数各代表什么
+		"boundingVolume": {
+			-   "box"：表示边界体积为一个长方体，其位置和大小由"box"属性指定；
+			-   "region"：表示边界体积为一个地理区域，由"region"属性指定；
+			-   "sphere"：表示边界体积为一个球体，由"sphere"属性指定；
+			-   "tileset"：表示边界体积为整个数据集，由"tileset"属性指定。
+			"box": [
+				50.0694580078125,75.6625518798828,34.4871654510498,
+				421.810821533203,0,0,
+				0,393.366622924805,0,
+				0,0,52.166711807251
+			]
+			//或`region`属性的值为`[-1.3197209591796106, 0.6988424218, -1.3196390408203893, 0.6989055782, 0, 88]`，
+				//表示该模型所在的区域位于经度-1.31972到-1.31964之间、纬度0.69884到0.69891之间，高度范围为0到88米。
+		},这个包围盒是通过一个长方体盒子（box）来表示的，包含了以下12个数值：		
+	-   前三个数（50.0694580078125，75.6625518798828，34.4871654510498）表示盒子的中心点在三维坐标系中的位置（x、y、z轴坐标）。
+	-   接下来三个数（421.810821533203，0，0）表示盒子在x轴上的长度、y轴和z轴上的长度。
+	-   再接下来三个数（0，393.366622924805，0）表示盒子在y轴上的长度、x轴和z轴上的长度。
+	-   最后三个数（0，0，52.166711807251）表示盒子在z轴上的长度、x轴和y轴上的长度。
         
 ECEF (Earth-Centered, Earth-Fixed)是一种表示地球中物体位置的坐标系，它是以地球的中心为原点并固定在地球上的坐标系。在ECEF坐标系中，三维坐标（x, y, z）表示物体与地球中心的距离。
 
@@ -331,12 +353,12 @@ ECEF (Earth-Centered, Earth-Fixed)是一种表示地球中物体位置的坐标�
     Cartesian3 //世界坐标（三维坐标） 3D笛卡尔点对象 //米单位;原点是地球几何中心； +x是中央经线，-x是180度经线
         new Cesium.Cartesian3(x, y, z)  // 表示一个三维笛卡尔坐标系，也是直角坐标系（就是真实世界的坐标系）
         //二维屏幕坐标系到三维坐标系的转换
-            var pick = new Cesium.Cartesian2(window.innerWidth, window,innerHeight);	// 屏幕坐标
-            var cartesian= scene.globe.pick(viewer.camera.getPickRay(pick), scene) // 世界坐标
+            const pick = new Cesium.Cartesian2(window.innerWidth, window,innerHeight);	// 屏幕坐标
+            const cartesian= scene.globe.pick(viewer.camera.getPickRay(pick), scene) // 世界坐标
     Cartographic(longitude, latitude/*弧度*/, height) //地理坐标（弧度）
     point：经纬度坐标
     
-var transform =Cesium.Transforms.eastNorthUpToFixedFrame(点)//支持通过传入一个中心点，然后获取到中心点的正东正北，和地表法线的方向,返回以该点为中心的参考系
+const transform =Cesium.Transforms.eastNorthUpToFixedFrame(点)//支持通过传入一个中心点，然后获取到中心点的正东正北，和地表法线的方向,返回以该点为中心的参考系
 camera.lookAtTransform(transform,/*相机相对点的位置*/new Cesium.Cartesian3(0, 0, 120000.0));//整个sence以点为中心,而不是地心
 camera.position//相对于transform的位置
 camera.positionWC//相对于地心的位置,取位置转经纬度要取这个!!!!!!!!!!1111
@@ -349,7 +371,7 @@ camera.positionWC//相对于地心的位置,取位置转经纬度要取这个!!!
   
    
 Cesium.Ion.defaultAccessToken = 'your_access_token';
-var viewer = new Cesium.Viewer('cesiumContainer',{
+const viewer = new Cesium.Viewer('cesiumContainer',{
     //viewer用于构建应用程序的基本小部件。它将所有标准Cesium小部件组合到一个可重用的程序包中
       animation: true,              // 是否显示动画小部件（左下角仪表盘）
       baseLayerPicker: true,        // 是否显示图层选择器
@@ -365,80 +387,96 @@ var viewer = new Cesium.Viewer('cesiumContainer',{
       scene3DOnly: false,           // 如果设置为 true，则所有几何图形以 3D 模式绘制以节约GPU资源
       shadows : true,               // 是否显示阴影
       shouldAnimate : true,         // 是否显示动画
-      baseLayerPicker: false,       // 是否显示图层显示器
       imageryProvider: new Cesium.BingMapsImageryProvider({
-                              // url: 'https://dev.virtualearth.net',
-                              // key: 'YourBingMapKey',
-                              // mapStyle: Cesium.BingMapsStyle.AERIAL
-                              // }),
+							   url: 'https://dev.virtualearth.net',
+							   key: 'YourBingMapKey',
+							   mapStyle: Cesium.BingMapsStyle.AERIAL
+						   }),//亦可viewer.imageryLayers.addImageryProvider
+								var imageryViewModels = Cesium.createDefaultImageryProviderViewModels();//选择不同的地图图层
+								viewer.imageryLayers.addImageryProvider(imageryViewModels[0].createProvider());
       // 加载地形系统
       terrainProvider : Cesium.createWorldTerrain({
-                                // url: 'https://assets.agi.com/stk-terrain/v1/tilesets/world/tiles', // 默认立体地表
-                                requestWaterMask : true,        // 动态水纹
-                                requestVertexNormals: true      // 光效
-                              })
+								requestWaterMask : true,        // 动态水纹
+								requestVertexNormals: true      // 光效
+							  })
 });
 
 
-viewer._cesiumWidget._creditContainer.style.display = "none";//隐藏版权信息
-viewer.zoomTo(tileset);//定位过去
+viewer.cesiumWidget.creditContainer.style.display = "none";//隐藏版权信息
 viewer.entities.add  //点、标记、标签、线、模型、形状和物体\
 viewer.trackedEntity = entity; // 镜头追踪，将镜头固定在对象上
-viewer.imageryLayers.addImageryProvider
-viewer.scene.globe.show = false; //隐藏地球
-viewer.scene.globe.enableLighting // 阳光照射区域高亮
+viewer.scene.globe.enableLighting=true; // 阳光照射区域不高亮
 viewer.scene.debugShowFramesPerSecond = true;  // 显示帧率
 viewer.scene.globe.depthTestAgainstTerrain = true; // 控制视角不转到地下（确保在地形后面的物体被正确地遮挡，只有最前端的对象可见）
-viewer.scene.camera.setView(homeCameraView) // 设置初始视野视角
-    Heading //想象再飞机头,左右方向的改变
-    Pitch //飞机头俯仰角度的改变
-    Roll //飞机身向左右翻滚
-    //  range 距中心的距离，以米为单位。
-        // 初始化相机参数
-        var initialOrientation = new Cesium.HeadingPitchRoll.fromDegrees(0, -90, 0);
-        var homeCameraView = {
-            destination: new Cesium.Cartesian3.fromDegrees(114.29045969, 30.56173526, 40000),
-            orientation: {
-                heading: initialOrientation.heading,/不知道设多少可以从控制台的camera.heading获取！！/
-                pitch: initialOrientation.pitch,
-                roll: initialOrientation.roll
-            }
-        };
-        //也可以重写 homeButton
-        viewer.homeButton.viewModel.command.beforeExecute.addEventListener((e)=>{e.cancel = true;viewer.camera.flyTo(homeCameraView)});
 
+
+// 初始化相机参数
+const initialOrientation = new Cesium.HeadingPitchRoll.fromDegrees(0, -90, 0);
+const homeCameraView = {
+	destination: new Cesium.Cartesian3.fromDegrees(114.29045969, 30.56173526, 40000),
+	orientation: {
+		//Heading //想象再飞机头,左右方向的改变
+		//Pitch //飞机头俯仰角度的改变
+		//Roll //飞机身向左右翻滚
+		//Range //距中心的距离，以米为单位。
+		//HeadingPitchRange【目标物与相机之间的距离和角度】指的是目标物距离相机的距离、相机的垂直角度和水平角度
+		//HeadingPitchRoll【相机的旋转角度】指的是相机在水平、垂直和平面的旋转角度。
+		heading: initialOrientation.heading //不知道设多少可以从控制台的camera.heading获取！！
+		pitch: initialOrientation.pitch,
+		roll: initialOrientation.roll
+	}
+};
+viewer.scene.camera.setView(homeCameraView) // 设置初始视野视角
+//也可以重写 homeButton
+viewer.homeButton.viewModel.command.beforeExecute.addEventListener((e)=>{e.cancel = true;viewer.camera.flyTo(homeCameraView)});
+//viewer.zoomTo(tileset);//定位过去
 
 // 创建一个 scene 实例 Scene是用来管理三维场景的各种对象实体的核心类.
-var scene = viewer.scene;
+const scene = viewer.scene;
 // 创建一个 ellipsoid 实例
-var ellipsoid = scene.globe.ellipsoid;
+const ellipsoid = scene.globe.ellipsoid;
 // 创建一个 clock 实例
-var clock = viewer.clock;
+const clock = viewer.clock;
 // 创建一个 canvas 实例
-var canvas = viewer.canvas
+const canvas = viewer.canvas
 // 创建一个 camera 实例
-var camera = viewer.scene.camera;
+const camera = viewer.scene.camera;
 // 创建一个 entities 实例
-var entities = viewer.entities;
+const entities = viewer.entities;
 
+
+获取视图中心的经纬度：
+	var center = viewer.camera.positionCartographic;
+	var longitude = Cesium.Math.toDegrees(center.longitude);
+	var latitude = Cesium.Math.toDegrees(center.latitude);
+	var height = center .height;
+	[longitude,latitude,height]
 
 
 3DTiles:
-    tileset.boundingSphere//取得图层的坐标范围 tileset.boundingSphere.center为{ x: -181.90666255179437, y: -172.06516955205194, z: 1679.9689450075364 }
+    tileset.boundingSphere
+    //取得图层的坐标范围 tileset.boundingSphere.center为{ x: -181.90666255179437, y: -172.06516955205194, z: 1679.9689450075364 }
     viewer.scene.primitives.add(tileset);//添加到球体上  //primitives：图元 
 
 
+弧度转经纬度
+      var longitude = Cesium.Math.toDegrees(cartographic.longitude);
+	  var latitude = Cesium.Math.toDegrees(cartographic.latitude);
+      var height = cartographic.height;
+      [longitude,latitude,height] 
+      
 笛卡尔3坐标转成经纬度
-    var cartographic=viewer.scene.globe.ellipsoi.cartesianToCartographic(笛卡尔3坐标);//或者var cartographic=Cartographic.fromCartesian(tileset.boundingSphere.center)
-    var lat=CesiumMath.toDegrees(cartographic.latitude);
-    var lng=CesiumMath.toDegrees(cartographic.longitude);
-    var alt=cartographic.height;
+    const cartographic=viewer.scene.globe.ellipsoi.cartesianToCartographic(笛卡尔3坐标);
+    //或者const cartographic=Cartographic.fromCartesian(tileset.boundingSphere.center)
+    const lat=CesiumMath.toDegrees(cartographic.latitude);
+    const lng=CesiumMath.toDegrees(cartographic.longitude);
+    const alt=cartographic.height;
 
 完美修正拟合tileset的高度到地面上
       const cartographic = Cartographic.fromCartesian(tileset.boundingSphere.center);//获得原始中心
-      var surface = Cesium.Cartesian3.fromRadians(cartographic.longitude,cartographic.latitude,0.0);
-      var offset = Cesium.Cartesian3.fromRadians(cartographic.longitude,cartographic.latitude,-cartographic.height );//减去高度      
-      var translation = Cesium.Cartesian3.subtract(offset,surface,new Cesium.Cartesian3());//计算偏移
+      const surface = Cesium.Cartesian3.fromRadians(cartographic.longitude,cartographic.latitude,0.0);
+      const offset = Cesium.Cartesian3.fromRadians(cartographic.longitude,cartographic.latitude,-cartographic.height );//减去高度      
+      const translation = Cesium.Cartesian3.subtract(offset,surface,new Cesium.Cartesian3());//计算偏移
       tileset.modelMatrix = Cesium.Matrix4.fromTranslation(translation);
       
 提升tiles加载性能速度:
@@ -459,5 +497,11 @@ var entities = viewer.entities;
 Cesium.CallbackProperty //用回调函数传入time,用于处理随时间变化的属性,如随时间改变,位置属性改变
 ```
 
+## 矩阵
+
+```js
+Cesium.Matrix4.multiplyByMatrix3(m, rotation, m);替代了Cesium.Matrix4.multiply(m, Cesium.Matrix4.fromRotationTranslation(rotation), m);
+
+```
 
 

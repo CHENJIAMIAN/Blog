@@ -1,4 +1,4 @@
-
+![](https://omnaamelx4.feishu.cn/space/api/box/stream/download/asynccode/?code=OGY4ZDdjNDNmMTcxZjJlNDZmY2NhNDlmNjg4ZDI4N2FfdmNKWkNJeEc3cWxKbWQyb09ISmxPREVUMUdlQ3Q5ZUlfVG9rZW46Ym94Y25RVDhEdVoxVWdiS2p5VUFRdWJjUktjXzE2ODA1OTE5Mjc6MTY4MDU5NTUyN19WNA)
 
 ```javascript
 指令集//x86、ARM v8、MIPS都是指令集的代号。指令集可以被扩展，如x86增加64位支持就有了x86-64
