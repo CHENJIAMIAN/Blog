@@ -7,7 +7,6 @@
 ```
 
 ![](https://omnaamelx4.feishu.cn/space/api/box/stream/download/asynccode/?code=NjE0NzExYWViZWZlYmI3YjI2OWEyMThiODE3ZjA0OWNfVFZoYXZaT0xTTnlCRUpaakdKQXFpSDJxV3FhY05xRDZfVG9rZW46Ym94Y24yQUxTYTJpamxvZHN6SHhOcUpONUtnXzE2ODA1OTIzMDA6MTY4MDU5NTkwMF9WNA)
-
 ```javascript
 离线/实时渲染 //29fps/30fps
 /打断点在gl.drawArrays打,它通常是绘制前的最后一步/

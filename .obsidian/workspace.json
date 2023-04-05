@@ -4,18 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "5891703abafb7956",
+        "id": "e68094fb28ed2971",
         "type": "tabs",
         "children": [
           {
-            "id": "51fd79ae1a875fff",
+            "id": "9e0a3e3a5369e2ea",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
-              "state": {
-                "file": ".obsidian/workspace.json",
-                "staged": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -165,8 +162,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "51fd79ae1a875fff",
+  "active": "9e0a3e3a5369e2ea",
   "lastOpenFiles": [
+    "WebGL.md",
+    "ThreeJS.md",
+    "npm.md",
+    "nginx.md",
+    "【通用】Git.md",
     "conflict-files-obsidian-git.md",
     "Python/【python】数据筛选.md",
     "Python/【python】实践.md",
@@ -197,15 +199,10 @@
     "【通用】跨域CORS  JSONP.md",
     "【通用】编码 ASCII，Unicode 和 UTF-8.md",
     "【通用】MVVM 设计模式 ts实现 4+6+5=15个.md",
-    "【通用】Git.md",
     "【网络】WS TCP IP HTTP POST GET.md",
     "【网络】HTTPS 非对称加密 RSA.md",
     "【离线】渐进 SW.md",
     "【离线】 Cookie Storage.md",
-    "【地图】投影 编号.md",
-    "【区块链】.md",
-    "【Linux】.md",
-    "【Docker】.md",
     "images",
     "2 O/images",
     "2 O",
