@@ -1,1 +1,13 @@
-{}
+{
+  "editor:toggle-code": [],
+  "file-explorer:open": [],
+  "daily-notes": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "D"
+    }
+  ]
+}
