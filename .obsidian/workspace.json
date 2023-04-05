@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "c3ed68efca3c5328",
+        "id": "5891703abafb7956",
         "type": "tabs",
         "children": [
           {
-            "id": "7f870650650b1b0a",
+            "id": "51fd79ae1a875fff",
             "type": "leaf",
             "state": {
               "type": "diff-view",
               "state": {
-                "file": ".obsidian/plugins/various-complements/manifest.json",
-                "staged": true
+                "file": ".obsidian/workspace.json",
+                "staged": false
               }
             }
           }
@@ -64,8 +64,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -166,7 +165,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "7f870650650b1b0a",
+  "active": "51fd79ae1a875fff",
   "lastOpenFiles": [
     "conflict-files-obsidian-git.md",
     "Python/【python】数据筛选.md",
