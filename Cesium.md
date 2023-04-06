@@ -1,4 +1,9 @@
-
+## 资源
+[gw3_construkted/construkted.js at master · stefanciorici/gw3_construkted · GitHub](https://github.com/stefanciorici/gw3_construkted/blob/master/wp-content/themes/gowatch-child/js/construkted.js)泄露了官方的测量/距离/面积/模型位置编辑器插件
+[edd6b-Construkted/CesiumIonSDKPlugin.js at ba5418eaa26710e0b63440167c177a5014e046e5 · Construkted-Reality/edd6b-Construkted --- edd6b-Construkted/CesiumIonSDKPlugin.js 位于 ba5418eaa26710e0b63440167c177a5014e046e5 · Construkted-Reality/edd6b-Construkted](https://github.com/Construkted-Reality/edd6b-Construkted/tree/ba5418eaa26710e0b63440167c177a5014e046e5)具体分支
+[Construkted-Reality/3DT-Local-viewer: Local viewer for 3D Tiles --- Construkted-Reality/3DT-Local-viewer：3D Tiles 的本地查看器](https://github.com/Construkted-Reality/3DT-Local-viewer)2023年4月6日尝试了，不可用
+[Construkted-Reality/3DTG：将 3d 模型转换为 3d tiles](https://github.com/Construkted-Reality/3DTG)目前该工具只接受带纹理的 OBJ 文件
+[My Assets | Cesium ion --- 我的资产 |铯离子](https://ion.cesium.com/assets/)可以在线免费转3DTiles再下载下来
 
 ```javascript
 Cesium.Resource.fetchJson(url)
@@ -15,7 +20,7 @@ Scene//是一个Cesium应用程序的根对象，它包含用于场景渲染和�
 总体而言，这个方法的作用是生成当前视野中需要绘制的物体集合，以便优化渲染性能并提高可视效果。
     Globe//是Scene的一部分，表示在场景中渲染地球的部分。它包括地球的几何形状、地形、图像纹理和其他相关属性，使得场景中的地球可以进行交互和探索。
 ```
-
+## 执行流程 与 对象
 
 ```javascript
 多源//来源于遥感影像、摄像头、问卷调查、手机信令、GPS追踪等
@@ -228,7 +233,7 @@ WebMercatorTilingScheme: 以经典的WebMercator投影方式对图层进行瓦�
 when：一个实用工具，对带有错误处理的 promise 进行分装， 允许等待所有 promise 完成以及在适当的时间捕获潜在的失败。
 ```
 
-
+## 类图
 
 ```javascript
 Viewer
@@ -288,22 +293,8 @@ Viewer
             XXXGriaphics(可修改样式)
     Scene
 ```
-
-
-## 实践
-```javascript
-概念
-    Cesium ion是一个提供瓦片图和3D地理空间数据的平台
-    使用geojson加载线数据在30万左右，矢量建筑面8万左右尚可
-    OSGB//Open Scene Gragh Binary 是模型的二进制表示，所有纹理都包含在一个独立文件中。 OpenSceneGraph 是一个开源的高性能 3D 图形工具包 
-
-    Matrix4//4x4转换矩阵，用于转换图块的根图块
-    Ellipsoid//由方程在笛卡尔坐标系中定义的二次曲面//椭球体    
-    I3S//(索引3D场景)Esri针对3D场景提出的一种数据格式，ArcGIS的场景服务都默认采用这种数据格式
-    报错：
-        //我发现原因是KHR_technique_webgl扩展新版Cesium已经不支持的缘故，需要升级一下gltf数据，使用KHR_techniques_webgl扩展即可(注意多了一个s)
-        //Cesium在使用这个扩展时，gltf2.0也在逐步进化，居然连KHR_technique_webgl这个扩展的名字都改了，technique后面加了一个s。。所以现在的扩展名叫KHR_techniques_webgl
-
+## 3DTiles
+```js
 3DTiles 1.0 规范允许异构数据共存于一个数据集上。3D 瓦片只是空间划分的单元，并不是该块三维空域内的具体三维物体。这些三维物体被称作“瓦片内容”。
     简单地理解为带有 LOD 的 glTF
     //http://mars3d.cn/dev/guide/map/tileset.html#_3-2-lod%E6%A0%91%E7%BB%93%E6%9E%84
@@ -344,6 +335,32 @@ Viewer
 	-   接下来三个数（421.810821533203，0，0）表示盒子在x轴上的长度、y轴和z轴上的长度。
 	-   再接下来三个数（0，393.366622924805，0）表示盒子在y轴上的长度、x轴和z轴上的长度。
 	-   最后三个数（0，0，52.166711807251）表示盒子在z轴上的长度、x轴和y轴上的长度。
+
+3DTILES的root的"transform": [
+			-1.1348381601623395,			-0.2899580508025771,			-0.414291999686242,			0,//x、y、z三个轴向上的缩放比例
+			-0.13570189487791788,			-0.33968642889259656,			0.6094602447327197,			0,//x、y、z三个轴向旋转的角度(弧度or度)
+			-0.7711452290402661,			1.8167044083464686,			0.8408488797207132,			0,//x、y、z平移
+			-2293908.7750967207,			5404110.700716343,			2484510.344405871,			1//3D Tiles数据集在全局坐标系中的位置
+		]对于使用3D Tiles的应用程序来说，root transform的作用是将3D Tiles数据的本地坐标系映射到应用程序的全局坐标系，以便正确地显示和处理3D模型和场景。
+		
+
+```
+
+
+## 实践
+```javascript
+概念
+    Cesium ion是一个提供瓦片图和3D地理空间数据的平台
+    使用geojson加载线数据在30万左右，矢量建筑面8万左右尚可
+    OSGB//Open Scene Gragh Binary 是模型的二进制表示，所有纹理都包含在一个独立文件中。 OpenSceneGraph 是一个开源的高性能 3D 图形工具包 
+
+    Matrix4//4x4转换矩阵，用于转换图块的根图块
+    Ellipsoid//由方程在笛卡尔坐标系中定义的二次曲面//椭球体    
+    I3S//(索引3D场景)Esri针对3D场景提出的一种数据格式，ArcGIS的场景服务都默认采用这种数据格式
+    报错：
+        //我发现原因是KHR_technique_webgl扩展新版Cesium已经不支持的缘故，需要升级一下gltf数据，使用KHR_techniques_webgl扩展即可(注意多了一个s)
+        //Cesium在使用这个扩展时，gltf2.0也在逐步进化，居然连KHR_technique_webgl这个扩展的名字都改了，technique后面加了一个s。。所以现在的扩展名叫KHR_techniques_webgl
+
         
 ECEF (Earth-Centered, Earth-Fixed)是一种表示地球中物体位置的坐标系，它是以地球的中心为原点并固定在地球上的坐标系。在ECEF坐标系中，三维坐标（x, y, z）表示物体与地球中心的距离。
 
@@ -504,4 +521,10 @@ Cesium.Matrix4.multiplyByMatrix3(m, rotation, m);替代了Cesium.Matrix4.multipl
 
 ```
 
+## 概念
+
+```js
+与ClampToGround不同，clampToHeight属性允许您将对象放置在地球表面之上或之下的指定高度
+	//clampToHeight属性通常用于放置对象，例如气球、无人机或飞行器等，这些对象需要在指定的高度上悬停或飞行
+```
 
