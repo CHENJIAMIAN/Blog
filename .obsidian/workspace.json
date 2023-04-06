@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "751309738d592c17",
+        "id": "94c379d45f756f6f",
         "type": "tabs",
         "children": [
           {
-            "id": "c58a694aab220548",
+            "id": "4a99b062c54df938",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JS 进阶.md",
+                "file": "conflict-files-obsidian-git.md",
                 "mode": "preview",
                 "backlinks": false,
                 "source": false
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "<<<<<<<",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -66,7 +66,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -87,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "JS 进阶.md",
+                "file": "conflict-files-obsidian-git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JS 进阶.md",
+                "file": "conflict-files-obsidian-git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +152,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JS 进阶.md"
+                "file": "conflict-files-obsidian-git.md"
               }
             }
           }
@@ -172,8 +173,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "c58a694aab220548",
+  "active": "4a99b062c54df938",
   "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
+    "JS 进阶.md",
     "JS问答.md",
     "JS-TS.md",
     "KH.md",
@@ -187,7 +190,6 @@
     "WebGL.md",
     "ThreeJS.md",
     "【通用】Git.md",
-    "conflict-files-obsidian-git.md",
     "Python/【python】数据筛选.md",
     "Python/【python】实践.md",
     "Python/【python】基础.md",
@@ -211,7 +213,6 @@
     "投资 保险/股票 基本.md",
     "投资 保险/股票 买入.md",
     "投资 保险/2 买车.md",
-    "投资 保险/1 买房.md",
     "投资 保险",
     "images",
     "2 O/images",
