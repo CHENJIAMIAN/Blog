@@ -4,15 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "e68094fb28ed2971",
+        "id": "751309738d592c17",
         "type": "tabs",
         "children": [
           {
-            "id": "9e0a3e3a5369e2ea",
+            "id": "c58a694aab220548",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "JS 进阶.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
         ]
@@ -82,6 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "JS 进阶.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "JS 进阶.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +150,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "JS 进阶.md"
+              }
             }
           }
         ]
@@ -154,6 +163,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "markdown-importer:打开 Markdown 格式转换器": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -162,12 +172,20 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "9e0a3e3a5369e2ea",
+  "active": "c58a694aab220548",
   "lastOpenFiles": [
+    "JS问答.md",
+    "JS-TS.md",
+    "KH.md",
+    "JS.md",
+    "HTTP.md",
+    "Node.js.md",
+    "Cesium-地形.md",
+    "Cesium-3DTiles.md",
+    "nginx.md",
+    "npm.md",
     "WebGL.md",
     "ThreeJS.md",
-    "npm.md",
-    "nginx.md",
     "【通用】Git.md",
     "conflict-files-obsidian-git.md",
     "Python/【python】数据筛选.md",
@@ -194,15 +212,7 @@
     "投资 保险/股票 买入.md",
     "投资 保险/2 买车.md",
     "投资 保险/1 买房.md",
-    "投资 保险/0 保险.md",
     "投资 保险",
-    "【通用】跨域CORS  JSONP.md",
-    "【通用】编码 ASCII，Unicode 和 UTF-8.md",
-    "【通用】MVVM 设计模式 ts实现 4+6+5=15个.md",
-    "【网络】WS TCP IP HTTP POST GET.md",
-    "【网络】HTTPS 非对称加密 RSA.md",
-    "【离线】渐进 SW.md",
-    "【离线】 Cookie Storage.md",
     "images",
     "2 O/images",
     "2 O",
