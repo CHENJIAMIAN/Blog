@@ -1,2 +1,3 @@
 .idea/
 __pycache__/
+.obsidian/workspace   #不同步工作区
