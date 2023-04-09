@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Cesium.md",
-                "mode": "preview",
+                "mode": "source",
                 "backlinks": false,
                 "source": false
               }
@@ -70,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -79,7 +80,7 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
-        "dimension": 81.91489361702128,
+        "dimension": 56.743185078909605,
         "children": [
           {
             "id": "5e55221e27be587d",
@@ -143,7 +144,7 @@
       {
         "id": "62cca7b24132f3d3",
         "type": "tabs",
-        "dimension": 18.085106382978726,
+        "dimension": 43.25681492109039,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
@@ -174,6 +175,11 @@
   },
   "active": "1b11c6913d310db2",
   "lastOpenFiles": [
+    "Pasted image 20230409173031.png",
+    "Pasted image 20230409173007.png",
+    "Pasted image 20230409173004.png",
+    "Pasted image 20230409173003.png",
+    "Pasted image 20230409172949.png",
     "JS.md",
     "conflict-files-obsidian-git.md",
     "JS 进阶.md",
@@ -201,17 +207,12 @@
     "投资 保险/images/F23E0D9AFCD3426693A892261EFC02E4.png",
     "投资 保险/images/F00724686B1E49BA87D30F5AC9F8A1DB.png",
     "投资 保险/images/ED2D5BF0ACCB4C0180E07C72F48AEFC7.png",
-    "投资 保险/images/DF9089451A514FF284CC97EA120930C9.jpeg",
-    "投资 保险/images/DAAE809BCDF045F2A3672F44BDEECB5B.png",
-    "投资 保险/images/DEAB213652B74F289F6E9E5A0F58BD23.png",
-    "投资 保险/images/D5B0B483B451487CB0C67709E51E58EB.png",
     "投资 保险/黄金.md",
     "投资 保险/预测 大趋势.md",
     "投资 保险/images",
     "投资 保险/股票 卖出.md",
     "投资 保险/股票 基本.md",
     "投资 保险/股票 买入.md",
-    "投资 保险/2 买车.md",
     "投资 保险",
     "images",
     "2 O/images",
