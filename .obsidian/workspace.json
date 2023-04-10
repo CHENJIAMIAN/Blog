@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "5f024d2f4b132d60",
+        "id": "84a4f88d3f92885a",
         "type": "tabs",
         "children": [
           {
-            "id": "1b11c6913d310db2",
+            "id": "4f680b165ae56c07",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -88,7 +83,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +99,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,9 +144,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Cesium.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -173,15 +164,16 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "1b11c6913d310db2",
+  "active": "4f680b165ae56c07",
   "lastOpenFiles": [
+    "Cesium.md",
+    "conflict-files-obsidian-git.md",
     "Pasted image 20230409173031.png",
     "Pasted image 20230409173007.png",
     "Pasted image 20230409173004.png",
     "Pasted image 20230409173003.png",
     "Pasted image 20230409172949.png",
     "JS.md",
-    "conflict-files-obsidian-git.md",
     "JS 进阶.md",
     "JS问答.md",
     "JS-TS.md",
@@ -206,7 +198,6 @@
     "投资 保险/images/F57ACCC24AC6401FA4BC50A7718E2409.png",
     "投资 保险/images/F23E0D9AFCD3426693A892261EFC02E4.png",
     "投资 保险/images/F00724686B1E49BA87D30F5AC9F8A1DB.png",
-    "投资 保险/images/ED2D5BF0ACCB4C0180E07C72F48AEFC7.png",
     "投资 保险/黄金.md",
     "投资 保险/预测 大趋势.md",
     "投资 保险/images",
