@@ -294,58 +294,6 @@ Viewer
             XXXGriaphics(可修改样式)
     Scene
 ```
-## 3DTiles
-```js
-3DTiles 1.0 规范允许异构数据共存于一个数据集上。3D 瓦片只是空间划分的单元，并不是该块三维空域内的具体三维物体。这些三维物体被称作“瓦片内容”。
-    简单地理解为带有 LOD 的 glTF
-    //http://mars3d.cn/dev/guide/map/tileset.html#_3-2-lod%E6%A0%91%E7%BB%93%E6%9E%84
-    1.0 允许存在 7 种瓦片内容，它们的文件后缀名是：
-        b3dm，异构 3D 模型。例如带纹理的地形和表面，3D 建筑外部和内部，大型模型//批次三维模型，内置一个 glTF 模型文件，应尽可能在数据生产时优化此 glTF 的绘制批次   //B3DM(批量3D模型) = featureTable记录渲染相关的数据 + batchTable记录属性数据 + glb            
-            glb  // glTF binary 化,glTF //（TF传输格式）是一种使用 JSON标准的 3D场景和模型的文件格式
-        i3dm，3D 模型实例。例如树木，风车，螺栓//实例三维模型，允许内嵌在 i3dm 文件内的 glTF 模型在 WebGL 种绘制多实例
-        pnts，点云
-        cmpt，复合格式，即前三者的混合体，合并细碎瓦片内容文件成一个，减少网络请求
-        vctr，矢量瓦片，未正式发布，本篇不讨论
-        json，这种叫做扩展数据集（ExternalTileset），即允许瓦片空域内再嵌套一个子 3DTiles
-        空瓦片，即瓦片无内容
-    而 1.0 的扩展项，也就是下一代标准增加了一种瓦片格式：
-        glb//gltf，也就是直接将 glTF 模型文件作为瓦片内容文件
-        
-    cesium可以读取tileset中的{"geometricError":180.82317494275}用来干什么
-	    一般单位是米（m），每个子tile孙子tile都有这个值，越精细的值越小，孙子的这个值比它爹小
-        tileset 中的几何误差信息，如果几何误差较低，Cesium 可能加载更多的瓦片，以获得更高精度的图形。
-        如果几何误差较高，Cesium 可能加载更少的瓦片，以提高性能,确定瓦片的加载方式
-        //在webgl层级决定三角形剖分的程度
-        
-	整体代表什么，每个数各代表什么
-		"boundingVolume": {
-			-   "box"：表示边界体积为一个长方体，其位置和大小由"box"属性指定；
-			-   "region"：表示边界体积为一个地理区域，由"region"属性指定；
-			-   "sphere"：表示边界体积为一个球体，由"sphere"属性指定；
-			-   "tileset"：表示边界体积为整个数据集，由"tileset"属性指定。
-			"box": [
-				50.0694580078125,75.6625518798828,34.4871654510498,
-				421.810821533203,0,0,
-				0,393.366622924805,0,
-				0,0,52.166711807251
-			]
-			//或`region`属性的值为`[-1.3197209591796106, 0.6988424218, -1.3196390408203893, 0.6989055782, 0, 88]`，
-				//表示该模型所在的区域位于经度-1.31972到-1.31964之间、纬度0.69884到0.69891之间，高度范围为0到88米。
-		},这个包围盒是通过一个长方体盒子（box）来表示的，包含了以下12个数值：		
-	-   前三个数（50.0694580078125，75.6625518798828，34.4871654510498）表示盒子的中心点在三维坐标系中的位置（x、y、z轴坐标）。
-	-   接下来三个数（421.810821533203，0，0）表示盒子在x轴上的长度、y轴和z轴上的长度。
-	-   再接下来三个数（0，393.366622924805，0）表示盒子在y轴上的长度、x轴和z轴上的长度。
-	-   最后三个数（0，0，52.166711807251）表示盒子在z轴上的长度、x轴和y轴上的长度。
-
-3DTILES的root的"transform": [
-			-1.1348381601623395,			-0.2899580508025771,			-0.414291999686242,			0,//x、y、z三个轴向上的缩放比例
-			-0.13570189487791788,			-0.33968642889259656,			0.6094602447327197,			0,//x、y、z三个轴向旋转的角度(弧度or度)
-			-0.7711452290402661,			1.8167044083464686,			0.8408488797207132,			0,//x、y、z平移
-			-2293908.7750967207,			5404110.700716343,			2484510.344405871,			1//3D Tiles数据集在全局坐标系中的位置
-		]对于使用3D Tiles的应用程序来说，root transform的作用是将3D Tiles数据的本地坐标系映射到应用程序的全局坐标系，以便正确地显示和处理3D模型和场景。
-		
-
-```
 
 
 ## 实践
@@ -463,7 +411,7 @@ const camera = viewer.scene.camera;
 const entities = viewer.entities;
 
 
-获取视图中心的经纬度：
+获取当前视图中心的经纬度：
 	var center = viewer.camera.positionCartographic;
 	var longitude = Cesium.Math.toDegrees(center.longitude);
 	var latitude = Cesium.Math.toDegrees(center.latitude);
@@ -471,10 +419,6 @@ const entities = viewer.entities;
 	[longitude,latitude,height]
 
 
-3DTiles:
-    tileset.boundingSphere
-    //取得图层的坐标范围 tileset.boundingSphere.center为{ x: -181.90666255179437, y: -172.06516955205194, z: 1679.9689450075364 }
-    viewer.scene.primitives.add(tileset);//添加到球体上  //primitives：图元 
 
 
 弧度转经纬度
@@ -496,35 +440,126 @@ const entities = viewer.entities;
       const offset = Cesium.Cartesian3.fromRadians(cartographic.longitude,cartographic.latitude,-cartographic.height );//减去高度      
       const translation = Cesium.Cartesian3.subtract(offset,surface,new Cesium.Cartesian3());//计算偏移
       tileset.modelMatrix = Cesium.Matrix4.fromTranslation(translation);
-      
-提升tiles加载性能速度:
-    1.开启 gzip压缩,传输的数据能节省小一半
-    2.换转换工具,减少单个tile的大小, 减少索引Tile的个数(即增加.json文件个数)
-    3.几个影响加载效率的关键参数：
-        1.maximumScreenSpaceError//数据的清晰度,越大越粗糙,这个参数默认是16，只要是lab输出的数据，我们已经考虑这个默认值了，所以一般情况下，不需要修改        
-        2.skipLevelOfDetail //对于网络条件好，并且数据总量较小的情况下，可以设置false，提升数据显示质量        
-        3.preferLeaves //配合skipLevelOfDetail=true来设置preferLeaves=true。这样我们就能最快的看见符合当前视觉精度的块，对于提升大数据以及网络环境不好的前提下有一点点改善意义。        
-        4.maximumMemoryUsage//这个值应该处于最差视角下资源占用 和 显存最大量之间            
-    4:
-        viewer.resolutionScale = 小于1 //降低画布分辨率
-    5:
-        viewer.scene.requestRenderMode = true;//启用requestRenderMode可减少Cesium渲染新帧的总时间并减少Cesium在应用程序中的总体CPU使用率。
-        viewer.scene.maximumRenderTimeChange=Infinity //没用到时间相关的动画的话,就这样设置
-        开启后有些情况需要调用强制重新渲染: scene.requestRender();
-        
+
+   
 Cesium.CallbackProperty //用回调函数传入time,用于处理随时间变化的属性,如随时间改变,位置属性改变
 ```
 
 ## 矩阵
 
 ```js
-Cesium.Matrix4.multiplyByMatrix3(m, rotation, m);替代了Cesium.Matrix4.multiply(m, Cesium.Matrix4.fromRotationTranslation(rotation), m);
+T如何移动一个点，举例矩阵相乘的详细步骤
+	假设有一个点P(x, y, z)，现在想要将该点沿着X轴平移2个单位，沿着Y轴平移3个单位，沿着Z轴平移4个单位。可以使用变换矩阵来实现这个操作。变换矩阵可以表示为：	
+	T = [1 0 0 2]
+	    [0 1 0 3]
+	    [0 0 1 4]
+	    [0 0 0 1]	
+	其中，第一列表示X轴的变换，第二列表示Y轴的变换，第三列表示Z轴的变换，最后一列表示平移向量。	
+	现在，需要将点P应用该变换矩阵，以实现平移操作。可以按照以下步骤进行矩阵相乘：	
+	1.  将点P表示为一个4维向量，即增加一个齐次坐标分量w=1：	
+	P' = [x]
+	     [y]
+	     [z]
+	     [1]	
+	
+	2.  将变换矩阵T表示为一个4x4的矩阵：		
+	T = [1 0 0 2]
+	    [0 1 0 3]
+	    [0 0 1 4]
+	    [0 0 0 1]	
+	
+	3.  将点P'和变换矩阵T相乘，得到一个新的4维向量P''：		
+	P'' = T * P' = [1 0 0 2]   [x]
+	               [0 1 0 3] * [y]
+	               [0 0 1 4]   [z]
+	               [0 0 0 1]   [1]	
+	
+	4.  对于新的4维向量P''，将其前三个分量（x, y, z）除以最后一个分量（w=1），即可得到平移后的新点坐标：		
+	x' = P''[0] / P''[3] = x + 2
+	y' = P''[1] / P''[3] = y + 3
+	z' = P''[2] / P''[3] = z + 4		
+	综上，通过矩阵相乘的方式，可以将点P沿着X轴平移2个单位，沿着Y轴平移3个单位，沿着Z轴平移4个单位。
+	这种方法非常高效，可以同时对多个点进行平移操作，而且可以方便地组合不同的变换操作。
 
+
+Cesium.Matrix4要注意阅读顺序的问题
+	//不符合直觉的写法
+		const v = [
+		        1, 2, 3, 4, 
+		        5,6,7,8, 
+		        9,10,11,12,
+		        13,14,15,16
+		        ];
+		
+		const m = Cesium.Matrix4.fromArray(v);
+		console.log(m.toString())
+			//(1, 5, 9, 13)
+			//(2, 6, 10, 14)
+			//(3, 7, 11, 15)
+			//(4, 8, 12, 16)
+	//符合直觉的写法
+		const v = [
+		        1, 2, 3, 4, 
+		        5,6,7,8, 
+		        9,10,11,12,
+		        13,14,15,16
+		        ];
+		const m = Cesium.Matrix4.fromRowMajorArray(v);
+		console.log(m.toString())
+			//(1, 2, 3, 4)
+			//(5, 6, 7, 8)
+			//(9, 10, 11, 12)
+			//(13, 14, 15, 16)
+			
+
+缩放模板，将z轴值放大1.00002，相当于向上移动了
+const v = [
+	1.0000, 0.0, 0.0, 1.0, 
+	0.0, 1.0000, 0.0, 1.0, 
+	0.0, 0.0, 1.00002, 1.0, 
+	0.0, 0.0, 0.0, 1.0];
+  const m = Cesium.Matrix4.fromArray(v);
+  tileset.modelMatrix = m
+
+cesium的tileset的modelMatix为,描述做了什么样的变化, 每行每列各有什么作用?
+	(0, 0, 1, 6378137)//因为1在第三个,所以作用于z轴,将模型的z轴（垂直于模型表面的轴）沿着地球的表面朝向正上方，即垂直于地球表面，同时将模型的原点移动到地球表面上，距离地心的距离为6378137米（地球半径）。
+	(1, 0, 0, 0)//将模型的x轴（水平于模型表面的轴）指向地球上的经度为0度的位置，即 Greenwich 本初子午线。
+	(0, 1, 0, 0)//将模型的y轴（与x、z轴垂直的轴）指向地球上的纬度为0度的位置，即赤道。
+	(0, 0, 0, 1)//不进行任何透视变换，即模型在投影到地球表面时大小不会发生变化。
+	
+	这个矩阵如何作用于点(2,3,4),描述一下结果和计算过程?		
+		首先，将点(2, 3, 4)表示为一个列向量：		
+		| 2 |
+		| 3 |
+		| 4 |
+		| 1 |	
+		接下来，将该向量与模型矩阵相乘，即：		
+		| 0 0 1 6378137  |   | 2 |
+		| 1 0 0 0        | x | 3 |
+		| 0 1 0 0        |   | 4 |
+		| 0 0 0 1        |   | 1 |	
+		
+		按照矩阵乘法的规则，可以将该计算分解为以下四个部分：		
+		1. 第一列乘以向量的第一个元素：(0, 0, 1, 6378137) * 2 = (0, 0, 2, 12756274)。		
+		2. 第二列乘以向量的第二个元素：(1, 0, 0, 0) * 3 = (3, 0, 0, 0)。		
+		3. 第三列乘以向量的第三个元素：(0, 1, 0, 0) * 4 = (0, 4, 0, 0)。		
+		4. 最后一列乘以向量的第四个元素：(0, 0, 0, 1) * 1 = (0, 0, 0, 1)。		
+		将上述四个部分相加，得到最终的结果向量：		
+		
+		| 0 0 2 12756274 |
+		| 3 0 0 0         |
+		| 0 4 0 0         |
+		| 0 0 0 1         |		
+		
+		因此，点(2, 3, 4)在该模型矩阵的作用下被转换为点(2, 3, 6.2756274e+06)，位于地球表面上的一个点。
+
+Cesium.Matrix4.multiplyByMatrix3(m, rotation, m);替代了Cesium.Matrix4.multiply(m, Cesium.Matrix4.fromRotationTranslation(rotation), m);
 ```
 ![[Pasted image 20230409173031.png]]图片
 
 ```js
 Cesium.Transforms.eastNorthUpToFixedFrame //在地球上，每个点都有一个本地坐标系，它是以该点为原点，以地球表面的法线方向为z轴建立的一个坐标系。然而，当我们需要在计算机中对地球上的点进行处理时，通常需要将这些点转换为一个固定的坐标系，方便进行计算和可视化。
+	,/eastNorthUp 坐标系主要用于处理经纬度和高度等地理信息数据/
 	东北天坐标系（East-North-Up，ENU）是绿色的那个,是局部坐标系,# 垂直于当前地表的垂直坐标系
 	固定坐标系（Fixed Frame）是蓝色的那个,是全局坐标系
 
