@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "84a4f88d3f92885a",
+        "id": "19ef8747148c225e",
         "type": "tabs",
         "children": [
           {
-            "id": "4f680b165ae56c07",
+            "id": "b21838b9a90bb68b",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -164,7 +164,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4f680b165ae56c07",
+  "active": "b21838b9a90bb68b",
   "lastOpenFiles": [
     "Cesium.md",
     "conflict-files-obsidian-git.md",
