@@ -524,7 +524,9 @@ Cesium.Matrix4.multiplyByMatrix3(m, rotation, m);替代了Cesium.Matrix4.multipl
 ![[Pasted image 20230409173031.png]]图片
 
 ```js
-Cesium.Transforms.eastNorthUpToFixedFrame //在地球上，每个点都有一个本地坐标系，它是以该点为原点，以地球表面的法线方向为z轴建立的一个坐标系。然而，当我们需要在计算机中对地球上的点进行处理时，通常需要将这些点转换为一个固定的坐标系，方便进行计算和可视化。
+Cesium.Transforms.eastNorthUpToFixedFrame //将该点的本地坐标系转换为固定坐标系
+	//在地球上，每个点都有一个本地坐标系，它是以该点为原点，以地球表面的法线方向为z轴建立的一个坐标系。
+	//然而，当我们需要在计算机中对地球上的点进行处理时，通常需要将这些点转换为一个固定的坐标系，方便进行计算和可视化。
 	东北天坐标系（East-North-Up，ENU）是绿色的那个,是局部坐标系,# 垂直于当前地表的垂直坐标系
 	固定坐标系（Fixed Frame）是蓝色的那个,是全局坐标系
 
