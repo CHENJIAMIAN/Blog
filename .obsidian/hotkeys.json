@@ -1,6 +1,11 @@
 {
   "editor:toggle-code": [],
-  "file-explorer:open": [],
+  "file-explorer:open": [
+    {
+      "modifiers": [],
+      "key": "F1"
+    }
+  ],
   "daily-notes": [
     {
       "modifiers": [

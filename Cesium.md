@@ -404,7 +404,7 @@ const clock = viewer.clock;
 const canvas = viewer.canvas
 // 创建一个 camera 实例
 const camera = viewer.scene.camera;
-// 创建一个 entities 实例
+// 创建一个 entities 实例[]()
 const entities = viewer.entities;
 
 
@@ -417,8 +417,15 @@ const entities = viewer.entities;
 
 
 
+笛卡尔转弧度 //Cesium.Cartographic.fromCartesian(center)
+	var center = tileset.boundingSphere.center;
+	var cartographic = Cesium.Cartographic.fromCartesian(center);
+	var longitude = Cesium.Math.toDegrees(cartographic.longitude);
+	var latitude = Cesium.Math.toDegrees(cartographic.latitude);
+	var height = cartographic.height;
+	[longitude,latitude,height]
 
-弧度转经纬度
+弧度(小数形式的经纬度)转经纬度
       var longitude = Cesium.Math.toDegrees(cartographic.longitude);
 	  var latitude = Cesium.Math.toDegrees(cartographic.latitude);
       var height = cartographic.height;
@@ -426,9 +433,8 @@ const entities = viewer.entities;
       
 笛卡尔3坐标转成经纬度
     const cartographic=viewer.scene.globe.ellipsoi.cartesianToCartographic(笛卡尔3坐标);
-    //或者const cartographic=Cartographic.fromCartesian(tileset.boundingSphere.center)
-    const lat=CesiumMath.toDegrees(cartographic.latitude);
-    const lng=CesiumMath.toDegrees(cartographic.longitude);
+    const lat=Cesium.Math.toDegrees(cartographic.latitude);
+    const lng=Cesium.Math.toDegrees(cartographic.longitude);
     const alt=cartographic.height;
 
 完美修正拟合tileset的高度到地面上
@@ -465,6 +471,7 @@ proj_right_up = dot((1,0,0), (0,1,0)) * (0,1,0) = 0 * (0,1,0) = (0,0,0)
 
 
 ## 矩阵
+![[Pasted image 20230411101658.png]]
 
 ```js
 T如何移动一个点，举例矩阵相乘的详细步骤
@@ -523,7 +530,7 @@ Cesium.Matrix4要注意阅读顺序的问题
 		        9,10,11,12,
 		        13,14,15,16
 		        ];
-		const m = Cesium.Matrix4.fromRowMajorArray(v);
+		const m = Cesium.Matrix4.fromRowMajorArray(v);//fromColumnMajorArray
 		console.log(m.toString())
 			//(1, 2, 3, 4)
 			//(5, 6, 7, 8)
@@ -575,9 +582,9 @@ cesium的tileset的modelMatix为,描述做了什么样的变化, 每行每列各
 Cesium.Matrix4.multiplyByMatrix3(m, rotation, m);替代了Cesium.Matrix4.multiply(m, Cesium.Matrix4.fromRotationTranslation(rotation), m);
 ```
 ![[Pasted image 20230409173031.png]]图片
-![[Pasted image 20230411101658.png]]
+
 ```js
-Cesium.Transforms.eastNorthUpToFixedFrame //在地球上，每个点都有一个本地坐标系，它是以该点为原点，以地球表面的法线方向为z轴建立的一个坐标系。然而，当我们需要在计算机中对地球上的点进行处理时，通常需要将这些点转换为一个固定的坐标系，方便进行计算和可视化。
+Cesium.Transforms.eastNorthUpToFixedFrame //是回退变换, 在地球上，每个点都有一个本地坐标系，它是以该点为原点，以地球表面的法线方向为z轴建立的一个坐标系。然而，当我们需要在计算机中对地球上的点进行处理时，通常需要将这些点转换为一个固定的坐标系，方便进行计算和可视化。
 	,/eastNorthUp 坐标系主要用于处理经纬度和高度等地理信息数据/
 	东北天坐标系（East-North-Up，ENU）是绿色的那个,是局部坐标系,# 垂直于当前地表的垂直坐标系
 	固定坐标系（Fixed Frame）是蓝色的那个,是全局坐标系
@@ -607,3 +614,51 @@ camera.position//相对于transform的位置
 - `rightWC`：相机在世界坐标系中的右向量，即相机坐标系的 x 轴方向在世界坐标系中的方向。
 ```
 ![[Pasted image 20230411105231.png]]
+ 
+```js
+Ion使用Durandal开发: https://ion.cesium.com/main.js
+	是一个基于 Knockout.js 和 RequireJS 的前端 MVVM 框架,用来开发SPA。
+	Durandal 的核心思想是模块化和组件化，它通过模块化的方式管理应用程序的各个部分，并且提供了一个强大的组件系统，可以让开发者轻松地构建可重用的 UI 组件。
+	durandal/activator	
+		Durandal 提供了一个名为 Activator 的工具，它用于管理 ViewModel 的生命周期。
+		Activator 可以帮助开发者创建和销毁 ViewModel 实例，并且提供了一组方法，用于激活和停用 ViewModel 实例。	
+		Activator 的主要作用是实现 ViewModel 的惰性加载和缓存，它可以在需要时动态地创建 ViewModel 实例，在不需要时销毁实例，并且可以缓存已经创建的实例，以提高性能和减少资源消耗。
+		Activator 还提供了一些事件和钩子函数，可以让开发者在 ViewModel 的生命周期中执行一些自定义逻辑。
+		例如：
+			var MyViewModel = function() {
+			  this.displayName = 'Hello, Durandal!';
+			};		
+			var activator = new DurandalActivator();
+			var viewModel = activator.create(MyViewModel);
+			
+			// 激活 ViewModel
+			activator.activate(viewModel);		
+			// 停用 ViewModel
+			activator.deactivate(viewModel);
+	路由匹配
+		https://ion.cesium.com/tilesetLocationEditor/1626609
+		到了tilesetLocationEditor, 到了TilesetTransformEditor, define("Views/TilesetTransformEditor/TilesetTransformEditor 48250
+		调用了它的activate方法//`activate`函数是Durandal中一个最常用的生命周期钩子函数，它会在路由激活时执行			
+			const v = new D({ 48440 TransformEditor		
+	
+https://ion.cesium.com/ThirdParty/@cesiumgs/cesium-analytics/Cesium.js
+	function Ja(e) { 182222 TransformEditorViewModel
+	jA.prototype.handleLeftDown 182153 TranslationEditor
+
+	
+const transformEditor = new TransformEditor/TransformEditorViewModel/TranslationEditor({
+      container: viewer.container,
+      scene: viewer.scene,
+      transform: tileset.modelMatrix,
+      boundingSphere: tileset.boundingSphere,
+      originOffset: tileset.boundingSphere.center // 可选, 是控件的原点偏移量cartesian值,
+	      //TranslationEditor.prototype.update时
+});
+// 根据transform, 如果在地球球心即0,0,0 则将其移动到地球表面,也就是移动一个地球半径即z轴+6378137米
+
+TranslationEditor.prototype.handleLeftDown获得offset
+TranslationEditor.prototype.handleMouseMove改变transform为moveVector-offset
+
+//更新控件位置, 基于transform和设置的控件偏移originOffset
+TranslationEditor.prototype.update
+```
