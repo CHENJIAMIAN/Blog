@@ -324,8 +324,6 @@ ECEF (Earth-Centered, Earth-Fixed)是一种表示地球中物体位置的坐标�
     Cartographic(longitude, latitude/*弧度*/, height) //地理坐标（弧度）
     point：经纬度坐标
     
-const transform =Cesium.Transforms.eastNorthUpToFixedFrame(点)//支持通过传入一个中心点，然后获取到中心点的正东正北，和地表法线的方向,返回以该点为中心的参考系
-camera.lookAtTransform(transform,/*相机相对点的位置*/new Cesium.Cartesian3(0, 0, 120000.0));//整个sence以点为中心,而不是地心
 
 
 实体模型分2种：
@@ -580,10 +578,12 @@ Cesium.Transforms.eastNorthUpToFixedFrame //在地球上，每个点都有一个
 ## 相机
 
 ```js
+const transform =Cesium.Transforms.eastNorthUpToFixedFrame(点)//根据传入的点坐标生成以该点为中心，x轴指向正东、y轴指向正北、z轴指向地表法线方向的右手笛卡尔坐标系
+camera.lookAtTransform(transform,/*相机相对点的位置*/new Cesium.Cartesian3(0, 0, 120000.0));//整个sence以点为中心,而不是地心
 camera.position//相对于transform的位置
-camera.positionWC//相对于地心的位置,取位置转经纬度要取这个!!!!!!!!!!1111
+
 在 Cesium 中，`camera.*WC` 表示相机的属性在世界坐标系中的值。具体来说，`camera` 是 `Viewer` 对象中的一个属性，用于表示当前的相机状态。`camera.*WC` 中的 `*` 可以是以下几个属性：
-- `positionWC`：相机在世界坐标系中的位置，即相机在地球表面上的位置。
+- `positionWC`：相机在世界坐标系中的位置，即相机在地球表面上的位置。相对于地心的位置,取位置转经纬度要取这个!!!!!!!!!!
 - `directionWC`：相机在世界坐标系中的方向向量，即相机从当前位置朝向的方向。
 - `upWC`：相机在世界坐标系中的上向量，即相机坐标系的 y 轴方向在世界坐标系中的方向。
 - `rightWC`：相机在世界坐标系中的右向量，即相机坐标系的 x 轴方向在世界坐标系中的方向。
