@@ -594,6 +594,8 @@ Cesium.Transforms.eastNorthUpToFixedFrame //在地球上，每个点都有一个
 ## 相机
 
 ```js
+鼠标选转的其实是整个场景或者宇宙, 而不是相机,如果将相机viewer.camera.lookRight(10)偏移开,在再怎么旋转也看不到地球
+
 const transform =Cesium.Transforms.eastNorthUpToFixedFrame(点)//根据传入的点坐标生成以该点为中心，x轴指向正东、y轴指向正北、z轴指向地表法线方向的右手笛卡尔坐标系
 camera.lookAtTransform(transform,/*相机相对点的位置*/new Cesium.Cartesian3(0, 0, 120000.0));//让相机以该点为中心,而不是地心
 camera.position//相对于transform的位置
