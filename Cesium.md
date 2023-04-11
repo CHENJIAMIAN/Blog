@@ -579,7 +579,7 @@ Cesium.Transforms.eastNorthUpToFixedFrame //在地球上，每个点都有一个
 
 ```js
 const transform =Cesium.Transforms.eastNorthUpToFixedFrame(点)//根据传入的点坐标生成以该点为中心，x轴指向正东、y轴指向正北、z轴指向地表法线方向的右手笛卡尔坐标系
-camera.lookAtTransform(transform,/*相机相对点的位置*/new Cesium.Cartesian3(0, 0, 120000.0));//整个sence以点为中心,而不是地心
+camera.lookAtTransform(transform,/*相机相对点的位置*/new Cesium.Cartesian3(0, 0, 120000.0));//让相机以该点为中心,而不是地心
 camera.position//相对于transform的位置
 
 在 Cesium 中，`camera.*WC` 表示相机的属性在世界坐标系中的值。具体来说，`camera` 是 `Viewer` 对象中的一个属性，用于表示当前的相机状态。`camera.*WC` 中的 `*` 可以是以下几个属性：
@@ -587,7 +587,5 @@ camera.position//相对于transform的位置
 - `directionWC`：相机在世界坐标系中的方向向量，即相机从当前位置朝向的方向。
 - `upWC`：相机在世界坐标系中的上向量，即相机坐标系的 y 轴方向在世界坐标系中的方向。
 - `rightWC`：相机在世界坐标系中的右向量，即相机坐标系的 x 轴方向在世界坐标系中的方向。
-
-这些属性的值是 `Cartesian3` 类型的向量，表示相机在世界坐标系中的位置、方向和朝向。这些值可以用于计算相机与其他对象之间的距离、方向和相对位置关系等信息。通过修改这些属性的值，可以改变相机的位置、姿态和朝向，从而实现相机的控制和动画效果。
 ```
 ``
