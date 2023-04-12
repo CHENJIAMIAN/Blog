@@ -4,5 +4,6 @@
   "showLineNumber": true,
   "rightToLeft": false,
   "spellcheck": false,
-  "defaultViewMode": "preview"
+  "defaultViewMode": "preview",
+  "promptDelete": false
 }
