@@ -6,5 +6,5 @@
   "spellcheck": false,
   "defaultViewMode": "preview",
   "promptDelete": false,
-  "attachmentFolderPath": "./"
+  "attachmentFolderPath": "./images"
 }
