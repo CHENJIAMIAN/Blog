@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "19ef8747148c225e",
+        "id": "06176ac74a5e4aad",
         "type": "tabs",
         "children": [
           {
-            "id": "b21838b9a90bb68b",
+            "id": "d4089c367fa16d8e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "Cesium.md",
-                "mode": "preview",
-                "backlinks": false,
-                "source": false
+                "file": ".obsidian/plugins/obsidian-git/data.json",
+                "staged": false
               }
             }
           }
@@ -49,11 +47,11 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "<<<<<<<",
+                "query": "打印",
                 "matchingCase": false,
                 "explainSearch": false,
-                "collapseAll": false,
-                "extraContext": false,
+                "collapseAll": true,
+                "extraContext": true,
                 "sortOrder": "alphabetical"
               }
             }
@@ -70,7 +68,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 506.5
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -79,7 +77,7 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
-        "dimension": 56.743185078909605,
+        "dimension": 31.06382978723404,
         "children": [
           {
             "id": "5e55221e27be587d",
@@ -87,7 +85,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +101,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,16 +139,14 @@
       {
         "id": "62cca7b24132f3d3",
         "type": "tabs",
-        "dimension": 43.25681492109039,
+        "dimension": 68.93617021276596,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Cesium.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -163,56 +157,57 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "markdown-importer:打开 Markdown 格式转换器": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "command-palette:打开命令面板": false,
+      "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "b21838b9a90bb68b",
+  "active": "d4089c367fa16d8e",
   "lastOpenFiles": [
+    "Pasted image 20230409172949.png",
+    "WebGL-QA.md",
+    "Cesium.md",
+    "Cesium-3DTiles.md",
+    "conflict-files-obsidian-git.md",
     "Pasted image 20230411105231.png",
     "Pasted image 20230411104905.png",
     "Pasted image 20230411101658.png",
-    "Cesium.md",
-    "conflict-files-obsidian-git.md",
+    "Cesium-地形.md",
+    "WebGL.md",
     "Pasted image 20230409173031.png",
     "Pasted image 20230409173007.png",
     "Pasted image 20230409173004.png",
     "Pasted image 20230409173003.png",
-    "Pasted image 20230409172949.png",
+    "Node.js.md",
+    "AI产品导航.md",
     "JS.md",
-    "JS 进阶.md",
-    "JS问答.md",
-    "JS-TS.md",
+    "npm.md",
+    "【Linux】.md",
     "KH.md",
     "HTTP.md",
-    "Node.js.md",
-    "Cesium-地形.md",
-    "Cesium-3DTiles.md",
-    "nginx.md",
-    "npm.md",
-    "WebGL.md",
-    "ThreeJS.md",
     "【通用】Git.md",
-    "Python/【python】数据筛选.md",
-    "Python/【python】实践.md",
-    "Python/【python】基础.md",
+    "【通用】MVVM 设计模式 ts实现 4+6+5=15个.md",
+    "BIM-QA.md",
+    "BIM.md",
+    "2023-04-03.md",
+    "前端.md",
+    "☁ 难题.md",
+    "HTML CSS.md",
     "Python/【python】Flask web.md",
-    "Python/【python】Class.md",
-    "Python",
+    "投资 保险/1 买房.md",
+    "Python/跨域.md",
+    "Python/7月29日.md",
+    "办理资料.zip",
+    "我的资源",
     "投资 保险/images/FA93C31063DD433F8A8B6220A89235AE.png",
-    "投资 保险/images/F64096B8E1554C4598B045337EC25799.png",
     "投资 保险/images/F57ACCC24AC6401FA4BC50A7718E2409.png",
-    "投资 保险/黄金.md",
-    "投资 保险/预测 大趋势.md",
     "投资 保险/images",
-    "投资 保险/股票 卖出.md",
-    "投资 保险/股票 基本.md",
     "投资 保险",
+    "Python",
     "images",
     "2 O/images",
     "2 O",
