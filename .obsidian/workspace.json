@@ -4,18 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "06176ac74a5e4aad",
+        "id": "4a5d60c0ec090956",
         "type": "tabs",
         "children": [
           {
-            "id": "d4089c367fa16d8e",
+            "id": "0920dfaad42a7d96",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
-              "state": {
-                "file": ".obsidian/plugins/obsidian-git/data.json",
-                "staged": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -166,7 +163,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "d4089c367fa16d8e",
+  "active": "0920dfaad42a7d96",
   "lastOpenFiles": [
     "Pasted image 20230409172949.png",
     "WebGL-QA.md",
