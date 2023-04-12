@@ -5,5 +5,6 @@
   "rightToLeft": false,
   "spellcheck": false,
   "defaultViewMode": "preview",
-  "promptDelete": false
+  "promptDelete": false,
+  "attachmentFolderPath": "./"
 }
