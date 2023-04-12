@@ -30,8 +30,6 @@
 
 [100-Days-Of-ML-Code中文版](https://github.com/MLEveryday/100-Days-Of-ML-Code)
 
-[Ai - Chat](https://chatgpt.sbaliyun.com/)
-
 [AI无损放大工具 X-Lucifer/AI-Lossless-Zoomer:](https://github.com/X-Lucifer/AI-Lossless-Zoomer)
 
 [imagestool 转换图片 拼接图片 图片加水印 调整图片尺寸 裁剪图片 压缩图片 读取exif 分割图片 视频转gif 剪辑视频并转gif Gif转webp转apng](https://imagestool.com/zh_CN/)
