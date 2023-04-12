@@ -19,8 +19,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "1a2fee8a384c9ad6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AdBlock 规则.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -87,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "杂-GPT-QA.md",
+                "file": "AdBlock 规则.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "杂-GPT-QA.md",
+                "file": "AdBlock 规则.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +165,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "杂-GPT-QA.md"
+                "file": "AdBlock 规则.md"
               }
             }
           }
@@ -172,9 +186,10 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "0920dfaad42a7d96",
+  "active": "1a2fee8a384c9ad6",
   "lastOpenFiles": [
     "杂-GPT-QA.md",
+    "AdBlock 规则.md",
     "Pasted image 20230409172949.png",
     "WebGL-QA.md",
     "Cesium.md",
@@ -207,7 +222,6 @@
     "Python/【python】Flask web.md",
     "投资 保险/1 买房.md",
     "Python/跨域.md",
-    "Python/7月29日.md",
     "办理资料.zip",
     "我的资源",
     "投资 保险/images/FA93C31063DD433F8A8B6220A89235AE.png",
