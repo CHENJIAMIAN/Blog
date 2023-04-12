@@ -11,8 +11,13 @@
             "id": "9f0880e8701a39a6",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "AI产品导航.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
         ]
@@ -82,6 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "AI产品导航.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "AI产品导航.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +150,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "AI产品导航.md"
+              }
             }
           }
         ]
