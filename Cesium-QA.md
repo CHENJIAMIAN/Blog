@@ -1,3 +1,13 @@
+## cesium的primitive的性能比entiy高很多吗？如果是，那是为什么
+
+Cesium中的primitive和entity是用于构建三维场景的基本元素。在Cesium中，primitives通常指的是简单几何形状，而entities通常指的是更复杂的对象，如模型、点云数据等。
+
+就性能方面而言，primitives通常比entities更加轻量级和高效。这是因为primitives通常只包含定义一个基本几何形状所需的最小信息，如位置、大小和颜色等。相比之下，entities则可能包含更多的信息，如层次结构、动画、属性等。在处理大量数据时，使用primitives可以提高渲染性能和响应速度。
+
+此外，Cesium在渲染场景时采用了一些优化技术，如视锥剔除（frustum culling）和LOD（Level of Detail），这些技术可以进一步提高primitives的性能。视锥剔除可以排除不在当前视图范围内的物体，从而减少不必要的计算。而LOD技术可以根据物体与观察者的距离和大小自适应地选择合适的细节层次，以达到更好的性能和视觉效果。
+
+总的来说，尽管primitives和entities在Cesium中都有其各自的作用和特点，但由于primitives通常更加轻量级和高效，所以在处理大量数据时，使用primitives可以提高渲染性能和响应速度。
+
 ## cesium 怎么根据给的property里带height的geojson文件 生成3dtiles?
 
 要根据给定的含有高度属性的GeoJSON文件生成3D Tiles，您可以遵循以下步骤：
