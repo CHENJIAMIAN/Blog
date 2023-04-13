@@ -408,6 +408,25 @@ const camera = viewer.scene.camera;
 const entities = viewer.entities;
 
 
+
+Radian、Degree和Cartesian3数据类型的示例值：
+	- Radian类型：
+	  - π：Cesium.Math.PI
+	  - π/2：Cesium.Math.PI_OVER_TWO
+	  - 2π：Cesium.Math.TWO_PI
+	  
+	- Degree类型：
+	  - 90度：Cesium.Math.toRadians(90)
+	  - 45度：Cesium.Math.toRadians(45)
+	  - 180度：Cesium.Math.toRadians(180)
+	  
+	- Cartesian3类型：
+	  - (1, 0, 0)：new Cesium.Cartesian3(1, 0, 0)
+	  - (0, 1, 0)：new Cesium.Cartesian3(0, 1, 0)
+	  - (0, 0, 1)：new Cesium.Cartesian3(0, 0, 1)
+  
+	其中，Radian类型表示弧度值，Degree类型表示角度值，Cartesian3类型表示三维笛卡尔坐标系中的点。
+
 获取当前视图中心的经纬度：
 	var center = viewer.camera.positionCartographic;
 	var longitude = Cesium.Math.toDegrees(center.longitude);
