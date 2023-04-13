@@ -4,7 +4,8 @@
     简单地理解为带有 LOD 的 glTF
     //http://mars3d.cn/dev/guide/map/tileset.html#_3-2-lod%E6%A0%91%E7%BB%93%E6%9E%84
     1.0 允许存在 7 种瓦片内容，它们的文件后缀名是：
-        b3dm，异构 3D 模型。例如带纹理的地形和表面，3D 建筑外部和内部，大型模型//批次三维模型，内置一个 glTF 模型文件，应尽可能在数据生产时优化此 glTF 的绘制批次   //B3DM(批量3D模型) = featureTable记录渲染相关的数据 + batchTable记录属性数据 + glb            
+        b3dm，异构 3D 模型。例如带纹理的地形和表面，3D 建筑外部和内部，大型模型//批次三维模型，内置一个 glTF 模型文件，应尽可能在数据生产时优化此 glTF 的绘制批次   
+			//B3DM(批量3D模型) = featureTable记录渲染相关的数据 + batchTable记录属性数据 + glb            
             glb  // glTF binary 化,glTF //（TF传输格式）是一种使用 JSON标准的 3D场景和模型的文件格式
         i3dm，3D 模型实例。例如树木，风车，螺栓//实例三维模型，允许内嵌在 i3dm 文件内的 glTF 模型在 WebGL 种绘制多实例
         pnts，点云
