@@ -76,7 +76,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "，风车，螺栓",
+                "query": "czml",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +93,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -199,7 +200,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "aa7ee398ccef8934",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
     "杂-GPT-QA.md",
     "Cesium-3DTiles.md",
