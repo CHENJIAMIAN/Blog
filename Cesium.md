@@ -458,43 +458,16 @@ Radian、Degree和Cartesian3数据类型的示例值：
       const translation = Cesium.Cartesian3.subtract(offset,surface,new Cesium.Cartesian3());//计算偏移
       tileset.modelMatrix = Cesium.Matrix4.fromTranslation(translation);
       
-根据geojson生成城市粗模
+根据geojson生成城市粗模(多边形+拉伸高度即可)
 	看https://sandcastle.cesium.com/gallery/GeoJSON%20and%20TopoJSON.html
-		  const promise = Cesium.GeoJsonDataSource.load(
-            "../SampleData/ne_10m_us_states.topojson"
-          );
-          promise
-            .then(function (dataSource) {
+		  const promise = Cesium.GeoJsonDataSource.load("XXX./geojson");
+          promise.then(function (dataSource) {
               viewer.dataSources.add(dataSource);
-
-              //Get the array of entities
+              
               const entities = dataSource.entities.values;
-
-              const colorHash = {};
               for (let i = 0; i < entities.length; i++) {
-                //For each entity, create a random color based on the state name.
-                //Some states have multiple entities, so we store the color in a
-                //hash so that we use the same color for the entire state.
-                const entity = entities[i];
-                const name = entity.name;
-                let color = colorHash[name];
-                if (!color) {
-                  color = Cesium.Color.fromRandom({
-                    alpha: 1.0,
-                  });
-                  colorHash[name] = color;
-                }
-
-                //Set the polygon material to our random color.
-                entity.polygon.material = color;
-                //Remove the outlines.
-                entity.polygon.outline = false;
-
-                //Extrude the polygon based on the state's population.  Each entity
-                //stores the properties for the GeoJSON feature it was created from
-                //Since the population is a huge number, we divide by 50.
-                entity.polygon.extrudedHeight =
-                  entity.properties.Population / 50.0;
+                const entity = entities[i];                
+                entity.polygon.extrudedHeight = entity.properties.geojson属性里的高度;
               }
             })
    
