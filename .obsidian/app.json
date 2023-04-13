@@ -4,7 +4,7 @@
   "showLineNumber": true,
   "rightToLeft": false,
   "spellcheck": false,
-  "defaultViewMode": "preview",
+  "defaultViewMode": "source",
   "promptDelete": false,
   "attachmentFolderPath": "./images"
 }
