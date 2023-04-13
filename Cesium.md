@@ -394,19 +394,14 @@ viewer.scene.camera.setView(homeCameraView) // 设置初始视野视角
 viewer.homeButton.viewModel.command.beforeExecute.addEventListener((e)=>{e.cancel = true;viewer.camera.flyTo(homeCameraView)});
 //viewer.zoomTo(tileset);//定位过去
 
-// 创建一个 scene 实例 Scene是用来管理三维场景的各种对象实体的核心类.
-const scene = viewer.scene;
-// 创建一个 ellipsoid 实例
-const ellipsoid = scene.globe.ellipsoid;
-// 创建一个 clock 实例
-const clock = viewer.clock;
-// 创建一个 canvas 实例
-const canvas = viewer.canvas
-// 创建一个 camera 实例
-const camera = viewer.scene.camera;
-// 创建一个 entities 实例[]()
-const entities = viewer.entities;
-
+viewer
+	canvas
+	scene
+		globe
+			ellipsoid
+		camera
+	entities
+	clock
 
 
 Radian、Degree和Cartesian3数据类型的示例值：
@@ -462,7 +457,46 @@ Radian、Degree和Cartesian3数据类型的示例值：
       const offset = Cesium.Cartesian3.fromRadians(cartographic.longitude,cartographic.latitude,-cartographic.height );//减去高度      
       const translation = Cesium.Cartesian3.subtract(offset,surface,new Cesium.Cartesian3());//计算偏移
       tileset.modelMatrix = Cesium.Matrix4.fromTranslation(translation);
+      
+根据geojson生成城市粗模
+	看https://sandcastle.cesium.com/gallery/GeoJSON%20and%20TopoJSON.html
+		  const promise = Cesium.GeoJsonDataSource.load(
+            "../SampleData/ne_10m_us_states.topojson"
+          );
+          promise
+            .then(function (dataSource) {
+              viewer.dataSources.add(dataSource);
 
+              //Get the array of entities
+              const entities = dataSource.entities.values;
+
+              const colorHash = {};
+              for (let i = 0; i < entities.length; i++) {
+                //For each entity, create a random color based on the state name.
+                //Some states have multiple entities, so we store the color in a
+                //hash so that we use the same color for the entire state.
+                const entity = entities[i];
+                const name = entity.name;
+                let color = colorHash[name];
+                if (!color) {
+                  color = Cesium.Color.fromRandom({
+                    alpha: 1.0,
+                  });
+                  colorHash[name] = color;
+                }
+
+                //Set the polygon material to our random color.
+                entity.polygon.material = color;
+                //Remove the outlines.
+                entity.polygon.outline = false;
+
+                //Extrude the polygon based on the state's population.  Each entity
+                //stores the properties for the GeoJSON feature it was created from
+                //Since the population is a huge number, we divide by 50.
+                entity.polygon.extrudedHeight =
+                  entity.properties.Population / 50.0;
+              }
+            })
    
 Cesium.CallbackProperty //用回调函数传入time,用于处理随时间变化的属性,如随时间改变,位置属性改变
 ```
