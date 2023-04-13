@@ -1,3 +1,69 @@
+## cesium 怎么根据给的property里带height的geojson文件 生成3dtiles?
+
+要根据给定的含有高度属性的GeoJSON文件生成3D Tiles，您可以遵循以下步骤：
+
+1. 将GeoJSON文件转换为3D模型。您可以使用任何支持将GeoJSON文件转换为3D模型的工具，如CesiumJS、Blender、SketchUp等。其中，CesiumJS是一个基于Web的开源JavaScript库，可以通过它直接将GeoJSON文件转换为3D模型。
+
+2. 生成3D Tiles。一旦您获得了3D模型，您可以使用CesiumJS或其他类似的工具来将其转换为3D Tiles格式。CesiumJS为此提供了一个名为"3D Tileset Generator"的工具，该工具可以帮助您将3D模型转换为3D Tiles，并在网站上显示它们。您也可以使用其他工具，如FME、CityEngine等。
+
+3. 发布3D Tiles。最后，您需要将生成的3D Tiles发布到服务器上，以便用户可以访问它们。您可以将3D Tiles发布到任何标准Web服务器上，例如Apache、Nginx等。
+
+综上所述，要根据给定的含有高度属性的GeoJSON文件生成3D Tiles，您需要将GeoJSON文件转换为3D模型，然后再将其转换为3D Tiles，最后将其发布到服务器上。
+
+## 怎么不预处理，而是直接用cesium去操作呢？
+
+要直接使用Cesium操作GeoJSON数据而不进行预处理，您可以使用Cesium的Geometry和Entity API。以下是实现此操作的步骤：
+
+1. 加载GeoJSON数据。您可以使用Cesium的DataSource API加载GeoJSON数据。例如：
+
+```javascript
+var dataSource = new Cesium.GeoJsonDataSource();
+var promise = dataSource.load('/path/to/data.geojson');
+```
+
+2. 处理GeoJSON数据。一旦数据源加载完成，您就可以使用Cesium的Geometry和Entity API处理它们。您可以遍历加载的实体并将它们转换为3D对象。
+
+```javascript
+promise.then(function (dataSource) {
+    viewer.dataSources.add(dataSource);
+    var entities = dataSource.entities.values;
+    
+    for (var i = 0; i < entities.length; i++) {
+        var entity = entities[i];
+
+        // 将GeoJSON实体转换为Cesium.Geometry对象
+        var geometry = entity.polygon ? entity.polygon.hierarchy : entity.polyline.positions;
+        var height = entity.properties.height || 0; 
+
+        var positions = [];
+        for (var j = 0; j < geometry.length; j++) {
+            var position = geometry[j];
+            if (height !== 0) {
+                position = new Cesium.Cartesian3.fromDegrees(position.longitude, position.latitude, height);
+            }
+            positions.push(position);
+        }
+
+        // 将Cesium.Geometry对象添加到场景中
+        var primitive = new Cesium.Primitive({
+            geometryInstances: new Cesium.GeometryInstance({
+                geometry: new Cesium.PolylineGeometry({
+                    positions: positions
+                })
+            })
+        });
+
+        viewer.scene.primitives.add(primitive);
+    }
+});
+```
+
+在这个示例中，我们遍历加载的实体并将它们转换为3D对象。我们还处理了高度属性，如果有高度属性，则使用Cartesian3.fromDegrees函数将其添加到位置坐标中。
+
+最后，我们将Cesium.Geometry对象添加到场景中。
+
+综上所述，要直接使用Cesium操作GeoJSON数据而不进行预处理，您可以使用Cesium的Geometry和Entity API，加载数据源并将其转换为3D对象。
+
 ## 国内有哪些cesium怎么离线地形
 
 Cesium是一种开源的虚拟地球软件，国内常用的开源Cesium项目包括SuperMap iClient、SkylineGlobe、3D Tiles Server、TerraFX等。这些项目提供了基于Cesium的在线和离线地形服务。
