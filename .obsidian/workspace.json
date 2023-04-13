@@ -76,7 +76,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "经纬度",
+                "query": "经纬",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
