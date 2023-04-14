@@ -121,6 +121,20 @@ Cesium3DTileset.js //定义了3D Tiles集合对象，它是一个包含多个3D 
 	          Cesium3DTileRefine.js
 ```
 
+## tileset.json文件
+
+```js
+1. asset：表示数据集相关信息，例如版本、作者、生成工具等。
+2. geometricError：表示瓦片精度，即瓦片相对于父瓦片的误差范围。
+3. root：表示整个数据集根瓦片的位置和属性，例如瓦片边界、坐标系等。
+4. properties：表示数据集中可能包含的自定义属性。
+5. extensions：表示3D Tiles规范中使用的扩展，例如Batch Table和Feature Table等。
+6. extras：表示额外的元数据，通常用于应用程序特定的元数据。
+
+Tileset JSON文件还可以包含其他属性，例如LOD细节级别、子瓦片的链接关系等。
+Tileset JSON文件仅作为数据集的描述文件，不包括实际的3D模型数据。每个瓦片的实际数据存储在不同的glTF文件中。
+```
+
 ## tileset.json里的BoundingVolume下的region
 
 `tileset.json` 文件是 Cesium 3D Tiles 规范中定义的一个描述 3D Tiles 数据集的 JSON 文件，其中包含了一些元数据信息，例如每个瓦片的边界信息、模型的属性信息等。在 `tileset.json` 文件中，`BoundingVolume` 属性描述了整个 3D Tiles 数据集的边界体积信息，而 `region` 属性则是 `BoundingVolume` 的一个子属性，用于描述该边界体积的范围信息。
