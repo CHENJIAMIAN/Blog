@@ -135,7 +135,27 @@ Tileset JSON文件还可以包含其他属性，例如LOD细节级别、子瓦�
 Tileset JSON文件仅作为数据集的描述文件，不包括实际的3D模型数据。每个瓦片的实际数据存储在不同的glTF文件中。
 ```
 
-## tileset.json里的BoundingVolume下的region
+### 说说root
+
+```js
+在3D Tiles数据集中，root表示整个数据集的根瓦片。Tileset JSON文件中的root属性包含了描述根瓦片的信息，如下所示：
+"root": {
+    "boundingVolume": {...},
+    "geometricError": 200.0,
+    "refine": "ADD",
+    "content": {...}
+}
+
+其中：
+1. boundingVolume：描述根瓦片的边界体积，可以是一个包围盒或者球体。
+2. geometricError：描述根瓦片相对于父瓦片的误差范围，通常为最大误差距离的一半。
+3. refine：描述根瓦片进一步细分的方式，可以是"ADD"或者"REPLACE"。"ADD"表示在当前精度级别上添加更多子瓦片，"REPLACE"表示用更高精度的瓦片替换当前瓦片。
+4. content：描述根瓦片实际包含的数据。通常指向包含根瓦片数据的glTF文件或多个glTF文件的文件夹路径。
+
+通过解析root属性来获得3D Tiles数据集的基本信息和结构。
+```
+
+### tileset.json里的BoundingVolume下的region
 
 `tileset.json` 文件是 Cesium 3D Tiles 规范中定义的一个描述 3D Tiles 数据集的 JSON 文件，其中包含了一些元数据信息，例如每个瓦片的边界信息、模型的属性信息等。在 `tileset.json` 文件中，`BoundingVolume` 属性描述了整个 3D Tiles 数据集的边界体积信息，而 `region` 属性则是 `BoundingVolume` 的一个子属性，用于描述该边界体积的范围信息。
 
@@ -151,8 +171,7 @@ Tileset JSON文件仅作为数据集的描述文件，不包括实际的3D模型
 这些数字定义了一个包围整个 3D Tiles 数据集的长方体边界体积。其中，前三个数字表示长方体的左下角坐标，后三个数字表示长方体的右上角坐标。如果某个瓦片的边界体积完全包含在这个长方体边界体积内，那么该瓦片就需要加载和渲染。
 
 需要注意的是，`region` 属性中的经纬度坐标是以弧度为单位的，而高度是以米为单位的。如果你需要使用度数表示经纬度坐标，可以将其乘以 `Math.PI / 180` 进行转换。同样的，如果你需要使用英尺表示高度，可以将其乘以 `3.28084` 进行转换。
-### 源码体现
-
+#### 源码体现
 ```js
 Cesium3DTile.js
 	createBoundingVolume
