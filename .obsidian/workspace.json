@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "未命名.md",
+                "file": "☁.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -87,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "未命名.md",
+                "file": "☁.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "未命名.md",
+                "file": "☁.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "未命名.md"
+                "file": "☁.md"
               }
             }
           }
@@ -174,7 +174,8 @@
   },
   "active": "9357d59e758feb0c",
   "lastOpenFiles": [
-    "未命名.md",
+    "☁ 难题.md",
+    "☁.md",
     "conflict-files-obsidian-git.md",
     "Cesium-QA.md",
     "Cesium.md",
@@ -210,7 +211,6 @@
     "Python/【python】Flask web.md",
     "Python/【python】Class.md",
     "Python",
-    "投资 保险/黄金.md",
     "投资 保险/images",
     "投资 保险",
     "images",
