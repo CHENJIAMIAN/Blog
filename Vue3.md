@@ -99,8 +99,9 @@
     app.mount('#app')
 ```
 
-## 用法2: <script setup>
+## 用法2 `<script setup>`
 
+```js
 <template>
   <MyComponent />
   {{a}}
@@ -142,10 +143,7 @@ map = new Map();
 plotGETbyId(id).then(r => form = r.data);  /不会更新!!!/
 await plotGETbyId(id).then(r => form = r.data); /可以更新✔, 但必须与 Suspense 组合使用/
 </script>
-
-
-
-
+```
 
 
 ## useHook思想用法
@@ -214,7 +212,6 @@ ref存在是因为Proxy不支持代理原始类型,要把它包在{value:值}里
     ref对象.value=值//执行的是 this._object[this._key] = newVal; 进而触发Proxy的setter
     ref对象.value.arr.push//数组的push等方法在create getter的时候就被做了特殊处理了
 ```
-
 
 
 ![](images/0ACB95E1FCA746BC9928D885604F3AAD.png)
