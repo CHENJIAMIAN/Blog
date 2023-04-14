@@ -28,7 +28,7 @@
 
 # 基本数据响应式
 
-> 用法1: setup函数用法
+## 用法1: setup函数用法
 
 ```javascript
 .vue文件    
@@ -104,9 +104,8 @@
     app.mount('#app')
 ```
 
-> 用法2: <script setup>
+## 用法2: <script setup>
 
-```javascript
 <template>
   <MyComponent />
   {{a}}
@@ -143,18 +142,20 @@ defineExpose({  a })
 
 map = new Map();
 
-
+```
 //await 代码会被编译成 async setup(),async setup() 必须与 Suspense 组合使用//https://juejin.cn/post/7028026616441733156
 plotGETbyId(id).then(r => form = r.data);  /不会更新!!!/
 await plotGETbyId(id).then(r => form = r.data); /可以更新✔, 但必须与 Suspense 组合使用/
 </script>
 ```
+```
 
 
 
----
 
-> useHook思想用法
+
+
+## useHook思想用法
 
 ```javascript
     const { defineComponent, createApp, reactive, onMounted, onUnmounted, toRefs,ref } = Vue;
@@ -207,7 +208,7 @@ await plotGETbyId(id).then(r => form = r.data); /可以更新✔, 但必须与 S
     createApp(MyComp).mount('#app')
 ```
 
-> 源码
+> ## 源码
 
 ```javascript
  响应式实现
