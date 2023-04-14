@@ -76,7 +76,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "4326",
+                "query": "BoundingVolume",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +93,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -199,7 +200,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "63471ddd9ad0f12d",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
     "Cesium.md",
     "GIS OL Geoserver PostGIS.md",
