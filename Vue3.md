@@ -1,5 +1,4 @@
 
-
 ```javascript
 技巧
     模板重:[name]="sdf" 或 @[name]="" 动态属性|事件名
@@ -22,13 +21,9 @@
     生命周期多了onRenderTracked/onRenderTriggered
 ```
 
-
-
----
-
 # 基本数据响应式
 
-> 用法1: setup函数用法
+## 用法1: setup函数用法
 
 ```javascript
 .vue文件    
@@ -104,9 +99,8 @@
     app.mount('#app')
 ```
 
-> 用法2: <script setup>
+## 用法2: <script setup>
 
-```javascript
 <template>
   <MyComponent />
   {{a}}
@@ -148,13 +142,13 @@ map = new Map();
 plotGETbyId(id).then(r => form = r.data);  /不会更新!!!/
 await plotGETbyId(id).then(r => form = r.data); /可以更新✔, 但必须与 Suspense 组合使用/
 </script>
-```
 
 
 
----
 
-> useHook思想用法
+
+
+## useHook思想用法
 
 ```javascript
     const { defineComponent, createApp, reactive, onMounted, onUnmounted, toRefs,ref } = Vue;
@@ -207,7 +201,7 @@ await plotGETbyId(id).then(r => form = r.data); /可以更新✔, 但必须与 S
     createApp(MyComp).mount('#app')
 ```
 
-> 源码
+# 源码
 
 ```javascript
  响应式实现
@@ -224,4 +218,3 @@ ref存在是因为Proxy不支持代理原始类型,要把它包在{value:值}里
 
 
 ![](images/0ACB95E1FCA746BC9928D885604F3AAD.png)
-

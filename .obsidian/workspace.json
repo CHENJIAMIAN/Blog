@@ -4,23 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "19ef8747148c225e",
+        "id": "12016031b228cf42",
         "type": "tabs",
         "children": [
           {
-            "id": "b21838b9a90bb68b",
+            "id": "9efd125f01682208",
+            "type": "leaf",
+            "state": {
+              "type": "diff-view",
+              "state": {
+                "file": ".obsidian/workspace.json",
+                "staged": false
+              }
+            }
+          },
+          {
+            "id": "d36a5047bd09eea7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cesium-QA.md",
-                "mode": "preview",
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -87,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium-QA.md",
+                "file": "conflict-files-obsidian-git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium-QA.md",
+                "file": "conflict-files-obsidian-git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +163,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium-QA.md"
+                "file": "conflict-files-obsidian-git.md"
               }
             }
           }
@@ -172,10 +184,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "b21838b9a90bb68b",
+  "active": "d36a5047bd09eea7",
   "lastOpenFiles": [
-    "Cesium.md",
+    "conflict-files-obsidian-git.md",
     "Cesium-QA.md",
+    "Cesium.md",
     "杂-GPT-QA.md",
     "images/Pasted image 20230411105231.png",
     "images/Pasted image 20230411101658.png",
@@ -184,7 +197,6 @@
     "Pasted image 20230411105231.png",
     "Pasted image 20230411104905.png",
     "Pasted image 20230411101658.png",
-    "conflict-files-obsidian-git.md",
     "Pasted image 20230409173031.png",
     "Pasted image 20230409173007.png",
     "Pasted image 20230409173004.png",
