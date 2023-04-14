@@ -1,5 +1,4 @@
 
-
 ```javascript
 技巧
     模板重:[name]="sdf" 或 @[name]="" 动态属性|事件名
@@ -21,10 +20,6 @@
                    if (this.modelModifiers.asdf) {做一些事情}
     生命周期多了onRenderTracked/onRenderTriggered
 ```
-
-
-
----
 
 # 基本数据响应式
 
@@ -142,13 +137,11 @@ defineExpose({  a })
 
 map = new Map();
 
-```
+
 //await 代码会被编译成 async setup(),async setup() 必须与 Suspense 组合使用//https://juejin.cn/post/7028026616441733156
 plotGETbyId(id).then(r => form = r.data);  /不会更新!!!/
 await plotGETbyId(id).then(r => form = r.data); /可以更新✔, 但必须与 Suspense 组合使用/
 </script>
-```
-```
 
 
 
@@ -208,7 +201,7 @@ await plotGETbyId(id).then(r => form = r.data); /可以更新✔, 但必须与 S
     createApp(MyComp).mount('#app')
 ```
 
-> ## 源码
+# 源码
 
 ```javascript
  响应式实现
@@ -225,4 +218,3 @@ ref存在是因为Proxy不支持代理原始类型,要把它包在{value:值}里
 
 
 ![](images/0ACB95E1FCA746BC9928D885604F3AAD.png)
-
