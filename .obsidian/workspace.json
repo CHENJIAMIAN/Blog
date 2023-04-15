@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "d4944e0a19b72255",
+        "id": "2726ca413f5d0fc3",
         "type": "tabs",
         "children": [
           {
-            "id": "eab7f8fd7d92408b",
+            "id": "417a522fa8b6f8ba",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cesium-3DTiles.md",
+                "file": "AI产品导航.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -87,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium-3DTiles.md",
+                "file": "AI产品导航.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium-3DTiles.md",
+                "file": "AI产品导航.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium-3DTiles.md"
+                "file": "AI产品导航.md"
               }
             }
           }
@@ -172,8 +172,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "eab7f8fd7d92408b",
+  "active": "417a522fa8b6f8ba",
   "lastOpenFiles": [
+    "Cesium-3DTiles.md",
     "Cesium-QA.md",
     "☁.md",
     "AdBlock 规则.md",
@@ -199,7 +200,6 @@
     "HTTP.md",
     "Node.js.md",
     "Cesium-地形.md",
-    "Cesium-3DTiles.md",
     "nginx.md",
     "npm.md",
     "WebGL.md",
