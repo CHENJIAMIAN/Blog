@@ -20,9 +20,9 @@
 
 [人像修复 人像抠图 动漫增强 ARC官网-腾讯](https://arc.tencent.com/zh/ai-demos/faceRestoration)
 
-[Effidit](https://effidit.qq.com/demo)
+[文本润色 文本补全 文本纠错 腾讯Effidit](https://effidit.qq.com/demo)
 
-[腾讯智影-在线智能视频创作平台](https://zenvideo.qq.com/)
+[视频剪辑 文本配音 数字人播报  数字人与音色定制 视频审阅 字幕识别 智能抹除 智能横转竖 腾讯智影-在线智能视频创作平台](https://zenvideo.qq.com/)
 
 [通俗易懂AI学习库](https://easyai.tech/ai-definition/)
 
