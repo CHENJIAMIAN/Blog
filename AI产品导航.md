@@ -56,7 +56,7 @@
 
 [一键总结哔哩哔哩 油管 会议 音视频内容](https://b.jimmylv.cn/?utm_source=wechat_session)
 
-[Chat Chat - 解锁与 AI 的下一级对话](https://chat.okis.dev/zh-CN?mode=chat)
+[API KEY在线客户端 Chat Chat - 解锁与 AI 的下一级对话](https://chat.okis.dev/zh-CN?mode=chat)
 
 [Scribble Diffusion生成图片](https://scribblediffusion.com/)
 
@@ -109,8 +109,6 @@
 [学生包自助认证方法2（附Copilot激活方法）](https://docs.qq.com/doc/DQmx1aXZJVXdHTlVw)
 
 [ChatGPT PromptsZone - PromptsZone](https://promptszone.com/)
-
-[哔哔终结者](https://b.jimmylv.cn/)
 
 [BookAI.chat - Chat whit any book --- BookAI.chat - 与任何书籍聊天](https://www.bookai.chat/)
 
