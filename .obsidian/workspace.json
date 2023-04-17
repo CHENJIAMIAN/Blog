@@ -32,20 +32,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "63471ddd9ad0f12d",
-            "type": "leaf",
-            "state": {
-              "type": "diff-view",
-              "state": {
-                "file": ".obsidian/workspace.json",
-                "staged": false
-              }
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -193,7 +182,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "63471ddd9ad0f12d",
+  "active": "6323b2f6898b32c7",
   "lastOpenFiles": [
     "Vue3.md",
     "conflict-files-obsidian-git.md",
