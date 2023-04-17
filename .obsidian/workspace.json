@@ -45,9 +45,33 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "758d9362a95bcc3b",
+            "type": "leaf",
+            "state": {
+              "type": "diff-view",
+              "state": {
+                "file": ".obsidian/workspace.json",
+                "staged": false
+              }
+            }
+          },
+          {
+            "id": "73c04c6d00ae70ba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "conflict-files-obsidian-git.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -93,8 +117,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -115,7 +138,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Vue3.md",
+                "file": "conflict-files-obsidian-git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,7 +155,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Vue3.md",
+                "file": "conflict-files-obsidian-git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -179,7 +202,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Vue3.md"
+                "file": "conflict-files-obsidian-git.md"
               }
             }
           }
@@ -200,8 +223,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "63471ddd9ad0f12d",
+  "active": "73c04c6d00ae70ba",
   "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
+    "Vue3.md",
+    "☁.md",
     "Cesium-3DTiles.md",
     "Cesium-QA.md",
     "Cesium.md",
@@ -215,7 +241,6 @@
     "Pasted image 20230411105231.png",
     "Pasted image 20230411104905.png",
     "Pasted image 20230411101658.png",
-    "conflict-files-obsidian-git.md",
     "Pasted image 20230409173031.png",
     "Pasted image 20230409173007.png",
     "Pasted image 20230409173004.png",
@@ -236,9 +261,7 @@
     "Python/【python】实践.md",
     "Python/【python】基础.md",
     "Python/【python】Flask web.md",
-    "Python/【python】Class.md",
     "Python",
-    "投资 保险/黄金.md",
     "投资 保险/images",
     "投资 保险",
     "images",

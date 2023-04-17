@@ -12,19 +12,17 @@
 
 [AINAV AI产品大全导航网](https://www.ainav.cn/)
 
-[AINav.net - 一个属于AI人的导航网站](https://www.ainav.net/)
-
 [中文AIHub - 人工智能技术和产品服务](https://www.aihub.cn/)
 
 [AI工具箱](https://ai.baidu.com/creativity/main/workbench)
 
 [AI能力体验中心-百度智能云](https://cloud.baidu.com/experience)
 
-[ARC官网-腾讯](https://arc.tencent.com/zh/ai-demos/faceRestoration)
+[人像修复 人像抠图 动漫增强 ARC官网-腾讯](https://arc.tencent.com/zh/ai-demos/faceRestoration)
 
-[Effidit](https://effidit.qq.com/demo)
+[文本润色 文本补全 文本纠错 腾讯Effidit](https://effidit.qq.com/demo)
 
-[腾讯智影-在线智能视频创作平台](https://zenvideo.qq.com/)
+[视频剪辑 文本配音 数字人播报  数字人与音色定制 视频审阅 字幕识别 智能抹除 智能横转竖 腾讯智影-在线智能视频创作平台](https://zenvideo.qq.com/)
 
 [通俗易懂AI学习库](https://easyai.tech/ai-definition/)
 
@@ -58,7 +56,7 @@
 
 [一键总结哔哩哔哩 油管 会议 音视频内容](https://b.jimmylv.cn/?utm_source=wechat_session)
 
-[Chat Chat - 解锁与 AI 的下一级对话](https://chat.okis.dev/zh-CN?mode=chat)
+[API KEY在线客户端 Chat Chat - 解锁与 AI 的下一级对话](https://chat.okis.dev/zh-CN?mode=chat)
 
 [Scribble Diffusion生成图片](https://scribblediffusion.com/)
 
@@ -75,3 +73,67 @@
 <https://github.com/topics/openai>
 
 <https://github.com/topics/chatgpt>
+
+[Poe - ChatGPT](https://poe.com/chatgpt)
+
+[自己部署的 ChatGPT Next Web](https://chat-gpt-next-web-dun-three.vercel.app/)
+
+[自己部署 前后端 ChatGPT Web --- 聊天GPT网络](https://chatgpt-web-production-13a6.up.railway.app/#/chat/1680001780108)
+
+[国内如何开通 ChatGPT Plus - Kerry的学习笔记](https://kerrynotes.com/subscribe-chatgpt-plus/#toc5)
+
+[Microsoft 必应的图像创建者](https://www.bing.com/images/create)
+
+[DALL·E --- 给她](https://labs.openai.com/)
+
+[买chatgpt plus](https://nf.video/yinhe/web/?sharedId=78598)
+
+[TaxyAI chrome扩展: 自动化测试用 GPT-4](https://github.com/TaxyAI/browser-extension?utm_source=wechat_session)
+
+[最低成本的embedding，和new bing聊天时，加入#web_page_only 指令即可让它只根据当前网页回复](https://m.okjike.com/originalPosts/640dee5473b2f12319e64663?s=eyJ1IjoiIiwiZCI6MX0%3D)
+
+[Copilot Hub 基于 ChatGPT 创建个人的知识库 AI](https://app.copilothub.co/home)
+
+[简介 | Learning Prompt](https://learningprompt.wiki/docs/tutorial-basics/%E7%AE%80%E4%BB%8B)
+
+[yzfly/awesome-chatgpt-zh: ChatGPT 中文指南，指令指南，精选资源清单，更好的使用 chatGPT 让你的生产力 up up up!](https://github.com/yzfly/awesome-chatgpt-zh?utm_source=wechat_session)
+
+[Plaud AI - 在线语音转文本](https://plaud.ai/transcribe)
+
+[Stable diffusion reimagine --- 稳定的扩散重新构想](https://clipdrop.co/stable-diffusion-reimagine)
+
+[OpenAI API Key 账号密钥购买 和 基于 OpenAI API 的服务](https://openaikey.xyz/)
+
+[倍易付 虚拟信用卡 Vvacard](https://vvacard.com/index/user/account.html)
+
+[学生包自助认证方法2（附Copilot激活方法）](https://docs.qq.com/doc/DQmx1aXZJVXdHTlVw)
+
+[ChatGPT PromptsZone - PromptsZone](https://promptszone.com/)
+
+[BookAI.chat - Chat whit any book --- BookAI.chat - 与任何书籍聊天](https://www.bookai.chat/)
+
+[ChatMind.Tech](https://www.chatmind.tech/)
+
+[ChatBA：幻灯片的生成 AI ✨](https://www.chatba.com/)
+
+[ChatDOC - Chat with your documents](https://chatdoc.com/)
+
+[酷表ChatExcel](https://chatexcel.com/)
+
+[V2EX › OpenAI](https://www.v2ex.com/go/openai)
+
+[可买GPT4的apikey](https://670ca.tdchat.net/#/11/detail)
+
+[莓用AI](https://ai.usesless.com/scene/home)
+
+[MidJourney样式和关键字的参考 最高🤩](https://github.com/willwulfken/MidJourney-Styles-and-Keywords-Reference)
+
+[amazon版的github copilot](https://aws.amazon.com/cn/codewhisperer/resources/)
+
+[OpenAI 接口国内镜像 API2D](https://api2d.com/wiki/doc)
+
+[AgentGPT --- 代理GPT](https://agentgpt.reworkd.ai/)
+
+[GPT-4 Examples, Demos, Apps, Showcase, and Generative AI Use-cases | Discover GPT-4 use cases --- GPT-4 示例、演示、应用程序、展示和生成 AI 用例 |发现 GPT-4 用例](https://gpt4demo.com/)
+
+[Real-time Market Map - 700+ ChatGPT and GPT-3 Examples, Demos, Apps, Showcase, and Generative AI Use-cases | Discover AI use cases --- 实时市场地图 - 700 多个 ChatGPT 和 GPT-3 示例、演示、应用程序、展示和生成 AI 用例 |发现人工智能用例](https://gpt3demo.com/map)

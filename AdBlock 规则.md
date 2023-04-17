@@ -77,4 +77,5 @@ finance.sina.com.cn##DIV[class="tab-related-wrap"]
 finance.sina.com.cn##A[class="fapp"][href="https://finance.sina.com.cn/mobile/comfinanceweb.shtml"]
 finance.sina.com.cn##DIV[class="page-tools"]
 mbd.baidu.com##DIV[class="_3RNjY"]
+juejin.cn##DIV[class="extension"]
 ```
