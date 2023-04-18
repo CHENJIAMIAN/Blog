@@ -249,3 +249,52 @@ Cesium3DTile.js
 2. 在加载一个包含根瓦片的 Cesium3DTiles 数据集时，如果根瓦片没有包含实际的几何和纹理数据，则它将被解析为 `Empty3DTileContent`。试试从`tileset.root.children[0].content`拿
 
 需要注意的是，即使根瓦片没有几何和纹理数据，仍然可以使用CesiumJS API对其进行操作和渲染。例如，在根瓦片上设置样式、添加事件处理程序或调整光照设置等。此外，根瓦片可能包含有关数据集的元数据，如边界框信息、时间戳、投影信息等。
+## b3dm的文件结构
+b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式，主要用于地理信息系统（GIS）中的三维建模、可视化和分析。其文件结构包括以下几个主要部分：
+```
+1. glTF头部信息：包括文件大小、版本号、模型名称、场景等元数据。
+2. 二进制数据：包括模型的顶点坐标、法线、纹理坐标等信息，使用二进制格式进行存储。
+3. 特性表数据（Batch Table）：可选的元数据表格，用于存储模型的自定义属性信息。
+4. 特性实例数据（Batch Table Instance）：可选的实例表格，用于存储每个实例的自定义属性信息。
+5. 批处理数据（Batch）：存储三角形网格和所需的材质、纹理等信息，以及对应的特性表和特性实例表索引。
+```
+
+### b3dm文件结构中，material存在哪里
+在b3dm文件结构中，材质（Material）信息存储在Batch中。Batch是一个表示渲染批次的数据块，可以包含一个或多个三角形网格，以及对应的材质信息和特性表数据。每个Batch数据块的结构如下所示：
+
+```
+{
+    "primitive":<number>,
+    "centroid":<array>,
+    "batchLength":<number>,
+    "batchTableJSON":<object>,
+    "batchTableBinary":<arrayBuffer>,
+    "gltfFormat":<number>,
+    "attributeName":<string>,
+    "attributes":<arrayBuffer>
+}
+```
+
+其中，Batch中的"attributes"字段包含了模型的顶点坐标、法线、纹理坐标等信息，同时也包含了材质信息。材质信息可以在Batch中通过以下字段进行定义：
+
+- "material"：用于指定Batch的材质，在glTF中对应于material数组中的索引。例如，可以使用以下指令来与Batch关联材质：
+
+  ```
+  "material":0
+  ```
+
+- "attributes"：用于指定Batch的渲染属性，例如它的纹理坐标。其中，纹理坐标通常存储在gltf中的二进制buffer中，并使用实际坐标值和对应的偏移量进行索引。例如：
+
+  ```
+  "attributes":{
+      "TEXCOORD_0": {
+          "bufferView": 1,
+          "componentType": 5126,
+          "count": 7392,
+          "type": "VEC2",
+          "byteOffset": 0
+      }
+  }
+  ```
+
+通过Batch的材质和渲染属性信息，b3dm文件格式可以支持多种不同的纹理、材质和渲染效果。
