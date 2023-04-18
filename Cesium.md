@@ -295,9 +295,18 @@ Viewer
         Entity 
             XXXGriaphics(可修改样式)
     Scene
+
+
+PolygonGraphics和PolygonGeometry的区别
+	- PolygonGraphics用于创建多边形或多边形网格效果的可视化对象，主要应用于地图呈现和展示等场景
+		- PolygonGeometry用于储存和编辑多边形的坐标和相关信息，主要用于几何计算和数据处理的场景。
+	- PolygonGraphics可以通过Cesium API提供的多种属性来调整和修改多边形对象的外观效果，如边框、填充颜色、透明度、轮廓线等
+		- PolygonGeometry则需要手动设置每个点的坐标、索引等信息。
+	- PolygonGraphics支持一些交互事件，如鼠标点击、悬浮等，可以在用户与界面进行交互时进行响应
+		- PolygonGeometry不支持这些事件，只是简单的几何体。
+	- PolygonGraphics更加适用于可视化的场景
+		- PolygonGeometry则更适合于几何计算和数据处理的场景。
 ```
-
-
 ## 实践
 ```javascript
 概念
