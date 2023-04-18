@@ -51,7 +51,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "b3dm",
+                "query": "texCoord_0",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -167,7 +167,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "7ceff63e6e08528f",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
     "Cesium-3DTiles.md",
     "Cesium.md",
