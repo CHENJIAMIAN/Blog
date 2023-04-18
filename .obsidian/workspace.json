@@ -180,8 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5,
-    "collapsed": true
+    "width": 400.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -194,7 +193,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "ae012ef0f7d93e48",
+  "active": "d2c0130f8758643a",
   "lastOpenFiles": [
     "WebGL-QA.md",
     "Web 3D.md",
