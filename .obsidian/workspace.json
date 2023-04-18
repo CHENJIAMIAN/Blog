@@ -69,6 +69,22 @@
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "6e598b9e9cc7b927",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7974b07fd2b2c15",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Cesium.md"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
@@ -81,7 +97,6 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
-        "dimension": 56.7431850789096,
         "children": [
           {
             "id": "5e55221e27be587d",
@@ -141,27 +156,11 @@
           }
         ],
         "currentTab": 3
-      },
-      {
-        "id": "62cca7b24132f3d3",
-        "type": "tabs",
-        "dimension": 43.2568149210904,
-        "children": [
-          {
-            "id": "a7974b07fd2b2c15",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "Cesium.md"
-              }
-            }
-          }
-        ]
       }
     ],
     "direction": "horizontal",
-    "width": 400.5
+    "width": 400.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {

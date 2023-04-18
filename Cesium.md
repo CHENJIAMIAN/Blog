@@ -431,7 +431,7 @@ Radian、Degree和Cartesian3数据类型的示例值：
 
 
 
-笛卡尔转弧度 //Cesium.Cartographic.fromCartesian(center)
+笛卡尔3转弧度 //Cesium.Cartographic.fromCartesian(center)
 	var center = tileset.boundingSphere.center;
 	var cartographic = Cesium.Cartographic.fromCartesian(center);
 	var longitude = Cesium.Math.toDegrees(cartographic.longitude);
@@ -446,10 +446,13 @@ Radian、Degree和Cartesian3数据类型的示例值：
       [longitude,latitude,height] 
       
 笛卡尔3坐标转成经纬度
-    const cartographic=viewer.scene.globe.ellipsoi.cartesianToCartographic(笛卡尔3坐标);
-    const lat=Cesium.Math.toDegrees(cartographic.latitude);
-    const lng=Cesium.Math.toDegrees(cartographic.longitude);
-    const alt=cartographic.height;
+	// 将笛卡尔坐标系转换为地理坐标系
+	const cartographic = viewer.scene.globe.ellipsoid.cartesianToCartographic(笛卡尔3);	
+	// 获取经度和纬度
+	const longitude = Cesium.Math.toDegrees(cartographic.longitude);
+	const latitude = Cesium.Math.toDegrees(cartographic.latitude);
+    const height=cartographic.height;
+     [longitude,latitude,height] 
 
 完美修正拟合tileset的高度到地面上
       const cartographic = Cartographic.fromCartesian(tileset.boundingSphere.center);//获得原始中心
