@@ -67,8 +67,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "6e598b9e9cc7b927",
@@ -173,7 +172,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "ae012ef0f7d93e48",
+  "active": "0a50d9c573337de4",
   "lastOpenFiles": [
     "Cesium-QA.md",
     "Cesium.md",
