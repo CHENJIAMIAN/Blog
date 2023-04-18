@@ -4,18 +4,37 @@
     "type": "split",
     "children": [
       {
-        "id": "d416500d5dd0a6f3",
+        "id": "19ef8747148c225e",
         "type": "tabs",
         "children": [
           {
-            "id": "7935b61fc6f423f8",
+            "id": "b21838b9a90bb68b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Cesium-QA.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "029ff7be694d1a41",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cesium.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -44,7 +63,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "<<<<<<<",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +84,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -74,7 +94,7 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
-        "dimension": 56.743185078909605,
+        "dimension": 56.7431850789096,
         "children": [
           {
             "id": "5e55221e27be587d",
@@ -82,6 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Cesium.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Cesium.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,14 +158,16 @@
       {
         "id": "62cca7b24132f3d3",
         "type": "tabs",
-        "dimension": 43.256814921090395,
+        "dimension": 43.2568149210904,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Cesium.md"
+              }
             }
           }
         ]
@@ -154,30 +178,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "markdown-importer:打开 Markdown 格式转换器": false,
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "markdown-importer:打开 Markdown 格式转换器": true,
+      "switcher:打开快速切换": true,
+      "graph:查看关系图谱": true,
+      "canvas:新建白板": true,
+      "daily-notes:打开/创建今天的日记": true,
+      "templates:插入模板": true,
+      "command-palette:打开命令面板": true
     }
   },
-  "active": "7935b61fc6f423f8",
+  "active": "0a50d9c573337de4",
   "lastOpenFiles": [
     "Vue3.md",
-    "AI产品导航.md",
+    "conflict-files-obsidian-git.md",
+    "☁.md",
     "Cesium-3DTiles.md",
     "Cesium-QA.md",
-    "☁.md",
-    "AdBlock 规则.md",
-    "☁ 难题.md",
-    "conflict-files-obsidian-git.md",
     "Cesium.md",
+    "GIS OL Geoserver PostGIS.md",
+    "Web 3D.md",
     "杂-GPT-QA.md",
     "images/Pasted image 20230411105231.png",
     "images/Pasted image 20230411101658.png",
     "images/Pasted image 20230409173031.png",
+    "AdBlock 规则.md",
     "Pasted image 20230411105231.png",
     "Pasted image 20230411104905.png",
     "Pasted image 20230411101658.png",
@@ -192,7 +216,6 @@
     "KH.md",
     "HTTP.md",
     "Node.js.md",
-    "Cesium-地形.md",
     "nginx.md",
     "npm.md",
     "WebGL.md",
@@ -201,6 +224,7 @@
     "Python/【python】数据筛选.md",
     "Python/【python】实践.md",
     "Python/【python】基础.md",
+    "Python/【python】Flask web.md",
     "Python",
     "投资 保险/images",
     "投资 保险",
