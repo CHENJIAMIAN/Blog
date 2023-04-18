@@ -50,7 +50,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "j",
+                "query": "经纬度",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
