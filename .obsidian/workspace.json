@@ -64,7 +64,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "texCoord_0",
+                "query": "Primitive",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -81,7 +81,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -180,7 +181,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "d41a358b91bcf755",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
     "Cesium-3DTiles.md",
     "Cesium.md",
