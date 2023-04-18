@@ -50,7 +50,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "j",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -67,7 +67,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -174,7 +175,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "029ff7be694d1a41",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
     "Cesium-QA.md",
     "Cesium.md",
