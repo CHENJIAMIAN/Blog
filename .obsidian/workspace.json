@@ -59,7 +59,7 @@
       {
         "id": "3a6ba7b67347a1b2",
         "type": "tabs",
-        "dimension": 99.99999999999999,
+        "dimension": 50,
         "children": [
           {
             "id": "0a50d9c573337de4",
@@ -96,6 +96,23 @@
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "9e677a5de0caf9b1",
+        "type": "tabs",
+        "dimension": 50,
+        "children": [
+          {
+            "id": "a7974b07fd2b2c15",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Cesium.md"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
@@ -105,6 +122,20 @@
     "id": "6f6aee49d5407bee",
     "type": "split",
     "children": [
+      {
+        "id": "bc77cd9a3b8eb1bc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6323b2f6898b32c7",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          }
+        ]
+      },
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
@@ -127,15 +158,19 @@
             }
           },
           {
-            "id": "a7974b07fd2b2c15",
+            "id": "777c4cadf66f9b9d",
             "type": "leaf",
             "state": {
-              "type": "outline",
-              "state": {
-                "file": "Cesium.md"
-              }
+              "type": "git-history-view",
+              "state": {}
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "ab0d403b7e246141",
+        "type": "tabs",
+        "children": [
           {
             "id": "c01e185f4aa3d7d3",
             "type": "leaf",
@@ -147,7 +182,13 @@
                 "unlinkedCollapsed": true
               }
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "73627a13588425a1",
+        "type": "tabs",
+        "children": [
           {
             "id": "3f5e35f3c2b63f92",
             "type": "leaf",
@@ -158,25 +199,8 @@
                 "useHierarchy": true
               }
             }
-          },
-          {
-            "id": "6323b2f6898b32c7",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
-            }
-          },
-          {
-            "id": "777c4cadf66f9b9d",
-            "type": "leaf",
-            "state": {
-              "type": "git-history-view",
-              "state": {}
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -193,7 +217,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "d2c0130f8758643a",
+  "active": "6323b2f6898b32c7",
   "lastOpenFiles": [
     "WebGL-QA.md",
     "Web 3D.md",
