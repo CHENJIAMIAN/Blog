@@ -19,9 +19,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "d41a358b91bcf755",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cesium.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
         ],
-        "stacked": true
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -68,8 +81,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -89,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium-3DTiles.md",
+                "file": "Cesium.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,7 +118,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium-3DTiles.md"
+                "file": "Cesium.md"
               }
             }
           },
@@ -116,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium-3DTiles.md",
+                "file": "Cesium.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -154,7 +166,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5
+    "width": 400.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -167,7 +180,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "ae012ef0f7d93e48",
+  "active": "d41a358b91bcf755",
   "lastOpenFiles": [
     "Cesium-3DTiles.md",
     "Cesium.md",

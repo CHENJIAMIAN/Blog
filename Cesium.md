@@ -270,7 +270,7 @@ Viewer
                         XXXGeometry
                             geometry
                             modelMatrix
-                Model     
+                Model
                 BillboardCollection //面朝屏幕的图片, 广告牌
                 LabelCollection//面朝屏幕的文字
             grounPrimitives//贴地的
