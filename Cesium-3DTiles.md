@@ -234,3 +234,18 @@ Cesium3DTile.js
         viewer.scene.maximumRenderTimeChange=Infinity //没用到时间相关的动画的话,就这样设置
         开启后有些情况需要调用强制重新渲染: scene.requestRender();
 ```
+### ccesium的Cesium3DTile 的children跟content的区别
+在Cesium3DTiles中，一个瓦片（tile）可以有两种类型的子元素： `children` 和 `content`。
+
+`children` 表示当前瓦片的子瓦片，也就是细节更高的子区域。这些子瓦片通常具有比当前瓦片更高的三角形数量和更多的细节。通过使用 `children`，可以构建一棵树形结构的瓦片，用于渲染复杂的三维场景，并且可以按需加载每个瓦片以提高性能。
+
+另一方面，`content` 表示当前瓦片的实际几何和纹理数据。在大多数情况下，这些数据被压缩为二进制格式，并存储在磁盘上或通过网络传输。在渲染时，应用程序会将 `content` 中的数据解码，并使用它来绘制 3D 模型。
+
+因此，`children` 和 `content`都是Cesium3DTiles的关键概念，用于组织和呈现三维地球表面的数据。
+### tileset.root.content是Empty3DTileContent 是怎么回事
+在Cesium中，`Empty3DTileContent` 是一个特殊的类，用于表示一个没有内容的 3D 瓦片。如果 `tileset.root.content` 是 `Empty3DTileContent`，则这意味着根瓦片不包含任何几何和纹理数据。这通常发生在以下两种情况下：
+
+1. 当您创建一个新的空 `Cesium3DTileset` 时，其根瓦片会自动设置为空。
+2. 在加载一个包含根瓦片的 Cesium3DTiles 数据集时，如果根瓦片没有包含实际的几何和纹理数据，则它将被解析为 `Empty3DTileContent`。试试从`tileset.root.children[0].content`拿
+
+需要注意的是，即使根瓦片没有几何和纹理数据，仍然可以使用CesiumJS API对其进行操作和渲染。例如，在根瓦片上设置样式、添加事件处理程序或调整光照设置等。此外，根瓦片可能包含有关数据集的元数据，如边界框信息、时间戳、投影信息等。
