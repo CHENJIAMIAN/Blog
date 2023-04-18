@@ -257,6 +257,8 @@ Viewer
             ScreenSpaceCameraController  
                 enableRotate|enableTranslate|enableZoom等
             primitives //它的removeAll()会把Cesium自己添加的东西也移除掉,慎用!
+	            Visualizer有哪些
+			        GeometryVisualizer：用于将 `GeometryInstance` 对象（呈现 3D 几何图形的实例）转换为 `Primitive` 并呈现在场景中
                 Cesium.Cesium3DTileset
                     classificationType //将这个3dtile变成ClassificationPrimitive
                 PrimitiveCollection 
