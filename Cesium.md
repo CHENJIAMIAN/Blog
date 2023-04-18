@@ -475,6 +475,11 @@ Radian、Degree和Cartesian3数据类型的示例值：
                 entity.polygon.extrudedHeight = entity.properties.geojson属性里的高度;
               }
             })
+	设置颜色
+	dataSource.entities.values.filter(i=>i.id.includes('200_')).forEach(i=>{
+	    //dataSource.entities.remove(i)
+	    i.polygon.material = Cesium.Color.RED.withAlpha(0.5);
+	})
    
 Cesium.CallbackProperty //用回调函数传入time,用于处理随时间变化的属性,如随时间改变,位置属性改变
 ```

@@ -77,7 +77,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "diffu",
+                "query": "笛卡尔",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,7 +94,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -193,7 +194,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "d2c0130f8758643a",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
     "WebGL-QA.md",
     "Web 3D.md",
