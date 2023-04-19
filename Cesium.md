@@ -419,8 +419,8 @@ PolygonGraphics和PolygonGeometry的区别
 		- PolygonGeometry则更适合于几何计算和数据处理的场景。
 
 
-Cesium.Ellipsoid.WGS84对象是一个JavaScript对象，它定义了一个符合WGS84椭球体标准的椭球体。该对象包含了一些属性和方法，如下所示：
-
+Cesium.Ellipsoid.WGS84
+	定义了一个符合WGS84椭球体标准的椭球体	
 	radii：表示椭球体在x、y和z轴上的半径。
 	maximumRadius：表示椭球体的最大半径。
 	minimumRadius：表示椭球体的最小半径。
@@ -428,8 +428,7 @@ Cesium.Ellipsoid.WGS84对象是一个JavaScript对象，它定义了一个符合
 	radiiToTheFourth：表示椭球体在x、y和z轴上的半径的四次方。
 	oneOverRadii：表示椭球体在x、y和z轴上的半径的倒数。
 	oneOverRadiiSquared：表示椭球体在x、y和z轴上的半径的平方的倒数。
-
-这些属性可以用于各种计算，例如在地球表面上绘制点、线、面、矢量等时，需要将其投影到三维椭球体上进行计算。
+	用于各种计算，例如在地球表面上绘制点、线、面、矢量等时，需要将其投影到三维椭球体上进行计算。
 ```
 ## 实践
 ```javascript
