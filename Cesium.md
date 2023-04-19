@@ -237,17 +237,34 @@ when：一个实用工具，对带有错误处理的 promise 进行分装， 允
 ## 类图
 ![[Pasted image 20230419095022.png]]
 ```javascript
-
+通用类
+	Cartesian3
+	Matrix4
+	Catographic
+	
 Viewer
 	其他一大堆UI组件
     CesiumWidget//不包含任何UI组件的viewer，纯地球和星空
         //Viewer.scene === Viewer.cesiumWidget.scene
         Scene//用来操作一切
+			Event 事件
+		        pick/drillpick
+				preUpdate
+				postUpdate
+				preRender
+				postRender
             Camera
-                Cartesian3
-                Matrix4
-                Catographic
-            skyBox星空|skyAtmosphere大气|sun太阳
+	            position(位置)
+				heading(方位角)/绕z轴旋转
+				pitch(俯仰角)/绕y轴旋转
+				roll(翻滚角)/绕x轴旋转
+            环境对象
+	            skyAtmosphere(大气圈)
+				skyBox(天空盒)
+				sun(太阳)
+				moon(月亮)
+				flog(雾化)
+				ParticleSystem(粒子系统)
             Globe //地球
                 terrainProvider//TerrainProvider
                 imageryLayers//ImageryLayerCollection
@@ -272,24 +289,55 @@ Viewer
             ScreenSpaceCameraController  
                 enableRotate|enableTranslate|enableZoom等
             primitives:PrimitiveCollection //它的removeAll()会把Cesium自己添加的东西也移除掉,慎用!
-	            Visualizer有哪些
-			        GeometryVisualizer：用于将 `GeometryInstance` 对象（呈现 3D 几何图形的实例）转换为 `Primitive` 并呈现在场景中
-                Cesium.Cesium3DTileset
-                    classificationType //将这个3dtile变成ClassificationPrimitive
-                PrimitiveCollection 
-                ClassificationPrimitive//一个不可见封闭的体,被它罩住的,就要用它的颜色附着
+	            Visualizer //对象（呈现 3D 几何图形的实例）转换为 `Primitive` 并呈现在场景中
+			        GeometryVisualizer：用于 `GeometryInstance` 
                 Primitive
+	                modelMatrix
                     Appearance
                         XXXAppearance
                             material
                             renderState
+						EllipsoidSurfaceAppearance
+						MaterialAppearance
+						PerInstanceColorAppearance
+						PolylineColorAppearance
+						PolylineMaterialAppearance
                     GeometryInstance
                         XXXGeometry
                             geometry
                             modelMatrix
-                Model
+						BoxGeometry/BoxOutlineGeometry(立方体)
+						CircleGeometry/CircleOutlineGeometry(圆形或者拉伸的圆形)
+						CoplanarPolygonGeometry/CoplanarPolygonOutlineGeometry(任意面组成的多边形)
+						CorridorGeometry/CorridorOutlineGeometry(走廊)
+						CylinderGeometryy/CylinderOutlineGeometry(圆柱、圆锥或者载断的圆锥)
+						EllipseGeometry/EllipseOutlineGeometry(椭圆或者拉伸的椭圆)
+						EllipsoidGeometry/EllipsoidOutlineGeometry(球)
+						FrustumGeometry/FrustumOutlineGeometry(视体)
+						PlaneGeometry/PlaneOutlineGeometry(原点为中心的平面的几何形状)
+						PolygonGeometry/PolygonOutlineGeometry(多边形，可以具有空洞或者拉伸一定的的高度)
+						PolylineGeometry/SimplePolylineGeometry(多段线，可以具有一定的宽度)
+						PolylineVolumeGeometry/PolylineVolumeOutlineGeometry(多段线柱体)
+						RectangleGeometry/RectangleOutlineGeometry(矩形或者拉伸的矩形)
+						SphereGeometry/SphereOutlineGeometry(球体)
+						WallGeometry/WallOutlineGeometry()
                 BillboardCollection //面朝屏幕的图片, 广告牌
                 LabelCollection//面朝屏幕的文字
+                GroundPolylinePrimitive
+					GeometryInstance
+					Appearance
+				GroundPrimitive
+					GeometryInstance
+					Appearance
+				Cesium3DTileset
+                    classificationType //将这个3dtile变成ClassificationPrimitive
+				ClassificationPrimitive//一个不可见封闭的体,被它罩住的,就要用它的颜色附着
+					GeometryInstance
+					Appearance
+				PointPrimitiveCollection
+				PolylineCollection
+				Model
+				ParticleSystem
             grounPrimitives//贴地的
                 GroundPolylinePrimitive  
     Clock
