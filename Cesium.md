@@ -819,6 +819,86 @@ z = sin(45/2) ≈ 0.3827
 
 这是一个绕 Z 轴旋转 45 度的旋转矩阵。我们可以看到，对角线上的元素之和为 `cos(45) + cos(45) = 2cos(45/2)^2`，即四元数中的 `w` 分量的平方。因此，实际上，四元数中的 `w` 分量等于旋转矩阵中对角线元素之和的一半的平方根，也就是旋转角度一半的余弦值。
 ```
+### 为什么将变换矩阵中的前三行设置为局部坐标系的三个方向向量，第四行设置为 origin。我们就得到了一个将本地参考系中的向量转换为椭球体固定参考系中的向量的变换矩阵。
+
+```js
+对于任意一个在局部坐标系中的向量 v，都可以通过以下方式将其转换为椭球体固定参考系中的向量：
+
+`v_global = M * (v_local - origin)`
+
+其中，
+M 表示我们构建的变换矩阵，
+v_local 表示在局部坐标系中表示的向量，
+v_global 表示在椭球体固定参考系中表示的向量。
+
+这个式子的含义是：
+首先将 v_local 减去 origin，得到相对于局部坐标系原点的偏移量；
+然后用变换矩阵 M 将这个偏移量转换为椭球体固定参考系中的向量。
+最终得到的 v_global 就是我们要求的结果。
+
+因此，将变换矩阵中的前三行设置为局部坐标系的三个方向向量，第四行设置为 origin，就可以构建一个能够将本地参考系中的向量转换为椭球体固定参考系中的向量的变换矩阵。
+
+可以代入一个最简单的实际例子让我更容易看懂吗
+	假设有一个位于地球表面上的点 P，其经纬度坐标分别为 (40.0, 120.0)，高度为 1000 米。现在我们想将 P 的坐标转换到一个以赤道为 XY 平面、以北极为 Z 轴的固定参考系中。
+	
+	首先，需要通过经纬度坐标计算出 P 点所在的地心位置坐标。这个过程可以用一些地理工具库来实现，不过这里不展开讲解了。假设我们得到的地心位置坐标为 (x,y,z) = (4000 km, 3000 km, 5000 km)，那么 P 点在地球表面的位置就可以表示为：
+	
+	P_local = (1000 m, 0 m, 0 m)
+	
+	其中，P_local 表示相对于地心的局部坐标系中的位置向量。我们将其设置为 (1000, 0, 0)，是因为 P 点的高度为 1000 米，且位于经度为 120 度的地球表面上，也就是东经 120 度的交点处，因此它相对于经线和纬线交点的偏移量应该是东向 1000 米，北向 0 米，垂直于地球表面的距离为 0 米。
+	
+	接下来，需要构建一个从局部坐标系到全局坐标系的变换矩阵。在这个例子中，全局坐标系应该是以赤道为 XY 平面、以北极为 Z 轴的坐标系。根据上面提到的步骤，我们可以先计算出相对于 P 点的东向、北向和垂直于地球表面的向上的三个单位向量。具体来说，可以用以下式子计算它们：
+	scratchThirdCartesian = normalize(P_local)
+	scratchFirstCartesian = normalize(cross([0,0,1], scratchThirdCartesian))
+	scratchSecondCartesian = cross(scratchThirdCartesian, scratchFirstCartesian)
+	
+	其中，normalize 表示将向量归一化，cross 表示向量的叉积。由于我们已经知道了 P 点的经纬度坐标，因此也就知道了 scratchThirdCartesian 这个向量（它指向地球表面的法线方向），可以通过简单的几何计算得到 scratchFirstCartesian 和 scratchSecondCartesian。
+	
+	最后，将 scratchFirstCartesian、scratchSecondCartesian 和 scratchThirdCartesian 作为变换矩阵的前三行，P_local 作为变换矩阵的第四行，就得到了局部坐标系到全局坐标系的变换矩阵 M。具体来说，变换矩阵的元素可以表示为：
+	
+	M = [ scratchFirstCartesian.x    scratchSecondCartesian.x    scratchThirdCartesian.x    P_local.x ]
+	    [ scratchFirstCartesian.y    scratchSecondCartesian.y    scratchThirdCartesian.y    P_local.y ]
+	    [ scratchFirstCartesian.z    scratchSecondCartesian.z    scratchThirdCartesian.z    P_local.z ]
+	    [           0                        0                          0                    1        ]
+	
+	其中，.x、.y、.z 表示向量的 x、y、z 分量。这个变换矩阵可以将局部坐标系中的向量 P_local 转换为全局坐标系中的向量 P_global：
+	
+	P_global = M * (P_local - origin) = M * P_local
+	
+	由于 origin 在本例中为零向量，因此可以简化计算。最终得到的 P_global 就是 P 点相对于赤道-北极坐标系的位置向量。
+	
+	希望上面的解释已经让你对这个函数有了更深入的理解。下面来继续解释一下最后的部分。
+	
+	在本例中，origin 表示局部坐标系原点的位置向量，也就是 P 点在地心参考系中的位置向量。根据前面的假设，P 点的高度为 1000 米，因此 origin 的长度为：
+	
+	length(origin) = sqrt(x^2 + y^2 + z^2) = 7453.05 km
+	
+	由于 origin 在本例中为零向量，所以可以简化计算，得到以下式子：
+	
+	P_global = M * P_local
+	
+	其中，M 是变换矩阵，P_local 是相对于 origin 的 P 点在局部坐标系中的表示。具体来说，P_local 可以表示为：
+	
+	P_local = P - origin = (1000 m, 0 m, 0 m) - (4000 km, 3000 km, 5000 km)
+	        = (-3999999 m, -3000000 m, -4999000 m)
+	
+	将 P_local 代入变换矩阵中，得到：
+	
+	P_global = M * P_local
+	         = [ scratchFirstCartesian.x    scratchSecondCartesian.x    scratchThirdCartesian.x    P_local.x ]   [ -3999999 ]
+	           [ scratchFirstCartesian.y    scratchSecondCartesian.y    scratchThirdCartesian.y    P_local.y ] * [ -3000000 ]
+	           [ scratchFirstCartesian.z    scratchSecondCartesian.z    scratchThirdCartesian.z    P_local.z ]   [ -4999000 ]
+	           [           0                        0                              0                1        ]   [     1    ]
+	
+	         = [ -2971.03 ]
+	           [ -7607.76 ]
+	           [  5701.89 ]
+	           [     1    ]
+	
+	因此，P 点相对于赤道-北极坐标系的位置向量为 (X,Y,Z) = (-2971.03 m, -7607.76 m, 5701.89 m)。
+```
+
+
 ## 概念
 
 ```js

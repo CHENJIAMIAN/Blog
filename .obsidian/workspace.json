@@ -70,7 +70,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -169,7 +170,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "638d28d8e4eb2f10",
+  "active": "0a50d9c573337de4",
   "lastOpenFiles": [
     "GIS OL Geoserver PostGIS.md",
     "Cesium.md",
