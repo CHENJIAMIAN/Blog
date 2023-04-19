@@ -761,6 +761,21 @@ Cesium.Transforms.eastNorthUpToFixedFrame //是回退变换, 在地球上，每�
 ### Quaternion 四元数
 
 ```js
+Cesium还提供了许多方便的函数来创建和操作四元数，如`fromAxisAngle`、`fromRotationMatrix`、`multiply`等。
+
+Cesium中的四元数（Quaternion）可以使用以下公式进行计算：
+q = w + xi + yj + zk
+
+其中，`w`、`x`、`y`和`z`是四元数的四个分量。
+
+在Cesium中，通常使用单位四元数来表示旋转，因此四元数的长度应该为1，即：
+|q| = sqrt(w^2 + x^2 + y^2 + z^2) = 1
+
+四元数的乘法运算可以使用以下公式进行计算：
+q1 * q2 = (w1*w2 - x1*x2 - y1*y2 - z1*z2) + (w1*x2 + x1*w2 + y1*z2 - z1*y2)i + (w1*y2 - x1*z2 + y1*w2 + z1*x2)j + (w1*z2 + x1*y2 - y1*x2 + z1*w2)k
+
+其中，`q1`和`q2`是两个四元数，`*`表示乘法运算，`i`、`j`和`k`是虚部系数。
+
 在上面的代码中，我们创建了一个绕 Z 轴旋转 45 度的四元数，代码如下：
 
 var rotationQuaternion = Cesium.Quaternion.fromAxisAngle(Cesium.Cartesian3.UNIT_Z, Cesium.Math.toRadians(45));
