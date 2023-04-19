@@ -234,16 +234,33 @@ WebMercatorTilingScheme: 以经典的WebMercator投影方式对图层进行瓦�
 when：一个实用工具，对带有错误处理的 promise 进行分装， 允许等待所有 promise 完成以及在适当的时间捕获潜在的失败。
 ```
 
-## 类图
-![[Pasted image 20230419095022.png]]
+## 类图 
+[cesium.jpg (3561×3574)](http://mars3d.cn/dev/img/jiagou/cesium.jpg)
 ```javascript
-通用类
+通用类/空间计算
 	Cartesian3
-	Matrix4
 	Catographic
-	
+	Matrix3(3x3矩阵，旋转变换)
+	Quaternion(围绕某个向量旋转一定角度的变换)
+	Matrix4(4x4矩阵，旋转加平移变换)
+	Transforms(包含将位置转换为各种参考系的功能)
 Viewer
 	其他一大堆UI组件
+		Animation
+		BaseLayerPicker
+		Cesium3DTilesInspector
+		CesiumInspector
+		CesiumWidget
+		FullscreenButton
+		Geocoder
+		HomeButton
+		InfoBox
+		NavigationHelpButton
+		ProjectionPicker
+		SceneModePicker
+		SelectionIndicator
+		Timeline
+		VRButton
     CesiumWidget//不包含任何UI组件的viewer，纯地球和星空
         //Viewer.scene === Viewer.cesiumWidget.scene
         Scene//用来操作一切
@@ -266,24 +283,30 @@ Viewer
 				flog(雾化)
 				ParticleSystem(粒子系统)
             Globe //地球
-                terrainProvider//TerrainProvider
-                imageryLayers//ImageryLayerCollection
+				terrainProvider 地形
+	                ArcGISTiledElevationTerrainProvider
+					CesiumTerrainProvider
+					EllipsoidTerrainProvider
+					GoogleEarthEnterpriseTerrainProvider
+					VRTheWorldTerrainProvider
+                imageryLayers:ImageryLayerCollection影像
                     ImageryLayer
                     ImageryProvider
                         xxxImageryProvider
-                        WebMapTileServicelmageryProvider
-						WebMapServicelmageryProvider
-						UrITemplatelmageryProvider
-						TileCoordinatesImageryProvider
-						SingleTilelmageryProvider
-						Mapbox ImageryProvider
-						GridlmageryProvider
-						GoogleEarthEnterpriseMapsProvider
-						GoogleEarthEnterpriselmageryProvider
-						createTileMapServicelmageryProvider
-						createOpenStreetMaplmageryProvider
+	                    ArcGisMapServerImageryProvider
 						BingMapsImageryProvider
-						ArcGisMapServerlmageryProvider
+						GoogleEarthEnterpriselmageryProvider
+						GridImageryProvider(开发调试)
+						IonImageryProvider
+						MapboxImageryProvider
+						MapboxStylelmageryProvider
+						OpenStreetMapImageryProvider
+						SingleTilelmageryProvider
+						TileCoordinatesImageryProvider(开发调试)
+						TileMapServicelmageryProvider
+						UrITemplateImageryProvider
+						WebMapServicelmageryProvider
+						WebMapTileServicelmageryProvider
                 Ellipsoid//平面的地形
                 Color
             ScreenSpaceCameraController  
@@ -295,7 +318,15 @@ Viewer
 	                modelMatrix
                     Appearance
                         XXXAppearance
-                            material
+                            material   MaterialProperty
+	                            ColorMaterialProperty颜色材质
+								ImageMaterialProperty贴图材质
+								CheckerboardMaterialProperty棋盘纹理
+								StripeMaterialProperty条纹纹理
+								GridMaterialProperty网格
+								PolylineGlowMaterialProperty发光材质
+								PolylineOutlineMaterialProperty外轮廓材质
+								PolylineArrowMaterialProperty带有箭头的线
                             renderState
 						EllipsoidSurfaceAppearance
 						MaterialAppearance
@@ -325,6 +356,7 @@ Viewer
                 LabelCollection//面朝屏幕的文字
                 GroundPolylinePrimitive
 					GeometryInstance
+						GroundPolylineGeometry
 					Appearance
 				GroundPrimitive
 					GeometryInstance
@@ -346,10 +378,12 @@ Viewer
         dataSources
         defaultDataSource(CustomDataSource)
             entities
-    dataSources//是dataSourceDisplay的属性的快捷方式
-        //Viewer.dataSources === Viewer.dataSourceDisplay.dataSources
+    dataSources:DataSourceCollectior//是dataSourceDisplay的属性的快捷方式
         DataSourceCollection 
             GeoJsonDataSource
+            CustomDataSource
+			CzmIDataSource
+			KmIDataSource
     entities:EntityCollection//是defaultDataSource的属性的快捷方式，primitive的简化版.底层用的还是primitive
         //Viewer.entities === Viewer.dataSourceDisplay.defaultDataSource.entities
         Entity 
