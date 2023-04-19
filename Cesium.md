@@ -235,8 +235,9 @@ when：一个实用工具，对带有错误处理的 promise 进行分装， 允
 ```
 
 ## 类图
-
+![[Pasted image 20230419095022.png]]
 ```javascript
+
 Viewer
     CesiumWidget//不包含任何UI组件的viewer，纯地球和星空
         //Viewer.scene === Viewer.cesiumWidget.scene
