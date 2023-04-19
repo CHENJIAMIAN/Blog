@@ -4,37 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "9b18bc99f115cb51",
+        "id": "f39000b8145b19c1",
         "type": "tabs",
         "children": [
           {
-            "id": "d41a358b91bcf755",
+            "id": "0d08efa14ba40062",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "WebGL-QA.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "f08abfcc54b0806a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -80,8 +61,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -120,7 +100,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -132,7 +111,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -162,9 +140,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Cesium.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -184,15 +160,15 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "f08abfcc54b0806a",
+  "active": "0a50d9c573337de4",
   "lastOpenFiles": [
+    "WebGL-QA.md",
+    "Cesium.md",
     "images/Pasted image 20230419101452.png",
     "images/Pasted image 20230419095100.png",
     "images/Pasted image 20230419095022.png",
-    "Cesium.md",
     "images/Pasted image 20230411105231.png",
     "Cesium-3DTiles.md",
-    "WebGL-QA.md",
     "images/Pasted image 20230411101658.png",
     "Web 3D.md",
     "WebGL.md",
@@ -208,7 +184,6 @@
     "Pasted image 20230411104905.png",
     "Pasted image 20230411101658.png",
     "Pasted image 20230409173031.png",
-    "Pasted image 20230409173007.png",
     "JS.md",
     "JS 进阶.md",
     "JS问答.md",
