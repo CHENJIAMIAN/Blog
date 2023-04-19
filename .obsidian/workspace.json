@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "f39000b8145b19c1",
+        "id": "d416500d5dd0a6f3",
         "type": "tabs",
         "children": [
           {
-            "id": "638d28d8e4eb2f10",
+            "id": "7935b61fc6f423f8",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -49,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "EntityCluster",
+                "query": "<<<<<<<",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,17 +65,44 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "6f6aee49d5407bee",
     "type": "split",
     "children": [
       {
-        "id": "bc77cd9a3b8eb1bc",
+        "id": "441dbf8ada8f85b4",
         "type": "tabs",
+        "dimension": 56.743185078909605,
         "children": [
+          {
+            "id": "5e55221e27be587d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c01e185f4aa3d7d3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
           {
             "id": "3f5e35f3c2b63f92",
             "type": "leaf",
@@ -101,35 +123,6 @@
             }
           },
           {
-            "id": "c01e185f4aa3d7d3",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "Cesium.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
-            "id": "5e55221e27be587d",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Cesium.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
             "id": "777c4cadf66f9b9d",
             "type": "leaf",
             "state": {
@@ -137,20 +130,20 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
-        "id": "fa69ff743e95bac3",
+        "id": "62cca7b24132f3d3",
         "type": "tabs",
+        "dimension": 43.256814921090395,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Cesium.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -161,36 +154,34 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "markdown-importer:打开 Markdown 格式转换器": true,
-      "switcher:打开快速切换": true,
-      "graph:查看关系图谱": true,
-      "canvas:新建白板": true,
-      "daily-notes:打开/创建今天的日记": true,
-      "templates:插入模板": true,
-      "command-palette:打开命令面板": true
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
     }
   },
-  "active": "638d28d8e4eb2f10",
+  "active": "7935b61fc6f423f8",
   "lastOpenFiles": [
     "images/Pasted image 20230419164035.png",
-    "GIS OL Geoserver PostGIS.md",
-    "Cesium.md",
-    "Cesium-QA.md",
-    "WebGL-QA.md",
     "images/Pasted image 20230419101452.png",
     "images/Pasted image 20230419095100.png",
     "images/Pasted image 20230419095022.png",
-    "images/Pasted image 20230411105231.png",
-    "Cesium-3DTiles.md",
-    "images/Pasted image 20230411101658.png",
-    "Web 3D.md",
-    "WebGL.md",
     "Vue3.md",
-    "conflict-files-obsidian-git.md",
+    "AI产品导航.md",
+    "Cesium-3DTiles.md",
+    "Cesium-QA.md",
     "☁.md",
-    "杂-GPT-QA.md",
-    "images/Pasted image 20230409173031.png",
     "AdBlock 规则.md",
+    "☁ 难题.md",
+    "conflict-files-obsidian-git.md",
+    "Cesium.md",
+    "杂-GPT-QA.md",
+    "images/Pasted image 20230411105231.png",
+    "images/Pasted image 20230411101658.png",
+    "images/Pasted image 20230409173031.png",
     "Pasted image 20230411105231.png",
     "Pasted image 20230411104905.png",
     "Pasted image 20230411101658.png",
@@ -202,8 +193,10 @@
     "KH.md",
     "HTTP.md",
     "Node.js.md",
+    "Cesium-地形.md",
     "nginx.md",
     "npm.md",
+    "WebGL.md",
     "ThreeJS.md",
     "【通用】Git.md",
     "Python/【python】数据筛选.md",
