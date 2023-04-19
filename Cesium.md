@@ -750,7 +750,7 @@ cesium的tileset的modelMatix为,描述做了什么样的变化, 每行每列各
 Cesium.Matrix4.multiplyByMatrix3(m, rotation, m);替代了Cesium.Matrix4.multiply(m, Cesium.Matrix4.fromRotationTranslation(rotation), m);
 ```
 ![[Pasted image 20230409173031.png]]图片
-
+z'b'x
 ```js
 Cesium.Transforms.eastNorthUpToFixedFrame //是回退变换, 在地球上，每个点都有一个本地坐标系，它是以该点为原点，以地球表面的法线方向为z轴建立的一个坐标系。然而，当我们需要在计算机中对地球上的点进行处理时，通常需要将这些点转换为一个固定的坐标系，方便进行计算和可视化。
 	,/eastNorthUp 坐标系主要用于处理经纬度和高度等地理信息数据/
