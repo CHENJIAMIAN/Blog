@@ -417,6 +417,7 @@ PolygonGraphics和PolygonGeometry的区别
 		- PolygonGeometry不支持这些事件，只是简单的几何体。
 	- PolygonGraphics更加适用于可视化的场景
 		- PolygonGeometry则更适合于几何计算和数据处理的场景。
+- 
 ```
 ## 实践
 ```javascript
