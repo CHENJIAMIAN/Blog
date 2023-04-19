@@ -421,13 +421,13 @@ PolygonGraphics和PolygonGeometry的区别
 
 Cesium.Ellipsoid.WGS84对象是一个JavaScript对象，它定义了一个符合WGS84椭球体标准的椭球体。该对象包含了一些属性和方法，如下所示：
 
-- Cesium.Ellipsoid.WGS84.radii：表示椭球体在x、y和z轴上的半径。
-- Cesium.Ellipsoid.WGS84.maximumRadius：表示椭球体的最大半径。
-- Cesium.Ellipsoid.WGS84.minimumRadius：表示椭球体的最小半径。
-- Cesium.Ellipsoid.WGS84.radiiSquared：表示椭球体在x、y和z轴上的半径的平方。
-- Cesium.Ellipsoid.WGS84.radiiToTheFourth：表示椭球体在x、y和z轴上的半径的四次方。
-- Cesium.Ellipsoid.WGS84.oneOverRadii：表示椭球体在x、y和z轴上的半径的倒数。
-- Cesium.Ellipsoid.WGS84.oneOverRadiiSquared：表示椭球体在x、y和z轴上的半径的平方的倒数。
+GS84.radii：表示椭球体在x、y和z轴上的半径。
+GS84.maximumRadius：表示椭球体的最大半径。
+GS84.minimumRadius：表示椭球体的最小半径。
+GS84.radiiSquared：表示椭球体在x、y和z轴上的半径的平方。
+GS84.radiiToTheFourth：表示椭球体在x、y和z轴上的半径的四次方。
+GS84.oneOverRadii：表示椭球体在x、y和z轴上的半径的倒数。
+GS84.oneOverRadiiSquared：表示椭球体在x、y和z轴上的半径的平方的倒数。
 
 这些属性可以用于各种计算，例如在地球表面上绘制点、线、面、矢量等时，需要将其投影到三维椭球体上进行计算。
 ```
