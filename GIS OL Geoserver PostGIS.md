@@ -4,10 +4,8 @@
 mapbox-gl 库是开源的，可以免费使用。但是，要从 Mapbox 的数据服务加载地图样式和图块，您需要在他们的网站上注册以检索地图组件所需的访问令牌，该令牌将用于识别您并开始提供地图图块。
     //该服务将是免费的，直到超过一定的流量水平。
 ```
-
-> OpenLayers
-
-### https://pic4.zhimg.com/v2-360cd3f0710e145c6bb4bbd7973aa3a7_r.jpg (类图)
+## OpenLayers
+https://pic4.zhimg.com/v2-360cd3f0710e145c6bb4bbd7973aa3a7_r.jpg (类图)
 
 ```javascript
 背景全是白色的，改成png即可，jpg不可以透明(jpg与jpeg只是叫法习惯不同)
@@ -219,13 +217,7 @@ map.setView(new View({        center: [-5639523.95, -3501274.52],        zoom: 1
     center: [113.36799, 22.98255],
     rotation: 0
 ```
-
-
-
----
-
-
-
+## WFS
 ```javascript
 wfs 根据几何查询的示例:
 http://10.168.1.243:8080/geoserver/jr_test/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=jr_test:hengli_xz_fw&outputFormat=application/json&srsName=EPSG:3857&bbox=113.94845297994834, 23.023148474534974,113.94845350846369, 23.023149003050317,EPSG:4326
@@ -260,12 +252,7 @@ http://10.168.1.243:8080/geoserver/jr_test/ows?service=WFS&version=1.0.0&request
     </Update>
 </Transaction>
 ```
-
-
-
----
-
-> Geoserver 
+## Geoserver 
 
 ```javascript
 配置样式方法1: 在uDig中生成sld样式文件(本质是xml) .在Geoserver中导入使用
@@ -470,12 +457,7 @@ geoserver 账户admin 密码geoserver
                     sudo scp -r /usr/data/data_dir/workspaces/jrtest  gis@172.16.0.206:/usr/data/data_dir/workspaces
                     sudo scp -r /usr/data/data_dir/gwc-layers  gis@172.16.0.206:/usr/data/data_dir
 ```
-
-
-
----
-
-> PostGIS 
+## PostGIS 
 
 ```javascript
 PostGIS将对地理对象的支持添加到PostgreSQL对象关系数据库中，就像ESRI的SDE或Oracle的Spatial扩展一样
@@ -491,4 +473,55 @@ Application Stack Builder安装完postgis_2_3_pg95 , 还要在SQL Shell执行以
         CREATE EXTENSION postgis_tiger_geocoder;
         
 用 PostGIS Shapfile Import/Export Manager导入图层'路径不能有中文',否则导入失败!
+```
+## GeoJSON
+
+```JSON
+{
+    "type": "FeatureCollection",
+    "features": [
+        {//要素1
+            "type": "Feature",
+            "geometry": {
+	            //要素1的图形
+                "type": "MultiPolygon",
+                "coordinates": []
+				}
+		}
+	]
+}
+```
+
+### 给出含一个有两个环的多边形和一个三角形的基于GeoJSON规范的MultiPolygon的例子，要添加逐行注释
+
+```JSON
+{
+  "type": "MultiPolygon", // GeoJSON对象类型为MultiPolygon
+  "coordinates": [ // coordinates用于定义多边形的坐标
+    [ // 第一个Polygon，一个有两个环的多边形
+      [ // 第一个环
+        [-122.801742, 45.48565], // 坐标为[-122.801742, 45.48565]
+        [-122.801742, 45.60491], // 坐标为[-122.801742, 45.60491]
+        [-122.584762, 45.60491], // 坐标为[-122.584762, 45.60491]
+        [-122.584762, 45.48565], // 坐标为[-122.584762, 45.48565]
+        [-122.801742, 45.48565]  // 第一个坐标被重复，以闭合环
+      ],
+      [ // 第二个环
+        [-122.76696, 45.52304],  // 坐标为[-122.76696, 45.52304]
+        [-122.76696, 45.5825],   // 坐标为[-122.76696, 45.5825]
+        [-122.68127, 45.5825],   // 坐标为[-122.68127, 45.5825]
+        [-122.68127, 45.52304],  // 坐标为[-122.68127, 45.52304]
+        [-122.76696, 45.52304]   // 第一个坐标被重复，以闭合环
+      ]
+    ],
+    [ // 第二个Polygon，一个三角形
+      [
+        [-122.639961, 45.543541],  // 坐标为[-122.639961, 45.543541]
+        [-122.639976, 45.533529],  // 坐标为[-122.639976, 45.533529]
+        [-122.611206, 45.526554],  // 坐标为[-122.611206, 45.526554]
+        [-122.639961, 45.543541]   // 第一个坐标被重复，以闭合环
+      ]
+    ]
+  ]
+}
 ```
