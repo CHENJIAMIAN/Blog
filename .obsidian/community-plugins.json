@@ -1,5 +1,7 @@
 [
   "obsidian-git",
   "hotkeysplus-obsidian",
-  "cmenu-plugin"
+  "cmenu-plugin",
+  "obsidian-smarter-md-hotkeys",
+  "remember-cursor-position"
 ]
