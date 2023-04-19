@@ -239,6 +239,7 @@ when：一个实用工具，对带有错误处理的 promise 进行分装， 允
 ```javascript
 
 Viewer
+	其他一大堆UI组件
     CesiumWidget//不包含任何UI组件的viewer，纯地球和星空
         //Viewer.scene === Viewer.cesiumWidget.scene
         Scene//用来操作一切
@@ -253,11 +254,24 @@ Viewer
                     ImageryLayer
                     ImageryProvider
                         xxxImageryProvider
+                        WebMapTileServicelmageryProvider
+						WebMapServicelmageryProvider
+						UrITemplatelmageryProvider
+						TileCoordinatesImageryProvider
+						SingleTilelmageryProvider
+						Mapbox ImageryProvider
+						GridlmageryProvider
+						GoogleEarthEnterpriseMapsProvider
+						GoogleEarthEnterpriselmageryProvider
+						createTileMapServicelmageryProvider
+						createOpenStreetMaplmageryProvider
+						BingMapsImageryProvider
+						ArcGisMapServerlmageryProvider
                 Ellipsoid//平面的地形
                 Color
             ScreenSpaceCameraController  
                 enableRotate|enableTranslate|enableZoom等
-            primitives //它的removeAll()会把Cesium自己添加的东西也移除掉,慎用!
+            primitives:PrimitiveCollection //它的removeAll()会把Cesium自己添加的东西也移除掉,慎用!
 	            Visualizer有哪些
 			        GeometryVisualizer：用于将 `GeometryInstance` 对象（呈现 3D 几何图形的实例）转换为 `Primitive` 并呈现在场景中
                 Cesium.Cesium3DTileset
@@ -284,18 +298,32 @@ Viewer
         dataSources
         defaultDataSource(CustomDataSource)
             entities
-    其他一大堆UI组件
-            
- 挂在Viewer上，实际并不在viewer上       
     dataSources//是dataSourceDisplay的属性的快捷方式
         //Viewer.dataSources === Viewer.dataSourceDisplay.dataSources
         DataSourceCollection 
             GeoJsonDataSource
-    entites//是defaultDataSource的属性的快捷方式，primitive的简化版.底层用的还是primitive
+    entities:EntityCollection//是defaultDataSource的属性的快捷方式，primitive的简化版.底层用的还是primitive
         //Viewer.entities === Viewer.dataSourceDisplay.defaultDataSource.entities
         Entity 
             XXXGriaphics(可修改样式)
-    Scene
+			availability:TimeIntervalCollection
+			BillboardGraphics(广告牌
+			BoxGraphics(盒子)
+			CorridorGraphics(走廊)
+			CylinderGraphics(圆柱、圆锥或者截断的圆锥)
+			EllipseGraphics(圆或者拉伸的椭圆)
+			EllipsoidGraphics(椭圆)
+			LabelGraphics(标签)
+			ModelGraphics(模型)
+			Cesium3DTilesetGraphics(三维瓦片
+			PathGraphics(路径)
+			PlaneGraphics(平面)
+			PointGraphics(点)
+			PolygonGraphics(多边形)
+			PolylineGraphics(多线段)
+			PolylineVolumeGraphics(多段线柱体)
+			RectangleGraphics(矩形)
+			WallGraphics(墙)
 
 
 PolygonGraphics和PolygonGeometry的区别
