@@ -16,7 +16,7 @@ blender
 
 ---
 
-> 3D格式
+## 3D格式
 
 ```javascript
 实际上有数百种 3D 文件类型可用，因为每个 3D 软件程序都有自己的文件类型，并针对该特定软件进行了优化。例如，Blender 有 BLEND，AutoCAD 有 DWG，Clo 有 .zprj，Browzwear 有 .bw，仅举几例。
