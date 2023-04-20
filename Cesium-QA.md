@@ -56,7 +56,7 @@ promise.then(function (dataSource) {
 
         // 将Cesium.Geometry对象添加到场景中
         var primitive = new Cesium.Primitive({
-            geometryInstances: new Cesium.GeometryInstance({
+            geometryInstances: /*可以是数组[]*/new Cesium.GeometryInstance({
                 geometry: new Cesium.PolylineGeometry({
                     positions: positions
                 })
