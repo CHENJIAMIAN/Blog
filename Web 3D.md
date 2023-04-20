@@ -452,7 +452,7 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
 
 
 ```javascript
-canvas
+C
     canvas.toDataURL('image/png',1)//转图片
     contextType
         "2d", 建立一个 CanvasRenderingContext2D 二维渲染上下文。
