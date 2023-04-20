@@ -331,9 +331,10 @@ Viewer
 						EllipsoidSurfaceAppearance
 						MaterialAppearance
 						PerInstanceColorAppearance
+							可设置renderState: { depthTest: { enabled: true}}
 						PolylineColorAppearance
 						PolylineMaterialAppearance
-                    GeometryInstance
+                   GeometryInstance，1或n个'每个可以有自己的modelMatrix'
                         XXXGeometry
                             geometry
                             modelMatrix
