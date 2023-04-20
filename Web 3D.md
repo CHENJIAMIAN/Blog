@@ -69,7 +69,7 @@ CAD//像SU、MS、ArchiCAD、Inventor、Allplan、 VevtorWorks、Civil 3D等软�
 通过无人机航飞处理生成模型，具有真实建筑属性：长宽高，地理位置等等。这类数据可用于空间分析业务。
 所以说，建筑数据可视化还是得根据数据用途，业务场景来设计，而非单纯的使用白模。
 ```
-
+## 总结Draco的压缩原理
 
 
 ![](images/AECA9D1EA33647C99D4A25A725166B5B.png)
