@@ -67,7 +67,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -81,7 +81,16 @@
       {
         "id": "bc77cd9a3b8eb1bc",
         "type": "tabs",
+        "dimension": 58.08510638297872,
         "children": [
+          {
+            "id": "6323b2f6898b32c7",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          },
           {
             "id": "3f5e35f3c2b63f92",
             "type": "leaf",
@@ -91,14 +100,6 @@
                 "sortOrder": "frequency",
                 "useHierarchy": true
               }
-            }
-          },
-          {
-            "id": "6323b2f6898b32c7",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
             }
           },
           {
@@ -138,12 +139,12 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
-        "id": "fa69ff743e95bac3",
+        "id": "e2e3164139098d2d",
         "type": "tabs",
+        "dimension": 41.91489361702128,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
