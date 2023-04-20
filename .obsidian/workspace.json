@@ -71,7 +71,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -158,7 +159,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5
+    "width": 400.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -171,7 +173,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "638d28d8e4eb2f10",
+  "active": "6323b2f6898b32c7",
   "lastOpenFiles": [
     "WebGL.md",
     "Cesium.md",
