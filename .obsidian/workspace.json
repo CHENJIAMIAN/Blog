@@ -159,7 +159,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5
+    "width": 324.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -172,7 +172,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "638d28d8e4eb2f10",
+  "active": "abaa1e41f1f74ada",
   "lastOpenFiles": [
     "WebGL.md",
     "Cesium.md",
