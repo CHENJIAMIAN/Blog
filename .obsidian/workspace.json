@@ -57,7 +57,14 @@
                 "sortOrder": "alphabetical"
               }
             }
-          },
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "20e9c64a5f7884cb",
+        "type": "tabs",
+        "children": [
           {
             "id": "abaa1e41f1f74ada",
             "type": "leaf",
@@ -66,8 +73,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
