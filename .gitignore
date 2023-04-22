@@ -1,3 +1,6 @@
 .idea/
 __pycache__/
 .obsidian/workspace.json   #不同步工作区
+
+# Ignore Smart Connections folder because embeddings file is large and updated frequently
+.smart-connections

@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "20221fbb166d5d94",
+        "id": "d416500d5dd0a6f3",
         "type": "tabs",
         "children": [
           {
-            "id": "6ab0542c956c19c4",
+            "id": "7935b61fc6f423f8",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Vue3.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -32,7 +27,6 @@
       {
         "id": "3a6ba7b67347a1b2",
         "type": "tabs",
-        "dimension": 46.73758865248227,
         "children": [
           {
             "id": "0a50d9c573337de4",
@@ -43,21 +37,14 @@
                 "sortOrder": "alphabetical"
               }
             }
-          }
-        ]
-      },
-      {
-        "id": "ce991ed47faede50",
-        "type": "tabs",
-        "dimension": 39.07801418439716,
-        "children": [
+          },
           {
             "id": "ae012ef0f7d93e48",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "<<<<<<<",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,14 +52,7 @@
                 "sortOrder": "alphabetical"
               }
             }
-          }
-        ]
-      },
-      {
-        "id": "20e9c64a5f7884cb",
-        "type": "tabs",
-        "dimension": 14.184397163120568,
-        "children": [
+          },
           {
             "id": "abaa1e41f1f74ada",
             "type": "leaf",
@@ -92,16 +72,35 @@
     "type": "split",
     "children": [
       {
-        "id": "bc77cd9a3b8eb1bc",
+        "id": "441dbf8ada8f85b4",
         "type": "tabs",
-        "dimension": 54.8936170212766,
+        "dimension": 56.743185078909605,
         "children": [
           {
-            "id": "6323b2f6898b32c7",
+            "id": "5e55221e27be587d",
             "type": "leaf",
             "state": {
-              "type": "git-view",
-              "state": {}
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c01e185f4aa3d7d3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
             }
           },
           {
@@ -116,32 +115,11 @@
             }
           },
           {
-            "id": "c01e185f4aa3d7d3",
+            "id": "6323b2f6898b32c7",
             "type": "leaf",
             "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "Vue3.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
-            "id": "5e55221e27be587d",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Vue3.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
+              "type": "git-view",
+              "state": {}
             }
           },
           {
@@ -151,68 +129,79 @@
               "type": "git-history-view",
               "state": {}
             }
+          },
+          {
+            "id": "946a6c197d4e9f53",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-chat-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "36fac671a5dba112",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 6
       },
       {
-        "id": "e2e3164139098d2d",
+        "id": "62cca7b24132f3d3",
         "type": "tabs",
-        "dimension": 45.1063829787234,
+        "dimension": 43.256814921090395,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Vue3.md"
-              }
+              "state": {}
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 324.5
+    "width": 400.5
   },
   "left-ribbon": {
     "hiddenItems": {
-      "markdown-importer:打开 Markdown 格式转换器": true,
-      "switcher:打开快速切换": true,
-      "graph:查看关系图谱": true,
-      "canvas:新建白板": true,
-      "daily-notes:打开/创建今天的日记": true,
-      "templates:插入模板": true,
-      "command-palette:打开命令面板": true
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
     }
   },
-  "active": "6ab0542c956c19c4",
+  "active": "36fac671a5dba112",
   "lastOpenFiles": [
-    "Cesium.md",
-    "【通用】Git.md",
-    "2023-04-21.md",
-    "WebGL.md",
-    "Cesium-QA.md",
-    "Web 3D.md",
     "images/Pasted image 20230419164035.png",
-    "GIS OL Geoserver PostGIS.md",
-    "WebGL-QA.md",
     "images/Pasted image 20230419101452.png",
     "images/Pasted image 20230419095100.png",
     "images/Pasted image 20230419095022.png",
-    "images/Pasted image 20230411105231.png",
-    "Cesium-3DTiles.md",
-    "images/Pasted image 20230411101658.png",
     "Vue3.md",
-    "conflict-files-obsidian-git.md",
+    "AI产品导航.md",
+    "Cesium-3DTiles.md",
+    "Cesium-QA.md",
     "☁.md",
-    "杂-GPT-QA.md",
-    "images/Pasted image 20230409173031.png",
     "AdBlock 规则.md",
+    "☁ 难题.md",
+    "conflict-files-obsidian-git.md",
+    "Cesium.md",
+    "杂-GPT-QA.md",
+    "images/Pasted image 20230411105231.png",
+    "images/Pasted image 20230411101658.png",
+    "images/Pasted image 20230409173031.png",
     "Pasted image 20230411105231.png",
     "Pasted image 20230411104905.png",
     "Pasted image 20230411101658.png",
+    "Pasted image 20230409173031.png",
     "JS.md",
     "JS 进阶.md",
     "JS问答.md",
@@ -220,9 +209,12 @@
     "KH.md",
     "HTTP.md",
     "Node.js.md",
+    "Cesium-地形.md",
     "nginx.md",
     "npm.md",
+    "WebGL.md",
     "ThreeJS.md",
+    "【通用】Git.md",
     "Python/【python】数据筛选.md",
     "Python/【python】实践.md",
     "Python",
