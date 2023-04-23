@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ef27140d29fba522",
+        "id": "1bd5ea905e6d346f",
         "type": "tabs",
         "children": [
           {
-            "id": "5cafa2ffe6beac30",
+            "id": "f3cdb4b655a428e8",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -89,7 +89,7 @@
       {
         "id": "bc77cd9a3b8eb1bc",
         "type": "tabs",
-        "dimension": 54.8936170212766,
+        "dimension": 60.141843971631204,
         "children": [
           {
             "id": "6323b2f6898b32c7",
@@ -144,14 +144,30 @@
               "type": "git-history-view",
               "state": {}
             }
+          },
+          {
+            "id": "68de3c7ec6ed23c7",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-chat-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "1d1796fed6fc44d6",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 6
       },
       {
         "id": "e2e3164139098d2d",
         "type": "tabs",
-        "dimension": 45.1063829787234,
+        "dimension": 39.858156028368796,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
@@ -165,7 +181,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 324.5
+    "width": 656.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -178,8 +194,9 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "5cafa2ffe6beac30",
+  "active": "1d1796fed6fc44d6",
   "lastOpenFiles": [
+    "JS-TS.md",
     "Cesium.md",
     "Vue3.md",
     "【通用】Git.md",
@@ -207,7 +224,6 @@
     "JS.md",
     "JS 进阶.md",
     "JS问答.md",
-    "JS-TS.md",
     "KH.md",
     "HTTP.md",
     "Node.js.md",
