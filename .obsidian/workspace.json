@@ -162,7 +162,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 5
       },
       {
         "id": "e2e3164139098d2d",
@@ -194,7 +194,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "1d1796fed6fc44d6",
+  "active": "68de3c7ec6ed23c7",
   "lastOpenFiles": [
     "JS-TS.md",
     "Cesium.md",
