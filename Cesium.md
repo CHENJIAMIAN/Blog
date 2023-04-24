@@ -1075,3 +1075,9 @@ czm_material结构体包含以下属性：
 5. emission：材质发射的均匀光源。默认为vec3(0.0)，即不发出任何光线。
 6. alpha：该材质的透明度。0.0表示完全透明，1.0表示完全不透明。
 ```
+
+```js
+AutomaticUniforms 是指在渲染过程中，需要自动更新的 Uniform 变量。在 CesiumJS 中，这些变量包括光照信息（如 czm_lightColor、czm_sunDirectionEC 等）、视锥体信息、时间等。
+ShaderProgram 中，会先区分哪些是需要手动更新的 Uniform 变量，哪些是自动更新的 Uniform 变量，
+ShaderProgram 的 _setUniforms 执行所有 uniforms 的 WebGL 设置，这其中就会对 CesiumJS 内部不需要手动更新的 Uniform 状态信息进行自动刷新
+```
