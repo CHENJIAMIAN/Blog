@@ -57,7 +57,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "execute",
+                "query": "shininess",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
