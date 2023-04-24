@@ -620,7 +620,7 @@ Radian、Degree和Cartesian3数据类型的示例值：
    
 Cesium.CallbackProperty //用回调函数传入time,用于处理随时间变化的属性,如随时间改变,位置属性改变
 
-viewer.scene.screenSpaceCameraController.inertiaZoom 设置丝滑缩放，默认0.8，越接近1惯性越大
+viewer.scene.screenSpaceCameraController.inertiaZoom=0.9 //设置丝滑惯性缩放，默认0.8，越接近1惯性越大
 ```
 
 ## 向量
