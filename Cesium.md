@@ -46,15 +46,21 @@ CesiumJS 2022^ 源码解读[7] - 3DTiles 的请求、加载处理流程解析 _
     set (Cesium.js:212336)
     CesiumWidget (Cesium.js:212236)
     Viewer (Cesium.js:215480)
-    
+
+DrawCommand.prototype.execute 被谁调用，完整的调用链是什么样的：
+    简述: 由Scene更新时遍历绘制命令触发gl的draw函数
+    主更新循环体 → Scene.render → Scene.executeCommand 
+    → 遍历了frustumCommands.commands[Pass_default.GLOBE]  → DrawCommand.execute 
+    → Context.draw → Context.continueDraw → gl绘制调用drawElements
+
 在主更新循环中调用3dtile的更新方法
-    updateTiles (Cesium.js:107633)分支
-    requestTiles (Cesium.js:107407)分支
+    'updateTiles (Cesium.js:107633)分支'
+    'requestTiles (Cesium.js:107407)分支'
     update(tileset, frameState, passStatistics, passOptions)  (Cesium.js:107784)
     Cesium3DTileset.updateForPass (Cesium.js:107829)
     Cesium3DTileset.update (Cesium.js:107800)
     PrimitiveCollection.update (Cesium.js:122827)
-    Scene的updateAndRenderPrimitives (Cesium.js:200225)  || Scene的executeCommand (Cesium.js:199593)分支
+    Scene的updateAndRenderPrimitives   || 'Scene的executeCommand分支'
     executeCommandsInViewport (Cesium.js:200077)
         //MapGIS洪水淹没分析的原理
         FloodAnalysis.update (FloodAnalysis.js?7cc9:510)
@@ -68,22 +74,22 @@ CesiumJS 2022^ 源码解读[7] - 3DTiles 的请求、加载处理流程解析 _
     CesiumWidget.render (Cesium.js:212473)
     起点：render(frameTime) (Cesium.js:212033)
     分支们：
-        Scene的 executeCommand (Cesium.js:199593)分支
-            Context.continueDraw (Cesium.js:32629)  ||  Context的beginDraw分支  ,/context._gl.drawElements 和 context._gl.drawArrays在此执行/
+        'Scene的executeCommand分支'
+            Context.continueDraw (Cesium.js:32629)  ||  'Context的beginDraw分支'
             Context.draw (Cesium.js:32685)
             DrawCommand.execute (Cesium.js:18200)
                 DrawCommand，是 Cesium 封装 WebGL 的一个优秀设计，它把绘图数据（VertexArray）和绘图行为（ShaderProgram）作为一个对象，待时机合适，也就是 Scene 执行 executeCommand 函数时，帧状态对象上所有的指令对象就会使用 WebGL 函数执行，要什么就 bind 什么，做到了在绘图时的用法一致，上层应用接口只需生成指令对象。
                     VertexArray//Cesium 把 WebGL 的顶点缓冲和索引缓冲包装成了 Buffer，然后为了方便，将这些顶点相关的缓冲绑定在了一个对象里，叫做 VertexArray，内部会启用 WebGL 的 VAO 功能。
                     ShaderProgram//着色器代码由 ShaderSource 管理，ShaderProgram 则管理起多个着色器源码，也就是着色器本身。使用 ShaderCache 作为着色器程序的缓存容器。
             Scene的executeCommand (Cesium.js:199593) //遍历了frustumCommands.commands[Pass_default.GLOBE]
-                Context的beginDraw分支                                        
+                'Context的beginDraw分支'/context._gl.drawElements和context._gl.drawArrays在此执行/                                        
                     createAndLinkProgram (ShaderProgram.js:213) 在gl.linkProgram(program)打断点可以看到fsSource/vsSource即WebGL的shader代码，                    
                     reinitialize (ShaderProgram.js:470)
                     initialize (ShaderProgram.js:463)
                     ShaderProgram._bind (ShaderProgram.js:542) 在ShaderProgram.prototype._bind打条件断点this._fragmentShaderText.includes('特殊标识')可以找到CustomShader在合成后的shader代码
                     beginDraw (Context.js:1291)
 
-        requestTiles (Cesium.js:107407)分支
+        'requestTiles (Cesium.js:107407)分支'
             ForEach.topLevel (Cesium.js:65203)
             ForEach.material (Cesium.js:65319)
             addDefaults (Cesium.js:65581)
@@ -110,7 +116,7 @@ CesiumJS 2022^ 源码解读[7] - 3DTiles 的请求、加载处理流程解析 _
             requestContent (Cesium.js:107323)
             requestTiles (Cesium.js:107407)
             
-        updateTiles (Cesium.js:107633)分支
+        'updateTiles (Cesium.js:107633)分支'
             Model3DTileContent.update (Cesium.js:89408)
             updateContent (Cesium.js:105303)
             Cesium3DTile.update (Cesium.js:105320)
