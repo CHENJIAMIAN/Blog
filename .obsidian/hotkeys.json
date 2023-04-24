@@ -6,15 +6,7 @@
       "key": "F1"
     }
   ],
-  "daily-notes": [
-    {
-      "modifiers": [
-        "Alt",
-        "Mod"
-      ],
-      "key": "D"
-    }
-  ],
+  "daily-notes": [],
   "editor:set-heading-1": [
     {
       "modifiers": [
