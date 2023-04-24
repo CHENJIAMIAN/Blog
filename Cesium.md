@@ -983,3 +983,10 @@ TranslationEditor.prototype.handleMouseMove改变transform为moveVector-offset
 //更新控件位置, 基于transform和设置的控件偏移originOffset
 TranslationEditor.prototype.update
 ```
+在Cesium中，通过使用 `viewer.entities` 或 `scene.primitives` 添加图形实体来创建和渲染图形。它们的主要区别在于它们添加的内容以及它们被渲染的方式。
+
+`viewer.entities` 是一个用于管理场景上所有高级图形元素的集合。这包括点、线、多边形、模型等。这些图形实体是基于 Cesium API 封装的 JavaScript 对象，可以很容易地修改属性以控制它们的行为和外观。例如，你可以添加标签、设置颜色和动画效果等。entities 通常是静态对象，即它们自行处理更新并在每次渲染时更新。
+
+另一方面，`scene.primitives` 主要用于在场景中添加低级别的 WebGL 图元，如点、线、三角形等。这提供了更底层、更灵活的方式来控制渲染。使用 primitives，你可以直接操作顶点和着色器代码来创建定制的视觉效果。primitives 通常是动态的对象，需要手动更新。
+
+总之，使用 `viewer.entities` 和 `scene.primitives` 可以根据需求选择最适合的方法来添加和显示图形。如果需要复杂的高级图形元素，则使用 `viewer.entities` 更合适。如果需要更细粒度的控制或者添加低级别（如各种形状）的元素，则使用 `scene.primitives` 更为合适。
