@@ -35,16 +35,14 @@ Scene//是一个Cesium应用程序的根对象，它包含用于场景渲染和�
              Model.prototype.update调用了Source/Scene/processPbrMaterials.js的processPbrMaterials方法，进而遍历调用了generateTechnique生成着色器代码在返回的techniqueId对象里
              //processPbrMaterials：https://github.com/CesiumGS/cesium/blob/1.96/Source/Scene/processPbrMaterials.js#L448-L465 新版cesium已经废弃了它//详见https://cesium.com/blog/2022/10/05/tour-of-the-new-gltf-architecture-in-cesiumjs/
     
-DrawCommand.prototype.execute被谁调用，完整的调用链是什么样的：
-    简述: 由Scene更新时遍历绘制命令触发gl的draw函数
-    主更新循环体 → Scene.render → Scene.executeCommand → 遍历了frustumCommands.commands[Pass_default.GLOBE]  → DrawCommand.execute → Context.draw → Context.continueDraw → gl绘制调用drawElements
 
 CEO解释如何渲染一帧//https://cesium.com/blog/2015/05/14/graphics-tech-in-cesium/  https://cesium.com/blog/2015/05/26/graphics-tech-in-cesium-stack/
 CesiumJS 2022^ 源码解读[7] - 3DTiles 的请求、加载处理流程解析 _ https://www.cnblogs.com/onsummer/p/16432909.html    
 
 
 初始化主更新循环 //https://cdn.jsdelivr.net/npm/cesium@1.99.0/Build/CesiumUnminified/Cesium.js
-    startRenderLoop (Cesium.js:212021)  在此requestAnimationFrame(   render(frameTime){主更新循环体}  ) 
+    startRenderLoop (Cesium.js:212021)  
+	    在此requestAnimationFrame(   render(frameTime){主更新循环体}  ) 
     set (Cesium.js:212336)
     CesiumWidget (Cesium.js:212236)
     Viewer (Cesium.js:215480)
@@ -70,7 +68,7 @@ CesiumJS 2022^ 源码解读[7] - 3DTiles 的请求、加载处理流程解析 _
     CesiumWidget.render (Cesium.js:212473)
     起点：render(frameTime) (Cesium.js:212033)
     分支们：
-        Scene的executeCommand (Cesium.js:199593)分支
+        Scene的 executeCommand (Cesium.js:199593)分支
             Context.continueDraw (Cesium.js:32629)  ||  Context的beginDraw分支  ,/context._gl.drawElements 和 context._gl.drawArrays在此执行/
             Context.draw (Cesium.js:32685)
             DrawCommand.execute (Cesium.js:18200)
