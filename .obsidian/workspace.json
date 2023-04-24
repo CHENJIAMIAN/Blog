@@ -191,7 +191,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -208,7 +209,7 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "e39e5f560d971991",
+  "active": "6323b2f6898b32c7",
   "lastOpenFiles": [
     "WebGL-QA.md",
     "WebGL.md",
