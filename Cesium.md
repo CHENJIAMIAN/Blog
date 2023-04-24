@@ -983,10 +983,54 @@ TranslationEditor.prototype.handleMouseMove改变transform为moveVector-offset
 //更新控件位置, 基于transform和设置的控件偏移originOffset
 TranslationEditor.prototype.update
 ```
-在Cesium中，通过使用 `viewer.entities` 或 `scene.primitives` 添加图形实体来创建和渲染图形。它们的主要区别在于它们添加的内容以及它们被渲染的方式。
+## viewer.entities.add和scene.primitives.add的区别
+Cesium 中的 Primitive 和 Entity 都是用于在地图上显示图形、模型和其他可视化对象的抽象概念。
 
-`viewer.entities` 是一个用于管理场景上所有高级图形元素的集合。这包括点、线、多边形、模型等。这些图形实体是基于 Cesium API 封装的 JavaScript 对象，可以很容易地修改属性以控制它们的行为和外观。例如，你可以添加标签、设置颜色和动画效果等。entities 通常是静态对象，即它们自行处理更新并在每次渲染时更新。
+主要区别在于，Primitive 是一种基本图形结构，用于表示几何形状或集合，例如点、线或多边形等。您可以直接访问和修改 `primitive` 对象，从而控制其外观和行为。但是，在使用 Primitive 时需要编写更多的代码来控制其细节。
 
-另一方面，`scene.primitives` 主要用于在场景中添加低级别的 WebGL 图元，如点、线、三角形等。这提供了更底层、更灵活的方式来控制渲染。使用 primitives，你可以直接操作顶点和着色器代码来创建定制的视觉效果。primitives 通常是动态的对象，需要手动更新。
+Entity 是一种高级图形结构，它提供了一种简单的方法来添加和更新与时间和空间有关的元数据（例如位置，方向和速度）以及任意数量的属性（例如名称、详细信息和样式）。
 
-总之，使用 `viewer.entities` 和 `scene.primitives` 可以根据需求选择最适合的方法来添加和显示图形。如果需要复杂的高级图形元素，则使用 `viewer.entities` 更合适。如果需要更细粒度的控制或者添加低级别（如各种形状）的元素，则使用 `scene.primitives` 更为合适。
+创建 Primitive 需要更多的代码，并且需要精细控制其样式和行为。而对于 Entity，只需提供一组初始化参数，并将其添加到场景中即可方便地更新其状态和外观。
+
+```js
+// 创建一个红色的多边形 Primitive
+var redPolygon = new Cesium.GroundPrimitive({
+            geometryInstances: new Cesium.GeometryInstance({
+              geometry: new Cesium.PolygonGeometry({
+                polygonHierarchy: { positions: positions },
+                textureCoordinates: textureCoordinates,
+              }),
+            }),
+            appearance: new Cesium.EllipsoidSurfaceAppearance({
+              aboveGround: false,
+              material: new Cesium.Material({
+                fabric: {
+                  type: "Image",
+                  uniforms: {
+                    image: "../images/Cesium_Logo_Color.jpg",
+                  },
+                },
+              }),
+            }),
+            classificationType: Cesium.ClassificationType.TERRAIN,
+          })
+
+// 创建一个带有样式和元数据的 Entity
+var myEntity = viewer.entities.add({
+    name : 'My Entity',
+    position : Cesium.Cartesian3.fromDegrees(-75.59777, 40.03883),
+    billboard : {
+        image : 'https://cesium.com/docs/tutorials-asset/favicon.ico'
+    },
+    label : {
+        text : 'Hello World!',
+        font : '24px Helvetica',
+        pixelOffset : new Cesium.Cartesian2(0, -50)
+    },
+    properties : {
+        age : 42,
+        gender : 'male'
+    }
+});
+
+```
