@@ -19,22 +19,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "e39e5f560d971991",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "杂-GPT-QA.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -115,7 +101,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "杂-GPT-QA.md"
+                "file": "Cesium.md"
               }
             }
           },
@@ -144,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "杂-GPT-QA.md",
+                "file": "Cesium.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -156,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "杂-GPT-QA.md",
+                "file": "Cesium.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -208,8 +194,9 @@
       "command-palette:打开命令面板": true
     }
   },
-  "active": "e39e5f560d971991",
+  "active": "a7974b07fd2b2c15",
   "lastOpenFiles": [
+    "杂-GPT-QA.md",
     "Cesium.md",
     "Web 3D.md",
     "WebGL-QA.md",
@@ -238,7 +225,6 @@
     "images/Pasted image 20230411101658.png",
     "conflict-files-obsidian-git.md",
     "☁.md",
-    "杂-GPT-QA.md",
     "images/Pasted image 20230409173031.png",
     "AdBlock 规则.md",
     "Pasted image 20230411105231.png",
