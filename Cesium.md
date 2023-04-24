@@ -1039,3 +1039,24 @@ viewer.entities.add({
 });
 
 ```
+## DrawCommand 的 渲染的通道 pass
+
+```js
+  const drawCommand = new Cesium.DrawCommand({
+    boundingVolume: primitive.boundingSphere,
+    modelMatrix: primitive.modelMatrix,
+    pass: Cesium.Pass.OPAQUE,
+    shaderProgram: shaderProgram,
+    renderState: renderState,
+    vertexArray: vertexArray,
+    count: indexCount,
+    primitiveType: Cesium.PrimitiveType.TRIANGLES,
+    uniformMap: uniformMap,
+  });
+  primitive.drawCommand = drawCommand;
+
+pass表示渲染过程中的通道，主要用于渲染优化。在Cesium中，渲染过程会被划分为不同的通道，每个通道都会对场景中的物体进行不同的处理，比如：深度测试、透明度排序、光照计算等。不同的通道之间可能会有依赖关系，想要在正确的顺序下进行渲染，就需要指定正确的pass。
+
+在这段代码中，pass指定为OPAQUE不透明的通道。这意味着所有不透明的物体（无论是地形、建筑、树木等）都会在这个通道中被渲染。这是渲染的第一个基础阶段，所有不透明的像素（即alpha小于1）都会被绘制。
+```
+
