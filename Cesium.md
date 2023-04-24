@@ -993,44 +993,49 @@ Entity 是一种高级图形结构，它提供了一种简单的方法来添加�
 创建 Primitive 需要更多的代码，并且需要精细控制其样式和行为。而对于 Entity，只需提供一组初始化参数，并将其添加到场景中即可方便地更新其状态和外观。
 
 ```js
-// 创建一个红色的多边形 Primitive
-var redPolygon = new Cesium.GroundPrimitive({
-            geometryInstances: new Cesium.GeometryInstance({
-              geometry: new Cesium.PolygonGeometry({
-                polygonHierarchy: { positions: positions },
-                textureCoordinates: textureCoordinates,
-              }),
-            }),
-            appearance: new Cesium.EllipsoidSurfaceAppearance({
-              aboveGround: false,
-              material: new Cesium.Material({
-                fabric: {
-                  type: "Image",
-                  uniforms: {
-                    image: "../images/Cesium_Logo_Color.jpg",
-                  },
-                },
-              }),
-            }),
-            classificationType: Cesium.ClassificationType.TERRAIN,
-          })
+scene.groundPrimitives.add(
+//地面Primitive可以使图元沿着地球表面平铺，并且可以用于创建地面网格、地形剖面或其他需要沿着地球曲面分布的图元。 Ground Primitives 的渲染效率比常规 Primitive 高，因为它们不需要进行深度测试，而且可以通过强制将对象沿着地球曲面绘制来减少过程中的计算量。
+	new Cesium.GroundPrimitive({
+		geometryInstances: new Cesium.GeometryInstance({
+		  geometry: new Cesium.PolygonGeometry({
+			polygonHierarchy: { positions: positions },
+			textureCoordinates: textureCoordinates,
+		  }),
+		}),
+		appearance: new Cesium.EllipsoidSurfaceAppearance({
+		  aboveGround: false,
+		  material: new Cesium.Material({
+			fabric: {
+			  type: "Image",
+			  uniforms: {
+				image: "../images/Cesium_Logo_Color.jpg",
+			  },
+			},
+		  }),
+		}),
+		classificationType: Cesium.ClassificationType.TERRAIN,
+	})
+)
 
-// 创建一个带有样式和元数据的 Entity
-var myEntity = viewer.entities.add({
-    name : 'My Entity',
-    position : Cesium.Cartesian3.fromDegrees(-75.59777, 40.03883),
-    billboard : {
-        image : 'https://cesium.com/docs/tutorials-asset/favicon.ico'
-    },
-    label : {
-        text : 'Hello World!',
-        font : '24px Helvetica',
-        pixelOffset : new Cesium.Cartesian2(0, -50)
-    },
-    properties : {
-        age : 42,
-        gender : 'male'
-    }
+viewer.entities.add({
+  name: position.height.toFixed(1),
+  position: ellipsoid.cartographicToCartesian(position),
+  billboard: {
+	verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+	scale: 0.7,
+	image: "../images/facility.gif",
+  },
+  label: {
+	text: position.height.toFixed(1),
+	font: "10pt monospace",
+	horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+	pixelOffset: new Cesium.Cartesian2(0, -14),
+	fillColor: Cesium.Color.BLACK,
+	outlineColor: Cesium.Color.BLACK,
+	showBackground: true,
+	backgroundColor: new Cesium.Color(0.9, 0.9, 0.9, 0.7),
+	backgroundPadding: new Cesium.Cartesian2(4, 3),
+  },
 });
 
 ```
