@@ -68,5 +68,14 @@
       ],
       "key": "6"
     }
+  ],
+  "cmenu-plugin:codeblock": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "D"
+    }
   ]
 }

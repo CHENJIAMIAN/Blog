@@ -15,7 +15,7 @@ node使用使用 babel-node CLI命令，来运行含有 import/export 语法
     Babel 7 中，这个命令已经被拆分成它自己的@babel/node包    
 ```
 
-> 概念
+## 概念
 
 ```javascript
 OpenAPI规范（以前称为Swagger规范）    
@@ -59,13 +59,7 @@ SOLID原则
     4.接口隔离//接口做一件事，做好,就行了        
     5.依赖倒置//我们应该依靠在抽象（或接口）上，而不是在具体对象的实例上
 ```
-
-
-
----
-
-> VsCode调试配置：launch.json
-
+## VsCode调试配置：launch.json
 ```javascript
 "env": {
         "DEBUG": "users:*", //node环境变量
@@ -75,13 +69,7 @@ SOLID原则
 "runtimeArgs": ["--experimental-modules"],//node的运行参数 
 "args": [ "serve" ]//js的运行参数     
 ```
-
-
-
----
-
-> 命令
-
+## 命令
 ```javascript
 node-gyp//使用C或C ++编译器编译以构建相应的  .node 文件（该.node扩展名用于二进制本机代码模块）。
     //libxslt 和  libxmljs 模块是同名C / C ++库的包装
@@ -98,13 +86,7 @@ Internet邮件扩展:MIME//MIME类型:multipart/form-data
 --max_old_space_size 5000 //解决服务进程内存不足的问题
 nodemon index.js //调试必备,支持热更新
 ```
-
-
-
----
-
-> 变量
-
+## 变量
 ```javascript
 全局对象module://这些对象在所有模块中均可用。以下变量似乎是全局变量，但不是全局变量。它们仅存在于模块范围内，请参阅 模块系统文档：
     __dirname//包含当前正在执行的文件的目录的绝对路径
@@ -202,13 +184,7 @@ Node 调试
     const req = require.context(路径,is递归,后缀匹配规则)
     req.keys()//返回路径下所有文件名
 ```
-
-
-
----
-
-> express服务器库：  
-
+## express服务器库：  
 ```javascript
 用户控制 1个express服务器
 页面内容 1个express服务器:
@@ -319,12 +295,8 @@ var app = express();
          Mocha单元测试框架和Chai断言库              
 ```
 
-
-
----
-
-> koa, web框架//Koa 是一个非常优秀的框架，然而对于企业级应用来说，它还比较基础。
-
+## koa, web框架
+//Koa 是一个非常优秀的框架，然而对于企业级应用来说，它还比较基础。
 ```javascript
 //Koa 的中间件和 Express 不同，Koa 选择了洋葱圈模型,所有的请求经过一个中间件的时候都会执行两次
 //对比 Express 形式的中间件，Koa 的模型可以非常方便的实现后置处理逻辑
@@ -341,8 +313,7 @@ var app = express();
     
 ```
 
-
-
+## egg.js
 ```javascript
 egg.js
     Express 适合个人项目,但框架本身缺少约定，标准的 MVC 模型会有各种千奇百怪的写法。
@@ -352,12 +323,7 @@ egg.js
 worker agent 进程 //worker是进程1,2,3,4是集群 agent是特殊用来处理整个集群的公共功能如记录日志
 ```
 
-
-
----
-
-> 多线程
-
+## 多线程
 ```javascript
     var numCPUs = os.cpus().length;
     var cluster = require('cluster');
@@ -368,11 +334,12 @@ worker agent 进程 //worker是进程1,2,3,4是集群 agent是特殊用来处理
 ```
 
 
+## PNPM
+```JS
+pnpm i --shamefully-hoist 出现奇怪的问题时执行它, //创建一个平面node_modules结构，类似于npm or yarn。 警告：这是非常不鼓励的。
+```
 
----
-
-> NPM
-
+## NPM
 ```javascript
 使用淘宝镜像:
     1.目录下放.npmrc文件,每次npm命令会自动读取它的配置//可设置淘宝镜像等
@@ -395,7 +362,6 @@ worker agent 进程 //worker是进程1,2,3,4是集群 agent是特殊用来处理
 
 nvm		node version manager 用来管理node版本,切换node版本 ,nvm install v12.14.1  nvm use v12.14.1
 
-pnpm i --shamefully-hoist 出现奇怪的问题时执行它, //创建一个平面node_modules结构，类似于npmor yarn。 警告：这是非常不鼓励的。
 
 npm config ls 	#查看默认全局路径等
 
@@ -434,4 +400,3 @@ peerDependencies
     上面代码指定，安装chai-as-promised模块时，主程序chai必须一起安装，而且chai的版本必须是1.x。如果你的项目指定的依赖是chai的2.0版本，就会报错。
     注意，从npm 3.0版开始，peerDependencies不再会默认安装了。
 ```
-
