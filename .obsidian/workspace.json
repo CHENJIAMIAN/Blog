@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "MaterialProperty",
+                "query": "p'n'p'm",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -139,7 +139,7 @@
             }
           },
           {
-            "id": "9dcb350057b53aea",
+            "id": "a3e5b9d36982b656",
             "type": "leaf",
             "state": {
               "type": "smart-connections-view",
@@ -147,7 +147,7 @@
             }
           },
           {
-            "id": "79037429d3fffeea",
+            "id": "16273b04efe3f944",
             "type": "leaf",
             "state": {
               "type": "smart-connections-chat-view",
@@ -189,7 +189,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "7935b61fc6f423f8",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
     "images/Pasted image 20230424120853.png",
     "TS.md",
