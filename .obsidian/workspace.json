@@ -74,7 +74,7 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
-        "dimension": 56.743185078909605,
+        "dimension": 56.7431850789096,
         "children": [
           {
             "id": "5e55221e27be587d",
@@ -131,18 +131,18 @@
             }
           },
           {
-            "id": "946a6c197d4e9f53",
+            "id": "9dcb350057b53aea",
             "type": "leaf",
             "state": {
-              "type": "smart-connections-chat-view",
+              "type": "smart-connections-view",
               "state": {}
             }
           },
           {
-            "id": "36fac671a5dba112",
+            "id": "79037429d3fffeea",
             "type": "leaf",
             "state": {
-              "type": "smart-connections-view",
+              "type": "smart-connections-chat-view",
               "state": {}
             }
           }
@@ -152,7 +152,7 @@
       {
         "id": "62cca7b24132f3d3",
         "type": "tabs",
-        "dimension": 43.256814921090395,
+        "dimension": 43.2568149210904,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
@@ -179,7 +179,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "7935b61fc6f423f8",
+  "active": "79037429d3fffeea",
   "lastOpenFiles": [
     "images/Pasted image 20230424120853.png",
     "TS.md",
