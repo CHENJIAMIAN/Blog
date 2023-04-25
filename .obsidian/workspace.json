@@ -1,0 +1,238 @@
+{
+  "main": {
+    "id": "48717a51e83d2aa5",
+    "type": "split",
+    "children": [
+      {
+        "id": "d416500d5dd0a6f3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7935b61fc6f423f8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cesium-QA.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4b2b71b62973b73c",
+    "type": "split",
+    "children": [
+      {
+        "id": "3a6ba7b67347a1b2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0a50d9c573337de4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ae012ef0f7d93e48",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "pnpm",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "abaa1e41f1f74ada",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6f6aee49d5407bee",
+    "type": "split",
+    "children": [
+      {
+        "id": "441dbf8ada8f85b4",
+        "type": "tabs",
+        "dimension": 56.7431850789096,
+        "children": [
+          {
+            "id": "5e55221e27be587d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Cesium-QA.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c01e185f4aa3d7d3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Cesium-QA.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3f5e35f3c2b63f92",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "6323b2f6898b32c7",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "777c4cadf66f9b9d",
+            "type": "leaf",
+            "state": {
+              "type": "git-history-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "a3e5b9d36982b656",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "16273b04efe3f944",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-chat-view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 6
+      },
+      {
+        "id": "62cca7b24132f3d3",
+        "type": "tabs",
+        "dimension": 43.2568149210904,
+        "children": [
+          {
+            "id": "a7974b07fd2b2c15",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Cesium-QA.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 400.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "7935b61fc6f423f8",
+  "lastOpenFiles": [
+    "Cesium.md",
+    "☁ 难题.md",
+    "0 正则.md",
+    "☁.md",
+    "【网络】HTTPS 非对称加密 RSA.md",
+    "【区块链】.md",
+    "【地图】投影 编号.md",
+    "Node.js.md",
+    "AdBlock 规则.md",
+    "images/Pasted image 20230424120853.png",
+    "TS.md",
+    "Cesium-GLTF.md",
+    "images/Pasted image 20230419164035.png",
+    "images/Pasted image 20230419101452.png",
+    "images/Pasted image 20230419095100.png",
+    "images/Pasted image 20230419095022.png",
+    "Vue3.md",
+    "AI产品导航.md",
+    "Cesium-3DTiles.md",
+    "Cesium-QA.md",
+    "conflict-files-obsidian-git.md",
+    "杂-GPT-QA.md",
+    "images/Pasted image 20230411105231.png",
+    "images/Pasted image 20230411101658.png",
+    "images/Pasted image 20230409173031.png",
+    "Pasted image 20230411105231.png",
+    "Pasted image 20230411104905.png",
+    "JS.md",
+    "JS 进阶.md",
+    "JS问答.md",
+    "JS-TS.md",
+    "KH.md",
+    "HTTP.md",
+    "Cesium-地形.md",
+    "nginx.md",
+    "npm.md",
+    "Python",
+    "投资 保险/images",
+    "投资 保险",
+    "images",
+    "2 O/images",
+    "2 O",
+    "1 杂/images",
+    "1 杂"
+  ]
+}

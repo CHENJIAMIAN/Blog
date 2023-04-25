@@ -170,3 +170,14 @@ Quantized Mesh文件结构包括以下几部分：
 4. 在Viewer的clock.onTick事件中更新地形数据，以实现动态效果。
 
 加载完成后，Cesium会自动根据Quantized Mesh数据生成地形模型，并进行光照和阴影的计算，实现高度感和细节效果。同时，用户可以通过调整TerrainProvider中的参数，如高度偏差、坡度、详细程度等，来优化地形表现。
+## 源码Tools/jsdoc/cesium_template/publish.js被谁调用？
+
+```js
+-> npm run build-docs 
+-> gulp buildDocs
+-> gulpfile.js的buildDocs方法
+-> npx jsdoc --configure Tools/jsdoc/conf. json --pedantic ${generatePrivateDocumentation}
+-> node_modules/jsdoc/cli.js 
+	-> cli.generateDocs 
+		-> template = require(`${env.opts.template}/publish`);
+```
