@@ -44,7 +44,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "<<<<<<<",
+                "query": "axure",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +61,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -179,7 +180,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "79037429d3fffeea",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
     "images/Pasted image 20230424120853.png",
     "TS.md",
