@@ -331,6 +331,7 @@ Viewer
 								PolylineGlowMaterialProperty发光材质
 								PolylineOutlineMaterialProperty外轮廓材质
 								PolylineArrowMaterialProperty带有箭头的线
+								PolylineDashMaterialProperty
                             renderState
 						EllipsoidSurfaceAppearance
 						MaterialAppearance
