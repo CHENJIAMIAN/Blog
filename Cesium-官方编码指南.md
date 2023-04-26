@@ -851,7 +851,8 @@ function loadTileset(tileset, tilesJson, done) {
 
 文件属于哪个目录通常很明显。如果不是，则通常在 `Core` 和另一个目录之间做出决定。如果它是纯数字运算或预计对 Cesium 通常有用的实用程序，请将文件放在 Core 中，例如 [`Matrix4`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/Matrix4.js) 属于 `Core`，因为 Cesium 堆栈的许多部分都使用 4x4 矩阵；另一方面，[`BoundingSphereState`](https://github.com/CesiumGS/cesium/blob/main/Source/DataSources/BoundingSphereState.js) 在 `DataSources` 中，因为它特定于数据源。
 ![CesiumJS Design](https://raw.fastgit.org/CesiumGS/cesium/main/Documentation/Contributors/CodingGuide/1.jpg)
-![[Pasted image 20230426101106.png]]
+![CesiumJS Design](https://raw.fastgit.org/CHENJIAMIAN/Blog/master/images/Pasted%20image%2020230426101106.png)
+
 模块（文件）应该只引用堆栈中同一级别或较低级别的模块。例如，`Scene` 中的模块可以使用`Scene`、`Renderer` 和`Core` 中的模块，但不能使用`DataSources` 或`Widgets` 中的模块。
 
 - 需要显式删除 WebGL 资源，以便包含它们的类（以及包含这些类的类等）具有 `destroy` 和 `isDestroyed` 函数，例如，
@@ -933,7 +934,7 @@ Cesium 还使用 [Knockout-ES5](http://blog.stevensanderson.com/2013/05/20/knock
 knockout.track(this, ["tooltip", "showInstructions", "_touch"]); 
 ``` 
 
-### ### Knockout订阅
+### Knockout订阅
 
 只有当您无法完成您需要使用标准绑定执行的操作时，才使用Knockout订阅。对于 [example](https://github.com/CesiumGS/cesium/blob/main/Source/Widgets/Viewer/Viewer.js#L588)，`Viewer` 订阅了 `FullscreenButtonViewModel.isFullscreenEnabled` 因为它需要改变该值更改时时间轴小部件的宽度。这不能通过绑定来完成，因为来自“FullscreenButtonViewModel”的值正在影响不包含在该小部件中的值。
 
