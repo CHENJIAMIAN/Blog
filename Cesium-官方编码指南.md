@@ -6,11 +6,11 @@ CesiumJS 是世界上最大的 JavaScript 代码库之一。从一开始，我�
 
 本指南适用于 CesiumJS 和用 JavaScript 编写的 Cesium 生态系统的所有部分。
 
-:art: 调色板图标表示设计提示。
+🎨: 调色板图标表示设计提示。
 
-:house: 房子图标表示可维护性提示。当然，整个指南都是关于编写可维护代码的。
+🏠: 房子图标表示可维护性提示。当然，整个指南都是关于编写可维护代码的。
 
-:speedboat: 快艇表示性能提示。
+🚤: 快艇表示性能提示。
 
 在某种程度上，本指南可以概括为_使新代码与现有代码相似_。
 
@@ -46,7 +46,7 @@ CesiumJS 是世界上最大的 JavaScript 代码库之一。从一开始，我�
     - [性能](#performance) 
   - [资源]( #resources) 
 
-## Naming 
+## 命名 
 
 - 目录名称为 `PascalCase`，例如 `Source/Scene`。
 - 构造函数是`PascalCase`，例如`Cartesian3`。
@@ -109,7 +109,7 @@ this._showTouch = createCommand(function () {
 - 对于 HTML 代码，保持现有样式。使用双引号。
 - 文本文件，以换行符结尾以最小化差异中的噪音。
 
-## 林林
+## Linting
 
 对于语法和样式指南，我们使用 ESLint 推荐的设置（规则列表可以在[此处](http://eslint.org/docs/rules/) 找到）作为基础，并通过共享的附加规则对其进行扩展配置节点模块，[eslint-config-cesium](https://www.npmjs.com/package/eslint-config-cesium)。该包作为 Cesium 存储库的一部分进行维护，并在整个 Cesium 生态系统中使用。有关已启用规则的列表，请查看 [index.js](https://github.com/CesiumGS/cesium/blob/main/Tools/eslint-config-cesium/index.js)、[browser.js ](https://github.com/CesiumGS/eslint-config-cesium/blob/main/browser.js) 和 [node.js](https://github.com/CesiumGS/eslint-config-cesium/ blob/main/node.js）。
 
@@ -166,7 +166,7 @@ try {
   - 持续时间的秒数。
 - 如果一个函数的参数有一个非标准单位，比如度，把单位放在函数名里，例如，``` 
 
-javascript 
+``` javascript 
 Cartesian3.fromDegrees = function ( 
   longitude, 
   latitude, 
@@ -182,12 +182,11 @@ Cartesian3.fromDegrees = function (
 
 - Cesium 使用 JavaScript 的 [严格模式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) 所以每个模块（文件）包含
 
-`` `javascript 
-“使用严格”；
-
+```  javascript 
+"use strict";
 ``` 
 
-- :speedboat: 为避免类型强制转换（隐式类型转换），使用 `===` 和 `!==` 测试相等性，例如，
+- 🚤: 为避免类型强制转换（隐式类型转换），使用 `===` 和 `!==` 测试相等性，例如，
 
 ```javascript 
 const i = 1; 
@@ -250,7 +249,7 @@ console.log(i); // 我在这里是未定义的。永远不要在变量声明之�
 
 - 当值未更新时，首选 `const` 变量。这确保了不变性。
 
-- :speedboat: 避免冗余的嵌套属性访问。这个
+- 🚤: 避免冗余的嵌套属性访问。这个
 
 ```javascript 
 scene.environmentState.isSkyAtmosphereVisible = true; 
@@ -331,7 +330,7 @@ byteOffset += sizeOfUint32; // 跳过长度字段
 
 ## 函数
 
-- :art: 函数应该是**内聚的**；他们应该只做一项任务。
+- 🎨: 函数应该是**内聚的**；他们应该只做一项任务。
 - 函数中的语句应该处于相似的抽象级别。如果一个代码块比其余的语句低得多，那么移至辅助函数是一个很好的选择，例如，
 
 ```javascript 
@@ -399,11 +398,11 @@ function getTransform(node) {
 ` 
 ``
 
-- :speedboat: 较小的函数更有可能被 JavaScript 引擎优化。对于可能成为热点的代码，请考虑这一点。
+- 🚤: 较小的函数更有可能被 JavaScript 引擎优化。对于可能成为热点的代码，请考虑这一点。
 
 ### `options` 参数
 
-:art: 许多 Cesium 函数采用 `options` 参数来支持可选参数、自文档代码和向前兼容性。例如，考虑：
+🎨: 许多 Cesium 函数采用 `options` 参数来支持可选参数、自文档代码和向前兼容性。例如，考虑：
 
 ```javascript 
 const sphere = new SphereGeometry(10.0, 32, 16, VertexFormat.POSITION_ONLY); 
@@ -420,7 +419,7 @@ const sphere = new SphereGeometry({
 }); 
 ``` 
 
-- :speedboat: 使用 `{ /* ... */ }` 创建一个对象字面量，这是一个内存分配。如果函数可能成为热点，请避免设计使用“选项”参数的函数；否则，调用者将不得不使用临时变量（参见 [下文](#result-parameters-and-scratch-variables)）来提高性能。非数学类的构造函数是“选项”参数的良好候选者，因为 Cesium 避免在热点中构造对象。例如，
+- 🚤: 使用 `{ /* ... */ }` 创建一个对象字面量，这是一个内存分配。如果函数可能成为热点，请避免设计使用“选项”参数的函数；否则，调用者将不得不使用临时变量（参见 [下文](#result-parameters-and-scratch-variables)）来提高性能。非数学类的构造函数是“选项”参数的良好候选者，因为 Cesium 避免在热点中构造对象。例如，
 
 ```javascript 
 const p = new Cartesian3({ 
@@ -447,7 +446,7 @@ Cartesian3.fromRadians = function (longitude, latitude, height) {
 }; 
 ``` 
 
-- :speedboat: 不要使用 `defaultValue` 如果它会导致不必要的函数调用或内存分配，例如，
+- 🚤: 不要使用 `defaultValue` 如果它会导致不必要的函数调用或内存分配，例如，
 
 ```javascript 
 this._mapProjection = defaultValue( 
@@ -539,7 +538,7 @@ if (typeof WebGLRenderingContext === "undefined") {
 
 ### `result` 参数和临时变量
 
-:speedboat: 在 JavaScript 中，用户定义的类（如“Cartesian3”）是引用类型，因此分配在堆上。频繁分配这些类型会导致严重的性能问题，因为它会产生 GC 压力，从而导致垃圾收集器运行更长时间和更频繁。
+🚤: 在 JavaScript 中，用户定义的类（如“Cartesian3”）是引用类型，因此分配在堆上。频繁分配这些类型会导致严重的性能问题，因为它会产生 GC 压力，从而导致垃圾收集器运行更长时间和更频繁。
 
 Cesium 使用必需的“结果”参数来避免隐式内存分配。例如，
 
@@ -585,8 +584,8 @@ result = Cartesian3.add(v0, v1, result);
 
 ## 类
 
-- :art: 类应该是**内聚的**。一个类应该代表一个抽象。
-- :art: 类应该**松耦合**。两个类不应该纠缠在一起并依赖彼此的实现细节；他们应该通过定义明确的接口进行通信。
+- 🎨: 类应该是**内聚的**。一个类应该代表一个抽象。
+- 🎨: 类应该**松耦合**。两个类不应该纠缠在一起并依赖彼此的实现细节；他们应该通过定义明确的接口进行通信。
 
 ### 构造函数
 
@@ -606,14 +605,14 @@ function Cartesian3(x, y, z) {
 const p = new Cartesian3(1.0, 2.0, 3.0); 
 ``` 
 
-- :speedboat: 在构造函数中分配给一个类的所有属性成员。这允许 JavaScript 引擎使用隐藏类并避免进入字典模式。如果初始值没有意义，则分配“undefined”。不要向对象添加属性，例如，
+- 🚤: 在构造函数中分配给一个类的所有属性成员。这允许 JavaScript 引擎使用隐藏类并避免进入字典模式。如果初始值没有意义，则分配“undefined”。不要向对象添加属性，例如，
 
 ```javascript 
 const p = new Cartesian3(1.0, 2.0, 3.0); 
 pw = 4.0; // 将 w 属性添加到 p，减慢属性访问，因为对象进入字典模式
 ```
 
-- :speedboat: 出于同样的原因，不要更改属性的类型，例如，将字符串分配给数字，例如，`` 
+- 🚤: 出于同样的原因，不要更改属性的类型，例如，将字符串分配给数字，例如，`` 
 
 `javascript 
 const p = new Cartesian3(1.0, 2.0, 3.0); 
@@ -639,7 +638,7 @@ px = "铯"; // 将 x 更改为字符串，减慢属性访问速度
 
 ### `from` 构造函数
 
-:art: 构造函数应该将类的基本组件作为参数。例如，“Cartesian3”采用“x”、“y”和“z”。
+🎨: 构造函数应该将类的基本组件作为参数。例如，“Cartesian3”采用“x”、“y”和“z”。
 
 从其他参数构造对象通常很方便。由于 JavaScript 没有函数重载，Cesium 使用
 以 `from` 为前缀的静态函数以这种方式构造对象。例如：
@@ -679,7 +678,7 @@ Cartesian3.prototype.toString = function () {
 
 ### 对基础类谨慎使用原型函数
 
-:art: 诸如`Cartesian3`、`Quaternion`、`Matrix4` 和`JulianDate` 之类的基础数学类很少使用原型函数。例如，`Cartesian3` 没有像这样的原型 `add` 函数：
+🎨: 诸如`Cartesian3`、`Quaternion`、`Matrix4` 和`JulianDate` 之类的基础数学类很少使用原型函数。例如，`Cartesian3` 没有像这样的原型 `add` 函数：
 
 ```javascript 
 const v2 = v0.add(v1, result); 
@@ -819,7 +818,7 @@ Object.defineProperties(UniformState.prototype, {
 }); 
 ```
 
-- :speedboat: 调用 getter/setter 函数比直接访问属性要慢，因此类内部的函数可以在适当的时候直接使用私有属性。
+- 🚤: 调用 getter/setter 函数比直接访问属性要慢，因此类内部的函数可以在适当的时候直接使用私有属性。
 
 ### Shadowed Property
 
@@ -877,10 +876,10 @@ function loadTileset(tileset, tilesJson, done) {
 
 即使它依赖于将 `loadTileset` 函数隐式提升到文件顶部。
 
-＃＃ 设计
+## 设计
 
-- :house: 只有当它可能对最终用户有用时，才将类或函数作为 Cesium API 的一部分；避免将实现细节作为公共 API 的一部分。当某些东西是公开的时，它会使 Cesium API 变得更大，更难学习，以后更难更改，并且需要更多的文档工作。
-- :art: 将新类和函数放在 Cesium 堆栈（目录）的右侧部分。从下往上：
+- 🏠: 只有当它可能对最终用户有用时，才将类或函数作为 Cesium API 的一部分；避免将实现细节作为公共 API 的一部分。当某些东西是公开的时，它会使 Cesium API 变得更大，更难学习，以后更难更改，并且需要更多的文档工作。
+- 🎨: 将新类和函数放在 Cesium 堆栈（目录）的右侧部分。从下往上：
   - `Source/Core` - 数字运算。纯数学，例如 [`Cartesian3`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/Cartesian3.js)。纯几何体，例如 [`CylinderGeometry`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/CylinderGeometry.js)。基本算法，例如 [`mergeSort`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/mergeSort.js)。请求辅助函数，例如 [`loadArrayBuffer`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/loadArrayBuffer.js)。
   - `Source/Renderer` - WebGL 抽象，例如 [`ShaderProgram`](https://github.com/CesiumGS/cesium/blob/main/Source/Renderer/ShaderProgram.js) 和特定于 WebGL 的实用程序，例如 [` ShaderCache`](https://github.com/CesiumGS/cesium/blob/main/Source/Renderer/ShaderCache.js)。此目录中的标识符不是公共 Cesium API 的一部分。
   - `Source/Scene` - 图形引擎，包括 [Model](https://github.com/CesiumGS/cesium/blob/main/Source/Scene/Model.js) 等原语。此目录中的代码通常依赖于 `Renderer`。
@@ -944,7 +943,7 @@ function Foo() {
 
 ## 第三方库
 
-:house: Cesium 很少使用第三方库。如果你想添加一个新的，请在[Cesium社区论坛](https://community.cesium.com/)上发帖([示例讨论](https://community.cesium.com/t/我们喜欢使用第三方库/745))。该库应该
+🏠: Cesium 很少使用第三方库。如果你想添加一个新的，请在[Cesium社区论坛](https://community.cesium.com/)上发帖([示例讨论](https://community.cesium.com/t/我们喜欢使用第三方库/745))。该库应该
 
 - 具有兼容的许可证，例如 MIT、BSD 或 Apache 2.0。
 - 提供 Cesium 真正需要且团队没有时间和/或专业知识来开发的功能。
@@ -1043,10 +1042,10 @@ struct czm_ray
 
 ### 性能
 
-- :speedboat: 尽可能不频繁地计算昂贵的值，例如，更喜欢在 JavaScript 中计算一个值并以统一的方式传递它，而不是冗余地计算每个顶点的相同值。同样，更喜欢计算每个顶点的值并传递一个变量，而不是尽可能计算每个片段。
-- :speedboat: 谨慎使用 `discard`，因为它会禁用 early-z GPU 优化。
+- 🚤: 尽可能不频繁地计算昂贵的值，例如，更喜欢在 JavaScript 中计算一个值并以统一的方式传递它，而不是冗余地计算每个顶点的相同值。同样，更喜欢计算每个顶点的值并传递一个变量，而不是尽可能计算每个片段。
+- 🚤: 谨慎使用 `discard`，因为它会禁用 early-z GPU 优化。
 
-＃＃ 资源
+## 资源
 
 请参阅 Cesium 贡献者 Matthew Amato 和 Kevin Ring 在 _WebGL Insights_ 中 [认真对待 JavaScript](http://webglinsights.github.io/downloads/WebGL-Insights-Chapter-4.pdf) 的第 4.1 至 4.3 节，以更深入地了解模块和性能。
 

@@ -120,37 +120,7 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
-        "dimension": 56.7431850789096,
         "children": [
-          {
-            "id": "5e55221e27be587d",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Cesium-官方编码指南.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
-            "id": "c01e185f4aa3d7d3",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "Cesium-官方编码指南.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
           {
             "id": "3f5e35f3c2b63f92",
             "type": "leaf",
@@ -193,15 +163,7 @@
               "type": "smart-connections-chat-view",
               "state": {}
             }
-          }
-        ],
-        "currentTab": 6
-      },
-      {
-        "id": "62cca7b24132f3d3",
-        "type": "tabs",
-        "dimension": 43.2568149210904,
-        "children": [
+          },
           {
             "id": "a7974b07fd2b2c15",
             "type": "leaf",
@@ -212,11 +174,12 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 400.5,
+    "width": 444.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -230,7 +193,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ab1ba8a73889de81",
+  "active": "a7974b07fd2b2c15",
   "lastOpenFiles": [
     "Cesium.md",
     "Cesium-官方编码指南.md",
