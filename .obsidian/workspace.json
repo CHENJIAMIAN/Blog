@@ -55,8 +55,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -66,6 +65,29 @@
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
         "children": [
+          {
+            "id": "ae012ef0f7d93e48",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "region",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6323b2f6898b32c7",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          },
           {
             "id": "a7974b07fd2b2c15",
             "type": "leaf",
@@ -88,14 +110,6 @@
             }
           },
           {
-            "id": "6323b2f6898b32c7",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
-            }
-          },
-          {
             "id": "777c4cadf66f9b9d",
             "type": "leaf",
             "state": {
@@ -112,41 +126,18 @@
             }
           },
           {
-            "id": "16273b04efe3f944",
+            "id": "74f14a89d3f3bb94",
             "type": "leaf",
             "state": {
               "type": "smart-connections-chat-view",
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
-      },
-      {
-        "id": "b8958e087523eb9b",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "ae012ef0f7d93e48",
-            "type": "leaf",
-            "state": {
-              "type": "search",
-              "state": {
-                "query": "region",
-                "matchingCase": false,
-                "explainSearch": false,
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical"
-              }
-            }
-          }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 343.5,
-    "collapsed": true
+    "width": 375.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -159,7 +150,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "165e0dae8314b663",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
     "Cesium-3DTiles.md",
     "Cesium.md",

@@ -79,7 +79,7 @@ this._showTouch = createCommand(function () {
 
 ## Linting
 
-对于语法和样式指南，我们使用 ESLint 推荐的设置（规则列表可以在[此处](http://eslint.org/docs/rules/) 找到）作为基础，并通过共享的附加规则对其进行扩展配置节点模块，[eslint-config-cesium](https://www.npmjs.com/package/eslint-config-cesium)。该包作为 Cesium 存储库的一部分进行维护，并在整个 Cesium 生态系统中使用。有关已启用规则的列表，请查看 [index.js](https://github.com/CesiumGS/cesium/blob/main/Tools/eslint-config-cesium/index.js)、[browser.js ](https://github.com/CesiumGS/eslint-config-cesium/blob/main/browser.js) 和 [node.js](https://github.com/CesiumGS/eslint-config-cesium/ blob/main/node.js）。
+对于语法和样式指南，我们使用 ESLint 推荐的设置（规则列表可以在[此处](http://eslint.org/docs/rules/) 找到）作为基础，并通过共享的附加规则对其进行扩展配置节点模块，[eslint-config-cesium](https://www.npmjs.com/package/eslint-config-cesium)。该包作为 Cesium 存储库的一部分进行维护，并在整个 Cesium 生态系统中使用。有关已启用规则的列表，请查看 [index.js](https://github.com/CesiumGS/cesium/blob/main/Tools/eslint-config-cesium/index.js)、[browser.js ](https://github.com/CesiumGS/eslint-config-cesium/blob/main/browser.js) 和 [node.js](https://github.com/CesiumGS/eslint-config-cesium/blob/main/node.js)
 
 **一般规则：** 
 
@@ -99,7 +99,7 @@ this._showTouch = createCommand(function () {
 - [no-sequences](http://eslint.org/docs/rules/no-sequences) 
 - [no-unused-expressions](http://eslint.org/docs/rules/no-unused-expressions) 
 
-**节点特定规则：** 
+**Node特定规则：** 
 
 - [global-require](http://eslint.org/docs/rules/global-require) 
 - [no-buffer-constructor](http://eslint.org/docs/rules/no-buffer-constructor) 
@@ -127,9 +127,9 @@ try {
 ## 单位
 
 - Cesium 使用 SI 单位：
-  - 米表示距离，
-  - 弧度表示角度，以及
-  - 持续时间的秒数。
+  - 米表示距离
+  - 弧度表示角度
+  - 持续时间的秒数
 - 如果一个函数的参数有一个非标准单位，比如度，把单位放在函数名里，例如，
 
 ``` javascript 
