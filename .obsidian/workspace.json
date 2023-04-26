@@ -160,7 +160,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -177,7 +178,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6368f1885e10f5ac",
+  "active": "6323b2f6898b32c7",
   "lastOpenFiles": [
     "WebGL-QA.md",
     "Cesium-QA.md",
