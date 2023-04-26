@@ -858,12 +858,12 @@ primitive.destroy();
 expect(content.isDestroyed()).toEqual(true);
 ``` 
 
-`destroy` 函数是用 Cesium 的 `destroyObject` 函数实现的，例如，
+`destroy` 函数用 Cesium 的 `destroyObject` 函数实现防止二次销毁，例如，
 
 ```javascript 
 SkyBox.prototype.destroy = function () {
   this._vertexArray = this._vertexArray && this._vertexArray.destroy();
-  return destroyObject(this);
+  return destroyObject(this);//再次调用时，如果已经销毁，则报错"This object was destroyed, i.e., destroy() was called."
 };
 ``` 
 
@@ -871,9 +871,11 @@ SkyBox.prototype.destroy = function () {
 
 ### 弃用和重大更改
 
-从发布到发布，我们努力保持公共 Cesium API 稳定，同时保持移动性以快速开发并使 API 朝着正确的方向发展。因此，我们谨慎地弃用然后删除或替换部分公共 API。
+从发布到发布，我们努力保持公共 Cesium API 稳定，同时保持可迁移性以快速开发并使 API 朝着正确的方向发展。因此，我们谨慎地弃用然后删除或替换部分公共 API。
 
 `@private` API 被认为是 Cesium 的实现细节，可以在不弃用的情况下立即被破坏。
+
+> “立即中断”是指关闭或删除一个功能或API，不再支持其使用，而不提供升级迁移和替代方案。这意味着如果代码中使用了已经被立即中断的API，代码将不再能够正常工作，开发者需要立即做出相应的修改来解决问题。
 
 `@experimental` API 在未来的 Cesium 版本中可能会发生重大变化，但不会弃用。它允许新的实验性功能，例如实施草稿格式。
 
