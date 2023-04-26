@@ -45,9 +45,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "ab1ba8a73889de81",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cesium-官方编码指南.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -115,7 +128,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium.md",
+                "file": "Cesium-官方编码指南.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -132,7 +145,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium.md",
+                "file": "Cesium-官方编码指南.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,7 +208,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium.md"
+                "file": "Cesium-官方编码指南.md"
               }
             }
           }
@@ -217,14 +230,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "0a50d9c573337de4",
+  "active": "ab1ba8a73889de81",
   "lastOpenFiles": [
+    "Cesium.md",
+    "Cesium-官方编码指南.md",
     "images/Pasted image 20230426092257.png",
     "images/Pasted image 20230426092252.png",
     "WebGL.md",
     "WebGL-QA.md",
     "Cesium-QA.md",
-    "Cesium.md",
     "☁ 难题.md",
     "0 正则.md",
     "☁.md",
@@ -248,7 +262,6 @@
     "images/Pasted image 20230411105231.png",
     "images/Pasted image 20230411101658.png",
     "images/Pasted image 20230409173031.png",
-    "Pasted image 20230411105231.png",
     "JS.md",
     "JS 进阶.md",
     "JS问答.md",
