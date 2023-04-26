@@ -605,6 +605,7 @@ this._xSquared = x * x;
 
 从其他参数构造对象通常很方便。**由于 JavaScript 没有函数重载**，Cesium 使用
 以 `from` 为前缀的静态函数以这种方式构造对象。例如：
+> 由于 JavaScript 没有函数重载，函数名相同的函数在同一作用域下只能定义一次。但是有时候需要不同的构造函数能够接收不同的参数。因此，Cesium 使用静态函数和 from 前缀来表示不同类型的构造函数，并使用函数的参数来表示不同的组件。这样，即使函数名相同，也能通过参数类型和数量的不同来区分不同的构造函数。这样也为JS 增加了一部分的函数重载功能。
 
 ```javascript 
 const p = Cartesian3.fromRadians(-2.007, 0.645); // 使用经度和纬度构造 Cartesian3 对象
@@ -690,7 +691,7 @@ Cartesian3.ZERO = Object.freeze(new Cartesian3(0.0, 0.0, 0.0));
 
 ### 私有函数
 
-与私有属性一样，私有函数以 _ 开头。实际上，这些很少使用。相反，为了更好的封装，**使用了一个将`this`作为第一个参数的文件范围函数**。例如，
+与私有属性一样，私有函数以 _ 开头。实际上，这些很少使用。相反，为了更好的封装，通常会使用一个文件范围的函数，并将 this 作为第一个参数传递进去。例如，
 
 ```javascript 
 Cesium3DTileset.prototype.update = function(frameState) { 
@@ -706,11 +707,11 @@ Cesium3DTileset.prototype._processTiles(tileset, frameState) {
         tiles[i].process(tileset, frameState); 
     } 
 } 
-```
 
-最好写成
 
-```javascript
+//最好写成
+
+
 Cesium3DTileset.prototype.update = function (frameState) { 
   processTiles(this, frameState); 
   // ... 
@@ -731,11 +732,11 @@ function processTiles(tileset, frameState) {
 无需额外处理即可读取或写入的公共属性可以简单地在构造函数中赋值，例如，
 ```javascript 
 function Model(options) { 
-  this.show = defaultValue( options.show, true); 
+  this.show = defaultValue(options.show, true); 
 }
 ```
 
-可以使用 `Object.defineProperties` 函数使用私有属性和 getter 创建只读属性，例如，
+可以使用 `Object.defineProperties` 函数使用**私有属性**和 getter 创建只读属性，例如，
 ```javascript 
 function Cesium3DTileset(options) { 
   this._url = options.url; 
@@ -751,37 +752,36 @@ Object.defineProperties(Cesium3DTileset.prototype, {
 ``` 
 
 Getters 可以执行任何需要的计算来返回属性，但性能期望是它们执行得很快。
-
-设置器还可以在分配给私有属性之前执行计算，设置标志以延迟计算，或两者兼而有之，例如：
+Setters 还可以在分配给私有属性之前执行计算，设置标志以延迟计算，或两者兼而有之，例如：
 ```javascript
-Object.defineProperties(UniformState.prototype, { 
-  viewport: { 
-    get: function () { 
-      return this._viewport; 
-    }, 
-    set: function (viewport) { 
-      if (!BoundingRectangle.equals(viewport, this._viewport)) { 
-        BoundingRectangle.clone （视口，this._viewport）；
+Object.defineProperties(UniformState.prototype, {
+  viewport: {
+    get: function () {
+      return this._viewport;
+    },
+    set: function (viewport) {
+      if (!BoundingRectangle.equals(viewport, this._viewport)) {
+        BoundingRectangle.clone(viewport, this._viewport);
 
-        const v = this._viewport；
-        const vc = this._viewportCartesian4；
-        vc.x = vx；
-        vc.y = vy；
-        vc.z = v.width；
-        vc.w = v.height；
+        const v = this._viewport;
+        const vc = this._viewportCartesian4;
+        vc.x = v.x;
+        vc.y = v.y;
+        vc.z = v.width;
+        vc.w = v.height;
 
-        this._viewportDirty = true; 
-      } 
-    }, 
-  }, 
-}); 
+        this._viewportDirty = true;
+      }
+    },
+  },
+});
 ```
 
 - 🚤: 调用 getter/setter 函数比直接访问属性要慢，因此类内部的函数可以在适当的时候直接使用私有属性。
 
 ### Shadowed深拷贝属性
 
-当 getter/setter 函数的开销过高或需要引用类型语义时，例如，将属性作为 `result` 参数传递以便修改其属性的能力，请考虑将公共属性与私有深拷贝属性，例如，
+当 getter/setter 函数的开销过高或需要引用类型语义时，例如，将属性作为 `result` 参数传递以便修改其属性的能力，请考虑将公共属性与私有深拷贝属性结合使用，例如，
 
 ```javascript 
 function Model(options) { 
