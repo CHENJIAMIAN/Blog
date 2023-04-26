@@ -145,12 +145,10 @@ this._showTouch = createCommand(function () {
 function exit(warningMessage) { 
   //eslint-disable-next-line no-alert 
   window.alert("Cannot exit : " + 警告消息); 
-` 
-`` 
+``` 
 
 - 当禁用代码块的 linting 时，将 `eslint-disable` 注释放在新行上并尽可能靠近相关代码：``` 
-
-js 
+``` js 
 /*eslint-disable no-empty*/ 
 try { 
   lineNumber = parseInt(stack.substring(lineStart + 1, lineEnd1), 10); 
@@ -202,7 +200,7 @@ if (i !== 1) {
 
 - 为了帮助人类阅读，将 `.0` 附加到旨在是浮点值，例如，除非 f 是整数，否则
 
-javascript 
+``` javascript 
 const f = 1; 
 ```
 
@@ -244,7 +242,7 @@ for (let i = 0; i < length; ++i) {
 
 ```javascript 
 console.log(i); // 我在这里是未定义的。永远不要在变量声明之前使用它。
-让我= 0.0; 
+let i= 0.0; 
 ``` 
 
 - 当值未更新时，首选 `const` 变量。这确保了不变性。
@@ -304,12 +302,12 @@ if (defined(u)) {
 ```javascript 
 
     const ModelAnimationState = {
-        停止：0，
-        动画：1 
-    }；
+        STOPPED : 0,
+        ANIMATING : 1
+    };
 
-    返回 Object.freeze(ModelAnimationState); 
-}); 
+    return Object.freeze(ModelAnimationState);
+});
 ``` 
 
 - 对不明显的代码使用描述性注释，例如，
@@ -350,19 +348,19 @@ Cesium3DTileset.prototype.update = function (frameState) {
 最好写成
 
 ```javascript 
-Cesium3DTileset.prototype.update = function (frameState) { 
-  processTiles(this, frameState); 
-  选择瓷砖（这个，框架状态）；
-  updateTiles（这个，frameState）；
-}; 
+Cesium3DTileset.prototype.update = function (frameState) {
+  processTiles(this, frameState);
+  selectTiles(this, frameState);
+  updateTiles(this, frameState);
+};
 
-function processTiles(tileset, frameState) { 
-  const tiles = tileset._processingQueue; 
-  const length = tiles.length; 
+function processTiles(tileset, frameState) {
+  const tiles = tileset._processingQueue;
+  const length = tiles.length;
 
-  for (let i = length - 1; i >= 0; --i) { 
-    tiles[i].process(tileset, frameState); 
-  } 
+  for (let i = length - 1; i >= 0; --i) {
+    tiles[i].process(tileset, frameState);
+  }
 } 
 ``` 
 
@@ -395,8 +393,7 @@ function getTransform(node) {
     node.rotation, 
     node.scale 
   ); 
-` 
-``
+```
 
 - 🚤: 较小的函数更有可能被 JavaScript 引擎优化。对于可能成为热点的代码，请考虑这一点。
 
@@ -439,7 +436,7 @@ const p = new Cartesian3(1.0, 2.0, 3.0);
 
 如果函数参数或类属性存在_合理_默认值，则不需要用户提供它。使用 Cesium 的 defaultValue 来分配一个默认值。例如，在 Cartesian3.fromRadians 中，height 默认为零：
 
-javascript 
+```javascript 
 Cartesian3.fromRadians = function (longitude, latitude, height) { 
   height = defaultValue(height, 0.0); 
   // ... 
@@ -487,13 +484,13 @@ Use the functions of Cesium's [Check](https://github .com/CesiumGS/cesium/blob/m
 - 例如，要检查参数是否已定义并且是一个对象：
 
 ```javascript 
-Cartesian3.maximumComponent = function (cartesian) { 
-  //>>includeStart('debug', pragmas.debug); 
-  Check.typeOf.object("笛卡尔", 笛卡尔); 
-  //>>includeEnd('
+Cartesian3.maximumComponent = function (cartesian) {
+  //>>includeStart('debug', pragmas.debug);
+  Check.typeOf.object("cartesian", cartesian);
+  //>>includeEnd('debug');
 
-  返回 Math.max(cartesian.x, cartesian.y, cartesian.z); 
-}; 
+  return Math.max(cartesian.x, cartesian.y, cartesian.z);
+};
 ``` 
 
 - 对于更复杂的参数检查，手动检查参数然后抛出 `DeveloperError`。示例：
@@ -522,7 +519,7 @@ Cartesian3.maximumComponent = function (cartesian) {
   //>>includeEnd('调试'); 
 
   // 在调试中工作。发布失败，因为 c 被优化了！
-  返回 Math.max(cx, cy, cz); 
+  return Math.max(cx, cy, cz); 
 }; 
 ```
 
@@ -560,7 +557,7 @@ const scratchDistance = new Cartesian3();
 
 Cartesian3.distance = function (left, right) { 
   Cartesian3.subtract(left, right, scratchDistance); 
-  返回 Cartesian3.magnitude(scratchDistance); 
+  return Cartesian3.magnitude(scratchDistance); 
 }; 
 ```
 
@@ -614,7 +611,7 @@ pw = 4.0; // 将 w 属性添加到 p，减慢属性访问，因为对象进入�
 
 - 🚤: 出于同样的原因，不要更改属性的类型，例如，将字符串分配给数字，例如，`` 
 
-`javascript 
+```javascript 
 const p = new Cartesian3(1.0, 2.0, 3.0); 
 px = "铯"; // 将 x 更改为字符串，减慢属性访问速度
 ``` 
@@ -887,27 +884,24 @@ function loadTileset(tileset, tilesJson, done) {
   - `Source/Widgets` - 主要的 Cesium [`Viewer`](https://github.com/CesiumGS/cesium/blob/main/Source/Widgets/Viewer/Viewer.js) 等小部件。
 
 文件属于哪个目录通常很明显。如果不是，则通常在 `Core` 和另一个目录之间做出决定。如果它是纯数字运算或预计对 Cesium 通常有用的实用程序，请将文件放在 Core 中，例如 [`Matrix4`](https://github.com/CesiumGS/cesium/blob/main/ Source/Core/Matrix4.js) 属于 `Core`，因为 Cesium 堆栈的许多部分都使用 4x4 矩阵；另一方面，[`BoundingSphereState`](https://github.com/CesiumGS/cesium/blob/main/Source/DataSources/BoundingSphereState.js) 在 `DataSources` 中，因为它特定于数据源。
-
-![CesiumJS设计](1.jpg)
-
+![[Pasted image 20230426101035.png]]
 模块（文件）应该只引用堆栈中同一级别或较低级别的模块。例如，`Scene` 中的模块可以使用`Scene`、`Renderer` 和`Core` 中的模块，但不能使用`DataSources` 或`Widgets` 中的模块。
 
-- 需要显式删除 WebGL 资源，以便包含它们的类（以及包含这些类的类等）具有 `destroy` 和 `isDestroyed` 函数，例如，```javascript const primitive 
-
-= 
-new Primitive(/* . .. */); 
-期望（内容。isDestroyed（））。toEqual（假）；
-原始的.destroy(); 
-期望（内容。isDestroyed（））。toEqual（真）；
+- 需要显式删除 WebGL 资源，以便包含它们的类（以及包含这些类的类等）具有 `destroy` 和 `isDestroyed` 函数，例如，
+```javascript 
+const primitive = new Primitive(/* ... */);
+expect(content.isDestroyed()).toEqual(false);
+primitive.destroy();
+expect(content.isDestroyed()).toEqual(true);
 ``` 
 
 `destroy` 函数是用 Cesium 的 `destroyObject` 函数实现的，例如，
 
 ```javascript 
 SkyBox.prototype.destroy = function () {
-  this._vertexArray = this._vertexArray && this._vertexArray.destroy(); 
-  返回销毁对象（这个）；
-}; 
+  this._vertexArray = this._vertexArray && this._vertexArray.destroy();
+  return destroyObject(this);
+};
 ``` 
 
 - 仅“销毁”您创建的对象；赋予类的外部对象应该由它们的所有者而不是类来销毁。
@@ -996,14 +990,9 @@ fullscreenSubscription.dispose();
 - Cesium 内置标识符以 `czm_` 开头，例如 [`czm_material`](https://github.com/CesiumGS/cesium/blob/main/Source/Shaders/Builtin/Structs/material.glsl)。文件具有相同的名称，但不带 `czm_` 前缀，例如 `material.glsl`。
 - 在对立方体贴图进行采样时使用 `czm_textureCube` 而不是 `texture`。
 这是为了保持
-与WebGL 1 的向后兼容性
-
-。
-``` 
+与WebGL 1 的向后兼容性 
 - 制服以 `u_` 开头，例如，
-
-
-```javascript 
+``` javascript 
 uniform sampler2D u_atlas; 
 ``` 
 
