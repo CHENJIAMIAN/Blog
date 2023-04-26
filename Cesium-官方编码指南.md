@@ -595,7 +595,7 @@ this._xSquared = x * x;
 
 🎨: 构造函数应该将类的基本组件作为参数。例如，`Cartesian3`采用`x`、`y`和`z`。
 
-从其他参数构造对象通常很方便。由于 JavaScript 没有函数重载，Cesium 使用
+从其他参数构造对象通常很方便。**由于 JavaScript 没有函数重载**，Cesium 使用
 以 `from` 为前缀的静态函数以这种方式构造对象。例如：
 
 ```javascript 
