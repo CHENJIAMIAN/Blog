@@ -44,6 +44,8 @@
 ```
 ## 介绍
 ```javascript
+WebGL 2.0是基于OpenGL ES 3.0的Web图形渲染API，用于在Web浏览器中进行高性能图形渲染。WebGL 2.0包含了大部分OpenGL ES 3.0的功能，并添加了一些WebGL特定的功能和改进，以便更好地适应Web平台。WebGL 2.0支持更高的渲染质量、更快的性能和更广泛的硬件支持，同时还支持一些新的渲染技术，如几何着色器、实例化渲染和可编程渲染管线。由于其高性能和跨平台特性，WebGL 2.0已成为Web游戏和应用程序开发的重要工具。因此，可以说WebGL 2.0是建立在OpenGL ES 3.0之上的Web图形渲染API。
+
 2007年，Vladimir Vukicevic， 一个塞尔维亚裔美国软件工程师开始编写一个名为Canvas 3D的OpenGL原型，以适用于即将到来的canvas元素上。2011年3月，他的工作指引着Kronos Group（一个OpenGL背后的非盈利组织）创建了WebGL：一个允许浏览器使用GPU的规范。
 不同于OpenGL:
     WebGL并没有提供单独操作单个点进行渲染的API
