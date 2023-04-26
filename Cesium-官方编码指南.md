@@ -916,7 +916,7 @@ function Foo() {
 - 如果一个库作为 CesiumJS 版本的一部分发布，它应该包含在生成的 [`ThirdParty.json`](../../../ThirdParty.json) 中。
   1. 使用包 name 更新 [`ThirdParty.extra.json`](../../../ThirdParty.extra.json)。如果它是 [`package.json`](../../../package.json) 中包含的 npm 模块，请使用确切的包名称。
   2. 如果库_不是_包含在 `package.json` 中的 npm 模块，请提供 `license`、`version` 和 `url` 字段。否则，需保证可以使用 `package.json` 检测到此信息。
-  3. 如果许可证有特殊情况，例如从多个可用许可证列表中选择使用单个许可证，则提供 `license` 字段将覆盖使用 `package.json` 检测到的信息。在解释异常的情况下，还应提供 `notes` 字段。
+  3. 如果在许可证方面存在特例，比如在多个可用许可证中选择使用单个许可证，提供许可证字段将覆盖使用 `package.json` 检测到的信息。如果需要解释异常情况，则还应在`note`s字段中提供解释。
   4. 运行 `npm run build-third-party` 并提交生成的 `ThirdParty.json` 
 
 ## Widgets
@@ -925,7 +925,7 @@ Cesium 包含一些在查看器中使用的标准小部件，包括动画和时�
 
 以了解如何使用Knockout 库，请参阅其主页的[入门](http://knockoutjs.com/) 部分。他们还有一个很棒的 [交互式教程](http://learn.knockoutjs.com/)，其中包含分步说明。
 
-Cesium 还使用 [Knockout-ES5](http://blog.stevensanderson.com/2013/05/20/knockout-es5-a-plugin-to-simplify-your-syntax/) 插件来简化 knockout 语法。这让我们可以像使用其他变量一样使用 knockout observables。调用 `knockout.track` 来创建可观察对象。这是来自 [BaseLayerPickerViewModel](https://github.com/CesiumGS/cesium/blob/main/Source/Widgets/BaseLayerPicker/BaseLayerPickerViewModel.js#L73) 的示例，它为`tooltip`、`showInstructions`和` _touch` 属性。
+Cesium 还使用 [Knockout-ES5](http://blog.stevensanderson.com/2013/05/20/knockout-es5-a-plugin-to-simplify-your-syntax/) 插件来简化 knockout 语法，也就是自动深度监听，不用一个个监听。这让我们可以像使用其他变量一样使用 knockout observables。调用 `knockout.track` 来创建可观察对象。这是来自 [BaseLayerPickerViewModel](https://github.com/CesiumGS/cesium/blob/main/Source/Widgets/BaseLayerPicker/BaseLayerPickerViewModel.js#L73) 的示例，它为`tooltip`、`showInstructions`和` _touch` 属性制作可观察对象
 
 ```javascript 
 knockout.track(this, ["tooltip", "showInstructions", "_touch"]); 
@@ -950,13 +950,15 @@ fullscreenSubscription.dispose();
 ### 命名
 
 - GLSL 文件以 `.glsl` 结尾，位于 [Shaders](https://github.com/CesiumGS/cesium/tree/main/Source/Shaders) 目录中。
-- 顶点着色器的文件有一个`VS`后缀；片段着色器有一个 FS 后缀。例如：`BillboardCollectionVS.glsl` 和 `BillboardCollectionFS.glsl`。
+- 顶点着色器的文件有一个`VS`后缀；片段着色器有一个 `FS` 后缀。例如：`BillboardCollectionVS.glsl` 和 `BillboardCollectionFS.glsl`。
 - 通常，函数和变量等标识符使用 `camelCase`。
-- Cesium 内置标识符以 `czm_` 开头，例如 [`czm_material`](https://github.com/CesiumGS/cesium/blob/main/Source/Shaders/Builtin/Structs/material.glsl)。文件具有相同的名称，但不带 `czm_` 前缀，例如 `material.glsl`。
-- 在对立方体贴图进行采样时使用 `czm_textureCube` 而不是 `texture`。
-这是为了保持
-与WebGL 1 的向后兼容性 
-- 制服以 `u_` 开头，例如，
+- Cesium 内置标识符以 `czm_` 开头，例如 [`czm_material`](https://github.com/CesiumGS/cesium/blob/main/Source/Shaders/Builtin/Structs/material.glsl)。文件具有相同的名称，但不带 `czm_` 前缀，例如 `material.glsl`
+- 在对立方体贴图进行采样时使用 `czm_textureCube` 而不是 `texture`。这是为了保持与WebGL 1 的向后兼容性 
+-  `Varyings` 以v_开头，例如，
+``` javascript 
+in vec2 v_textureCoordinates;
+``` 
+- uniform以 `u_` 开头，例如，
 ``` javascript 
 uniform sampler2D u_atlas; 
 ``` 

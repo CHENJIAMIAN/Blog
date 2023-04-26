@@ -127,6 +127,14 @@
   "cmenu-plugin:editor:toggle-code": [
     {
       "modifiers": [
+        "Mod"
+      ],
+      "key": "B"
+    }
+  ],
+  "editor:toggle-bold": [
+    {
+      "modifiers": [
         "Mod",
         "Shift"
       ],
