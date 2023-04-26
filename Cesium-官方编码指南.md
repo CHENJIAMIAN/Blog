@@ -69,7 +69,7 @@ this._showTouch = createCommand(function () {
 }); 
 ```
 
-下面介绍了更多命名约定及其设计模式，例如，[`options` 参数](#options-parameters)、[`result` 参数和临时变量](#result-parameters-and-scratch -variables) 和 [`from` 构造函数](#from-constructors)。
+下面介绍了更多命名约定及其设计模式，例如，[`options`参数](#options-parameters)、[`result`参数和临时变量](#result-parameters-and-scratch -variables) 和 [`from`构造函数](#from-constructors)。
 
 ## 格式化
 
@@ -130,7 +130,7 @@ try {
   - 米表示距离，
   - 弧度表示角度，以及
   - 持续时间的秒数。
-- 如果一个函数的参数有一个非标准单位，比如度，把单位放在函数名里，例如，``` 
+- 如果一个函数的参数有一个非标准单位，比如度，把单位放在函数名里，例如，
 
 ``` javascript 
 Cartesian3.fromDegrees = function ( 
@@ -483,7 +483,7 @@ Cartesian3.unpackArray = function (array, result) {
 Cartesian3.maximumComponent = function (cartesian) { 
   //>>includeStart('debug', pragmas.debug); 
   const c = cartesian；
-  Check.typeOf.object("笛卡尔", cartesian); 
+  Check.typeOf.object("cartesian", cartesian); 
   //>>includeEnd('调试'); 
 
   // 在调试中工作。发布失败，因为 c 被优化了！
@@ -729,7 +729,7 @@ function processTiles(tileset, frameState) {
 } 
 ``` 
 
-### Property Getter/Setters
+### 属性的Getter/Setters
 
 无需额外处理即可读取或写入的公共属性可以简单地在构造函数中赋值，例如，
 
@@ -784,9 +784,9 @@ Object.defineProperties(UniformState.prototype, {
 
 - 🚤: 调用 getter/setter 函数比直接访问属性要慢，因此类内部的函数可以在适当的时候直接使用私有属性。
 
-### Shadowed Property
+### Shadowed深拷贝属性
 
-当 getter/setter 函数的开销过高或需要引用类型语义时，例如，将属性作为 `result` 参数传递以便修改其属性的能力，请考虑将公共属性与私有阴影属性，例如，
+当 getter/setter 函数的开销过高或需要引用类型语义时，例如，将属性作为 `result` 参数传递以便修改其属性的能力，请考虑将公共属性与私有深拷贝属性，例如，
 
 ```javascript 
 function Model(options) { 
@@ -845,11 +845,11 @@ function loadTileset(tileset, tilesJson, done) {
 - 🎨: 将新类和函数放在 Cesium 堆栈（目录）的右侧部分。从下往上：
   - `Source/Core` - 数字运算。纯数学，例如 [`Cartesian3`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/Cartesian3.js)。纯几何体，例如 [`CylinderGeometry`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/CylinderGeometry.js)。基本算法，例如 [`mergeSort`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/mergeSort.js)。请求辅助函数，例如 [`loadArrayBuffer`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/loadArrayBuffer.js)。
   - `Source/Renderer` - WebGL 抽象，例如 [`ShaderProgram`](https://github.com/CesiumGS/cesium/blob/main/Source/Renderer/ShaderProgram.js) 和特定于 WebGL 的实用程序，例如 [` ShaderCache`](https://github.com/CesiumGS/cesium/blob/main/Source/Renderer/ShaderCache.js)。此目录中的标识符不是公共 Cesium API 的一部分。
-  - `Source/Scene` - 图形引擎，包括 [Model](https://github.com/CesiumGS/cesium/blob/main/Source/Scene/Model.js) 等原语。此目录中的代码通常依赖于 `Renderer`。
+  - `Source/Scene` - 图形引擎，包括 [Model](https://github.com/CesiumGS/cesium/blob/main/Source/Scene/Model.js) 等primitive。此目录中的代码通常依赖于 `Renderer`。
   - `Source/DataSources` - 实体API，例如[`Entity`](https://github.com/CesiumGS/cesium/blob/main/Source/DataSources/Entity.js)，以及数据源，例如[` CzmlDataSource`](https://github.com/CesiumGS/cesium/blob/main/Source/DataSources/CzmlDataSource.js)。
   - `Source/Widgets` - 主要的 Cesium [`Viewer`](https://github.com/CesiumGS/cesium/blob/main/Source/Widgets/Viewer/Viewer.js) 等小部件。
 
-文件属于哪个目录通常很明显。如果不是，则通常在 `Core` 和另一个目录之间做出决定。如果它是纯数字运算或预计对 Cesium 通常有用的实用程序，请将文件放在 Core 中，例如 [`Matrix4`](https://github.com/CesiumGS/cesium/blob/main/ Source/Core/Matrix4.js) 属于 `Core`，因为 Cesium 堆栈的许多部分都使用 4x4 矩阵；另一方面，[`BoundingSphereState`](https://github.com/CesiumGS/cesium/blob/main/Source/DataSources/BoundingSphereState.js) 在 `DataSources` 中，因为它特定于数据源。
+文件属于哪个目录通常很明显。如果不是，则通常在 `Core` 和另一个目录之间做出决定。如果它是纯数字运算或预计对 Cesium 通常有用的实用程序，请将文件放在 Core 中，例如 [`Matrix4`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/Matrix4.js) 属于 `Core`，因为 Cesium 堆栈的许多部分都使用 4x4 矩阵；另一方面，[`BoundingSphereState`](https://github.com/CesiumGS/cesium/blob/main/Source/DataSources/BoundingSphereState.js) 在 `DataSources` 中，因为它特定于数据源。
 ![[Pasted image 20230426101035.png]]
 ![[Pasted image 20230426101106.png]]
 模块（文件）应该只引用堆栈中同一级别或较低级别的模块。例如，`Scene` 中的模块可以使用`Scene`、`Renderer` 和`Core` 中的模块，但不能使用`DataSources` 或`Widgets` 中的模块。

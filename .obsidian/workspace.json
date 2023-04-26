@@ -37,12 +37,9 @@
             "id": "255a49872e6bdfef",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Cesium-官方编码指南.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": true
+                "file": "images/Pasted image 20230426101035.png"
               }
             }
           }
@@ -114,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium-官方编码指南.md"
+                "file": "images/Pasted image 20230426101035.png"
               }
             }
           },
@@ -179,10 +176,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6323b2f6898b32c7",
+  "active": "255a49872e6bdfef",
   "lastOpenFiles": [
-    "Cesium.md",
     "Cesium-官方编码指南.md",
+    "Cesium.md",
     "WebGL-QA.md",
     "images/Pasted image 20230426101106.png",
     "images/Pasted image 20230426101035.png",
