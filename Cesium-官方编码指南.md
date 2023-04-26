@@ -652,7 +652,7 @@ const v2 = Cartesian3.add(v0, v1, result);
 - `equalsEpsilon` 
 - `toString`
 
-这些原型函数通常委托给非原型（静态）版本，例如，
+这些原型函数通常委托给非原型（静态）版本（原型版本的好处是可以多态使用），例如，
 
 ```javascript 
 Cartesian3.equals = function (left, right) {
@@ -671,7 +671,6 @@ Cartesian3.prototype.equals = function (right) {
 };
 ```
 
-原型版本的好处是可以多态使用。
 
 ### 静态常量
 
