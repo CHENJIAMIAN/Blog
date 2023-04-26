@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "b704ad565691395f",
+        "id": "62bff86f36e265a5",
         "type": "tabs",
         "children": [
           {
-            "id": "7e8ceb9398c57d10",
+            "id": "165e0dae8314b663",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -70,9 +65,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Cesium.md"
-              }
+              "state": {}
             }
           },
           {
@@ -131,7 +124,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Pasted image ",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -157,8 +150,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "0a50d9c573337de4",
+  "active": "ae012ef0f7d93e48",
   "lastOpenFiles": [
+    "Cesium.md",
     "images/20230426111523.png",
     "images/20230426101106.png",
     "images/20230426101035.png",
@@ -169,9 +163,7 @@
     "images/20230419101452.png",
     "images/20230419095100.png",
     "images/20230419095022.png",
-    "images/20230411105231.png",
     "【区块链】.md",
-    "Cesium.md",
     "Vue3.md",
     "WebGL-QA.md",
     "Cesium-QA.md",
