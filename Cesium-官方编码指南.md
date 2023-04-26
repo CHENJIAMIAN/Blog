@@ -794,6 +794,7 @@ function Model(options) {
 
 Model.prototype.update = function (frameState) {
   if (!Matrix4.equals(this._modelMatrix, this.modelMatrix)) { 
+    //切断引用后的同步方式：外部矩阵有变化才更新内部矩阵
     // clone() 是深拷贝。不是 this._modelMatrix = this._modelMatrix 
     Matrix4.clone(this.modelMatrix, this._modelMatrix);  
     // 执行模型矩阵变化时需要发生的缓慢操作
@@ -831,22 +832,22 @@ function loadTileset(tileset, tilesJson, done) {
   // ... 
 } 
 ```
-
-即使它依赖于将 `loadTileset` 函数隐式提升到文件顶部。
+它依赖于函数隐式将 `loadTileset` 提升到文件顶部。
 
 ## 设计
 
 - 🏠: 只有当它可能对最终用户有用时，才将类或函数作为 Cesium API 的一部分；避免将实现细节作为公共 API 的一部分。当某些东西是公开的时，它会使 Cesium API 变得更大，更难学习，以后更难更改，并且需要更多的文档工作。
-- 🎨: 将新类和函数放在 Cesium 堆栈（目录）的右侧部分。从下往上：
+- 🎨: 将新类和函数放在 Cesium 堆栈（目录`Source/XXX` ）的右侧部分。从下往上：
+ ![gh](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/16825068650006j94b4.png)
   - `Source/Core` - 数字运算。纯数学，例如 [`Cartesian3`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/Cartesian3.js)。纯几何体，例如 [`CylinderGeometry`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/CylinderGeometry.js)。基本算法，例如 [`mergeSort`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/mergeSort.js)。请求辅助函数，例如 [`loadArrayBuffer`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/loadArrayBuffer.js)。
   - `Source/Renderer` - WebGL 抽象，例如 [`ShaderProgram`](https://github.com/CesiumGS/cesium/blob/main/Source/Renderer/ShaderProgram.js) 和特定于 WebGL 的实用程序，例如 [` ShaderCache`](https://github.com/CesiumGS/cesium/blob/main/Source/Renderer/ShaderCache.js)。此目录中的标识符不是公共 Cesium API 的一部分。
-  - `Source/Scene` - 图形引擎，包括 [Model](https://github.com/CesiumGS/cesium/blob/main/Source/Scene/Model.js) 等primitive。此目录中的代码通常依赖于 `Renderer`。
+  - `Source/Scene` - 图形引擎，包括 [Model](https://github.com/CesiumGS/cesium/blob/main/Source/Scene/Model.js) 等 `primitive`。此目录中的代码通常依赖于 `Renderer`。
   - `Source/DataSources` - 实体API，例如[`Entity`](https://github.com/CesiumGS/cesium/blob/main/Source/DataSources/Entity.js)，以及数据源，例如[` CzmlDataSource`](https://github.com/CesiumGS/cesium/blob/main/Source/DataSources/CzmlDataSource.js)。
   - `Source/Widgets` - 主要的 Cesium [`Viewer`](https://github.com/CesiumGS/cesium/blob/main/Source/Widgets/Viewer/Viewer.js) 等小部件。
 
 文件属于哪个目录通常很明显。如果不是，则通常在 `Core` 和另一个目录之间做出决定。如果它是纯数字运算或预计对 Cesium 通常有用的实用程序，请将文件放在 Core 中，例如 [`Matrix4`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/Matrix4.js) 属于 `Core`，因为 Cesium 堆栈的许多部分都使用 4x4 矩阵；另一方面，[`BoundingSphereState`](https://github.com/CesiumGS/cesium/blob/main/Source/DataSources/BoundingSphereState.js) 在 `DataSources` 中，因为它特定于数据源。
 ![CesiumJS Design](https://raw.fastgit.org/CesiumGS/cesium/main/Documentation/Contributors/CodingGuide/1.jpg)
-![CesiumJS Design](https://raw.fastgit.org/CHENJIAMIAN/Blog/master/images/Pasted%20image%2020230426101106.png)
+
 模块（文件）应该只引用堆栈中同一级别或较低级别的模块。例如，`Scene` 中的模块可以使用`Scene`、`Renderer` 和`Core` 中的模块，但不能使用`DataSources` 或`Widgets` 中的模块。
 
 - 需要显式删除 WebGL 资源，以便包含它们的类（以及包含这些类的类等）具有 `destroy` 和 `isDestroyed` 函数，例如，
