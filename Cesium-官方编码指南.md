@@ -559,7 +559,7 @@ function Cartesian3(x, y, z) {
 const p = new Cartesian3(1.0, 2.0, 3.0); 
 ``` 
 
-- 🚤: 在构造函数中分配给一个类的所有属性成员。这允许 JavaScript 引擎使用隐藏类并避免进入字典模式。如果初始值没有意义，则分配`undefined`。不要向对象添加属性，例如，
+- 🚤: 在构造函数中为类的所有属性成员分配初始值。这样做可以让 JavaScript 引擎使用隐藏类，。如果初始值没有意义，则分配`undefined`。不要向对象添加属性，例如，
 
 ```javascript 
 const p = new Cartesian3(1.0, 2.0, 3.0); 
