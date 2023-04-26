@@ -953,6 +953,7 @@ fullscreenSubscription.dispose();
 - 顶点着色器的文件有一个`VS`后缀；片段着色器有一个 `FS` 后缀。例如：`BillboardCollectionVS.glsl` 和 `BillboardCollectionFS.glsl`。
 - 通常，函数和变量等标识符使用 `camelCase`。
 - Cesium 内置标识符以 `czm_` 开头，例如 [`czm_material`](https://github.com/CesiumGS/cesium/blob/main/Source/Shaders/Builtin/Structs/material.glsl)。文件具有相同的名称，但不带 `czm_` 前缀，例如 `material.glsl`
+>  czm_textureCube是CesiumJS的一个库函数，其底层实现方式是根据WebGL上下文对象是否支持WebGL 2来使用不同的API进行操作的。如果当前浏览器使用的是WebGL 1，czm_textureCube会判断当前上下文对象无法支持WebGL 2，然后使用WebGL 1对应的API来实现立方体贴图的采样。因此，虽然czm_textureCube是为了满足WebGL 2的需求而存在的，但是它也能够通过兼容性处理来在WebGL 1中使用。
 - 在对立方体贴图进行采样时使用 `czm_textureCube` 而不是 `texture`。这是为了保持与WebGL 1 的向后兼容性 
 -  `Varyings` 以v_开头，例如，
 ``` javascript 
@@ -962,9 +963,7 @@ in vec2 v_textureCoordinates;
 ``` javascript 
 uniform sampler2D u_atlas; 
 ``` 
-
-- `EC` 后缀表示点或向量在眼睛坐标中，例如，
-
+- EC后缀表示点或向量位于眼睛坐标系中，例如，
 ```glsl 
 varying vec3 v_positionEC；
 // ... 
@@ -977,8 +976,23 @@ v_positionEC = (czm_modelViewRelativeToEye * p).xyz;
 attribute vec3 position3DHigh;
 attribute vec3 position3DLow;
 ``` 
-
-- 2D 纹理坐标是 `s` 和 `t`，而不是 `u` 和 `v`，例如，
+> WebGL通过利用GPU RTE提供的并行计算能力实现高质量的图形渲染和计算。GPU RTE通常包含更多的处理器核心和更高的内存带宽，可以同时处理多个数据和计算任务。
+> 
+> 在底层原理方面，GPU RTE通过以下几个步骤实现并行计算：
+> 
+> 1. 图形卡将计算任务传递给GPU驱动程序。
+> 2. GPU驱动程序将任务分成多个小块，每个小块可以同时在GPU上执行。
+> 3. 单个任务被分配给多个处理器核心，并在GPU内存中运行。
+> 4. 处理器核心读取内存中的数据进行计算，可以同时读取多个数据并执行多个计算操作。
+> 5. 计算结果被写入GPU内存中。
+> 6. GPU将所有结果合并为最终结果，并将结果传递回CPU。
+> 
+> WebGL应用程序可以通过WebGL API调用将计算任务输出到GPU，并利用GPU RTE的并行计算能力完成计算任务。WebGL提供了多种类型的缓冲器（buffer）对象，可以将计算任务数据存储在GPU内存中。然后，WebGL API可以使用着色器程序来对这些数据进行计算，并将计算结果输出到缓冲器的另一端。
+> 
+> 在更底层的实现原理方面，GPU RTE内部主要利用了并行计算架构和可编程着色器技术。GPU通常包含较多的处理器核心，可以同时执行多个计算操作。GPU RTE还可以利用单指令多数据（SIMD）指令集来加速计算，并在内存访问时通过存储器分层结构和缓存技术来提高内存带宽和访问速度。可编程着色器技术则允许开发者自定义计算任务，并可以在GPU上高效执行这些任务。
+> 
+> 在最底层的实现原理方面，GPU RTE内部使用了硬件级别的并行计算技术，如SIMD指令，多核心架构等。此外，GPU内部还使用了高速缓存技术，内存条带技术等一系列优化技术来提高计算和内存访问速度。GPU RTE还能够执行复杂的图像和计算任务，并使用可编程着色器技术进行高效的计算和渲染。
+> - 2D 纹理坐标是 `s` 和 `t`，而不是 `u` 和 `v`，例如，
 
 ```glsl 
 attribute vec2 st; 
