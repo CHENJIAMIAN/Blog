@@ -119,16 +119,16 @@ this._showTouch = createCommand(function () {
 - [无警报](http://eslint.org/docs/rules/no-alert) 
 - [无浮动小数](http://eslint.org/docs/rules/no-floating-decimal) 
 - [no-implicit-globals](http://eslint.org/docs/rules/no-implicit-globals) 
-- [no-loop-func](http://eslint.org/docs/rules/no- loop-func) 
+- [no-loop-func](http://eslint.org/docs/rules/no-loop-func) 
 - [no-use-before-define](http://eslint.org/docs/rules/no-use-before-define) 以防止在定义变量和函数之前使用它们。
 - [no-else-return](http://eslint.org/docs/rules/no-else-return) 
-- [no-undef-init](http://eslint.org/docs/rules/no- undef-init) 
+- [no-undef-init](http://eslint.org/docs/rules/no-undef-init) 
 - [无序列](http://eslint.org/docs/rules/no-sequences) 
-- [无未使用的表达式](http://eslint.org/docs/rules/no-未使用的表达式）
+- [no-unused-expressions](http://eslint.org/docs/rules/no-unused-expressions)
 - [无尾随空格](http://eslint.org/docs/rules/no-trailing-spaces) 
-- [no-lonely-if](http://eslint.org/docs/rules/no- lonely-if) 
+- [no-lonely-if](http://eslint.org/docs/rules/no-lonely-if) 
 - [quotes](http://eslint.org/docs/rules/quotes) 强制使用单引号
-- [no-sequences](http://eslint.org/docs/rules/no- sequences) 
+- [no-sequences](http://eslint.org/docs/rules/no-sequences) 
 - [no-unused-expressions](http://eslint.org/docs/rules/no-unused-expressions) 
 
 **节点特定规则：** 
@@ -1005,8 +1005,8 @@ v_positionEC = (czm_modelViewRelativeToEye * p).xyz;
 - 当使用 [GPU RTE](https://help.agi.com/AGIComponents/html/BlogPrecisionsPrecisions.htm) 时，`High` 和 `Low` 后缀分别定义高位和低位，例如，
 
 ```glsl
-属性 vec3 position3DHigh；
-属性 vec3 position3DLow；
+attribute vec3 position3DHigh;
+attribute vec3 position3DLow;
 ``` 
 
 - 2D 纹理坐标是 `s` 和 `t`，而不是 `u` 和 `v`，例如，
@@ -1020,11 +1020,11 @@ attribute vec2 st;
 - 使用与 JavaScript 相同的格式，除了将 `{` 换行，例如，
 
 ```glsl 
-struct czm_ray 
-{ 
-    vec3 origin; 
-    vec3方向；
-}; 
+struct czm_ray
+{
+    vec3 origin;
+    vec3 direction;
+};
 ``` 
 
 ### 性能

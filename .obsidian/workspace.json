@@ -34,7 +34,7 @@
             }
           },
           {
-            "id": "202b866c57eefec1",
+            "id": "255a49872e6bdfef",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -109,6 +109,16 @@
         "type": "tabs",
         "children": [
           {
+            "id": "a7974b07fd2b2c15",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Cesium-官方编码指南.md"
+              }
+            }
+          },
+          {
             "id": "3f5e35f3c2b63f92",
             "type": "leaf",
             "state": {
@@ -150,23 +160,12 @@
               "type": "smart-connections-chat-view",
               "state": {}
             }
-          },
-          {
-            "id": "a7974b07fd2b2c15",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "Cesium-官方编码指南.md"
-              }
-            }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 259.5
+    "width": 363.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -179,17 +178,17 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "202b866c57eefec1",
+  "active": "a7974b07fd2b2c15",
   "lastOpenFiles": [
+    "Cesium.md",
+    "Cesium-官方编码指南.md",
+    "WebGL-QA.md",
     "images/Pasted image 20230426101106.png",
     "images/Pasted image 20230426101035.png",
-    "Cesium.md",
     "1.jpg.md",
-    "Cesium-官方编码指南.md",
     "images/Pasted image 20230426092257.png",
     "images/Pasted image 20230426092252.png",
     "WebGL.md",
-    "WebGL-QA.md",
     "Cesium-QA.md",
     "☁ 难题.md",
     "0 正则.md",
@@ -212,7 +211,6 @@
     "conflict-files-obsidian-git.md",
     "杂-GPT-QA.md",
     "images/Pasted image 20230411105231.png",
-    "images/Pasted image 20230411101658.png",
     "JS.md",
     "JS 进阶.md",
     "JS问答.md",
