@@ -4,50 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "d416500d5dd0a6f3",
+        "id": "b704ad565691395f",
         "type": "tabs",
         "children": [
           {
-            "id": "7935b61fc6f423f8",
+            "id": "7e8ceb9398c57d10",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cesium-QA.md",
+                "file": "Cesium.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "51258be3eb35d03c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "WebGL-QA.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6368f1885e10f5ac",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium-官方编码指南.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": true
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -66,21 +39,6 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
-            }
-          },
-          {
-            "id": "ae012ef0f7d93e48",
-            "type": "leaf",
-            "state": {
-              "type": "search",
-              "state": {
-                "query": "pnpm",
-                "matchingCase": false,
-                "explainSearch": false,
-                "collapseAll": false,
-                "extraContext": false,
                 "sortOrder": "alphabetical"
               }
             }
@@ -113,7 +71,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium-官方编码指南.md"
+                "file": "Cesium.md"
               }
             }
           },
@@ -162,6 +120,27 @@
           }
         ],
         "currentTab": 2
+      },
+      {
+        "id": "b8958e087523eb9b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ae012ef0f7d93e48",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "Pasted image ",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
@@ -178,35 +157,37 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6368f1885e10f5ac",
+  "active": "0a50d9c573337de4",
   "lastOpenFiles": [
+    "images/20230426111523.png",
+    "images/20230426101106.png",
+    "images/20230426101035.png",
+    "images/20230426092257.png",
+    "images/20230426092252.png",
+    "images/20230424120853.png",
+    "images/20230419164035.png",
+    "images/20230419101452.png",
+    "images/20230419095100.png",
+    "images/20230419095022.png",
+    "images/20230411105231.png",
+    "【区块链】.md",
+    "Cesium.md",
+    "Vue3.md",
     "WebGL-QA.md",
     "Cesium-QA.md",
-    "images/Pasted image 20230426111526.png",
     "Cesium-官方编码指南.md",
-    "images/Pasted image 20230426111523.png",
-    "images/Pasted image 20230426101106.png",
+    "image",
     "1.jpg.md",
-    "Cesium.md",
-    "images/Pasted image 20230426101035.png",
-    "images/Pasted image 20230426092257.png",
-    "images/Pasted image 20230426092252.png",
     "WebGL.md",
     "☁ 难题.md",
     "0 正则.md",
     "☁.md",
     "【网络】HTTPS 非对称加密 RSA.md",
-    "【区块链】.md",
     "【地图】投影 编号.md",
     "Node.js.md",
     "AdBlock 规则.md",
-    "images/Pasted image 20230424120853.png",
     "TS.md",
     "Cesium-GLTF.md",
-    "images/Pasted image 20230419164035.png",
-    "images/Pasted image 20230419101452.png",
-    "images/Pasted image 20230419095100.png",
-    "Vue3.md",
     "AI产品导航.md",
     "Cesium-3DTiles.md",
     "conflict-files-obsidian-git.md",
