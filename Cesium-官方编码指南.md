@@ -496,7 +496,7 @@ if (typeof WebGLRenderingContext === "undefined") {
 
 ### `result` 参数和`Scratch`临时变量
 
-🚤: 在 JavaScript 中，用户定义的类（如`Cartesian3`）是引用类型，并且因此分配在堆上。频繁分配这些类型会导致严重的性能问题，因为它会产生 GC 压力，从而导致垃圾收集器运行更长时间和更频繁。
+	🚤: 在 JavaScript 中，用户定义的类（如`Cartesian3`）是引用类型，并且因此分配在堆上。频繁分配这些类型会导致严重的性能问题，因为它会产生 GC 压力，从而导致垃圾收集器运行更长时间和更频繁。
 
 Cesium 使用必需的`result`参数来避免隐式内存分配。例如，
 
@@ -504,17 +504,16 @@ Cesium 使用必需的`result`参数来避免隐式内存分配。例如，
 const sum = Cartesian3.add(v0, v1); //会为返回的sum隐含分配一个新的Cartesian3对象。
 ```
 
-相反，`Cartesian3.add` 需要一个`result` 参数：
+相反，如果`Cartesian3.add` 需要一个`result` 参数，
 
 ```javascript 
 const result = new Cartesian3(); 
 const sum = Cartesian3.add(v0, v1, result); // Result 和 sum 引用同一个对象
 ```
-
-这使得内存分配对调用者显式，这使得调用者可以在文件范围的临时变量中重复使用结果对象：
+就会使得内存分配对调用者显式，这使得调用者可以在文件范围的临时变量中重复使用结果对象：
 
 ```javascript 
-const scratchDistance = new Cartesian3(); 
+const scratchDistance = new Cartesian3(); //在被频繁调用的函数之外声明会被重复使用的临时变量，而不是在函数里
 
 Cartesian3.distance = function (left, right) { 
   Cartesian3.subtract(left, right, scratchDistance); 
@@ -564,14 +563,14 @@ const p = new Cartesian3(1.0, 2.0, 3.0);
 
 ```javascript 
 const p = new Cartesian3(1.0, 2.0, 3.0); 
-pw = 4.0; // 将 w 属性添加到 p，减慢属性访问，因为对象进入字典模式
+p.w = 4.0; // 将 w 属性添加到 p，减慢属性访问，因为对象进入字典模式
 ```
 
 - 🚤: 出于同样的原因，不要更改属性的类型，例如，将字符串分配给数字，例如
 
 ```javascript 
 const p = new Cartesian3(1.0, 2.0, 3.0); 
-px = "铯"; // 将 x 更改为字符串，减慢属性访问速度
+p.x = "铯"; // 将 x 更改为字符串，减慢属性访问速度
 ``` 
 
 - 在构造函数中，将属性视为一次写入；不要写信给他们或多次阅读它们。如果需要读取它们，请创建一个局部变量。例如：
