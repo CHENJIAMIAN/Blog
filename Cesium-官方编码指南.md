@@ -850,7 +850,7 @@ function loadTileset(tileset, tilesJson, done) {
 
 模块（文件）应该只引用堆栈中同一级别或较低级别的模块。例如，`Scene` 中的模块可以使用`Scene`、`Renderer` 和`Core` 中的模块，但不能使用`DataSources` 或`Widgets` 中的模块。
 
-- 需要显式删除 WebGL 资源，以便包含它们的类（以及包含这些类的类等）具有 `destroy` 和 `isDestroyed` 函数，例如，
+- WebGL资源需要显式删除，因此包含它们的类（以及包含这些类的类等等）都必须具有 `destroy` 和 `isDestroyed` 函数，例如测试用例如下：
 ```javascript 
 const primitive = new Primitive(/* ... */);
 expect(content.isDestroyed()).toEqual(false);
@@ -867,7 +867,7 @@ SkyBox.prototype.destroy = function () {
 };
 ``` 
 
-- 仅`销毁`您创建的对象；赋予类的外部对象应该由它们的所有者而不是类来销毁。
+- 仅`销毁`您创建的对象；赋予类的外部对象应该由它们的所有者而不是该类来销毁。
 
 ### 弃用和重大更改
 
