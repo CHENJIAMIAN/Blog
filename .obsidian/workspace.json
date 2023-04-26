@@ -42,7 +42,7 @@
                 "file": "Cesium-官方编码指南.md",
                 "mode": "source",
                 "backlinks": false,
-                "source": false
+                "source": true
               }
             }
           }
@@ -178,7 +178,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "a7974b07fd2b2c15",
+  "active": "255a49872e6bdfef",
   "lastOpenFiles": [
     "Cesium.md",
     "Cesium-官方编码指南.md",
