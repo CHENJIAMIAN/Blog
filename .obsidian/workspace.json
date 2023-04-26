@@ -97,7 +97,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -202,7 +203,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5
+    "width": 400.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -215,7 +217,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "202b866c57eefec1",
+  "active": "0a50d9c573337de4",
   "lastOpenFiles": [
     "images/Pasted image 20230426092257.png",
     "images/Pasted image 20230426092252.png",

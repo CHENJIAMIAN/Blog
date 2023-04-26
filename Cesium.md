@@ -1069,6 +1069,15 @@ pass表示渲染过程中的通道，主要用于渲染优化。在Cesium中，�
 ## 着色器源码
 
 ```js
+着色器程序使用原始 GLSL 源代码作为key进行缓存，以减少为初始化和使用着色器而进行的 WebGL 调用次数。
+执行命令
+	使用Context.draw执行命令 ，其中	
+		如果它与上一个命令不同，则绑定帧缓冲区。
+		应用与先前命令不同的渲染状态。由于渲染状态是不可变且被缓存的，所以可以通过比较前一个和当前的渲染状态，找到两者之间不同的部分，然后只设置这些不同的部分，而不是全部重新设置一遍渲染状态，这样可以提高效率。因此，会生成一个函数，这个函数只会设置发生了更改的状态，而不会重复设置已经存在且没有更改的状态。
+		绑定着色器程序（并在需要时编译/链接它）并设置更改的制服，包括 Cesium 的AutomaticUniforms。
+		绑定顶点数组并发出 drawElements 或 drawArrays。
+		在每一帧结束时，  Context.endFrame 通过解除绑定着色器程序、帧缓冲区、绘图缓冲区和纹理来清理状态。这有助于减少渲染器在每次命令执行之间管理的状态量。
+
 czm_material结构体包含以下属性：
 1. diffuse：散射光线对材质表面的影响，均匀地在所有方向上散射。
 2. specular：镜面反射的强度。
@@ -1079,14 +1088,12 @@ czm_material结构体包含以下属性：
 ```
 
 ```js
-AutomaticUniforms 是cesium内置的 GLSL Uniform, 指的是以czm_开头的变量。
+AutomaticUniforms 
+	是cesium内置的 GLSL Uniform, 指的是以czm_开头的变量。这些变量可以在shader中直接使用，无需手动传递。
 	包括光照信息（如 czm_lightColor、czm_sunDirectionEC 等）、视锥体信息、时间、相机位置、视口大小等。
 	ShaderProgram 中，会先区分哪些是需要手动更新的 Uniform 变量，哪些是自动更新的 Uniform 变量，
 		continueDraw中执行shaderProgram._setUniforms
 			ShaderProgram 的 _setUniforms 执行所有 uniforms 的 WebGL 设置，这其中就会进行自动刷新
-	是的，cesium的AutomaticUniforms这些变量在cesium中被用来传递一些自动计算的uniforms，比如相机位置、视口大小等。
-	
-	这些变量可以在shader中直接使用，无需手动传递。
 ```
 ## 杂
 
