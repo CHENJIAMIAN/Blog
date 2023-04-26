@@ -881,7 +881,7 @@ SkyBox.prototype.destroy = function () {
 
 公共标识符（类、函数、属性）在被删除之前应该被弃用。为此：
 
-- 决定应删除已弃用 API 的未来版本。这是视具体情况而定，具体取决于它对用户和 Cesium 开发的影响有多严重。大多数弃用的 API 将在 1-3 个版本中删除。如果需要，可以在拉取请求中对此进行讨论。
+- 决定应在那个未来版本的删除已弃用 API 。这是视具体情况而定的，具体取决于它对用户和 Cesium 开发的影响有多严重。大多数弃用的 API 将在 1-3 个版本中删除。如果需要，可以在拉取请求中对此进行讨论。
 - 使用 [`deprecationWarning`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/deprecationWarning.js) 警告用户 API 已弃用以及他们可以采取哪些主动更改，例如，
 
 ```javascript
@@ -897,7 +897,7 @@ function Foo() {
 - 添加 [`@deprecated`](http://usejsdoc.org/tags-deprecated.html) 文档标签。
 - 除了专门测试已弃用 API 的单元测试外，删除 Cesium 中所有已弃用 API 的使用。
 - 在 [`CHANGES.md`](https://github.com/CesiumGS/cesium/blob/main/CHANGES.md) 的`Deprecated` 部分提及弃用。包括它将被删除的 Cesium 版本。
-- 创建一个[问题]（https://github.com/CesiumGS/cesium/issues）以使用适当的`在[版本]中删除`标签删除 API。
+- 创建一个[问题](https://github.com/CesiumGS/cesium/issues)，标记`remove in [version]`标签来删除 API。
 - 删除 API 后，在 [`CHANGES.md`](https://github.com/CesiumGS/cesium/blob/main/CHANGES.md) 的`Breaking Changes` 部分添加对它的提及。
 
 ## 第三方库
@@ -908,14 +908,14 @@ function Foo() {
 - 提供 Cesium 真正需要且团队没有时间和/或专业知识来开发的功能。
 - 轻量级、经过测试、维护并合理广泛使用。
 - 不污染全局命名空间。
-- 提供足够的价值来证明添加需要维护集成的第三方库是合理的，并且在一些用户评估它时有可能略微计较 Cesium（通常，第三方越少越好）。
+- 提供足够的价值来证明添加需要维护集成的第三方库是合理的，但是，添加第三方库可能会导致一些用户会对 Cesium 产生疑虑（因为使用第三方库需要额外的维护工作）
 
 添加或更新第三方库时：
 
 - 确保 [LICENSE.md](../../../LICENSE.md) 更新为库的名称和完整的版权声明。
 - 如果一个库作为 CesiumJS 版本的一部分发布，它应该包含在生成的 [`ThirdParty.json`](../../../ThirdParty.json) 中。
   1. 使用包 name 更新 [`ThirdParty.extra.json`](../../../ThirdParty.extra.json)。如果它是 [`package.json`](../../../package.json) 中包含的 npm 模块，请使用确切的包名称。
-  2. 如果库_不是_包含在 `package.json` 中的 npm 模块，请提供 `license`、`version` 和 `url` 字段。否则，可以使用 `package.json` 检测到此信息。
+  2. 如果库_不是_包含在 `package.json` 中的 npm 模块，请提供 `license`、`version` 和 `url` 字段。否则，需保证可以使用 `package.json` 检测到此信息。
   3. 如果许可证有特殊情况，例如从多个可用许可证列表中选择使用单个许可证，则提供 `license` 字段将覆盖使用 `package.json` 检测到的信息。在解释异常的情况下，还应提供 `notes` 字段。
   4. 运行 `npm run build-third-party` 并提交生成的 `ThirdParty.json` 
 
