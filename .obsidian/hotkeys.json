@@ -123,5 +123,14 @@
       ],
       "key": "F1"
     }
+  ],
+  "cmenu-plugin:editor:toggle-code": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "B"
+    }
   ]
 }

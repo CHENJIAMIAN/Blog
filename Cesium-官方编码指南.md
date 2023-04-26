@@ -1,4 +1,4 @@
-# [Coding Guide ](https://github.com/CesiumGS/cesium/blob/main/Documentation/Contributors/CodingGuide/README.md)
+ `result` 参数和临时变量# [Coding Guide ](https://github.com/CesiumGS/cesium/blob/main/Documentation/Contributors/CodingGuide/README.md)
 
 CesiumJS 是世界上最大的 JavaScript 代码库之一。从一开始，我们就一直保持着代码质量的高标准，这使得代码库对于新老贡献者来说都更容易使用。我们希望您发现代码库干净且一致。
 
@@ -367,7 +367,7 @@ function getTransform(node) {
 const sphere = new SphereGeometry(10.0, 32, 16, VertexFormat.POSITION_ONLY); 
 ```
 
-不清楚数值代表什么，调用者需要知道参数的顺序。如果这需要一个“选项”参数，它看起来像这样：
+不清楚数值代表什么，调用者需要知道参数的顺序。如果这需要一个“options”参数，它看起来像这样：
 
 ```javascript 
 const sphere = new SphereGeometry({ 
@@ -378,7 +378,7 @@ const sphere = new SphereGeometry({
 }); 
 ``` 
 
-- 🚤: 使用 `{ /* ... */ }` 创建一个对象字面量，这是一个内存分配。如果函数可能成为热点，请避免设计使用“选项”参数的函数；否则，调用者将不得不使用临时变量（参见 [下文](#result-parameters-and-scratch-variables)）来提高性能。非数学类的构造函数是“选项”参数的良好候选者，因为 Cesium 避免在热点中构造对象。例如，
+- 🚤: 使用 `{ /* ... */ }` 创建一个对象字面量，这是一种内存分配，比较慢。所以如果函数可能被频繁调用，请避免设计使用“options”参数的函数；否则，调用者将不得不使用临时变量（参见 [ `result` 参数和临时变量](# `result` 参数和临时变量)）来提高性能。除了数学类的构造函数外，其他的类构造函数都可以使用`options`参数。Cesium 避免了在被频繁调用的类使用`options`去构造对象。例如，
 
 ```javascript 
 const p = new Cartesian3({ 
@@ -405,7 +405,7 @@ Cartesian3.fromRadians = function (longitude, latitude, height) {
 }; 
 ``` 
 
-- 🚤: 不要使用 `defaultValue` 如果它会导致不必要的函数调用或内存分配，例如，
+- 🚤: 不要使用 `defaultValue` ，如果它会导致不必要的函数调用或内存分配，例如，
 
 ```javascript 
 this._mapProjection = defaultValue( 
