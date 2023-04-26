@@ -779,23 +779,23 @@ Object.defineProperties(UniformState.prototype, {
 
 - 🚤: 调用 getter/setter 函数比直接访问属性要慢，因此类内部的函数可以在适当的时候直接使用私有属性。
 
-### Shadowed深拷贝属性
+### 私有阴影属性
 
-当 getter/setter 函数的开销过高或需要引用类型语义时，例如，将属性作为 `result` 参数传递以便修改其属性的能力，请考虑将公共属性与私有深拷贝属性结合使用，例如，
+> 当我们需要频繁地获取和设置对象属性时，使用getter/setter函数可能会导致代码性能下降，因为getter/setter函数需要动态地执行一些代码才能完成属性的获取和设置，并且每次调用都需要执行这些代码。此时，直接暴露属性可能会更有效率。但是，如果我们直接暴露对象的引用类型属性，其他代码可能会直接修改这些值，将其篡改，从而破坏了对象的内部状态。为了避免这种情况，我们可以通过将公共属性和私有阴影属性结合起来的方式，实现对属性的更好保护和控制。我们可以暴露公共属性用于读取和写入，同时在内部使用私有阴影属性保存属性值，在必要的时候判断私有阴影属性值是否发生改变，避免其他代码直接篡改属性值造成损害。这种方式可以在提高代码安全性和可维护性的前提下，减少性能开销。
 
+例如：
 ```javascript 
 function Model(options) { 
   this.modelMatrix = Matrix4.clone( 
     defaultValue(options.modelMatrix, Matrix4.IDENTITY) 
   ); 
-  this._modelMatrix = Matrix4.clone(this.modelMatrix); 
+  this._modelMatrix = Matrix4.clone(this.modelMatrix); //克隆以切断引用
 } 
 
 Model.prototype.update = function (frameState) {
   if (!Matrix4.equals(this._modelMatrix, this.modelMatrix)) { 
     // clone() 是深拷贝。不是 this._modelMatrix = this._modelMatrix 
-    Matrix4.clone(this.modelMatrix, this._modelMatrix); 
-
+    Matrix4.clone(this.modelMatrix, this._modelMatrix);  
     // 执行模型矩阵变化时需要发生的缓慢操作
   } 
 }; 
