@@ -247,7 +247,7 @@ function radiiEquals(left, right) {
 ``` 
 
 - 使用 `undefined` 而不是 `null`。
-- 测试变量是否使用 Cesium 的 `defined` 函数定义，例如，
+- 使用`Cesium.defined` 测试一个变量是否被定义，例如，
 
 ```javascript 
 const v = undefined; 
@@ -264,14 +264,12 @@ if (defined(u)) {
 - 使用 `Object.freeze` 函数创建枚举，例如，
 
 ```javascript 
+const ModelAnimationState = {
+	STOPPED : 0,
+	ANIMATING : 1
+};
 
-    const ModelAnimationState = {
-        STOPPED : 0,
-        ANIMATING : 1
-    };
-
-    return Object.freeze(ModelAnimationState);
-});
+return Object.freeze(ModelAnimationState);
 ``` 
 
 - 对不明显的代码使用描述性注释，例如，
