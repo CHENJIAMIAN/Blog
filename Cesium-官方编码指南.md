@@ -14,38 +14,6 @@ CesiumJS 是世界上最大的 JavaScript 代码库之一。从一开始，我�
 
 在某种程度上，本指南可以概括为_使新代码与现有代码相似_。
 
-- [编码指南](#coding-guide) 
-  - [命名](#naming) 
-  - [格式化](#formatting) 
-  - [Linting](#linting) 
-  - [单位](#units) 
-  - [基本代码构造]( #basic-code-construction) 
-  - [函数](#functions) 
-    - [`options` 参数](#options-parameters) 
-    - [默认参数值](#default-parameter-values) 
-    - [抛出异常](#throwing -例外）
-    - [`result` 参数和临时变量](#result-parameters-and-scratch-variables) 
-  - [类](#classes) 
-    - [构造函数](#constructor-functions) 
-    - [`from` 构造函数](# from-constructors) 
-    - [`to` 函数](#to-functions) 
-    - [对基础类谨慎使用原型函数](#use-prototype-functions-for-fundamental-classes-sparingly) 
-    - [静态常量](# static-constants) 
-    - [Private Functions](#private-functions) 
-    - [Property Getter/Setters](#property-gettersetters) 
-    - [Shadowed Property](#shadowed-property) 
-    - [将构造函数放在文件](#put-the-constructor-function-at-the-top-of-the-file)
-  - [设计](#design) 
-    - [弃用和重大更改](#deprecation-and-breaking-changes) 
-  - [第三方库](#third-party-libraries) 
-  - [小部件](#widgets) 
-    - [ Knockout 订阅](#knockout-subscriptions) 
-  - [GLSL](#glsl) 
-    - [命名](#naming-1) 
-    - [格式](#formatting-1) 
-    - [性能](#performance) 
-  - [资源]( #resources) 
-
 ## 命名 
 
 - 目录名称为 `PascalCase`，例如 `Source/Scene`。
@@ -116,7 +84,7 @@ this._showTouch = createCommand(function () {
 **一般规则：** 
 
 - [block-scoped-var](http://eslint.org/docs/rules/block-scoped-var)
-- [无警报](http://eslint.org/docs/rules/no-alert) 
+- [no-alert](http://eslint.org/docs/rules/no-alert) 
 - [无浮动小数](http://eslint.org/docs/rules/no-floating-decimal) 
 - [no-implicit-globals](http://eslint.org/docs/rules/no-implicit-globals) 
 - [no-loop-func](http://eslint.org/docs/rules/no-loop-func) 
@@ -431,9 +399,292 @@ const p = new Cartesian3({
 ```javascript 
 const p = new Cartesian3(1.0, 2.0, 3.0); 
 ``` 
+
+### 默认参数值
+
+如果函数参数或类属性存在_合理_默认值，则不需要用户提供它。使用 Cesium 的 defaultValue 来分配一个默认值。例如，在 Cartesian3.fromRadians 中，height 默认为零：
+
+```javascript 
+Cartesian3.fromRadians = function (longitude, latitude, height) { 
+  height = defaultValue(height, 0.0); 
+  // ... 
+}; 
+``` 
+
+- 🚤: 不要使用 `defaultValue` 如果它会导致不必要的函数调用或内存分配，例如，
+
+```javascript 
+this._mapProjection = defaultValue( 
+  options.mapProjection, 
+  new GeographicProjection() 
+); 
+```
+
+最好写成
+
+```javascript 
+this._mapProjection = defined(options.mapProjection) 
+  ？options.mapProjection 
+  : new GeographicProjection(); 
+``` 
+
+- 如果 `options` 参数是可选的，请使用 `defaultValue.EMPTY_OBJECT`，例如
+
+```javascript 
+function DebugModelMatrixPrimitive(options) { 
+  options = defaultValue(options, defaultValue.EMPTY_OBJECT); 
+  this.length = defaultValue(options.length, 10000000.0); 
+  this.width = defaultValue(options.width, 2.0); 
+  // ... 
+} 
+```
+
+一些常见的合理默认值是
+
+- `height`: `0.0` 
+- `ellipsoid`: `Ellipsoid.WGS84` 
+- `show`: `true` 
+
+### 抛出异常
+
+[使用Cesium的Check](https://github.com/CesiumGS/cesium/blob/main/Source/Core/Check.js)类在用户出现编码错误时抛出“DeveloperError”。最常见的错误是参数丢失、类型错误或超出错误类型的范围或超出范围。
+
+- 例如，要检查参数是否已定义并且是一个对象：
+
+```javascript 
+Cartesian3.maximumComponent = function (cartesian) {
+  //>>includeStart('debug', pragmas.debug);
+  Check.typeOf.object("cartesian", cartesian);
+  //>>includeEnd('debug');
+
+  return Math.max(cartesian.x, cartesian.y, cartesian.z);
+};
+``` 
+
+- 对于更复杂的参数检查，手动检查参数然后抛出 `DeveloperError`。示例：
+
+```javascript 
+Cartesian3.unpackArray = function (array, result) { 
+  //>>includeStart('debug', pragmas.debug); 
+	  Check.defined("array", array); 
+  Check.typeOf.number.greaterThanOrEquals("array.length", array.length, 3); 
+  if (array.length % 3 !== 0) { 
+    throw new DeveloperError("数组长度必须是 3 的倍数。"); 
+  } 
+  //>>includeEnd('调试'); 
+
+  // ... 
+}; 
+```
+
+- 要检查“DeveloperError”，请将代码包围在“includeStart”/“includeEnd”注释中，如上所示，以便开发人员错误检查可以在发布版本之外进行优化。不要在 `includeStart`/`includeEnd` 中包含所需的副作用，例如，
+
+```javascript 
+Cartesian3.maximumComponent = function (cartesian) { 
+  //>>includeStart('debug', pragmas.debug); 
+  const c = cartesian；
+  Check.typeOf.object("笛卡尔", cartesian); 
+  //>>includeEnd('调试'); 
+
+  // 在调试中工作。发布失败，因为 c 被优化了！
+  return Math.max(cx, cy, cz); 
+}; 
+```
+
+- 抛出 Cesium 的 `RuntimeError` 错误，直到运行时才知道。与开发人员错误不同，运行时错误检查并未针对发布版本进行优化。
+
+```javascript 
+if (typeof WebGLRenderingContext === "undefined") { 
+  throw new RuntimeError("浏览器不支持 WebGL。"); 
+} 
+``` 
+
+🎨 异常是特殊情况。尽量避免抛出异常，例如，如果一条多段线只提供一个位置，而不是两个或更多，而不是抛出异常只是不渲染它。
+
+### `result` 参数和临时变量
+
+🚤: 在 JavaScript 中，用户定义的类（如“Cartesian3”）是引用类型，因此分配在堆上。频繁分配这些类型会导致严重的性能问题，因为它会产生 GC 压力，从而导致垃圾收集器运行更长时间和更频繁。
+
+Cesium 使用必需的“结果”参数来避免隐式内存分配。例如，
+
+```javascript 
+const sum = Cartesian3.add(v0, v1); 
+```
+
+必须为返回的总和隐式分配一个新的 `Cartesian3` 对象。相反，`Cartesian3.add` 需要一个`result` 参数：
+
+```javascript 
+const result = new Cartesian3(); 
+const sum = Cartesian3.add(v0, v1, result); // Result 和 sum 引用同一个对象
+```
+
+这使得分配对调用者是显式的，这允许调用者，例如，在文件范围的临时变量中重用结果对象：
+
+```javascript 
+const scratchDistance = new Cartesian3(); 
+
+Cartesian3.distance = function (left, right) { 
+  Cartesian3.subtract(left, right, scratchDistance); 
+  return Cartesian3.magnitude(scratchDistance); 
+}; 
+```
+
+代码不是那么干净，但性能改进通常是显着的。
+
+如下所述，“from”构造函数还使用可选的“result”参数。
+
+由于并不总是需要或返回结果参数，因此不要严格依赖您传入的结果参数进行修改。例如：
+
+```js
+Cartesian3.add(v0, v1, result);
+Cartesian3.add(result, v2, result);
+```
+
+最好写成
+
+```js 
+result = Cartesian3.add(v0, v1, result);
+result = Cartesian3.add(result, v2, result);
+``` 
+
+## 类
+
+- 🎨: 类应该是**内聚的**。一个类应该代表一个抽象。
+- 🎨: 类应该**松耦合**。两个类不应该纠缠在一起并依赖彼此的实现细节；他们应该通过定义明确的接口进行通信。
+
+### 构造函数
+
+- 通过创建构造函数来创建类：
+
+```javascript 
+function Cartesian3(x, y, z) { 
+  this.x = defaultValue(x, 0.0);
+  this.y = defaultValue(y, 0.0); 
+  this.z = defaultValue(z, 0.0); 
+} 
+``` 
+
+- 通过使用 `new` 调用构造函数来创建类（_object_）的实例：
+
+```javascript 
+const p = new Cartesian3(1.0, 2.0, 3.0); 
+``` 
+
+- 🚤: 在构造函数中分配给一个类的所有属性成员。这允许 JavaScript 引擎使用隐藏类并避免进入字典模式。如果初始值没有意义，则分配“undefined”。不要向对象添加属性，例如，
+
+```javascript 
+const p = new Cartesian3(1.0, 2.0, 3.0); 
+pw = 4.0; // 将 w 属性添加到 p，减慢属性访问，因为对象进入字典模式
+```
+
+- 🚤: 出于同样的原因，不要更改属性的类型，例如，将字符串分配给数字，例如，`` 
+
+```javascript 
+const p = new Cartesian3(1.0, 2.0, 3.0); 
+px = "铯"; // 将 x 更改为字符串，减慢属性访问速度
+``` 
+
+- 在构造函数中，将属性视为一次写入；不要写信给他们或多次阅读它们。如果需要读取它们，请创建一个局部变量。例如：
+
+  代替
+
+  ```javascript 
+  this._x = 2; 
+  this._xSquared = this._x * this._x; 
+  ```
+
+  更喜欢
+  
+```js
+const x = 2;
+this._x = x;
+this._xSquared = x * x;
+```
+
+### `from` 构造函数
+
+🎨: 构造函数应该将类的基本组件作为参数。例如，“Cartesian3”采用“x”、“y”和“z”。
+
+从其他参数构造对象通常很方便。由于 JavaScript 没有函数重载，Cesium 使用
+以 `from` 为前缀的静态函数以这种方式构造对象。例如：
+
+```javascript 
+const p = Cartesian3.fromRadians(-2.007, 0.645); // 使用经度和纬度构造 Cartesian3 对象
+```
+
+这些是使用可选的 `result` 参数实现的，它允许调用者传入临时变量：
+
+```javascript 
+Cartesian3.fromRadians = function (longitude, latitude, height,result） {
+  // 使用经度、纬度、高度计算 x、y、z 
+
+  if (!defined(result)) { 
+    result = new Cartesian3(); 
+  }
+
+  result.x = x; 
+  result.y = y; 
+  result.z = z; 
+  return result；
+}; 
+```
+
+由于调用 `from` 构造函数不需要现有对象，因此该函数被分配给 `Cartesian3.fromRadians`，而不是 `Cartesian3.prototype.fromRadians`。
+
+### `to` 函数
+
+以 `to` 开头的函数返回一种新类型的对象，例如
+
+```javascript 
+Cartesian3.prototype.toString = function () { 
+  return "(${this.x}, ${this .y}, ${this.z})"; 
+}; 
+```
+
+### 对基础类谨慎使用原型函数
+
+🎨: 诸如`Cartesian3`、`Quaternion`、`Matrix4` 和`JulianDate` 之类的基础数学类很少使用原型函数。例如，`Cartesian3` 没有像这样的原型 `add` 函数：
+
+```javascript 
+const v2 = v0.add(v1, result); 
+```
+
+相反，它被写成
+
+```javascript 
+const v2 = Cartesian3.add(v0, v1, result); 
+```
+
+唯一的例外是
+
+- `clone` 
+- `equals` 
+- `equalsEpsilon` 
+- `toString`
+
+这些原型函数通常委托给非原型（静态）版本，例如，
+
+```javascript 
+Cartesian3.equals = function (left, right) {
+  return (
+    left === right ||
+    (defined(left) &&
+      defined(right) &&
+      left.x === right.x &&
+      left.y === right.y &&
+      left.z === right.z)
+  );
+};
+
+Cartesian3.prototype.equals = function (right) {
+  return Cartesian3.equals(this, right);
+};
+```
+
 原型版本的好处是可以多态使用。
 
 ### 静态常量
+
 要创建与类相关的静态常量，请使用 `Object.freeze`：
 
 ```javascript 
@@ -682,9 +933,9 @@ Cesium 还使用 [Knockout-ES5](http://blog.stevensanderson.com/2013/05/20/knock
 knockout.track(this, ["tooltip", "showInstructions", "_touch"]); 
 ``` 
 
-### 淘汰订阅
+### ### Knockout订阅
 
-只有当您无法完成您需要使用标准绑定执行的操作时，才使用淘汰订阅。对于 [example](https://github.com/CesiumGS/cesium/blob/main/Source/Widgets/Viewer/Viewer.js#L588)，`Viewer` 订阅了 `FullscreenButtonViewModel.isFullscreenEnabled` 因为它需要改变该值更改时时间轴小部件的宽度。这不能通过绑定来完成，因为来自“FullscreenButtonViewModel”的值正在影响不包含在该小部件中的值。
+只有当您无法完成您需要使用标准绑定执行的操作时，才使用Knockout订阅。对于 [example](https://github.com/CesiumGS/cesium/blob/main/Source/Widgets/Viewer/Viewer.js#L588)，`Viewer` 订阅了 `FullscreenButtonViewModel.isFullscreenEnabled` 因为它需要改变该值更改时时间轴小部件的宽度。这不能通过绑定来完成，因为来自“FullscreenButtonViewModel”的值正在影响不包含在该小部件中的值。
 
 Cesium 包含一个 [`subscribeAndEvaluate`](https://github.com/CesiumGS/cesium/blob/main/Source/Widgets/subscribeAndEvaluate.js) 辅助函数，用于订阅 knockout observable。
 
