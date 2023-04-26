@@ -1,4 +1,4 @@
-# Coding Guide 
+# [Coding Guide ](https://github.com/CesiumGS/cesium/blob/main/Documentation/Contributors/CodingGuide/README.md)
 
 CesiumJS 是世界上最大的 JavaScript 代码库之一。从一开始，我们就一直保持着代码质量的高标准，这使得代码库对于新老贡献者来说都更容易使用。我们希望您发现代码库干净且一致。
 
@@ -144,7 +144,7 @@ this._showTouch = createCommand(function () {
 ```js 
 function exit(warningMessage) { 
   //eslint-disable-next-line no-alert 
-  window.alert("Cannot exit : " + 警告消息); 
+  window.alert("Cannot exit : " + warningMessage); 
 ``` 
 
 - 当禁用代码块的 linting 时，将 `eslint-disable` 注释放在新行上并尽可能靠近相关代码：``` 
@@ -213,16 +213,16 @@ const f = 1.0;
 - 在第一次使用的地方声明变量。例如，
 
 ```javascript 
-let i; 
-让米; 
-const 模型 = [ 
-  /* ... */ 
-]; 
-const length = models.length; 
-对于 (i = 0; i < length; ++i) { 
+let i;
+let m;
+const models = [
+  /* ... */
+];
+const length = models.length;
+for (i = 0; i < length; ++i) {
   m = models[i];
-  // 使用 m 
-} 
+  // Use m
+}
 ```
 
 最好写成
@@ -267,11 +267,11 @@ environmentState.isMoonVisible = false;
 - 不要创建只使用一次的局部变量，除非它显着提高可读性，例如，
 
 ```javascript 
-function radiiEquals(left, right) { 
+function radiiEquals(left, right) {
   const leftRadius = left.radius;
-  const rightRadius = right.radius; 
-  返回左半径 === 右半径；
-} 
+  const rightRadius = right.radius;
+  return leftRadius === rightRadius;
+}
 ```
 
 最好写成
@@ -288,7 +288,7 @@ function radiiEquals(left, right) {
 ```javascript 
 const v = undefined; 
 if (defined(v)) { 
-  // 假
+  // False
 } 
 
 const u = {}; 
@@ -332,17 +332,17 @@ byteOffset += sizeOfUint32; // 跳过长度字段
 - 函数中的语句应该处于相似的抽象级别。如果一个代码块比其余的语句低得多，那么移至辅助函数是一个很好的选择，例如，
 
 ```javascript 
-Cesium3DTileset.prototype.update = function (frameState) { 
-  const tiles = this._processingQueue ; 
-  const length = tiles.length; 
+Cesium3DTileset.prototype.update = function (frameState) {
+  const tiles = this._processingQueue;
+  const length = tiles.length;
 
-  for (let i = length - 1; i >= 0; --i) { 
-    tiles[i].process(this, frameState); 
+  for (let i = length - 1; i >= 0; --i) {
+    tiles[i].process(this, frameState);
   }
 
-  选择瓷砖（这个，框架状态）；
-  updateTiles（这个，frameState）；
-}; 
+  selectTiles(this, frameState);
+  updateTiles(this, frameState);
+};
 ```
 
 最好写成
@@ -498,7 +498,7 @@ Cartesian3.maximumComponent = function (cartesian) {
 ```javascript 
 Cartesian3.unpackArray = function (array, result) { 
   //>>includeStart('debug', pragmas.debug); 
-  Check.defined("数组", 数组); 
+	  Check.defined("array", array); 
   Check.typeOf.number.greaterThanOrEquals("array.length", array.length, 3); 
   if (array.length % 3 !== 0) { 
     throw new DeveloperError("数组长度必须是 3 的倍数。"); 
@@ -514,8 +514,8 @@ Cartesian3.unpackArray = function (array, result) {
 ```javascript 
 Cartesian3.maximumComponent = function (cartesian) { 
   //>>includeStart('debug', pragmas.debug); 
-  常量 c = 笛卡尔；
-  Check.typeOf.object("笛卡尔", 笛卡尔); 
+  const c = cartesian；
+  Check.typeOf.object("笛卡尔", cartesian); 
   //>>includeEnd('调试'); 
 
   // 在调试中工作。发布失败，因为 c 被优化了！
@@ -531,7 +531,7 @@ if (typeof WebGLRenderingContext === "undefined") {
 } 
 ``` 
 
--：艺术：例外是例外。避免抛出异常，例如，如果一条多段线只提供一个位置，而不是两个或更多，而不是抛出异常只是不渲染它。
+🎨 异常是特殊情况。尽量避免抛出异常，例如，如果一条多段线只提供一个位置，而不是两个或更多，而不是抛出异常只是不渲染它。
 
 ### `result` 参数和临时变量
 
@@ -568,15 +568,15 @@ Cartesian3.distance = function (left, right) {
 由于并不总是需要或返回结果参数，因此不要严格依赖您传入的结果参数进行修改。例如：
 
 ```js
-Cartesian3.add(v0, v1, 结果); 
-Cartesian3.add（结果，v2，结果）；
+Cartesian3.add(v0, v1, result);
+Cartesian3.add(result, v2, result);
 ```
 
 最好写成
 
 ```js 
-result = Cartesian3.add(v0, v1, result); 
-结果 = Cartesian3.add（结果，v2，结果）；
+result = Cartesian3.add(v0, v1, result);
+result = Cartesian3.add(result, v2, result);
 ``` 
 
 ## 类
@@ -628,9 +628,9 @@ px = "铯"; // 将 x 更改为字符串，减慢属性访问速度
   更喜欢
 
   ```javascript 
-  const x = 2; 
-  这个._x = x; 
-  这个._xSquared = x * x; 
+const x = 2;
+this._x = x;
+this._xSquared = x * x;
   ``` 
 
 ### `from` 构造函数
@@ -647,17 +647,17 @@ const p = Cartesian3.fromRadians(-2.007, 0.645); // 使用经度和纬度构造 
 这些是使用可选的 `result` 参数实现的，它允许调用者传入临时变量：
 
 ```javascript 
-Cartesian3.fromRadians = function (longitude, latitude, height,结果） {
+Cartesian3.fromRadians = function (longitude, latitude, height,result） {
   // 使用经度、纬度、高度计算 x、y、z 
 
   if (!defined(result)) { 
     result = new Cartesian3(); 
   }
 
-  结果.x = x; 
-  结果.y = y; 
-  结果.z = z; 
-  返回结果；
+  result.x = x; 
+  result.y = y; 
+  result.z = z; 
+  return result；
 }; 
 ```
 
@@ -697,21 +697,20 @@ const v2 = Cartesian3.add(v0, v1, result);
 这些原型函数通常委托给非原型（静态）版本，例如，
 
 ```javascript 
-Cartesian3.equals = function (左右） {
-  返回（
-    左===右|| 
-    （定义（左）&&
-      定义（右）&& 
-      left.x === right.x && 
-      left.y === right.y && 
-      left.z === right.z）
-  ); 
-}; 
+Cartesian3.equals = function (left, right) {
+  return (
+    left === right ||
+    (defined(left) &&
+      defined(right) &&
+      left.x === right.x &&
+      left.y === right.y &&
+      left.z === right.z)
+  );
+};
 
-Cartesian3.prototype.equals = function (right) { 
-  return Cartesian3.equals(this, right); } 
-}; 
-```
+Cartesian3.prototype.equals = function (right) {
+  return Cartesian3.equals(this, right);
+};```
 
 原型版本的好处是可以多态使用。
 
@@ -768,8 +767,7 @@ function processTiles(tileset, frameState) {
 ```javascript 
 function Model(options) { 
   this.show = defaultValue( options.show, true); 
-` 
-``
+```
 
 可以使用 `Object.defineProperties` 函数使用私有属性和 getter 创建只读属性，例如，
 
@@ -853,8 +851,7 @@ function Cesium3DTileset(options) {
   loadTileset(this, options.url, function (data) { 
     // ... 
   }); 
-` 
-``
+```
 
 最好写成
 
@@ -885,6 +882,7 @@ function loadTileset(tileset, tilesJson, done) {
 
 文件属于哪个目录通常很明显。如果不是，则通常在 `Core` 和另一个目录之间做出决定。如果它是纯数字运算或预计对 Cesium 通常有用的实用程序，请将文件放在 Core 中，例如 [`Matrix4`](https://github.com/CesiumGS/cesium/blob/main/ Source/Core/Matrix4.js) 属于 `Core`，因为 Cesium 堆栈的许多部分都使用 4x4 矩阵；另一方面，[`BoundingSphereState`](https://github.com/CesiumGS/cesium/blob/main/Source/DataSources/BoundingSphereState.js) 在 `DataSources` 中，因为它特定于数据源。
 ![[Pasted image 20230426101035.png]]
+![[Pasted image 20230426101106.png]]
 模块（文件）应该只引用堆栈中同一级别或较低级别的模块。例如，`Scene` 中的模块可以使用`Scene`、`Renderer` 和`Core` 中的模块，但不能使用`DataSources` 或`Widgets` 中的模块。
 
 - 需要显式删除 WebGL 资源，以便包含它们的类（以及包含这些类的类等）具有 `destroy` 和 `isDestroyed` 函数，例如，
