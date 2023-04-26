@@ -166,7 +166,7 @@ if (i !== 1) {
 } 
 ``` 
 
-为了帮助人类读者，对于打算作为浮点数值的整数，请在其末尾添加`.0”
+为了帮助人类读者，对于打算作为浮点数值的整数，请在其末尾添加`.0`
 
 ```javascript 
 const f = 1; 
@@ -367,7 +367,7 @@ function getTransform(node) {
 const sphere = new SphereGeometry(10.0, 32, 16, VertexFormat.POSITION_ONLY); 
 ```
 
-不清楚数值代表什么，调用者需要知道参数的顺序。如果这需要一个`options”参数，它看起来像这样：
+不清楚数值代表什么，调用者需要知道参数的顺序。如果这需要一个`options`参数，它看起来像这样：
 
 ```javascript 
 const sphere = new SphereGeometry({ 
@@ -378,7 +378,7 @@ const sphere = new SphereGeometry({
 }); 
 ``` 
 
-- 🚤: 使用 `{ /* ... */ }` 创建一个对象字面量，这是一种内存分配，比较慢。所以如果函数可能被频繁调用，请避免设计使用`options”参数的函数；否则，调用者将不得不使用临时变量（参见 [ `result` 参数和临时变量](# `result` 参数和临时变量)）来提高性能。除了数学类的构造函数外，其他的类构造函数都可以使用`options`参数。Cesium 避免了在被频繁调用的类使用`options`去构造对象。例如，
+- 🚤: 使用 `{ /* ... */ }` 创建一个对象字面量，这是一种内存分配，比较慢。所以如果函数可能被频繁调用，请避免设计使用`options`参数的函数；否则，调用者将不得不使用临时变量（参见 [ `result` 参数和临时变量](# `result` 参数和临时变量)）来提高性能。除了数学类的构造函数外，其他的类构造函数都可以使用`options`参数。Cesium 避免了在被频繁调用的类使用`options`去构造对象。例如，
 
 ```javascript 
 const p = new Cartesian3({ 
@@ -441,7 +441,7 @@ function DebugModelMatrixPrimitive(options) {
 
 ### 抛出异常
 
-[使用Cesium的Check](https://github.com/CesiumGS/cesium/blob/main/Source/Core/Check.js)类在用户出现编码错误时抛出``DeveloperError`”。最常见的错误是参数丢失、类型错误 或 类型错误且超出范围 或 超出范围。
+[使用Cesium的Check](https://github.com/CesiumGS/cesium/blob/main/Source/Core/Check.js)类在用户出现编码错误时抛出``DeveloperError``。最常见的错误是参数丢失、类型错误 或 类型错误且超出范围 或 超出范围。
 
 - 例如，要检查参数是否已定义并且是一个对象：
 
@@ -471,7 +471,7 @@ Cartesian3.unpackArray = function (array, result) {
 }; 
 ```
 
-- 要检查`DeveloperError”，请将代码包围在``includeStart`”/``includeEnd`”注释中，如上所示，以便开发人员可以在发布版本之前进行错误检查和优化。不要在 `includeStart`/`includeEnd` 中包含其他的副作用，例如，
+- 要检查`DeveloperError`，请将代码包围在`includeStart`/`includeEnd`注释中，如上所示，以便开发人员可以在发布版本之前进行错误检查和优化。不要在 `includeStart`/`includeEnd` 中包含其他的副作用，例如，
 
 ```javascript 
 Cartesian3.maximumComponent = function (cartesian) { 
@@ -496,15 +496,15 @@ if (typeof WebGLRenderingContext === "undefined") {
 
 ### `result` 参数和临时变量
 
-🚤: 在 JavaScript 中，用户定义的类（如`Cartesian3”）是引用类型，因此分配在堆上。频繁分配这些类型会导致严重的性能问题，因为它会产生 GC 压力，从而导致垃圾收集器运行更长时间和更频繁。
+🚤: 在 JavaScript 中，用户定义的类（如`Cartesian3`）是引用类型，因此分配在堆上。频繁分配这些类型会导致严重的性能问题，因为它会产生 GC 压力，从而导致垃圾收集器运行更长时间和更频繁。
 
-Cesium 使用必需的`结果`参数来避免隐式内存分配。例如，
+Cesium 使用必需的`result`参数来避免隐式内存分配。例如，
 
 ```javascript 
-const sum = Cartesian3.add(v0, v1); 
+const sum = Cartesian3.add(v0, v1); //必须为返回的`sum`隐式分配一个新的 `Cartesian3` 对象。
 ```
 
-必须为返回的总和隐式分配一个新的 `Cartesian3` 对象。相反，`Cartesian3.add` 需要一个`result` 参数：
+相反，`Cartesian3.add` 需要一个`result` 参数：
 
 ```javascript 
 const result = new Cartesian3(); 
@@ -521,13 +521,10 @@ Cartesian3.distance = function (left, right) {
   return Cartesian3.magnitude(scratchDistance); 
 }; 
 ```
-
 代码不是那么干净，但性能改进通常是显着的。
 
-如下所述，`from`构造函数还使用可选的`result`参数。
-
-由于并不总是需要或返回结果参数，因此不要严格依赖您传入的结果参数进行修改。例如：
-
+如下所述，`add`构造函数还使用可选的`result`参数。
+由于并不一定需要用到返回的`result`参数，因此不要严格依赖您传入的`result`参数进行修改。例如：
 ```js
 Cartesian3.add(v0, v1, result);
 Cartesian3.add(result, v2, result);
@@ -570,7 +567,7 @@ const p = new Cartesian3(1.0, 2.0, 3.0);
 pw = 4.0; // 将 w 属性添加到 p，减慢属性访问，因为对象进入字典模式
 ```
 
-- 🚤: 出于同样的原因，不要更改属性的类型，例如，将字符串分配给数字，例如，`` 
+- 🚤: 出于同样的原因，不要更改属性的类型，例如，将字符串分配给数字，例如
 
 ```javascript 
 const p = new Cartesian3(1.0, 2.0, 3.0); 
@@ -596,7 +593,7 @@ this._xSquared = x * x;
 
 ### `from` 构造函数
 
-🎨: 构造函数应该将类的基本组件作为参数。例如，`Cartesian3”采用`x`、`y`和`z`。
+🎨: 构造函数应该将类的基本组件作为参数。例如，`Cartesian3`采用`x`、`y`和`z`。
 
 从其他参数构造对象通常很方便。由于 JavaScript 没有函数重载，Cesium 使用
 以 `from` 为前缀的静态函数以这种方式构造对象。例如：
@@ -945,7 +942,7 @@ fullscreenSubscription.dispose();
 ### 命名
 
 - GLSL 文件以 `.glsl` 结尾，位于 [Shaders](https://github.com/CesiumGS/cesium/tree/main/Source/Shaders) 目录中。
-- 顶点着色器的文件有一个`VS”后缀；片段着色器有一个 FS 后缀。例如：`BillboardCollectionVS.glsl` 和 `BillboardCollectionFS.glsl`。
+- 顶点着色器的文件有一个`VS`后缀；片段着色器有一个 FS 后缀。例如：`BillboardCollectionVS.glsl` 和 `BillboardCollectionFS.glsl`。
 - 通常，函数和变量等标识符使用 `camelCase`。
 - Cesium 内置标识符以 `czm_` 开头，例如 [`czm_material`](https://github.com/CesiumGS/cesium/blob/main/Source/Shaders/Builtin/Structs/material.glsl)。文件具有相同的名称，但不带 `czm_` 前缀，例如 `material.glsl`。
 - 在对立方体贴图进行采样时使用 `czm_textureCube` 而不是 `texture`。
