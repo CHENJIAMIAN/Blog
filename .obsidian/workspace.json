@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cesium-3DTiles.md",
+                "file": "Cesium-官方编码指南.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -55,7 +55,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -71,7 +72,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium-3DTiles.md"
+                "file": "Cesium-官方编码指南.md"
               }
             }
           },
@@ -144,7 +145,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 343.5
+    "width": 343.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -159,6 +161,7 @@
   },
   "active": "165e0dae8314b663",
   "lastOpenFiles": [
+    "Cesium-3DTiles.md",
     "Cesium.md",
     "images/20230426111523.png",
     "images/20230426101106.png",
@@ -188,7 +191,6 @@
     "TS.md",
     "Cesium-GLTF.md",
     "AI产品导航.md",
-    "Cesium-3DTiles.md",
     "conflict-files-obsidian-git.md",
     "杂-GPT-QA.md",
     "JS.md",
