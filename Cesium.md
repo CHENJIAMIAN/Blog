@@ -1064,7 +1064,8 @@ pass表示渲染过程中的通道，主要用于渲染优化。在Cesium中，�
 
 在这段代码中，pass指定为OPAQUE不透明的通道。这意味着所有不透明的物体（无论是地形、建筑、树木等）都会在这个通道中被渲染。这是渲染的第一个基础阶段，所有不透明的像素（即alpha小于1）都会被绘制。
 ```
-
+![[Pasted image 20230426092257.png]]
+![[Pasted image 20230426092252.png]]
 ## 着色器源码
 
 ```js
@@ -1078,11 +1079,14 @@ czm_material结构体包含以下属性：
 ```
 
 ```js
-AutomaticUniforms 是指 CesiumJS 内部不需要手动更新的 Uniform 状态信息, 会进行自动刷新
-	包括光照信息（如 czm_lightColor、czm_sunDirectionEC 等）、视锥体信息、时间等。
+AutomaticUniforms 是cesium内置的 GLSL Uniform, 指的是以czm_开头的变量。
+	包括光照信息（如 czm_lightColor、czm_sunDirectionEC 等）、视锥体信息、时间、相机位置、视口大小等。
 	ShaderProgram 中，会先区分哪些是需要手动更新的 Uniform 变量，哪些是自动更新的 Uniform 变量，
 		continueDraw中执行shaderProgram._setUniforms
 			ShaderProgram 的 _setUniforms 执行所有 uniforms 的 WebGL 设置，这其中就会进行自动刷新
+	是的，cesium的AutomaticUniforms这些变量在cesium中被用来传递一些自动计算的uniforms，比如相机位置、视口大小等。
+	
+	这些变量可以在shader中直接使用，无需手动传递。
 ```
 ## 杂
 
