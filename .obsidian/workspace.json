@@ -11,8 +11,13 @@
             "id": "165e0dae8314b663",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Cesium-3DTiles.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
         ]
@@ -65,7 +70,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Cesium-3DTiles.md"
+              }
             }
           },
           {
@@ -124,7 +131,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "region",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -150,7 +157,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ae012ef0f7d93e48",
+  "active": "165e0dae8314b663",
   "lastOpenFiles": [
     "Cesium.md",
     "images/20230426111523.png",
