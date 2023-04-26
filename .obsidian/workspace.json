@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "62bff86f36e265a5",
+        "id": "774852bbc266dc31",
         "type": "tabs",
         "children": [
           {
-            "id": "165e0dae8314b663",
+            "id": "473dc5602a327446",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -134,7 +134,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -151,11 +151,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "165e0dae8314b663",
+  "active": "6323b2f6898b32c7",
   "lastOpenFiles": [
+    "Cesium-官方编码指南.md",
     "image/16825068650006j94b4.png",
     "2020230426101106.md",
-    "Cesium-官方编码指南.md",
     "1.jpg.md",
     "README.md",
     "Cesium-3DTiles.md",
@@ -169,7 +169,6 @@
     "images/20230419164035.png",
     "images/20230419101452.png",
     "images/20230419095100.png",
-    "images/20230419095022.png",
     "【区块链】.md",
     "Vue3.md",
     "WebGL-QA.md",

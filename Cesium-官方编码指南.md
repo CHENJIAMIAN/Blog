@@ -1,4 +1,4 @@
- `result` 参数和临时变量# [Coding Guide ](https://github.com/CesiumGS/cesium/blob/main/Documentation/Contributors/CodingGuide/README.md)
+# [Coding Guide ](https://github.com/CesiumGS/cesium/blob/main/Documentation/Contributors/CodingGuide/README.md)
 
 CesiumJS 是世界上最大的 JavaScript 代码库之一。从一开始，我们就一直保持着代码质量的高标准，这使得代码库对于新老贡献者来说都更容易使用。我们希望您发现代码库干净且一致。
 
@@ -992,8 +992,8 @@ attribute vec3 position3DLow;
 > 在更底层的实现原理方面，GPU RTE内部主要利用了并行计算架构和可编程着色器技术。GPU通常包含较多的处理器核心，可以同时执行多个计算操作。GPU RTE还可以利用单指令多数据（SIMD）指令集来加速计算，并在内存访问时通过存储器分层结构和缓存技术来提高内存带宽和访问速度。可编程着色器技术则允许开发者自定义计算任务，并可以在GPU上高效执行这些任务。
 > 
 > 在最底层的实现原理方面，GPU RTE内部使用了硬件级别的并行计算技术，如SIMD指令，多核心架构等。此外，GPU内部还使用了高速缓存技术，内存条带技术等一系列优化技术来提高计算和内存访问速度。GPU RTE还能够执行复杂的图像和计算任务，并使用可编程着色器技术进行高效的计算和渲染。
-> - 2D 纹理坐标是 `s` 和 `t`，而不是 `u` 和 `v`，例如，
 
+ - 2D 纹理坐标是 `s` 和 `t`，而不是 `u` 和 `v`，例如，
 ```glsl 
 attribute vec2 st; 
 ``` 
