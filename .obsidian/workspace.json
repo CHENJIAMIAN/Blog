@@ -151,8 +151,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "a7974b07fd2b2c15",
+  "active": "165e0dae8314b663",
   "lastOpenFiles": [
+    "README.md",
+    "Cesium-官方编码指南.md",
     "Cesium-3DTiles.md",
     "Cesium.md",
     "images/20230426111523.png",
@@ -169,7 +171,6 @@
     "Vue3.md",
     "WebGL-QA.md",
     "Cesium-QA.md",
-    "Cesium-官方编码指南.md",
     "image",
     "1.jpg.md",
     "WebGL.md",

@@ -284,7 +284,7 @@ byteOffset += sizeOfUint32; // 将 4 添加到 byteOffset
 byteOffset += sizeOfUint32; // 跳过长度字段
 ``` 
 
-- 在代码合并到 main 之前需要删除或解决 `TODO` 注释。谨慎使用“PERFORMANCE_IDEA”，稍后在分析时会派上用场。
+- 在代码合并到 main 之前需要删除或解决 `TODO` 注释。使用`// PERFORMANCE_IDEA : `注释标记可能优化的点，以便以后在性能分析时使用，但要谨慎使用。
 - 在合并到 main 之前删除注释掉的代码。
 - 现代语言功能可能会提供方便的快捷方式和更简洁的语法，但在使用它们时应考虑到它们对性能的影响，尤其是在每帧调用的代码中。
 
@@ -361,7 +361,7 @@ function getTransform(node) {
 
 ### `options` 参数
 
-🎨: 许多 Cesium 函数采用 `options` 参数来支持可选参数、自文档代码和向前兼容性。例如，考虑：
+🎨: 许多 Cesium 函数采用 `options` 参数来支持可选参数、自动生成代码文档和向前兼容性。例如，考虑：
 
 ```javascript 
 const sphere = new SphereGeometry(10.0, 32, 16, VertexFormat.POSITION_ONLY); 
