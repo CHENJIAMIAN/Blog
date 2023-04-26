@@ -494,14 +494,14 @@ if (typeof WebGLRenderingContext === "undefined") {
 
 🎨 异常是特殊情况。尽量避免抛出异常，例如，如果一条多段线只提供一个位置，而不是两个或更多，那么只是不渲染它而不是抛出异常。
 
-### `result` 参数和临时变量
+### `result` 参数和`Scratch`临时变量
 
-🚤: 在 JavaScript 中，用户定义的类（如`Cartesian3`）是引用类型，因此分配在堆上。频繁分配这些类型会导致严重的性能问题，因为它会产生 GC 压力，从而导致垃圾收集器运行更长时间和更频繁。
+🚤: 在 JavaScript 中，用户定义的类（如`Cartesian3`）是引用类型，并且因此分配在堆上。频繁分配这些类型会导致严重的性能问题，因为它会产生 GC 压力，从而导致垃圾收集器运行更长时间和更频繁。
 
 Cesium 使用必需的`result`参数来避免隐式内存分配。例如，
 
 ```javascript 
-const sum = Cartesian3.add(v0, v1); //必须为返回的`sum`隐式分配一个新的 `Cartesian3` 对象。
+const sum = Cartesian3.add(v0, v1); //会为返回的sum隐含分配一个新的Cartesian3对象。
 ```
 
 相反，`Cartesian3.add` 需要一个`result` 参数：
@@ -511,7 +511,7 @@ const result = new Cartesian3();
 const sum = Cartesian3.add(v0, v1, result); // Result 和 sum 引用同一个对象
 ```
 
-这使得分配对调用者是显式的，这允许调用者，例如，在文件范围的临时变量中重用结果对象：
+这使得内存分配对调用者显式，这使得调用者可以在文件范围的临时变量中重复使用结果对象：
 
 ```javascript 
 const scratchDistance = new Cartesian3(); 
@@ -521,16 +521,16 @@ Cartesian3.distance = function (left, right) {
   return Cartesian3.magnitude(scratchDistance); 
 }; 
 ```
-代码不是那么干净，但性能改进通常是显着的。
+这样的代码不够简洁，但是性能提升通常非常明显。
 
 如下所述，`add`构造函数还使用可选的`result`参数。
-由于并不一定需要用到返回的`result`参数，因此不要严格依赖您传入的`result`参数进行修改。例如：
+但由于result参数并非始终必需或返回，不要严格依赖传递的result参数被修改。例如：
 ```js
 Cartesian3.add(v0, v1, result);
 Cartesian3.add(result, v2, result);
 ```
 
-最好写成
+因此，最好的方式是在每一次方法调用的时候都显式地对result进行赋值，而不是依赖于方法中隐含的运算:
 
 ```js 
 result = Cartesian3.add(v0, v1, result);
