@@ -71,21 +71,13 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "region",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
-            }
-          },
-          {
-            "id": "6323b2f6898b32c7",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
             }
           },
           {
@@ -96,6 +88,14 @@
               "state": {
                 "file": "Cesium-官方编码指南.md"
               }
+            }
+          },
+          {
+            "id": "6323b2f6898b32c7",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
             }
           },
           {
@@ -133,7 +133,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -150,7 +151,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ae012ef0f7d93e48",
+  "active": "a7974b07fd2b2c15",
   "lastOpenFiles": [
     "Cesium-3DTiles.md",
     "Cesium.md",

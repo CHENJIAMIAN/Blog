@@ -166,15 +166,11 @@ if (i !== 1) {
 } 
 ``` 
 
-- 为了帮助人类阅读，将 `.0` 附加到旨在是浮点值，例如，除非 f 是整数，否则
-
-``` javascript 
-const f = 1; 
-```
-
-最好写成
+为了帮助人类读者，对于打算作为浮点数值的整数，请在其末尾添加“.0”
 
 ```javascript 
+const f = 1; 
+//例如，除非 f 是整数，否则最好写成
 const f = 1.0; 
 ``` 
 
@@ -215,7 +211,7 @@ let i= 0.0;
 
 - 当值未更新时，首选 `const` 变量。这确保了不变性。
 
-- 🚤: 避免冗余的嵌套属性访问。这个
+- 🚤: 避免冗余的嵌套属性访问。如：
 
 ```javascript 
 scene.environmentState.isSkyAtmosphereVisible = true; 
