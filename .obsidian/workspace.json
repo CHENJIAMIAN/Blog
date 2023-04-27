@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI产品导航.md",
+                "file": "WebGL.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -86,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI产品导航.md"
+                "file": "WebGL.md"
               }
             }
           },
@@ -152,6 +152,7 @@
   },
   "active": "473dc5602a327446",
   "lastOpenFiles": [
+    "AI产品导航.md",
     "Cesium-官方编码指南.md",
     "image/16825068650006j94b4.png",
     "2020230426101106.md",
@@ -183,7 +184,6 @@
     "AdBlock 规则.md",
     "TS.md",
     "Cesium-GLTF.md",
-    "AI产品导航.md",
     "conflict-files-obsidian-git.md",
     "杂-GPT-QA.md",
     "JS.md",
