@@ -1101,3 +1101,9 @@ AutomaticUniforms
 ArcType.RHUMB
 	RHUMB 是弧线类型之一，用于创建在两个点之间呈现为大圆航线的分段线。RHUMB 弧线不遵循大圆弧规则，但对于长距离导航来说，它通常比标准的直接线更符合实际情况，因为它能够绕过地球转折的曲面造成的略微偏转。
 ```
+[marsgis的study-cesium.pdf](http://marsgis.cn/doc/study-cesium.pdf)
+1. dae转gltf转换:https://qithub.com/KhronosGroup/COLLADA2GLTF
+2. obj转gltf转换:https://qithub.com/AnalyticalGraphicsInc/obi2gltf
+3. 或 https://github.com/PrincessGod/objTo3d-tiles
+4. 或 https://github.com/fanvanzh/3DTiles
+5. gltf内部优化处理: https://github.com/AnalyticalGraphicsInc/altf-pipeline
