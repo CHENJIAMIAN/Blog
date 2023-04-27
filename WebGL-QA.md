@@ -24,13 +24,10 @@ glm::vec3 transformedNormal = normalMatrix \* originalNormal;
 
 ## 摄像头矩阵转换的WebGL的实现
 
-[![](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67)](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67) &#x20;
-
-*   Theory:&#x20;
-
+[![](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67)](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67)
+*   Theory:
     *   ObjectCoordinates ModelTransform ViewTransform ProjectionTransform PerspectiveDivision ViewportTransform Viewport(Canvas)Coordinates
-*   WebGL:&#x20;
-
+*   WebGL:
     *   ObjectCoordinates  Model -ViewMatrix  PerspectiveMatrix TransformedNormal Vectors gl.viewport Viewport(Canvas)Coordinates
     *   NormalVectors NommalMatrix
 
