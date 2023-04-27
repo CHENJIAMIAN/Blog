@@ -71,10 +71,10 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "相机",
                 "matchingCase": false,
                 "explainSearch": false,
-                "collapseAll": false,
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
@@ -153,6 +153,9 @@
   "active": "473dc5602a327446",
   "lastOpenFiles": [
     "WebGL.md",
+    "Web 3D.md",
+    "Cesium.md",
+    "WebGL-QA.md",
     "AI产品导航.md",
     "Cesium-官方编码指南.md",
     "image/16825068650006j94b4.png",
@@ -160,7 +163,6 @@
     "1.jpg.md",
     "README.md",
     "Cesium-3DTiles.md",
-    "Cesium.md",
     "images/20230426111523.png",
     "images/20230426101106.png",
     "images/20230426101035.png",
@@ -172,7 +174,6 @@
     "images/20230419095100.png",
     "【区块链】.md",
     "Vue3.md",
-    "WebGL-QA.md",
     "Cesium-QA.md",
     "image",
     "☁ 难题.md",
