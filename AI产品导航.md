@@ -97,7 +97,6 @@
 [简介 | Learning Prompt](https://learningprompt.wiki/docs/tutorial-basics/%E7%AE%80%E4%BB%8B)
 
 [yzfly/awesome-chatgpt-zh: ChatGPT 中文指南，指令指南，精选资源清单，更好的使用 chatGPT 让你的生产力 up up up!](https://github.com/yzfly/awesome-chatgpt-zh?utm_source=wechat_session)
-
 [Plaud AI - 在线语音转文本](https://plaud.ai/transcribe)
 
 [Stable diffusion reimagine --- 稳定的扩散重新构想](https://clipdrop.co/stable-diffusion-reimagine)
