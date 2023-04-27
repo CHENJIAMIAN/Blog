@@ -3,7 +3,7 @@ name: Generate blog
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -22,10 +22,10 @@ jobs:
       - name: Convert markdown to HTML
         run: |
           mkdir docs
-          cd /
+          cd $GITHUB_WORKSPACE
           for file in *.md
           do
-            pandoc "$file" -o "../docs/${file%.md}.html"
+            pandoc "$file" -o "$GITHUB_WORKSPACE/docs/${file%.md}.html"
           done
 
       # Push generated pages to Github Pages branch
