@@ -47,7 +47,8 @@ glm::vec3 transformedNormal = normalMatrix \* originalNormal;
 *   Camera Matrix是Model-View matrix的逆矩阵，它们的操作是相反的。我们有两种视角——上帝视角和第一人称视角；
 *   当进行仿射变换时，法线需要被特别对待。我们需要从Model-View matrix中计算出新的Normal matrix；
 *   Perspective决定了两种基本投影方式：即透视投影和正视投影。
-
+## 省略版的OpenGL渲染流水线(透视投影变换矩阵)
+![](https://ask.qcloudimg.com/http-save/yehe-1148525/w58bd7ishs.jpeg?imageView2/2/w/2560/h/7000)
 
 ## 什么是切线空间
 切线空间（Tangent Space）是一种坐标系统，用于表达表面几何特征和材质属性。在三维计算机图形学中，通常将一个几何体的每个三角形面片都映射到这个切线空间中，从而能够方便地计算出这个面片上每个像素的法线向量以及材质纹理的值。
