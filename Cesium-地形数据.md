@@ -46,6 +46,7 @@ tif可以有8位，24位等深度，一般真彩色是24位，而地形数据只
 > 1. [devtool.app.js - up209d/ResourcesSaverExt - GitHub1s](https://github1s.com/up209d/ResourcesSaverExt/blob/HEAD/unpacked2x/legacy/0.1.9/devtool.app.js) 
 > 	1. 直接浏览想要的区域，用ResourcesSaver插件保存到本地 
 > 	2. 如果要自定义插件为专门保存.terrian的工具则需要掌握chrome插件开发，至少要花2天时间研究
+> 		1. 原理是chrome.devtools.inspectedWindow.onResourceAdded事件监听页面加载新资源的事件
 > 2. [tile.go - atlasdatatech/tiler - GitHub1s](https://github1s.com/atlasdatatech/tiler/blob/HEAD/tile.go)
 > 	1. 还没研究，是go写的爬取xyz瓦片的，可考虑改造成爬取xyz地形
 
