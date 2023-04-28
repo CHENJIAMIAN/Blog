@@ -10,4 +10,6 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的架构来加载
 4. 飞行模拟/直飞/绕飞/环飞/
 5. 飞机探测(视频推流)
 
-[earthsdk digitalCity](http://earthsdk.com/v/last/Apps/Examples/?menu=true&url=./earth-digitalCity.html#:~:text=%20v_elevationPos.z%20-%20_baseHeight%3B%20) 包含多个特效案例vue-vite-cesium-demo的Tileset特效根源于它
+[earthsdk digitalCity](http://earthsdk.com/v/last/Apps/Examples/?menu=true&url=./earth-digitalCity.html#:~:text=%20v_elevationPos.z%20-%20_baseHeight%3B%20) 包含多个特效案例vue-vite-cesium-demo的Tileset特效根源于它，作者是[在cesiumlab工作的唐晓飞vtxf (Tang Xiaofei)](https://github.com/vtxf) 
+
+[mars3d-vue-example/map.js at d141900bea02b8daa2e2834b347067f73967ce48 · marsgis/mars3d-vue-example](https://github.com/marsgis/mars3d-vue-example/blob/d141900bea02b8daa2e2834b347067f73967ce48/src/example/layer-tileset/style/customShader/map.js#L24) 这里也有几个shader可以参考
