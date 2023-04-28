@@ -150,5 +150,14 @@
       "key": "ArrowRight"
     }
   ],
-  "app:go-forward": []
+  "app:go-forward": [],
+  "command-palette:open": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "P"
+    }
+  ]
 }
