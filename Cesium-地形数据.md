@@ -31,22 +31,23 @@ tif可以有8位，24位等深度，一般真彩色是24位，而地形数据只
 ### [#](http://mars3d.cn/dev/guide/data/terrain.html#_3-2-terr2cesiumapp%E5%B7%A5%E5%85%B7)3.2 terr2cesiumApp工具
 
 来源：QQ群703622028 风的心愿 提供
-
 说明：按下载的文件内说明进行操作。
-
 [下载地址(opens new window)](http://data.mars3d.cn/tool/terr2cesiumApp.zip)
 
 ### [#](http://mars3d.cn/dev/guide/data/terrain.html#_3-3-cesiumlab%E5%B7%A5%E5%85%B7-%E5%9C%B0%E5%BD%A2%E5%88%87%E7%89%87-%E6%A8%A1%E5%9D%97)3.3 Cesiumlab工具“地形切片”模块
 
 来源：北京西部世界公司
-
 说明：从官网下载工具后，按工具说明注册帐号登录后即可使用，是图形化界面操作，操作比较简便。
+[官方下载地址 (opens new window)](http://www.cesiumlab.com/)[官方操作说明(opens new window)](http://www.cesiumlab.com/doc/CesiumLab/index.html#/dataprocess/terrain.md
 
-[官方下载地址 (opens new window)](http://www.cesiumlab.com/)[官方操作说明(opens new window)](http://www.cesiumlab.com/doc/CesiumLab/index.html#/dataprocess/terrain.md)
 > 3.4 GDAL地形处理工具
-### 自己写爬虫下载
-[devtool.app.js - up209d/ResourcesSaverExt - GitHub1s](https://github1s.com/up209d/ResourcesSaverExt/blob/HEAD/unpacked2x/legacy/0.1.9/devtool.app.js) 要掌握chrome插件开发，至少要花2天时间研究
-[tile.go - atlasdatatech/tiler - GitHub1s](https://github1s.com/atlasdatatech/tiler/blob/HEAD/tile.go)
+
+### 3.5 自己写爬虫下载，不用tif转terrain的过程，直接获取到官方的.terrain
+> 1. [devtool.app.js - up209d/ResourcesSaverExt - GitHub1s](https://github1s.com/up209d/ResourcesSaverExt/blob/HEAD/unpacked2x/legacy/0.1.9/devtool.app.js) 
+> 	1. 直接浏览想要的区域，用ResourcesSaver插件保存到本地 
+> 	2. 如果要自定义插件为专门保存.terrian的工具则需要掌握chrome插件开发，至少要花2天时间研究
+> 2. [tile.go - atlasdatatech/tiler - GitHub1s](https://github1s.com/atlasdatatech/tiler/blob/HEAD/tile.go)
+> 	1. 还没研究，是go写的爬取xyz瓦片的，可考虑改造成爬取xyz地形
 
 ## [#](http://mars3d.cn/dev/guide/data/terrain.html#_4-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%AF%B4%E6%98%8E)4. 常见问题说明
 
