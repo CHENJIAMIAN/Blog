@@ -21,6 +21,25 @@
             }
           }
         ]
+      },
+      {
+        "id": "de3c707a39800cd5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "13de0d7edbc972de",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cesium-QA.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -151,7 +170,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "473dc5602a327446",
+  "active": "13de0d7edbc972de",
   "lastOpenFiles": [
     "Cesium.md",
     "WebGL-QA.md",
