@@ -114,11 +114,8 @@ Imagery数据是指被摄影或传感器捕捉的地面图像数据。 Imagery�
 国内的Terrain数据可以从以下来源获取：
 
 1. 国家测绘地理信息局：获取全国数字高程模型数据，包括高分辨率DEM数据、高程等值线数据等。
-
 2. 公开的开放数据平台：比如天地图、高德地图、百度地图等，这些平台提供免费的高程数据和地形数据下载。
-
 3. 省市地理信息中心：各省市的地理信息中心也提供高程数据和地形数据，可在其官网下载。
-
 4. 遥感影像：卫星遥感影像中也包含高程数据，如ASTER GDEM、SRTM等，可在NASA官网下载。
 
 需要注意的是，以上数据来源有些需要购买或订阅，有些需要特殊的授权才能获取使用。建议在使用前仔细查看使用协议，遵守相关法律法规。
@@ -151,27 +148,18 @@ viewer.terrainProvider = terrainProvider;
 Cesium可以加载多种格式的地形数据，包括STL、OBJ、Terrain-RGB、Quantized Mesh等。其中，Quantized Mesh是Cesium原生支持的格式，具有良好的性能和视觉效果。
 
 Quantized Mesh文件结构包括以下几部分：
-
 1. Header：包含文件版本、最小和最大高度、节点数等信息。
-
 2. Indices：索引数组，用于描述三角形网格的拓扑结构。
-
 3. Positions：顶点位置数组。
-
 4. Normals：顶点法线数组。
-
 5. Texture Coordinates：顶点纹理坐标数组。
-
 6. Octants和Water Mask：用于描述地形切片和水域覆盖。
 
 在Cesium中加载Quantized Mesh数据时，需要使用Cesium.TerrainProvider类提供的API进行设置和调用。具体步骤包括：
 
 1. 创建TerrainProvider对象，指定数据源URL和高度范围。
-
 2. 创建CesiumTerrainProvider图层对象，将TerrainProvider对象作为参数传入。
-
 3. 将CesiumTerrainProvider添加到Cesium.Viewer图形容器中。
-
 4. 在Viewer的clock.onTick事件中更新地形数据，以实现动态效果。
 
 加载完成后，Cesium会自动根据Quantized Mesh数据生成地形模型，并进行光照和阴影的计算，实现高度感和细节效果。同时，用户可以通过调整TerrainProvider中的参数，如高度偏差、坡度、详细程度等，来优化地形表现。
