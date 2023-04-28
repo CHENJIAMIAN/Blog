@@ -44,6 +44,9 @@ tif可以有8位，24位等深度，一般真彩色是24位，而地形数据只
 
 [官方下载地址 (opens new window)](http://www.cesiumlab.com/)[官方操作说明(opens new window)](http://www.cesiumlab.com/doc/CesiumLab/index.html#/dataprocess/terrain.md)
 > 3.4 GDAL地形处理工具
+### 自己写爬虫下载
+[devtool.app.js - up209d/ResourcesSaverExt - GitHub1s](https://github1s.com/up209d/ResourcesSaverExt/blob/HEAD/unpacked2x/legacy/0.1.9/devtool.app.js)
+[tile.go - atlasdatatech/tiler - GitHub1s](https://github1s.com/atlasdatatech/tiler/blob/HEAD/tile.go)
 
 ## [#](http://mars3d.cn/dev/guide/data/terrain.html#_4-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%AF%B4%E6%98%8E)4. 常见问题说明
 
