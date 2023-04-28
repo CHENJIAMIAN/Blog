@@ -33,8 +33,26 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "1cf0bce83d33351c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e80c5c711b9b4c37",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cesium-地形数据.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -85,7 +103,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium-地形数据.md"
+                "file": "Cesium-QA.md"
               }
             }
           },
@@ -170,10 +188,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "62d6923f934ebd56",
+  "active": "13de0d7edbc972de",
   "lastOpenFiles": [
-    "Cesium-QA.md",
     "Cesium-地形数据.md",
+    "Cesium-QA.md",
     "Cesium.md",
     "WebGL-QA.md",
     "image/1682576062000eg1d8x.png",

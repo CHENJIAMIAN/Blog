@@ -23,6 +23,15 @@ Quantized Mesh文件结构包括以下几部分：
 5. Texture Coordinates：顶点纹理坐标数组。
 6. Octants和Water Mask：用于描述地形切片和水域覆盖。
 
+```js
+1. .terrian文件是二进制+末尾json
+	末尾
+2. available: (10) [Array(1), Array(1), Array(1), Array(1), Array(5), Array(5), Array(5), Array(5), Array(84), Array(84)]
+3.  geometricerror: 78822.47759060614
+4.  surfacearea: 256716195410744.53
+```
+
+
 加载完成后，Cesium会自动根据Quantized Mesh数据生成地形模型，并进行光照和阴影的计算，实现高度感和细节效果。
 
 ## 源码Tools/jsdoc/cesium_template/publish.js被谁调用？
