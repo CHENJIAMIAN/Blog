@@ -13,7 +13,7 @@ tif可以有8位，24位等深度，一般真彩色是24位，而地形数据只
 ### [#](http://mars3d.cn/dev/guide/data/terrain.html#_1-3-dem%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90)1.3 DEM数据来源
 
 目前很多网站可以下载公开的90米或30米精度的tif格式DEM地形数据，比如：
-[地理空间数据云官网](http://www.gscloud.cn/)
+- [地理空间数据云官网](http://www.gscloud.cn/) **最常用**
 -   [http://srtm.csi.cgiar.org/SELECTION/inputCoord.asp (opens new window)](http://srtm.csi.cgiar.org/SELECTION/inputCoord.asp)等网站下载。
 
 也可以通过一些爬虫工具，如[水经微图 (opens new window)](http://www.rivermap.cn/down.html)、[太乐地图 (opens new window)](http://www.arctiler.com/index.html)等下载谷歌地球的高精度DEM地形数据。
@@ -96,7 +96,7 @@ nodata定义了删格中的无效数据数据值，也就是说如果栅格里�
 
 ![image](http://mars3d.cn/dev/img/guide/data-terrain-02.jpg)
 
-### [#](http://mars3d.cn/dev/guide/data/terrain.html#_3-2-%E8%BD%AC%E6%8D%A2%E4%B8%BAterrain%E6%96%87%E4%BB%B6)3.2 转换为terrain文件
+### [#](http://mars3d.cn/dev/guide/data/terrain.html#_3-2-%E8%BD%AC%E6%8D%A2%E4%B8%BAterrain%E6%96%87%E4%BB%B6)3.2 转换为.terrain散列文件
 
 下面我们以Cesiumlab工具“地形切片”模块为例，进行转换
 
@@ -128,7 +128,8 @@ var terrainProvider = new Cesium.CesiumTerrainProvider({
   url : 'path_to_terrain_data_directory',
   requestWaterMask : true,
   requestVertexNormals : true,
-  requestSlopeRamp : true
+  requestSlopeRamp : true,
+  maximumLevel: 7
 });
 
 viewer.terrainProvider = terrainProvider;
