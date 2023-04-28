@@ -24,11 +24,25 @@ Quantized Mesh文件结构包括以下几部分：
 6. Octants和Water Mask：用于描述地形切片和水域覆盖。
 
 ```js
-1. .terrian文件是二进制+末尾json
-	末尾
-2. available: (10) [Array(1), Array(1), Array(1), Array(1), Array(5), Array(5), Array(5), Array(5), Array(84), Array(84)]
-3.  geometricerror: 78822.47759060614
-4.  surfacearea: 256716195410744.53
+ .terrian文件是二进制+末尾json
+	末尾json包含：
+		available: (10) [
+							[
+								{
+									endX: 3
+									endY: 1
+									startX: 2
+									startY: 0
+								}
+							],
+							 Array(1), Array(1), Array(1), Array(5), Array(5), 
+							 Array(5), Array(5), Array(84), Array(84)
+						 ]
+		geometricerror: 78822.47759060614
+		surfacearea: 256716195410744.53
+		available数组表示该地形数据分为10个等级，每个等级包含的瓦片数量分别是1，1，1，1，5，5，5，5，84，84。这个数组描述了地形数据在空间中组成的树状结构，以便在不同细节级别上进行渲染。
+		“geometricerror”属性表示该数据的几何误差，即表示每个瓦片在地球表面的最大距离偏差，单位为米。这个属性越小，数据越精细。
+		surfacearea属性表示该数据所覆盖的地表面积，单位为平方米。
 ```
 
 
