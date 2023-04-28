@@ -43,7 +43,7 @@ tif可以有8位，24位等深度，一般真彩色是24位，而地形数据只
 > 3.4 GDAL地形处理工具
 
 ### 3.5 自己写爬虫下载，不用tif转terrain的过程，直接获取到官方的.terrain
-
+[Terrain sandcastle](https://sandcastle.cesium.com/gallery/Terrain.html) 在官方页面爬取
 > 1. [devtool.app.js - up209d/ResourcesSaverExt - GitHub1s](https://github1s.com/up209d/ResourcesSaverExt/blob/HEAD/unpacked2x/legacy/0.1.9/devtool.app.js) 
 > 	1. 直接浏览想要的区域，用ResourcesSaver插件保存到本地 
 > 	2. 如果要自定义插件为专门保存.terrian的工具则需要掌握chrome插件开发，至少要花2天时间研究
