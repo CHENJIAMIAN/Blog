@@ -158,8 +158,7 @@
               }
             }
           }
-        ],
-        "currentTab": 5
+        ]
       },
       {
         "id": "000c0ab0d53af031",
@@ -190,7 +189,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ae012ef0f7d93e48",
+  "active": "a7974b07fd2b2c15",
   "lastOpenFiles": [
     "Cesium-地形数据.md",
     "Node.js.md",
