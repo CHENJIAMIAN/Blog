@@ -4,25 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "774852bbc266dc31",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "473dc5602a327446",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium-QA.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
         "id": "de3c707a39800cd5",
         "type": "tabs",
         "children": [
@@ -99,27 +80,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ae012ef0f7d93e48",
-            "type": "leaf",
-            "state": {
-              "type": "search",
-              "state": {
-                "query": "观察",
-                "matchingCase": false,
-                "explainSearch": false,
-                "collapseAll": true,
-                "extraContext": false,
-                "sortOrder": "alphabetical"
-              }
-            }
-          },
-          {
             "id": "a7974b07fd2b2c15",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium-QA.md"
+                "file": "Cesium-地形数据.md"
               }
             }
           },
@@ -159,6 +125,27 @@
             }
           },
           {
+            "id": "ae012ef0f7d93e48",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "观察",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "000c0ab0d53af031",
+        "type": "tabs",
+        "children": [
+          {
             "id": "74f14a89d3f3bb94",
             "type": "leaf",
             "state": {
@@ -166,8 +153,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -184,10 +170,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "473dc5602a327446",
+  "active": "62d6923f934ebd56",
   "lastOpenFiles": [
-    "Cesium-地形数据.md",
     "Cesium-QA.md",
+    "Cesium-地形数据.md",
     "Cesium.md",
     "WebGL-QA.md",
     "image/1682576062000eg1d8x.png",

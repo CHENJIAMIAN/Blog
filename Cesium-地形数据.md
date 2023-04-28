@@ -43,6 +43,7 @@ tif可以有8位，24位等深度，一般真彩色是24位，而地形数据只
 说明：从官网下载工具后，按工具说明注册帐号登录后即可使用，是图形化界面操作，操作比较简便。
 
 [官方下载地址 (opens new window)](http://www.cesiumlab.com/)[官方操作说明(opens new window)](http://www.cesiumlab.com/doc/CesiumLab/index.html#/dataprocess/terrain.md)
+> 3.4 GDAL地形处理工具
 
 ## [#](http://mars3d.cn/dev/guide/data/terrain.html#_4-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%AF%B4%E6%98%8E)4. 常见问题说明
 
