@@ -9,3 +9,5 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的架构来加载
 3. 天气/雨天/雪天/雾天
 4. 飞行模拟/直飞/绕飞/环飞/
 5. 飞机探测(视频推流)
+
+[earthsdk digitalCity](http://earthsdk.com/v/last/Apps/Examples/?menu=true&url=./earth-digitalCity.html#:~:text=%20v_elevationPos.z%20-%20_baseHeight%3B%20) 包含多个特效案例vue-vite-cesium-demo的Tileset特效根源于它
