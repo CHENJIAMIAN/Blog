@@ -45,19 +45,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "fa4091bc933b8ea3",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.2.7"
-              }
-            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       },
       {
         "id": "1cf0bce83d33351c",
@@ -187,6 +177,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Cesium-CustomShader.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -203,6 +194,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Cesium-CustomShader.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -242,7 +234,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6046bd2d1e72a925",
+  "active": "7cefe2e2d9d64a97",
   "lastOpenFiles": [
     "Cesium.md",
     "Cesium-CustomShader.md",
