@@ -4,62 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "de3c707a39800cd5",
+        "id": "17f70a159b6c362b",
         "type": "tabs",
         "children": [
           {
-            "id": "13de0d7edbc972de",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium-QA.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "62d6923f934ebd56",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "7cefe2e2d9d64a97",
+            "id": "83fca8e9a1150d91",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Cesium-CustomShader.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          }
-        ],
-        "currentTab": 2
-      },
-      {
-        "id": "1cf0bce83d33351c",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "e80c5c711b9b4c37",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -87,14 +41,6 @@
               "state": {
                 "sortOrder": "alphabetical"
               }
-            }
-          },
-          {
-            "id": "abaa1e41f1f74ada",
-            "type": "leaf",
-            "state": {
-              "type": "starred",
-              "state": {}
             }
           },
           {
@@ -201,27 +147,26 @@
             }
           },
           {
-            "id": "74cc36a5da27c56e",
-            "type": "leaf",
-            "state": {
-              "type": "smart-connections-view",
-              "state": {}
-            }
-          },
-          {
             "id": "6046bd2d1e72a925",
             "type": "leaf",
             "state": {
               "type": "smart-connections-chat-view",
               "state": {}
             }
+          },
+          {
+            "id": "d919cd1fbf58b5f9",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {}
+            }
           }
-        ],
-        "currentTab": 8
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 348.5
+    "width": 477.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -234,13 +179,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "7cefe2e2d9d64a97",
+  "active": "83fca8e9a1150d91",
   "lastOpenFiles": [
-    "Cesium.md",
-    "Cesium-CustomShader.md",
-    "Cesium-QA.md",
-    "Node.js.md",
     "Cesium-地形数据.md",
+    "Cesium-CustomShader.md",
+    "未命名.canvas",
+    "Cesium.md",
+    "Cesium-QA.md",
+    "2023-05-04.md",
+    "Node.js.md",
     "AdBlock 规则.md",
     "☁ 难题.md",
     "WebGL-QA.md",
@@ -271,8 +218,6 @@
     "【地图】投影 编号.md",
     "TS.md",
     "Cesium-GLTF.md",
-    "conflict-files-obsidian-git.md",
-    "杂-GPT-QA.md",
     "Python",
     "投资 保险/images",
     "投资 保险",
