@@ -14,7 +14,7 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的架构来加载
 
 [mars3d-vue-example/map.js at d141900bea02b8daa2e2834b347067f73967ce48 · marsgis/mars3d-vue-example](https://github.com/marsgis/mars3d-vue-example/blob/d141900bea02b8daa2e2834b347067f73967ce48/src/example/layer-tileset/style/customShader/map.js#L24) 这里也有几个shader可以参考
 
-[基础实例|xt3d](http://211.149.185.229:8080/basiccategorylist) 有管线流动的效果，但官网限制了无法直接请求静态资源 和 打开开发者工具就会崩溃（原理没时间去研究[有个网站我点击F12后，浏览器就变得异常卡顿 | Laravel | Laravel China 社区](https://learnku.com/laravel/t/54919)）核心库用[JavaScript Obfuscator Tool --- JavaScript 混淆器工具](https://obfuscator.io/)混淆过
+[基础实例|xt3d](http://211.149.185.229:8080/basiccategorylist) 有管线流动的效果，但官网限制了无法直接请求静态资源 和 打开开发者工具就会崩溃（原理没时间去研究[有个网站我点击F12后，浏览器就变得异常卡顿 | Laravel | Laravel China 社区](https://learnku.com/laravel/t/54919)manifest.7969719400cd8dd16534.js的blast方法）核心库用[JavaScript Obfuscator Tool --- JavaScript 混淆器工具](https://obfuscator.io/)混淆过
 ```js
   但是可以通过这样在代码编辑器去下载资源
   http://211.149.185.229:8080/BasicExampleEditor?path=PolylineObject-PolylineSprite
