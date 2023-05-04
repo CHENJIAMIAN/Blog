@@ -45,9 +45,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "fa4091bc933b8ea3",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.2.7"
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       },
       {
         "id": "1cf0bce83d33351c",
@@ -94,6 +104,14 @@
             "type": "leaf",
             "state": {
               "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "607c5382d11ef61c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
               "state": {}
             }
           }
@@ -149,14 +167,6 @@
             }
           },
           {
-            "id": "a3e5b9d36982b656",
-            "type": "leaf",
-            "state": {
-              "type": "smart-connections-view",
-              "state": {}
-            }
-          },
-          {
             "id": "ae012ef0f7d93e48",
             "type": "leaf",
             "state": {
@@ -170,23 +180,52 @@
                 "sortOrder": "alphabetical"
               }
             }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "000c0ab0d53af031",
-        "type": "tabs",
-        "children": [
+          },
           {
-            "id": "74f14a89d3f3bb94",
+            "id": "33a3de7f0d7eb021",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "1df2e133c89ddfe8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "74cc36a5da27c56e",
+            "type": "leaf",
+            "state": {
+              "type": "smart-connections-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "6046bd2d1e72a925",
             "type": "leaf",
             "state": {
               "type": "smart-connections-chat-view",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -203,7 +242,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6323b2f6898b32c7",
+  "active": "6046bd2d1e72a925",
   "lastOpenFiles": [
     "Cesium.md",
     "Cesium-CustomShader.md",
