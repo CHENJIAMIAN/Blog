@@ -22,7 +22,7 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的架构来加载
 			 1. 打开新标签页 - 源代码 - 事件监听器断点 - 脚本 - 脚本的第一个语句
 			 2. 输入`http://211.149.185.229:8080/BasicExampleEditor?path=PolylineObject-PolylineSprite`回车
 			 3. 在`manifest.7969719400cd8dd16534.js`的 `var im = new Image();` 行打断点，当执行到该行时，控制台运行代码
-			 4. `blast = ()=>{};detectIE=()=>{};resize=()=>{};`
+			 4.`blast = ()=>{};detectIE=()=>{};resize=()=>{};
 			 5. 再放行即可
 	- 核心库用[JavaScript Obfuscator Tool --- JavaScript 混淆器工具](https://obfuscator.io/)混淆过
 ```js
