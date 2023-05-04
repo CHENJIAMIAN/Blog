@@ -64,6 +64,7 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
+        "dimension": 85.81560283687944,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
@@ -73,14 +74,6 @@
               "state": {
                 "file": "Cesium-CustomShader.md"
               }
-            }
-          },
-          {
-            "id": "6323b2f6898b32c7",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
             }
           },
           {
@@ -163,6 +156,21 @@
             }
           }
         ]
+      },
+      {
+        "id": "fdb83edf448264e1",
+        "type": "tabs",
+        "dimension": 14.184397163120568,
+        "children": [
+          {
+            "id": "6323b2f6898b32c7",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
@@ -179,7 +187,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "83fca8e9a1150d91",
+  "active": "a7974b07fd2b2c15",
   "lastOpenFiles": [
     "Cesium-地形数据.md",
     "Cesium-CustomShader.md",
