@@ -15,9 +15,15 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的架构来加载
 [mars3d-vue-example/map.js at d141900bea02b8daa2e2834b347067f73967ce48 · marsgis/mars3d-vue-example](https://github.com/marsgis/mars3d-vue-example/blob/d141900bea02b8daa2e2834b347067f73967ce48/src/example/layer-tileset/style/customShader/map.js#L24) 这里也有几个shader可以参考
 
 [基础实例|xt3d](http://211.149.185.229:8080/basiccategorylist) 有管线流动的效果，但官网限制了无法直接请求静态资源 和 打开开发者工具就会崩溃
-	 - 原理：[有个网站我点击F12后，浏览器就变得异常卡顿 | Laravel | Laravel China 社区](https://learnku.com/laravel/t/54919)
-		 - manifest.7969719400cd8dd16534.js的blast方法
+	 - 打开开发者工具就会崩溃的原理：[有个网站我点击F12后，浏览器就变得异常卡顿 | Laravel | Laravel China 社区](https://learnku.com/laravel/t/54919)
+		 - manifest.7969719400cd8dd16534.js的blast等方法
 		 - [JS反调试技术随笔记录_chouyidang1008的博客-CSDN博客](https://blog.csdn.net/chouyidang1008/article/details/100946392)
+		 - 破解方法：
+			 1. 打开新标签页 - 源代码 - 事件监听器断点 - 脚本 - 脚本的第一个语句
+			 2. 输入`http://211.149.185.229:8080/BasicExampleEditor?path=PolylineObject-PolylineSprite`回车
+			 3. 在`manifest.7969719400cd8dd16534.js`的 `var im = new Image();` 行打断点，当执行到该行时，控制台运行代码
+			 4. `blast = ()=>{};detectIE=()=>{};resize=()=>{};`
+			 5. 再放行即可
 	- 核心库用[JavaScript Obfuscator Tool --- JavaScript 混淆器工具](https://obfuscator.io/)混淆过
 ```js
   但是可以通过这样在代码编辑器去下载资源
