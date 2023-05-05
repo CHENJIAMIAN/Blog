@@ -30,7 +30,7 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的架构来加载
 ```js
   但是可以通过这样在代码编辑器去下载资源
   http://211.149.185.229:8080/BasicExampleEditor?path=PolylineObject-PolylineSprite
-      const url = `/data.xt3d.cn/assets/images/polylinematerial/spriteline2.png`;
+      const url = `/data.xt3d.cn/assets/images/polylinematerial/spriteline2.png`;//blast = ()=>{};detectIE=()=>{};resize=()=>{};
       fetch(url)
         .then((response) => response.blob())
         .then((blob) => {
