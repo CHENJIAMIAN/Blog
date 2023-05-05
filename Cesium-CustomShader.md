@@ -23,6 +23,10 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的架构来加载
 			 4. blast = ()=>{};detectIE=()=>{};resize=()=>{};
 			 5. 再放行即可
 	- 核心库用[JavaScript Obfuscator Tool --- JavaScript 混淆器工具](https://obfuscator.io/)混淆过
+		- 破解方法：
+			1. 利用正则 + vscode的多游标 匹配 构造[获值函数1, 获值函数2...]数组 + 在devtools执行，右键执行结果复制对象，得到[值1, 值2]
+			2. 利用vscode的batch rename插件批量重命名
+			3. 利用正则批量把xxx.['值1']替换为xxx.值1（注意排除排除@单引号双引号 `\['([^"'@]+)'\]`）
 ```js
   但是可以通过这样在代码编辑器去下载资源
   http://211.149.185.229:8080/BasicExampleEditor?path=PolylineObject-PolylineSprite
