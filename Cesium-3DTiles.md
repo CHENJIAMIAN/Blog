@@ -1,3 +1,7 @@
+## 下载器
+[WangMingHua111/3dtilesdownloader: 3dtiles 网络文件下载器](https://github.com/WangMingHua111/3dtilesdownloader) 上次更新2021 年 8 月 ，npm cli包，试了，下载的是cesiumlab的clt，自动解包是空文件夹，无效❌
+[IKangXu/3dtilesdownloader: 下载在线3dtiles数据，可自指定多线程数，可分段下载，可指定位置下载。](https://github.com/IKangXu/3dtilesdownloader) 上次更新2022 年 10 月，py3写的duo
+
 ## 3DTiles
 ```js
 3DTiles 1.0 规范允许异构数据共存于一个数据集上。3D 瓦片只是空间划分的单元，并不是该块三维空域内的具体三维物体。这些三维物体被称作“瓦片内容”。
