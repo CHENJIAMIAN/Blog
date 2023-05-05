@@ -1,4 +1,4 @@
-## 下载器
+## 3DTiles## 下载器
 1. [WangMingHua111/3dtilesdownloader: 3dtiles 网络文件下载器](https://github.com/WangMingHua111/3dtilesdownloader) 上次更新2021 年 8 月 ，npm cli包，试了，下载的是cesiumlab的clt，自动解包是空文件夹，无效❌
 2. [IKangXu/3dtilesdownloader: 下载在线3dtiles数据，可自指定多线程数，可分段下载，可指定位置下载。](https://github.com/IKangXu/3dtilesdownloader) 上次更新2022 年 10 月，py3写的，可下载external tilesets（我称之为层级tilesets）
 > 3D Tiles 支持多个其他 JSON 文件的 JSON 索引。这是通过使用external tilesets外部瓦片集实现的，外部瓦片集是使用 URL 或相对路径引用其他瓦片集的 JSON 文件。 通过这种方式，单个顶级 tileset JSON 文件可以引用和索引多个其他 tilesets，从而实现大型 3D 数据集的高效组织和管理。每个引用的图块集都可以包含自己的图块集、属性和元数据，并且可以独立于其他图块加载和显示。
