@@ -410,6 +410,10 @@ gl.useProgram//使用 WebGL 程序对象。
 gl.viewport//设置视口。定义了绘制在 canvas 上的图像的区域
 ```
 ## 兼容性
+## CesiumJS 1.102 发布
+
+CesiumJS 1.102 现已可用。CesiumJS 现在默认使用 WebGL2 上下文进行渲染。WebGL2 在所有平台上都得到广泛支持，这导致跨设备（尤其是移动设备）更好的功能支持。仍然支持 WebGL1。如果 WebGL2 不可用，CesiumJS 将自动回退到 WebGL1。
+
 1. 在WebGL 2中，texture2D已经被废弃，而texture是新的关键字
 2. 使用PixelFormat.RED代替PixelFormat.LUMINANCE，是因为在WebGL 2.0中，LUMINANCE也已经被废弃。
 3. 将uniform中的texture重命名为noiseTexture，是为了避免与WebGL中的texture关键字产生冲突。
