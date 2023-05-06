@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "0923c2d666e2a7bc",
+        "id": "e8693272d8993fda",
         "type": "tabs",
         "children": [
           {
-            "id": "2054c177c83ee6cc",
+            "id": "77a55964ede60586",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium-CustomShader.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -71,9 +66,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Cesium-CustomShader.md"
-              }
+              "state": {}
             }
           },
           {
@@ -116,7 +109,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium-CustomShader.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +125,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium-CustomShader.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -187,10 +178,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "2054c177c83ee6cc",
+  "active": "0a50d9c573337de4",
   "lastOpenFiles": [
-    "Cesium-地形数据.md",
     "Cesium-CustomShader.md",
+    "Cesium-地形数据.md",
     "WebGL.md",
     "☁ 难题.md",
     "【通用】Git.md",
