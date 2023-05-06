@@ -1,6 +1,7 @@
 # Cesium 1.97 发布
 
 CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的Model架构来加载 glTF 模型和 tilesets 以启用：用户定义的 GLSL 着色器通过[`CustomShader`](https://github.com/CesiumGS/cesium/blob/main/Documentation/CustomShaderGuide/README.md)
+[CesiumJS 更新日志 1.96 与 1.97 - 新构建工具 esbuild 体验及 Model API 更替完成 - 岭南灯火 - 博客园](https://www.cnblogs.com/onsummer/p/16560461.html)
 
 找到[vue-vite-cesium-demo/](https://lihanqiang.github.io/vue-vite-cesium-demo/) 可用，包含
 	1. 经度、纬度、高度/距离/面积
