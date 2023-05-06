@@ -155,8 +155,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "fdb83edf448264e1",
@@ -188,7 +187,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "2054c177c83ee6cc",
+  "active": "a7974b07fd2b2c15",
   "lastOpenFiles": [
     "☁ 难题.md",
     "Cesium-地形数据.md",
