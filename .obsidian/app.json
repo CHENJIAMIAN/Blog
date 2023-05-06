@@ -6,5 +6,11 @@
   "spellcheck": false,
   "defaultViewMode": "source",
   "promptDelete": false,
-  "attachmentFolderPath": "./images"
+  "attachmentFolderPath": "./images",
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
 }
