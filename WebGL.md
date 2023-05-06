@@ -410,7 +410,7 @@ gl.useProgram//使用 WebGL 程序对象。
 gl.viewport//设置视口。定义了绘制在 canvas 上的图像的区域
 ```
 ## 兼容性
-1. 在WebGL中，texture2D已经被废弃，而texture是新的关键字
+1. 在WebGL 2中，texture2D已经被废弃，而texture是新的关键字
 2. 使用PixelFormat.RED代替PixelFormat.LUMINANCE，是因为在WebGL 2.0中，LUMINANCE也已经被废弃。
 3. 将uniform中的texture重命名为noiseTexture，是为了避免与WebGL中的texture关键字产生冲突。
 ## 高阶学习
