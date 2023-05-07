@@ -1,25 +1,3 @@
 {
-<<<<<<< HEAD
   "items": []
-=======
-  "items": [
-    {
-      "type": "file",
-      "ctime": 1683191329800,
-      "path": "Cesium-QA.md"
-    },
-    {
-      "type": "file",
-      "ctime": 1683191342221,
-      "path": "Cesium.md",
-      "title": "阿道夫"
-    },
-    {
-      "type": "group",
-      "ctime": 1683191358182,
-      "items": [],
-      "title": "Untitled folder"
-    }
-  ]
->>>>>>> origin/master
 }
