@@ -60,6 +60,14 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "9119d7988fe927a0",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -74,7 +82,7 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
-        "dimension": 56.743185078909605,
+        "dimension": 56.7431850789096,
         "children": [
           {
             "id": "5e55221e27be587d",
@@ -131,7 +139,7 @@
             }
           },
           {
-            "id": "946a6c197d4e9f53",
+            "id": "4c534b7a2a022897",
             "type": "leaf",
             "state": {
               "type": "smart-connections-chat-view",
@@ -139,7 +147,7 @@
             }
           },
           {
-            "id": "36fac671a5dba112",
+            "id": "f925c19810a397a1",
             "type": "leaf",
             "state": {
               "type": "smart-connections-view",
@@ -147,12 +155,12 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 3
       },
       {
         "id": "62cca7b24132f3d3",
         "type": "tabs",
-        "dimension": 43.256814921090395,
+        "dimension": 43.2568149210904,
         "children": [
           {
             "id": "a7974b07fd2b2c15",
@@ -179,7 +187,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "7935b61fc6f423f8",
+  "active": "6323b2f6898b32c7",
   "lastOpenFiles": [
     "images/20230426111523.png",
     "images/20230426101106.png",
