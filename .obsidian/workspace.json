@@ -14,8 +14,20 @@
               "type": "empty",
               "state": {}
             }
+          },
+          {
+            "id": "1d31521a38fe4644",
+            "type": "leaf",
+            "state": {
+              "type": "diff-view",
+              "state": {
+                "file": ".obsidian/bookmarks.json",
+                "staged": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -187,8 +199,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6323b2f6898b32c7",
+  "active": "1d31521a38fe4644",
   "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
+    "image/1682576062000eg1d8x.png",
+    "image/1682576051000qao4o2.png",
+    "Cesium-地形数据.md",
+    "Cesium-CustomShader.md",
     "images/20230426111523.png",
     "images/20230426101106.png",
     "images/20230426101035.png",
@@ -197,9 +214,6 @@
     "images/20230424120853.png",
     "images/20230419164035.png",
     "images/20230419101452.png",
-    "images/20230419095100.png",
-    "images/20230419095022.png",
-    "images/20230411105231.png",
     "image",
     "Cesium-官方编码指南.md",
     "TS.md",
@@ -211,7 +225,6 @@
     "☁.md",
     "AdBlock 规则.md",
     "☁ 难题.md",
-    "conflict-files-obsidian-git.md",
     "Cesium.md",
     "杂-GPT-QA.md",
     "JS.md",
@@ -224,8 +237,6 @@
     "Cesium-地形.md",
     "nginx.md",
     "npm.md",
-    "WebGL.md",
-    "ThreeJS.md",
     "Python",
     "投资 保险/images",
     "投资 保险",

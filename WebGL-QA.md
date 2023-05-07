@@ -24,13 +24,10 @@ glm::vec3 transformedNormal = normalMatrix \* originalNormal;
 
 ## 摄像头矩阵转换的WebGL的实现
 
-[![](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67)](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67) &#x20;
-
-*   Theory:&#x20;
-
+[![](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67)](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67)
+*   Theory:
     *   ObjectCoordinates ModelTransform ViewTransform ProjectionTransform PerspectiveDivision ViewportTransform Viewport(Canvas)Coordinates
-*   WebGL:&#x20;
-
+*   WebGL:
     *   ObjectCoordinates  Model -ViewMatrix  PerspectiveMatrix TransformedNormal Vectors gl.viewport Viewport(Canvas)Coordinates
     *   NormalVectors NommalMatrix
 
@@ -50,7 +47,8 @@ glm::vec3 transformedNormal = normalMatrix \* originalNormal;
 *   Camera Matrix是Model-View matrix的逆矩阵，它们的操作是相反的。我们有两种视角——上帝视角和第一人称视角；
 *   当进行仿射变换时，法线需要被特别对待。我们需要从Model-View matrix中计算出新的Normal matrix；
 *   Perspective决定了两种基本投影方式：即透视投影和正视投影。
-
+## 省略版的OpenGL渲染流水线(透视投影变换矩阵)
+![](https://ask.qcloudimg.com/http-save/yehe-1148525/w58bd7ishs.jpeg?imageView2/2/w/2560/h/7000)
 
 ## 什么是切线空间
 切线空间（Tangent Space）是一种坐标系统，用于表达表面几何特征和材质属性。在三维计算机图形学中，通常将一个几何体的每个三角形面片都映射到这个切线空间中，从而能够方便地计算出这个面片上每个像素的法线向量以及材质纹理的值。
@@ -113,11 +111,15 @@ w的值通常设置为1，这样可以保证在执行模型视图变换和投影
 在三维坐标系中，平移变换可以表示为一个矩阵：
 
 ```javascript
-1 0 0 Tx
-0 1 0 Ty
-0 0 1 Tz
-0 0 0 1
-
+1  0  0  Tx
+0  1  0  Ty
+0  0  1  Tz
+0  0  0  1
+顺时针：
+1  0  0  0
+0  1  0  0
+0  0  1  0
+Tx Ty Tz 1
 ```
 
 其中Tx、Ty、Tz是平移的距离，这个矩阵的右下角元素是1，因此与该矩阵相乘的向量不会发生缩放或旋转，只会进行平移。
@@ -152,7 +154,7 @@ vec4(3.0, 5.0, 7.0, 1.0)
 
 其中Tx、Ty、Tz是平移的距离。
 
-2.  旋转变换矩阵
+2.  旋转变换矩阵****逆时针**的旋转公式**
 
 绕x轴旋转θ角度的变换矩阵：
 
@@ -160,6 +162,14 @@ vec4(3.0, 5.0, 7.0, 1.0)
 1    0       0      0
 0    cos(θ) -sin(θ) 0
 0    sin(θ) cos(θ)  0
+0    0       0      1
+```
+> 在虚拟3D世界中，正数代表顺时针旋转更容易理解，在实践中更好处理。
+```
+顺时针：
+1    0       0      0
+0    cos(θ) sin(θ) 0
+0    -sin(θ) cos(θ)  0
 0    0       0      1
 ```
 
@@ -170,6 +180,12 @@ cos(θ)   0  sin(θ)   0
 0        1  0        0
 -sin(θ)  0  cos(θ)   0
 0        0  0        1
+
+顺时针：
+cos(θ)   0  -sin(θ)   0
+0        1  0         0
+sin(θ)   0  cos(θ)    0
+0        0  0         1
 ```
 
 绕z轴旋转θ角度的变换矩阵：
@@ -179,6 +195,12 @@ cos(θ) -sin(θ)   0 0
 sin(θ) cos(θ)    0 0
 0       0        1 0
 0       0        0 1
+
+顺时针：
+cos(θ)   0  sin(θ)    0
+0        1  0         0
+-sin(θ)   0  cos(θ)   0
+0        0  0         1
 ```
 
 3.  缩放变换矩阵
@@ -241,7 +263,9 @@ gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
 
 其中，uPMatrix和uMVMatrix分别是投影矩阵和模型视图矩阵，它们是顶点着色器中的uniform变量，通过将这些变换矩阵与顶点位置向量相乘，可以将顶点从模型坐标系（或世界坐标系）转换到裁剪坐标系（或屏幕坐标系）。
 
-具体来说，uPMatrix是一个4x4的矩阵，用于将裁剪坐标系的坐标转换为标准化设备坐标系的坐标，其中，标准化设备坐标系是一个以屏幕中心为原点，范围在[-1, 1]之间的二维坐标系。uMVMatrix是一个4x4的矩阵，用于将顶点从模型坐标系（或世界坐标系）转换到观察坐标系（或相机坐标系），也就是将顶点的位置和朝向从模型空间转换到相机空间。
+- 具体来说，
+- uPMatrix是一个4x4的矩阵，用于将裁剪坐标系的坐标转换为标准化设备坐标系的坐标，其中，标准化设备坐标系是一个以屏幕中心为原点，范围在[-1, 1]之间的二维坐标系。
+- uMVMatrix是一个4x4的矩阵，用于将顶点从模型坐标系（或世界坐标系）转换到观察坐标系（或相机坐标系），也就是将顶点的位置和朝向从模型空间转换到相机空间。
 
 因此，通过将这两个矩阵相乘，可以将顶点从模型坐标系（或世界坐标系）转换到观察坐标系，然后再将其乘以顶点的位置向量，得到在观察坐标系中的位置。最后，再将其乘以投影矩阵，得到在裁剪坐标系中的位置，最终将这个位置向量写入gl_Position中。
 
