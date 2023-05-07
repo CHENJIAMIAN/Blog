@@ -757,5 +757,3 @@ float mean = vsInput.metadataStatistics.intensity.mean;
 材料颜色（例如`material.diffuse`）始终在线性颜色空间中，即使`lightingModel`是`LightingModel.UNLIT`。
 
 当`scene.highDynamicRange`是 时`false`，最终计算的颜色（在自定义着色器和光照之后）被转换为`sRGB`.
-
-&#x9;
