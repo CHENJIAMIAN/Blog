@@ -26,7 +26,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "未命名.md",
+                "file": "Cesium-CustomShader官方文档.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -92,7 +92,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -101,15 +102,25 @@
       {
         "id": "441dbf8ada8f85b4",
         "type": "tabs",
-        "dimension": 56.7431850789096,
+        "dimension": 72.40274599542333,
         "children": [
+          {
+            "id": "a7974b07fd2b2c15",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Cesium-CustomShader官方文档.md"
+              }
+            }
+          },
           {
             "id": "5e55221e27be587d",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "未命名.md",
+                "file": "Cesium-CustomShader官方文档.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +137,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "未命名.md",
+                "file": "Cesium-CustomShader官方文档.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,31 +177,20 @@
               "type": "smart-connections-view",
               "state": {}
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "d6780fe6e1607063",
+        "type": "tabs",
+        "dimension": 27.59725400457667,
+        "children": [
           {
             "id": "2d60adc08c03c387",
             "type": "leaf",
             "state": {
               "type": "smart-connections-chat-view",
               "state": {}
-            }
-          }
-        ],
-        "currentTab": 6
-      },
-      {
-        "id": "62cca7b24132f3d3",
-        "type": "tabs",
-        "dimension": 43.2568149210904,
-        "children": [
-          {
-            "id": "a7974b07fd2b2c15",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "未命名.md"
-              }
             }
           }
         ]
@@ -213,7 +213,7 @@
   "active": "391ef0019a6affa5",
   "lastOpenFiles": [
     "Cesium-CustomShader.md",
-    "未命名.md",
+    "Cesium-CustomShader官方文档.md",
     "conflict-files-obsidian-git.md",
     "image/1682576062000eg1d8x.png",
     "image/1682576051000qao4o2.png",
