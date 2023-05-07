@@ -4,7 +4,7 @@
 
 ```c
 const customShader = new Cesium.CustomShader({
-  //用户想要添加到着色器的任何自定义制服。
+  //用户想要添加到着色器的任何自定义Uniforms。
   //这些可以在运行时通过 customShader.setUniform() 改变
   uniforms: {
     u_time: {
@@ -75,7 +75,7 @@ const model = await Cesium.Model.fromGltfAsync({,
 });
 ```
 
-## 制服
+## Uniforms
 
 自定义着色器目前支持以下统一类型：
 
@@ -98,7 +98,7 @@ const model = await Cesium.Model.fromGltfAsync({,
 | `MAT4`       | `mat4`      | `Matrix4`        |
 | `SAMPLER_2D` | `sampler2D` | `TextureUniform` |
 
-### 纹理制服
+### 纹理Uniforms
 
 Texture uniforms有更多的选项，已经封装在 `TextureUniform`类中了。可以从 URL、a`Resource`或类型化数组加载纹理。这里有些例子：
 
@@ -368,7 +368,7 @@ struct FragmentInput {
 ]
 ```
 
-### 旧`EXT_feature_metadata`功能 ID
+### 旧`EXT_feature_metadata`Feature ID
 
 `EXT_feature_metadata`是 . 的早期草稿`EXT_mesh_features`。尽管要素 ID 概念没有太大变化，但 JSON 结构略有不同。在较旧的扩展中，分别`featureIdAttributes`存储`featureIdTextures` 。在这个 CesiumJS 实现中，特征属性和特征纹理被连接到一个列表中，本质上是 `featureIds = featureIdAttributes.concat(featureIdTextures)`. 除了扩展 JSON 中的这种差异外，特征 ID 集的标记方式与 相同`EXT_mesh_features`，即
 
@@ -488,7 +488,7 @@ struct FragmentInput {
 
 ## `Metadata`结构
 
-此结构包含模型可从 glTF 扩展（或旧 扩展）访问的相关元数据属性。[`EXT_structural_metadata`](https://Github.com/cesium gs/gl tf/tree/3d tiles next/extensions/2.0/vendor/ext structural metadata)[`ext feature metadata`](https://github.com/cesium gs/gl tf/tree/3d tiles next/extensions/2.0/vendor/ext 功能元数据）
+此结构包含模型可从 glTF 扩展（或旧 扩展）访问的相关元数据属性。[`EXT_structural_metadata`](https://Github.com/cesium gs/gl tf/tree/3d tiles next/extensions/2.0/vendor/ext structural metadata)[`ext feature metadata`](https://github.com/cesiumgs/gltf/tree/3dtilesnext/extensions/2.0/vendor/ext 功能元数据）
 
 目前支持以下类型的元数据：
 
@@ -587,7 +587,8 @@ struct Metadata {
 
 在着色器中，`(vsInput|fsInput).metadata.temperatureCelsius`将是一个`float` 介于 0.0 和 100.0 之间的值，而 `(vsInput|fsInput).metadata.temperatureFahrenheit`将是一个`float`范围为`[32.0, 212.0]`.
 
-### 财产ID消毒
+### Property ID消毒
+> 换句话说，就是通过一系列的处理方式将属性ID（通常是字符串）从潜在的安全威胁中清除掉，保护应用程序或系统不受攻击。这样做的目的是防止数据注入攻击，例如SQL注入或跨站脚本攻击等。
 
 GLSL 只支持字母数字标识符，即不以数字开头的标识符。此外，带有连续下划线 ( `__`) 的标识符，以及带有`gl_`前缀的标识符，在 GLSL 中是保留的。为了规避这些限制，属性 ID 修改如下：
 
