@@ -758,11 +758,11 @@ struct czm_modelVertexOutput {
 struct czm_modelMaterial {
     vec3 diffuse;
     float alpha;
-    vec3 specular;
+    vec3 specular;//非常谈的的颜色
     float roughness;
     vec3 normalEC;
     float occlusion;
-    vec3 emissive;
+    vec3 emissive;//更接近设置色的谈的颜色
 };
 ```
 
