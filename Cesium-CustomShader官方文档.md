@@ -124,8 +124,7 @@ const textureWithSampler = new Cesium.TextureUniform({
 
 Varyings 在`CustomShader`构造函数中声明。这会自动将诸如`out float v_userDefinedVarying;`和`in float v_userDefinedVarying;`之类的行分别添加到 GLSL 顶点和片段着色器的顶部。
 
-用户负责为这个 varying in 赋值 `vertexShaderText`并在 中使用它`fragmentShaderText`。例如：
-
+用户负责在 `vertexShaderText` 中为这个 `varying` 赋值，并在 `fragmentShaderText` 中使用它。例如：
 ```c
 const customShader = new Cesium.CustomShader({
   //在这里声明了变化
@@ -153,8 +152,7 @@ const customShader = new Cesium.CustomShader({
 ```
 
 CustomShader支持以下不同类型：
-
-| 变型      | GLSL型   |
+| Varyings      | GLSL型   |
 | :------ | :------ |
 | `FLOAT` | `float` |
 | `VEC2`  | `vec2`  |
@@ -167,18 +165,16 @@ CustomShader支持以下不同类型：
 ## CustomShader模式
 
 自定义片段着色器是可配置的，因此它可以在材质或照明之前/之后运行。这是可用模式的摘要。
-
 | 模式                    | 片段着色器管线            | 描述                         |
 | :-------------------- | :----------------- | :------------------------- |
 | `MODIFY_MATERIAL`（默认） | 材质 -> CustomShader -> 光照 | CustomShader修改材质阶段的结果            |
 | `REPLACE_MATERIAL`    | CustomShader -> 光照       | 根本不运行材质阶段，而是在CustomShader中按程序生成它 |
 
-在上面，“material”对纹理进行了预处理，从而产生了一个`czm_modelMaterial`. 这主要与 PBR 相关，但即使对于 UNLIT，也会处理基色纹理。
+在上面，“材质”对纹理进行了预处理，从而产生了一个`czm_modelMaterial`. 这主要与 PBR 相关，但即使对于 UNLIT，也会处理基色纹理。
 
 ## `VertexInput`结构
 
 包含属性的自动生成的 GLSL 结构。
-
 ```c
 struct VertexInput {
     //处理过的属性。请参阅下面的属性结构部分。
@@ -197,7 +193,6 @@ struct VertexInput {
 ## `FragmentInput`结构
 
 这个结构类似于`VertexInput`，但是有一些更多的自动变量用于各种坐标空间中的位置。
-
 ```c
 struct FragmentInput {
     //处理的属性值。请参阅下面的属性结构部分。
