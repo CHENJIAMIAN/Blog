@@ -24,7 +24,7 @@ const customShader = new Cesium.CustomShader({
   varyings: {
     v_customTexCoords: Cesium.VaryingType.VEC2
   },
-  //配置自定义着色器在片段着色器的材质/照明管道中的位置。后面会有更多关于此的内容。
+  //配置CustomShader在片段着色器的材质/照明管道中的位置。后面会有更多关于此的内容。
   mode: Cesium.CustomShaderMode.MODIFY_MATERIAL,
   //PBR（基于物理的渲染）或 UNLIT，具体取决于所需的结果。
   lightingModel: Cesium.LightingModel.PBR,
@@ -50,11 +50,11 @@ const customShader = new Cesium.CustomShader({
 });
 ```
 
-## 应用自定义着色器
+## 应用CustomShader
 
-自定义着色器可以应用于 3D Tiles 或`Model`如下：
+CustomShader可以应用于 3D Tiles 或`Model`如下：
 
-```c
+```JS
 const customShader = new Cesium.CustomShader(/*...*/);
 
 //应用于 tileset 中的所有 tile。
@@ -73,9 +73,9 @@ const model = await Cesium.Model.fromGltfAsync({,
 
 ## Uniforms
 
-自定义着色器目前支持以下统一类型：
+CustomShader目前支持以下Uniform类型：
 
-| 统一类型         | GLSL型       | JS型              |
+| Uniform类型         | GLSL型       | JS型              |
 | :----------- | :---------- | :--------------- |
 | `FLOAT`      | `float`     | `Number`         |
 | `VEC2`       | `vec2`      | `Cartesian2`     |
@@ -92,13 +92,13 @@ const model = await Cesium.Model.fromGltfAsync({,
 | `MAT2`       | `mat2`      | `Matrix2`        |
 | `MAT3`       | `mat3`      | `Matrix3`        |
 | `MAT4`       | `mat4`      | `Matrix4`        |
-| `SAMPLER_2D` | `sampler2D` | `TextureUniform` |
+| `SAMPLER_2D` | `sampler2D` | **TextureUniform** |
 
-### 纹理Uniforms
+### Texture Uniforms
 
-Texture uniforms有更多的选项，已经封装在 `TextureUniform`类中了。可以从 URL、a`Resource`或类型化数组加载纹理。这里有些例子：
-
-```c
+纹理uniforms有更多的选项，已经封装在 `TextureUniform`类中了。纹理可以从URL、资源或 `typedArray` 中加载。以下是一些示例：
+> 这里的"资源"指的是Cesium支持的一些资源类型，比如Blob、File和BlobURI等。可以通过将这些资源传递给TextureUniform类的构造函数，来创建纹理。
+```js
 const textureFromUrl = new Cesium.TextureUniform({
   url: "https://example.com/image.png",
 });
@@ -120,9 +120,9 @@ const textureWithSampler = new Cesium.TextureUniform({
 });
 ```
 
-## 变化
+## Varyings
 
-Varyings 在构造函数中声明`CustomShader`。这会自动将诸如`out float v_userDefinedVarying;`和`in float v_userDefinedVarying;`之类的行分别添加到 GLSL 顶点和片段着色器的顶部。
+Varyings 在`CustomShader`构造函数中声明。这会自动将诸如`out float v_userDefinedVarying;`和`in float v_userDefinedVarying;`之类的行分别添加到 GLSL 顶点和片段着色器的顶部。
 
 用户负责为这个 varying in 赋值 `vertexShaderText`并在 中使用它`fragmentShaderText`。例如：
 
@@ -152,7 +152,7 @@ const customShader = new Cesium.CustomShader({
 });
 ```
 
-自定义着色器支持以下不同类型：
+CustomShader支持以下不同类型：
 
 | 变型      | GLSL型   |
 | :------ | :------ |
@@ -164,14 +164,14 @@ const customShader = new Cesium.CustomShader({
 | `MAT3`  | `mat3`  |
 | `MAT4`  | `mat4`  |
 
-## 自定义着色器模式
+## CustomShader模式
 
 自定义片段着色器是可配置的，因此它可以在材质或照明之前/之后运行。这是可用模式的摘要。
 
 | 模式                    | 片段着色器管线            | 描述                         |
 | :-------------------- | :----------------- | :------------------------- |
-| `MODIFY_MATERIAL`（默认） | 材质 -> 自定义着色器 -> 光照 | 自定义着色器修改材质阶段的结果            |
-| `REPLACE_MATERIAL`    | 自定义着色器 -> 光照       | 根本不运行材质阶段，而是在自定义着色器中按程序生成它 |
+| `MODIFY_MATERIAL`（默认） | 材质 -> CustomShader -> 光照 | CustomShader修改材质阶段的结果            |
+| `REPLACE_MATERIAL`    | CustomShader -> 光照       | 根本不运行材质阶段，而是在CustomShader中按程序生成它 |
 
 在上面，“material”对纹理进行了预处理，从而产生了一个`czm_modelMaterial`. 这主要与 PBR 相关，但即使对于 UNLIT，也会处理基色纹理。
 
@@ -215,11 +215,11 @@ struct FragmentInput {
 
 ## 属性结构
 
-该`Attributes`结构是根据自定义着色器中使用的变量和要渲染的图元中可用的属性动态生成的。
+该`Attributes`结构是根据CustomShader中使用的变量和要渲染的图元中可用的属性动态生成的。
 
 例如，如果用户在着色器中使用，运行时将生成从模型中的`fsInput.attributes.texCoord_0`属性（如果可用）提供此值所需的代码`TEXCOORD_0`
 
-如果图元不具有满足自定义着色器所需的属性，则将尽可能推断出默认值，以便着色器仍然可以编译。否则，将为该图元禁用自定义顶点/片段着色器部分。
+如果图元不具有满足CustomShader所需的属性，则将尽可能推断出默认值，以便着色器仍然可以编译。否则，将为该图元禁用自定义顶点/片段着色器部分。
 
 内置属性的完整列表如下。`0, 1, 2, ...`一些属性有一个集合索引，它是（例如）之一`texCoord_0`，这些用`N`.
 
@@ -261,8 +261,8 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
 
 当使用glTF 扩展`EXT_mesh_features`或时，特征 ID 出现在两个地方：`EXT_instance_features`
 
-1.  任何 glTF 基元都可以有一个`featureIds`数组。该`featureIds`数组可能包含特征 ID 属性、隐式特征 ID 属性和/或特征 ID 纹理。无论特征 ID 的类型如何，它们都会出现在自定义着色器中，因为数组中特征 ID 的索引在`(vsInput|fsInput).featureIds.featureId_N`哪里。`NfeatureIds`
-2.  `EXT_mesh_gpu_instancing`任何带有和 的glTF 节点都`EXT_instance_features`可以定义特征 ID。这些可能是特征 ID 属性或隐式特征 ID 属性，但不是特征 ID 纹理。这些将出现在自定义着色器中，因为数组中特征 ID 的索引在`(vsInput|fsInput).featureIds.instanceFeatureId_N`哪里。`NfeatureIds`
+1.  任何 glTF 基元都可以有一个`featureIds`数组。该`featureIds`数组可能包含特征 ID 属性、隐式特征 ID 属性和/或特征 ID 纹理。无论特征 ID 的类型如何，它们都会出现在CustomShader中，因为数组中特征 ID 的索引在`(vsInput|fsInput).featureIds.featureId_N`哪里。`NfeatureIds`
+2.  `EXT_mesh_gpu_instancing`任何带有和 的glTF 节点都`EXT_instance_features`可以定义特征 ID。这些可能是特征 ID 属性或隐式特征 ID 属性，但不是特征 ID 纹理。这些将出现在CustomShader中，因为数组中特征 ID 的索引在`(vsInput|fsInput).featureIds.instanceFeatureId_N`哪里。`NfeatureIds`
 
 此外，特征 ID 纹理仅在片段着色器中受支持。
 
@@ -592,7 +592,7 @@ GLSL 只支持字母数字标识符，即不以数字开头的标识符。此外
 2.  删除保留`gl_`前缀（如果存在）。
 3.  如果标识符以数字 ( `[0-9]`) 开头，则前缀为`_`
 
-以下是结构中自定义着色器中属性 ID 和结果变量名称的几个示例`(vsInput|fsInput).metadata`：
+以下是结构中CustomShader中属性 ID 和结果变量名称的几个示例`(vsInput|fsInput).metadata`：
 
 *   `temperature ℃`->`metadata.temperature_`
 *   `custom__property`->`metadata.custom_property`
@@ -662,7 +662,7 @@ float maxTemp = vsInput.metadataClass.temperature.maxValue;//== 500.0
 
 ## `MetadataStatistics`结构
 
-如果模型是从[3D Tiles tileset加载的，它可能在](https://github.com/CesiumGS/3d-tiles/tree/main/specification)tileset.json 的属性中定义了统计信息。`statistics`这些将在结构的自定义着色器中可用`MetadataStatistics`。
+如果模型是从[3D Tiles tileset加载的，它可能在](https://github.com/CesiumGS/3d-tiles/tree/main/specification)tileset.json 的属性中定义了统计信息。`statistics`这些将在结构的CustomShader中可用`MetadataStatistics`。
 
 ### 组织
 
@@ -733,7 +733,7 @@ float mean = vsInput.metadataStatistics.intensity.mean;
 
 该结构包含自定义顶点着色器的输出。这包括：
 
-*   `positionMC`- 模型空间坐标中的顶点位置。该结构字段可用于扰动或动画顶点。它被初始化为 `vsInput.attributes.positionMC`. 自定义着色器可以修改它，结果用于计算`gl_Position`。
+*   `positionMC`- 模型空间坐标中的顶点位置。该结构字段可用于扰动或动画顶点。它被初始化为 `vsInput.attributes.positionMC`. CustomShader可以修改它，结果用于计算`gl_Position`。
 *   `pointSize`- 对应于`gl_PointSize`。这仅适用于渲染为 的模型`gl.POINTS`，否则将被忽略。这会覆盖 应用于模型的任何磅值样式`Cesium3DTileStyle`。
 
 > **实施注意事项**：`positionMC`不修改图元的边界球体。如果顶点移动到包围球之外，则图元可能会被无意中剔除，具体取决于视锥体。
@@ -746,10 +746,10 @@ float mean = vsInput.metadataStatistics.intensity.mean;
 
 *   物质阶段产生物质
 *   照明阶段接收材质，计算照明，并将结果存储到`material.diffuse`
-*   自定义着色器（无论它在管线中的哪个位置）接收一种材质（即使它是具有默认值的材质）并对其进行修改。
+*   CustomShader（无论它在管线中的哪个位置）接收一种材质（即使它是具有默认值的材质）并对其进行修改。
 
 ### 材质色彩空间
 
 材料颜色（例如`material.diffuse`）始终在线性颜色空间中，即使`lightingModel`是`LightingModel.UNLIT`。
 
-当`scene.highDynamicRange`是 时`false`，最终计算的颜色（在自定义着色器和光照之后）被转换为`sRGB`.
+当`scene.highDynamicRange`是 时`false`，最终计算的颜色（在CustomShader和光照之后）被转换为`sRGB`.
