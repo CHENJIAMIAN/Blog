@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "6213718b63973630",
+        "id": "c0b629234b336eda",
         "type": "tabs",
         "children": [
           {
-            "id": "71c6521bc766f17e",
+            "id": "c041b9371962d924",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "Cesium.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
+                "file": "Cesium-CustomShader官方文档.md",
+                "staged": false
               }
             }
           }
@@ -93,9 +91,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Cesium.md"
-              }
+              "state": {}
             }
           },
           {
@@ -104,7 +100,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +116,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -188,11 +182,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6323b2f6898b32c7",
+  "active": "c041b9371962d924",
   "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
+    "Cesium.md",
+    "Cesium-AutomaticUniforms大全.md",
     "Cesium-CustomShader官方文档.md",
     "Cesium-CustomShader.md",
-    "conflict-files-obsidian-git.md",
     "image/1682576062000eg1d8x.png",
     "image/1682576051000qao4o2.png",
     "Cesium-地形数据.md",
@@ -215,7 +211,6 @@
     "☁.md",
     "AdBlock 规则.md",
     "☁ 难题.md",
-    "Cesium.md",
     "杂-GPT-QA.md",
     "JS.md",
     "JS 进阶.md",
@@ -226,7 +221,6 @@
     "Node.js.md",
     "Cesium-地形.md",
     "nginx.md",
-    "npm.md",
     "Python",
     "投资 保险/images",
     "投资 保险",
