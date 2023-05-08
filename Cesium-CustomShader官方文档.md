@@ -2,7 +2,7 @@
 
 ## 构造器
 
-```c
+```JS
 const customShader = new Cesium.CustomShader({
   //用户想要添加到着色器的任何自定义Uniforms。
   //这些可以在运行时通过 customShader.setUniform() 改变
@@ -24,25 +24,21 @@ const customShader = new Cesium.CustomShader({
   varyings: {
     v_customTexCoords: Cesium.VaryingType.VEC2
   },
-  //配置片段着色器的材质/照明管道中的位置
-  //自定义着色器去。更多内容请见下文。
+  //配置自定义着色器在片段着色器的材质/照明管道中的位置。后面会有更多关于此的内容。
   mode: Cesium.CustomShaderMode.MODIFY_MATERIAL,
-  //PBR（基于物理的渲染）或 UNLIT，具体取决于所需的
-  //结果。
+  //PBR（基于物理的渲染）或 UNLIT，具体取决于所需的结果。
   lightingModel: Cesium.LightingModel.PBR,
   //强制着色器渲染为透明，即使图元具有不透明材质
   translucencyMode: Cesium.CustomShaderTranslucencyMode.TRANSLUCENT,
-  //自定义顶点着色器。这是模型空间 -> 模型空间的函数。
-  //VertexInput 记录如下
+  // 自定义顶点着色器。这是一个从模型空间到模型空间的函数。
+  // VertexInput 如下所述。
   vertexShaderText: `
-    //重要提示：函数签名必须使用这些参数名称。这使得运行时更容易生成着色器并进行优化。
+    // 重要提示：函数签名必须使用这些参数名称。这会使运行时更容易生成着色器并进行优化。
     void vertexMain(VertexInput vsInput, inout czm_modelVertexOutput vsOutput) {
-        //代码在这里。一个空的身体是一个空操作。
+        //代码在这里。一个空的代码体不会有任何操作
     }
   `,
-  //自定义片段着色器。
-  //FragmentInput 将在下面记录
-  //无论模式如何，这总是采用材质并在适当的位置修改它。
+  //自定义的片段着色器。下面将会介绍 FragmentInput。不论mode如何，它始终接收一个材质，并直接在原地修改它。
   fragmentShaderText: `
     //重要提示：函数签名必须使用这些参数名称。这使得运行时更容易生成着色器并进行优化。
     void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material) {
@@ -249,14 +245,14 @@ struct FragmentInput {
 
 这个结构是动态生成的，以将所有不同的特征 ID 收集到一个集合中，而不管值是来自属性、纹理还是变量。
 
-功能 ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
+Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
 
 *   以上`2^24`, values 可能会丢失精度，因为 WebGL 1 实现 `highp int`为浮点值。
 *   理想情况下，类型应该是`uint`，但直到 WebGL 2 才可用
 
 ### 3D Tiles 1.0 批次 ID
 
-在 3D Tiles 1.0 中，在图元中识别特征的相同概念被称为`BATCH_ID`或 legacy `_BATCHID`。这些批次 ID 被重命名为单个功能 ID，索引始终为 0：
+在 3D Tiles 1.0 中，在图元中识别特征的相同概念被称为`BATCH_ID`或 legacy `_BATCHID`。这些批次 ID 被重命名为单个Feature ID，索引始终为 0：
 
 *   `vsInput.featureIds.featureId_0`（顶点着色器）
 *   `fsInput.featureIds.featureId_0`（片段着色器）
@@ -288,7 +284,7 @@ struct FragmentInput {
       "EXT_instance_features": {
         "featureIds": [
           {
-            //默认功能 ID（实例 ID）
+            //默认Feature ID（实例 ID）
             //
             //顶点着色器：vsInput.featureIds.instanceFeatureId_0 或 vsInput.featureIds.perInstance
             //片段着色器：fsInput.featureIds.instanceFeatureId_0 或 fsInput.featureIds.perInstance
@@ -488,7 +484,7 @@ struct FragmentInput {
 
 ## `Metadata`结构
 
-此结构包含模型可从 glTF 扩展（或旧 扩展）访问的相关元数据属性。[`EXT_structural_metadata`](https://Github.com/cesium gs/gl tf/tree/3d tiles next/extensions/2.0/vendor/ext structural metadata)[`ext feature metadata`](https://github.com/cesiumgs/gltf/tree/3dtilesnext/extensions/2.0/vendor/ext 功能元数据）
+此结构包含模型可从 glTF 扩展（或旧 扩展）访问的相关元数据属性。[`EXT_structural_metadata`](https://Github.com/cesium gs/gl tf/tree/3d tiles next/extensions/2.0/vendor/ext structural metadata)[`ext feature metadata`](https://github.com/cesiumgs/gltf/tree/3dtilesnext/extensions/2.0/vendor/ext Feature元数据）
 
 目前支持以下类型的元数据：
 
