@@ -238,7 +238,13 @@ struct FragmentInput {
 
 ## `FeatureIds`结构
 
-这个结构是动态生成的，以将所有不同的Feature ID 收集到一个集合中，而不管值是来自属性、纹理还是变量。
+这个结构是动态生成的，以将所有不同的Feature ID 收集到一个集合中，而不管值是来自属性、纹理或varying。
+> 为什么要素id会来自属性、纹理或varying？
+> 在三维场景渲染中，要素ID可以来源于不同的数据，这是因为不同的要素ID需要用不同的数据来标识，这些数据可以是：
+> 	1. 属性(Attribute)：属性是与每个几何体（比如点、线或多边形）相关联的标量或向量值。例如，一个三角形的颜色可能是一个属性值，而且每个三角形的颜色可能不同。
+> 	2. 纹理(Texture)：纹理是一个图像，可以应用到几何体表面上，从而赋予其颜色、图案或其他特征。如果在纹理图像中标记每个几何体或几何体的部分，这些标记就可以用作要素ID。
+> 	3. varying：varying在顶点着色器和片元着色器之间传递数据，可以用来传递每个顶点的颜色或法向量等信息。可以利用varying来传递要素ID值到片元着色器中进行处理。
+> 因此，要素ID可以来自多种数据，可以根据实际需要选择使用哪种方式来标识要素ID。
 
 Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
 *   以上`2^24`, values 可能会丢失精度，因为 WebGL 1 实现 `highp int`为浮点值。
@@ -251,7 +257,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
 *   `vsInput.featureIds.featureId_0`（顶点着色器）
 *   `fsInput.featureIds.featureId_0`（片段着色器）
 
-### `EXT_mesh_features`/`EXT_instance_features`Feature ID
+### `EXT_mesh_features`/`EXT_instance_features` Feature IDs
 
 当使用glTF 扩展`EXT_mesh_features`或时，Feature ID 出现在两个地方：`EXT_instance_features`
 
@@ -262,7 +268,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
 
 如果一组要素 ID 包含一个`label`属性（ 中的新增内容`EXT_mesh_features`），则该标签将作为别名使用。例如，如果`label: "alias"`，则将 `(vsInput|fsInput).featureIds.alias`与 一起在着色器中可用`featureId_N`。
 
-例如，假设我们有一个具有以下Feature ID 的 glTF 原语：
+例如，假设我们有一个具有以下Feature ID 的 glTF primitive：
 
 ```c
 "nodes": [
@@ -358,7 +364,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
 ]
 ```
 
-### 旧`EXT_feature_metadata`Feature ID
+### 旧`EXT_feature_metadata` Feature IDs
 
 `EXT_feature_metadata`是 . 的早期草稿`EXT_mesh_features`。尽管要素 ID 概念没有太大变化，但 JSON 结构略有不同。在较旧的扩展中，分别`featureIdAttributes`存储`featureIdTextures` 。在这个 CesiumJS 实现中，Feature属性和Feature纹理被连接到一个列表中，本质上是 `featureIds = featureIdAttributes.concat(featureIdTextures)`. 除了扩展 JSON 中的这种差异外，Feature ID 集的标记方式与 相同`EXT_mesh_features`，即
 
@@ -366,7 +372,6 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
 *   `(vsInput|fsInput).featureIds.instanceFeatureId_N`对应于来自具有扩展名的节点的数组 `N`中的第 - 个Feature ID 集。`featureIdsEXT_mesh_gpu_instancing`
 
 为了进行比较，这里是与上一节中相同的示例，已翻译为`EXT_feature_metadata`扩展名：
-
 ```c
 "nodes": [
   {
@@ -512,12 +517,11 @@ struct Metadata {
 
 `vsInput.metadata.temperature`现在可以通过或 访问温度`fsInput.metadata.temperature`。
 
-### 归一化值
+### Normalized归一化值
 
 如果类属性指定`normalized: true`，该属性将作为适当的浮点类型（例如`float`或`vec3`）出现在着色器中。`[0, 1]`所有组件都将在（无符号）或（有符号）的范围内`[-1, 1]` 。
 
 例如，
-
 ```c
 "schema": {
   "classes": {
@@ -541,10 +545,9 @@ struct Metadata {
 
 ### 偏移量和比例
 
-如果属性提供`offset`or `scale`，则在规范化后自动应用（如果适用）。这对于将值预缩放到方便的范围内很有用。
+如果属性提供了offset偏移量或scale缩放比例，它会在归一化（如果适用）后自动应用。这有助于将值预先缩放到方便的范围。
 
 例如，考虑采用归一化温度值并自动将其转换为摄氏度或华氏度：
-
 ```c
 "schema": {
   "classes": {
@@ -580,13 +583,11 @@ struct Metadata {
 > 换句话说，就是通过一系列的处理方式将属性ID（通常是字符串）从潜在的安全威胁中清除掉，保护应用程序或系统不受攻击。这样做的目的是防止数据注入攻击，例如SQL注入或跨站脚本攻击等。
 
 GLSL 只支持字母数字标识符，即不以数字开头的标识符。此外，带有连续下划线 ( `__`) 的标识符，以及带有`gl_`前缀的标识符，在 GLSL 中是保留的。为了规避这些限制，Property ID 修改如下：
-
 1.  将所有非字母数字字符序列替换为单个`_`.
 2.  删除保留`gl_`前缀（如果存在）。
 3.  如果标识符以数字 ( `[0-9]`) 开头，则前缀为`_`
 
 以下是结构中CustomShader中属性 ID 和结果变量名称的几个示例`(vsInput|fsInput).metadata`：
-
 *   `temperature ℃`->`metadata.temperature_`
 *   `custom__property`->`metadata.custom_property`
 *   `gl_customProperty`->`metadata.customProperty`
@@ -594,7 +595,6 @@ GLSL 只支持字母数字标识符，即不以数字开头的标识符。此外
 *   `gl_12345`->`metadata._12345`
 
 如果以上结果导致空字符串或与其他属性 ID 的名称冲突，则行为未定义。例如：
-
 *   `✖️✖️✖️`映射到空字符串，因此行为未定义。
 *   `temperature ℃`具有名称和的两个属性`temperature ℉`都将映射到`metadata.temperature`，因此行为未定义
 
@@ -602,10 +602,9 @@ GLSL 只支持字母数字标识符，即不以数字开头的标识符。此外
 
 ## `MetadataClass`结构
 
-此结构包含每个元数据属性的常量，如类架构中所定义。
+此结构包含每个元数据属性的常量，如class模式中所定义。
 
 无论元数据的来源如何，属性都按属性 ID 收集到一个结构中。考虑以下元数据类：
-
 ```c
 "schema": {
   "classes": {
@@ -627,7 +626,6 @@ GLSL 只支持字母数字标识符，即不以数字开头的标识符。此外
 ```
 
 这将显示在结构字段的着色器中，如下所示：
-
 ```c
 struct floatMetadataClass {
   float noData;
@@ -643,7 +641,6 @@ struct MetadataClass {
 将选择每个属性的子结构，以便各个属性（例如`noData`和`defaultValue`）与属性的实际值具有相同的类型。
 
 现在可以在顶点着色器中按如下方式访问 noData 和默认值：
-
 ```c
 float noData = vsInput.metadataClass.temperature.noData;//== -9999.0
 float defaultTemp = vsInput.metadataClass.temperature.defaultValue;//== 72.0
@@ -655,7 +652,7 @@ float maxTemp = vsInput.metadataClass.temperature.maxValue;//== 500.0
 
 ## `MetadataStatistics`结构
 
-如果模型是从[3D Tiles tileset加载的，它可能在](https://github.com/CesiumGS/3d-tiles/tree/main/specification)tileset.json 的属性中定义了统计信息。`statistics`这些将在结构的CustomShader中可用`MetadataStatistics`。
+如果模型是从[3D Tiles tileset加载的，它可能在](https://github.com/CesiumGS/3d-tiles/tree/main/specification)tileset.json 的statistics属性中定义了统计信息。这些将在`MetadataStatistics`结构的自定义着色器中可用。
 
 ### 组织
 
