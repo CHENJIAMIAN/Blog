@@ -179,7 +179,7 @@ CustomShader支持以下不同类型：
 struct VertexInput {
     //处理过的属性。请参阅下面的属性结构部分。
     Attributes attributes;
-    //特征 ID/批次 ID。请参阅下面的 FeatureIds 结构部分。
+    //Feature ID/Batch ID。请参阅下面的 FeatureIds 结构部分。
     FeatureIds featureIds;
     //元数据属性。请参阅下面的元数据结构部分。
     Metadata metadata;
@@ -197,7 +197,7 @@ struct VertexInput {
 struct FragmentInput {
     //处理的属性值。请参阅下面的属性结构部分。
     Attributes attributes;
-    //特征 ID/批次 ID。请参阅下面的 FeatureIds 结构部分。
+    //Feature ID/Batch ID。请参阅下面的 FeatureIds 结构部分。
     FeatureIds featureIds;
     //元数据属性。请参阅下面的元数据结构部分。
     Metadata metadata;
@@ -208,7 +208,7 @@ struct FragmentInput {
 };
 ```
 
-## 属性结构
+## Attributes结构
 
 该`Attributes`结构是根据CustomShader中使用的变量和要渲染的图元中可用的属性动态生成的。
 
@@ -238,32 +238,31 @@ struct FragmentInput {
 
 ## `FeatureIds`结构
 
-这个结构是动态生成的，以将所有不同的特征 ID 收集到一个集合中，而不管值是来自属性、纹理还是变量。
+这个结构是动态生成的，以将所有不同的Feature ID 收集到一个集合中，而不管值是来自属性、纹理还是变量。
 
 Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
-
 *   以上`2^24`, values 可能会丢失精度，因为 WebGL 1 实现 `highp int`为浮点值。
 *   理想情况下，类型应该是`uint`，但直到 WebGL 2 才可用
 
-### 3D Tiles 1.0 批次 ID
+### 3D Tiles 1.0 Batch ID
 
-在 3D Tiles 1.0 中，在图元中识别特征的相同概念被称为`BATCH_ID`或 legacy `_BATCHID`。这些批次 ID 被重命名为单个Feature ID，索引始终为 0：
+在 3D Tiles 1.0 中，在图元中识别Feature的相同概念被称为`BATCH_ID`或 legacy `_BATCHID`。这些Batch ID 被重命名为单个Feature ID，索引始终为 0：
 
 *   `vsInput.featureIds.featureId_0`（顶点着色器）
 *   `fsInput.featureIds.featureId_0`（片段着色器）
 
-### `EXT_mesh_features`/`EXT_instance_features`特征 ID
+### `EXT_mesh_features`/`EXT_instance_features`Feature ID
 
-当使用glTF 扩展`EXT_mesh_features`或时，特征 ID 出现在两个地方：`EXT_instance_features`
+当使用glTF 扩展`EXT_mesh_features`或时，Feature ID 出现在两个地方：`EXT_instance_features`
 
-1.  任何 glTF 基元都可以有一个`featureIds`数组。该`featureIds`数组可能包含特征 ID 属性、隐式特征 ID 属性和/或特征 ID 纹理。无论特征 ID 的类型如何，它们都会出现在CustomShader中，因为数组中特征 ID 的索引在`(vsInput|fsInput).featureIds.featureId_N`哪里。`NfeatureIds`
-2.  `EXT_mesh_gpu_instancing`任何带有和 的glTF 节点都`EXT_instance_features`可以定义特征 ID。这些可能是特征 ID 属性或隐式特征 ID 属性，但不是特征 ID 纹理。这些将出现在CustomShader中，因为数组中特征 ID 的索引在`(vsInput|fsInput).featureIds.instanceFeatureId_N`哪里。`NfeatureIds`
+1.  任何 glTF 基元都可以有一个`featureIds`数组。该`featureIds`数组可能包含Feature ID 属性、隐式Feature ID 属性和/或Feature ID 纹理。无论Feature ID 的类型如何，它们都会出现在CustomShader中，因为数组中Feature ID 的索引在`(vsInput|fsInput).featureIds.featureId_N`哪里。`NfeatureIds`
+2.  `EXT_mesh_gpu_instancing`任何带有和 的glTF 节点都`EXT_instance_features`可以定义Feature ID。这些可能是Feature ID 属性或隐式Feature ID 属性，但不是Feature ID 纹理。这些将出现在CustomShader中，因为数组中Feature ID 的索引在`(vsInput|fsInput).featureIds.instanceFeatureId_N`哪里。`NfeatureIds`
 
-此外，特征 ID 纹理仅在片段着色器中受支持。
+此外，Feature ID 纹理仅在片段着色器中受支持。
 
 如果一组要素 ID 包含一个`label`属性（ 中的新增内容`EXT_mesh_features`），则该标签将作为别名使用。例如，如果`label: "alias"`，则将 `(vsInput|fsInput).featureIds.alias`与 一起在着色器中可用`featureId_N`。
 
-例如，假设我们有一个具有以下特征 ID 的 glTF 原语：
+例如，假设我们有一个具有以下Feature ID 的 glTF 原语：
 
 ```c
 "nodes": [
@@ -287,7 +286,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
             "propertyTable": 0
           },
           {
-            //特征 ID 属性。这对应于上面实例化扩展中的 _FEATURE_ID_0。请注意，这被标记为 instanceFeatureId_1，因为它是 featureIds 数组中设置的第二个特征 ID
+            //Feature ID 属性。这对应于上面实例化扩展中的 _FEATURE_ID_0。请注意，这被标记为 instanceFeatureId_1，因为它是 featureIds 数组中设置的第二个Feature ID
             //
             //顶点着色器：vsInput.featureIds.instanceFeatureId_1
             //片段着色器：fsInput.featureIds.instanceFeatureId_1
@@ -314,7 +313,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
           "EXT_mesh_features": {
             "featureIds": [
               {
-                //特征 ID 纹理
+                //Feature ID 纹理
                 //
                 //顶点着色器：（不支持）
                 //片段着色器：fsInput.featureIds.featureId_0 或 fsInput.featureIds.texture
@@ -333,7 +332,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
                 "propertyTable": 3,
               },
               {
-                //特征 ID 属性 (_FEATURE_ID_0)。请注意，它在 featureIds 数组中的索引被标记为 featureId_2
+                //Feature ID 属性 (_FEATURE_ID_0)。请注意，它在 featureIds 数组中的索引被标记为 featureId_2
                 //
                 //顶点着色器：vsInput.featureIds.featureId_2
                 //片段着色器：fsInput.featureIds.featureId_2
@@ -343,7 +342,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
                 "attribute": 0
               },
               {
-                //特征 ID 属性 (_FEATURE_ID_1)。请注意，它在 featureIds 数组中的索引被标记为 featureId_3
+                //Feature ID 属性 (_FEATURE_ID_1)。请注意，它在 featureIds 数组中的索引被标记为 featureId_3
                 //
                 //顶点着色器：vsInput.featureIds.featureId_3
                 //片段着色器：fsInput.featureIds.featureId_3
@@ -361,10 +360,10 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
 
 ### 旧`EXT_feature_metadata`Feature ID
 
-`EXT_feature_metadata`是 . 的早期草稿`EXT_mesh_features`。尽管要素 ID 概念没有太大变化，但 JSON 结构略有不同。在较旧的扩展中，分别`featureIdAttributes`存储`featureIdTextures` 。在这个 CesiumJS 实现中，特征属性和特征纹理被连接到一个列表中，本质上是 `featureIds = featureIdAttributes.concat(featureIdTextures)`. 除了扩展 JSON 中的这种差异外，特征 ID 集的标记方式与 相同`EXT_mesh_features`，即
+`EXT_feature_metadata`是 . 的早期草稿`EXT_mesh_features`。尽管要素 ID 概念没有太大变化，但 JSON 结构略有不同。在较旧的扩展中，分别`featureIdAttributes`存储`featureIdTextures` 。在这个 CesiumJS 实现中，Feature属性和Feature纹理被连接到一个列表中，本质上是 `featureIds = featureIdAttributes.concat(featureIdTextures)`. 除了扩展 JSON 中的这种差异外，Feature ID 集的标记方式与 相同`EXT_mesh_features`，即
 
-*   `(vsInput|fsInput).featureIds.featureId_N`对应于来自每个基元的`N`组合数组中的第 - 个特征 ID 集。`featureIds`
-*   `(vsInput|fsInput).featureIds.instanceFeatureId_N`对应于来自具有扩展名的节点的数组 `N`中的第 - 个特征 ID 集。`featureIdsEXT_mesh_gpu_instancing`
+*   `(vsInput|fsInput).featureIds.featureId_N`对应于来自每个基元的`N`组合数组中的第 - 个Feature ID 集。`featureIds`
+*   `(vsInput|fsInput).featureIds.instanceFeatureId_N`对应于来自具有扩展名的节点的数组 `N`中的第 - 个Feature ID 集。`featureIdsEXT_mesh_gpu_instancing`
 
 为了进行比较，这里是与上一节中相同的示例，已翻译为`EXT_feature_metadata`扩展名：
 
@@ -393,7 +392,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
                 }
               },
               {
-                //特征 ID 属性。这对应于上面实例化扩展中的 _FEATURE_ID_0。请注意，这被标记为 instanceFeatureId_1，因为它是 featureIds 数组中设置的第二个特征 ID
+                //Feature ID 属性。这对应于上面实例化扩展中的 _FEATURE_ID_0。请注意，这被标记为 instanceFeatureId_1，因为它是 featureIds 数组中设置的第二个Feature ID
                 //
                 //顶点着色器：vsInput.featureIds.instanceFeatureId_1
                 //片段着色器：fsInput.featureIds.instanceFeatureId_1
@@ -422,7 +421,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
           "EXT_feature_metadata": {
             "featureIdAttributes": [
               {
-                //隐式特征 ID 属性
+                //隐式Feature ID 属性
                 //
                 //顶点着色器：vsInput.featureIds.featureId_0
                 //片段着色器：fsInput.featureIds.featureId_0
@@ -433,7 +432,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
                 }
               },
               {
-                //特征 ID 属性 (_FEATURE_ID_0)。请注意，它在 featureIds 数组中的索引被标记为 featureId_1
+                //Feature ID 属性 (_FEATURE_ID_0)。请注意，它在 featureIds 数组中的索引被标记为 featureId_1
                 //
                 //顶点着色器：vsInput.featureIds.featureId_1
                 //片段着色器：fsInput.featureIds.featureId_1
@@ -443,7 +442,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
                 }
               },
               {
-                //特征 ID 属性 (_FEATURE_ID_1)。请注意，它在 featureIds 数组中的索引被标记为 featureId_2
+                //Feature ID 属性 (_FEATURE_ID_1)。请注意，它在 featureIds 数组中的索引被标记为 featureId_2
                 //
                 //顶点着色器：vsInput.featureIds.featureId_2
                 //片段着色器：fsInput.featureIds.featureId_2
@@ -455,7 +454,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
             ],
             "featureIdTextures": [
               {
-                //特征 ID 纹理。请注意，这被标记为 featureId_3，因为特征 ID 纹理列表连接到特征 ID 属性列表
+                //Feature ID 纹理。请注意，这被标记为 featureId_3，因为Feature ID 纹理列表连接到Feature ID 属性列表
                 //
                 //顶点着色器：（不支持）
                 //片段着色器：fsInput.featureIds.featureId_3
@@ -479,10 +478,9 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
 
 ## `Metadata`结构
 
-此结构包含模型可从 glTF 扩展（或旧 扩展）访问的相关元数据属性。[`EXT_structural_metadata`](https://Github.com/cesium gs/gl tf/tree/3d tiles next/extensions/2.0/vendor/ext structural metadata)[`ext feature metadata`](https://github.com/cesiumgs/gltf/tree/3dtilesnext/extensions/2.0/vendor/ext Feature元数据）
+此结构包含模型可从 [EXT_structural_metadata](https://github.com/CesiumGS/glTF/tree/3d-tiles-next/extensions/2.0/Vendor/EXT_structural_metadata) glTF 扩展（或较旧的 [EXT_feature_metadata](https://github.com/CesiumGS/glTF/tree/3d-tiles-next/extensions/2.0/Vendor/EXT_feature_metadata)扩展）访问的相关元数据属性。
 
 目前支持以下类型的元数据：
-
 *   glTF 扩展中的属性`EXT_structural_metadata`。
 *   来自 glTF 扩展的属性纹理`EXT_structural_metadata`。当前仅`componentType: UINT8`支持带有的类型。
 
@@ -581,7 +579,7 @@ struct Metadata {
 ### Property ID消毒
 > 换句话说，就是通过一系列的处理方式将属性ID（通常是字符串）从潜在的安全威胁中清除掉，保护应用程序或系统不受攻击。这样做的目的是防止数据注入攻击，例如SQL注入或跨站脚本攻击等。
 
-GLSL 只支持字母数字标识符，即不以数字开头的标识符。此外，带有连续下划线 ( `__`) 的标识符，以及带有`gl_`前缀的标识符，在 GLSL 中是保留的。为了规避这些限制，属性 ID 修改如下：
+GLSL 只支持字母数字标识符，即不以数字开头的标识符。此外，带有连续下划线 ( `__`) 的标识符，以及带有`gl_`前缀的标识符，在 GLSL 中是保留的。为了规避这些限制，Property ID 修改如下：
 
 1.  将所有非字母数字字符序列替换为单个`_`.
 2.  删除保留`gl_`前缀（如果存在）。
