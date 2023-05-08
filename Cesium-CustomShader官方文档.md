@@ -742,17 +742,11 @@ struct czm_modelVertexOutput {
 
 ```js
 /**
- * 代表 {@link Model} 材质的结构。该模型
- * 渲染管道将在材质、自定义着色器之间传递此结构，
- * 和照明阶段。这不要与 {@link czm_material} 混淆
- * 由较旧的 Fabric 材质系统使用，尽管它们很相似。
+ * 这是一个用于表示{@link Model}材质的结构体。模型渲染管道将在材质、自定义着色器和光照阶段之间传递此结构体。
+ * 这不应与{@link czm_material}混淆，后者是旧版Fabric材料系统使用的，尽管它们非常相似。
  * <p>
  * 所有颜色值（漫反射、镜面反射、发射）都在线性颜色空间中。
  * </p>
- *
- * @name czm_modelMaterial
- * @glslStruct
- *
  * @property {vec3} diffuse 入射光向各个方向均匀散射。
  * @property {float} alpha 此材质的 Alpha。0.0 是完全透明的；1.0 是完全不透明的。
  * @property {vec3} PBR 材质中法向入射反射光的镜面反射颜色。这有时在文献中称为 f0。

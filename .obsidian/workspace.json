@@ -19,8 +19,22 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "d504434d6358abec",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "未命名.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -55,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "6f6aee49d5407bee",
@@ -73,7 +86,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium-CustomShader官方文档.md"
+                "file": "未命名.md"
               }
             }
           },
@@ -117,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium-CustomShader官方文档.md",
+                "file": "未命名.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +147,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium-CustomShader官方文档.md",
+                "file": "未命名.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -188,7 +201,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "a7974b07fd2b2c15",
+  "active": "d504434d6358abec",
   "lastOpenFiles": [
     "Cesium-CustomShader官方文档.md",
     "未命名.md",
