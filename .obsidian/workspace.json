@@ -4,20 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "3977c4fc98d546b5",
+        "id": "6213718b63973630",
         "type": "tabs",
         "children": [
           {
-            "id": "6b7850968f79b9c7",
+            "id": "71c6521bc766f17e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Cesium-CustomShader官方文档.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -93,9 +88,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Cesium-CustomShader官方文档.md"
-              }
+              "state": {}
             }
           },
           {
@@ -104,7 +97,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium-CustomShader官方文档.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +113,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium-CustomShader官方文档.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -188,10 +179,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6b7850968f79b9c7",
+  "active": "71c6521bc766f17e",
   "lastOpenFiles": [
-    "Cesium-CustomShader.md",
     "Cesium-CustomShader官方文档.md",
+    "Cesium-CustomShader.md",
     "conflict-files-obsidian-git.md",
     "image/1682576062000eg1d8x.png",
     "image/1682576051000qao4o2.png",
