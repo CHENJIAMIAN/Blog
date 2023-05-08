@@ -749,8 +749,8 @@ struct czm_modelVertexOutput {
  * </p>
  * @property {vec3} diffuse 入射光向各个方向均匀散射。
  * @property {float} alpha 此材质的 Alpha。0.0 是完全透明的；1.0 是完全不透明的。
- * @property {vec3} PBR 材质中法向入射反射光的镜面反射颜色。这有时在文献中称为 f0。
- * @property {float} roughness 一个从 0.0 到 1.0 的数字，表示表面的粗糙程度。接近 0.0 的值会产生光滑的表面，而接近 1.0 的值会产生粗糙的表面。
+ * @property {vec3} specular PBR 材质中法向入射反射光的镜面反射颜色。这有时在文献中称为 f0。
+ * @property {float} roughness 一个从 0.0 到 1.0 的数字，表示表面的粗糙程度。接近 0.0 的值会产生光滑的表面，接近 1.0反之
  * @property {vec3} normalEC 表面在眼睛坐标中的法线。它用于法线贴图等效果。默认值为表面未修改的法线。
  * @property {float} occlusion 在材质上此时收到的环境遮挡。1.0 表示完全点亮，0.0 表示完全遮挡。
  * @property {vec3} emissive 材质向各个方向均匀发射的光。默认值为 vec3(0.0)，不发光。

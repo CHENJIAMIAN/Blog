@@ -33,8 +33,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -86,7 +85,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Cesium-AutomaticUniforms大全.md"
+                "file": "Cesium-CustomShader官方文档.md"
               }
             }
           },
@@ -130,7 +129,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Cesium-AutomaticUniforms大全.md",
+                "file": "Cesium-CustomShader官方文档.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +146,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Cesium-AutomaticUniforms大全.md",
+                "file": "Cesium-CustomShader官方文档.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -201,10 +200,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "d504434d6358abec",
+  "active": "77a55964ede60586",
   "lastOpenFiles": [
-    "Cesium-CustomShader官方文档.md",
     "Cesium-AutomaticUniforms大全.md",
+    "Cesium-CustomShader官方文档.md",
     "Cesium-CustomShader.md",
     "Cesium-地形数据.md",
     "WebGL.md",
