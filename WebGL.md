@@ -419,7 +419,8 @@ CesiumJS 1.102 现已可用。CesiumJS 现在默认使用 WebGL2 上下文进行
 
 迁移到1.102以上：
 1. texture2D替换为texture
-2. 自定义hack了tileset的改为用customshader api
+2. 自定义hack了`tileset.content.getFeature(index).content._model._rendererResources.sourceShaders`的改为用[[Cesium-CustomShader#Cesium 1.97 发布]]
+3. 
 
 
 ## 高阶学习
