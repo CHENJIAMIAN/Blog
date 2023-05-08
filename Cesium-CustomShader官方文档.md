@@ -652,12 +652,11 @@ float maxTemp = vsInput.metadataClass.temperature.maxValue;//== 500.0
 
 ## `MetadataStatistics`结构
 
-如果模型是从[3D Tiles tileset加载的，它可能在](https://github.com/CesiumGS/3d-tiles/tree/main/specification)tileset.json 的statistics属性中定义了统计信息。这些将在`MetadataStatistics`结构的自定义着色器中可用。
+如果该模型是从[3D Tiles tileset加载的，它可能在](https://github.com/CesiumGS/3d-tiles/tree/main/specification)tileset.json的statistics属性中定义了统计信息。这些信息可以从`CustomShader`的`MetadataStatistics`结构中获得。
 
 ### 组织
 
 无论元数据的来源如何，属性都通过属性 ID 收集到一个源中。考虑以下元数据类：
-
 ```c
   "statistics": {
     "classes": {
@@ -686,7 +685,6 @@ float maxTemp = vsInput.metadataClass.temperature.maxValue;//== 500.0
 ```
 
 这将显示在结构字段的着色器中，如下所示：
-
 ```c
 struct floatMetadataStatistics {
   float minValue;//'min' 是 GLSL 中的保留字
@@ -703,7 +701,6 @@ struct MetadataStatistics {
 ```
 
 可以从顶点着色器中访问统计值，如下所示：
-
 ```c
 float minValue = vsInput.metadataStatistics.intensity.minValue;
 float mean = vsInput.metadataStatistics.intensity.mean;
@@ -719,12 +716,23 @@ float mean = vsInput.metadataStatistics.intensity.mean;
 
 ## `czm_modelVertexOutput`结构
 
-此结构是内置的，请参阅[文档注释](https://Github.com/cesium gs/cesium/blob/main/packages/engine/source/shaders/builtin/structs/model vertex output.glsl)。
+此结构是内置的，请参阅[文档注释](https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Shaders/Builtin/Structs/modelVertexOutput.glsl)。
+```js
+/**
+ * 表示自定义顶点着色器输出的结构。
+ * @property {vec3} positionMC 顶点在模型坐标中的位置
+ * @property {float} pointSize gl_PointSize 的自定义值。这仅用于点图元。
+ */
+struct czm_modelVertexOutput {
+  vec3 positionMC;
+  float pointSize;
+};
+```
+
 
 该结构包含自定义顶点着色器的输出。这包括：
-
-*   `positionMC`- 模型空间坐标中的顶点位置。该结构字段可用于扰动或动画顶点。它被初始化为 `vsInput.attributes.positionMC`. CustomShader可以修改它，结果用于计算`gl_Position`。
-*   `pointSize`- 对应于`gl_PointSize`。这仅适用于渲染为 的模型`gl.POINTS`，否则将被忽略。这会覆盖 应用于模型的任何磅值样式`Cesium3DTileStyle`。
+*   `positionMC` - 模型空间坐标中的顶点位置。该结构字段可用于扰动或动画顶点。它被初始化为 `vsInput.attributes.positionMC`.  CustomShader可以修改它，结果用于计算`gl_Position`。
+*   `pointSize` - 对应于`gl_PointSize`。这仅适用于渲染为 的模型`gl.POINTS`，否则将被忽略。这会覆盖 应用于模型的任何磅值样式`Cesium3DTileStyle`。
 
 > **实施注意事项**：`positionMC`不修改图元的边界球体。如果顶点移动到包围球之外，则图元可能会被无意中剔除，具体取决于视锥体。
 
@@ -732,14 +740,44 @@ float mean = vsInput.metadataStatistics.intensity.mean;
 
 此结构是内置的，请参阅[文档注释](https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Shaders/Builtin/Structs/modelMaterial.glsl)。这与旧的 Fabric 系统类似，但由于支持 PBR 照明，因此字段略有不同。`czm_material`
 
-此结构用作片段着色器管道阶段的基本输入/输出。例如：
+```js
+/**
+ * 代表 {@link Model} 材质的结构。该模型
+ * 渲染管道将在材质、自定义着色器之间传递此结构，
+ * 和照明阶段。这不要与 {@link czm_material} 混淆
+ * 由较旧的 Fabric 材质系统使用，尽管它们很相似。
+ * <p>
+ * 所有颜色值（漫反射、镜面反射、发射）都在线性颜色空间中。
+ * </p>
+ *
+ * @name czm_modelMaterial
+ * @glslStruct
+ *
+ * @property {vec3} diffuse 入射光向各个方向均匀散射。
+ * @property {float} alpha 此材质的 Alpha。0.0 是完全透明的；1.0 是完全不透明的。
+ * @property {vec3} PBR 材质中法向入射反射光的镜面反射颜色。这有时在文献中称为 f0。
+ * @property {float} roughness 一个从 0.0 到 1.0 的数字，表示表面的粗糙程度。接近 0.0 的值会产生光滑的表面，而接近 1.0 的值会产生粗糙的表面。
+ * @property {vec3} normalEC 表面在眼睛坐标中的法线。它用于法线贴图等效果。默认值为表面未修改的法线。
+ * @property {float} occlusion 在材质上此时收到的环境遮挡。1.0 表示完全点亮，0.0 表示完全遮挡。
+ * @property {vec3} emissive 材质向各个方向均匀发射的光。默认值为 vec3(0.0)，不发光。
+ */
+struct czm_modelMaterial {
+    vec3 diffuse;
+    float alpha;
+    vec3 specular;
+    float roughness;
+    vec3 normalEC;
+    float occlusion;
+    vec3 emissive;
+};
+```
 
-*   物质阶段产生物质
+此结构用作片段着色器管道阶段的基本输入/输出。例如：
+*   材质阶段产生材质
 *   照明阶段接收材质，计算照明，并将结果存储到`material.diffuse`
 *   CustomShader（无论它在管线中的哪个位置）接收一种材质（即使它是具有默认值的材质）并对其进行修改。
 
 ### 材质色彩空间
 
-材料颜色（例如`material.diffuse`）始终在线性颜色空间中，即使`lightingModel`是`LightingModel.UNLIT`。
-
-当`scene.highDynamicRange`是 时`false`，最终计算的颜色（在CustomShader和光照之后）被转换为`sRGB`.
+1. 材质颜色（例如`material.diffuse`）始终在线性颜色空间中，即使`lightingModel`是`LightingModel.UNLIT`。
+2. 当`scene.highDynamicRange`是 时`false`，最终计算的颜色（在CustomShader和光照之后）被转换为`sRGB`.
