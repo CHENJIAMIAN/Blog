@@ -60,4 +60,6 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的Model架构来�
 	1. 动态渐变+动态光环的特效
 	2. 夜景贴图的特效
 	3. 色彩动态变化的特效
-	4. 
+[mars3d-link-supermap/map.js at master · marsgis/mars3d-link-supermap · GitHub --- mars3d-link-supermap/map.js at master · marsgis/mars3d-link-supermap · GitHub](https://github.com/marsgis/mars3d-link-supermap/blob/master/mars3d-vue-example/src/example/graphic/primitive/model/map.js)
+	1. 纹理坐标移动成动画
+	2. 官方的彩色点云波示例
