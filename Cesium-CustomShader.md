@@ -54,3 +54,5 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的Model架构来�
         })
         .catch((error) => console.error(error));
 ```
+
+[mars3d-vue-example/map.js at 20011b390505b80445a0ce553745210613311fd1 · marsgis/mars3d-vue-example](https://github.com/marsgis/mars3d-vue-example/blob/20011b390505b80445a0ce553745210613311fd1/src/example/layer-tileset/style/customShader/map.js#L24)
