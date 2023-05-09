@@ -60,3 +60,36 @@ Quantized Mesh文件结构包括以下几部分：
 		-> template = require(`${env.opts.template}/publish`);
 ```
 
+## 3DTiles模型的如何处理成box类型而不是region类型
+
+在3DTiles模型中，模型数据通常被分割成许多"瓦片"，每个瓦片都包含一定范围内的模型数据。这些瓦片的范围可以以不同的方式表示，例如"box"类型和"region"类型。默认情况下，3DTiles的瓦片范围都是以"region"类型表示的，而不是"box"类型。
+
+要将3DTiles模型中的瓦片范围从"region"类型转换为"box"类型，需要进行以下步骤：
+
+1. 提取模型数据中的经纬度坐标信息。
+2. 在地球上通过这些经纬度坐标信息绘制一个矩形，确定模型在地球表面上的范围。
+3. 将该矩形范围转换为一个"box"类型表示，包含该矩形的最小包围盒。
+4. 将计算出的"box"类型范围信息写入3DTiles模型瓦片的metadata信息中，以供渲染引擎使用。
+
+具体实现方式可以根据模型数据的不同而有所不同。以下是一个可能的实现示例：
+
+```javascript
+// 提取瓦片数据中的经纬度信息
+var region = tile.content.boundingVolume.region;  // 获取region类型表示的范围信息
+var minLon = Cesium.Math.toDegrees(region[0]);
+var minLat = Cesium.Math.toDegrees(region[1]);
+var maxLon = Cesium.Math.toDegrees(region[2]);
+var maxLat = Cesium.Math.toDegrees(region[3]);
+
+// 计算并转换为box类型范围信息
+var rectangle = Cesium.Rectangle.fromDegrees(minLon, minLat, maxLon, maxLat);  // 创建矩形范围
+var boundingBox = Cesium.AxisAlignedBoundingBox.fromRectangle(rectangle);    // 转换为最小包围盒
+var box = [boundingBox.minimum.x, boundingBox.minimum.y, boundingBox.minimum.z, boundingBox.maximum.x, boundingBox.maximum.y, boundingBox.maximum.z];
+
+// 将范围信息写入metadata中
+tile.content.metadata = {
+  "box": box
+};
+```
+
+上述代码中，我们首先从瓦片数据中提取经纬度坐标信息，然后通过这些信息创建一个矩形范围，最后将矩形范围转换为最小包围盒，即"box"类型表示的范围信息。最后，将这个信息写入3DTiles模型瓦片的metadata中，以供渲染引擎使用。
