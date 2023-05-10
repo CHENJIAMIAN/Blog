@@ -275,6 +275,7 @@ transform属性通过矩阵中的最大缩放因子缩放geometricError 。
     *   [b3dm · 批处理的 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)Feature Table可以定义用于平移模型顶点的RTC\_CENTER 。
     *   [i3dm · 实例化 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md)Feature Table定义每个实例的位置、法线和比例。这些用于创建应用于每个实例的每个实例 4x4 仿射变换矩阵。
 4.  [tile变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-transforms)
+> RTC\_CENTER: 一个`GlobalPropertyCartesian3`对象定义了所有要素的三分量数值属性。请参见[Semantics](/specification/TileFormats/Batched3DModel/README.md#semantics)中对应的属性语义。
 
 > \*\*实施注意事项：\*\*当处理本质上是*z*向上的源数据时，例如 WGS 84 坐标中的数据或本地*z*向上坐标系统中的数据，常见的工作流程是：
 >
