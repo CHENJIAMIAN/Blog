@@ -119,7 +119,7 @@ Tileset的根tile需要细化类型；它对于所有其他tile都是可选的�
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [![边界框](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/BoundingBox.jpg "边界框")](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/BoundingBox.jpg) | [![包围球](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/BoundingSphere.jpg "包围球")](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/BoundingSphere.jpg) | [![边界区域](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/BoundingRegion.jpg "边界区域")](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/BoundingRegion.jpg) |
 
-##### 地区
+##### region
 
 boundingVolume.region属性是一个包含六个数字的数组，用于定义具有纬度、经度和高度坐标的边界地理区域，顺序为`[west, south, east, north, minimum height, maximum height]`。[纬度和经度在EPSG 4979](http://spatialreference.org/ref/epsg/4979/)中定义的 WGS 84 基准中，以弧度为单位。[高度以高于（或低于） WGS 84 椭球体的](http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf)米为单位。
 
@@ -567,7 +567,7 @@ Tileset可以使用类似于栅格和矢量tile方案（如 Web 地图tile服务
 
 #### 扩展
 
-扩展允许使用新功能扩展基本规范。可选的扩展字典属性可以添加到任何 3D Tiles JSON 对象，其中包含扩展名和扩展特定对象。以下示例显示了一个tile对象，该对象具有一个假设的供应商扩展名，该扩展名指定了一个单独的碰撞体积。
+扩展允许使用新功能扩展基本规范。可选的扩展字典属性可以添加到任何 3D Tiles JSON 对象，其中包含extensions和扩展特定对象。以下示例显示了一个tile对象，该对象具有一个假设的vendor extension，该extension指定了一个单独的碰撞体积。
 ```js
     {
       "transform": [
@@ -694,10 +694,10 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 | **特性**           | 任何          | 关于每个feature属性的元数据的字典对象。                                                  | 不   |
 | **几何误差**         | 数字          | 如果未渲染此 tileset，则会引入以米为单位的错误。在运行时，几何误差用于计算屏幕空间误差 (SSE)，即以像素为单位测量的误差。 | ✅是的 |
 | **根**            | 目的          | 3D Tiles Tileset中的tile。                                                   | ✅是的 |
-| **扩展使用**         | 字符串 \[1-\*] | 此 tileset 中某处使用的 3D Tiles 扩展的名称。                                    | 不   |
-| **extensions必填** | 字符串 \[1-\*] | 正确加载此 tileset 所需的 3D Tiles 扩展的名称。                                   | 不   |
-| **扩展名**          | 目的          | 具有扩展特定对象的字典对象。                                                      | 不   |
-| **临时演员**         | 任何          | 特定于应用程序的数据。                                                         | 不   |
+| **extensionsUsed**         | 字符串 \[1-\*] | 此 tileset 中某处使用的 3D Tiles 扩展的名称。                                    | 不   |
+| **extensionsRequired** | 字符串 \[1-\*] | 正确加载此 tileset 所需的 3D Tiles 扩展的名称。                                   | 不   |
+| **extensions**          | 目的          | 具有扩展特定对象的字典对象。                                                      | 不   |
+| **extras**         | 任何          | 特定于应用程序的数据。                                                         | 不   |
 
 #### Tileset.asset ✅
 
@@ -774,8 +774,8 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 | :------------ | :- | :-------------------------------------------------- | :-- |
 | **版本**        | 细绳 | 3D tile版本。该版本定义了 tileset JSON 的 JSON 模式和基本的 tile 格式集。 | ✅是的 |
 | **tileset版本** | 细绳 | 此 tileset 的特定应用程序版本，例如，用于更新现有 tileset 时。            | 不   |
-| **扩展名**       | 目的 | 具有扩展特定对象的字典对象。                                      | 不   |
-| **临时演员**      | 任何 | 特定于应用程序的数据。                                         | 不   |
+| **extensions**       | 目的 | 具有扩展特定对象的字典对象。                                      | 不   |
+| **extras**      | 任何 | 特定于应用程序的数据。                                         | 不   |
 
 #### 资产版本✅
 
@@ -817,10 +817,10 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 |          | 类型       | 描述                                                                                                                                            | 必需的 |
 | :------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------- | :-- |
 | **box**   | 数量 \[12] | 定义定向边界框的 12 个数字的数组。前三个元素定义框中心的 x、y 和 z 值。接下来的三个元素（索引为 3、4 和 5）定义了 x 轴方向和半长。接下来的三个元素（索引 6、7 和 8）定义了 y 轴方向和半长。最后三个元素（索引 9、10 和 11）定义了 z 轴方向和半长。 | 不   |
-| **地区**   | 编号 \[6]  | 定义 EPSG:4979 中边界地理区域的六个数字的数组，坐标顺序为 \[west, south, east, north, minimum height, maximum height]。经度和纬度以弧度为单位，高度以高于（或低于）WGS84 椭球的米为单位。           | 不   |
+| **region**   | 编号 \[6]  | 定义 EPSG:4979 中边界地理区域的六个数字的数组，坐标顺序为 \[west, south, east, north, minimum height, maximum height]。经度和纬度以弧度为单位，高度以高于（或低于）WGS84 椭球的米为单位。           | 不   |
 | **sphere**   | 编号 \[4]  | 定义边界球体的四个数字的数组。前三个元素定义球体中心的 x、y 和 z 值。最后一个元素（索引为 3）定义了以米为单位的半径。                                                                               | 不   |
-| **扩展名**  | 目的       | 具有扩展特定对象的字典对象。                                                                                                                                | 不   |
-| **临时演员** | 任何       | 特定于应用程序的数据。                                                                                                                                   | 不   |
+| **extensions**  | 目的       | 具有扩展特定对象的字典对象。                                                                                                                                | 不   |
+| **extras** | 任何       | 特定于应用程序的数据。                                                                                                                                   | 不   |
 
 #### BoundingVolume.box
 
@@ -888,8 +888,8 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 | :------- | :- | :---------------- | :-- |
 | **最大限度** | 数字 | Tileset中所有要素的此属性的最大值。 | ✅是的 |
 | **最低限度** | 数字 | Tileset中所有要素的此属性的最小值。 | ✅是的 |
-| **扩展名**  | 目的 | 具有扩展特定对象的字典对象。    | 不   |
-| **临时演员** | 任何 | 特定于应用程序的数据。       | 不   |
+| **extensions**  | 目的 | 具有扩展特定对象的字典对象。    | 不   |
+| **extras** | 任何 | 特定于应用程序的数据。       | 不   |
 
 #### 属性.maximum✅
 
@@ -937,8 +937,8 @@ Tileset中所有要素的此属性的最小值。
 | **转换(transforms)**                  | 编号 \[16] | 一个浮点 4x4 仿射变换矩阵，以列优先顺序存储，将tile的内容（即其feature以及 content.boundingVolume、boundingVolume 和 viewerRequestVolume）从tile的本地坐标系转换到父tile的坐标系，或者，在根tile的情况下，从tile的局部坐标系到Tileset的坐标系。当体积是在 EPSG:4979 坐标中定义的区域时，变换不适用于任何体积属性。transform通过矩阵中的最大缩放因子缩放geometricError 。 | 否，默认：`[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]` |
 | **内容**                  | 目的       | 有关tile内容的元数据和指向内容的链接。                                                                                                                                                                                                                 | 不                                        |
 | **孩子们**                 | 大批\[]    | 定义子tile的对象数组。每个子tile内容都被其父tile的边界体积(boundingVolumes)完全包围，并且通常具有小于其父tile的几何误差的几何误差。对于叶tile，此数组的长度为零，并且可能未定义子级。                                                                                                                                                  | 不                                        |
-| **扩展名**                 | 目的       | 具有扩展特定对象的字典对象。                                                                                                                                                                                                                      | 不                                        |
-| **临时演员**                | 任何       | 特定于应用程序的数据。                                                                                                                                                                                                                         | 不                                        |
+| **extensions**                 | 目的       | 具有扩展特定对象的字典对象。                                                                                                                                                                                                                      | 不                                        |
+| **extras**                | 任何       | 特定于应用程序的数据。                                                                                                                                                                                                                         | 不                                        |
 
 #### Tile.boundingVolume✅
 
@@ -1023,8 +1023,8 @@ Tileset中所有要素的此属性的最小值。
 | :------- | :- | :-------------------------------------------------- | :-- |
 | **边界体积(boundingVolumes)** | 目的 | 包围tile或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。 | 不   |
 | **类型**   | 细绳 | 指向tile内容的 uri。当 uri 是相对的时，它是相对于引用的 tileset JSON 文件的。  | ✅是的 |
-| **扩展名**  | 目的 | 具有扩展特定对象的字典对象。                                      | 不   |
-| **临时演员** | 任何 | 特定于应用程序的数据。                                         | 不   |
+| **extensions**  | 目的 | 具有扩展特定对象的字典对象。                                      | 不   |
+| **extras** | 任何 | 特定于应用程序的数据。                                         | 不   |
 
 #### Content.boundingVolume
 
