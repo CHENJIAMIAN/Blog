@@ -29,8 +29,8 @@
             *   [平铺变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-transforms)
             *   [glTF 变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-transforms)
         *   [瓷砖 JSON](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-json)
-    *   [瓦片集 JSON](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tileset-json)
-        *   [外部瓦片集](https://github.com/CesiumGS/3d-tiles/tree/main/specification#external-tilesets)
+    *   [Tileset JSON](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tileset-json)
+        *   [外部Tileset](https://github.com/CesiumGS/3d-tiles/tree/main/specification#external-tilesets)
         *   [边界体积空间相干性](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volume-spatial-coherence)
         *   [空间数据结构](https://github.com/CesiumGS/3d-tiles/tree/main/specification#spatial-data-structures)
             *   [四叉树](https://github.com/CesiumGS/3d-tiles/tree/main/specification#quadtrees)
@@ -66,7 +66,7 @@ Batched 3D Model 和 Instanced 3D Model 格式建立在[glTF](https://github.com
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/tree.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/tree.png)
 
-瓦片集可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片服务 (WMTS) 或 XYZ 方案）的 2D 空间瓦片方案，这些瓦片在多个细节级别（或缩放级别）提供预定义瓦片。然而，由于 tileset 的内容通常是不均匀的，或者可能不容易仅在二维中组织，树可以是任何具有空间一致性[的空间数据结构](https://github.com/CesiumGS/3d-tiles/tree/main/specification#spatial-data-structures)，包括 kd 树、四叉树、八叉树和网格。
+Tileset可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片服务 (WMTS) 或 XYZ 方案）的 2D 空间瓦片方案，这些瓦片在多个细节级别（或缩放级别）提供预定义瓦片。然而，由于 tileset 的内容通常是不均匀的，或者可能不容易仅在二维中组织，树可以是任何具有空间一致性[的空间数据结构](https://github.com/CesiumGS/3d-tiles/tree/main/specification#spatial-data-structures)，包括 kd 树、四叉树、八叉树和网格。
 
 可选择将[3D Tiles Style](https://github.com/CesiumGS/3d-tiles/blob/main/specification/Styling)或*style*应用于 tileset。样式定义了要评估的表达式，这些表达式修改了每个特征的显示方式。
 
@@ -124,7 +124,7 @@ Batched 3D Model 和 Instanced 3D Model 格式建立在[glTF](https://github.com
 
 在客户端实现中，几何误差与其他屏幕空间指标（例如，从图块到相机的距离、屏幕尺寸和分辨率）一起使用，以计算在呈现该图块而其子项未呈现时引入的 SSE。如果引入的 SSE 超过允许的最大值，则细化图块并考虑渲染其子项。
 
-几何误差是根据点密度、以米为单位的瓦片大小或该瓦片集特定的其他因素等指标制定的。通常，较高的几何误差意味着将更积极地细化图块，并且将更快地加载和渲染子图块。
+几何误差是根据点密度、以米为单位的瓦片大小或该Tileset特定的其他因素等指标制定的。通常，较高的几何误差意味着将更积极地细化图块，并且将更快地加载和渲染子图块。
 
 #### 求精
 
@@ -132,7 +132,7 @@ Batched 3D Model 和 Instanced 3D Model 格式建立在[glTF](https://github.com
 
 一个 tileset 可以只使用替换细化，只使用加法细化，或者加法和替换细化的任意组合。
 
-瓦片集的根瓦片需要细化类型；它对于所有其他图块都是可选的。省略时，图块会继承其父项的细化类型。
+Tileset的根瓦片需要细化类型；它对于所有其他图块都是可选的。省略时，图块会继承其父项的细化类型。
 
 ##### 替代品
 
@@ -257,7 +257,7 @@ tile 的viewerRequestVolume可用于组合异构数据集，并可与[外部 til
 
 ##### 平铺变换
 
-为了支持局部坐标系——例如，城市瓦片集中的建筑瓦片集可以在它自己的坐标系中定义，而建筑物内部的点云瓦片集也可以在它自己的坐标系中定义——每个瓦片都有一个可选的转换属性。
+为了支持局部坐标系——例如，城市Tileset中的建筑Tileset可以在它自己的坐标系中定义，而建筑物内部的点云Tileset也可以在它自己的坐标系中定义——每个瓦片都有一个可选的转换属性。
 
 transform属性是一个 4x4 仿射变换矩阵，以列优先顺序存储，从图块的局部坐标系转换到父图块的坐标系——或者在根图块的情况下是图块集的坐标系。
 
@@ -431,7 +431,7 @@ geometricError属性是一个非负数，用于定义错误，以米为单位，
 
 可选的viewerRequestVolume属性（上面未显示）使用与boundingVolume相同的模式定义了一个体积，在请求图块内容之前以及根据geometricError优化图块之前，查看器必须在其中。请参阅[查看器请求量](https://github.com/CesiumGS/3d-tiles/tree/main/specification#viewer-request-volume)部分。
 
-refine属性是一个字符串，对于替换优化是“REPLACE”，对于加法优化是“ADD” ，请参阅[Refinement](https://github.com/CesiumGS/3d-tiles/tree/main/specification#refinement)。瓦片集的根瓦片需要它；它对于所有其他图块都是可选的。一个 tileset 可以使用添加和替换细化的任意组合。当省略refine属性时，它是从父图块继承的。
+refine属性是一个字符串，对于替换优化是“REPLACE”，对于加法优化是“ADD” ，请参阅[Refinement](https://github.com/CesiumGS/3d-tiles/tree/main/specification#refinement)。Tileset的根瓦片需要它；它对于所有其他图块都是可选的。一个 tileset 可以使用添加和替换细化的任意组合。当省略refine属性时，它是从父图块继承的。
 
 content属性是一个对象，其中包含有关 tile 的可渲染内容的元数据 。content.uri是一个 uri，它指向 tile 的二进制内容（参见[Tile 格式规范](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-format-specifications)），或者另一个 tileset JSON 来创建一个 tileset 的 tileset（参见[External tilesets](https://github.com/CesiumGS/3d-tiles/tree/main/specification#external-tilesets)）。
 
@@ -449,7 +449,7 @@ children属性是一组定义子图块的对象。每个子图块的内容都完
 
 有关磁贴 JSON 架构参考，请参阅[属性参考。](https://github.com/CesiumGS/3d-tiles/tree/main/specification#property-reference)[完整的 JSON 模式可以在tile.schema.json](https://github.com/CesiumGS/3d-tiles/blob/main/specification/schema/tile.schema.json)中找到。
 
-### 瓦片集 JSON
+### Tileset JSON
 
 3D Tiles 使用一个主要的 tileset JSON 文件作为入口点来定义一个 tileset。入口和外部 tileset JSON 文件都不需要遵循特定的命名约定。
 
@@ -510,13 +510,13 @@ geometricError是一个非负数，它定义了错误，以米为单位，确定
 
 root是一个对象，它使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tiles)中描述的图块 JSON 定义根图块。 root.geometricError与 tileset 的顶级geometricError不同。tileset 的geometricError在运行时用于确定 tileset 的根 tile 渲染的 SSE；root.geometricError在运行时用于确定渲染根图块子项的 SSE。
 
-#### 外部瓦片集
+#### 外部Tileset
 
 要创建树中树，tile 的content.uri可以指向外部 tileset（另一个 tileset JSON 文件的 uri）。例如，这可以将每个城市存储在一个 tileset 中，然后拥有一个全局 tilesets 的 tilesets。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/tilesets.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/tilesets.png)
 
-当瓦片指向外部瓦片集时，瓦片：
+当瓦片指向外部Tileset时，瓦片：
 
 *   不能有任何孩子；tile.children必须是未定义的或空数组。
 *   不能用于创建循环，例如，通过指向包含该图块的同一个图块集文件或通过指向另一个图块集文件然后指向包含该图块的初始文件。
@@ -524,7 +524,7 @@ root是一个对象，它使用[上一节](https://github.com/CesiumGS/3d-tiles/
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/tileTransformExternalTileset.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/tileTransformExternalTileset.png)
 
-如果外部 tileset 定义了asset.tilesetVersion，这将覆盖父 tileset 的值。如果外部瓦片集未定义asset.tilesetVersion，则该值继承自父瓦片集（如果已定义）。
+如果外部 tileset 定义了asset.tilesetVersion，这将覆盖父 tileset 的值。如果外部Tileset未定义asset.tilesetVersion，则该值继承自父Tileset（如果已定义）。
 
 #### 边界体积空间相干性
 
@@ -542,7 +542,7 @@ root是一个对象，它使用[上一节](https://github.com/CesiumGS/3d-tiles/
 
 运行时引擎是通用的，将渲染由 tileset 定义的任何树。可以使用切片格式和细化方法的任意组合，从而能够灵活地支持异构数据集，请参阅[细化](https://github.com/CesiumGS/3d-tiles/tree/main/specification#refinement)。
 
-瓦片集可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片服务 (WMTS) 或 XYZ 方案）的 2D 空间瓦片方案，这些瓦片在多个细节级别（或缩放级别）提供预定义瓦片。然而，由于 tileset 的内容通常是不均匀的，或者可能不容易仅在二维中组织，因此其他空间数据结构可能更优化。
+Tileset可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片服务 (WMTS) 或 XYZ 方案）的 2D 空间瓦片方案，这些瓦片在多个细节级别（或缩放级别）提供预定义瓦片。然而，由于 tileset 的内容通常是不均匀的，或者可能不容易仅在二维中组织，因此其他空间数据结构可能更优化。
 
 下面简要描述了 3D Tiles 如何表示各种空间数据结构。
 
@@ -690,7 +690,7 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 | [点云 ( pnts )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/PointCloud/README.md)              | 大量的点。                                 |
 | [复合 ( cmpt )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md)               | 将不同格式的图块连接成一个图块。                      |
 
-瓦片集可以包含瓦片格式的任意组合。[3D Tiles 还可以使用Composite](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md) tile在同一个 tile 中支持不同的格式。
+Tileset可以包含瓦片格式的任意组合。[3D Tiles 还可以使用Composite](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md) tile在同一个 tile 中支持不同的格式。
 
 ## 声明式样式规范
 
@@ -708,7 +708,7 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 
 ## 物业参考
 
-*   [瓦片集](https://github.com/CesiumGS/3d-tiles/tree/main/specification#reference-tileset)
+*   [Tileset](https://github.com/CesiumGS/3d-tiles/tree/main/specification#reference-tileset)
 
     *   [资产](https://github.com/CesiumGS/3d-tiles/tree/main/specification#reference-asset)
     *   [边界体积](https://github.com/CesiumGS/3d-tiles/tree/main/specification#reference-bounding-volume)
@@ -721,9 +721,9 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 
 ***
 
-### 瓦片集
+### Tileset
 
-一个 3D Tiles 瓷砖集。
+一个 3D Tiles Tileset。
 
 **特性**
 
@@ -732,13 +732,13 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 | **资产**           | 目的          | 关于整个 tileset 的元数据。                                                  | ✅是的 |
 | **特性**           | 任何          | 关于每个特征属性的元数据的字典对象。                                                  | 不   |
 | **几何误差**         | 数字          | 如果未渲染此 tileset，则会引入以米为单位的错误。在运行时，几何误差用于计算屏幕空间误差 (SSE)，即以像素为单位测量的误差。 | ✅是的 |
-| **根**            | 目的          | 3D Tiles 瓦片集中的瓦片。                                                   | ✅是的 |
+| **根**            | 目的          | 3D Tiles Tileset中的瓦片。                                                   | ✅是的 |
 | **扩展使用**         | 字符串 \[1-\*] | 此 tileset 中某处使用的 3D Tiles 扩展的名称。                                    | 不   |
 | **extensions必填** | 字符串 \[1-\*] | 正确加载此 tileset 所需的 3D Tiles 扩展的名称。                                   | 不   |
 | **扩展名**          | 目的          | 具有扩展特定对象的字典对象。                                                      | 不   |
 | **临时演员**         | 任何          | 特定于应用程序的数据。                                                         | 不   |
 
-#### 瓦片集.asset ✅
+#### Tileset.asset ✅
 
 关于整个 tileset 的元数据。
 
@@ -763,7 +763,7 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 
 #### Tileset.root✅
 
-3D Tiles 瓦片集中的瓦片。
+3D Tiles Tileset中的瓦片。
 
 *   **类型**：对象
 *   **要求**：是
@@ -786,7 +786,7 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
     *   数组中的每个元素都必须是唯一的。
 *   **要求**：否
 
-#### 瓦片集.extensions
+#### Tileset.extensions
 
 具有扩展特定对象的字典对象。
 
@@ -925,21 +925,21 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 
 |          | 类型 | 描述                | 必需的 |
 | :------- | :- | :---------------- | :-- |
-| **最大限度** | 数字 | 瓦片集中所有要素的此属性的最大值。 | ✅是的 |
-| **最低限度** | 数字 | 瓦片集中所有要素的此属性的最小值。 | ✅是的 |
+| **最大限度** | 数字 | Tileset中所有要素的此属性的最大值。 | ✅是的 |
+| **最低限度** | 数字 | Tileset中所有要素的此属性的最小值。 | ✅是的 |
 | **扩展名**  | 目的 | 具有扩展特定对象的字典对象。    | 不   |
 | **临时演员** | 任何 | 特定于应用程序的数据。       | 不   |
 
 #### 属性.maximum✅
 
-瓦片集中所有要素的此属性的最大值。
+Tileset中所有要素的此属性的最大值。
 
 *   **类型**：数字
 *   **要求**：是
 
 #### 属性.minimum✅
 
-瓦片集中所有要素的此属性的最小值。
+Tileset中所有要素的此属性的最小值。
 
 *   **类型**：数字
 *   **要求**：是
@@ -963,7 +963,7 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 
 ### 瓦
 
-3D Tiles 瓦片集中的瓦片。
+3D Tiles Tileset中的瓦片。
 
 **特性**
 
@@ -973,7 +973,7 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 | **viewerRequestVolume** | 目的       | 包围图块或其内容的边界体积。至少需要一个边界体积属性。边界体积包括box、region或sphere。                                                                                                                                                                                 | 不                                        |
 | **几何误差**                | 数字       | 如果渲染此图块而其子项未呈现，则会引入以米为单位的错误。在运行时，几何误差用于计算屏幕空间误差 (SSE)，即以像素为单位测量的误差。                                                                                                                                                                 | ✅是的                                      |
 | **提炼**                  | 细绳       | 指定在遍历 tileset 进行渲染时是否使用附加或替换细化。这个属性对于 tileset 的根 tile 是必需的；它对于所有其他图块都是可选的。默认是从父 tile 继承。                                                                                                                                            | 不                                        |
-| **转换**                  | 编号 \[16] | 一个浮点 4x4 仿射变换矩阵，以列优先顺序存储，将图块的内容（即其特征以及 content.boundingVolume、boundingVolume 和 viewerRequestVolume）从图块的本地坐标系转换到父图块的坐标系，或者，在根瓦片的情况下，从瓦片的局部坐标系到瓦片集的坐标系。当体积是在 EPSG:4979 坐标中定义的区域时，变换不适用于任何体积属性。transform通过矩阵中的最大缩放因子缩放geometricError 。 | 否，默认：`[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]` |
+| **转换**                  | 编号 \[16] | 一个浮点 4x4 仿射变换矩阵，以列优先顺序存储，将图块的内容（即其特征以及 content.boundingVolume、boundingVolume 和 viewerRequestVolume）从图块的本地坐标系转换到父图块的坐标系，或者，在根瓦片的情况下，从瓦片的局部坐标系到Tileset的坐标系。当体积是在 EPSG:4979 坐标中定义的区域时，变换不适用于任何体积属性。transform通过矩阵中的最大缩放因子缩放geometricError 。 | 否，默认：`[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]` |
 | **内容**                  | 目的       | 有关磁贴内容的元数据和指向内容的链接。                                                                                                                                                                                                                 | 不                                        |
 | **孩子们**                 | 大批\[]    | 定义子图块的对象数组。每个子图块内容都被其父图块的边界体积完全包围，并且通常具有小于其父图块的几何误差的几何误差。对于叶瓦片，此数组的长度为零，并且可能未定义子级。                                                                                                                                                  | 不                                        |
 | **扩展名**                 | 目的       | 具有扩展特定对象的字典对象。                                                                                                                                                                                                                      | 不                                        |
@@ -1014,7 +1014,7 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 
 #### 平铺变换
 
-一个浮点 4x4 仿射变换矩阵，以列优先顺序存储，将图块的内容（即其特征以及 content.boundingVolume、boundingVolume 和 viewerRequestVolume）从图块的本地坐标系转换到父图块的坐标系，或者，在根瓦片的情况下，从瓦片的局部坐标系到瓦片集的坐标系。当体积是在 EPSG:4979 坐标中定义的区域时，变换不适用于任何体积属性。transform通过矩阵中的最大缩放因子缩放geometricError 。
+一个浮点 4x4 仿射变换矩阵，以列优先顺序存储，将图块的内容（即其特征以及 content.boundingVolume、boundingVolume 和 viewerRequestVolume）从图块的本地坐标系转换到父图块的坐标系，或者，在根瓦片的情况下，从瓦片的局部坐标系到Tileset的坐标系。当体积是在 EPSG:4979 坐标中定义的区域时，变换不适用于任何体积属性。transform通过矩阵中的最大缩放因子缩放geometricError 。
 
 *   **类型**：数字 \[16]
 *   **必需**：否，默认：`[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]`
