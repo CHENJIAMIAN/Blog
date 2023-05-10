@@ -312,7 +312,8 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 
 通过Batch的材质和渲染属性信息，b3dm文件格式可以支持多种不同的纹理、材质和渲染效果。
 
-# Next
+# 3D-Tiles-NEXT参考卡
+> [3d-tiles/README.md at main · CesiumGS/3d-tiles · GitHub](https://github.com/CesiumGS/3d-tiles/blob/main/next/README.md)
 ![ght|800](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683680925000b2k1mi.jpg)
 
 ![gh|800](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683681222000h7dyy2.jpg)
