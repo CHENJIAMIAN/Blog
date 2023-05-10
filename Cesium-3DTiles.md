@@ -203,11 +203,12 @@ Cesium3DTile.js
 	Promise.then（异步）
 	Cesium3DTileset (Cesium3DTileset.js:1035)
 
-  //保存原始的、未转换的边界体积位置，以便我们可以应用
+Cesium3DTileset.js在构造函数阶段会保存原始的、未转换的边界体积位置，以便我们可以应用运行时的瓦片变换和模型矩阵
+	const boundingVolume = that._root.createBoundingVolume(tilesetJson.root.boundingVolume , Matrix4.IDENTITY);
 
-        //运行时的瓦片变换和模型矩阵
-
-        const boundingVolume = that._root.createBoundingVolume
+TileOrientedBoundingBox
+TileBoundingRegion
+TileBoundingSphere
 ```
 
 ## BoundingVolume下的region举例
