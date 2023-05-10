@@ -1,5 +1,5 @@
 [3d-tiles/specification at main · CesiumGS/3d-tiles · GitHub](https://github.com/CesiumGS/3d-tiles/tree/main/specification)
-[3D Tiles Specification](https://portal.ogc.org/files/102132)
+[超详细的OGC 网页书: 3D Tiles Specification](https://portal.ogc.org/files/102132)
 
 **1.0 版**，2018 年 6 月 6 日
 本文档描述了 3D Tiles 的规范，这是一种用于流式传输大量异构 3D 地理空间数据集的开放标准。
@@ -228,8 +228,7 @@ tile 的viewerRequestVolume可用于组合异构数据集，并可与[外部 til
 transform属性是一个 4x4 仿射变换矩阵，以列优先顺序存储，从tile的局部坐标系转换到父tile的坐标系——或者在根tile的情况下是tile集的坐标系。
 
 变换属性适用于
-
-*   tile内容
+*   tile.content
     *   每个feature的位置。
     *   每个feature的法线都应该由左上角的 3x3 逆转置矩阵进行变换，以便[在使用 scale 时](http://www.realtimerendering.com/resources/RTNews/html/rtnews1a.html#art4)考虑正确的矢量变换。
     *   content.boundingVolume，除非已`content.boundingVolume.region`定义，否则在 EPSG:4979 坐标中明确显示。
@@ -273,14 +272,13 @@ transform属性通过矩阵中的最大缩放因子缩放geometricError 。
 1.  [glTF 节点层次结构转换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-node-hierarchy)
 2.  [glTF ](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[y](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[-up 到](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[z](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[-up 变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)
 3.  任何tile格式特定的转换。
-
-    *   [批处理的 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)Feature Table可以定义用于平移模型顶点的RTC\_CENTER 。
-    *   [实例化 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md)Feature Table定义每个实例的位置、法线和比例。这些用于创建应用于每个实例的每个实例 4x4 仿射变换矩阵。
+    *   [b3dm · 批处理的 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)Feature Table可以定义用于平移模型顶点的RTC\_CENTER 。
+    *   [i3dm · 实例化 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md)Feature Table定义每个实例的位置、法线和比例。这些用于创建应用于每个实例的每个实例 4x4 仿射变换矩阵。
 4.  [tile变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-transforms)
 
 > \*\*实施注意事项：\*\*当处理本质上是*z*向上的源数据时，例如 WGS 84 坐标中的数据或本地*z*向上坐标系统中的数据，常见的工作流程是：
 >
-> *   网格数据（包括位置和法线）不会被修改——它们保持*z*向上。
+> *   Mesh数据（包括位置和法线）不会被修改——它们保持*z*向上。
 > *   根节点矩阵指定列主要*z*到*y*向上变换。这会将源数据转换为glTF 所需的*y向上坐标系。*
 > *   在运行时，glTF使用上面的矩阵从*y向上*转换回*z向上*。实际上，转换抵消了。
 >
@@ -309,7 +307,6 @@ transform属性通过矩阵中的最大缩放因子缩放geometricError 。
 *   T4：\[T0]\[T1]\[T4]
 
 tile 内容中的位置和法线也可能在 tile变换*之前*应用特定于 tile的变换（之前表示仿射变换的后乘）。一些例子是：
-
 *   b3dm和i3dm tiles 嵌入了 glTF，它定义了自己的节点层次结构和坐标系。tile.transform在这些转换解决后应用。请参阅[glTF 转换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-transforms)。
 *   i3dm的Feature Table定义了每个实例的位置、法线和比例。这些用于创建每个实例的 4x4 仿射变换矩阵，这些矩阵在tile.transform之前应用于每个实例。
 *   压缩属性，例如i3dm和pnts的Feature Table中的POSITION\_QUANTIZED以及pnts中的NORMAL\_OCT16P应该在任何其他转换之前解压缩。
