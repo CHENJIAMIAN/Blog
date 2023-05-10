@@ -48,7 +48,7 @@ Tileset可以使用类似于栅格和矢量tile方案（如 Web 地图tile服务
 1.  JSON 必须使用不带 BOM 的 UTF-8 编码。
 2.  本规范中定义的所有字符串（属性名称、枚举）仅使用 ASCII 字符集，并且必须以纯文本形式编写。
 3.  JSON 对象中的名称（键）必须是唯一的，即不允许重复的键。
-region
+
 ## URIs
 
 3D Tiles 使用 URI 来引用tile内容。这些 URI 可能指向[相对外部引用 (RFC3986)](https://tools.ietf.org/html/rfc3986#section-4.2)或者是在 JSON 中嵌入资源的数据 URI。嵌入式资源使用[“数据”URL 方案 (RFC2397)](https://tools.ietf.org/html/rfc2397)。
