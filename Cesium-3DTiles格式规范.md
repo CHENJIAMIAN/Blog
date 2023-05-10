@@ -5,30 +5,30 @@
 
 ## 介绍
 
-3D Tiles 专为流式传输和渲染大量 3D 地理空间内容而设计，例如摄影测量、3D 建筑、BIM/CAD、实例化特征和点云。它定义了一个分层数据结构和一组提供可渲染内容的图块格式。3D Tiles 没有为内容的可视化定义明确的规则；客户端可以根据自身需求对3D瓦片数据进行可视化呈现。
+3D Tiles 专为流式传输和渲染大量 3D 地理空间内容而设计，例如摄影测量、3D 建筑、BIM/CAD、实例化Feature和点云。它定义了一个分层数据结构和一组提供可渲染内容的tile格式。3D Tiles 没有为内容的可视化定义明确的规则；客户端可以根据自身需求对3D瓦片数据进行可视化呈现。
 
-在 3D Tiles 中，一个*tileset*是一组以空间数据结构组织的*图块，树*。一个 tileset 由至少一个包含 tileset 元数据和 tile 对象树的 tileset JSON 文件描述，每个对象都可以引用以下格式之一的可渲染内容：
+在3D Tiles中，一个*tileset*是一组按空间数据结构**树**组织的**瓦片**。一个 tileset 由至少一个包含 tileset 元数据和 tile 对象树的 tileset JSON 文件描述，每个对象都可以引用以下格式之一的可渲染内容：
 
 | 格式                                                                                                                        | 用途                                    |
 | :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------ |
 | [批量 3D 模型 ( b3dm )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)    | 异构 3D 模型。例如带纹理的地形和表面、3D 建筑外部和内部、大型模型。 |
 | [实例化 3D 模型 ( i3dm )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md) | 3D 模型实例。例如树木、风车、螺栓。                   |
 | [点云 ( pnts )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/PointCloud/README.md)              | 大量的点。                                 |
-| [复合 ( cmpt )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md)               | 将不同格式的图块连接成一个图块。                      |
+| [复合 ( cmpt )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md)               | 将不同格式的tile连接成一个tile。                      |
 
-图块的*内容*（图块格式的单个实例）是一个二进制 blob，具有特定于格式的组件，包括[特征表](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/FeatureTable/README.md)和[批处理表](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/BatchTable/README.md)。
+tile的*内容*（tile格式的单个实例）是一个二进制 blob，具有特定于格式的组件，包括[Feature Table](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/FeatureTable/README.md)和[Batch Table](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/BatchTable/README.md)。
 
-内容引用一组*特征*，例如表示建筑物或树木的 3D 模型，或点云中的点。每个特征的位置和外观属性都存储在图块的特征表中，其他特定于应用程序的属性存储在批处理表中。客户端可以选择在运行时选择特征并检索它们的属性以进行可视化或分析。
+内容引用一组*features*，例如表示建筑物或树木的 3D 模型，或点云中的点。每个feature的位置和外观属性都存储在tile的Feature Table中，其他特定于应用程序的属性存储在Batch Table中。客户端可以选择在运行时选择feature并检索它们的属性以进行可视化或分析。
 
-Batched 3D Model 和 Instanced 3D Model 格式建立在[glTF](https://github.com/KhronosGroup/glTF)之上，glTF 是一种为高效传输 3D 内容而设计的开放规范。这些格式的图块内容在二进制主体中嵌入了一个 glTF 资产，其中包含模型几何和纹理信息。点云格式不嵌入 glTF。
+Batched 3D Model 和 Instanced 3D Model 格式建立在[glTF](https://github.com/KhronosGroup/glTF)之上，glTF 是一种为高效传输 3D 内容而设计的开放规范。这些格式的tile内容在二进制主体中嵌入了一个 glTF 资产，其中包含模型几何和纹理信息。点云格式不嵌入 glTF。
 
-切片以树的形式组织，该树结合了层次细节级别 (HLOD) 的概念，以优化空间数据的渲染。每个图块都有一个*包围体*，一个定义完全包围其内容的空间范围的对象。树具有[空间连贯性](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volume-spatial-coherence)；子图块的内容完全在父图块的包围体内。
+切片以树的形式组织，该树结合了层次细节级别 (HLOD) 的概念，以优化空间数据的渲染。每个tile都有一个*包围体*，一个定义完全包围其内容的空间范围的对象。树具有[空间连贯性](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volume-spatial-coherence)；子tile的内容完全在父tile的包围体内。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/tree.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/tree.png)
 
 Tileset可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片服务 (WMTS) 或 XYZ 方案）的 2D 空间瓦片方案，这些瓦片在多个细节级别（或缩放级别）提供预定义瓦片。然而，由于 tileset 的内容通常是不均匀的，或者可能不容易仅在二维中组织，树可以是任何具有空间一致性[的空间数据结构](https://github.com/CesiumGS/3d-tiles/tree/main/specification#spatial-data-structures)，包括 kd 树、四叉树、八叉树和网格。
 
-可选择将[3D Tiles Style](https://github.com/CesiumGS/3d-tiles/blob/main/specification/Styling)或*style*应用于 tileset。样式定义了要评估的表达式，这些表达式修改了每个特征的显示方式。
+可选择将[3D Tiles Style](https://github.com/CesiumGS/3d-tiles/blob/main/specification/Styling)或*style*应用于 tileset。样式定义了要评估的表达式，这些表达式修改了每个feature的显示方式。
 
 ## 文件扩展名和媒体类型
 
@@ -50,7 +50,7 @@ Tileset可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片�
 
 ## URIs
 
-3D Tiles 使用 URI 来引用图块内容。这些 URI 可能指向[相对外部引用 (RFC3986)](https://tools.ietf.org/html/rfc3986#section-4.2)或者是在 JSON 中嵌入资源的数据 URI。嵌入式资源使用[“数据”URL 方案 (RFC2397)](https://tools.ietf.org/html/rfc2397)。
+3D Tiles 使用 URI 来引用tile内容。这些 URI 可能指向[相对外部引用 (RFC3986)](https://tools.ietf.org/html/rfc3986#section-4.2)或者是在 JSON 中嵌入资源的数据 URI。嵌入式资源使用[“数据”URL 方案 (RFC2397)](https://tools.ietf.org/html/rfc2397)。
 
 当 URI 是相对的时，它的基础总是相对于引用的 tileset JSON 文件。
 
@@ -74,29 +74,29 @@ Tileset可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片�
 
 ### tile
 
-图块包含用于确定是否呈现图块的元数据、对可呈现内容的引用以及任何子图块的数组。
+tile包含用于确定是否呈现tile的元数据、对可呈现内容的引用以及任何子tile的数组。
 
 #### 几何误差
 
 *瓦片被构造成包含层次细节级别*(HLOD) 的树，因此在运行时，客户端实现将需要确定瓦片是否足够详细以进行渲染，以及瓦片的内容是否应由更高分辨率的子瓦片连续细化。实现将考虑最大允许*屏幕空间误差*(SSE)，该误差以像素为单位。
 
-tile的几何误差定义了该tile的选择指标。它的值是一个非负数，用于指定图块对其源几何体的简化表示的误差（以米为单位）。作为源几何体的最简化版本的根瓦片将具有最大的几何误差。然后每个连续级别的子级将具有比其父级更低的几何误差，叶瓦片具有或接近 0 的几何误差。
+tile的几何误差定义了该tile的选择指标。它的值是一个非负数，用于指定tile对其源几何体的简化表示的误差（以米为单位）。作为源几何体的最简化版本的根瓦片将具有最大的几何误差。然后每个连续级别的子级将具有比其父级更低的几何误差，叶瓦片具有或接近 0 的几何误差。
 
-在客户端实现中，几何误差与其他屏幕空间指标（例如，从图块到相机的距离、屏幕尺寸和分辨率）一起使用，以计算在呈现该图块而其子项未呈现时引入的 SSE。如果引入的 SSE 超过允许的最大值，则细化图块并考虑渲染其子项。
+在客户端实现中，几何误差与其他屏幕空间指标（例如，从tile到相机的距离、屏幕尺寸和分辨率）一起使用，以计算在呈现该tile而其子项未呈现时引入的 SSE。如果引入的 SSE 超过允许的最大值，则细化tile并考虑渲染其子项。
 
-几何误差是根据点密度、以米为单位的瓦片大小或该Tileset特定的其他因素等指标制定的。通常，较高的几何误差意味着将更积极地细化图块，并且将更快地加载和渲染子图块。
+几何误差是根据点密度、以米为单位的瓦片大小或该Tileset特定的其他因素等指标制定的。通常，较高的几何误差意味着将更积极地细化tile，并且将更快地加载和渲染子tile。
 
 #### 细化(refinement)
 
-`refinement` 决定了较低的分辨率父层在选择较高的分辨率儿童渲染时呈现的过程。允许的细化类型是替换 ( "REPLACE" ) 和添加 ( "ADD" )。如果图块具有替换细化，则子图块会代替父图块进行渲染，即不再渲染父图块。如果图块具有附加细化，则除了父图块之外还会渲染子图块。
+`refinement` 决定了较低的分辨率父层在选择较高的分辨率儿童渲染时呈现的过程。允许的细化类型是替换 ( "REPLACE" ) 和添加 ( "ADD" )。如果tile具有替换细化，则子tile会代替父tile进行渲染，即不再渲染父tile。如果tile具有附加细化，则除了父tile之外还会渲染子tile。
 
 一个 tileset 可以只使用替换细化，只使用加法细化，或者加法和替换细化的任意组合。
 
-Tileset的根瓦片需要细化类型；它对于所有其他图块都是可选的。省略时，图块会继承其父项的细化类型。
+Tileset的根瓦片需要细化类型；它对于所有其他tile都是可选的。省略时，tile会继承其父项的细化类型。
 
 ##### 替换
 
-如果一个图块使用替换细化，那么在细化时它会渲染它的孩子来代替它自己。
+如果一个tile使用替换细化，那么在细化时它会渲染它的孩子来代替它自己。
 
 | 父tile                                                                                                                                                                                  | 精制                                                                                                                                                                                   |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -104,7 +104,7 @@ Tileset的根瓦片需要细化类型；它对于所有其他图块都是可选�
 
 ##### 添加
 
-如果一个图块使用加法细化，那么在细化时它会同时渲染它自己和它的孩子。
+如果一个tile使用加法细化，那么在细化时它会同时渲染它自己和它的孩子。
 
 | 父tile                                                                                                                                                                            | 精制                                                                                                                                                                             |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -112,7 +112,7 @@ Tileset的根瓦片需要细化类型；它对于所有其他图块都是可选�
 
 #### 边界体积(boundingVolumes)
 
-边界体积(boundingVolumes)定义了包含图块或图块内容的空间范围。为了支持各种数据集的紧密拟合体积，例如规则划分的地形、未与纬度或经度线对齐的城市或任意点云，包围体类型包括定向包围盒、包围球和地理区域由最小和最大纬度、经度和高度定义。
+边界体积(boundingVolumes)定义了包含tile或tile内容的空间范围。为了支持各种数据集的紧密拟合体积，例如规则划分的地形、未与纬度或经度线对齐的城市或任意点云，包围体类型包括定向包围盒、包围球和地理区域由最小和最大纬度、经度和高度定义。
 
 | 边界框                                                                                                                                                                                       | 包围球                                                                                                                                                                                             | 边界区域                                                                                                                                                                                              |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -169,7 +169,7 @@ boundingVolume.sphere属性是一个包含四个数字的数组，用于定义�
 
 tile 的viewerRequestVolume可用于组合异构数据集，并可与[外部 tilesets](https://github.com/CesiumGS/3d-tiles/tree/main/specification#external-tilesets)组合。
 
-以下示例在b3dm瓦片中有一个建筑物，在pnts瓦片中建筑物内有一个点云。点云图块的boundingVolume是一个半径为1.25的球体。对于viewerRequestVolume，它还有一个半径为15的更大球体。由于geometricError为零，因此当查看器位于由viewerRequestVolume定义的大球体内部时，点云图块的内容始终呈现（并最初请求） 。
+以下示例在b3dm瓦片中有一个建筑物，在pnts瓦片中建筑物内有一个点云。点云tile的boundingVolume是一个半径为1.25的球体。对于viewerRequestVolume，它还有一个半径为15的更大球体。由于geometricError为零，因此当查看器位于由viewerRequestVolume定义的大球体内部时，点云tile的内容始终呈现（并最初请求） 。
 ```js
     {
       "children": [{
@@ -219,14 +219,14 @@ tile 的viewerRequestVolume可用于组合异构数据集，并可与[外部 til
 
 为了支持局部坐标系——例如，城市Tileset中的建筑Tileset可以在它自己的坐标系中定义，而建筑物内部的点云Tileset也可以在它自己的坐标系中定义——每个瓦片都有一个可选的转换属性。
 
-transform属性是一个 4x4 仿射变换矩阵，以列优先顺序存储，从图块的局部坐标系转换到父图块的坐标系——或者在根图块的情况下是图块集的坐标系。
+transform属性是一个 4x4 仿射变换矩阵，以列优先顺序存储，从tile的局部坐标系转换到父tile的坐标系——或者在根tile的情况下是tile集的坐标系。
 
 变换属性适用于
 
-*   图块内容
+*   tile内容
 
-    *   每个特征的位置。
-    *   每个特征的法线都应该由左上角的 3x3 逆转置矩阵进行变换，以便[在使用 scale 时](http://www.realtimerendering.com/resources/RTNews/html/rtnews1a.html#art4)考虑正确的矢量变换。
+    *   每个feature的位置。
+    *   每个feature的法线都应该由左上角的 3x3 逆转置矩阵进行变换，以便[在使用 scale 时](http://www.realtimerendering.com/resources/RTNews/html/rtnews1a.html#art4)考虑正确的矢量变换。
     *   content.boundingVolume，除非已`content.boundingVolume.region`定义，否则在 EPSG:4979 坐标中明确显示。
 *   tile.boundingVolume，定义时除外`tile.boundingVolume.region`，它在 EPSG:4979 坐标中明确显示。
 *   tile.viewerRequestVolume，定义时除外`tile.viewerRequestVolume.region`，它在 EPSG:4979 坐标中明确表示。
@@ -246,7 +246,7 @@ transform属性通过矩阵中的最大缩放因子缩放geometricError 。
 
 ##### glTF 变换
 
-[批处理 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)和[实例化 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md)图块嵌入了 glTF，它定义了自己的节点层次结构并使用*y*向上坐标系。任何特定于图块格式的转换和tile.transform属性都会在解析这些转换后应用。
+[批处理 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)和[实例化 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md)tile嵌入了 glTF，它定义了自己的节点层次结构并使用*y*向上坐标系。任何特定于tile格式的转换和tile.transform属性都会在解析这些转换后应用。
 
 ###### glTF 节点层次结构
 
@@ -267,10 +267,10 @@ transform属性通过矩阵中的最大缩放因子缩放geometricError 。
 
 1.  [glTF 节点层次结构转换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-node-hierarchy)
 2.  [glTF ](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[y](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[ -up 到](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[z](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[ -up 变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)
-3.  任何图块格式特定的转换。
+3.  任何tile格式特定的转换。
 
-    *   [批处理的 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)特征表可以定义用于平移模型顶点的RTC\_CENTER 。
-    *   [实例化 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md)特征表定义每个实例的位置、法线和比例。这些用于创建应用于每个实例的每个实例 4x4 仿射变换矩阵。
+    *   [批处理的 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)Feature Table可以定义用于平移模型顶点的RTC\_CENTER 。
+    *   [实例化 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md)Feature Table定义每个实例的位置、法线和比例。这些用于创建应用于每个实例的每个实例 4x4 仿射变换矩阵。
 4.  [tile变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-transforms)
 
 > \*\*实施注意事项：\*\*当处理本质上是*z*向上的源数据时，例如 WGS 84 坐标中的数据或本地*z*向上坐标系统中的数据，常见的工作流程是：
@@ -291,11 +291,11 @@ transform属性通过矩阵中的最大缩放因子缩放geometricError 。
 
 ##### 例子
 
-对于图块集的计算变换（上面代码中的transformToRoot ）的示例，请考虑：
+对于tile集的计算变换（上面代码中的transformToRoot ）的示例，请考虑：
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/tileTransform.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/tileTransform.png)
 
-每个图块的计算变换是：
+每个tile的计算变换是：
 
 *   至：\[T0]
 *   T1：\[T0]\[T1]
@@ -306,8 +306,8 @@ transform属性通过矩阵中的最大缩放因子缩放geometricError 。
 tile 内容中的位置和法线也可能在 tile变换*之前*应用特定于 tile的变换（之前表示仿射变换的后乘）。一些例子是：
 
 *   b3dm和i3dm tiles 嵌入了 glTF，它定义了自己的节点层次结构和坐标系。tile.transform在这些转换解决后应用。请参阅[glTF 转换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-transforms)。
-*   i3dm的特征表定义了每个实例的位置、法线和比例。这些用于创建每个实例的 4x4 仿射变换矩阵，这些矩阵在tile.transform之前应用于每个实例。
-*   压缩属性，例如i3dm和pnts的特征表中的POSITION\_QUANTIZED以及pnts中的NORMAL\_OCT16P应该在任何其他转换之前解压缩。
+*   i3dm的Feature Table定义了每个实例的位置、法线和比例。这些用于创建每个实例的 4x4 仿射变换矩阵，这些矩阵在tile.transform之前应用于每个实例。
+*   压缩属性，例如i3dm和pnts的Feature Table中的POSITION\_QUANTIZED以及pnts中的NORMAL\_OCT16P应该在任何其他转换之前解压缩。
 
 因此，上述示例的完整计算转换为：
 
@@ -350,11 +350,11 @@ tile 内容中的位置和法线也可能在 tile变换*之前*应用特定于 t
 ```
 #### tile JSON
 
-图块 JSON 对象包含以下属性。
+tile JSON 对象包含以下属性。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/tile.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/tile.png)
 
-以下示例显示了一个非叶子图块。
+以下示例显示了一个非叶子tile。
 ```js
     {
       "boundingVolume": {
@@ -385,27 +385,27 @@ tile 内容中的位置和法线也可能在 tile变换*之前*应用特定于 t
       "children": [...]
     }
 ```
-boundingVolume定义包围图块的体积，并用于确定在运行时渲染哪些图块。上面的示例使用了区域体积，但也可以使用其他[边界体积(boundingVolumes)](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volumes)，例如box或sphere 。
+boundingVolume定义包围tile的体积，并用于确定在运行时渲染哪些tile。上面的示例使用了区域体积，但也可以使用其他[边界体积(boundingVolumes)](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volumes)，例如box或sphere 。
 
-geometricError属性是一个非负数，用于定义错误，以米为单位，如果渲染此图块而其子项未呈现则引入。在运行时，几何误差用于计算*屏幕空间误差*(SSE)，该误差以像素为单位。SSE 确定图块对于当前视图是否足够详细，或者是否应考虑其子项，请参阅[几何错误](https://github.com/CesiumGS/3d-tiles/tree/main/specification#geometric-error)。
+geometricError属性是一个非负数，用于定义错误，以米为单位，如果渲染此tile而其子项未呈现则引入。在运行时，几何误差用于计算*屏幕空间误差*(SSE)，该误差以像素为单位。SSE 确定tile对于当前视图是否足够详细，或者是否应考虑其子项，请参阅[几何错误](https://github.com/CesiumGS/3d-tiles/tree/main/specification#geometric-error)。
 
-可选的viewerRequestVolume属性（上面未显示）使用与boundingVolume相同的模式定义了一个体积，在请求图块内容之前以及根据geometricError优化图块之前，查看器必须在其中。请参阅[查看器请求量(viewerRequestVolume)](https://github.com/CesiumGS/3d-tiles/tree/main/specification#viewer-request-volume)部分。
+可选的viewerRequestVolume属性（上面未显示）使用与boundingVolume相同的模式定义了一个体积，在请求tile内容之前以及根据geometricError优化tile之前，查看器必须在其中。请参阅[查看器请求量(viewerRequestVolume)](https://github.com/CesiumGS/3d-tiles/tree/main/specification#viewer-request-volume)部分。
 
-refine属性是一个字符串，对于替换优化是“REPLACE”，对于加法优化是“ADD” ，请参阅[Refinement](https://github.com/CesiumGS/3d-tiles/tree/main/specification#refinement)。Tileset的根瓦片需要它；它对于所有其他图块都是可选的。一个 tileset 可以使用添加和替换细化的任意组合。当省略refine属性时，它是从父图块继承的。
+refine属性是一个字符串，对于替换优化是“REPLACE”，对于加法优化是“ADD” ，请参阅[Refinement](https://github.com/CesiumGS/3d-tiles/tree/main/specification#refinement)。Tileset的根瓦片需要它；它对于所有其他tile都是可选的。一个 tileset 可以使用添加和替换细化的任意组合。当省略refine属性时，它是从父tile继承的。
 
 content属性是一个对象，其中包含有关 tile 的可渲染内容的元数据 。content.uri是一个 uri，它指向 tile 的二进制内容（参见[Tile 格式规范](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-format-specifications)），或者另一个 tileset JSON 来创建一个 tileset 的 tileset（参见[External tilesets](https://github.com/CesiumGS/3d-tiles/tree/main/specification#external-tilesets)）。
 
 content.uri不需要文件扩展名。内容的[tile 格式可以通过其标头中的](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-format-specifications)魔术字段来标识，或者如果内容是 JSON，则作为外部 tileset。
 
-content.boundingVolume属性定义了一个类似于顶级boundingVolume属性的可选[边界体积(boundingVolumes)](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volumes)。但与顶级boundingVolume属性不同的是，content.boundingVolume是一个紧密配合的边界体积(boundingVolumes)，仅包含图块的内容。 boundingVolume提供空间连贯性，而content.boundingVolume支持紧密的视锥体剔除，排除渲染不在潜在视图体积内的任何内容。未定义时，瓦片的边界体积(boundingVolumes)仍用于剔除（请参阅[网格](https://github.com/CesiumGS/3d-tiles/tree/main/specification#grids)）。
+content.boundingVolume属性定义了一个类似于顶级boundingVolume属性的可选[边界体积(boundingVolumes)](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volumes)。但与顶级boundingVolume属性不同的是，content.boundingVolume是一个紧密配合的边界体积(boundingVolumes)，仅包含tile的内容。 boundingVolume提供空间连贯性，而content.boundingVolume支持紧密的视锥体剔除，排除渲染不在潜在视图体积内的任何内容。未定义时，瓦片的边界体积(boundingVolumes)仍用于剔除（请参阅[网格](https://github.com/CesiumGS/3d-tiles/tree/main/specification#grids)）。
 
-下面的屏幕截图显示了金丝雀码头根瓦片的边界体积(boundingVolumes)。 boundingVolume以红色显示，包围了 tileset 的整个区域；content.boundingVolume以蓝色显示，仅包含根图块中的四个特征（模型）。
+下面的屏幕截图显示了金丝雀码头根瓦片的边界体积(boundingVolumes)。 boundingVolume以红色显示，包围了 tileset 的整个区域；content.boundingVolume以蓝色显示，仅包含根tile中的四个feature（模型）。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/contentsBox.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/contentsBox.png)
 
 可选的transform属性（上面未显示）定义了一个 4x4 仿射变换矩阵，该矩阵变换 tile 的content、boundingVolume和viewerRequestVolume ，如[Tile 变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-transforms)部分所述。
 
-children属性是一组定义子图块的对象。每个子图块的内容都完全包含在其父图块的boundingVolume中，并且通常小于其父图块的geometricError的geometricError。对于叶瓦片，此数组的长度为零，并且可能未定义子级。请参阅下面的[Tileset JSON](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tileset-json)部分。
+children属性是一组定义子tile的对象。每个子tile的内容都完全包含在其父tile的boundingVolume中，并且通常小于其父tile的geometricError的geometricError。对于叶瓦片，此数组的长度为零，并且可能未定义子级。请参阅下面的[Tileset JSON](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tileset-json)部分。
 
 有关tile JSON 架构参考，请参阅[属性参考。](https://github.com/CesiumGS/3d-tiles/tree/main/specification#property-reference)[完整的 JSON 模式可以在tile.schema.json](https://github.com/CesiumGS/3d-tiles/blob/main/specification/schema/tile.schema.json)中找到。
 
@@ -464,11 +464,11 @@ asset是一个对象，包含关于整个 tileset 的元数据。asset.version�
 
 > **实现注意事项**：tilesetVersion可以在请求内容时用作查询参数，以避免使用缓存中的过时内容。
 
-properties是一个对象，包含 tileset 中每个特征属性的对象。这个 tileset JSON 片段是针对 3D 建筑的，所以每个 tile 都有建筑模型，每个建筑模型都有一个Height属性（参见[批处理表](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/BatchTable/README.md)）。properties中每个对象的名称与每个特征属性的名称相匹配，它的值定义了它的最小和最大数值，这对于例如为样式创建颜色渐变很有用。
+properties是一个对象，包含 tileset 中每个feature属性的对象。这个 tileset JSON 片段是针对 3D 建筑的，所以每个 tile 都有建筑模型，每个建筑模型都有一个Height属性（参见[Batch Table](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/BatchTable/README.md)）。properties中每个对象的名称与每个feature属性的名称相匹配，它的值定义了它的最小和最大数值，这对于例如为样式创建颜色渐变很有用。
 
-geometricError是一个非负数，它定义了错误，以米为单位，确定是否渲染了 tileset。在运行时，几何误差用于计算*屏幕空间误差*(SSE)，该误差以像素为单位。如果 SSE 未超过所需的最小值，则不应渲染图块集，并且不应考虑渲染其图块，请参阅[几何错误](https://github.com/CesiumGS/3d-tiles/tree/main/specification#geometric-error)。
+geometricError是一个非负数，它定义了错误，以米为单位，确定是否渲染了 tileset。在运行时，几何误差用于计算*屏幕空间误差*(SSE)，该误差以像素为单位。如果 SSE 未超过所需的最小值，则不应渲染tile集，并且不应考虑渲染其tile，请参阅[几何错误](https://github.com/CesiumGS/3d-tiles/tree/main/specification#geometric-error)。
 
-root是一个对象，它使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tiles)中描述的图块 JSON 定义根图块。 root.geometricError与 tileset 的顶级geometricError不同。tileset 的geometricError在运行时用于确定 tileset 的根 tile 渲染的 SSE；root.geometricError在运行时用于确定渲染根图块子项的 SSE。
+root是一个对象，它使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tiles)中描述的tile JSON 定义根tile。 root.geometricError与 tileset 的顶级geometricError不同。tileset 的geometricError在运行时用于确定 tileset 的根 tile 渲染的 SSE；root.geometricError在运行时用于确定渲染根tile子项的 SSE。
 
 #### 外部Tileset
 
@@ -479,8 +479,8 @@ root是一个对象，它使用[上一节](https://github.com/CesiumGS/3d-tiles/
 当瓦片指向外部Tileset时，瓦片：
 
 *   不能有任何孩子；tile.children必须是未定义的或空数组。
-*   不能用于创建循环，例如，通过指向包含该图块的同一个图块集文件或通过指向另一个图块集文件然后指向包含该图块的初始文件。
-*   将由 tile 的transform和 root tile 的transform进行转换。例如，在以下引用外部图块集的图块集中，T3的计算变换为\[T0]\[T1]\[T2]\[T3]。
+*   不能用于创建循环，例如，通过指向包含该tile的同一个tile集文件或通过指向另一个tile集文件然后指向包含该tile的初始文件。
+*   将由 tile 的transform和 root tile 的transform进行转换。例如，在以下引用外部tile集的tile集中，T3的计算变换为\[T0]\[T1]\[T2]\[T3]。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/tileTransformExternalTileset.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/tileTransformExternalTileset.png)
 
@@ -488,13 +488,13 @@ root是一个对象，它使用[上一节](https://github.com/CesiumGS/3d-tiles/
 
 #### 边界体积(boundingVolumes)空间相干性
 
-如上所述，树具有空间连贯性；每个图块都有一个完全包围其内容的边界体积(boundingVolumes)，子图块的内容完全在父图块的边界体积(boundingVolumes)内。这并不意味着孩子的边界体积(boundingVolumes)完全在其父边界体积(boundingVolumes)内。例如：
+如上所述，树具有空间连贯性；每个tile都有一个完全包围其内容的边界体积(boundingVolumes)，子tile的内容完全在父tile的边界体积(boundingVolumes)内。这并不意味着孩子的边界体积(boundingVolumes)完全在其父边界体积(boundingVolumes)内。例如：
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/parentBoundingSphere.jpg)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/parentBoundingSphere.jpg)\
-地形图块的边界球体。
+地形tile的边界球体。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/childBoundingSphere.jpg)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/childBoundingSphere.jpg)\
-四个子图块的边界球体。子级的内容完全在父级的包围体内，但子级的包围体不在，因为它们没有紧密贴合。
+四个子tile的边界球体。子级的内容完全在父级的包围体内，但子级的包围体不在，因为它们没有紧密贴合。
 
 #### 空间数据结构
 
@@ -508,12 +508,12 @@ Tileset可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片�
 
 ##### 四叉树
 
-当每个瓦片有四个均匀细分的孩子（例如，使用中心纬度和经度）时，将创建一个四叉树，类似于典型的 2D 地理空间瓦片方案。可以省略空的子图块。
+当每个瓦片有四个均匀细分的孩子（例如，使用中心纬度和经度）时，将创建一个四叉树，类似于典型的 2D 地理空间瓦片方案。可以省略空的子tile。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/quadtree.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/quadtree.png)\
 经典的四叉树细分。
 
-3D Tiles 启用四叉树变体，例如不均匀细分和紧边界体积(boundingVolumes)（与边界相反，例如，父图块的全部 25%，这对于稀疏数据集来说是一种浪费）。
+3D Tiles 启用四叉树变体，例如不均匀细分和紧边界体积(boundingVolumes)（与边界相反，例如，父tile的全部 25%，这对于稀疏数据集来说是一种浪费）。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/quadtree-tight.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/quadtree-tight.png)\
 每个孩子周围都有紧密的边界体积(boundingVolumes)的四叉树。
@@ -522,10 +522,10 @@ Tileset可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片�
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/nonUniformQuadtree.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/nonUniformQuadtree.png)
 
-3D Tiles 还支持其他四叉树变体，例如[松散四叉树](http://www.tulrich.com/geekstuff/partitioning.html)，其中子图块重叠但空间连贯性仍然保留，即父图块完全包围其所有子图块。此方法可用于避免跨图块拆分要素（例如 3D 模型）。
+3D Tiles 还支持其他四叉树变体，例如[松散四叉树](http://www.tulrich.com/geekstuff/partitioning.html)，其中子tile重叠但空间连贯性仍然保留，即父tile完全包围其所有子tile。此方法可用于避免跨tile拆分要素（例如 3D 模型）。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/quadtree-overlap.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/quadtree-overlap.png)\
-具有不均匀和重叠图块的四叉树。
+具有不均匀和重叠tile的四叉树。
 
 下面，绿色建筑物在左孩子中，紫色建筑物在右孩子中。请注意，tile重叠，因此中间的两座绿色和一座紫色建筑没有分开。
 
@@ -533,7 +533,7 @@ Tileset可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片�
 
 ##### Kd树
 
-当每个图块有两个子图块时，会创建一个 kd 树，两个子图块由平行于*x*、*y*或*z*轴（或纬度、经度、高度）的*分割平面*隔开。分裂轴通常随着树的级别增加而循环旋转，并且可以使用中值分裂、表面积启发式或其他方法来选择分裂平面。
+当每个tile有两个子tile时，会创建一个 kd 树，两个子tile由平行于*x*、*y*或*z*轴（或纬度、经度、高度）的*分割平面*隔开。分裂轴通常随着树的级别增加而循环旋转，并且可以使用中值分裂、表面积启发式或其他方法来选择分裂平面。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/kdtree.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/kdtree.png)\
 示例 kd 树。注意非均匀细分。
@@ -544,7 +544,7 @@ Tileset可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片�
 
 ##### 八叉树
 
-八叉树通过使用三个正交的分裂平面将一个图块细分为八个孩子来扩展四叉树。与四叉树一样，3D Tiles 允许对八叉树进行变体，例如非均匀细分、紧边界体积(boundingVolumes)和重叠子项。
+八叉树通过使用三个正交的分裂平面将一个tile细分为八个孩子来扩展四叉树。与四叉树一样，3D Tiles 允许对八叉树进行变体，例如非均匀细分、紧边界体积(boundingVolumes)和重叠子项。
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/octree.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/octree.png)\
 传统的八叉树细分。
@@ -554,11 +554,11 @@ Tileset可以使用类似于栅格和矢量瓦片方案（如 Web 地图瓦片�
 
 ##### 网格
 
-3D Tiles 通过支持任意数量的子图块来实现统一、非统一和重叠的网格。例如，这是剑桥非均匀重叠网格的自上而下视图：
+3D Tiles 通过支持任意数量的子tile来实现统一、非统一和重叠的网格。例如，这是剑桥非均匀重叠网格的自上而下视图：
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/grid.png)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/grid.png)
 
-3D tile利用空tile：那些具有边界体积(boundingVolumes)但没有内容的tile。由于不需要定义图块的内容属性，因此可以使用空的非叶图块来加速具有分层剔除的非均匀网格。这实质上创建了一个没有层次细节层次 (HLOD) 的四叉树或八叉树。
+3D tile利用空tile：那些具有边界体积(boundingVolumes)但没有内容的tile。由于不需要定义tile的内容属性，因此可以使用空的非叶tile来加速具有分层剔除的非均匀网格。这实质上创建了一个没有层次细节层次 (HLOD) 的四叉树或八叉树。
 
 ### 指定扩展和特定于应用程序的附加功能
 
@@ -611,7 +611,7 @@ tileset 或任何后代外部 tilesets 中使用的所有扩展必须在顶级ex
 
 #### 附加功能
 
-extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles JSON 对象。以下示例显示了一个具有附加应用程序特定名称属性的图块对象。
+extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles JSON 对象。以下示例显示了一个具有附加应用程序特定名称属性的tile对象。
 ```js
     {
       "transform": [
@@ -641,14 +641,14 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 
 ## tile格式规范
 
-每个图块的content.uri属性可以是包含用于呈现图块 3D 内容的信息的二进制 blob 的 uri。内容是下表所列格式之一的实例。
+每个tile的content.uri属性可以是包含用于呈现tile 3D 内容的信息的二进制 blob 的 uri。内容是下表所列格式之一的实例。
 
 | 格式                                                                                                                        | 用途                                    |
 | :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------ |
 | [批量 3D 模型 ( b3dm )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)    | 异构 3D 模型。例如带纹理的地形和表面、3D 建筑外部和内部、大型模型。 |
 | [实例化 3D 模型 ( i3dm )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md) | 3D 模型实例。例如树木、风车、螺栓。                   |
 | [点云 ( pnts )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/PointCloud/README.md)              | 大量的点。                                 |
-| [复合 ( cmpt )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md)               | 将不同格式的图块连接成一个图块。                      |
+| [复合 ( cmpt )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md)               | 将不同格式的tile连接成一个tile。                      |
 
 Tileset可以包含瓦片格式的任意组合。[3D Tiles 还可以使用Composite](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md) tile在同一个 tile 中支持不同的格式。
 
@@ -656,7 +656,7 @@ Tileset可以包含瓦片格式的任意组合。[3D Tiles 还可以使用Compos
 
 3D Tiles 包括使用 JSON 定义的简明声明式样式和用一小部分 JavaScript 编写的表达式，以增强样式。
 
-样式使用基于特征属性的表达式定义特征的显示方式，例如显示和颜色（RGB 和半透明）。
+样式使用基于feature属性的表达式定义feature的显示方式，例如显示和颜色（RGB 和半透明）。
 
 以下示例将高度高于 90 的要素着色为红色，将其他要素着色为白色。
 ```js
@@ -690,7 +690,7 @@ Tileset可以包含瓦片格式的任意组合。[3D Tiles 还可以使用Compos
 |                  | 类型          | 描述                                                                  | 必需的 |
 | :--------------- | :---------- | :------------------------------------------------------------------ | :-- |
 | **资产**           | 目的          | 关于整个 tileset 的元数据。                                                  | ✅是的 |
-| **特性**           | 任何          | 关于每个特征属性的元数据的字典对象。                                                  | 不   |
+| **特性**           | 任何          | 关于每个feature属性的元数据的字典对象。                                                  | 不   |
 | **几何误差**         | 数字          | 如果未渲染此 tileset，则会引入以米为单位的错误。在运行时，几何误差用于计算屏幕空间误差 (SSE)，即以像素为单位测量的误差。 | ✅是的 |
 | **根**            | 目的          | 3D Tiles Tileset中的瓦片。                                                   | ✅是的 |
 | **扩展使用**         | 字符串 \[1-\*] | 此 tileset 中某处使用的 3D Tiles 扩展的名称。                                    | 不   |
@@ -707,7 +707,7 @@ Tileset可以包含瓦片格式的任意组合。[3D Tiles 还可以使用Compos
 
 #### Tileset.properties
 
-关于每个特征属性的元数据的字典对象。
+关于每个feature属性的元数据的字典对象。
 
 *   **类型**：任何
 *   **要求**：否
@@ -809,7 +809,7 @@ Tileset可以包含瓦片格式的任意组合。[3D Tiles 还可以使用Compos
 
 ### 边界体积(boundingVolumes)
 
-包围图块或其内容的边界体积(boundingVolumes)。必须至少指定一个边界体积(boundingVolumes)属性。这可能是box、region或sphere属性。扩展可以定义额外的包围体类型。如果指定了多个边界体积(boundingVolumes)，客户可以根据用例和性能要求选择最合适的选项。
+包围tile或其内容的边界体积(boundingVolumes)。必须至少指定一个边界体积(boundingVolumes)属性。这可能是box、region或sphere属性。扩展可以定义额外的包围体类型。如果指定了多个边界体积(boundingVolumes)，客户可以根据用例和性能要求选择最合适的选项。
 
 **特性**
 
@@ -879,7 +879,7 @@ Tileset可以包含瓦片格式的任意组合。[3D Tiles 还可以使用Compos
 
 ### 特性
 
-关于每个特征属性的元数据的字典对象。
+关于每个feature属性的元数据的字典对象。
 
 **特性**
 
@@ -929,33 +929,33 @@ Tileset中所有要素的此属性的最小值。
 
 |                         | 类型       | 描述                                                                                                                                                                                                                                  | 必需的                                      |
 | :---------------------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
-| **边界体积(boundingVolumes)**                | 目的       | 包围图块或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。                                                                                                                                                                                 | ✅是的                                      |
-| **viewerRequestVolume** | 目的       | 包围图块或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。                                                                                                                                                                                 | 不                                        |
-| **几何误差**                | 数字       | 如果渲染此图块而其子项未呈现，则会引入以米为单位的错误。在运行时，几何误差用于计算屏幕空间误差 (SSE)，即以像素为单位测量的误差。                                                                                                                                                                 | ✅是的                                      |
-| **提炼**                  | 细绳       | 指定在遍历 tileset 进行渲染时是否使用附加或替换细化。这个属性对于 tileset 的根 tile 是必需的；它对于所有其他图块都是可选的。默认是从父 tile 继承。                                                                                                                                            | 不                                        |
-| **转换(transforms)**                  | 编号 \[16] | 一个浮点 4x4 仿射变换矩阵，以列优先顺序存储，将图块的内容（即其特征以及 content.boundingVolume、boundingVolume 和 viewerRequestVolume）从图块的本地坐标系转换到父图块的坐标系，或者，在根瓦片的情况下，从瓦片的局部坐标系到Tileset的坐标系。当体积是在 EPSG:4979 坐标中定义的区域时，变换不适用于任何体积属性。transform通过矩阵中的最大缩放因子缩放geometricError 。 | 否，默认：`[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]` |
+| **边界体积(boundingVolumes)**                | 目的       | 包围tile或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。                                                                                                                                                                                 | ✅是的                                      |
+| **viewerRequestVolume** | 目的       | 包围tile或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。                                                                                                                                                                                 | 不                                        |
+| **几何误差**                | 数字       | 如果渲染此tile而其子项未呈现，则会引入以米为单位的错误。在运行时，几何误差用于计算屏幕空间误差 (SSE)，即以像素为单位测量的误差。                                                                                                                                                                 | ✅是的                                      |
+| **提炼**                  | 细绳       | 指定在遍历 tileset 进行渲染时是否使用附加或替换细化。这个属性对于 tileset 的根 tile 是必需的；它对于所有其他tile都是可选的。默认是从父 tile 继承。                                                                                                                                            | 不                                        |
+| **转换(transforms)**                  | 编号 \[16] | 一个浮点 4x4 仿射变换矩阵，以列优先顺序存储，将tile的内容（即其feature以及 content.boundingVolume、boundingVolume 和 viewerRequestVolume）从tile的本地坐标系转换到父tile的坐标系，或者，在根瓦片的情况下，从瓦片的局部坐标系到Tileset的坐标系。当体积是在 EPSG:4979 坐标中定义的区域时，变换不适用于任何体积属性。transform通过矩阵中的最大缩放因子缩放geometricError 。 | 否，默认：`[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]` |
 | **内容**                  | 目的       | 有关tile内容的元数据和指向内容的链接。                                                                                                                                                                                                                 | 不                                        |
-| **孩子们**                 | 大批\[]    | 定义子图块的对象数组。每个子图块内容都被其父图块的边界体积(boundingVolumes)完全包围，并且通常具有小于其父图块的几何误差的几何误差。对于叶瓦片，此数组的长度为零，并且可能未定义子级。                                                                                                                                                  | 不                                        |
+| **孩子们**                 | 大批\[]    | 定义子tile的对象数组。每个子tile内容都被其父tile的边界体积(boundingVolumes)完全包围，并且通常具有小于其父tile的几何误差的几何误差。对于叶瓦片，此数组的长度为零，并且可能未定义子级。                                                                                                                                                  | 不                                        |
 | **扩展名**                 | 目的       | 具有扩展特定对象的字典对象。                                                                                                                                                                                                                      | 不                                        |
 | **临时演员**                | 任何       | 特定于应用程序的数据。                                                                                                                                                                                                                         | 不                                        |
 
 #### Tile.boundingVolume✅
 
-包围图块或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。
+包围tile或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。
 
 *   **类型**：对象
 *   **要求**：是
 
 #### Tile.viewerRequestVolume
 
-包围图块或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。
+包围tile或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。
 
 *   **类型**：对象
 *   **要求**：否
 
 #### Tile.geometricError✅
 
-如果渲染此图块而其子项未呈现，则会引入以米为单位的错误。在运行时，几何误差用于计算屏幕空间误差 (SSE)，即以像素为单位测量的误差。
+如果渲染此tile而其子项未呈现，则会引入以米为单位的错误。在运行时，几何误差用于计算屏幕空间误差 (SSE)，即以像素为单位测量的误差。
 
 *   **类型**：数字
 *   **要求**：是
@@ -963,7 +963,7 @@ Tileset中所有要素的此属性的最小值。
 
 #### tile.细化
 
-指定在遍历 tileset 进行渲染时是否使用附加或替换细化。这个属性对于 tileset 的根 tile 是必需的；它对于所有其他图块都是可选的。默认是从父 tile 继承。
+指定在遍历 tileset 进行渲染时是否使用附加或替换细化。这个属性对于 tileset 的根 tile 是必需的；它对于所有其他tile都是可选的。默认是从父 tile 继承。
 
 *   **类型**：字符串
 *   **要求**：否
@@ -974,7 +974,7 @@ Tileset中所有要素的此属性的最小值。
 
 #### tile变换
 
-一个浮点 4x4 仿射变换矩阵，以列优先顺序存储，将图块的内容（即其特征以及 content.boundingVolume、boundingVolume 和 viewerRequestVolume）从图块的本地坐标系转换到父图块的坐标系，或者，在根瓦片的情况下，从瓦片的局部坐标系到Tileset的坐标系。当体积是在 EPSG:4979 坐标中定义的区域时，变换不适用于任何体积属性。transform通过矩阵中的最大缩放因子缩放geometricError 。
+一个浮点 4x4 仿射变换矩阵，以列优先顺序存储，将tile的内容（即其feature以及 content.boundingVolume、boundingVolume 和 viewerRequestVolume）从tile的本地坐标系转换到父tile的坐标系，或者，在根瓦片的情况下，从瓦片的局部坐标系到Tileset的坐标系。当体积是在 EPSG:4979 坐标中定义的区域时，变换不适用于任何体积属性。transform通过矩阵中的最大缩放因子缩放geometricError 。
 
 *   **类型**：数字 \[16]
 *   **必需**：否，默认：`[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]`
@@ -988,7 +988,7 @@ Tileset中所有要素的此属性的最小值。
 
 #### [tile.children](http://tile.children/)
 
-定义子图块的对象数组。每个子图块内容都被其父图块的边界体积(boundingVolumes)完全包围，并且通常具有小于其父图块的几何误差的几何误差。对于叶瓦片，此数组的长度为零，并且可能未定义子级。
+定义子tile的对象数组。每个子tile内容都被其父tile的边界体积(boundingVolumes)完全包围，并且通常具有小于其父tile的几何误差的几何误差。对于叶瓦片，此数组的长度为零，并且可能未定义子级。
 
 *   **类型**：数组\[]
 
@@ -1020,14 +1020,14 @@ Tileset中所有要素的此属性的最小值。
 
 |          | 类型 | 描述                                                  | 必需的 |
 | :------- | :- | :-------------------------------------------------- | :-- |
-| **边界体积(boundingVolumes)** | 目的 | 包围图块或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。 | 不   |
+| **边界体积(boundingVolumes)** | 目的 | 包围tile或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。 | 不   |
 | **类型**   | 细绳 | 指向tile内容的 uri。当 uri 是相对的时，它是相对于引用的 tileset JSON 文件的。  | ✅是的 |
 | **扩展名**  | 目的 | 具有扩展特定对象的字典对象。                                      | 不   |
 | **临时演员** | 任何 | 特定于应用程序的数据。                                         | 不   |
 
 #### Content.boundingVolume
 
-包围图块或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。
+包围tile或其内容的边界体积(boundingVolumes)。至少需要一个边界体积(boundingVolumes)属性。边界体积(boundingVolumes)包括box、region或sphere。
 
 *   **类型**：对象
 *   **要求**：否
