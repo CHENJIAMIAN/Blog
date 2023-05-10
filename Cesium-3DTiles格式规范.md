@@ -1,43 +1,10 @@
-# 3D 瓦片格式规范
+[3d-tiles/specification at main · CesiumGS/3d-tiles · GitHub](https://github.com/CesiumGS/3d-tiles/tree/main/specification)
 
 **1.0 版**，2018 年 6 月 6 日
 
 [![](https://github.com/CesiumGS/3d-tiles/raw/main/figures/Cesium3DTiles.png)](https://github.com/CesiumGS/3d-tiles/blob/main/figures/Cesium3DTiles.png)
 
 本文档描述了 3D Tiles 的规范，这是一种用于流式传输大量异构 3D 地理空间数据集的开放标准。
-
-编辑：
-
-*   帕特里克·科齐，[@pjcozzi](https://twitter.com/pjcozzi)，<patrick@cesium.com>
-*   肖恩·利利，[@](https://twitter.com/lilleyse) lilleyse ，<sean@cesium.com>
-*   Gabby Getz，[@gabbygetz](https://twitter.com/gabbygetz)，<gabby@cesium.com>
-
-致谢：
-
-*   马特·阿马托，[@matt\_amato](https://twitter.com/matt_amato)
-*   埃里克·安德森，[@e-andersson](https://github.com/e-andersson)
-*   丹·巴格内尔，[@bagnell](https://github.com/bagnell)
-*   雷宾利
-*   詹尼斯博林，[@jbo023](https://github.com/jbo023)
-*   迪伦·布朗，[@Dylan-Brown](http://www.github.com/Dylan-Brown)
-*   Sarah Chow，[cesium.com/team/SarahChow](https://cesium.com/team/SarahChow/)
-*   保罗·康奈利
-*   沃尔克库尔斯
-*   汤姆菲利，[@CesiumFili](https://twitter.com/CesiumFili)
-*   丽萨·菲尼，[@LeesaFini](http://www.github.com/LeesaFini)
-*   拉尔夫古特贝尔
-*   弗雷德里克·胡比
-*   Christopher Mitchell，博士，[@KermMartian](https://github.com/KermMartian)
-*   克劳斯内格尔
-*   让-菲利普庞斯
-*   卡尔·里德
-*   凯文·林 (Kevin Ring)，[www.kotachrome.com/kevin](http://www.kotachrome.com/kevin/)
-*   斯科特·西蒙斯
-*   Rob Taglang，[@lasalvavida](https://github.com/lasalvavida)
-*   斯坦蒂尔曼
-*   皮耶罗·托法宁，[@pierotofy](https://github.com/pierotofy)
-*   帕诺·沃杜里斯
-*   戴夫韦斯洛
 
 ## 内容
 
@@ -47,32 +14,25 @@
 *   [URIs](https://github.com/CesiumGS/3d-tiles/tree/main/specification#uris)
 *   [单位](https://github.com/CesiumGS/3d-tiles/tree/main/specification#units)
 *   [概念](https://github.com/CesiumGS/3d-tiles/tree/main/specification#concepts)
-
     *   [坐标参考系统 (CRS)](https://github.com/CesiumGS/3d-tiles/tree/main/specification#coordinate-reference-system-crs)
     *   [瓷砖](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tiles)
-
         *   [几何误差](https://github.com/CesiumGS/3d-tiles/tree/main/specification#geometric-error)
         *   [求精](https://github.com/CesiumGS/3d-tiles/tree/main/specification#refinement)
-
             *   [替代品](https://github.com/CesiumGS/3d-tiles/tree/main/specification#replacement)
             *   [添加剂](https://github.com/CesiumGS/3d-tiles/tree/main/specification#additive)
         *   [边界体积](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volumes)
-
             *   [地区](https://github.com/CesiumGS/3d-tiles/tree/main/specification#region)
             *   [盒子](https://github.com/CesiumGS/3d-tiles/tree/main/specification#box)
             *   [领域](https://github.com/CesiumGS/3d-tiles/tree/main/specification#sphere)
         *   [查看器请求量](https://github.com/CesiumGS/3d-tiles/tree/main/specification#viewer-request-volume)
         *   [转换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#transforms)
-
             *   [平铺变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-transforms)
             *   [glTF 变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-transforms)
         *   [瓷砖 JSON](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-json)
     *   [瓦片集 JSON](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tileset-json)
-
         *   [外部瓦片集](https://github.com/CesiumGS/3d-tiles/tree/main/specification#external-tilesets)
         *   [边界体积空间相干性](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volume-spatial-coherence)
         *   [空间数据结构](https://github.com/CesiumGS/3d-tiles/tree/main/specification#spatial-data-structures)
-
             *   [四叉树](https://github.com/CesiumGS/3d-tiles/tree/main/specification#quadtrees)
             *   [Kd树](https://github.com/CesiumGS/3d-tiles/tree/main/specification#k-d-trees)
             *   [八叉树](https://github.com/CesiumGS/3d-tiles/tree/main/specification#octrees)
@@ -1143,3 +1103,38 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 上面列出的公司已授予开放地理空间联盟 (OGC) 一项非排他性、免版税、已付费的全球许可，以复制和分发本文档以及修改本文档和分发修改后版本的副本，根据 Attribution 4.0 International (CC BY 4.0) 许可证。
 
 本规范的某些部分仅供参考，并未定义合规所需的要求，因此不在本规范的范围内。规范的这些部分被标记为非规范性的，或标识为**实施说明**。
+
+
+
+编辑：
+
+*   帕特里克·科齐，[@pjcozzi](https://twitter.com/pjcozzi)，<patrick@cesium.com>
+*   肖恩·利利，[@](https://twitter.com/lilleyse) lilleyse ，<sean@cesium.com>
+*   Gabby Getz，[@gabbygetz](https://twitter.com/gabbygetz)，<gabby@cesium.com>
+
+致谢：
+
+*   马特·阿马托，[@matt\_amato](https://twitter.com/matt_amato)
+*   埃里克·安德森，[@e-andersson](https://github.com/e-andersson)
+*   丹·巴格内尔，[@bagnell](https://github.com/bagnell)
+*   雷宾利
+*   詹尼斯博林，[@jbo023](https://github.com/jbo023)
+*   迪伦·布朗，[@Dylan-Brown](http://www.github.com/Dylan-Brown)
+*   Sarah Chow，[cesium.com/team/SarahChow](https://cesium.com/team/SarahChow/)
+*   保罗·康奈利
+*   沃尔克库尔斯
+*   汤姆菲利，[@CesiumFili](https://twitter.com/CesiumFili)
+*   丽萨·菲尼，[@LeesaFini](http://www.github.com/LeesaFini)
+*   拉尔夫古特贝尔
+*   弗雷德里克·胡比
+*   Christopher Mitchell，博士，[@KermMartian](https://github.com/KermMartian)
+*   克劳斯内格尔
+*   让-菲利普庞斯
+*   卡尔·里德
+*   凯文·林 (Kevin Ring)，[www.kotachrome.com/kevin](http://www.kotachrome.com/kevin/)
+*   斯科特·西蒙斯
+*   Rob Taglang，[@lasalvavida](https://github.com/lasalvavida)
+*   斯坦蒂尔曼
+*   皮耶罗·托法宁，[@pierotofy](https://github.com/pierotofy)
+*   帕诺·沃杜里斯
+*   戴夫韦斯洛
