@@ -311,38 +311,3 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
   ```
 
 通过Batch的材质和渲染属性信息，b3dm文件格式可以支持多种不同的纹理、材质和渲染效果。
-
-# 3D-Tiles-NEXT参考卡
-> [3d-tiles/README.md at main · CesiumGS/3d-tiles · GitHub](https://github.com/CesiumGS/3d-tiles/blob/main/next/README.md)![ght|800](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683680925000b2k1mi.jpg)
-
-![gh|800](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683681222000h7dyy2.jpg)
-![gh|800](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683681336000mqey2y.jpg)
-![gh|800](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683681343000kap9u7.jpg)
-![gh|800](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683681353000qy4g56.jpg)
-![gh|800](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683681359000ao2f4t.jpg)
-# 3D-Tiles参考卡
-[3d-tiles/3d-tiles-reference-card.pdf at main · CesiumGS/3d-tiles · GitHub](https://github.com/CesiumGS/3d-tiles/blob/main/3d-tiles-reference-card.pdf)
-![gh|800](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683683639000a8y1gc.jpg)
-![微信图片_20230510095646](https://github.com/CHENJIAMIAN/Blog/assets/20126997/1626bce1-88d1-4a25-8303-dc057998b1e2)
-![微信图片_202305100956461|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/571b0ec2-0632-4341-91b3-cf6252d46794)
-![微信图片_202305100956462|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/79f1f78d-f2b9-4e2c-9221-d1496a0e97be)
-![微信图片_202305100956463|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/24fba5db-eb56-48ba-b9e8-d749a8433fe8)
-![微信图片_202305100956464|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/fcf31d2c-7b02-4ee0-9a53-53f80cb97695)
-![微信图片_202305100956465|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/4ab3b724-ad67-4d59-8204-5f536df47a00)
-![微信图片_202305100956466|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/f7085bf9-0370-4a90-9b5f-c7d8880ac964)
-![微信图片_202305100956467|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/590bf33b-94d9-4490-a2f5-4719e8fc4b2a)
-![微信图片_202305100956468|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/f868991e-cf41-4d0e-a7e6-f7bbd5232fd2)
-![微信图片_202305100956469|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/f80f642b-b293-481c-9458-13b60381822b)
-![微信图片_2023051009564610|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/b46f9fbd-3a2f-4452-9b50-e89180730eef)
-![微信图片_2023051009564611|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/5c2ab9a0-755b-4d94-9bc2-2c5bb6196d79)
-![微信图片_2023051009564612|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/7de780f0-1900-40b6-99e8-fea470f8d017)
-![微信图片_2023051009564613|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/05db0b2f-c875-48a5-8829-ccf983ffd5c5)
-![微信图片_2023051009564614|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/d5d87b2e-cc03-4c5e-aa27-0af1a40d14d5)
-![微信图片_2023051009564615|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/f4dbf831-903e-439b-bb0f-bd965b8f60ba)
-![微信图片_2023051009564616|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/d2707cc0-bc1e-4505-8578-9f8601f5bfde)
-![微信图片_2023051009564617|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/54671db3-ea6c-42b8-ba21-14a4f3331e6a)
-![微信图片_2023051009564618|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/4295e36c-0e7d-4614-8e71-1e28725acc6f)
-![微信图片_2023051009564619|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/3e8fdf3d-648e-49d9-a4cb-db4ba3f5c16f)
-![微信图片_2023051009564620|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/f45edf3f-5a37-459d-b412-b637297b5ca3)
-![微信图片_2023051009564621|800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/344aca8e-df13-46e5-a03d-dcea87f370d2)
-![微信图片_2023051009564622](https://github.com/CHENJIAMIAN/Blog/assets/20126997/c1f9ab65-aff3-4406-81bf-3c40969a03f3)
