@@ -75,9 +75,9 @@ Cesium3DTileset.js //定义了3D Tiles集合对象，它是一个包含多个3D 
 	Cesium3DTilesetSkipTraversal.js //定义了一种跳过遍历算法，用于在3D Tiles中跳过不需要加载和渲染的图块。这种遍历算法可以提高3D场景的加载速度和性能。
 	Cesium3DTilesetStatistics.js //定义了一组统计信息，用于跟踪3D Tiles数据的加载和渲染。统计信息可以提供有关3D场景性能和效率的有用信息。
 	Cesium3DTilesetTraversal.js //定义了一组遍历算法，用于遍历3D Tiles图块的层次结构。遍历算法可以优化3D Tiles数据的加载和渲染，以提高性能和效率。
-	Cesium3DTilesVoxelProvider.js
+	Cesium3DTilesVoxelProvider.js //从 3D Tiles tileset 中获取体素数据
 	
-依赖关系
+依赖关系	
 	Cesium3DTileset.js
 	    Cesium3DTile.js
 	       Cesium3DTileContentFactory.js
@@ -188,7 +188,7 @@ Tileset JSON文件仅作为数据集的描述文件，不包括实际的3D模型
 需要注意的是，`region` 属性中的经纬度坐标是以弧度为单位的，而高度是以米为单位的。如果你需要使用度数表示经纬度坐标，可以将其乘以 `Math.PI / 180` 进行转换。同样的，如果你需要使用英尺表示高度，可以将其乘以 `3.28084` 进行转换。
 ```
 
-#### 源码体现
+#### 源码
 ```js
 Cesium3DTile.js
 	createBoundingVolume
