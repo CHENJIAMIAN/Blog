@@ -202,6 +202,12 @@ Cesium3DTile.js
 	Cesium3DTileset.loadTileset (Cesium3DTileset.js:2234)
 	Promise.then（异步）
 	Cesium3DTileset (Cesium3DTileset.js:1035)
+
+  //保存原始的、未转换的边界体积位置，以便我们可以应用
+
+        //运行时的瓦片变换和模型矩阵
+
+        const boundingVolume = that._root.createBoundingVolume
 ```
 
 ## BoundingVolume下的region举例
