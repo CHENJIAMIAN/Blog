@@ -73,7 +73,7 @@ Tileset可以使用类似于栅格和矢量tile方案（如 Web 地图tile服务
 
 ## 概念
 
-### tile
+### Tiles
 
 tile包含用于确定是否呈现tile的元数据、对可呈现内容的引用以及任何子tile的数组。
 
@@ -314,11 +314,11 @@ tile 内容中的位置和法线也可能在 tile变换*之前*应用特定于 t
 
 *   至：\[T0]
 *   T1：\[T0]\[T1]
-*   T2 :`[T0][T2][pnts-specific transform, including RTC_CENTER (if defined)]`
-*   T3 :`[T0][T1][T3][b3dm-specific transform, including RTC_CENTER (if defined), coordinate system transform, and glTF node hierarchy]`
-*   T4 :`[T0][T1][T4][i3dm-specific transform, including per-instance transform, coordinate system transform, and glTF node hierarchy]`
+*   T2 :`[T0][T2][pnts 特定的转换，包括 RTC_CENTER（如果已定义）]`
+*   T3 :`[T0][T1][T3][b3dm 特定的变换，包括 RTC_CENTER（如果已定义）、坐标系变换和 glTF 节点层次结构]`
+*   T4 :`[T0][T1][T4][i3dm 特定的变换，包括每个实例变换、坐标系变换和 glTF 节点层次结构]`
 
-##### 实施例
+##### 实现示例
 
 *本部分是非规范的*
 
@@ -471,7 +471,7 @@ geometricError是一个非负数，它定义了错误，以米为单位，确定
 
 root是一个对象，它使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tiles)中描述的tile JSON 定义根tile。 root.geometricError与 tileset 的顶级geometricError不同。tileset 的geometricError在运行时用于确定 tileset 的根 tile 渲染的 SSE；root.geometricError在运行时用于确定渲染根tile子项的 SSE。
 
-#### 外部Tileset
+#### External tilesets
 
 要创建树中树，tile 的content.uri可以指向外部 tileset（另一个 tileset JSON 文件的 uri）。例如，这可以将每个城市存储在一个 tileset 中，然后拥有一个全局 tilesets 的 tilesets。
 
@@ -487,7 +487,7 @@ root是一个对象，它使用[上一节](https://github.com/CesiumGS/3d-tiles/
 
 如果外部 tileset 定义了asset.tilesetVersion，这将覆盖父 tileset 的值。如果外部Tileset未定义asset.tilesetVersion，则该值继承自父Tileset（如果已定义）。
 
-#### boundingVolumes空间相干性
+#### BoundingVolumes空间相干性
 
 如上所述，树具有空间连贯性；每个tile都有一个完全包围其内容的boundingVolumes，子tile的内容完全在父tile的boundingVolumes内。这并不意味着孩子的boundingVolumes完全在其父boundingVolumes内。例如：
 
@@ -704,14 +704,14 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 关于整个 tileset 的元数据。
 
 *   **类型**：对象
-*   **要求**：是
+*   **必须**：是
 
 #### Tileset.properties
 
 关于每个feature属性的元数据的字典对象。
 
 *   **类型**：任何
-*   **要求**：否
+*   **必须**：否
 *   **每个属性的类型**：对象
 
 #### Tileset.geometricError✅
@@ -719,7 +719,7 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 如果未渲染此 tileset，则会引入以米为单位的错误。在运行时，geometricError用于计算屏幕空间误差 (SSE)，即以像素为单位测量的误差。
 
 *   **类型**：数字
-*   **要求**：是
+*   **必须**：是
 *   **最小值**：>= 0
 
 #### Tileset.root✅
@@ -727,7 +727,7 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 3D Tiles Tileset中的tile。
 
 *   **类型**：对象
-*   **要求**：是
+*   **必须**：是
 
 #### Tileset.extensionsUsed
 
@@ -736,7 +736,7 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 *   **类型**：字符串 \[1-\*]
 
     *   数组中的每个元素都必须是唯一的。
-*   **要求**：否
+*   **必须**：否
 
 #### Tileset.extensionsRequired
 
@@ -745,14 +745,14 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 *   **类型**：字符串 \[1-\*]
 
     *   数组中的每个元素都必须是唯一的。
-*   **要求**：否
+*   **必须**：否
 
 #### Tileset.extensions
 
 具有extensions特定对象的字典对象。
 
 *   **类型**：对象
-*   **要求**：否
+*   **必须**：否
 *   **每个属性的类型**：扩展
 
 #### Tileset.extras
@@ -760,7 +760,7 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 特定于应用程序的数据。
 
 *   **类型**：任何
-*   **要求**：否
+*   **必须**：否
 
 ***
 
@@ -782,21 +782,21 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 3D tile版本。该版本定义了 tileset JSON 的 JSON 模式和基本的 tile 格式集。
 
 *   **类型**：字符串
-*   **要求**：是
+*   **必须**：是
 
 #### asset.tilesetVersion
 
 此 tileset 的特定应用程序版本，例如，用于更新现有 tileset 时。
 
 *   **类型**：字符串
-*   **要求**：否
+*   **必须**：否
 
 #### asset.extensions
 
 具有extensions特定对象的字典对象。
 
 *   **类型**：对象
-*   **要求**：否
+*   **必须**：否
 *   **每个属性的类型**：扩展
 
 #### asset.extras
@@ -804,7 +804,7 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 特定于应用程序的数据。
 
 *   **类型**：任何
-*   **要求**：否
+*   **必须**：否
 
 ***
 
@@ -827,28 +827,28 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 定义定向边界框的 12 个数字的数组。前三个元素定义框中心的 x、y 和 z 值。接下来的三个元素（索引为 3、4 和 5）定义了 x 轴方向和半长。接下来的三个元素（索引 6、7 和 8）定义了 y 轴方向和半长。最后三个元素（索引 9、10 和 11）定义了 z 轴方向和半长。
 
 *   **类型**：数字 \[12]
-*   **要求**：否
+*   **必须**：否
 
 #### BoundingVolume.region
 
 定义 EPSG:4979 中边界地理区域的六个数字的数组，坐标顺序为 \[west, south, east, north, minimum height, maximum height]。经度和纬度以弧度为单位，高度以高于（或低于）WGS84 椭球的米为单位。
 
 *   **类型**：数字 \[6]
-*   **要求**：否
+*   **必须**：否
 
 #### BoundingVolume.sphere
 
 定义边界球体的四个数字的数组。前三个元素定义球体中心的 x、y 和 z 值。最后一个元素（索引为 3）定义了以米为单位的半径。
 
 *   **类型**：数字 \[4]
-*   **要求**：否
+*   **必须**：否
 
 #### BoundingVolume.extensions
 
 具有extensions特定对象的字典对象。
 
 *   **类型**：对象
-*   **要求**：否
+*   **必须**：否
 *   **每个属性的类型**：扩展
 
 #### BoundingVolume.extras
@@ -856,11 +856,11 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 特定于应用程序的数据。
 
 *   **类型**：任何
-*   **要求**：否
+*   **必须**：否
 
 ***
 
-### 扩大
+### Extension
 
 具有extensions特定对象的字典对象。
 
@@ -896,21 +896,21 @@ Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composit
 Tileset中所有要素的此属性的最大值。
 
 *   **类型**：数字
-*   **要求**：是
+*   **必须**：是
 
 #### Properties.minimum✅
 
 Tileset中所有要素的此属性的最小值。
 
 *   **类型**：数字
-*   **要求**：是
+*   **必须**：是
 
 #### Properties.extensions
 
 具有extensions特定对象的字典对象。
 
 *   **类型**：对象
-*   **要求**：否
+*   **必须**：否
 *   **每个属性的类型**：扩展
 
 #### Properties.extras
@@ -918,13 +918,13 @@ Tileset中所有要素的此属性的最小值。
 特定于应用程序的数据。
 
 *   **类型**：任何
-*   **要求**：否
+*   **必须**：否
 
 ***
 
-### 瓦
+### Tile
 
-3D Tiles Tileset中的tile。
+3D Tiles Tileset中的 Tile。
 
 **Properties**
 
@@ -945,21 +945,21 @@ Tileset中所有要素的此属性的最小值。
 包围tile或其内容的boundingVolumes。至少需要一个boundingVolumes属性。boundingVolumes包括box、region或sphere。
 
 *   **类型**：对象
-*   **要求**：是
+*   **必须**：是
 
 #### Tile.viewerRequestVolume
 
 包围tile或其内容的boundingVolumes。至少需要一个boundingVolumes属性。boundingVolumes包括box、region或sphere。
 
 *   **类型**：对象
-*   **要求**：否
+*   **必须**：否
 
 #### Tile.geometricError✅
 
 如果渲染此tile而其子项未呈现，则会引入以米为单位的错误。在运行时，geometricError用于计算屏幕空间误差 (SSE)，即以像素为单位测量的误差。
 
 *   **类型**：数字
-*   **要求**：是
+*   **必须**：是
 *   **最小值**：>= 0
 
 #### Tile.refine
@@ -967,7 +967,7 @@ Tileset中所有要素的此属性的最小值。
 指定在遍历 tileset 进行渲染时是否使用附加或替换细化。这个属性对于 tileset 的根 tile 是必需的；它对于所有其他tile都是可选的。默认是从父 tile 继承。
 
 *   **类型**：字符串
-*   **要求**：否
+*   **必须**：否
 *   **允许值**：
 
     *   “添加”
@@ -985,7 +985,7 @@ Tileset中所有要素的此属性的最小值。
 有关tile内容的元数据和指向内容的链接。当省略时，tile仅用于剔除。
 
 *   **类型**：对象
-*   **要求**：否
+*   **必须**：否
 
 #### [Tile.children](http://tile.children/)
 
@@ -994,14 +994,14 @@ Tileset中所有要素的此属性的最小值。
 *   **类型**：数组\[]
 
     *   数组中的每个元素都必须是唯一的。
-*   **要求**：否
+*   **必须**：否
 
 #### Tile.extensions
 
 具有extensions特定对象的字典对象。
 
 *   **类型**：对象
-*   **要求**：否
+*   **必须**：否
 *   **每个属性的类型**：扩展
 
 #### Tile.extras
@@ -1009,7 +1009,7 @@ Tileset中所有要素的此属性的最小值。
 特定于应用程序的数据。
 
 *   **类型**：任何
-*   **要求**：否
+*   **必须**：否
 
 ***
 
@@ -1018,11 +1018,10 @@ Tileset中所有要素的此属性的最小值。
 有关tile内容的元数据和指向内容的链接。
 
 **Properties**
-
 |          | 类型 | 描述                                                  | 必需的 |
 | :------- | :- | :-------------------------------------------------- | :-- |
 | **boundingVolumes** | 目的 | 包围tile或其内容的boundingVolumes。至少需要一个boundingVolumes属性。boundingVolumes包括box、region或sphere。 | 不   |
-| **类型**   | 细绳 | 指向tile内容的 uri。当 uri 是相对的时，它是相对于引用的 tileset JSON 文件的。  | ✅是的 |
+| **uri**   | 细绳 | 指向tile内容的 uri。当 uri 是相对的时，它是相对于引用的 tileset JSON 文件的。  | ✅是的 |
 | **extensions**  | 目的 | 具有extensions特定对象的字典对象。                                      | 不   |
 | **extras** | 任何 | 特定于应用程序的数据。                                         | 不   |
 
@@ -1031,71 +1030,26 @@ Tileset中所有要素的此属性的最小值。
 包围tile或其内容的boundingVolumes。至少需要一个boundingVolumes属性。boundingVolumes包括box、region或sphere。
 
 *   **类型**：对象
-*   **要求**：否
+*   **必须**：否
 
-#### content.uri✅
+#### Content.uri✅
 
 指向tile内容的 uri。当 uri 是相对的时，它是相对于引用的 tileset JSON 文件的。
 
 *   **类型**：字符串
-*   **要求**：是
+*   **必须**：是
 
-#### content.extensions
+#### Content.extensions
 
 具有extensions特定对象的字典对象。
 
 *   **类型**：对象
-*   **要求**：否
+*   **必须**：否
 *   **每个属性的类型**：扩展
 
-#### content.extras
+#### Content.extras
 
 特定于应用程序的数据。
 
 *   **类型**：任何
-*   **要求**：否
-
-## 执照
-
-版权所有 2016 - 2020 Cesium GS, Inc.
-
-[本规范根据Creative Commons Attribution 4.0 International License (CC BY 4.0)](http://creativecommons.org/licenses/by/4.0/)获得许可。
-
-上面列出的公司已授予开放地理空间联盟 (OGC) 一项非排他性、免版税、已付费的全球许可，以复制和分发本文档以及修改本文档和分发修改后版本的副本，根据 Attribution 4.0 International (CC BY 4.0) 许可证。
-
-本规范的某些部分仅供参考，并未定义合规所需的要求，因此不在本规范的范围内。规范的这些部分被标记为非规范性的，或标识为**实施说明**。
-
-
-
-编辑：
-
-*   帕特里克·科齐，[@pjcozzi](https://twitter.com/pjcozzi)，<patrick@cesium.com>
-*   肖恩·利利，[@](https://twitter.com/lilleyse) lilleyse ，<sean@cesium.com>
-*   Gabby Getz，[@gabbygetz](https://twitter.com/gabbygetz)，<gabby@cesium.com>
-
-致谢：
-
-*   马特·阿马托，[@matt\_amato](https://twitter.com/matt_amato)
-*   埃里克·安德森，[@e-andersson](https://github.com/e-andersson)
-*   丹·巴格内尔，[@bagnell](https://github.com/bagnell)
-*   雷宾利
-*   詹尼斯博林，[@jbo023](https://github.com/jbo023)
-*   迪伦·布朗，[@Dylan-Brown](http://www.github.com/Dylan-Brown)
-*   Sarah Chow，[cesium.com/team/SarahChow](https://cesium.com/team/SarahChow/)
-*   保罗·康奈利
-*   沃尔克库尔斯
-*   汤姆菲利，[@CesiumFili](https://twitter.com/CesiumFili)
-*   丽萨·菲尼，[@LeesaFini](http://www.github.com/LeesaFini)
-*   拉尔夫古特贝尔
-*   弗雷德里克·胡比
-*   Christopher Mitchell，博士，[@KermMartian](https://github.com/KermMartian)
-*   克劳斯内格尔
-*   让-菲利普庞斯
-*   卡尔·里德
-*   凯文·林 (Kevin Ring)，[www.kotachrome.com/kevin](http://www.kotachrome.com/kevin/)
-*   斯科特·西蒙斯
-*   Rob Taglang，[@lasalvavida](https://github.com/lasalvavida)
-*   斯坦蒂尔曼
-*   皮耶罗·托法宁，[@pierotofy](https://github.com/pierotofy)
-*   帕诺·沃杜里斯
-*   戴夫韦斯洛
+*   **必须**：否
