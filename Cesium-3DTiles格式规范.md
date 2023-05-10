@@ -447,7 +447,7 @@ content.boundingVolume属性定义了一个类似于顶级boundingVolume属性�
 
 children属性是一组定义子图块的对象。每个子图块的内容都完全包含在其父图块的boundingVolume中，并且通常小于其父图块的geometricError的geometricError。对于叶瓦片，此数组的长度为零，并且可能未定义子级。请参阅下面的[Tileset JSON](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tileset-json)部分。
 
-有关磁贴 JSON 架构参考，请参阅[属性参考。](https://github.com/CesiumGS/3d-tiles/tree/main/specification#property-reference)[完整的 JSON 模式可以在tile.schema.json](https://github.com/CesiumGS/3d-tiles/blob/main/specification/schema/tile.schema.json)中找到。
+有关磁贴 JSON 架构参考，请参阅[属性参考。](https://github.com/CesiumGS/3d-tiles/tree/main/specification#Tileset-reference)[完整的 JSON 模式可以在tile.schema.json](https://github.com/CesiumGS/3d-tiles/blob/main/specification/schema/tile.schema.json)中找到。
 
 ### Tileset JSON
 
