@@ -1,5 +1,5 @@
 [3d-tiles/specification at main · CesiumGS/3d-tiles · GitHub](https://github.com/CesiumGS/3d-tiles/tree/main/specification)
-[超详细的OGC 网页书: 3D Tiles Specification](https://portal.ogc.org/files/102132) 此文件可能会发生更改
+[超详细的OGC 网页书: 3D Tiles Specification](https://portal.ogc.org/files/102132) 提交日期： 2022-08-18 **非标准,审议中,此文件可能会发生更改**
 
 **1.0 版**，2018 年 6 月 6 日
 本文档描述了 3D Tiles 的规范，这是一种用于流式传输大量异构 3D 地理空间数据集的开放标准。
