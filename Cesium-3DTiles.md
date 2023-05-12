@@ -300,10 +300,12 @@ CustomShader渲染堆栈：
             B3dmLoader.load (Cesium.js:76938)
             initialize19 (Cesium.js:88021)
             Model (Cesium.js:87953)
-            Model.fromB3dm (Cesium.js:89114) //这里开始有了model.modelMatrix定义了位置,还是model.referenceMatrix影响位置?还是model._boundingSphere?
-	            //还是 model._sceneGraph.boundingSphere.center 
-	            //是ModelSceneGraph.js的ModelSceneGraph.buildDrawCommands的this._boundingSphere = BoundingSphere.fromCornerPoints
-	            //还是PrimitiveRenderResources的runtimePrimitive.primitive.attributes[0]是:
+            Model.fromB3dm (Cesium.js:89114) //这里开始有了model.modelMatrix定义了位置,还是model.referenceMatrix影响位置?
+	            //是 model._boundingSphere
+	            //是 model._sceneGraph.boundingSphere.center 
+	            //是 ModelSceneGraph.js 的 ModelSceneGraph.buildDrawCommands的model 的 this._boundingSphere = 
+		            //BoundingSphere.fromCornerPoints(primitiveRenderResources.positionMin 和 positionMax)
+	            //是 PrimitiveRenderResources 的 runtimePrimitive.primitive.attributes[0]是:
 						{
 						    "name": "POSITION",
 						    "semantic": "POSITION",
@@ -339,6 +341,7 @@ CustomShader渲染堆栈：
 						    "byteOffset": 0,
 						    "byteStride": 12
 						}
+				//primitive是ModelSceneGraph.traverseAndCreateSceneGraph把ModelSceneGraph._components.scene.nodes[i].rootNode.primitives[j]推进runtimePrimitive数组的
             Model3DTileContent.fromB3dm (Cesium.js:89456) //modelMatrix: tile.computedTransform, //modelMatrix其实是tile的computedTransform
             b3dm (Cesium.js:99387)
             makeContent (Cesium.js:104921)
