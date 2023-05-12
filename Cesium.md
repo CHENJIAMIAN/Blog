@@ -1050,6 +1050,9 @@ https://cdn.bootcdn.net/ajax/libs/cesium/1.104.0/Cesium.js
 
 https://unpkg.com/cesium@1.104.0/Build/CesiumUnminified/Cesium.js
 #浏览https://unpkg.com/browse/cesium@1.104.0/Build/CesiumUnminified/Cesium.js
+
+
+import React from "https://esm.sh/cesium@1.104.0"
 ```
 
 
