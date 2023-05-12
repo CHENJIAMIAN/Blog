@@ -235,7 +235,10 @@ CustomShader渲染堆栈：
 
 ```js
 'processLoader分支'
-    B3dmLoader的createStructuralMetadata ,/此处gltf的components.structuralMetadata.propertyTables[0]._jsonMetadataTable._properties模型的属性
+	B3dmLoader的createStructuralMetadata ,/此处可获取gltf的components.structuralMetadata.propertyTables[0]._jsonMetadataTable._properties模型的属性
+	GltfLoader.parse
+	GltfLoader.loadResources
+    GltfLoader.process
     B3dmLoader.process (B3dmLoader.js:294)
     Model的processLoader
     Model.update (Model.js:1821)
