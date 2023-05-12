@@ -208,7 +208,9 @@ Cesium3DTileset.js在构造函数阶段会保存原始的、未转换的边界�
 
 打断点看createBoundingVolume的结果
 
-batchTableJson
+https://ga.jspm.io/npm:@cesium/engine@2.3.0/Source/Scene/Model/B3dmLoader.js
+	B3dmLoader.prototype.load 
+		batchTableJson定义了一个b3dm文件里面多个gltf模型各自的Height Latitude Longitude id, 这就是3dtiles位置定义的地方!
 ```
 ### 在主更新循环中调用3dtile的更新方法
 ```js
