@@ -301,7 +301,8 @@ CustomShader渲染堆栈：
             initialize19 (Cesium.js:88021)
             Model (Cesium.js:87953)
             Model.fromB3dm (Cesium.js:89114) //这里开始有了model.modelMatrix定义了位置,还是model.referenceMatrix影响位置????还是model._boundingSphere??
-	            //还是 model._sceneGraph.boundingSphere.center //是ModelSceneGraph.js的ModelSceneGraph.buildDrawCommands的
+	            //还是 model._sceneGraph.boundingSphere.center 
+	            //是ModelSceneGraph.js的ModelSceneGraph.buildDrawCommands的this._boundingSphere = BoundingSphere.fromCornerPoints
             Model3DTileContent.fromB3dm (Cesium.js:89456) //modelMatrix: tile.computedTransform, //modelMatrix其实是tile的computedTransform
             b3dm (Cesium.js:99387)
             makeContent (Cesium.js:104921)
