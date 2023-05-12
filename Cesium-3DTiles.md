@@ -316,21 +316,10 @@ CustomShader渲染堆栈：
 						    "type": "VEC3",
 						    "normalized": false,
 						    "count": 240,
-						    "min": {
-						        "x": 1214922.0063094844,//位置就藏在这里!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-						        "y": -4736399.2068924345,
-						        "z": 4081525.4477709476
-						    },
-						    "max": {
-						        "x": 1215121.59033861,
-						        "y": -4736238.163863403,
-						        "z": 4081670.8300574976
-						    },
-						    "constant": {
-						        "x": 0,
-						        "y": 0,
-						        "z": 0
-						    },
+						    //位置就藏在这里!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+						     "min": {"x": 1214922.0063094844,"y": -4736399.2068924345,"z": 4081525.4477709476},
+                                "max": {"x": 1215121.59033861,"y": -4736238.163863403,"z": 4081670.8300574976},
+						    "constant": {"x": 0,"y": 0,"z": 0},
 						    "buffer": {
 						        "_id": "a3ded257-2908-4de7-9476-4baa2a022801",
 						        "_gl": {},
@@ -345,7 +334,7 @@ CustomShader渲染堆栈：
 						    "byteStride": 12
 						}
 				//primitive是ModelSceneGraph.traverseAndCreateSceneGraph把ModelSceneGraph._components.scene.nodes[i].rootNode.primitives[j]传给new ModelRuntimePrimitive再推进runtimePrimitive数组的
-				//primitive.attributes 本质是GltfLoader.js构造的node
+				//primitive.attributes 本质是GltfLoader.js构造的node,见[[Cesium-GLTF#components]]
             Model3DTileContent.fromB3dm (Cesium.js:89456) //modelMatrix: tile.computedTransform, //modelMatrix其实是tile的computedTransform
             b3dm (Cesium.js:99387)
             makeContent (Cesium.js:104921)
