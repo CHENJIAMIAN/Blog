@@ -307,8 +307,8 @@ CustomShader渲染堆栈：
 	            本质是modelMatrix决定了位置而 ModelSceneGraph.buildDrawCommands 用 ModelDrawCommand 决定了 modelMatrix取决于: 1.this.runtimePrimitive.boundingSphere 2.this._modelMatrix 3.this._boundingVolume
 	            //是 model._boundingSphere
 	            //是 model._sceneGraph.boundingSphere.center 
-	            //是 ModelSceneGraph.js 的 ModelSceneGraph.buildDrawCommands的model 的 this._boundingSphere = 
-		            //BoundingSphere.fromCornerPoints(primitiveRenderResources.positionMin 和 positionMax)
+	            //是 ModelSceneGraph.js 的 ModelSceneGraph.buildDrawCommands的model 的 
+		            //this._boundingSphere = BoundingSphere.fromCornerPoints(primitiveRenderResources.positionMin 和 positionMax)
 	            //是 PrimitiveRenderResources 的 runtimePrimitive.primitive.attributes[0]是:
 						{
 						    "name": "POSITION",
