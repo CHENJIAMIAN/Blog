@@ -300,7 +300,7 @@ CustomShader渲染堆栈：
             B3dmLoader.load (Cesium.js:76938)
             initialize19 (Cesium.js:88021)
             Model (Cesium.js:87953)
-            Model.fromB3dm (Cesium.js:89114) //这里开始有了modelMatrix定义了位置
+            Model.fromB3dm (Cesium.js:89114) //这里开始有了modelMatrix定义了位置,还是referenceMatrix影响位置????还是_boundingSphere??
             Model3DTileContent.fromB3dm (Cesium.js:89456) //modelMatrix: tile.computedTransform, //modelMatrix其实是tile的computedTransform
             b3dm (Cesium.js:99387)
             makeContent (Cesium.js:104921)
