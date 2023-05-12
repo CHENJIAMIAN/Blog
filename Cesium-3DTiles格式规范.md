@@ -272,7 +272,7 @@ transform属性通过矩阵中的最大缩放因子缩放geometricError 。
 1.  [glTF 节点层次结构转换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-node-hierarchy)
 2.  [glTF ](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[y](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[-up 到](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[z](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)*[-up 变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)
 3.  任何tile格式特定的转换。
-    *   [b3dm · 批处理的 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)Feature Table可以定义用于平移模型顶点的RTC\_CENTER 。
+    *   [b3dm · 批处理的 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)Feature Table可以定义用于平移模型顶点的RTC\_CENTER 。_Relative To Center_ (RTC)
     *   [i3dm · 实例化 3D 模型](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md)Feature Table定义每个实例的位置、法线和比例。这些用于创建应用于每个实例的每个实例 4x4 仿射变换矩阵。
 4.  [tile变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-transforms)
 > RTC\_CENTER: 一个`GlobalPropertyCartesian3`对象定义了所有要素的三分量数值属性。请参见[Semantics](/specification/TileFormats/Batched3DModel/README.md#semantics)中对应的属性语义。

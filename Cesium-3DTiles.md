@@ -210,7 +210,7 @@ Cesium3DTileset.js在构造函数阶段会保存原始的、未转换的边界�
 
 B3dmLoader
 	B3dmLoader.prototype.load 
-		batchTableJson定义了一个b3dm文件里面多个gltf模型各自的Height Latitude Longitude id, 这就是3dtiles位置定义的地方!
+		batchTableJson定义了一个b3dm文件里面多个gltf模型各自的 Height Latitude Longitude id, 这就是3dtiles位置定义的地方!
 ```
 
 ### CustomShader渲染堆栈
@@ -235,7 +235,7 @@ CustomShader渲染堆栈：
 
 ```js
 'processLoader分支'
-    B3dmLoader的createStructuralMetadata ,/此处gltf的components.structuralMetadata.propertyTables[0]._jsonMetadataTable._properties.Latitude就是模型的位置/
+    B3dmLoader的createStructuralMetadata ,/此处gltf的components.structuralMetadata.propertyTables[0]._jsonMetadataTable._properties.Latitude 就是模型的位置/
     B3dmLoader.process (B3dmLoader.js:294)
     Model的processLoader
     Model.update (Model.js:1821)
