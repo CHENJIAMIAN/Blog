@@ -172,10 +172,6 @@ Tileset JSON文件仅作为数据集的描述文件，不包括实际的3D模型
 ### root.BoundingVolume.region
 
 ```js
-`tileset.json` 文件是 Cesium 3D Tiles 规范中定义的一个描述 3D Tiles 数据集的 JSON 文件，其中包含了一些元数据信息，例如每个瓦片的边界信息、模型的属性信息等。在 `tileset.json` 文件中，`BoundingVolume` 属性描述了整个 3D Tiles 数据集的边界体积信息，而 `region` 属性则是 `BoundingVolume` 的一个子属性，用于描述该边界体积的范围信息。
-
-`region` 属性是一个包含 6 个数字的数组，表示边界体积的范围信息。这些数字按照以下顺序排列：
-
 1. 最小经度（单位：弧度）
 2. 最小纬度（单位：弧度）
 3. 最小高度（单位：米）
@@ -183,7 +179,8 @@ Tileset JSON文件仅作为数据集的描述文件，不包括实际的3D模型
 5. 最大纬度（单位：弧度）
 6. 最大高度（单位：米）
 
-这些数字定义了一个包围整个 3D Tiles 数据集的长方体边界体积。其中，前三个数字表示长方体的左下角坐标，后三个数字表示长方体的右上角坐标。如果某个瓦片的边界体积完全包含在这个长方体边界体积内，那么该瓦片就需要加载和渲染。
+前三个数字表示长方体的左下角坐标，后三个数字表示长方体的右上角坐标。
+如果某个瓦片的边界体积完全包含在这个长方体边界体积内，那么该瓦片就需要加载和渲染。
 
 需要注意的是，`region` 属性中的经纬度坐标是以弧度为单位的，而高度是以米为单位的。如果你需要使用度数表示经纬度坐标，可以将其乘以 `Math.PI / 180` 进行转换。同样的，如果你需要使用英尺表示高度，可以将其乘以 `3.28084` 进行转换。
 ```
@@ -210,7 +207,9 @@ Cesium3DTileset.js在构造函数阶段会保存原始的、未转换的边界�
 	const boundingVolume = that._root.createBoundingVolume(tilesetJson.root.boundingVolume , Matrix4.IDENTITY);
 
 打断点看createBoundingVolume的结果
-
+```
+### 在主更新循环中调用3dtile的更新方法
+```js
 在主更新循环中调用3dtile的更新方法
     'updateTiles (Cesium.js:107633)分支'
     'requestTiles (Cesium.js:107407)分支'
@@ -231,6 +230,9 @@ Cesium3DTileset.js在构造函数阶段会保存原始的、未转换的边界�
     Scene4.prototype.render(Cesium.js:200599)
     CesiumWidget.render (Cesium.js:212473)
     起点：render(frameTime) (Cesium.js:212033)
+```
+### 'Scene的executeCommand分支'
+```js
     分支们：
         'Scene的executeCommand分支'
             Context.continueDraw (Cesium.js:32629)  ||  'Context的beginDraw分支'
@@ -247,7 +249,7 @@ Cesium3DTileset.js在构造函数阶段会保存原始的、未转换的边界�
                     ShaderProgram._bind (ShaderProgram.js:542) 在ShaderProgram.prototype._bind打条件断点this._fragmentShaderText.includes('特殊标识')可以找到CustomShader在合成后的shader代码
                     beginDraw (Context.js:1291)
 ```
-##### 'requestTiles (Cesium.js:107407)分支'
+### 'requestTiles (Cesium.js:107407)分支'
 ```js
         'requestTiles (Cesium.js:107407)分支'
             ForEach.topLevel (Cesium.js:65203)
