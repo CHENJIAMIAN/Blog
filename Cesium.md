@@ -1044,6 +1044,7 @@ ArcType.RHUMB
 
 ```bash
 https://cesium.com/downloads/cesiumjs/releases/1.104/Build/CesiumUnminified/Cesium.js
+https://cesium.com/downloads/cesiumjs/releases/1.104/Build/CesiumUnminified/Assets/approximateTerrainHeights.json
 https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Cesium.js
 
 https://cdn.bootcdn.net/ajax/libs/cesium/1.104.0/Cesium.js
