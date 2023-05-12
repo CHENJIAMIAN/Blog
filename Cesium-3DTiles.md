@@ -210,13 +210,13 @@ Cesium3DTileset.js在构造函数阶段会保存原始的、未转换的边界�
 
 B3dmLoader
 	B3dmLoader.prototype.load 
-		batchTableJson定义了一个b3dm文件里面多个gltf模型各自的 Height Latitude Longitude id, 这就是3dtiles位置定义的地方!
+		batchTableJson定义了一个b3dm文件里面多个gltf模型各自的属性
 ```
 
 ### CustomShader渲染堆栈
 ```js
 CustomShader渲染堆栈：
-    CustomShaderPipelineStage.process (CustomShaderPipelineStage.js:74)
+    CustomShaderPipelineStage.process (CustomShaderPipelineStage.js:74) || PrimitiveRenderResources
     ModelSceneGraph.buildDrawCommands (ModelSceneGraph.js:527)
     buildDrawCommands (Model.js:1967)
     Model.update (Model.js:1796) | 'processLoader分支'
@@ -235,7 +235,7 @@ CustomShader渲染堆栈：
 
 ```js
 'processLoader分支'
-    B3dmLoader的createStructuralMetadata ,/此处gltf的components.structuralMetadata.propertyTables[0]._jsonMetadataTable._properties.Latitude 就是模型的位置/
+    B3dmLoader的createStructuralMetadata ,/此处gltf的components.structuralMetadata.propertyTables[0]._jsonMetadataTable._properties模型的属性
     B3dmLoader.process (B3dmLoader.js:294)
     Model的processLoader
     Model.update (Model.js:1821)
@@ -300,9 +300,45 @@ CustomShader渲染堆栈：
             B3dmLoader.load (Cesium.js:76938)
             initialize19 (Cesium.js:88021)
             Model (Cesium.js:87953)
-            Model.fromB3dm (Cesium.js:89114) //这里开始有了model.modelMatrix定义了位置,还是model.referenceMatrix影响位置????还是model._boundingSphere??
+            Model.fromB3dm (Cesium.js:89114) //这里开始有了model.modelMatrix定义了位置,还是model.referenceMatrix影响位置?还是model._boundingSphere?
 	            //还是 model._sceneGraph.boundingSphere.center 
 	            //是ModelSceneGraph.js的ModelSceneGraph.buildDrawCommands的this._boundingSphere = BoundingSphere.fromCornerPoints
+	            //还是PrimitiveRenderResources的runtimePrimitive.primitive.attributes[0]是:
+						{
+						    "name": "POSITION",
+						    "semantic": "POSITION",
+						    "componentDatatype": 5126,
+						    "type": "VEC3",
+						    "normalized": false,
+						    "count": 240,
+						    "min": {
+						        "x": 1214922.0063094844,//位置就藏在这里!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+						        "y": -4736399.2068924345,
+						        "z": 4081525.4477709476
+						    },
+						    "max": {
+						        "x": 1215121.59033861,
+						        "y": -4736238.163863403,
+						        "z": 4081670.8300574976
+						    },
+						    "constant": {
+						        "x": 0,
+						        "y": 0,
+						        "z": 0
+						    },
+						    "buffer": {
+						        "_id": "a3ded257-2908-4de7-9476-4baa2a022801",
+						        "_gl": {},
+						        "_webgl2": true,
+						        "_bufferTarget": 34962,
+						        "_sizeInBytes": 2880,
+						        "_usage": 35044,
+						        "_buffer": {},
+						        "vertexArrayDestroyable": false
+						    },
+						    "byteOffset": 0,
+						    "byteStride": 12
+						}
             Model3DTileContent.fromB3dm (Cesium.js:89456) //modelMatrix: tile.computedTransform, //modelMatrix其实是tile的computedTransform
             b3dm (Cesium.js:99387)
             makeContent (Cesium.js:104921)
