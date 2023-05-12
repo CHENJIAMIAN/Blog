@@ -1061,6 +1061,8 @@ es-module-shims配合importmap导入https://ga.jspm.io/npm:cesium@1.105.1/Source
 		<script type="importmap">
 		 { "imports": { "cesium": "https://ga.jspm.io/npm:cesium@1.105.1/Source/Cesium.js" },"scopes": {...} } 
 		</script>
+
+默认情况下，JSPM 支持jspm.io、nodemodules、esm.sh、denoland、unpkg、skypack和jsdelivr包提供程序
 ```
 
 
