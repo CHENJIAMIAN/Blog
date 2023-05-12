@@ -212,6 +212,35 @@ https://ga.jspm.io/npm:@cesium/engine@2.3.0/Source/Scene/Model/B3dmLoader.js
 	B3dmLoader.prototype.load 
 		batchTableJson定义了一个b3dm文件里面多个gltf模型各自的Height Latitude Longitude id, 这就是3dtiles位置定义的地方!
 ```
+
+### CustomShader渲染堆栈
+```js
+CustomShader渲染堆栈：
+    CustomShaderPipelineStage.process (CustomShaderPipelineStage.js:74)
+    ModelSceneGraph.buildDrawCommands (ModelSceneGraph.js:527)
+    buildDrawCommands (Model.js:1967)
+    Model.update (Model.js:1796) | 'processLoader分支'
+    Model3DTileContent.update (Model3DTileContent.js:246)
+    Cesium3DTile.process (Cesium3DTile.js:1965)
+    processTiles (Cesium3DTileset.js:2500)
+    Cesium3DTileset.prePassesUpdate (Cesium3DTileset.js:2352)
+    PrimitiveCollection.prePassesUpdate (PrimitiveCollection.js:392)
+    prePassesUpdate (Scene.js:3648)
+    tryAndCatchError (Scene.js:3745)
+    Scene4.render (Scene.js:3814)
+    CesiumWidget.render (CesiumWidget.js:802)
+    render (CesiumWidget.js:41)
+```
+### b3dm处理
+
+```js
+'processLoader分支'
+    createStructuralMetadata (B3dmLoader.js:338) 此处gltf的components.structuralMetadata.propertyTables[0]._jsonMetadataTable._properties.Latitude就是模型的位置
+    B3dmLoader.process (B3dmLoader.js:294)
+    processLoader (Model.js:1970)
+    Model.update (Model.js:1821)
+```
+
 ### 在主更新循环中调用3dtile的更新方法
 ```js
 在主更新循环中调用3dtile的更新方法

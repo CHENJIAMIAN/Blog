@@ -53,23 +53,8 @@ DrawCommand.prototype.execute 被谁调用，完整的调用链是什么样的�
     → 遍历了frustumCommands.commands[Pass_default.GLOBE]  → DrawCommand.execute 
     → Context.draw → Context.continueDraw → gl绘制调用drawElements
 
-            
-CustomShader渲染堆栈：
-    CustomShaderPipelineStage.process (CustomShaderPipelineStage.js:74)
-    ModelSceneGraph.buildDrawCommands (ModelSceneGraph.js:527)
-    buildDrawCommands (Model.js:1967)
-    Model.update (Model.js:1796)
-    Model3DTileContent.update (Model3DTileContent.js:246)
-    Cesium3DTile.process (Cesium3DTile.js:1965)
-    processTiles (Cesium3DTileset.js:2500)
-    Cesium3DTileset.prePassesUpdate (Cesium3DTileset.js:2352)
-    PrimitiveCollection.prePassesUpdate (PrimitiveCollection.js:392)
-    prePassesUpdate (Scene.js:3648)
-    tryAndCatchError (Scene.js:3745)
-    Scene4.render (Scene.js:3814)
-    CesiumWidget.render (CesiumWidget.js:802)
-    render (CesiumWidget.js:41)
-         
+
+
 【Cesium 历史博客】Cesium 中的图形技术：渲染体系结构  https://www.cnblogs.com/onsummer/p/14022405.html   
 czm_xxx//如 czm_getWgs84EllipsoidEC() ，如czm_viewRotation，Cesium 提供了一个庞大的 GLSL 函数库，包括函数、结构体、常量。如果你的代码需要用到自定义 glsl 代码，你完全可以不声明、不加入 #include 预编译指令，可以直接使用它们。
 
