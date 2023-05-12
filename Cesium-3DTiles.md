@@ -341,7 +341,8 @@ CustomShader渲染堆栈：
 						    "byteOffset": 0,
 						    "byteStride": 12
 						}
-				//primitive是ModelSceneGraph.traverseAndCreateSceneGraph把ModelSceneGraph._components.scene.nodes[i].rootNode.primitives[j]推进runtimePrimitive数组的
+				//primitive是ModelSceneGraph.traverseAndCreateSceneGraph把ModelSceneGraph._components.scene.nodes[i].rootNode.primitives[j]传给new ModelRuntimePrimitive再推进runtimePrimitive数组的
+				//primitive.attributes 本质是GltfLoader.js构造的node
             Model3DTileContent.fromB3dm (Cesium.js:89456) //modelMatrix: tile.computedTransform, //modelMatrix其实是tile的computedTransform
             b3dm (Cesium.js:99387)
             makeContent (Cesium.js:104921)
