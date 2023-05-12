@@ -1040,6 +1040,13 @@ ArcType.RHUMB
 4. 或 https://github.com/fanvanzh/3DTiles
 5. gltf内部优化处理: https://github.com/AnalyticalGraphicsInc/altf-pipeline
 
+## CDN
+
+```
+https://cesium.com/downloads/cesiumjs/releases/1.104/Build/CesiumUnminified/Cesium.js
+```
+
+
 ## 兼容性
 ### CesiumJS 1.102 发布
 CesiumJS 1.102 现已可用。CesiumJS 现在默认使用 WebGL2 上下文进行渲染。WebGL2 在所有平台上都得到广泛支持，这导致跨设备（尤其是移动设备）更好的功能支持。仍然支持 WebGL1。如果 WebGL2 不可用，CesiumJS 将自动回退到 WebGL1。
