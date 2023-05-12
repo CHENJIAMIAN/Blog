@@ -303,8 +303,8 @@ CustomShader渲染堆栈：
             B3dmLoader.load (Cesium.js:76938)
             initialize19 (Cesium.js:88021)
             Model (Cesium.js:87953)
-            Model.fromB3dm (Cesium.js:89114) 本质是modelMatrix决定了位置,而
-	            //这里开始有了model.modelMatrix定义了位置,还是model.referenceMatrix影响位置?
+            Model.fromB3dm (Cesium.js:89114) 
+	            本质是modelMatrix决定了位置而 ModelSceneGraph.buildDrawCommands 用 ModelDrawCommand 决定了 modelMatrix取决于: 1.this.runtimePrimitive.boundingSphere 2.this._modelMatrix 3.this._boundingVolume
 	            //是 model._boundingSphere
 	            //是 model._sceneGraph.boundingSphere.center 
 	            //是 ModelSceneGraph.js 的 ModelSceneGraph.buildDrawCommands的model 的 this._boundingSphere = 
