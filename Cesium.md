@@ -1052,7 +1052,15 @@ https://unpkg.com/cesium@1.104.0/Build/CesiumUnminified/Cesium.js
 #浏览https://unpkg.com/browse/cesium@1.104.0/Build/CesiumUnminified/Cesium.js
 
 
-import React from "https://esm.sh/cesium@1.104.0"
+import Cesium from "https://esm.sh/cesium@1.104.0"
+
+或
+
+es-module-shims配合importmap导入https://ga.jspm.io/npm:cesium@1.105.1/Source/Cesium.js使用
+	在jspm.io官网自动生成:
+		<script type="importmap">
+		 { "imports": { "cesium": "https://ga.jspm.io/npm:cesium@1.105.1/Source/Cesium.js" },"scopes": {...} } 
+		</script>
 ```
 
 
