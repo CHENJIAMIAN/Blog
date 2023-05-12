@@ -207,6 +207,8 @@ Cesium3DTileset.js在构造函数阶段会保存原始的、未转换的边界�
 	const boundingVolume = that._root.createBoundingVolume(tilesetJson.root.boundingVolume , Matrix4.IDENTITY);
 
 打断点看createBoundingVolume的结果
+
+batchTableJson
 ```
 ### 在主更新循环中调用3dtile的更新方法
 ```js
