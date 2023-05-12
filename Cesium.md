@@ -1044,7 +1044,11 @@ ArcType.RHUMB
 
 ```bash
 https://cesium.com/downloads/cesiumjs/releases/1.104/Build/CesiumUnminified/Cesium.js
-https://cesium.com/downloads/cesiumjs/releases/1.104/Build/CesiumUnminified/Assets/approximateTerrainHeights.json
+	200 https://cesium.com/downloads/cesiumjs/releases/1.104/Build/CesiumUnminified/Assets/approximateTerrainHeights.json
+	#404 https://cesium.com/downloads/cesiumjs/releases/1.104/Build/CesiumUnminified/Widgets/widgets.css
+	#404 https://cesium.com/downloads/cesiumjs/releases/1.104/Build/CesiumUnminified/Widgets/Images/ImageryProviders/bingAerial.png
+	要设置 window.CESIUM_BASE_URL = 'https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium'; 才能解决404
+
 https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Cesium.js
 
 https://cdn.bootcdn.net/ajax/libs/cesium/1.104.0/Cesium.js
