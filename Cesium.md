@@ -380,7 +380,8 @@ Cesium.Ellipsoid.WGS84
 			Vector3DTileClampedPolylines: Workers/createVectorTileClampedPolylinesVector3DTileClampedPolylines
 		（匿名） (Cesium.js:1)
 	2.Primitive.update.loadAsynchronous时创建
-		createGeometryTaskProcessors[navigator.hardwareConcurrency创建cpu核数哥] = new TaskProcessor("createGeometry");
+		createGeometryTaskProcessors[navigator.hardwareConcurrency] = new TaskProcessor("createGeometry");
+		//创建cpu核数创建n个Workers/createGeometry
 
 主线程
 	Viewer (Viewer.js:488)
@@ -405,7 +406,7 @@ Cesium.Ellipsoid.WGS84
 		TaskProcessor的worker线程发消息给之前createTaskProcessorWorker创建出来的worker
 
 		
-cesiumWorkerBootstrapper的worker线程
+cesiumWorkerBootstrapper 的worker线程
 	self.onmessage (cesiumWorkerBootstrapper.js:30)
 		接收到:
 		{
