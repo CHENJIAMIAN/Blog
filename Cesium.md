@@ -356,6 +356,10 @@ Cesium.Ellipsoid.WGS84
 ## 源码-创建worker
 
 ```js
+TaskProcessor (TaskProcessor.js:204)
+（匿名） (HeightmapTerrainData.js:187)QuantizedMeshTerrainData
+（匿名） (Cesium.js:1)
+
 主线程
 	Viewer (Viewer.js:488)
 	CesiumWidget (CesiumWidget.js:399)
@@ -377,6 +381,7 @@ Cesium.Ellipsoid.WGS84
 		createWorker (TaskProcessor.js:151)
 			Worker.postMessage（异步）TaskProcessor的worker线程发消息给 cesiumWorkerBootstrapper的worker线程
 		TaskProcessor的worker线程发消息给之前createTaskProcessorWorker创建出来的worker
+
 		
 cesiumWorkerBootstrapper的worker线程
 	self.onmessage (cesiumWorkerBootstrapper.js:30)
@@ -389,6 +394,21 @@ cesiumWorkerBootstrapper的worker线程
 				"baseUrl": "https://sandcastle.cesium.com/CesiumUnminified/"
 			},
 			"workerModule": "Workers/createGeometry" 或 "Workers/createVerticesFromQuantizedTerrainMesh" 或 "Workers/combineGeometry" 等
+		}
+createTaskProcessorWorker 根据"workerModule"创建出来的worker线程
+		接收到:
+		{
+			"id": 0,
+			"parameters": {
+				"subTasks": [
+					{
+						"moduleName": "createBoxGeometry",
+						"geometry": {"0": -200000,"1": -150000,"2": -250000,"3": 200000,"4": 150000,"5": 250000,"6": 1,"7": 1,"8": 0,"9": 0,"10": 0,"11": 0,"12": -1},
+						"offset": 0
+					}
+				]
+			},
+			"canTransferArrayBuffer": true
 		}
 ```
 
