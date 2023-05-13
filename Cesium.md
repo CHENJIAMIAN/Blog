@@ -1157,3 +1157,13 @@ CesiumJS 1.102 现已可用。CesiumJS 现在默认使用 WebGL2 上下文进行
 [cesium-graph/RectangularSensorPrimitive.js at master · xuzhao123/cesium-graph · GitHub](https://github.com/xuzhao123/cesium-graph/blob/master/Source/Sensor/RectangularSensor/RectangularSensorPrimitive.js) 雷达追踪圆锥体/相控阵雷达范围的最早开源实现
 [snorb/polygon.js at master · numtel/snorb · GitHub](https://github.com/numtel/snorb/blob/master/lib/polygon.js) 3DCityDB-Web-Map/ThirdParty/Intersection/IntersectionAPI.js的原始来源
 研究源码的正则：**Cesium\.(?!defined|defaultValue|Cartesian3|Cartesian2|Cartesian4|objectToQuery|Math|queryToObject)\w+**
+
+- cesium1.105.1依赖于
+	- @cesium/engine@2.4.0
+	- @cesium/widgets@2.2.0依赖于
+		- @cesium/engine@**2.3.0**
+
+ @cesium/engine@2.3.0的上下文覆盖了 @cesium/engine@2.4.0的上下文, 造成
+ @cesium/engine@2.4.0/Scene -> @cesium/engine@2.4.0/Context -> @cesium/engine@2.3.0/ContextLimits -> @cesium/engine@2.3.0/ContextLimits.maximumVertexTextureImageUnits === 0 ->  throw new RuntimeError(
+        "Vertex texture fetch support is required to render primitives with per-instance attributes. The maximum number of vertex texture image units must be greater than zero."
+      );
