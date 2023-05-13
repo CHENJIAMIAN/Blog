@@ -360,6 +360,7 @@ Cesium.Ellipsoid.WGS84
 	1.在加载Cesium.js就触发各种TaskProcessor的创建
 		TaskProcessor (TaskProcessor.js:204)
 		（匿名） (HeightmapTerrainData.js:187) 类似还有:
+			HeightmapTerrainData: Workers/createVerticesFromHeightmap
 			QuantizedMeshTerrainData GoogleEarthEnterpriseTerrainData GoogleEarthEnterpriseTerrainProvider KTX2Transcoder 
 			Primitive Vector3DTileGeometry Vector3DTilePoints Vector3DTilePolygons Vector3DTilePolylines Vector3DTileClampedPolylines
 		（匿名） (Cesium.js:1)
