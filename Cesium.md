@@ -356,9 +356,15 @@ Cesium.Ellipsoid.WGS84
 ## 源码-创建worker
 
 ```js
-TaskProcessor (TaskProcessor.js:204)
-（匿名） (HeightmapTerrainData.js:187)QuantizedMeshTerrainData
-（匿名） (Cesium.js:1)
+'TaskProcessor 的创建'
+	1.在加载Cesium.js就触发各种TaskProcessor的创建
+		TaskProcessor (TaskProcessor.js:204)
+		（匿名） (HeightmapTerrainData.js:187) 类似还有:
+			QuantizedMeshTerrainData GoogleEarthEnterpriseTerrainData GoogleEarthEnterpriseTerrainProvider KTX2Transcoder 
+			Primitive Vector3DTileGeometry Vector3DTilePoints Vector3DTilePolygons Vector3DTilePolylines Vector3DTileClampedPolylines
+		（匿名） (Cesium.js:1)
+	2.Primitive.update.loadAsynchronous时创建
+		createGeometryTaskProcessors[i] = new TaskProcessor("createGeometry");
 
 主线程
 	Viewer (Viewer.js:488)
@@ -376,7 +382,7 @@ TaskProcessor (TaskProcessor.js:204)
 	updateAndRenderPrimitives (Scene.js:3339)
 	PrimitiveCollection.update (PrimitiveCollection.js:377)
 	Primitive.update (Primitive.js:2170)
-	loadAsynchronous (Primitive.js:1270)
+	Primitive.update.loadAsynchronous (Primitive.js:1270) 
 	TaskProcessor.scheduleTask (TaskProcessor.js:251)
 		createWorker (TaskProcessor.js:151)
 			Worker.postMessage（异步）TaskProcessor的worker线程发消息给 cesiumWorkerBootstrapper的worker线程
@@ -395,7 +401,7 @@ cesiumWorkerBootstrapper的worker线程
 			},
 			"workerModule": "Workers/createGeometry" 或 "Workers/createVerticesFromQuantizedTerrainMesh" 或 "Workers/combineGeometry" 等
 		}
-createTaskProcessorWorker 根据"workerModule"创建出来的worker线程
+createTaskProcessorWorker根据"workerModule"匹配 TaskProcessor根据传入的workerPath 创建出来的worker线程, 见'TaskProcessor 的创建'
 		接收到:
 		{
 			"id": 0,
