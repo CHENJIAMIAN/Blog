@@ -375,9 +375,10 @@ Cesium.Ellipsoid.WGS84
 	loadAsynchronous (Primitive.js:1270)
 	TaskProcessor.scheduleTask (TaskProcessor.js:251)
 		createWorker (TaskProcessor.js:151)
-			Worker.postMessage（异步）
-
-worker线程
+			Worker.postMessage（异步）TaskProcessor的worker线程发消息给 cesiumWorkerBootstrapper的worker线程
+		TaskProcessor的worker线程发消息给之前createTaskProcessorWorker创建出来的worker
+		
+cesiumWorkerBootstrapper的worker线程
 	self.onmessage (cesiumWorkerBootstrapper.js:30)
 		接收到:
 		{
