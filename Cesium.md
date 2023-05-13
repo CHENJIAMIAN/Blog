@@ -356,8 +356,39 @@ Cesium.Ellipsoid.WGS84
 ## 源码-创建worker
 
 ```js
+主线程
+	Viewer (Viewer.js:488)
+	CesiumWidget (CesiumWidget.js:399)
+	set (CesiumWidget.js:621)
+	startRenderLoop (CesiumWidget.js:69)
+	requestAnimationFrame（异步）
+	render2 (CesiumWidget.js:42)
+	CesiumWidget.render (CesiumWidget.js:842)
+	Scene4.render (Scene.js:3859)
+	tryAndCatchError (Scene.js:3769)
+	render (Scene.js:3750)
+	Scene4.updateAndExecuteCommands (Scene.js:2860)
+	executeCommandsInViewport (Scene.js:3115)
+	updateAndRenderPrimitives (Scene.js:3339)
+	PrimitiveCollection.update (PrimitiveCollection.js:377)
+	Primitive.update (Primitive.js:2170)
+	loadAsynchronous (Primitive.js:1270)
+	TaskProcessor.scheduleTask (TaskProcessor.js:251)
+		createWorker (TaskProcessor.js:151)
+			Worker.postMessage（异步）
 
-
+worker线程
+	self.onmessage (cesiumWorkerBootstrapper.js:30)
+		接收到:
+		{
+			"loaderConfig": {
+				"paths": {
+					"Workers": "https://sandcastle.cesium.com/CesiumUnminified/Workers"
+				},
+				"baseUrl": "https://sandcastle.cesium.com/CesiumUnminified/"
+			},
+			"workerModule": "Workers/createGeometry" 或 "Workers/createVerticesFromQuantizedTerrainMesh" 或 "Workers/combineGeometry" 等
+		}
 ```
 
 ## 实践
