@@ -360,12 +360,27 @@ Cesium.Ellipsoid.WGS84
 	1.在加载Cesium.js就触发各种TaskProcessor的创建
 		TaskProcessor (TaskProcessor.js:204)
 		（匿名） (HeightmapTerrainData.js:187) 类似还有:
-			HeightmapTerrainData: Workers/createVerticesFromHeightmap
-			QuantizedMeshTerrainData GoogleEarthEnterpriseTerrainData GoogleEarthEnterpriseTerrainProvider KTX2Transcoder 
-			Primitive Vector3DTileGeometry Vector3DTilePoints Vector3DTilePolygons Vector3DTilePolylines Vector3DTileClampedPolylines
+			各自用TaskProcessor对应创建的worker
+			HeightmapTerrainData: Workers/createVerticesFromHeightmap //NoThrottle
+			HeightmapTerrainData: Workers/createVerticesFromHeightma  //Throttle
+			QuantizedMeshTerrainData: Workers/createVerticesFromQuantizedTerrainMesh //NoThrottle
+			QuantizedMeshTerrainData: Workers/createVerticesFromQuantizedTerrainMesh //Throttle
+			QuantizedMeshTerrainData: Workers/upsampleQuantizedTerrainMesh
+			GoogleEarthEnterpriseMetadata: Workers/decodeGoogleEarthEnterprisePacket
+			GoogleEarthEnterpriseTerrainData: Workers/createVerticesFromGoogleEarthEnterpriseBuffer //NoThrottle
+			GoogleEarthEnterpriseTerrainData: Workers/createVerticesFromGoogleEarthEnterpriseBuffer //Throttle
+			GoogleEarthEnterpriseTerrainData: Workers/upsampleQuantizedTerrainMesh
+			GoogleEarthEnterpriseTerrainProvider: Workers/decodeGoogleEarthEnterprisePacket
+			KTX2Transcoder: Workers/transcodeKTX2
+			Primitive: Workers/combineGeometry
+			Vector3DTileGeometry: Workers/createVectorTileGeometries
+			Vector3DTilePoints: Workers/createVectorTilePoints
+			Vector3DTilePolygons: Workers/createVectorTilePolygons
+			Vector3DTilePolylines: Workers/createVectorTilePolylines
+			Vector3DTileClampedPolylines: Workers/createVectorTileClampedPolylinesVector3DTileClampedPolylines
 		（匿名） (Cesium.js:1)
 	2.Primitive.update.loadAsynchronous时创建
-		createGeometryTaskProcessors[i] = new TaskProcessor("createGeometry");
+		createGeometryTaskProcessors[navigator.hardwareConcurrency创建cpu核数哥] = new TaskProcessor("createGeometry");
 
 主线程
 	Viewer (Viewer.js:488)
