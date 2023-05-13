@@ -353,6 +353,13 @@ Cesium.Ellipsoid.WGS84
 	oneOverRadiiSquared：表示椭球体在x、y和z轴上的半径的平方的倒数。
 	用于各种计算，例如在地球表面上绘制点、线、面、矢量等时，需要将其投影到三维椭球体上进行计算。
 ```
+## 源码-创建worker
+
+```js
+
+
+```
+
 ## 实践
 ```javascript
 概念
