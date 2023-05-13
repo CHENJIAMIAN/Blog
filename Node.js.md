@@ -348,7 +348,8 @@ pnpm i --shamefully-hoist 出现奇怪的问题时执行它, //创建一个平�
     2.持久使用：            
             npm config set registry https://registry.npmmirror.com
             npm config set registry https://registry.npmjs.org//恢复默认
-            
+            pnpm config set registry https://registry.npmmirror.com
+
 /不要使用cnpm，因为cnpm，是不支持依赖版本锁定的/
     cnpm i xxx@xxx不会更新到package-lock.json中去。
     cnpm i不受package-lock.json影响，只会根据package.json进行下载
