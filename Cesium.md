@@ -379,7 +379,7 @@ Cesium.Ellipsoid.WGS84
 			Vector3DTilePolylines: Workers/createVectorTilePolylines
 			Vector3DTileClampedPolylines: Workers/createVectorTileClampedPolylinesVector3DTileClampedPolylines
 		（匿名） (Cesium.js:1)
-	2.Primitive.update.loadAsynchronous时创建
+	2.Primitive.update.loadAsynchronous 时创建
 		createGeometryTaskProcessors[navigator.hardwareConcurrency] = new TaskProcessor("createGeometry");
 		//创建cpu核数创建n个Workers/createGeometry
 
