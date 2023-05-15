@@ -312,7 +312,6 @@ var app = express();
     app.listen(3000);  
     
 ```
-![image](https://github.com/CHENJIAMIAN/Blog/assets/20126997/9ef5b5a1-4e5f-4310-8770-bf84b0f88137)
 
 ## egg.js
 ```javascript
