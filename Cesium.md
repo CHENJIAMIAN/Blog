@@ -1106,7 +1106,7 @@ ArcType.RHUMB
 3. 或 https://github.com/PrincessGod/objTo3d-tiles
 4. 或 https://github.com/fanvanzh/3DTiles
 5. gltf内部优化处理: https://github.com/AnalyticalGraphicsInc/altf-pipeline
-
+[CHENJIAMIAN/gis-bim-3d-prototype-vue2: 用代码写KH的GIS/BIM项目的原型](https://github.com/CHENJIAMIAN/gis-bim-3d-prototype-vue2)
 ## CDN
 ```bash
 https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Cesium.js
