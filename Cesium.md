@@ -1107,6 +1107,7 @@ ArcType.RHUMB
 4. 或 https://github.com/fanvanzh/3DTiles
 5. gltf内部优化处理: https://github.com/AnalyticalGraphicsInc/altf-pipeline
 [CHENJIAMIAN/gis-bim-3d-prototype-vue2: 用代码写KH的GIS/BIM项目的原型](https://github.com/CHENJIAMIAN/gis-bim-3d-prototype-vue2)
+[CHENJIAMIAN/xt3d-Situation-Command-of-Public-Security-Exercises: cesium.js+xt3d.js XX市公安局三维安防布控管理平台 公安演练态势指挥](https://github.com/CHENJIAMIAN/xt3d-Situation-Command-of-Public-Security-Exercises)
 ## CDN
 ```bash
 https://cesium.com/downloads/cesiumjs/releases/1.104/Build/Cesium/Cesium.js
