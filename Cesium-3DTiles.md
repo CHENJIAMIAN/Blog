@@ -471,7 +471,8 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 ### 前置知识
 1. [Revit Geolocation](https://community.safe.com/s/article/revit-geolocation-tutorial)
 2. [帮助 | 关于定位 | Autodesk](https://help.autodesk.com/view/RVT/2018/CHS/?guid=GUID-9DD9DCDB-F80F-4FCE-BA87-FE49B66936CF)
-3. 在Autodesk Revit软件中，您可以设置地理位置。Revit软件将此信息用于各种照明和建模过程。**但地理位置信息不足以定义准确的地理空间位置**
+3. [终于搞清了Revit的5个定位点都是啥？怎么用？怎么对齐？ – BIMBOX](https://bimbox.top/9372.html)
+4. 在Autodesk Revit软件中，您可以设置地理位置。Revit软件将此信息用于各种照明和建模过程。**但地理位置信息不足以定义准确的地理空间位置**
 ### 工具
 #### FME
 [Autodesk Revit Reader 参数](https://docs.safe.com/fme/2022.0/html/FME_Desktop_Documentation/FME_ReadersWriters/revitnative/revitnative_reader.htm)
