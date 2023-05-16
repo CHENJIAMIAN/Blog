@@ -1,3 +1,5 @@
+> Cesium从版本 v1.35(2017-07-05) 就已经开始提供对 3D Tiles 1.0 草案的支持，并持续保持对最新3D Tiles 规格的支持更新
+
 ## 3DTiles下载器爬虫
 1. [WangMingHua111/3dtilesdownloader: 3dtiles 网络文件下载器](https://github.com/WangMingHua111/3dtilesdownloader) 上次更新2021 年 8 月 ，npm cli包，试了，下载的是cesiumlab的clt，自动解包是空文件夹，无效❌
 2. [IKangXu/3dtilesdownloader: 下载在线3dtiles数据，可自指定多线程数，可分段下载，可指定位置下载。](https://github.com/IKangXu/3dtilesdownloader) 上次更新2022 年 10 月，py3写的，可下载external tilesets（我称之为层级tilesets）
