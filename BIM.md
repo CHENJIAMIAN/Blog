@@ -1,5 +1,4 @@
-
-
+## Revit
 ```javascript
 Revit2018比较好  
     协作式软件
@@ -51,8 +50,7 @@ Revit2018比较好
                 预制舱//通常用于安装电力设备、控制设备、监控系统、通讯设备等
 ```
 
-
-
+## IFC
 ```javascript
 版本    
     IFC1.0: 该版本是IFC的初始版本，由建筑工业联盟（BuildingSMART）发布，是建筑信息模型（BIM）中常用的数据交换格式。1994
@@ -123,7 +121,10 @@ IfcTypeObject用来定义一组相关的IfcSpace对象，并为它们分配特�
     和http://localhost:8082/download?token=&topicId= 拿1个_rIsDefinedBy和3个_rHasProperties递归去获取属性信息
         //IsDefinedBy，房间有一些属性，这些属性是该房间的一部分
         //HasProperties，有HasProperties属性，则说明它有属性信息可以进行查询
-        
+```
+
+## FME
+```JS
 FME（Feature Manipulation Engine）实践
     输入输入一般分为 几何和属性 两种数据
         获取几何数据//使用 GeometryPartExtractor，并将查询设置为 geometry name = Body
