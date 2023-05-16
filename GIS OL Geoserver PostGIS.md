@@ -31,6 +31,7 @@ EPSG:4326（WGS 84）                         #单位：经纬度    #EPSG代表
     OGC//(Open Geospatial Consortium)开放地理空间信息联盟 
 EPSG:3857（WGS 84投影版）  默认米为单位（Web Spherical Mercator投影)  #单位：米   平面坐标放大6倍  ,/geoserver的900913等同它/
     等效于EPSG:900913
+    
 
 Resolution//每个像素代表的实际距离 
     //map.getView().setResolution(10) 一个像素就是10米
