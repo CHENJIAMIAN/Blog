@@ -475,6 +475,7 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 4. 在Autodesk Revit软件中，您可以设置地理位置。Revit软件将此信息用于各种照明和建模过程。**但地理位置信息不足以定义准确的地理空间位置**, 测量点模型附近的真实世界位置, 它对应的测量坐标系才是GIS 坐标[帮助 | 关于坐标系 | Autodesk](https://help.autodesk.com/view/RVT/2024/CHS/?guid=GUID-E67ED082-2556-475B-84A7-4605329F612F)
 ### 工具
 #### FME
+##### 理论
 [Autodesk Revit Reader 参数](https://docs.safe.com/fme/2022.0/html/FME_Desktop_Documentation/FME_ReadersWriters/revitnative/revitnative_reader.htm)
 参数: 要读取的 Revit 坐标系 
 	1. 选项目： 读取器将读取由 Revit 文件的项目基点定义的坐标系中的数据和单位
@@ -484,6 +485,9 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 			1. 如果未找到.wld/.wld3文件，则转换将继续使用在.prj文件中找到的地理配准信息，同时读取由 Revit 文件的测量点定义的坐标系中的坐标。读者还将使用该文件定义的项目单元。
 		3. 如果 FME 没有找到 Esri .prj文件，它将在 Revit 数据集中的活动站点上查找地理参考坐标系信息。为了正确地对数据集进行地理配准，Revit 文件需要链接到 Autodesk Revit 中的 DWG 坐标系。如果 FME 在 Revit 数据集中找到地理配准数据，它将生成一个本地 AZMED 投影坐标系来对数据集进行地理配准。读者还将在 SurveyPoint 要素上设置 Revit 文件中找到的坐标系名称以及测量点的经纬度。
 	4. 如果找不到文件，那么将使用在数据集中找到的坐标信息，而不执行任何额外的转换。
+##### 实践
+1. 调整rvt的测量点
+2. fme设置reader读取坐标为XY-M
 #### BimAngle(1个月试用,主revit插件+周边小工具)
 [《毕安格 Engine 输出 3D Tiles 教程》之地理配准篇 - (1)概述](https://mp.weixin.qq.com/s?__biz=MzI0NDkxOTMxOA==&mid=2247483951&idx=1&sn=0e679458b5e8fe120f34919bd1886420&chksm=e9573f56de20b640f936bc2a2eeb5a3e13f8aed9837e8e285c4a2deb874153f027d321ca087f&scene=178&cur_album_id=2209537110058106884#rd)
 1. 从 2019 开始原软件名称 《BimAngle Forge Engine》更名为《BimAngle Engine》； 
