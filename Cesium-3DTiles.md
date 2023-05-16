@@ -464,3 +464,6 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
   ```
 
 通过Batch的材质和渲染属性信息，b3dm文件格式可以支持多种不同的纹理、材质和渲染效果。
+
+## 地理配准
+[《毕安格 Engine 输出 3D Tiles 教程》之地理配准篇 - (1)概述](https://mp.weixin.qq.com/s?__biz=MzI0NDkxOTMxOA==&mid=2247483951&idx=1&sn=0e679458b5e8fe120f34919bd1886420&chksm=e9573f56de20b640f936bc2a2eeb5a3e13f8aed9837e8e285c4a2deb874153f027d321ca087f&scene=178&cur_album_id=2209537110058106884#rd)
