@@ -21,18 +21,6 @@ OSM是一款由网络大众共同打造的免费开源、可编辑的地图服�
 CityGML 标准为虚拟 3D 城市模型的表示、存储和交换定义了概念模型和交换格式。
 
 
-EPSG:4326（WGS 84）                         #单位：经纬度    #EPSG代表欧洲石油调查组，该组织参与测量和应用大地测量//WGS 1984=EPSG:4326
-    CRS84等效于EPSG:4326//经纬度相反?
-    OGC CRS URN
-        eg:urn：ogc：def：crs：OGC：1.3：CRS84
-        // urn是标识符，ogc是组织，def是另一个静态交易，crs是类型（坐标参考系统），
-        //OGC是权限，1.3是版本，CRS84是投影
-    OpenGIS(Open Geodata Interoperation Specification) 开放的地理数据互操作规范, 由OGC提出     
-    OGC//(Open Geospatial Consortium)开放地理空间信息联盟 
-EPSG:3857（WGS 84投影版）  默认米为单位（Web Spherical Mercator投影)  #单位：米   平面坐标放大6倍  ,/geoserver的900913等同它/
-    等效于EPSG:900913
-    
-
 Resolution//每个像素代表的实际距离 
     //map.getView().setResolution(10) 一个像素就是10米
     
