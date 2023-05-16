@@ -469,7 +469,8 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 
 ## BIM转3DTiles
 ### 前置知识
-[Revit Geolocation](https://community.safe.com/s/article/revit-geolocation-tutorial)
+1. [Revit Geolocation](https://community.safe.com/s/article/revit-geolocation-tutorial)
+2. [帮助 | 关于定位 | Autodesk](https://help.autodesk.com/view/RVT/2018/CHS/?guid=GUID-9DD9DCDB-F80F-4FCE-BA87-FE49B66936CF)
 ### 工具
 #### FME
 [Autodesk Revit Reader 参数](https://docs.safe.com/fme/2022.0/html/FME_Desktop_Documentation/FME_ReadersWriters/revitnative/revitnative_reader.htm)
