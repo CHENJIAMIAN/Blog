@@ -478,7 +478,7 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 ##### 理论
 [Autodesk Revit Reader 参数](https://docs.safe.com/fme/2022.0/html/FME_Desktop_Documentation/FME_ReadersWriters/revitnative/revitnative_reader.htm)
 参数: 要读取的 Revit 坐标系 
-	1. 选项目： 读取器将读取由 Revit 文件的项目基点定义的坐标系中的数据和单位
+	1. 选项目(： 读取器将读取由 Revit 文件的项目基点定义的坐标系中的数据和单位
 	2. 选地理参考:FME 将在数据集的文件夹中搜索与您的数据集同名但具有投影文件 ( .prj ) 扩展名的文件。如果找不到具有该名称的文件，它将在数据集文件夹中查找文件esri_cad.prj 。
 		1. 如果这些文件中的任何一个存在，FME 将使用其中包含的坐标系信息对 Revit 文件进行地理定位。
 		2. 如果找到.prj文件，FME 还将在数据集的文件夹中搜索与您的数据集同名但具有世界文件扩展名（.wld或.wld3）的文件。如果找不到具有该名称的文件，它将在数据集文件夹中查找文件esri_cad.wld / esri_cad.wld3。如果这些文件中的任何一个存在，FME 将使用文件中的信息将数据集中要素的坐标转换为新的地理空间坐标。[CAD 和 BIM 数据的地理空间位置—ArcGIS Pro | 文档](https://pro.arcgis.com/en/pro-app/latest/help/data/revit/geospatial-position-of-cad-and-bim-data.htm)
