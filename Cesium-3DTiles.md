@@ -474,7 +474,7 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 3. [终于搞清了Revit的5个定位点都是啥？怎么用？怎么对齐？ – BIMBOX](https://bimbox.top/9372.html)
 4. 在Autodesk Revit软件中，您可以设置地理位置。Revit软件将此信息用于各种照明和建模过程。**但地理位置信息不足以定义准确的地理空间位置**, 测量点模型附近的真实世界位置, 它对应的测量坐标系才是GIS 坐标[帮助 | 关于坐标系 | Autodesk](https://help.autodesk.com/view/RVT/2024/CHS/?guid=GUID-E67ED082-2556-475B-84A7-4605329F612F)
 ### 工具
-#### FME
+#### FME(有破解版)
 ##### 理论
 [Autodesk Revit Reader 参数](https://docs.safe.com/fme/2022.0/html/FME_Desktop_Documentation/FME_ReadersWriters/revitnative/revitnative_reader.htm)
 参数: 要读取的 Revit 坐标系 
