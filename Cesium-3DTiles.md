@@ -471,3 +471,5 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 [《毕安格 Engine 输出 3D Tiles 教程》之地理配准篇 - (1)概述](https://mp.weixin.qq.com/s?__biz=MzI0NDkxOTMxOA==&mid=2247483951&idx=1&sn=0e679458b5e8fe120f34919bd1886420&chksm=e9573f56de20b640f936bc2a2eeb5a3e13f8aed9837e8e285c4a2deb874153f027d321ca087f&scene=178&cur_album_id=2209537110058106884#rd)
 1. 从 2019 开始原软件名称 《BimAngle Forge Engine》更名为《BimAngle Engine》； 
 2. 2019 年 3 月新增 Express 系列，主要是屏蔽了对 Forge 格式的支持
+
+z
