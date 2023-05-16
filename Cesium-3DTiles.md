@@ -468,8 +468,16 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 通过Batch的材质和渲染属性信息，b3dm文件格式可以支持多种不同的纹理、材质和渲染效果。
 
 ## BIM转3DTiles
+### 前置知识
+[Revit Geolocation](https://community.safe.com/s/article/revit-geolocation-tutorial)
+### 工具
+#### FME
+[Autodesk Revit Reader 参数](https://docs.safe.com/fme/2022.0/html/FME_Desktop_Documentation/FME_ReadersWriters/revitnative/revitnative_reader.htm)
+参数: 要读取的 Revit 坐标系 
+	1. 选项目： 读取器将读取由 Revit 文件的项目基点定义的坐标系中的数据和单位
+	2. 选地理参考:FME 将在数据集的文件夹中搜索与您的数据集同名但具有投影文件 ( .prj ) 扩展名的文件。如果找不到具有该名称的文件，它将在数据集文件夹中查找文件esri_cad.prj 。如果这些文件中的任何一个存在，FME 将使用其中包含的坐标系信息对 Revit 文件进行地理定位。读取由 Revit 文件的测量点定义的坐标系中的坐标
+	3. 如果找不到文件，那么将使用在数据集中找到的坐标信息，而不执行任何额外的转换。
+#### BimAngle(1个月试用,主revit插件+周边小工具)
 [《毕安格 Engine 输出 3D Tiles 教程》之地理配准篇 - (1)概述](https://mp.weixin.qq.com/s?__biz=MzI0NDkxOTMxOA==&mid=2247483951&idx=1&sn=0e679458b5e8fe120f34919bd1886420&chksm=e9573f56de20b640f936bc2a2eeb5a3e13f8aed9837e8e285c4a2deb874153f027d321ca087f&scene=178&cur_album_id=2209537110058106884#rd)
 1. 从 2019 开始原软件名称 《BimAngle Forge Engine》更名为《BimAngle Engine》； 
 2. 2019 年 3 月新增 Express 系列，主要是屏蔽了对 Forge 格式的支持
-
-z
