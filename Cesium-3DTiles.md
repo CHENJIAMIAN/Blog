@@ -471,6 +471,7 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 ### 前置知识
 1. [Revit Geolocation](https://community.safe.com/s/article/revit-geolocation-tutorial)
 2. [帮助 | 关于定位 | Autodesk](https://help.autodesk.com/view/RVT/2018/CHS/?guid=GUID-9DD9DCDB-F80F-4FCE-BA87-FE49B66936CF)
+3. 在Autodesk Revit软件中，您可以设置地理位置。Revit软件将此信息用于各种照明和建模过程。**但地理位置信息不足以定义准确的地理空间位置**
 ### 工具
 #### FME
 [Autodesk Revit Reader 参数](https://docs.safe.com/fme/2022.0/html/FME_Desktop_Documentation/FME_ReadersWriters/revitnative/revitnative_reader.htm)
@@ -478,7 +479,7 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 	1. 选项目： 读取器将读取由 Revit 文件的项目基点定义的坐标系中的数据和单位
 	2. 选地理参考:FME 将在数据集的文件夹中搜索与您的数据集同名但具有投影文件 ( .prj ) 扩展名的文件。如果找不到具有该名称的文件，它将在数据集文件夹中查找文件esri_cad.prj 。
 		1. 如果这些文件中的任何一个存在，FME 将使用其中包含的坐标系信息对 Revit 文件进行地理定位。
-		2. 如果找到.prj文件，FME 还将在数据集的文件夹中搜索与您的数据集同名但具有世界文件扩展名（.wld或.wld3）的文件。如果找不到具有该名称的文件，它将在数据集文件夹中查找文件esri_cad.wld / esri_cad.wld3。如果这些文件中的任何一个存在，FME 将使用文件中的信息将数据集中要素的坐标转换为新的地理空间坐标。
+		2. 如果找到.prj文件，FME 还将在数据集的文件夹中搜索与您的数据集同名但具有世界文件扩展名（.wld或.wld3）的文件。如果找不到具有该名称的文件，它将在数据集文件夹中查找文件esri_cad.wld / esri_cad.wld3。如果这些文件中的任何一个存在，FME 将使用文件中的信息将数据集中要素的坐标转换为新的地理空间坐标。[CAD 和 BIM 数据的地理空间位置—ArcGIS Pro | 文档](https://pro.arcgis.com/en/pro-app/latest/help/data/revit/geospatial-position-of-cad-and-bim-data.htm)
 			1. 如果未找到.wld/.wld3文件，则转换将继续使用在.prj文件中找到的地理配准信息，同时读取由 Revit 文件的测量点定义的坐标系中的坐标。读者还将使用该文件定义的项目单元。
 		3. 如果 FME 没有找到 Esri .prj文件，它将在 Revit 数据集中的活动站点上查找地理参考坐标系信息。为了正确地对数据集进行地理配准，Revit 文件需要链接到 Autodesk Revit 中的 DWG 坐标系。如果 FME 在 Revit 数据集中找到地理配准数据，它将生成一个本地 AZMED 投影坐标系来对数据集进行地理配准。读者还将在 SurveyPoint 要素上设置 Revit 文件中找到的坐标系名称以及测量点的经纬度。
 	4. 如果找不到文件，那么将使用在数据集中找到的坐标信息，而不执行任何额外的转换。
