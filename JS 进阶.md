@@ -660,7 +660,7 @@ Base64:
 1. [v8/v8 - GitHub1s](https://github1s.com/v8/v8)
 2. [最原始版本 2008 年 8 月 11 日 - 0.1.5版本 - v8/v8 - GitHub1s](https://github1s.com/v8/v8/blob/0.1.5/src/apinatives.js)
 
-### 以下Git repositories on chromium的仓库前缀分别代表什么?
+### 以下 Git repositories on chromium 的仓库前缀分别代表什么?
 1. angle/ - 用于支持OpenGL ES 2.0在Windows平台的实现库。
 2. aosp/ - 用于支持Android开源项目的代码库。
 3. apps/ - Chromium浏览器客户端的应用程序代码库。
