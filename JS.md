@@ -532,7 +532,7 @@ var p = Object.create(Object.prototype); 等同于 {} 等同于 new Object() //p
 
 ---
 
-> for...of(遍历实现Iterator接口的可枚举对象的值)
+## for...of(遍历实现Iterator接口的可枚举对象的值)
 
 > 取代for...in(遍历属性名)
 
