@@ -619,3 +619,15 @@ every() //是否每个都是
 改:
     arr.map(callback(currentValue, index, array), this)
 ```
+
+## 奇淫技巧
+
+```js
+const func = ()=>{ console.log(1)}
+debug(func)//注入断点
+func()//触发断点
+
+monitor(func)//当函数被调用时打印提醒
+
+monitorEvents(window, "resize");//注入打印e事件语句
+```
