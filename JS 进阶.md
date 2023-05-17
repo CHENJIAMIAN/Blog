@@ -727,7 +727,13 @@ Base64:
 Reduction JSCallReducer::ReduceStringPrototypeIndexOfInclude
 //array.prototype.includes在
 Reduction JSCallReducer::ReduceArrayIncludes
-	底层实现在src\builtins\builtins-array-gen.cc
+	ReduceArrayPrototypeIndexOfIncludes
+		GetCallableForArrayIndexOfIncludes
+			kArrayIncludesSmiOrObject等各分类
+				`src\builtins\builtins-array-gen.cc`
+				TF_BUILTIN(ArrayIncludesSmiOrObject, ArrayIncludesIndexofAssembler)	
+							
+	底层实现在`src\builtins\builtins-array-gen.cc`
 	void ArrayIncludesIndexofAssembler::GenerateSmiOrObject
 		该段代码是 `ArrayIncludesIndexofAssembler` 类中的 `GenerateSmiOrObject()` 方法的实现。
 		该方法的目的是生成执行 `Array.prototype.includes()` 方法的汇编代码，
