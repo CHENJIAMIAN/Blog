@@ -254,8 +254,12 @@ gl.vertexAttribDivisor 是 WebGL 2.0 中的一个函数，用于设置顶点属�
 ```
 ## 方法大全
 ```javascript
-gl.activeTexture(gl.TEXTURE0);//设置要用于纹理操作的纹理单元。
-    一次draw中操作多纹理，这也被叫做多纹理渲染（multitexturing）
+gl.activeTexture(gl.TEXTURE0);//激活纹理单元0，因为WebGL支持多个纹理单元
+	可以在一个场景中使用多个纹理对象,一次draw中操作多纹理，这也被叫做多纹理渲染（multitexturing）
+gl.bindTexture(gl.TEXTURE_2D, myTexture);//绑定myTexture纹理对象到2D纹理目标（gl.TEXTURE_2D），将myTexture纹理对象赋值给目标，以便后面可以对这个纹理对象进行操作。
+	myTexture = gl.createTexture();
+    myTexture.image = new Image();
+    
 gl.attachShader(program, shader)//将着色器对象附加到程序对象上。
 gl.bindBufferBase(target, index, buffer)//将缓存区绑定到绑定点。绘制立方体时使用UBO中保存的矩阵变量。这样就可以避免在每一帧都将矩阵变量从JavaScript代码传递到着色器中    
     第二个参数 index 可以取的值取决于缓冲区的类型，例如：
@@ -288,8 +292,7 @@ gl.bindFramebuffer(target, framebuffer)//将帧缓存区对象绑定到目标上
         gl.bindRenderbuffer(target, renderbuffer)//将渲染缓存区绑定到目标上。        
         gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, width, height);//设置渲染缓冲区的存储。
 
-    
-gl.bindTexture(gl.TEXTURE_2D, texture);//将纹理绑定到目标上。
+
 gl.bindVertexArray(array)//绑定顶点数组对象。
 
 多个物体重叠创建透明物体需要：开启α混合并选择混合函数,/从后往前的渲染物体/
