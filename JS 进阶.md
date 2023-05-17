@@ -727,4 +727,24 @@ Base64:
 Reduction JSCallReducer::ReduceStringPrototypeIndexOfInclude
 //array.prototype.includes在
 Reduction JSCallReducer::ReduceArrayIncludes
+	底层实现在src\builtins\builtins-array-gen.cc
+	void ArrayIncludesIndexofAssembler::GenerateSmiOrObject
+		该段代码是 `ArrayIncludesIndexofAssembler` 类中的 `GenerateSmiOrObject()` 方法的实现。
+		该方法的目的是生成执行 `Array.prototype.includes()` 方法的汇编代码，
+		用于判断数组 `elements` 是否包含指定元素 `search_element`。该方法接受多个参数，
+		包括 `variant`（搜索模式），`context`（执行上下文对象），
+		`elements`（待搜索的数组），`search_element`（要查找的元素），
+		`array_length`（数组长度），`from_index`（查找的起始位置），
+		以及 `array_kind`（数组元素的类型）。
+		其中 `TNode` 类型表示的是 V8 引擎内部的节点对象。
+		同时，该方法中还定义了两个临时变量 `index_var` 和 `search_num`，
+		用于存储搜索的位置和要查找的数字元素。
+		在该方法的实现中，首先根据输入参数 `from_index` ，将其解码成 `IntPtrT` 类型的值，
+		并将其存储到变量 `index_var` 中。
+		然后，使用 V8 引擎的内置函数 `SmiUntag()` 对参数 `array_length` 进行解码处理，
+		得到数组的长度 `array_length_untagged`。
+		接着，根据 `variant` 的值和 `array_kind` 的类型，调用不同类型的内置函数，
+		执行 `Array.prototype.includes()` 的操作，最终得到数组中是否包含指定的元素。
+		代码的最后部分使用 `Return()` 函数返回了搜索结果。
+		如果搜索不到该元素，则返回 `FalseConstant()`，否则返回 `-1`。
 ```
