@@ -93,4 +93,74 @@ tile.content.metadata = {
 ```
 
 上述代码中，我们首先从瓦片数据中提取经纬度坐标信息，然后通过这些信息创建一个矩形范围，最后将矩形范围转换为最小包围盒，即"box"类型表示的范围信息。最后，将这个信息写入3DTiles模型瓦片的metadata中，以供渲染引擎使用。
-## 
+## 百度地图破解
+
+```js
+{
+    "action": "loadTileData",
+    "url": "https://maponline1.bdimg.com/pvd/?qt=vtile&param=5J9FL5%40%3BEK9FJE2%3BEL9FND%3ENMFA7H8%3CNKO%403H4%3EO57A3L8DM%3D99FJD%3EOCO82N5B%3BEG%3ECL5L%3ECB8%3AKE2%3F%3BC8JE8FNMA%3FJPE23",
+    "tileInfo": {
+        "col": 47,
+        "row": 10,
+        "zoom": 9,
+        "useZoom": 9,
+        "tileTypeName": "na",
+        "loopOffsetX": 0,
+        "tileSize": 512,
+        "baseTileSize": 512,
+        "mercatorSize": 262144
+    },
+    "tileKey": "B_NORMAL_MAP_default_47_10_9_9"
+}
+self.onmessage (worker_wasm_ncq5j1.js:formatted:1118)
+Worker.postMessage（异步）
+loadTileData (initmap_4213f59.js:formatted:2:15008)
+loadVectorTileData (initmap_4213f59.js:formatted:2:13026)
+loadVectorLayerData (initmap_4213f59.js:formatted:2:12969)
+loadLayerData (initmap_4213f59.js:formatted:2:12862)
+（匿名） (initmap_4213f59.js:formatted:2:15115)
+setTimeout（异步）
+e.executeFunction (VM1306:3)
+e.executeOriginFunction (VM1306:3)
+i.<computed> (VM1306:3)
+loadLayersData (initmap_4213f59.js:formatted:2:15106)
+（匿名） (initmap_4213f59.js:formatted:2:15031)
+x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
+_updateFrame (VM1410:1)
+eval (VM1410:1)
+（匿名） (VM1306:3)
+requestAnimationFrame（异步）
+e.executeFunction (VM1306:3)
+e.executeOriginFunction (VM1306:3)
+t.<computed> (VM1306:3)
+_updateFrame (VM1410:1)
+eval (VM1410:1)
+（匿名） (VM1306:3)
+requestAnimationFrame（异步）
+e.executeFunction (VM1306:3)
+e.executeOriginFunction (VM1306:3)
+t.<computed> (VM1306:3)
+startRenderThread (VM1410:1)
+fm (VM1410:1)
+x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
+_setValue (initmap_4213f59.js:formatted:2:10807)
+render (initmap_4213f59.js:formatted:2:10783)
+l._loop (initmap_4213f59.js:formatted:2:4355)
+（匿名） (initmap_4213f59.js:formatted:2:4332)
+（匿名） (VM1306:3)
+requestAnimationFrame（异步）
+e.executeFunction (VM1306:3)
+e.executeOriginFunction (VM1306:3)
+t.<computed> (VM1306:3)
+l._doStart (initmap_4213f59.js:formatted:2:4331)
+l (initmap_4213f59.js:formatted:2:145)
+_startInfiniteZoomAnimation (initmap_4213f59.js:formatted:2:10776)
+zoomTo (initmap_4213f59.js:formatted:2:10486)
+setZoom (initmap_4213f59.js:formatted:2:3937)
+ey._onWheelMouse (VM1411:1)
+ey.wheel (VM1411:1)
+eval (VM1411:1)
+x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
+eY._deepZoomWheel (VM1411:1)
+i (VM1411:1)
+```
