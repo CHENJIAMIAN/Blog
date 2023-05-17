@@ -112,5 +112,40 @@ tile.content.metadata = {
     },
     "tileKey": "B_NORMAL_MAP_default_47_10_9_9"
 }
-
+self.onmessage (worker_wasm_ncq5j1.js:formatted:1118)
+- Worker.postMessage（异步）
+loadTileData (initmap_4213f59.js:formatted:2:15008)
+loadVectorTileData (initmap_4213f59.js:formatted:2:13026)
+loadVectorLayerData (initmap_4213f59.js:formatted:2:12969)
+loadLayerData (initmap_4213f59.js:formatted:2:12862)
+- setTimeout（异步）
+loadLayersData (initmap_4213f59.js:formatted:2:15106)
+on("update",（匿名）) (initmap_4213f59.js:formatted:2:15031)
+x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
+- 请求渲染
+_updateFrame (VM1410:1)
+eval (VM1410:1)
+- requestAnimationFrame（异步）
+startRenderThread (VM1410:1)
+fk.on("zoom_changed" ,fm) (VM1410:1)
+-
+x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
+_setValue (initmap_4213f59.js:formatted:2:10807)
+render (initmap_4213f59.js:formatted:2:10783)
+l._loop (initmap_4213f59.js:formatted:2:4355)
+（匿名） (initmap_4213f59.js:formatted:2:4332)
+requestAnimationFrame（异步）
+l._doStart (initmap_4213f59.js:formatted:2:4331)
+l (initmap_4213f59.js:formatted:2:145)
+_startInfiniteZoomAnimation (initmap_4213f59.js:formatted:2:10776)
+zoomTo (initmap_4213f59.js:formatted:2:10486)
+setZoom (initmap_4213f59.js:formatted:2:3937)
+- 事件相关
+ey._onWheelMouse (VM1411:1)
+ey.wheel (VM1411:1)
+i.addEventListener("deepzoommousewheel",eval) (VM1411:1)
+x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
+eY._deepZoomWheel (VM1411:1)
+i (VM1411:1)
+https://maponline2.bdimg.com/tile/?qt=vtile&x=3158&y=1180&z=14&styles=pl&udt=20200928&scaler=1&showtext=1
 ```
