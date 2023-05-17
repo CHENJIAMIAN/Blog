@@ -643,7 +643,7 @@ Base64:
 ```
 ![](images/46D1BE3DFB7C4959A81DDC3740279548.png)
 
-# 浏览器原理
+## 浏览器原理
 ```js
 渲染进程 
     1个 主线程    
@@ -659,4 +659,44 @@ Base64:
 ```
 1. [v8/v8 - GitHub1s](https://github1s.com/v8/v8)
 2. [最原始版本 2008 年 8 月 11 日 - 0.1.5版本 - v8/v8 - GitHub1s](https://github1s.com/v8/v8/blob/0.1.5/src/apinatives.js)
-3. 
+
+### 以下Git repositories on chromium的仓库前缀分别代表什么?
+1. angle/ - 用于支持OpenGL ES 2.0在Windows平台的实现库。
+2. aosp/ - 用于支持Android开源项目的代码库。
+3. apps/ - Chromium浏览器客户端的应用程序代码库。
+4. arc/ - 用于支持Android应用于Chrome OS的库。
+5. breakpad/ - 用于收集和报告应用程序崩溃的库。
+6. cast_core/ - 用于支持Google Cast技术的核心代码库。
+7. chrome_extensions/ - Chromium浏览器插件的代码库。
+8. chromeos/ - Chrome OS操作系统的代码库。
+9. chromium/ - Chromium浏览器核心代码库。
+10. chromiumos/ - Chromium OS操作系统的代码库。
+11. Library/ - 用于支持Chromium浏览器的共享库。
+12. Firmware/ - 用于支持Chromium浏览器硬件的固件库。
+13. codecs/ - 用于支持Chromium浏览器音视频编码的库。
+14. codesearch/ - 用于支持代码搜索的库。
+15. crashpad/ - 用于收集和报告应用程序崩溃的库（替代Breakpad）。
+16. crosvm/ - 用于支持虚拟机监视器的库。
+17. dart/ - 用于支持Dart语言的库。
+18. deps/ - 用于支持Chromium浏览器的依赖库。
+19. devtools/ - 用于支持开发者工具的库。
+20. enterprise/ - 用于支持企业版Chromium浏览器的代码库。
+21. experimental/ - 用于包含实验性代码的仓库。
+22. extensions/ - Chromium浏览器扩展的代码库。
+23. external/ - 包含第三方的代码库。
+24. git/ - 用于支持Git源代码管理系统的库。
+25. infra/ - 用于支持测试、构建和持续集成的库。
+26. infradata/ - 用于支持网络和通信的库。
+27. libyuv/ - 用于支持图像和视频处理的库。
+28. native_client/ - 用于支持原生客户端的库。
+29. openscreen/ - 用于支持开放屏幕协议的库。
+30. playground/ - 用于尝试新想法或实验性代码的仓库。
+31. private/ - 私有的代码库。
+32. src/ - Chromium浏览器的源代码库。
+33. test/ - 用于测试Chromium浏览器的代码库。
+34. testing/ - 用于支持测试的库。
+35. testrepo/ - 用于包含测试代码的仓库。
+36. v8/ - 用于支持V8 JavaScript引擎的库。
+37. vcbox/ - 用于支持虚拟容器的库。
+38. weave/ - 用于支持Google Sync的库。
+39. webm/ - 用于支持WebM视频格式的库。
