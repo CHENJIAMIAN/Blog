@@ -658,5 +658,5 @@ Base64:
     tag(['Hello ', ' world ', ''],  a + b , a * b);  
 ```
 1. [v8/v8 - GitHub1s](https://github1s.com/v8/v8)
-2. [2008 年 8 月 11 日 - v8/v8 - GitHub1s](https://github1s.com/v8/v8/blob/3a1ab8c626dfee28a5cafb6632b28e284c4cffb3/src/apinatives.js#L52)
+2. [最原始版本 2008 年 8 月 11 日 - 0.1.5版本 - v8/v8 - GitHub1s](https://github1s.com/v8/v8/blob/0.1.5/src/apinatives.js)
 3. 
