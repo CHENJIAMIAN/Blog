@@ -18,9 +18,6 @@ var n = 0755; // 493  //八进制   0  开头
 0.2e7.toFixed(20) //"2000000.00000000000000000000" e7表示:小数点向后移动7位
 2e7.toFixed(20)   //"20000000.00000000000000000000" 
 
-console.log("123 %c这是你没有见过的console.log", "color: #fff; border-radius: 5px; padding: 10px 25px;background:red;",'1231');
-console.dir(f)//将函数以普通对象的形式输出到控制台里
-
 ES6的 9个
     1.(b='1')=>{let、const、块级作用域} //箭头函数没有1.new 2.arguments 3.yield
     2. class A extends B{ super(); super.F()} 
@@ -71,7 +68,7 @@ DOM事件流机制:
         element.addEventListener('事件名', (e)=>{},   是否捕获=false), /参数3是否捕获不写的话,默认是false,是冒泡,子的事件会冒泡给父/
             /浏览器先捕获后冒泡, 说的是如果同时绑定了参数3为true和参数3为false的, 第三个参数为true会先执行/
             第3个参数作用: 规定是在捕获阶段执行,还是在冒泡阶段执行,默认是在冒泡阶段去执行
-            假设父子都绑定了click事件:`
+            假设父子都绑定了click事件:
                 捕获:就是捕获它儿子的click,就算是点它的儿子,那也是先执行它的click,再执行儿子的,/也就是第3个参数只作用于儿子/
                 对于父绑定了click, 子没有绑定click的,那第三个参数没意义的,因为它就是控制父子监听函数执行循序的
         element.addEventListener('事件名', (e)=>{} ,  {passive:true}) //passive执行默认操作
@@ -175,19 +172,11 @@ Blob 对象表示一个二进制文件的数据内容，比如一个图片文件
     File 对象代表一个文件，用来读写文件信息。它继承了 Blob 对象，或者说是一种特殊的 Blob 对象，所有可以使用 Blob 对象的场合都可以使用它。
         FileReader 对象用于读取 File 对象或 Blob 对象所包含的文件内容。
 ```
-
-
-
 ![](images/C6F35968C7E046ED80E7324398E64BD6.png)
 
 
-
----
-
-> 事件\异步:
-
+## 事件\异步:
 > JS是一门单线程语言，当线程中没有任何同步代码的前提下才会执行异步代码
-
 ```javascript
 Event Loop事件循环(重要): //用于等待和发送消息和事件的运行机制
     1.'同步任务'
@@ -219,10 +208,8 @@ for(var i = 1; i <= 3; i++) {
     /let变量绑定在该块，不再受外部的影响/, 所以setTimeout里的绑定了值，不再受影响
 ```
 
-> Promises 异步函数调用
-
+## Promises 异步函数调用
 > 异步的发展过程：Callbacks>> Promises>> async/await(ES8)(本质是 Generator 的语法糖)
-
 ```javascript
 所有的 then() 函数总是会被异步调用, 即使是一个已经变成 resolve 状态的 Promise
 
@@ -310,11 +297,7 @@ try {
 ```
 
 
-
----
-
 ## DOM增删改查
-
 ```javascript
 //增
 dom1.appendChild(dom11)//到后面
@@ -332,11 +315,7 @@ dom.style.color = '#ff0000';
 ```
 
 
-
----
-
-> 模块
-
+## 模块
 ```javascript
 //-> 无模块化<script src="jquery.js"/>  
 1-> CommonJS规范   
@@ -368,11 +347,7 @@ node支持:	require /module.exports 等价 exports
 ```
 
 
-
----
-
-> IIFE立即执行函数
-
+## IIFE立即执行函数
 ```javascript
 //"立即执行匿名" functions",它可以防止临时变量泄漏到全局变量中范围.
 (function (){    var temporary = 5; window.permanent = 10;
@@ -393,8 +368,7 @@ function(){}()			          //javascript引擎将开头的function关键字当做
     //输出: "//后面括号里的对象的内容//"
 ```
 
-> //JavaScript 有三种方法，可以确定一个值到底是什么类型。
-
+## 3种方法确定值类型
 ```javascript
 typeof
     typeof new Date//    "object"
@@ -407,7 +381,6 @@ Object.prototype.toString方法
 ```
 
 ## prototype（可以被继承的东西）
-
 ```javascript
 //原型对象的所有属性和方法，都能被实例对象共享。也就是说，如果属性和方法定义在原型上，那么所有实例对象就能共享
 Object.prototype //prototype 原型属性使您有能力向对象添加可以被继承的属性和方法
@@ -436,7 +409,6 @@ o.c=4 				//如果该对象没有,那js会一直摸下去上一级原型直到�
 ```
 
 
-
 ```javascript
 //继承:
 var p1= {name:1}	
@@ -445,7 +417,6 @@ var p = Object.create(Object.prototype); 等同于 {} 等同于 new Object() //p
 ```
 
 ## this
-
 ```javascript
 规则：不论它们出现在哪里，它们总是将 global 对象作为其函数体中 this 关键字的默认值。
     //this的指向在函数定义的时候是确定不了的，只有函数执行的时候才能确定this到底指向谁，实际上this的最终指向的是那个调用它的对象
@@ -521,21 +492,15 @@ var p = Object.create(Object.prototype); 等同于 {} 等同于 new Object() //p
     toStr(123) 等同于 toString.call(123) 等同于 toString(123)
 ```
 
-> 垃圾回收(标记:从root可达)
-
+## 垃圾回收(标记:从root可达)
 ```javascript
 //之前是[引用计数]
 //现在主流浏览器的垃圾回收算法是[标记清除],从Root（全局对象）开始寻找这个对象的引用是否可达，如window.foo.scope, 如果引用链断裂，那么这个对象就会回收。
 ```
 
 
-
----
-
 ## for...of(遍历实现Iterator接口的可枚举对象的值)
-
 > 取代for...in(遍历属性名)
-
 ```javascript
 Object.prototype.objCustom = function() {}; 
 Array.prototype.arrCustom = function() {};
@@ -560,12 +525,7 @@ for (let key of iterable.keys()) {//通过获取index,打印内容
 }
 ```
 
-
-
----
-
-> var let const
-
+## var let const
 ```javascript
 函数提升优先级>变量提升, 同名会覆盖掉
 var		无论声明在何处，都会被视为声明在函数的最顶部, 这就是函数变量提升(提性能|高容错)
@@ -594,8 +554,7 @@ typeof null;      // => 'object'
 
 
 
-> 数组
-
+## 数组
 ```javascript
 Array.from([1, 2, 3], x => 2*x) //[2, 4, 6]
 
@@ -660,4 +619,3 @@ every() //是否每个都是
 改:
     arr.map(callback(currentValue, index, array), this)
 ```
-
