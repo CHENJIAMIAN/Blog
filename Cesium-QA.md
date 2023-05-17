@@ -93,9 +93,11 @@ tile.content.metadata = {
 ```
 
 上述代码中，我们首先从瓦片数据中提取经纬度坐标信息，然后通过这些信息创建一个矩形范围，最后将矩形范围转换为最小包围盒，即"box"类型表示的范围信息。最后，将这个信息写入3DTiles模型瓦片的metadata中，以供渲染引擎使用。
-## 百度地图破解
 
+## 百度地图破解
+[解析百度地图api 返回数据_新版百度地图建筑数据含高度解析_weixin_39747807的博客-CSDN博客](https://blog.csdn.net/weixin_39747807/article/details/110460861)
 ```js
+我们还可以直接从worker返回消息处入手（拦截，伪造https证书替换js），将解析后的顶点缓冲和索引进行解析，直接获得建筑的平面数据和高度。把这些数据保存下来，并通过后期的处理，即可以获得比较完整的百度地图建筑轮廓数据。
 {
     "action": "loadTileData",
     "url": "https://maponline1.bdimg.com/pvd/?qt=vtile&param=5J9FL5%40%3BEK9FJE2%3BEL9FND%3ENMFA7H8%3CNKO%403H4%3EO57A3L8DM%3D99FJD%3EOCO82N5B%3BEG%3ECL5L%3ECB8%3AKE2%3F%3BC8JE8FNMA%3FJPE23",
@@ -147,5 +149,7 @@ i.addEventListener("deepzoommousewheel",eval) (VM1411:1)
 x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
 eY._deepZoomWheel (VM1411:1)
 i (VM1411:1)
+
 https://maponline2.bdimg.com/tile/?qt=vtile&x=3158&y=1180&z=14&styles=pl&udt=20200928&scaler=1&showtext=1
+https://maponline2.bdimg.com/pvd/?qt=vtile&param=xxx
 ```
