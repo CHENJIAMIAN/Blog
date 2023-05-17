@@ -657,8 +657,6 @@ Base64:
     等同于  
     tag(['Hello ', ' world ', ''],  a + b , a * b);  
 ```
-1. [v8/v8 - GitHub1s](https://github1s.com/v8/v8)
-2. [最原始版本 2008 年 8 月 11 日 - 0.1.5版本 - v8/v8 - GitHub1s](https://github1s.com/v8/v8/blob/0.1.5/src/apinatives.js)
 
 ### 以下 Git repositories on chromium 的仓库前缀分别代表什么?
 1. angle/ - 用于支持OpenGL ES 2.0在Windows平台的实现库。
@@ -700,3 +698,13 @@ Base64:
 37. vcbox/ - 用于支持虚拟容器的库。
 38. weave/ - 用于支持Google Sync的库。
 39. webm/ - 用于支持WebM视频格式的库。
+
+用depot_tools拉取项目, 它是一个Google开源项目的命令行工具集合
+用GN构建系统构建, 它采用Python作为脚本语言，使用类似于Makefile的语法描述构建过程，并使用Ninja构建工具执行构建任务。
+
+
+### 探索V8
+1. 1. [v8/v8 - GitHub1s](https://github1s.com/v8/v8)
+2. [最原始版本 2008 年 8 月 11 日 - 0.1.5版本 - v8/v8 - GitHub1s](https://github1s.com/v8/v8/blob/0.1.5/src/apinatives.js)
+2. 对于最新的v8, 不直接克隆项目, 而要用depot_tools拉取项目, 它是一个Google开源项目的命令行工具集合
+3. 用GN构建系统构建, 它采用Python作为脚本语言，使用类似于Makefile的语法描述构建过程，并使用Ninja构建工具执行构建任务
