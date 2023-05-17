@@ -147,8 +147,6 @@ render (initmap_4213f59.js:formatted:2:10783)
 l._loop (initmap_4213f59.js:formatted:2:4355)
 （匿名） (initmap_4213f59.js:formatted:2:4332)
 requestAnimationFrame（异步）
-e.executeFunction (VM1306:3)
-e.executeOriginFunction (VM1306:3)
 t.<computed> (VM1306:3)
 l._doStart (initmap_4213f59.js:formatted:2:4331)
 l (initmap_4213f59.js:formatted:2:145)
