@@ -708,17 +708,23 @@ Base64:
 2. [最原始版本 2008 年 8 月 11 日 - 0.1.5版本 - v8/v8 - GitHub1s](https://github1s.com/v8/v8/blob/0.1.5/src/apinatives.js)
 2. 对于最新的v8, 不直接克隆项目, 而要用depot_tools拉取项目, 它是一个Google开源项目的命令行工具集合
 3. 用GN构建系统构建, 它采用Python作为脚本语言，使用类似于Makefile的语法描述构建过程，并使用Ninja构建工具执行构建任务
-#### src\init\bootstrapper.cc 主要负责引擎的初始化工作。
+#### src\init\bootstrapper.cc 负责引擎的初始化工作。
 > 使V8引擎能够对JavaScript代码进行解析、编译和执行，并提供了丰富的内置对象、函数和方法等支持
 1.  初始化堆内存：创建堆内存空间并初始化堆管理器等相关数据结构，为运行时环境提供堆内存支持。
-2.  构建全局对象和全局变量：构建全局对象，包括Object, String, Array, Function等对象，在全局作用域下注册全局变量，为JS代码提供全局对象和变量的支持。包括: `Empty\Object\Global\Native context\Object\Function\Array\ArrayIterator\Number\Boolean\String\StringIterator\Symbol\Date\RegExpString Iterator\BoundFunction\sloppy arguments map\fast and slow aliased arguments map\strict mode arguments map\context extension\Iterator\%WrapForValidIteratorPrototype%\%IteratorHelperPrototype%\Helper maps\WrappedFunction`
+2.  构建全局对象和全局变量：构建全局对象，包括Object, String, Array, Function等对象，在全局作用域下注册全局变量，为JS代码提供全局对象和变量的支持。包括: `Empty\Object\Global\Native context\Object\Function\Array\ArrayIterator\Number\Boolean\String\StringIterator\Symbol\Date\RegExpString Iterator\BoundFunction\sloppy arguments map\fast and slow aliased arguments map\strict mode arguments map\context extension\Iterator\%WrapForValidIteratorPrototype%\%IteratorHelperPrototype%\Helper maps\WrappedFunction`依赖于**js-call-reducer.cc**
 3.  生成JavaScript内置对象：生成Math, JSON, Date等内置对象的模板，并在全局作用域下注册对应的对象，为内置对象的使用提供支持。
 4.  安装内置方法和函数：安装全局函数和内置对象的方法，如Array.prototype.push, Object.keys等，为JS代码的执行提供基础的函数和方法支持。
 5.  初始化编译器和解释器：初始化编译器和解释器，包括生成JIT代码，解析、编译、执行JavaScript代码，为JS代码执行提供支持。
+#### js-call-reducer.cc实现JavaScript函数调用
+1.  解析函数表达式，获取函数调用的参数、作用域和上下文等信息。
+2.  调用JavaScript实现的函数，并将参数传递给该函数。
+3.  执行JavaScript函数中的代码，并将执行结果返回给调用方。
+4.  处理JavaScript函数中的异常，并将异常信息返回给调用方。
+5.  实现函数的递归调用和闭包等高级特性。
+6.  对函数调用的性能进行优化，提高JavaScript代码的执行效率。
 ```js
-src\compiler\js-call-reducer.cc
-	//string.prototype.includes在
-	Reduction JSCallReducer::ReduceStringPrototypeIndexOfInclude
-	//array.prototype.includes在
-	Reduction JSCallReducer::ReduceArrayIncludes
+//string.prototype.includes在
+Reduction JSCallReducer::ReduceStringPrototypeIndexOfInclude
+//array.prototype.includes在
+Reduction JSCallReducer::ReduceArrayIncludes
 ```
