@@ -112,51 +112,5 @@ tile.content.metadata = {
     },
     "tileKey": "B_NORMAL_MAP_default_47_10_9_9"
 }
-self.onmessage (worker_wasm_ncq5j1.js:formatted:1118)
-Worker.postMessage（异步）
-loadTileData (initmap_4213f59.js:formatted:2:15008)
-loadVectorTileData (initmap_4213f59.js:formatted:2:13026)
-loadVectorLayerData (initmap_4213f59.js:formatted:2:12969)
-loadLayerData (initmap_4213f59.js:formatted:2:12862)
-（匿名） (initmap_4213f59.js:formatted:2:15115)
-setTimeout（异步）
-e.executeFunction (VM1306:3)
-e.executeOriginFunction (VM1306:3)
-i.<computed> (VM1306:3)
-loadLayersData (initmap_4213f59.js:formatted:2:15106)
-（匿名） (initmap_4213f59.js:formatted:2:15031)
-x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
-_updateFrame (VM1410:1)
-eval (VM1410:1)
-requestAnimationFrame（异步）
-e.executeFunction (VM1306:3)
-e.executeOriginFunction (VM1306:3)
-t.<computed> (VM1306:3)
-_updateFrame (VM1410:1)
-eval (VM1410:1)
-（匿名） (VM1306:3)
-requestAnimationFrame（异步）
-e.executeFunction (VM1306:3)
-e.executeOriginFunction (VM1306:3)
-t.<computed> (VM1306:3)
-startRenderThread (VM1410:1)
-fm (VM1410:1)
-x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
-_setValue (initmap_4213f59.js:formatted:2:10807)
-render (initmap_4213f59.js:formatted:2:10783)
-l._loop (initmap_4213f59.js:formatted:2:4355)
-（匿名） (initmap_4213f59.js:formatted:2:4332)
-requestAnimationFrame（异步）
-t.<computed> (VM1306:3)
-l._doStart (initmap_4213f59.js:formatted:2:4331)
-l (initmap_4213f59.js:formatted:2:145)
-_startInfiniteZoomAnimation (initmap_4213f59.js:formatted:2:10776)
-zoomTo (initmap_4213f59.js:formatted:2:10486)
-setZoom (initmap_4213f59.js:formatted:2:3937)
-ey._onWheelMouse (VM1411:1)
-ey.wheel (VM1411:1)
-eval (VM1411:1)
-x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
-eY._deepZoomWheel (VM1411:1)
-i (VM1411:1)
+
 ```
