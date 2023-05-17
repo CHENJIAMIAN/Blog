@@ -632,4 +632,5 @@ monitor(func)//当函数被调用时打印提醒
 monitorEvents(window, "resize");//注入打印e事件语句
 
 queryObjects(HTMLElement)//查询对象的所有实例!!!!
+	queryObjects(Object) // 将异步结果值存为全局变量temp1 ---------- temp1.filter(a=>a.__esModule)
 ```
