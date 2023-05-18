@@ -184,6 +184,9 @@ https://maponline2.bdimg.com/pvd/?qt=vtile&param=xxx
 - drawTileBase3D 5次
 
 ```js
+在dy.prototype.setVertexAttribPointers打条件断点,即可命中调用`block 的gldraw函数`时的vertexAttribPointer得到取值方法:
+	this.attributes.length ===3 && this.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color'
+	
 属性是:
 [
     {
