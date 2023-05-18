@@ -103,7 +103,7 @@ tile.content.metadata = {
 ///我们还可以直接从worker返回消息处入手（拦截，伪造https证书替换js），将解析后的顶点缓冲和索引进行解析，直接获得建筑的平面数据和高度。把这些数据保存下来，并通过后期的处理，即可以获得比较完整的百度地图建筑轮廓数据。
 
 _updateFrame分支2: webgl draw矢量瓦片到画布
-    fo.drawElements(fo.TRIANGLES, fm.element1.length, fo.UNSIGNED_SHORT, 0)
+	fo.drawElements(fo.TRIANGLES, fm.element1.length, fo.UNSIGNED_SHORT, 0)
     i (VM1410:formatted:1337) 
     （匿名） (VM1410:formatted:1513)
     drawTileLayer (VM1410:formatted:4371)
