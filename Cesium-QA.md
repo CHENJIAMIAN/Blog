@@ -108,7 +108,7 @@ _updateFrame分支2: webgl draw矢量瓦片到画布
     （匿名） (VM1410:formatted:1513)
     drawTileLayer (VM1410:formatted:4371)
     drawBase | 'drawTileBase3D' (VM1410:formatted:4237)
-    draw (VM1410:formatted:3150)
+    draw (VM1410:formatted:3150) //fj.renderData.base3d有东西时drawTileBase3D
 _updateFrame分支1:接收矢量瓦片数据
 	{
 	    "action": "loadTileData",
