@@ -305,6 +305,8 @@ e7(i, fm, e, fl, fk)
 		fk.setVertexAttribPointers(fo, e);//条件断点: fk.attributes.length ===3 && fk.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color'
 	fn.drawElements(fn.TRIANGLES, e.element1.length, fn.UNSIGNED_SHORT, 0)//可获取到顶点元素的顺序
 	'fm.renderData.building3d就是数组'
+	fm.renderData.building3d.index.length === e.element1.length
+	e.element1.arrayBuffer其实原来等于fm.renderData.building3d.index只是被置为null了
 ```
 ### 3. 即可解析出数据
 **太难了放弃了**, 走到获取到arrayBuffer了,也知道画顶点顺序了,也知道顶点的属性的解析规则了, 下一步就是根据这些去解析了
