@@ -104,11 +104,30 @@ tile.content.metadata = {
 
 _updateFrame分支2: webgl draw矢量瓦片到画布
 	fo.drawElements(fo.TRIANGLES, fm.element1.length, fo.UNSIGNED_SHORT, 0)
-    i (VM1410:formatted:1337) 
-    （匿名） (VM1410:formatted:1513)
+    i (VM1410:formatted:1337)  
+    （匿名） (VM1410:formatted:1513) | e7(i, fm, e, fl, fk) 是drawTileBase3D绘制快的gl draw函数
     drawTileLayer (VM1410:formatted:4371)
     drawBase | 'drawTileBase3D' (VM1410:formatted:4237)
     draw (VM1410:formatted:3150) //fj.renderData.base3d有东西时drawTileBase3D
+	    如    
+			[
+				    {
+			        "type": "line",
+			        "textureSize": [16,16],
+			        "texture": "MapRes/renxinghengdao16.png",
+			        "lineWidth": 8,
+			        "data": ["vertex": {},"index": {}],
+			        "has3D": true,
+			        "has2D": false,
+			        "zoomWithMap": true
+			    },
+			    {
+			        "type": "block",
+			        "data": {"vertex": {},"index": {}},
+			        "has3D": true,
+			        "has2D": false
+			    }
+			]
 _updateFrame分支1:接收矢量瓦片数据
 	{
 	    "action": "loadTileData",
