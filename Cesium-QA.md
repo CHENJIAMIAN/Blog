@@ -100,33 +100,34 @@ tile.content.metadata = {
 负载均衡:
 	webmap0.bdimg.com === webmap1.bdimg.com ==== map.baidu.com 
 
-我们还可以直接从worker返回消息处入手（拦截，伪造https证书替换js），将解析后的顶点缓冲和索引进行解析，直接获得建筑的平面数据和高度。把这些数据保存下来，并通过后期的处理，即可以获得比较完整的百度地图建筑轮廓数据。
-{
-    "action": "loadTileData",
-    "url": "https://maponline1.bdimg.com/pvd/?qt=vtile&param=5J9FL5%40%3BEK9FJE2%3BEL9FND%3ENMFA7H8%3CNKO%403H4%3EO57A3L8DM%3D99FJD%3EOCO82N5B%3BEG%3ECL5L%3ECB8%3AKE2%3F%3BC8JE8FNMA%3FJPE23",
-    "tileInfo": {
-        "col": 47,
-        "row": 10,
-        "zoom": 9,
-        "useZoom": 9,
-        "tileTypeName": "na",
-        "loopOffsetX": 0,
-        "tileSize": 512,
-        "baseTileSize": 512,
-        "mercatorSize": 262144
-    },
-    "tileKey": "B_NORMAL_MAP_default_47_10_9_9"
-}
-self.onmessage (worker_wasm_ncq5j1.js:formatted:1118)
-- Worker.postMessage（异步）
-loadTileData (initmap_4213f59.js:formatted:2:15008)
-loadVectorTileData (initmap_4213f59.js:formatted:2:13026)
-loadVectorLayerData (initmap_4213f59.js:formatted:2:12969)
-loadLayerData (initmap_4213f59.js:formatted:2:12862)
-- setTimeout（异步）
-loadLayersData (initmap_4213f59.js:formatted:2:15106)
-on("update",（匿名）) (initmap_4213f59.js:formatted:2:15031)
-x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
+///我们还可以直接从worker返回消息处入手（拦截，伪造https证书替换js），将解析后的顶点缓冲和索引进行解析，直接获得建筑的平面数据和高度。把这些数据保存下来，并通过后期的处理，即可以获得比较完整的百度地图建筑轮廓数据。
+
+分支2
+    fo.drawElements(fo.TRIANGLES, fm.element1.length, fo.UNSIGNED_SHORT, 0)
+    i (VM1410:formatted:1337) 
+    （匿名） (VM1410:formatted:1513)
+    drawTileLayer (VM1410:formatted:4371)
+    drawBase (VM1410:formatted:4237)
+    draw (VM1410:formatted:3150)
+分支1
+	{
+	    "action": "loadTileData",
+	    //maponline0 - maponline3负载均衡
+	    "url": "https://maponline0.bdimg.com/pvd/?qt=vtile&param=xxx",
+	    "tileInfo": {"col": 47,        "row": 10,        "zoom": 9,        "useZoom": 9,        "tileTypeName": "na",        "loopOffsetX": 0,        
+				    "tileSize": 512,        "baseTileSize": 512,        "mercatorSize": 262144    },
+	    "tileKey": "B_NORMAL_MAP_default_47_10_9_9"
+	}
+    self.onmessage (worker_wasm_ncq5j1.js:formatted:1118)
+    - Worker.postMessage（异步）
+    loadTileData (initmap_4213f59.js:formatted:2:15008)
+    loadVectorTileData (initmap_4213f59.js:formatted:2:13026)
+    loadVectorLayerData (initmap_4213f59.js:formatted:2:12969)
+    loadLayerData (initmap_4213f59.js:formatted:2:12862)
+    - setTimeout（异步）
+    loadLayersData (initmap_4213f59.js:formatted:2:15106)
+    on("update",（匿名）) (initmap_4213f59.js:formatted:2:15031)
+    x.BaseClass.fire.x.BaseClass.dispatchEvent (initmap_4213f59.js:formatted:2:1856)
 - 请求渲染
 _updateFrame (VM1410:1)
 eval (VM1410:1)
