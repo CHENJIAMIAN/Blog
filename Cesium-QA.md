@@ -307,6 +307,13 @@ e7(i, fm, e, fl, fk)
 	'fm.renderData.building3d就是数组'
 	fm.renderData.building3d.index.length === e.element1.length
 	e.element1.arrayBuffer其实原来等于fm.renderData.building3d.index只是被置为null了
+
+	e.vertex.arrayType.components === 7
+	const groupArray = Array.from({length: Math.ceil(fm.renderData.building3d.vertex.length / 7)}, (_, i) =>
+	  fm.renderData.building3d.vertex.slice(i * 7, i * 7 + 7)
+	);//按components数拆,也就是分组
+	fm.renderData.building3d.index数组里的值都是[0,groupArray.length-1]直接的数
+	
 ```
 ### 3. 即可解析出数据
 **太难了放弃了**, 走到获取到arrayBuffer了,也知道画顶点顺序了,也知道顶点的属性的解析规则了, 下一步就是根据这些去解析了
