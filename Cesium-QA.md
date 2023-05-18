@@ -113,7 +113,7 @@ tile.content.metadata = {
 	{
 	    "action": "loadTileData",
 	    //maponline0 - maponline3负载均衡
-	    "url": "https://maponline0.bdimg.com/pvd/?qt=vtile&param=xxx",
+	    "url": "https://maponline0.bdimg.com/pvd/?qt=vtile&param=编码后参数",//initmap_4213f59.js:formatted的12833行getTilesUrl方法的u变量就是编码前的参数
 	    "tileInfo": {"col": 47,        "row": 10,        "zoom": 9,        "useZoom": 9,        "tileTypeName": "na",        "loopOffsetX": 0,        
 				    "tileSize": 512,        "baseTileSize": 512,        "mercatorSize": 262144    },
 	    "tileKey": "B_NORMAL_MAP_default_47_10_9_9"
