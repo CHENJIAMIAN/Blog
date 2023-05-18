@@ -178,48 +178,8 @@ i (VM1411:1)
 https://maponline2.bdimg.com/tile/?qt=vtile&x=3158&y=1180&z=14&styles=pl&udt=20200928&scaler=1&showtext=1
 https://maponline2.bdimg.com/pvd/?qt=vtile&param=xxx
 ```
-#### block 的gldraw函数e7(i, fm, e, fl, fk)是谁调用
-- `drawArea3DTile` 6次 
-- `drawBuildingsTile` 60次 
-- `drawTileBase3D` 5次
-```js
-只在绘制3D建筑即drawBuildingsTile时才进入断点:
-	在dy.prototype.setVertexAttribPointers打条件断点,即可命中调用`block 的gldraw函数`时的vertexAttribPointer得到取a_pos值方法:
-		this.attributes.length ===3 && this.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color' && fl.name === 'a_pos'
-		
-		发现都是: 
-		vertexAttribPointer(0/*着色器程序中的 attribute 变量的位置*/, 3/*size*/, 5126/*5126表示浮点数类型的数据*/, undefined/*不进行归一化*/, 28/*每个顶点数据在数组中占用28个字节*/, 0/*从缓冲区的第一个字节开始读取*/)
 
-e2.prototype.bind的fk.bind(fo)即dy.prototype.bind可获取到数组
-	i.bufferData(e, this.arrayBuffer, i.STATIC_DRAW);
-	fk.arrayBuffer就是数组
-
-
-dy的this.attributes属性是:
-[
-    {
-        "name": "a_pos",
-        "components": 3,
-        "offset": 0,
-        "type": "Float32"
-    },
-    {
-        "name": "a_normal",
-        "components": 3,
-        "offset": 12,
-        "type": "Float32"
-    },
-    {
-        "name": "a_color",
-        "components": 4,
-        "offset": 24,
-        "type": "Uint8",
-        "normalize": true
-    }
-]
-```
-
-#### 绘制block的shader:
+### 绘制block的shader(绘制3D建筑):
 > shader定义在mapgl的js(即VM1410,是_jsload函数插入的<script)
 ```js
 precision highp float; // 设定精度为highp
@@ -295,3 +255,32 @@ void main() {
     gl_FragColor = vec4(_.rgb, e);
 }
 ```
+
+### 1. 获取shader的a_pos属性的vertexAttribPointer
+```js
+只在绘制3D建筑即drawBuildingsTile时才进入断点:
+	在dy.prototype.setVertexAttribPointers打条件断点,即可命中调用`block 的gldraw函数`时的vertexAttribPointer得到取a_pos值方法:
+		this.attributes.length ===3 && this.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color' && fl.name === 'a_pos'
+		
+		发现都是: 
+		vertexAttribPointer(0/*着色器程序中的 attribute 变量的位置*/, 3/*size*/, 5126/*5126表示浮点数类型的数据*/, undefined/*不进行归一化*/, 28/*每个顶点数据在数组中占用28个字节*/, 0/*从缓冲区的第一个字节开始读取*/)
+
+dy的this.attributes属性是:
+[
+{"name": "a_pos",        "components": 3,"offset": 0,        "type": "Float32"    },
+{"name": "a_normal",        "components": 3,"offset": 12,        "type": "Float32"    },
+{"name": "a_color",        "components": 4,"offset": 24,        "type": "Uint8",     "normalize": true    }
+]
+```
+
+### 2. 解析shader的arrayBuffer的中的逐个a_pos位置数据
+#### block 的gldraw函数e7(i, fm, e, fl, fk)是谁调用
+- `drawArea3DTile` 6次 
+- `drawBuildingsTile` 60次 
+- `drawTileBase3D` 5次
+```js
+e2.prototype.bind的fk.bind(fo)即dy.prototype.bind可获取到数组
+	i.bufferData(e, this.arrayBuffer, i.STATIC_DRAW);
+	fk.arrayBuffer就是数组
+```
+### 3. 即可解析出数据
