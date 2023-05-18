@@ -269,9 +269,12 @@ void main() {
 			5126/*5126表示浮点数类型的数据*/, 
 			undefined/*不进行归一化*/, 
 			28/*每个顶点数据在数组中占用28个字节*/, 
+				//一个顶点有3个属性：位置、颜色、法向量，每个属性都是4个字节，那么stride就是3 x 4 = 12个字节
 			0/*从缓冲区的第一个字节开始读取*/
 		)
-
+		 [0, 3, 5126, undefined, 28, 0 ] //a_pos
+		 [1, 3, 5126, undefined, 28, 12] //a_normal
+		 [2, 4, 5121, true,      28, 24] //a_normal
 dy的this.attributes属性是:
 [
 {"name": "a_pos",        "components": 3,"offset": 0,        "type": "Float32"    },
