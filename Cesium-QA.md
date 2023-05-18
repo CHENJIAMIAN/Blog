@@ -105,7 +105,7 @@ tile.content.metadata = {
 _updateFrame分支2: webgl draw矢量瓦片到画布
 	fo.drawElements(fo.TRIANGLES, fm.element1.length, fo.UNSIGNED_SHORT, 0)
     i (VM1410:formatted:1337)  
-    （匿名） (VM1410:formatted:1513) | e7(i, fm, e, fl, fk) 是drawTileBase3D绘制快的gl draw函数
+    （匿名） (VM1410:formatted:1513) | e7(i, fm, e, fl, fk) 是drawTileBase3D绘制块block的gl draw函数
 	    //e7大概call了32次drawElements 3D建筑物就显示出来了
     drawTileLayer (VM1410:formatted:4371)
     drawBase | 'drawTileBase3D' (VM1410:formatted:4237)
@@ -177,4 +177,79 @@ i (VM1411:1)
 
 https://maponline2.bdimg.com/tile/?qt=vtile&x=3158&y=1180&z=14&styles=pl&udt=20200928&scaler=1&showtext=1
 https://maponline2.bdimg.com/pvd/?qt=vtile&param=xxx
+```
+#### 绘制block的shader:
+```js
+precision highp float; // 设定精度为highp
+
+attribute vec4 a_pos; // 定义顶点位置的attribute变量
+attribute vec4 a_normal; // 定义顶点法线的attribute变量
+attribute vec4 a_color; // 定义颜色的attribute变量
+
+uniform mat4 u_proj_matrix; // 投影矩阵
+uniform mat4 u_mv_matrix; // 变换矩阵
+uniform mat4 u_normal_matrix; // 法线变换矩阵
+uniform vec3 u_side_light_dir; // 侧面光源方向的uniform变量
+uniform bool u_is_normal; // 判断是否使用法线贴图的uniform变量
+
+varying vec4 _; // 传递到片元着色器中的颜色和透明度的变量
+varying float a; // 传递到片元着色器中的偏移量变量
+
+const vec3 b = vec3(0.06, 0.06, 0.06); // 光照常量项
+vec3 c = vec3(0.1, 0.1, 0.1); // 光照环境项
+
+void main() {
+    vec4 d = u_proj_matrix * u_mv_matrix * a_pos; // 计算投影后的坐标
+    gl_Position = d; // 将投影后的坐标赋值给内建变量gl_Position
+    a = -1. / 500. - a_pos.z / 100.; // 计算偏移量
+    gl_Position.z = gl_Position.z + a; // 将偏移量加到z坐标上，使得离视点越近的物体显示在更前面
+
+    if(!u_is_normal) { // 如果不使用法线贴图，则将光照环境项设置为0.2
+        c = vec3(0.2, 0.2, 0.2);
+    }
+
+    if(u_is_normal && a_normal == vec4(0., 0., 1., 1.)) { // 如果使用法线贴图且面朝向相同，则将传递到片元着色器中的颜色和透明度赋值为a_color
+        _ = a_color;
+    } else { // 否则，计算光照信息
+        vec3 e = a_color.rgb; // 获取顶点颜色
+        vec3 f = normalize(vec3(u_normal_matrix * a_normal)); // 获取法线方向，并标准化
+        vec4 g = u_mv_matrix * vec4(0, 1, 0, 0); // 获取上方向，并进行矩阵变换
+        vec3 h = normalize(g.xyz); // 标准化后的上方向
+        float i = max(0., dot(f, -h)); // 进行点积运算，并取最大值
+        vec4 j = u_mv_matrix * vec4(u_side_light_dir, 0); // 确定侧面光源方向，并进行矩阵变换
+        vec3 k = normalize(j.xyz); // 标准化后的侧面光源方向
+        float l = max(0., dot(f, -k)); // 进行点积运算，并取最大值
+
+        if(a_pos.z < 2.) { // 如果z坐标小于2，则计算一个额外的衰减因子m，并将其应用于光照强度中
+            float m = (2. - a_pos.z) / 5.;
+            l = l - m;
+        }
+
+        _ = vec4(e + e * c * l + e * b * i, a_color.a); // 根据各项因素，计算出传递到片元着色器中的颜色和透明度
+    }
+}
+
+precision highp float;
+
+varying vec4 _;
+varying float a;
+float b = 4000.0;
+float c = 500.0;
+void main() {
+    //定义浮点数类型的变量 "d" 并赋值为 gl_FragCoord.z / gl_FragCoord.w - a
+    float d = (gl_FragCoord.z / gl_FragCoord.w - a);
+    //定义浮点数类型的变量 "e" 并赋值为 _.a
+    float e = _.a;
+    //如果 d 大于 b 减去 c
+    if(d > b - c) {
+        //重新给 e 赋值为 e 乘以 (b-d) 除以 c
+        e = e * (b - d) / c;
+        //如果 e 小于等于 0，则不绘制该像素
+        if(e <= 0.) {
+            discard;
+        }
+    }
+    //设置像素颜色为 vec4(_.rgb, e)
+    gl_FragColor = vec4(_.rgb, e);
+}
 ```
