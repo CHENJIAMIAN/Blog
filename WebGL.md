@@ -340,7 +340,11 @@ gl.drawBuffers//指定要写入渲染缓冲区的 帧缓冲的颜色附件(颜�
 /最终步骤，在绘制之前，需要使用 gl.drawXXX 系列函数来指定要绘制的图形和绘制的方式，通知GPU执行着色器代码:/
 //drawArrays和drawElements只能使用被激活的数组们（enabled arrays）。
     gl.drawArrays//按照vertex data buffers按顺序创建对象。
-    gl.drawElements//使用IBO来处理vertex data buffers并创建对象,gl.drawElements(mode, count, type, offset);
+    gl.drawElements//使用IBO来处理vertex data buffers并创建对象,
+    
+	gl.drawElements(gl.TRIANGLES, 要绘制的顶点数, gl.UNSIGNED_SHORT, 0);
+		//gl.drawElements(mode, count, type, offset); 
+	     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, vertexIndexBuffer);//drawElements从这个buffer拿顶点索引
         //例如，给VBO顶点数组们分组编号为点1234，IBO声明以点3点1点4组成一个三角形 。 eg：Vertex array=[`0,0,  10,10,  20,0,  30,10]; Index array = [3,1,4,..其他三角形]
         //如果在创建图形时有大量重复的点，使用drawArrays是不明智的。重复的vertex信息会引发重复的vertex shader调用从而导致性能下降。
         //不同mode的演示：https://codepen.io/571574085/pen/wvxNvvq
