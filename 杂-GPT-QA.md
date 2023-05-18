@@ -39,3 +39,7 @@ Pro Engineer Wildfire和3ds Max的应用场景不同，Pro Engineer Wildfire主�
 
 ## Axure 怎么让容器滚动
 右键太长的容器，转换为动态面板，概要-动态面板的State1选中，样式-更改高度（限定死高度），样式-Scroll Vertical，就可以了。说到底就是限定动态面板的高度再打开它的滚动条，超出的部分就会自动显示滚动条。
+
+## dlswbr 可能和反爬虫有关
+DLSWBR的英文全称是"Dynamic Limiting Speed Web Behavior Recognition"。是“动态限速Web行为识别”。
+如: dlswbr.baidu.com
