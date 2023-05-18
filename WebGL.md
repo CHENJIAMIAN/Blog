@@ -418,3 +418,33 @@ gl.viewport//设置视口。定义了绘制在 canvas 上的图像的区域
 根据program获取shader源码
 gl.getShaderSource(gl.getAttachedShaders(program)[0])
 gl.getShaderSource(gl.getAttachedShaders(program)[1])
+#### 如何绑定多个bufferData
+```javascript
+// 创建顶点缓冲区对象
+var vertexBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+// 创建颜色缓冲区对象
+var colorBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, colors, gl.STATIC_DRAW);
+
+
+//在绘制图形时，需要分别绑定各自的缓冲区对象并设置到指定的 attribute 变量上：
+
+// 设置顶点坐标数据
+gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+gl.enableVertexAttribArray(vertexLoc);
+gl.vertexAttribPointer(vertexLoc, 3, gl.FLOAT, false, 0, 0);
+
+// 设置颜色数据
+gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+gl.enableVertexAttribArray(colorLoc);
+gl.vertexAttribPointer(colorLoc, 3, gl.FLOAT, false, 0, 0);
+
+// 绘制图形
+gl.drawArrays(gl.TRIANGLES, 0, numVertices);
+
+其中 `vertexLoc` 和 `colorLoc` 分别是顶点和颜色 attribute 变量的位置（通常使用 `gl.getAttribLocation()` 函数来获取），`numVertices` 表示顶点数。
+```
