@@ -179,6 +179,7 @@ https://maponline2.bdimg.com/tile/?qt=vtile&x=3158&y=1180&z=14&styles=pl&udt=202
 https://maponline2.bdimg.com/pvd/?qt=vtile&param=xxx
 ```
 #### 绘制block的shader:
+> shader定义在mapgl的js(即VM1410,是_jsload函数插入的<script)
 ```js
 precision highp float; // 设定精度为highp
 
