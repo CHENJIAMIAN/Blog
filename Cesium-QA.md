@@ -256,7 +256,7 @@ void main() {
     gl_FragColor = vec4(_.rgb, e);
 }
 ```
-### 1. 获取shader的a_pos属性的vertexAttribPointer
+### 1. 获取shader的a_pos属性(vertexAttribPointer得到取值规则)
 ```js
 只在绘制3D建筑即drawBuildingsTile时才进入断点:
 	在dy.prototype.setVertexAttribPointers打条件断点,即可命中调用`block 的gldraw函数`时的vertexAttribPointer得到取a_pos值方法:
@@ -290,7 +290,7 @@ dy的this.attributes属性是:
 {"name": "a_color",        "components": 4,"offset": 24,        "type": "Uint8",     "normalize": true    }
 ]
 ```
-### 2. 解析shader的arrayBuffer的中的逐个a_pos位置数据
+### 2. 解析shader的arrayBuffer的中根据drawElements定义的顺序的逐个解析顶点
 #### block 的gldraw函数e7(i, fm, e, fl, fk)是谁调用
 - `drawArea3DTile` 6次 
 - `drawBuildingsTile` 60次 
@@ -301,6 +301,7 @@ e7(i, fm, e, fl, fk)
 		fk.bind(fo)即dy.prototype.bind可获取到数组//日志断点: 'fk.bind',fk?.arrayBuffer //fk.arrayBuffer就是数组
 			i.bufferData(e, this.arrayBuffer, i.STATIC_DRAW);
 		fk.setVertexAttribPointers(fo, e);//条件断点: fk.attributes.length ===3 && fk.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color'
-	fn.drawElements(fn.TRIANGLES, e.element1.length, fn.UNSIGNED_SHORT, 0)//可
+	fn.drawElements(fn.TRIANGLES, e.element1.length, fn.UNSIGNED_SHORT, 0)//可获取到顶点元素的顺序
 ```
 ### 3. 即可解析出数据
+**太难了放弃了**, 走到获取到arrayBuffer了,也知道画顶点顺序了,也知道顶点的属性的解析规则了, 下一步就是根据这些去解析了
