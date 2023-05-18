@@ -190,7 +190,7 @@ https://maponline2.bdimg.com/pvd/?qt=vtile&param=xxx
 		发现都是: 
 		vertexAttribPointer(0/*着色器程序中的 attribute 变量的位置*/, 3/*size*/, 5126/*5126表示浮点数类型的数据*/, undefined/*不进行归一化*/, 28/*每个顶点数据在数组中占用28个字节*/, 0/*从缓冲区的第一个字节开始读取*/)
 
-
+dy.prototype.bind可获取到
 
 
 dy的this.attributes属性是:
