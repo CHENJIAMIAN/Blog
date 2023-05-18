@@ -259,6 +259,8 @@ void main() {
 ### 1. 获取shader的a_pos属性(vertexAttribPointer得到取值规则)
 ```js
 只在绘制3D建筑即drawBuildingsTile时才进入断点:
+	this.drawBuildingsTile(fj[0][fl], "building3d", false);
+	this.drawBuildingsTile(fj[0][fl], "building3dMesh", false)//自动跳过百度大厦...
 	在dy.prototype.setVertexAttribPointers打条件断点,即可命中调用`block 的gldraw函数`时的vertexAttribPointer得到取a_pos值方法:
 		this.attributes.length ===3 && this.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color' && fl.name === 'a_pos'
 		
@@ -302,6 +304,7 @@ e7(i, fm, e, fl, fk)
 			i.bufferData(e, this.arrayBuffer, i.STATIC_DRAW);
 		fk.setVertexAttribPointers(fo, e);//条件断点: fk.attributes.length ===3 && fk.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color'
 	fn.drawElements(fn.TRIANGLES, e.element1.length, fn.UNSIGNED_SHORT, 0)//可获取到顶点元素的顺序
+	'fm.renderData.building3d就是数组'
 ```
 ### 3. 即可解析出数据
 **太难了放弃了**, 走到获取到arrayBuffer了,也知道画顶点顺序了,也知道顶点的属性的解析规则了, 下一步就是根据这些去解析了
