@@ -274,9 +274,12 @@ void main() {
 				a_color (RGBA4个分量) * (1个unsigned byte 占用1字节) = 4字节
 			0/*从缓冲区的第一个字节开始读取*/
 		)
-		 [0, 3, 5126, undefined, 28, 0 ] //a_pos
-		 [1, 3, 5126, undefined, 28, 12] //a_normal
-		 [2, 4, 5121, true,      28, 24] //a_color 5121代表unsigned byte即0-255 true表示要归一化
+		//从gl.ARRAY_BUFFER缓冲区按参数指定的规则拿顶点的数据到a_pos
+		 vertexAttribPointer(0, 3, 5126, undefined, 28, 0 )//
+		 //从gl.ARRAY_BUFFER缓冲区按参数指定的拿顶点的数据到a_normal
+		 vertexAttribPointer(1, 3, 5126, undefined, 28, 12)//
+		 //从gl.ARRAY_BUFFER缓冲区按参数指定的拿顶点的数据到a_color
+		 vertexAttribPointer(2, 4, 5121, true,      28, 24)//5121代表unsigned byte即0-255 true表示要归一化
 		取值示例:
 		三角形的第一个顶点位置为(0.0, 0.5, 0.0)，法线为(0.0, 0.0, 1.0)，颜色为(1.0, 0.0, 0.0, 1.0)
 	
@@ -293,9 +296,11 @@ dy的this.attributes属性是:
 - `drawBuildingsTile` 60次 
 - `drawTileBase3D` 5次
 ```js
-e2.prototype.bind的
-	fk.bind(fo)即dy.prototype.bind可获取到数组//日志断点: 'fk.bind',fk?.arrayBuffer //fk.arrayBuffer就是数组
-		i.bufferData(e, this.arrayBuffer, i.STATIC_DRAW);
-	fk.setVertexAttribPointers(fo, e);//条件断点: fk.attributes.length ===3 && fk.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color'
+e7(i, fm, e, fl, fk)
+	e.vao1.bind(fn, fj, e.vertex, e.element1);即e2.prototype.bind的
+		fk.bind(fo)即dy.prototype.bind可获取到数组//日志断点: 'fk.bind',fk?.arrayBuffer //fk.arrayBuffer就是数组
+			i.bufferData(e, this.arrayBuffer, i.STATIC_DRAW);
+		fk.setVertexAttribPointers(fo, e);//条件断点: fk.attributes.length ===3 && fk.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color'
+	fn.drawElements(fn.TRIANGLES, e.element1.length, fn.UNSIGNED_SHORT, 0)//可
 ```
 ### 3. 即可解析出数据
