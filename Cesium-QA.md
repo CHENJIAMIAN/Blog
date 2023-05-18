@@ -94,7 +94,7 @@ tile.content.metadata = {
 
 上述代码中，我们首先从瓦片数据中提取经纬度坐标信息，然后通过这些信息创建一个矩形范围，最后将矩形范围转换为最小包围盒，即"box"类型表示的范围信息。最后，将这个信息写入3DTiles模型瓦片的metadata中，以供渲染引擎使用。
 
-## 百度地图破解
+## 百度地图破解获取3D建筑物
 [解析百度地图api 返回数据_新版百度地图建筑数据含高度解析_weixin_39747807的博客-CSDN博客](https://blog.csdn.net/weixin_39747807/article/details/110460861)
 ```js
 负载均衡:
@@ -107,7 +107,7 @@ _updateFrame分支2: webgl draw矢量瓦片到画布
     i (VM1410:formatted:1337) 
     （匿名） (VM1410:formatted:1513)
     drawTileLayer (VM1410:formatted:4371)
-    drawBase (VM1410:formatted:4237)
+    drawBase | 'drawTileBase3D' (VM1410:formatted:4237)
     draw (VM1410:formatted:3150)
 _updateFrame分支1:接收矢量瓦片数据
 	{
