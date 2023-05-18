@@ -234,7 +234,7 @@ gl.bindBuffer 是 WebGL 中的一个方法，用于将缓冲区绑定到 WebGL �
     
 设置顶点//配置在绘制函数gl.drawArrays()时候，如何提取数据
     vertexAttribIPointer 函数用于设置'整数型'的顶点属性。它接受以下参数：
-        index：要设置的顶点属性的索引。
+        index：着色器程序中的 attribute 变量的位置,通过 gl.getAttribLocation(shaderProgram, "aVertexPosition")获得
         size：每个顶点属性的分量数，必须为 1、2、3 或 4。
         type：数据类型，可以是 gl.BYTE、gl.UNSIGNED_BYTE、gl.SHORT、gl.UNSIGNED_SHORT 或 gl.INT。
         normalized：布尔值，指定当被访问时，固定点数据值是否应当被归一化。            
