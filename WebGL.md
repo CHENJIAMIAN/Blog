@@ -413,3 +413,8 @@ gl.uniformBlockBinding//绑定统一块到一个绑定点。
 gl.useProgram//使用 WebGL 程序对象。
 gl.viewport//设置视口。定义了绘制在 canvas 上的图像的区域
 ```
+
+## 实践
+根据program获取shader源码
+gl.getShaderSource(gl.getAttachedShaders(program)[0])
+gl.getShaderSource(gl.getAttachedShaders(program)[1])
