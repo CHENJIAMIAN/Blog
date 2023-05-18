@@ -97,6 +97,9 @@ tile.content.metadata = {
 ## 百度地图破解
 [解析百度地图api 返回数据_新版百度地图建筑数据含高度解析_weixin_39747807的博客-CSDN博客](https://blog.csdn.net/weixin_39747807/article/details/110460861)
 ```js
+负载均衡:
+	webmap0.bdimg.com === webmap1.bdimg.com ==== map.baidu.com 
+
 我们还可以直接从worker返回消息处入手（拦截，伪造https证书替换js），将解析后的顶点缓冲和索引进行解析，直接获得建筑的平面数据和高度。把这些数据保存下来，并通过后期的处理，即可以获得比较完整的百度地图建筑轮廓数据。
 {
     "action": "loadTileData",
