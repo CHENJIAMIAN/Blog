@@ -179,7 +179,9 @@ https://maponline2.bdimg.com/tile/?qt=vtile&x=3158&y=1180&z=14&styles=pl&udt=202
 https://maponline2.bdimg.com/pvd/?qt=vtile&param=xxx
 ```
 #### block 的gldraw函数是谁调用
-drawArea3DTile6次 drawBuildingsTile60次 drawTileBase3D5次
+- drawArea3DTile 6次 
+- drawBuildingsTile 60次 
+- drawTileBase3D 5次
 #### 绘制block的shader:
 > shader定义在mapgl的js(即VM1410,是_jsload函数插入的<script)
 ```js
