@@ -96,6 +96,7 @@ tile.content.metadata = {
 
 ## 百度地图破解获取3D建筑物
 [解析百度地图api 返回数据_新版百度地图建筑数据含高度解析_weixin_39747807的博客-CSDN博客](https://blog.csdn.net/weixin_39747807/article/details/110460861)
+### 堆栈追踪
 ```js
 负载均衡:
 	webmap0.bdimg.com === webmap1.bdimg.com ==== map.baidu.com 
@@ -255,15 +256,21 @@ void main() {
     gl_FragColor = vec4(_.rgb, e);
 }
 ```
-
 ### 1. 获取shader的a_pos属性的vertexAttribPointer
 ```js
 只在绘制3D建筑即drawBuildingsTile时才进入断点:
 	在dy.prototype.setVertexAttribPointers打条件断点,即可命中调用`block 的gldraw函数`时的vertexAttribPointer得到取a_pos值方法:
 		this.attributes.length ===3 && this.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color' && fl.name === 'a_pos'
 		
-		发现都是: 
-		vertexAttribPointer(0/*着色器程序中的 attribute 变量的位置*/, 3/*size*/, 5126/*5126表示浮点数类型的数据*/, undefined/*不进行归一化*/, 28/*每个顶点数据在数组中占用28个字节*/, 0/*从缓冲区的第一个字节开始读取*/)
+	发现都是: 
+		vertexAttribPointer(
+			0/*着色器程序中的 attribute 变量的位置*/, 
+			3/*size*/, 
+			5126/*5126表示浮点数类型的数据*/, 
+			undefined/*不进行归一化*/, 
+			28/*每个顶点数据在数组中占用28个字节*/, 
+			0/*从缓冲区的第一个字节开始读取*/
+		)
 
 dy的this.attributes属性是:
 [
@@ -272,15 +279,15 @@ dy的this.attributes属性是:
 {"name": "a_color",        "components": 4,"offset": 24,        "type": "Uint8",     "normalize": true    }
 ]
 ```
-
 ### 2. 解析shader的arrayBuffer的中的逐个a_pos位置数据
 #### block 的gldraw函数e7(i, fm, e, fl, fk)是谁调用
 - `drawArea3DTile` 6次 
 - `drawBuildingsTile` 60次 
 - `drawTileBase3D` 5次
 ```js
-e2.prototype.bind的fk.bind(fo)即dy.prototype.bind可获取到数组
-	i.bufferData(e, this.arrayBuffer, i.STATIC_DRAW);
-	fk.arrayBuffer就是数组
+e2.prototype.bind的
+	fk.bind(fo)即dy.prototype.bind可获取到数组//日志断点: 'fk.bind',fk?.arrayBuffer //fk.arrayBuffer就是数组
+		i.bufferData(e, this.arrayBuffer, i.STATIC_DRAW);
+	fk.setVertexAttribPointers(fo, e);//条件断点: fk.attributes.length ===3 && fk.attributes.map(i=>i.name).toString() === 'a_pos,a_normal,a_color'
 ```
 ### 3. 即可解析出数据
