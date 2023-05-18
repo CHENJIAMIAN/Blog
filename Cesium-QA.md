@@ -106,6 +106,7 @@ _updateFrame分支2: webgl draw矢量瓦片到画布
 	fo.drawElements(fo.TRIANGLES, fm.element1.length, fo.UNSIGNED_SHORT, 0)
     i (VM1410:formatted:1337)  
     （匿名） (VM1410:formatted:1513) | e7(i, fm, e, fl, fk) 是drawTileBase3D绘制快的gl draw函数
+	    //e7大概call了32次drawElements 3D建筑物就显示出来了
     drawTileLayer (VM1410:formatted:4371)
     drawBase | 'drawTileBase3D' (VM1410:formatted:4237)
     draw (VM1410:formatted:3150) //fj.renderData.base3d有东西时drawTileBase3D
