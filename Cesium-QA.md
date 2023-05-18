@@ -270,13 +270,16 @@ void main() {
 			undefined/*不进行归一化*/, 
 			28/*每个顶点数据在数组中占用28个字节*/
 				a_pos (xyz3个值)*(1float4字节) =  12字节
-				a_normal
-				a_color
+				a_normal (顶点法线的xyz3个分量)*(1float4字节)  =  12字节
+				a_color (RGBA4个分量) * (1个unsigned byte 占用1字节) = 4字节
 			0/*从缓冲区的第一个字节开始读取*/
 		)
 		 [0, 3, 5126, undefined, 28, 0 ] //a_pos
 		 [1, 3, 5126, undefined, 28, 12] //a_normal
-		 [2, 4, 5121, true,      28, 24] //a_color 5121代表整数值0-255 true表示要归一化
+		 [2, 4, 5121, true,      28, 24] //a_color 5121代表unsigned byte即0-255 true表示要归一化
+		取值示例:
+		三角形的第一个顶点位置为(0.0, 0.5, 0.0)，法线为(0.0, 0.0, 1.0)，颜色为(1.0, 0.0, 0.0, 1.0)
+	
 dy的this.attributes属性是:
 [
 {"name": "a_pos",        "components": 3,"offset": 0,        "type": "Float32"    },
