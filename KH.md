@@ -21,18 +21,19 @@
     *   PLM: Product Lifecycle Management, 产品生命周期管理
     *   IPMT: Integrated Project Management Team，项目管理团队，由建设方、投资方、项目管理方和其他参与各方代表组成，负责协调和监督项目的实施
         *   PDT: Product Development Team, 产品开发团队
-*   CDCP: Concept Development and Control Plan, 概念开发和控制计划
-*   PDCP: Product Development and Control Plan, 产品开发和控制计划
-*   ADCP: Advanced Development and Control Plan, 先进开发和控制计划
 *   GA: General Availability，意思是产品向公众发布
 *   LDCP: Launch Development and Control Plan, 发布开发与控制计划
+*
 *   TR: Technical Review, 技术评审
-    *   TR1：产品需求和概念评审
-    *   TR2：需求分解和规格评审&#x20;
-    *   TR3：总体方案评审
-    *   TR4：模块/系统评审&#x20;
-    *   TR5：样机评审&#x20;
-    *   TR6：小批量评审
+    *   TR1：概念阶段
+    *   CDCP: 概念决策评审
+    *   TR2：计划阶段
+    *   TR3：评审概要设计
+    *   PCDP: 计划决策评审
+    *   TR4：样机设计
+    *   TR5：性能样机评审
+    *   TR6：生产样机评审
+    *   ADCP: 可获得性评审
 *   LPDT是领导型产品开发团队，由各个PDT的经理组成，负责协调各个PDT之间的资源和沟通；
 *   FPDT是财务型产品开发团队，由PDT的财务代表组成，负责管理项目的成本和收益；
 *   RDPDT是研发型产品开发团队，由PDT的开发代表组成，负责实施技术方案和模块设计；
@@ -71,11 +72,13 @@
 
 
 ## CDP(Charter契约/任务书 开发流程)
-
-1. CDT: 任务书开发团队
-2. IPMT: 集成 组合(Protfolio) 管理团队
-3. PMT: 组合(Protfolio) 管理团队
-4. PL-PMT：是Product Line（产品线）
-3.  CDT：Cross-Functional Development Team（跨职能开发团队）的缩写，1可能是该团队的编号或者名称。
-	1. LCDT: Chater开发团队领导
 #### IPMT->PL-PMT1->CDT1从上到下
+1. IPMT: 集成 组合(Protfolio) 管理团队
+	1. PMT: 组合(Protfolio) 管理团队
+2. PL-PMT：是Product Line（产品线）
+	1. 
+3. CDT: 任务书开发团队
+	1. LCDT: Chater开发团队领导
+	2. MK TCD: 市场代表
+	3. P TCD: 产品代表
+	4. T TCD: 开发代表
