@@ -75,6 +75,7 @@
 1. CDT: 任务书开发团队
 2. IPMT: 集成 组合(Protfolio) 管理团队
 3. PMT: 组合(Protfolio) 管理团队
-4. PL-PMT1：PL可能是Product Line（产品线）的缩写，PMT可能是Project Management Team（项目管理团队）的缩写，1可能是该团队的编号或者名称。
-3.  CDT1：Cross-Functional Development Team（跨职能开发团队）的缩写，1可能是该团队的编号或者名称。
+4. PL-PMT：是Product Line（产品线）
+3.  CDT：Cross-Functional Development Team（跨职能开发团队）的缩写，1可能是该团队的编号或者名称。
+	1. LCDT: Chater开发团队领导
 #### IPMT->PL-PMT1->CDT1从上到下
