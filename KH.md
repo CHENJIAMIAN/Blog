@@ -73,12 +73,13 @@
 
 ## CDP(Charter契约/任务书 开发流程)
 #### IPMT->PL-PMT1->CDT1从上到下
-1. IPMT: 集成 组合(Protfolio) 管理团队
-	1. PMT: 组合(Protfolio) 管理团队
-2. PL-PMT：是Product Line（产品线）
-	1. 
-3. CDT: 任务书开发团队
-	1. LCDT: Chater开发团队领导
-	2. MK TCD: 市场代表
-	3. P TCD: 产品代表
-	4. T TCD: 开发代表
+- IPMT: 集成 组合(Protfolio) 管理团队
+	- PL-PMT：是Product Line（产品线）
+		1. CDT: 任务书开发团队
+		2. PDT: 产品开发团队
+		3. LMT: 生命周期管理团队
+
+1. LCDT: Chater开发团队领导
+2. MK TCD: 市场代表
+3. P TCD: 产品代表
+4. T TCD: 开发代表
