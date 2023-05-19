@@ -307,7 +307,7 @@ SuperMap iClient3D for WebGL这样一款开发包是基于Cesium这样的开源�
 	- [JS格式化_JS代码格式化-JSON在线工具 (json-online.com)](https://json-online.com/code/js1.html)可以
 
 ```js
-流动管线line.textureUVSpeed = line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
+line.textureUVSpeed = line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
 	执行源码:
 	g.uTexUVOffset (Cesium.js:152356)
 	Va._setUniforms (Cesium.js:120001)
