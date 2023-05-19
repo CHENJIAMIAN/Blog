@@ -66,8 +66,15 @@
 
 这就是一个简单的IPD产品开发流程的例子。
 
-## IPMT->PL-PMT1->CDT1从上到下是什么
-根据您提供的信息，可以猜测这是一个层级结构，从上到下依次是：
-1.  IPMT：可能是指某个项目管理团队，或者某个管理层级别。    
-2.  PL-PMT1：可能是指IPMT下的某个子团队或者某个项目领导团队，其中PL可能是Product Line（产品线）的缩写，PMT可能是Project Management Team（项目管理团队）的缩写，1可能是该团队的编号或者名称。
-3.  CDT1：可能是指PL-PMT1下的某个子团队或者某个具体的项目团队，其中CDT可能是Cross-Functional Development Team（跨职能开发团队）的缩写，1可能是该团队的编号或者名称。
+
+
+
+
+## CDP(Charter契约/任务书 开发流程)
+
+1. CDT: 任务书开发团队
+2. IPMT: 集成 组合(Protfolio) 管理团队
+3. PMT: 组合(Protfolio) 管理团队
+4. PL-PMT1：PL可能是Product Line（产品线）的缩写，PMT可能是Project Management Team（项目管理团队）的缩写，1可能是该团队的编号或者名称。
+3.  CDT1：Cross-Functional Development Team（跨职能开发团队）的缩写，1可能是该团队的编号或者名称。
+#### IPMT->PL-PMT1->CDT1从上到下
