@@ -23,6 +23,9 @@ blender
     STEP (.STP)//程和国防工业使用 STEP。它是一种中性的 3D 文件格式。这种文件格式可以存储所有几何形状，包括拓扑和几何公差、材料类型、纹理和其他复杂的产品数据。
    (.dae)COLLADA//Khronos 集团创建, 另一种中性 3D 文件格式。此文件格式存储几何、外观、场景和动画。它也是少数支持物理和运动学的格式之一。虽然曾经被大量使用，COLLADA由于未能跟上新技术，随着时间的推移变得越来越不受欢迎。Khronos Group 选择不更新此格式，而是创建了新格式 GLTF。
 Unity是用3D模型，3dmax之类是生成模型
+```
+
+```
 模型加载(重点)//常用的3d格式
     问题: 导入到场景内的模型无法查看，而且也没有报错?
         尝试放大一千倍或者缩小一千倍来查看效果, 将模型居中到相机照射的焦点位置查看
@@ -45,22 +48,6 @@ Unity是用3D模型，3dmax之类是生成模型
     4.FBX模型导入        
     5.(.dae)COLLADA模型导入      
         
-    
-CAD//像SU、MS、ArchiCAD、Inventor、Allplan、 VevtorWorks、Civil 3D等软件
-    BIM//将以前的CAD图纸转化为立体模型，真到每个窗户都是真实具体尺寸的。具有小场景精细化的业务
-        Revit主要用于进行建筑信息建模
-        
-1、立方体模型数据：
-通过建模软件快速生成的，然后导入到上述一些平台中，该类数据比较适合宏观类的业务，比如导航什么的，看看POI点分布什么的看看城市大体情况。
-2、卡通模型数据：
-通过建模软件完成建模，导入到上述一些平台中，通常是智慧旅游一些表现力丰富的业务
-3、人工建模数据：
-和上述相同，只是谝写实。现在这类型数据可结合BIM数据（BIM不一定能要的来）制作。
-4、BIM模型数据：
-真正的建筑可视化模型，将以前的CAD图纸转化为立体模型，真到每个窗户都是真实具体尺寸的。具有小场景精细化的业务。
-5、倾斜模型数据：
-通过无人机航飞处理生成模型，具有真实建筑属性：长宽高，地理位置等等。这类数据可用于空间分析业务。
-所以说，建筑数据可视化还是得根据数据用途，业务场景来设计，而非单纯的使用白模。
 ```
 ## 总结Draco的压缩原理
 >Draco支持多种3D图形数据格式，包括点云、三角网络格式和多边形网络格式。
@@ -97,7 +84,7 @@ CAD//像SU、MS、ArchiCAD、Inventor、Allplan、 VevtorWorks、Civil 3D等软�
 
 ## 类图
 ![](images/AECA9D1EA33647C99D4A25A725166B5B.png)
-## three.js
+## Web3D
 ```javascript
 HT for Web 提供了一套独特的 WebGL 层抽象，将 Model–View–Presenter (MVP) 的设计模型延伸应用到了 3D 图形领域
     //和类似的JavaScript库（如three.js）一样，包含ht的js库文件，即可使用ht js API开发。
@@ -109,20 +96,18 @@ HT for Web 提供了一套独特的 WebGL 层抽象，将 Model–View–Present
     //我们建议客户提供卫星图像、设计草图、物业鸟瞰图、CAD图纸、现场照片等给设计师进行建模。
     //以前只能靠 Unity3D/Unreal 游戏引擎实现的 3D/VR 项目，现在慢慢能让 Web 开发人员驾驭，更好的与其他 Web 业务系统融合，
     //毕竟用 Unity3D/Unreal 游戏引擎开发整个业务系统是比较反人类，相信 Web 承担越来越重度的渲染呈现应用是不可逆的趋势
-    HDRI文件是一种文件，*.hdr或*.tif格式,记录了图片环境中的照明信息，因此我们可以使用这种图象来“照亮”场景
-        可以用作scene的背景,scene.background = new RGBELoader().setPath( 'textures/' ).load( 'royal_esplanade_1k.hdr', ()=>{
-                                                hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;} );
-    
-素材:sketchfab.com
-
-
+```
+## three.js
+```js
 Three.js中级封装做3D, 万物皆三角形
     //Babylon.js高级封装做游戏
     相机,场景,网格都是THREE.Object3D的实例,有位置,有大小
     坐标系: 世界空间和局部空间
     
 最小例子：https://github1s.com/johnson2heng/GitChat-Three.js/blob/master/01%E7%AC%AC%E4%B8%80%E8%8A%82%20helloWorld/index.html#L50
-
+```
+## 调试
+```js
 调试
     "three": "^0.115.0"//该版本支持vscode快速跳转定义, 最新版不支持..,换版本可能有兼容问题!!
     显示帧数
@@ -148,14 +133,18 @@ Three.js中级封装做3D, 万物皆三角形
         11、PointLightHelper 点光源菱形网格辅助对象        12、SpotLightHelper 聚光灯锥形辅助对象
         13、RectAreaLightHelper 矩形光辅助对象        14、Skeleton<x>helper 骨骼辅助对象
         15、VertexNormalsHelper 顶点的法线辅助对象        16、VertexTangentsHelper 顶点切向量辅助对象  
-
+```
+## 渲染器
+```js
 渲染器
     const renderer = new THREE.WebGLRenderer(); 
     //如何用到glsl们?     WebGLRenderer-> initGLContext-> new WebGLPrograms -> ShaderChunk ->./ShaderLib/**.glsl.js
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
     动画循环调用renderer.render(scene, camera);
-    
+```
+## 曲线
+```js
 曲线
     THREE.LineCurve3() - 表示由两个3D点定义的线段。在路径动画（如先前示例中看到的盘旋）和粒子系统中常常使用。
     THREE.QuadraticBezierCurve3() - 也称为单曲线轨迹，它由三个3D点（首位点以及一个控制点）构成，平滑地将起始点移动到结束点。 它们可以用于多用场景中，例如在动画时平滑地过渡模型位置。
@@ -164,7 +153,9 @@ Three.js中级封装做3D, 万物皆三角形
     THREE.EllipseCurve() - 椭圆曲线由中心点、半径、起始角度和弧长角度定义。 它们比其他路径类型更受限制，但如果需要按预期方式围绕中心点旋转/移动物体，则非常有用。
     THREE.ArcCurve() - 圆弧曲线表示圆形线段。其由圆心、半径、起始角度和弧度价值组成。这些曲线可以用于创建自定义3D几何体或建筑物，其中一个或多个曲线合并成一个形状。
     THREE.CatmullRomCurve3() - 经典样条曲线类型。可以连接任意数量的点，产生平滑、流畅的路径。它们经常用于动画和交互式可视化中。经常用来定义相机运动路径或者某些特效涉及到物体移动的路径
-    
+ ```
+## 相机/控制器
+```  js 
 相机/控制器
     target/lookAt/上下左右近远/updateProjectionMatrix()更新相机/fov垂直视野角度/aspect宽高比
         camera.target = mesh.position;    //或者 camera.lookAt(mesh.position);
@@ -187,7 +178,9 @@ Three.js中级封装做3D, 万物皆三角形
         PointerLockControls 鼠标锁定相机控制器
         TransformControls 控制模型位置，缩放，旋转的控制器
         VRControls 实现VR双屏相机控制器 
-        
+```
+## Layer/scene/Object
+```js
 Layer
     配合camera.layers.set(0);分组渲染(一组用composer渲染,一组正常渲染)或分组隐藏, '默认的图层都是0和相机对象一样，都会被渲染到画布上，如果把其中一个网格模型的图层值设置为非0，比如3，因为和相机对象的图层0不一样，就不会被渲染出来。'
     layers.set() //删除图层对象已有的所有对应关系，增加与参数指定的图层的对应关系。.set()方法的参数可以理解为二进制中右侧1向左平移的位数，得到的值赋值给图层对象的.mask属性
@@ -203,7 +196,9 @@ Layer
     2.1.scene.getObjectByName ( "左腿" );
     2.2.scene.traverse(function(obj) {  if (obj.type === "Group") console.log(obj.name); 
     
-      
+```
+## 材质
+```js
 材质(Material):
     color/map纹理/normalMap法线贴图是一种模拟凹凸处光照效果的技术.是凸凹贴图的一种实现/自发光属性emissive/高光颜色属性specular
     /粗糙度属性roughness/depthTest'被挡住还能看到'
@@ -224,7 +219,6 @@ Layer
         LineDashedMaterial({color:0xff0000})//虚线 ,需要重新计算位置才能显示出虚线line.computeLineDistances()
     
 
-
 基本属性和方法
     needsUpdate//如果修改了Material内的内容，需要将此属性设置为true，然后Three.js会在下一帧里面将修改内容同步到WebGL的显存内
     map//此属性可以配置当前材质的纹理贴图，是一个THREE.Texture对象, material.map = texture
@@ -236,11 +230,25 @@ Layer
         //UV坐标将被用于纹理映射
     颜色:   
         var color = new THREE.Color(1, 0, 0 );//"rgb(255, 0, 0)" 0xff0000 "#ff0000"  "rgb(100%, 0%, 0%)"       'skyblue'    "hsl(0, 100%, 50%)"    
- 
-
+```
+## scene的背景/.hdr文件
+```js
+.hdr文件
+    HDRI文件是一种文件，*.hdr或*.tif格式,记录了图片环境中的照明信息，因此我们可以使用这种图象来“照亮”场景
+        可以用作scene的背景,
+        scene.background = new RGBELoader()
+	        .setPath( 'textures/' )
+	        .load( 'royal_esplanade_1k.hdr', 
+			        ()=>{hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;} 
+				 ); 
+```
+## 精灵Sprite/粒子points
+```
 精灵Sprite //类似cesium的广告牌
 粒子points //和精灵的效果是一样的，粒子的作用就是为解决很多精灵而出现的，我们可以使用粒子去模型数量很多的效果，比如下雨，下雪等
-
+```
+## BufferGeometry(高性能)和Geometry(低性能)
+```js
 BufferGeometry(高性能)和Geometry(低性能)可通过自己的fromXX方法互转//BufferGeometry存储的都是一些原始的数据，性能比Geometry的性能高，很适合存储一些放入场景内不需要再额外操作的模型
     BoxBufferGeometry 正方体
     CylinderBufferGeometry 圆柱
@@ -255,8 +263,10 @@ Geometry和BufferGeomety内置了一些常用的方法:
     center()// 此方法为居中方法，可以根据边界框居中几何图形
     computeBoundingBox() // 此方法可以可以计算几何的边界框，方法调用后，会更新Geometry.boundingBox属性，我们可以通过Geometry.boundingBox属性获取到一个包围几何体的立方体的每个轴向的最大值和最小值
     dispose()// 将几何体从内存中删除，这个方法必须记得使用。如果频繁的删除模型，一定要记得将几何体从内存中删除掉。
-    
-## 光源
+```
+## 光源/阴影
+```js
+光源
     intensity/color/position/target朝向位置/shadow/castShadow是否接收投影
     DirectionalLight=> 阳光
         new THREE.DirectionalLight( 0xffffff, 0.5 ); //=> 阳光
@@ -274,7 +284,9 @@ Geometry和BufferGeomety内置了一些常用的方法:
         1.renderer.shadowMap.enabled = true; '默认情况下，阴影是禁用的'
         2.产生阴影的物体.castShadow = true;
         3.接收阴影的物体物体.recieveShadow=true; //接收阴影 8:47-12:47
-    
+```
+## 动画
+``` js
 动画
     function animate() {
         requestAnimationFrame(animate); //循环调用函数
@@ -329,7 +341,9 @@ Geometry和BufferGeomety内置了一些常用的方法:
             if (mixer) {mixer.update(time);}////由于模型导入是异步的，所以我们再模型没有加载完之前是获取不到混合器的
             renderer.render(scene, camera);
         }
-    
+```
+## 场景交互
+```js
 场景交互
     new Raycaster( origin, direction, near, far );//光线投射主要用于物体选择、碰撞检测以及图像成像等方面
         origin - 光线投射的原点矢量。
@@ -361,7 +375,9 @@ Geometry和BufferGeomety内置了一些常用的方法:
     raycaster.setFromCamera( mouse, camera );//coords,camera     
     var intersects = raycaster.intersectObjects( scene.children );//if(intersects.length > 0)    
     // 这里在提醒一句，很多小伙伴有时候发现点击了以后射线无法获取到相交的物体，那是因为为了节约性能，我们需要设置第二个参数为true，让Three.js遍历模型所有的子类去判断是否相交。    
-
+```
+## 实现一个简单的框选案例
+```js
 实现一个简单的框选案例
     //在鼠标按下时，记录鼠标按下时的场景坐标：
         //获取到显示区域距离窗口左上角的偏移量
@@ -406,7 +422,9 @@ Geometry和BufferGeomety内置了一些常用的方法:
             //将所有的模型修改为当前默认的材质
             for (let i = 0; i < modelsList.length; i++) {modelsList[i].component.material = modelsList[i].normalMaterial;}
         }
-
+```
+## EffectComposer效果合成器
+```js
 EffectComposer（效果合成器）post-processing//应用一个或多个图形效果，例如景深、发光、胶片微粒或是各种类型的抗锯齿
     //https://r105.threejsfundamentals.org/threejs/lessons/resources/images/threejs-postprocessing.svg
     EffectComposer(renderer).addPass( 
@@ -445,7 +463,9 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
     const line = new THREE.LineSegments(edges, lineBasematerial);
 
 
-
+```
+## 性能
+```js
 性能:
     material/geometry.dispose(); //删除材质/几何体
     使用merge方法合并不需要单独操作的模型

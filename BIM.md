@@ -1,3 +1,11 @@
+## 概念
+
+```js
+CAD//像SU、MS、ArchiCAD、Inventor、Allplan、 VevtorWorks、Civil 3D等软件
+    BIM//将以前的CAD图纸转化为立体模型，真到每个窗户都是真实具体尺寸的。具有小场景精细化的业务
+        Revit主要用于进行建筑信息建模
+```
+
 ## Revit
 ```javascript
 Revit2018比较好  
