@@ -690,8 +690,8 @@ const AutomaticUniforms = {
    * uniform mat4 czm_modelViewProjectionRelativeToEye;
    *
    * //例子
-   * attribute vec3 位置高;
-   * attribute vec3 位置低;
+   * attribute vec3 positionHigh;
+   * attribute vec3 positionLow;
    *
    * void main()
    * {
@@ -719,10 +719,10 @@ const AutomaticUniforms = {
    * uniform mat4 czm_modelViewInfiniteProjection;
    *
    * //例子
-   * vec4 gl_Position = czm_modelViewInfiniteProjection *模型位置;
+   * vec4 gl_Position = czm_modelViewInfiniteProjection * modelPosition;
    *
    * //上面等价于，但比以下更有效：
-   * gl_Position = czm_infiniteProjection *czm_view *czm_model *modelPosition;
+   * gl_Position = czm_infiniteProjection *czm_view *czm_model * modelPosition;
    *
    * @see UniformState#modelViewInfiniteProjection
    * @see czm_model
