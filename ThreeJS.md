@@ -519,3 +519,5 @@ src\renderers\WebGLRenderer.js
 11. Film：胶片效果，用于模拟老式胶片的颜色和质感。
 12. Glow：发光效果，用于模拟物体周围的光晕效果。
 13. Lensflare：镜头光晕，用于模拟镜头成像时光晕效果。
+
+tie
