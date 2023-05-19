@@ -297,3 +297,20 @@ e7(i, fm, e, fl, fk)
 1. F12搜索`clearMemoryImmediately`得到`debugger:///VM86`里源码(**是16进制混淆后的Cesium.js执行eval生成的**)
 2. 格式化是个难题, devtool格式化没反应, oschina的js格式化网址格式化完正则格式化出语法错误了,用prettier的npx工具也不行,
 	- [JS格式化_JS代码格式化-JSON在线工具 (json-online.com)](https://json-online.com/code/js1.html)可以
+
+```js
+流动管线line.textureUVSpeed = line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
+	执行源码:
+	g.uTexUVOffset (Cesium.js:152356)
+	Va._setUniforms (Cesium.js:120001)
+	xg.draw (Cesium.js:195038)
+	Na.execute (Cesium.js:118957)
+	hg (Cesium.js:61416)
+	K1 (Cesium.js:61648)
+	Kw (Cesium.js:61977)
+	pq (Cesium.js:61891)
+	$Ra (Cesium.js:62377)
+	Lw (Cesium.js:62403)
+	uc.render (Cesium.js:224741)
+	Qw.render (Cesium.js:260557)
+```
