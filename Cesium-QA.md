@@ -293,8 +293,15 @@ e7(i, fm, e, fl, fk)
 而且解析出来的坐标也不知道怎么转为经纬度和高度
 
 ## 超图源码
-> 
+SuperMap iClient3D for WebGL这样一款开发包是基于Cesium这样的开源的框架来构建的，而Cesium版本迭代更新的非常快，所以大家在做Web端的三维应用开发时，建议下载最新SuperMap iClient3D for WebGL包
+
+对比:
+- [SuperMap iClient3D for WebGL - 三维客户端开发平台 - SuperMap|超图软件](https://www.supermap.com/zh-cn/a/product/11i-iclient-webgl-2022.html)
+	- 精简了Cesium包的图片/类/Widgets等资源, 增加更强的粒子系统等
+- [SuperMap iClient3D for Cesium - 三维 GIS 应用程序 - SuperMap|超图软件](https://www.supermap.com/zh-cn/a/product/11i-iclient-cesium-2022.html)
+
 [support.supermap.com.cn:8090/webgl/examples/webgl/editor.html#FlowingPipeLine](http://support.supermap.com.cn:8090/webgl/examples/webgl/editor.html#FlowingPipeLine)
+
 1. F12搜索`clearMemoryImmediately`得到`debugger:///VM86`里源码(**是16进制混淆后的Cesium.js执行eval生成的**)
 2. 格式化是个难题, devtool格式化没反应, oschina的js格式化网址格式化完正则格式化出语法错误了,用prettier的npx工具也不行,
 	- [JS格式化_JS代码格式化-JSON在线工具 (json-online.com)](https://json-online.com/code/js1.html)可以
