@@ -68,9 +68,6 @@
 这就是一个简单的IPD产品开发流程的例子。
 
 
-
-
-
 ## CDP(Charter契约/任务书 开发流程)
 #### IPMT->PL-PMT1->CDT1从上到下
 - IPMT: 集成 组合(Protfolio) 管理团队
