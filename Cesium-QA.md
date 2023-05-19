@@ -291,3 +291,7 @@ e7(i, fm, e, fl, fk)
 ### 3. 即可解析出数据
 **太难了放弃了**, 走到获取到arrayBuffer了,也知道画顶点顺序了,也知道顶点的属性的解析规则了, 下一步就是根据这些去解析了,
 而且解析出来的坐标也不知道怎么转为经纬度和高度
+
+## 超图源码
+[support.supermap.com.cn:8090/webgl/examples/webgl/editor.html#FlowingPipeLine](http://support.supermap.com.cn:8090/webgl/examples/webgl/editor.html#FlowingPipeLine)
+1. F12搜索`clearMemoryImmediately`得到`debugger:///VM86`里源码(**不知是如何生成的**)
