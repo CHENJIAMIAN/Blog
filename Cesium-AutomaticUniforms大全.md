@@ -1,4 +1,5 @@
 [AutomaticUniforms.js - CesiumGS/cesium - GitHub1s](https://github1s.com/CesiumGS/cesium/blob/HEAD/packages/engine/Source/Renderer/AutomaticUniforms.js#L201)
+
 ```js
 import Cartesian3 from "../Core/Cartesian3.js";
 import Matrix4 from "../Core/Matrix4.js";
@@ -49,11 +50,11 @@ AutomaticUniform.prototype.getDeclaration = function (name) {
  */
 const AutomaticUniforms = {
   /**
-   * 在 <code>vec4 中包含视口的 <code>x</code>、<code>y</code>、<code>width</code> 和 <code>height</code> 属性的自动 GLSL 制服</code> 的 <code>x</code>、<code>y</code>、<code>z</code> 和 <code>w</code> 组件。
+   * 在 <code>vec4 中包含视口的 <code>x</code>、<code>y</code>、<code>width</code> 和 <code>height</code> 属性的自动 GLSL uniform</code> 的 <code>x</code>、<code>y</code>、<code>z</code> 和 <code>w</code> 组件。
    *
    * @example
    * //GLSL声明
-   * 统一 vec4 czm_viewport；
+   * uniform vec4 czm_viewport;
    *
    * //通过除法将窗口坐标分量缩放到[0, 1]
    * //根据视口的宽度和高度。
@@ -70,16 +71,16 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 正交投影矩阵的自动 GLSL 制服，可将窗口坐标转换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
+   * 表示 4x4 正交投影矩阵的自动 GLSL uniform，可将窗口坐标转换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
    * <br /><br />
    * 当顶点着色器像 {@link BillboardCollection} 那样输入或操作窗口坐标时，此转换很有用。
    * <br /><br />
    * 不要将 {@link czm_viewportTransformation} 与 <code>czm_viewportOrthographic</code> 混淆。
-   * 前者从归一化设备坐标转换为窗口坐标；后者从窗口坐标转换为剪辑坐标，通常用于分配给<code>gl_Position</code>。
+   * 前者从归一化设备坐标转换为窗口坐标;后者从窗口坐标转换为剪辑坐标，通常用于分配给<code>gl_Position</code>。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_viewportOrthographic；
+   * uniform mat4 czm_viewportOrthographic;
    *
    * //例子
    * gl_Position = czm_viewportOrthographic *vec4(windowPosition, 0.0, 1.0);
@@ -98,16 +99,16 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 变换矩阵的自动 GLSL 制服，可将规范化的设备坐标转换为窗口坐标。使用上下文的完整视口，深度范围假定为 <code>near = 0</code> 和 <code>far = 1</code>。
+   * 表示 4x4 变换矩阵的自动 GLSL uniform，可将规范化的设备坐标转换为窗口坐标。使用上下文的完整视口，深度范围假定为 <code>near = 0</code> 和 <code>far = 1</code>。
    * <br /><br />
-   * 当需要在顶点着色器中操作窗口坐标时，此转换很有用，如 {@link BillboardCollection} 所做的那样。很多情况下不会直接使用这个矩阵；相反，{@link czm_modelToWindowCoordinates} 将用于直接从模型坐标转换为窗口坐标。
+   * 当需要在顶点着色器中操作窗口坐标时，此转换很有用，如 {@link BillboardCollection} 所做的那样。很多情况下不会直接使用这个矩阵;相反，{@link czm_modelToWindowCoordinates} 将用于直接从模型坐标转换为窗口坐标。
    * <br /><br />
    * 不要将 <code>czm_viewportTransformation</code> 与 {@link czm_viewportOrthographic} 混淆。
-   * 前者从归一化设备坐标转换为窗口坐标；后者从窗口坐标转换为剪辑坐标，通常用于分配给<code>gl_Position</code>。
+   * 前者从归一化设备坐标转换为窗口坐标;后者从窗口坐标转换为剪辑坐标，通常用于分配给<code>gl_Position</code>。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_viewportTransformation；
+   * uniform mat4 czm_viewportTransformation;
    *
    * //使用 czm_viewportTransformation 作为
    * //从模型坐标到窗口坐标。
@@ -115,7 +116,7 @@ const AutomaticUniforms = {
    * q.xyz /= q.w; //裁剪到规范化设备坐标 (ndc)
    * q.xyz = (czm_viewportTransformation *vec4(q.xyz, 1.0)).xyz; //ndc 到窗口坐标
    *
-   * @see 统一状态#viewportTransformation
+   * @see uniform状态#viewportTransformation
    * @see czm_viewport
    * @see czm_viewportOrthographic
    * @see czm_modelToWindowCoordinates
@@ -135,11 +136,11 @@ const AutomaticUniforms = {
    *
    * @example
    * //GLSL声明
-   * 均匀采样器 2D czm_globeDepthTexture；
+   * 均匀采样器 2D czm_globeDepthTexture;
    *
    * //获取当前片段的深度
    * vec2 坐标 = gl_FragCoord.xy /czm_viewport.zw;
-   * 浮动深度= czm_unpackDepth（纹理（czm_globeDepthTexture，坐标））；
+   * 浮动深度= czm_unpackDepth（纹理（czm_globeDepthTexture，坐标））;
    */
   czm_globeDepthTexture: new AutomaticUniform({
     size: 1,
@@ -150,11 +151,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示将模型坐标转换为世界坐标的 4x4 模型转换矩阵的自动 GLSL 制服。
+   * 表示将模型坐标转换为世界坐标的 4x4 模型转换矩阵的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_model；
+   * uniform mat4 czm_model;
    *
    * //例子
    * vec4 worldPosition = czm_model *modelPosition;
@@ -173,11 +174,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示将世界坐标转换为模型坐标的 4x4 模型转换矩阵的自动 GLSL 制服。
+   * 表示将世界坐标转换为模型坐标的 4x4 模型转换矩阵的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_inverseModel；
+   * uniform mat4 czm_inverseModel;
    *
    * //例子
    * vec4 modelPosition = czm_inverseModel *worldPosition;
@@ -195,16 +196,16 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 视图转换矩阵的自动 GLSL 制服，可将世界坐标转换为眼睛坐标。
+   * 表示 4x4 视图转换矩阵的自动 GLSL uniform，可将世界坐标转换为眼睛坐标。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_view；
+   * uniform mat4 czm_view;
    *
    * //例子
    * vec4 eyePosition = czm_view *worldPosition;
    *
-   * @see 统一状态#view
+   * @see uniform状态#view
    * @see czm_viewRotation
    * @see czm_modelView
    * @see czm_viewProjection
@@ -220,14 +221,14 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示将 3D 世界坐标转换为眼睛坐标的 4x4 视图转换矩阵的自动 GLSL 制服。在 3D 模式下，这与
+   * 表示将 3D 世界坐标转换为眼睛坐标的 4x4 视图转换矩阵的自动 GLSL uniform。在 3D 模式下，这与
    * {@link czm_view}，但在 2D 和 Columbus View 中它表示视图矩阵
    * 就好像相机在 3D 模式下处于等效位置一样。这对照明很有用
    * 2D 和 Columbus 视图与 3D 点亮的方式相同。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_view3D；
+   * uniform mat4 czm_view3D;
    *
    * //例子
    * vec4 eyePosition3D = czm_view3D *worldPosition3D;
@@ -244,16 +245,16 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 3x3 视图旋转矩阵的自动 GLSL 制服，可将世界坐标中的向量转换为眼睛坐标。
+   * 表示 3x3 视图旋转矩阵的自动 GLSL uniform，可将世界坐标中的向量转换为眼睛坐标。
    *
    * @example
    * //GLSL声明
-   * 统一 mat3 czm_viewRotation；
+   * uniform mat3 czm_viewRotation;
    *
    * //例子
    * vec3 eyeVector = czm_viewRotation *worldVector;
    *
-   * @see 统一状态#viewRotation
+   * @see uniform状态#viewRotation
    * @see czm_view
    * @see czm_inverseView
    * @see czm_inverseViewRotation
@@ -267,14 +268,14 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 3x3 视图旋转矩阵的自动 GLSL 制服，可将 3D 世界坐标中的向量转换为眼睛坐标。在 3D 模式下，这与
+   * 表示 3x3 视图旋转矩阵的自动 GLSL uniform，可将 3D 世界坐标中的向量转换为眼睛坐标。在 3D 模式下，这与
    * {@link czm_viewRotation}，但在 2D 和 Columbus View 中它表示视图矩阵
    * 就好像相机在 3D 模式下处于等效位置一样。这对照明很有用
    * 2D 和 Columbus 视图与 3D 点亮的方式相同。
    *
    * @example
    * //GLSL声明
-   * 统一 mat3 czm_viewRotation3D；
+   * uniform mat3 czm_viewRotation3D;
    *
    * //例子
    * vec3 eyeVector = czm_viewRotation3D *worldVector;
@@ -291,11 +292,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示从眼睛坐标转换为世界坐标的 4x4 转换矩阵的自动 GLSL 制服。
+   * 表示从眼睛坐标转换为世界坐标的 4x4 转换矩阵的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_inverseView；
+   * uniform mat4 czm_inverseView;
    *
    * //例子
    * vec4 worldPosition = czm_inverseView *eyePosition;
@@ -313,19 +314,19 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示从 3D 眼睛坐标转换为世界坐标的 4x4 转换矩阵的自动 GLSL 制服。在 3D 模式下，这与
+   * 表示从 3D 眼睛坐标转换为世界坐标的 4x4 转换矩阵的自动 GLSL uniform。在 3D 模式下，这与
    * {@link czm_inverseView}，但在 2D 和 Columbus View 中它表示逆视图矩阵
    * 就好像相机在 3D 模式下处于等效位置一样。这对照明很有用
    * 2D 和 Columbus 视图与 3D 点亮的方式相同。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_inverseView3D；
+   * uniform mat4 czm_inverseView3D;
    *
    * //例子
    * vec4 worldPosition = czm_inverseView3D *eyePosition;
    *
-   * @see 统一状态#inverseView3D
+   * @see uniform状态#inverseView3D
    * @see czm_inverseView
    */
   czm_inverseView3D: new AutomaticUniform({
@@ -337,11 +338,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 3x3 旋转矩阵的自动 GLSL 制服，可将向量从眼睛坐标转换为世界坐标。
+   * 表示 3x3 旋转矩阵的自动 GLSL uniform，可将向量从眼睛坐标转换为世界坐标。
    *
    * @example
    * //GLSL声明
-   * 统一 mat3 czm_inverseViewRotation；
+   * uniform mat3 czm_inverseViewRotation;
    *
    * //例子
    * vec4 worldVector = czm_inverseViewRotation *eyeVector;
@@ -360,19 +361,19 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 3x3 旋转矩阵的自动 GLSL 制服，可将向量从 3D 眼睛坐标转换为世界坐标。在 3D 模式下，这与
+   * 表示 3x3 旋转矩阵的自动 GLSL uniform，可将向量从 3D 眼睛坐标转换为世界坐标。在 3D 模式下，这与
    * {@link czm_inverseViewRotation}，但在 2D 和 Columbus View 中它表示逆视图矩阵
    * 就好像相机在 3D 模式下处于等效位置一样。这对照明很有用
    * 2D 和 Columbus 视图与 3D 点亮的方式相同。
    *
    * @example
    * //GLSL声明
-   * 统一 mat3 czm_inverseViewRotation3D；
+   * uniform mat3 czm_inverseViewRotation3D;
    *
    * //例子
    * vec4 worldVector = czm_inverseViewRotation3D *eyeVector;
    *
-   * @see 统一状态#inverseView3D
+   * @see uniform状态#inverseView3D
    * @see czm_inverseViewRotation
    */
   czm_inverseViewRotation3D: new AutomaticUniform({
@@ -384,16 +385,16 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 投影变换矩阵的自动 GLSL 制服，可将眼睛坐标转换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
+   * 表示 4x4 投影变换矩阵的自动 GLSL uniform，可将眼睛坐标转换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
    *
    * @example
    * //GLSL声明
-   * 均匀的 mat4 czm_projection；
+   * 均匀的 mat4 czm_projection;
    *
    * //例子
    * gl_Position = czm_projection *eyePosition;
    *
-   * @see 统一状态#projection
+   * @see uniform状态#projection
    * @see czm_viewProjection
    * @see czm_modelViewProjection
    * @see czm_infiniteProjection
@@ -407,11 +408,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 逆投影变换矩阵的自动 GLSL 制服，该矩阵从剪辑坐标转换为眼睛坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
+   * 表示 4x4 逆投影变换矩阵的自动 GLSL uniform，该矩阵从剪辑坐标转换为眼睛坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_inverseProjection；
+   * uniform mat4 czm_inverseProjection;
    *
    * //例子
    * vec4 eyePosition = czm_inverseProjection *clipPosition;
@@ -432,7 +433,7 @@ const AutomaticUniforms = {
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_infiniteProjection；
+   * uniform mat4 czm_infiniteProjection;
    *
    * //例子
    * gl_Position = czm_infiniteProjection *eyePosition;
@@ -450,13 +451,13 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示将模型坐标转换为眼睛坐标的 4x4 模型视图转换矩阵的自动 GLSL 制服。
+   * 表示将模型坐标转换为眼睛坐标的 4x4 模型视图转换矩阵的自动 GLSL uniform。
    * <br /><br />
    * 应使用 <code>czm_modelView</code> 将位置转换为眼睛坐标，并应使用 {@link czm_normal} 转换法线。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_modelView；
+   * uniform mat4 czm_modelView;
    *
    * //例子
    * vec4 eyePosition = czm_modelView *modelPosition;
@@ -479,7 +480,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 模型视图转换矩阵的自动 GLSL 制服，可将 3D 模型坐标转换为眼睛坐标。在 3D 模式下，这与
+   * 表示 4x4 模型视图转换矩阵的自动 GLSL uniform，可将 3D 模型坐标转换为眼睛坐标。在 3D 模式下，这与
    * {@link czm_modelView}，但在 2D 和 Columbus View 中它表示模型视图矩阵
    * 就好像相机在 3D 模式下处于等效位置一样。这对照明很有用
    * 2D 和 Columbus 视图与 3D 点亮的方式相同。
@@ -488,7 +489,7 @@ const AutomaticUniforms = {
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_modelView3D；
+   * uniform mat4 czm_modelView3D;
    *
    * //例子
    * vec4 eyePosition = czm_modelView3D *modelPosition;
@@ -508,17 +509,17 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 模型视图转换矩阵的自动 GLSL 制服，该矩阵将相对于眼睛的模型坐标转换为眼睛坐标。这与 {@link czm_translateRelativeToEye} 结合使用。
+   * 表示 4x4 模型视图转换矩阵的自动 GLSL uniform，该矩阵将相对于眼睛的模型坐标转换为眼睛坐标。这与 {@link czm_translateRelativeToEye} 结合使用。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_modelViewRelativeToEye；
+   * uniform mat4 czm_modelViewRelativeToEye;
    *
    * //例子
-   * 属性 vec3 位置高；
-   * 属性 vec3 位置低；
+   * attribute vec3 positionHigh;
+   * attribute vec3 positionLow;
    *
-   * 无效主要（）
+   * void main()
    * {
    *   vec4 p = czm_translateRelativeToEye(positionHigh, positionLow);
    *   gl_Position = czm_projection *(czm_modelViewRelativeToEye *p);
@@ -537,11 +538,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示从眼睛坐标转换为模型坐标的 4x4 转换矩阵的自动 GLSL 制服。
+   * 表示从眼睛坐标转换为模型坐标的 4x4 转换矩阵的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_inverseModelView；
+   * uniform mat4 czm_inverseModelView;
    *
    * //例子
    * vec4 modelPosition = czm_inverseModelView *eyePosition;
@@ -558,14 +559,14 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示从眼睛坐标转换为 3D 模型坐标的 4x4 转换矩阵的自动 GLSL 制服。在 3D 模式下，这与
+   * 表示从眼睛坐标转换为 3D 模型坐标的 4x4 转换矩阵的自动 GLSL uniform。在 3D 模式下，这与
    * {@link czm_inverseModelView}，但在 2D 和 Columbus View 中它表示逆模型视图矩阵
    * 就好像相机在 3D 模式下处于等效位置一样。这对照明很有用
    * 2D 和 Columbus 视图与 3D 点亮的方式相同。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_inverseModelView3D；
+   * uniform mat4 czm_inverseModelView3D;
    *
    * //例子
    * vec4 modelPosition = czm_inverseModelView3D *eyePosition;
@@ -583,17 +584,17 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 视图投影转换矩阵的自动 GLSL 制服，可将世界坐标转换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
+   * 表示 4x4 视图投影转换矩阵的自动 GLSL uniform，可将世界坐标转换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_viewProjection；
+   * uniform mat4 czm_viewProjection;
    *
    * //例子
    * vec4 gl_Position = czm_viewProjection *czm_model *modelPosition;
    *
    * //上面等价于，但比以下更有效：
-   * gl_Position = czm_projection *czm_view *czm_model *modelPosition；
+   * gl_Position = czm_projection *czm_view *czm_model *modelPosition;
    *
    * @see UniformState#viewProjection
    * @see czm_view
@@ -610,11 +611,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 视图投影变换矩阵的自动 GLSL 制服，可将剪辑坐标转换为世界坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
+   * 表示 4x4 视图投影变换矩阵的自动 GLSL uniform，可将剪辑坐标转换为世界坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_inverseViewProjection；
+   * uniform mat4 czm_inverseViewProjection;
    *
    * //例子
    * vec4 worldPosition = czm_inverseViewProjection *clipPosition;
@@ -631,17 +632,17 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 模型-视图-投影变换矩阵的自动 GLSL 制服，可将模型坐标变换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
+   * 表示 4x4 模型-视图-投影变换矩阵的自动 GLSL uniform，可将模型坐标变换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_modelViewProjection；
+   * uniform mat4 czm_modelViewProjection;
    *
    * //例子
-   * vec4 gl_Position = czm_modelViewProjection *模型位置；
+   * vec4 gl_Position = czm_modelViewProjection *模型位置;
    *
    * //上面等价于，但比以下更有效：
-   * gl_Position = czm_projection *czm_view *czm_model *modelPosition；
+   * gl_Position = czm_projection *czm_view *czm_model *modelPosition;
    *
    * @see UniformState#modelViewProjection
    * @see czm_model
@@ -665,7 +666,7 @@ const AutomaticUniforms = {
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_inverseModelViewProjection；
+   * uniform mat4 czm_inverseModelViewProjection;
    *
    * //例子
    * vec4 modelPosition = czm_inverseModelViewProjection *clipPosition;
@@ -682,17 +683,17 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 模型-视图-投影变换矩阵的自动 GLSL 制服，该矩阵将相对于眼睛的模型坐标转换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。这与 {@link czm_translateRelativeToEye} 结合使用。
+   * 表示 4x4 模型-视图-投影变换矩阵的自动 GLSL uniform，该矩阵将相对于眼睛的模型坐标转换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。这与 {@link czm_translateRelativeToEye} 结合使用。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_modelViewProjectionRelativeToEye；
+   * uniform mat4 czm_modelViewProjectionRelativeToEye;
    *
    * //例子
-   * 属性 vec3 位置高；
-   * 属性 vec3 位置低；
+   * attribute vec3 位置高;
+   * attribute vec3 位置低;
    *
-   * 无效主要（）
+   * void main()
    * {
    *   vec4 p = czm_translateRelativeToEye(positionHigh, positionLow);
    *   gl_Position = czm_modelViewProjectionRelativeToEye *p;
@@ -711,17 +712,17 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 4x4 模型-视图-投影变换矩阵的自动 GLSL 制服，可将模型坐标变换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。投影矩阵将远平面置于无穷远。这在阴影体积和使用代理几何体的 GPU 光线投射等算法中很有用，可确保三角形不会被远平面裁剪。
+   * 表示 4x4 模型-视图-投影变换矩阵的自动 GLSL uniform，可将模型坐标变换为裁剪坐标。剪辑坐标是顶点着色器的 <code>gl_Position</code> 输出的坐标系。投影矩阵将远平面置于无穷远。这在阴影体积和使用代理几何体的 GPU 光线投射等算法中很有用，可确保三角形不会被远平面裁剪。
    *
    * @example
    * //GLSL声明
-   * 统一 mat4 czm_modelViewInfiniteProjection；
+   * uniform mat4 czm_modelViewInfiniteProjection;
    *
    * //例子
-   * vec4 gl_Position = czm_modelViewInfiniteProjection *模型位置；
+   * vec4 gl_Position = czm_modelViewInfiniteProjection *模型位置;
    *
    * //上面等价于，但比以下更有效：
-   * gl_Position = czm_infiniteProjection *czm_view *czm_model *modelPosition；
+   * gl_Position = czm_infiniteProjection *czm_view *czm_model *modelPosition;
    *
    * @see UniformState#modelViewInfiniteProjection
    * @see czm_model
@@ -738,7 +739,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 一个自动 GLSL 制服，指示当前相机是否在 3D 中是正交的。
+   * 一个自动 GLSL uniform，指示当前相机是否在 3D 中是正交的。
    *
    * @see UniformState#orthographicIn3D
    */
@@ -751,18 +752,18 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 3x3 法线变换矩阵的自动 GLSL 制服，该矩阵将模型坐标中的法线向量转换为眼睛坐标。
+   * 表示 3x3 法线变换矩阵的自动 GLSL uniform，该矩阵将模型坐标中的法线向量转换为眼睛坐标。
    * <br /><br />
    * 应使用 {@link czm_modelView} 将位置转换为眼睛坐标，并应使用 <code>czm_normal</code> 转换法线。
    *
    * @example
    * //GLSL声明
-   * 统一 mat3 czm_normal；
+   * uniform mat3 czm_normal;
    *
    * //例子
-   * vec3 eyeNormal = czm_normal *正常；
+   * vec3 eyeNormal = czm_normal *正常;
    *
-   * @see 统一状态#normal
+   * @see uniform状态#normal
    * @see czm_inverseNormal
    * @see czm_modelView
    */
@@ -775,7 +776,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 3x3 法线变换矩阵的自动 GLSL 制服，可将 3D 模型坐标中的法线向量转换为眼睛坐标。
+   * 表示 3x3 法线变换矩阵的自动 GLSL uniform，可将 3D 模型坐标中的法线向量转换为眼睛坐标。
    * 在 3D 模式下，这与
    * {@link czm_normal}，但在 2D 和 Columbus View 中它代表法线变换
    * 矩阵，就好像相机在 3D 模式下处于等效位置一样。这对照明很有用
@@ -785,10 +786,10 @@ const AutomaticUniforms = {
    *
    * @example
    * //GLSL声明
-   * 统一 mat3 czm_normal3D；
+   * uniform mat3 czm_normal3D;
    *
    * //例子
-   * vec3 eyeNormal = czm_normal3D *正常；
+   * vec3 eyeNormal = czm_normal3D *正常;
    *
    * @see UniformState#normal3D
    * @see czm_normal
@@ -802,16 +803,16 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 3x3 法线变换矩阵的自动 GLSL 制服，该矩阵将眼睛坐标中的法线向量转换为模型坐标。这与 {@link czm_normal} 提供的转换相反。
+   * 表示 3x3 法线变换矩阵的自动 GLSL uniform，该矩阵将眼睛坐标中的法线向量转换为模型坐标。这与 {@link czm_normal} 提供的转换相反。
    *
    * @example
    * //GLSL声明
-   * 统一 mat3 czm_inverseNormal；
+   * uniform mat3 czm_inverseNormal;
    *
    * //例子
    * vec3 normalMC = czm_inverseNormal *normalEC;
    *
-   * @see 统一状态#inverseNormal
+   * @see uniform状态#inverseNormal
    * @see czm_normal
    * @see czm_modelView
    * @see czm_inverseView
@@ -825,7 +826,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 3x3 法线变换矩阵的自动 GLSL 制服，可将眼睛坐标中的法线向量转换为 3D 模型坐标。这与 {@link czm_normal} 提供的转换相反。
+   * 表示 3x3 法线变换矩阵的自动 GLSL uniform，可将眼睛坐标中的法线向量转换为 3D 模型坐标。这与 {@link czm_normal} 提供的转换相反。
    * 在 3D 模式下，这与
    * {@link czm_inverseNormal}，但在 2D 和 Columbus View 中，它表示反向法线变换
    * 矩阵，就好像相机在 3D 模式下处于等效位置一样。这对照明很有用
@@ -833,7 +834,7 @@ const AutomaticUniforms = {
    *
    * @example
    * //GLSL声明
-   * 统一 mat3 czm_inverseNormal3D；
+   * uniform mat3 czm_inverseNormal3D;
    *
    * //例子
    * vec3 normalMC = czm_inverseNormal3D *normalEC;
@@ -850,7 +851,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 自动 GLSL 制服包含眼睛（相机）在椭圆体上方或下方的高度（以米为单位）。
+   * 自动 GLSL uniform包含眼睛（相机）在椭圆体上方或下方的高度（以米为单位）。
    *
    * @see UniformState#eyeHeight
    */
@@ -863,7 +864,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 一个自动 GLSL 统一包含高度 (<code>x</code>) 和高度平方 (<code>y</code>) 在二维世界平面上方的眼睛（相机）以米为单位。此制服仅在 {@link SceneMode} 为 <code>SCENE2D</code> 时有效。
+   * 一个自动 GLSL uniform包含高度 (<code>x</code>) 和高度平方 (<code>y</code>) 在二维世界平面上方的眼睛（相机）以米为单位。此uniform仅在 {@link SceneMode} 为 <code>SCENE2D</code> 时有效。
    *
    * @see UniformState#eyeHeight2D
    */
@@ -880,7 +881,7 @@ const AutomaticUniforms = {
    *
    * @example
    * //GLSL声明
-   * 统一 vec2 czm_entireFrustum；
+   * uniform vec2 czm_entireFrustum;
    *
    * //例子
    * float frustumLength = czm_entireFrustum.y -czm_entireFrustum.x;
@@ -901,7 +902,7 @@ const AutomaticUniforms = {
    *
    * @example
    * //GLSL声明
-   * 统一 vec2 czm_currentFrustum；
+   * uniform vec2 czm_currentFrustum;
    *
    * //例子
    * float frustumLength = czm_currentFrustum.y -czm_currentFrustum.x;
@@ -962,11 +963,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示世界坐标中太阳位置的自动 GLSL 制服。
+   * 表示世界坐标中太阳位置的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_sunPositionWC；
+   * uniform vec3 czm_sunPositionWC;
    *
    * @see UniformState#sunPositionWC
    * @see czm_sunPositionColumbusView
@@ -981,11 +982,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示哥伦布视图世界坐标中太阳位置的自动 GLSL 制服。
+   * 表示哥伦布视图世界坐标中太阳位置的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_sunPositionColumbusView；
+   * uniform vec3 czm_sunPositionColumbusView;
    *
    * @see UniformState#sunPositionColumbusView
    * @see czm_sunPositionWC
@@ -999,16 +1000,16 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 一个自动 GLSL 制服，表示眼睛坐标中太阳的归一化方向。
+   * 一个自动 GLSL uniform，表示眼睛坐标中太阳的归一化方向。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_sunDirectionEC；
+   * uniform vec3 czm_sunDirectionEC;
    *
    * //例子
    * float diffuse = max(dot(czm_sunDirectionEC, normalEC), 0.0);
    *
-   * @see 统一状态#sunDirectionEC
+   * @see uniform状态#sunDirectionEC
    * @see czm_moonDirectionEC
    * @see czm_sunDirectionWC
    */
@@ -1021,11 +1022,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 一个自动 GLSL 制服，代表世界坐标中太阳的归一化方向。
+   * 一个自动 GLSL uniform，代表世界坐标中太阳的归一化方向。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_sunDirectionWC；
+   * uniform vec3 czm_sunDirectionWC;
    *
    * //例子
    * float diffuse = max(dot(czm_sunDirectionWC, normalWC), 0.0);
@@ -1043,16 +1044,16 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 一个自动的 GLSL 制服，代表眼睛坐标中月球的归一化方向。
+   * 一个自动的 GLSL uniform，代表眼睛坐标中月球的归一化方向。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_moonDirectionEC；
+   * uniform vec3 czm_moonDirectionEC;
    *
    * //例子
    * float diffuse = max(dot(czm_moonDirectionEC, normalEC), 0.0);
    *
-   * @see 统一状态#moonDirectionEC
+   * @see uniform状态#moonDirectionEC
    * @see czm_sunDirectionEC
    */
   czm_moonDirectionEC: new AutomaticUniform({
@@ -1064,12 +1065,12 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 一个自动的 GLSL 制服，表示眼睛坐标中场景光源的归一化方向。
+   * 一个自动的 GLSL uniform，表示眼睛坐标中场景光源的归一化方向。
    * 这通常用于定向照明计算。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_lightDirectionEC；
+   * uniform vec3 czm_lightDirectionEC;
    *
    * //例子
    * float diffuse = max(dot(czm_lightDirectionEC, normalEC), 0.0);
@@ -1086,12 +1087,12 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 一个自动 GLSL 制服，表示世界坐标中场景光源的标准化方向。
+   * 一个自动 GLSL uniform，表示世界坐标中场景光源的标准化方向。
    * 这通常用于定向照明计算。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_lightDirectionWC；
+   * uniform vec3 czm_lightDirectionWC;
    *
    * //例子
    * float diffuse = max(dot(czm_lightDirectionWC, normalWC), 0.0);
@@ -1108,16 +1109,16 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 代表场景光源发出的光的颜色的自动 GLSL 制服。这相当于光色乘以光强度，最大亮度限制为 1.0，适用于非 HDR 照明。
+   * 代表场景光源发出的光的颜色的自动 GLSL uniform。这相当于光色乘以光强度，最大亮度限制为 1.0，适用于非 HDR 照明。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_lightColor；
+   * uniform vec3 czm_lightColor;
    *
    * //例子
    * vec3 diffuseColor = czm_lightColor *max(dot(czm_lightDirectionWC, normalWC), 0.0);
    *
-   * @see 统一状态#lightColor
+   * @see uniform状态#lightColor
    * @see czm_lightColorHdr
    */
   czm_lightColor: new AutomaticUniform({
@@ -1129,11 +1130,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 一种自动 GLSL 制服，表示场景光源发出的光的高动态范围颜色。这相当于灯光颜色乘以适合 HDR 照明的灯光强度。
+   * 一种自动 GLSL uniform，表示场景光源发出的光的高动态范围颜色。这相当于灯光颜色乘以适合 HDR 照明的灯光强度。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_lightColorHdr；
+   * uniform vec3 czm_lightColorHdr;
    *
    * //例子
    * vec3 diffuseColor = czm_lightColorHdr *max(dot(czm_lightDirectionWC, normalWC), 0.0);
@@ -1150,11 +1151,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示模型坐标中相机位置高位的自动 GLSL 制服。这用于 GPU RTE 以消除渲染时的抖动伪影，如 {@link http://help.agi.com/AGIComponents/html/BlogPrecisionsPrecisions.htm|Precisions, Precisions} 中所述。
+   * 表示模型坐标中相机位置高位的自动 GLSL uniform。这用于 GPU RTE 以消除渲染时的抖动伪影，如 {@link http://help.agi.com/AGIComponents/html/BlogPrecisionsPrecisions.htm|Precisions, Precisions} 中所述。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_encodedCameraPositionMCHigh；
+   * uniform vec3 czm_encodedCameraPositionMCHigh;
    *
    * @see czm_encodedCameraPositionMCLow
    * @see czm_modelViewRelativeToEye
@@ -1169,11 +1170,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示模型坐标中相机位置低位的自动 GLSL 制服。这用于 GPU RTE 以消除渲染时的抖动伪影，如 {@linkhttp://help.agi.com/AGIComponents/html/BlogPrecisionsPrecisions.htm|Precisions, Precisions} 中所述。
+   * 表示模型坐标中相机位置低位的自动 GLSL uniform。这用于 GPU RTE 以消除渲染时的抖动伪影，如 {@linkhttp://help.agi.com/AGIComponents/html/BlogPrecisionsPrecisions.htm|Precisions, Precisions} 中所述。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_encodedCameraPositionMCLow；
+   * uniform vec3 czm_encodedCameraPositionMCLow;
    *
    * @see czm_encodedCameraPositionMCHigh
    * @see czm_modelViewRelativeToEye
@@ -1188,11 +1189,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示观察者（相机）在世界坐标中的位置的自动 GLSL 制服。
+   * 表示观察者（相机）在世界坐标中的位置的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3 czm_viewerPositionWC；
+   * uniform vec3 czm_viewerPositionWC;
    */
   czm_viewerPositionWC: new AutomaticUniform({
     size: 1,
@@ -1206,11 +1207,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示帧号的自动 GLSL 制服。此制服每帧自动递增。
+   * 表示帧号的自动 GLSL uniform。此uniform每帧自动递增。
    *
    * @example
    * //GLSL声明
-   * 统一浮动 czm_frameNumber；
+   * uniform浮动 czm_frameNumber;
    */
   czm_frameNumber: new AutomaticUniform({
     size: 1,
@@ -1226,7 +1227,7 @@ const AutomaticUniforms = {
    *
    * @example
    * //GLSL声明
-   * 统一浮动 czm_morphTime；
+   * uniform浮动 czm_morphTime;
    *
    * //例子
    * vec4 p = czm_columbusViewMorph(position2D, position3D, czm_morphTime);
@@ -1240,11 +1241,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示当前 {@link SceneMode} 的自动 GLSL 制服，表示为浮点数。
+   * 表示当前 {@link SceneMode} 的自动 GLSL uniform，表示为浮点数。
    *
    * @example
    * //GLSL声明
-   * 统一浮动 czm_sceneMode；
+   * uniform浮动 czm_sceneMode;
    *
    * //例子
    * 如果（czm_sceneMode == czm_sceneMode2D）
@@ -1266,11 +1267,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示当前渲染通道的自动 GLSL 制服。
+   * 表示当前渲染通道的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一浮动 czm_pass；
+   * uniform浮动 czm_pass;
    *
    * //例子
    * 如果 ((czm_pass == czm_passTranslucent) && isOpaque())
@@ -1287,11 +1288,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示当前场景背景颜色的自动 GLSL 制服。
+   * 表示当前场景背景颜色的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一 vec4 czm_backgroundColor；
+   * uniform vec4 czm_backgroundColor;
    *
    * //示例：如果给定颜色的 RGB 与背景颜色匹配，则将其反转。
    * vec4 adjustColorForContrast(vec4 颜色)
@@ -1301,7 +1302,7 @@ const AutomaticUniforms = {
    *         color.rgb = vec3(1.0) -color.rgb;
    *     }
    *
-   *     返回颜色；
+   *     返回颜色;
    * }
    */
   czm_backgroundColor: new AutomaticUniform({
@@ -1313,15 +1314,15 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 包含用于基于图像的照明计算的 BRDF 查找纹理的自动 GLSL 制服。
+   * 包含用于基于图像的照明计算的 BRDF 查找纹理的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 均匀采样器 2D czm_brdfLut；
+   * 均匀采样器 2D czm_brdfLut;
    *
    * //示例：对于给定的粗糙度和 NdotV 值，在红色和绿色通道中找到材质的 BRDF 信息
-   * 浮动粗糙度= 0.5；
-   * 浮动 NdotV = 点（正常，视图）；
+   * 浮动粗糙度= 0.5;
+   * 浮动 NdotV = 点（正常，视图）;
    * vec2 brdfLut = texture(czm_brdfLut, vec2(NdotV, 1.0 -粗糙度)).rg;
    */
   czm_brdfLut: new AutomaticUniform({
@@ -1333,14 +1334,14 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 包含场景中使用的环境贴图的自动 GLSL 制服。
+   * 包含场景中使用的环境贴图的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一采样器立方体 czm_environmentMap；
+   * uniform采样器立方体 czm_environmentMap;
    *
    * //示例：在模型上创建环境贴图的完美反射
-   * 浮动反射=反射（视图，正常）；
+   * 浮动反射=反射（视图，正常）;
    * vec4 reflectedColor = texture(czm_environmentMap, reflected);
    */
   czm_environmentMap: new AutomaticUniform({
@@ -1352,11 +1353,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 包含场景中使用的高光环境地图集的自动 GLSL 制服。
+   * 包含场景中使用的高光环境地图集的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 均匀采样器 2D czm_specularEnvironmentMaps；
+   * 均匀采样器 2D czm_specularEnvironmentMaps;
    */
   czm_specularEnvironmentMaps: new AutomaticUniform({
     size: 1,
@@ -1367,11 +1368,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 包含场景中使用的镜面反射环境贴图集大小的自动 GLSL 制服。
+   * 包含场景中使用的镜面反射环境贴图集大小的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一 vec2 czm_specularEnvironmentMapSize；
+   * uniform vec2 czm_specularEnvironmentMapSize;
    */
   czm_specularEnvironmentMapSize: new AutomaticUniform({
     size: 1,
@@ -1382,11 +1383,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 自动 GLSL 制服，包含场景中使用的镜面反射环境地图集的最大细节级别。
+   * 自动 GLSL uniform，包含场景中使用的镜面反射环境地图集的最大细节级别。
    *
    * @example
    * //GLSL声明
-   * 统一浮动 czm_specularEnvironmentMapsMaximumLOD；
+   * uniform浮动 czm_specularEnvironmentMapsMaximumLOD;
    */
   czm_specularEnvironmentMapsMaximumLOD: new AutomaticUniform({
     size: 1,
@@ -1397,11 +1398,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 包含场景中使用的球谐系数的自动 GLSL 制服。
+   * 包含场景中使用的球谐系数的自动 GLSL uniform。
    *
    * @example
    * //GLSL声明
-   * 统一 vec3[9] czm_sphericalHarmonicCoefficients；
+   * uniform vec3[9] czm_sphericalHarmonicCoefficients;
    */
   czm_sphericalHarmonicCoefficients: new AutomaticUniform({
     size: 9,
@@ -1412,11 +1413,11 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示 3x3 旋转矩阵的自动 GLSL 制服，该矩阵在当前场景时间从真赤道平分点 (TEME) 轴转换为伪固定轴。
+   * 表示 3x3 旋转矩阵的自动 GLSL uniform，该矩阵在当前场景时间从真赤道平分点 (TEME) 轴转换为伪固定轴。
    *
    * @example
    * //GLSL声明
-   * 统一 mat3 czm_temeToPseudoFixed；
+   * uniform mat3 czm_temeToPseudoFixed;
    *
    * //例子
    * vec3 pseudoFixed = czm_temeToPseudoFixed *teme;
@@ -1433,10 +1434,10 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示画布坐标空间与画布像素空间比率的自动 GLSL 统一。
+   * 表示画布坐标空间与画布像素空间比率的自动 GLSL uniform。
    *
    * @example
-   * 统一浮动 czm_pixelRatio；
+   * uniform浮动 czm_pixelRatio;
    */
   czm_pixelRatio: new AutomaticUniform({
     size: 1,
@@ -1447,7 +1448,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 一种自动 GLSL 统一标量，用于根据到相机的距离将颜色与雾颜色混合。
+   * 一种自动 GLSL uniform标量，用于根据到相机的距离将颜色与雾颜色混合。
    *
    * @see czm_fog
    */
@@ -1465,7 +1466,7 @@ const AutomaticUniforms = {
    *
    * @example
    * //GLSL声明
-   * 统一浮动 czm_splitPosition；
+   * uniform浮动 czm_splitPosition;
    */
   czm_splitPosition: new AutomaticUniform({
     size: 1,
@@ -1476,7 +1477,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 表示每米几何公差的自动 GLSL 统一标量
+   * 表示每米几何公差的自动 GLSL uniform标量
    */
   czm_geometricToleranceOverMeter: new AutomaticUniform({
     size: 1,
@@ -1498,7 +1499,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 自动 GLSL 制服，将成为未分类 3D Tiles 的高亮颜色。
+   * 自动 GLSL uniform，将成为未分类 3D Tiles 的高亮颜色。
    */
   czm_invertClassificationColor: new AutomaticUniform({
     size: 1,
@@ -1509,7 +1510,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 用于伽马校正的自动 GLSL 制服。
+   * 用于伽马校正的自动 GLSL uniform。
    */
   czm_gamma: new AutomaticUniform({
     size: 1,
@@ -1520,7 +1521,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 存储椭球半径的自动 GLSL 制服。
+   * 存储椭球半径的自动 GLSL uniform。
    */
   czm_ellipsoidRadii: new AutomaticUniform({
     size: 1,
@@ -1531,7 +1532,7 @@ const AutomaticUniforms = {
   }),
 
   /**
-   * 存储椭圆体倒数半径的自动 GLSL 制服。
+   * 存储椭圆体倒数半径的自动 GLSL uniform。
    */
   czm_ellipsoidInverseRadii: new AutomaticUniform({
     size: 1,
