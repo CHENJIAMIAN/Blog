@@ -229,9 +229,9 @@ struct FragmentInput {
 | `TANGENT`          | `tangentEC`   | `vec3`  | 不           | 是的          | 眼睛坐标中的单位长度切向量。这始终是一个`vec3`. 对于提供`w`组件的模型，在计算双切线向量后将其删除。 |
 | `NORMAL`&`TANGENT` | `bitangentMC` | `vec3`  | 是的          | 不           | 模型坐标中的单位长度双切线向量。仅当法线和切线向量都可用时才可用。                       |
 | `NORMAL`&`TANGENT` | `bitangentEC` | `vec3`  | 不           | 是的          | 眼睛坐标中的单位长度双切线向量。仅当法线和切线向量都可用时才可用。                       |
-| `TEXCOORD_N`       | `texCoord_N`  | `vec2`  | 是的          | 是的          | 第N组纹理坐标。                                           |
-| `COLOR_N`          | `color_N`     | `vec4`  | 是的          | 是的          | `N`-th 组顶点颜色。这总是一个`vec4`; 如果模型未指定 alpha 值，则假定为 1。       |
-| `JOINTS_N`         | `joints_N`    | `ivec4` | 是的          | 是的          | `N`-th 组联合指数                                            |
+| `TEXCOORD_N`       | `texCoord_N`  | `vec2`  | 是的          | 是的          | 第`N`组纹理坐标。                                           |
+| `COLOR_N`          | `color_N`     | `vec4`  | 是的          | 是的          | 第`N`组顶点颜色。这总是一个`vec4`; 如果模型未指定 alpha 值，则假定为 1。       |
+| `JOINTS_N`         | `joints_N`    | `ivec4` | 是的          | 是的          | 第`N`组联合指数                                            |
 | `WEIGHTS_N`        | `weights_N`   | `vec4`  |             |             |                                                         |
 
 自定义属性也可用，但它们被重命名为使用小写字母和下划线。例如，`_SURFACE_TEMPERATURE` 模型中调用的属性将成为`fsInput.attributes.surface_temperature`着色器中的属性。

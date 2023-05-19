@@ -964,8 +964,8 @@ in vec2 v_textureCoordinates;
 uniform sampler2D u_atlas; 
 ``` 
 - EC后缀表示点或向量位于眼睛坐标系中，例如，
-```glsl 
-varying vec3 v_positionEC；
+```js
+varying vec3 v_positionEC;
 // ... 
 v_positionEC = (czm_modelViewRelativeToEye * p).xyz; 
 ``` 
