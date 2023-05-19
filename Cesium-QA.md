@@ -294,4 +294,4 @@ e7(i, fm, e, fl, fk)
 
 ## 超图源码
 [support.supermap.com.cn:8090/webgl/examples/webgl/editor.html#FlowingPipeLine](http://support.supermap.com.cn:8090/webgl/examples/webgl/editor.html#FlowingPipeLine)
-1. F12搜索`clearMemoryImmediately`得到`debugger:///VM86`里源码(**不知是如何生成的**)
+1. F12搜索`clearMemoryImmediately`得到`debugger:///VM86`里源码(**是16进制混淆后的Cesium.js执行eval生成的**)
