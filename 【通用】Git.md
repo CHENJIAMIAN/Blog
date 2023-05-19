@@ -1,5 +1,4 @@
 
-
 ```shell
 GitHub 是git(分布式) 的远端公共服务器
     搜索技巧: in:name|readme|description xxx 
@@ -123,7 +122,6 @@ reflog：记录了 commit 的历史操作。#如果说 reset \--soft 是后悔
 ```
 
 
-
 ```shell
 当我们需要删除暂存区或分支上的文件, 同时工作区也不需要这个文件了, 可以使用
 1 git rm file_path
@@ -138,3 +136,8 @@ git push
 git rm --cached file来停止跟踪这些文件
 ```
 
+## 技巧
+```js
+使用 --depth 参数来防止获取所有提交历史记录
+git clone --depth=30 https://github.com/mrdoob/three.js.git
+```
