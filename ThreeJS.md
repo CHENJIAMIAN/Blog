@@ -256,7 +256,7 @@ Geometry和BufferGeomety内置了一些常用的方法:
     computeBoundingBox() // 此方法可以可以计算几何的边界框，方法调用后，会更新Geometry.boundingBox属性，我们可以通过Geometry.boundingBox属性获取到一个包围几何体的立方体的每个轴向的最大值和最小值
     dispose()// 将几何体从内存中删除，这个方法必须记得使用。如果频繁的删除模型，一定要记得将几何体从内存中删除掉。
     
-光源
+## 光源
     intensity/color/position/target朝向位置/shadow/castShadow是否接收投影
     DirectionalLight=> 阳光
         new THREE.DirectionalLight( 0xffffff, 0.5 ); //=> 阳光
