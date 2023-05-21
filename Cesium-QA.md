@@ -312,24 +312,20 @@ SuperMap iClient3D for WebGL这样一款开发包是基于Cesium这样的开源�
 	 4. deuglify完事后, break a_xxx;语句替换错误了,手动改一下
 #### 流动管线效果实现
 ```js
-line.textureUVSpeed = line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
+line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
 	执行源码:
-S3MUniformMapCreator.createDynamicMaterialUniform (Cesium.js:201016)
+	uniformMap.uTexUVOffset (Cesium.js:201017)
+	ShaderProgram._setUniforms (Cesium.js:157907)
+	Context.draw (Cesium.js:254764)
 
-S3MUniformMapCreator.create (Cesium.js:201069)
-
-RenderEntityPagedLOD.createCommand (Cesium.js:205697)
-
-RenderEntityPagedLOD.createAllCommands (Cesium.js:205327)
-
-RenderEntityPagedLOD.transformResource (Cesium.js:204509)
-
-RenderEntityPagedLOD.update (Cesium.js:204732)
-
-S3MLayerScheduler._updateRenderQueue (Cesium.js:216818)
-
-S3MLayerScheduler.update (Cesium.js:216782)
-
-S3MTilesLayer.update (Cesium.js:224798)
+createDynamicMaterialUniform
+	S3MUniformMapCreator.createDynamicMaterialUniform (Cesium.js:201016)
+	S3MUniformMapCreator.create (Cesium.js:201069)
+	RenderEntityPagedLOD.createCommand (Cesium.js:205697)
+	RenderEntityPagedLOD.createAllCommands (Cesium.js:205327)
+	RenderEntityPagedLOD.transformResource (Cesium.js:204509)
+	RenderEntityPagedLOD.update (Cesium.js:204732)
+	S3MLayerScheduler._updateRenderQueue (Cesium.js:216818)
+	S3MLayerScheduler.update (Cesium.js:216782)
+	S3MTilesLayer.update (Cesium.js:224798)
 ```
-TEXTURE_MOVE
