@@ -314,12 +314,20 @@ SuperMap iClient3D for WebGL这样一款开发包是基于Cesium这样的开源�
 ```js
 line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
 	setter: this.traverseRenderEntity(xyspeed, YKa);
-	执行源码:
-	S3MUniformMapCreator.createDynamicMaterialUniform
-	改变了uniformMap.uTexUVOffset (Cesium.js:201017)
-		glsl:u_MaterialDynamicParameter.texUVOffset = uTexUVOffset;
-	ShaderProgram._setUniforms (Cesium.js:157907)
-	Context.draw (Cesium.js:254764)
+		YKa回调了RenderEntityPagedLOD.prototype.enableTextureMove
+		this.appendProgramDefine(options, true, true, ProgramDefines.TEXTURE_MOVE);
+		glsl: gl_FragColor.rgb = uEmissionColor.rgb * baseColor.rgb;
+			baseColor = baseColor * outTexColor;
+				vec4 baseColor = vColor;
+				vec4 outTexColor = getTextureColor(realTexCoord, firstColor, secColor);
+					getTextureColor里: czm_getTexColorForS3M用了u_MaterialDynamicParameter.texUVOffset作为texUVoffset
+						
+	渲染时源码:	
+		S3MUniformMapCreator.createDynamicMaterialUniform
+		改变了uniformMap.uTexUVOffset (Cesium.js:201017)
+			glsl: u_MaterialDynamicParameter.texUVOffset = uTexUVOffset;
+		ShaderProgram._setUniforms (Cesium.js:157907)
+		Context.draw (Cesium.js:254764)
 
 S3MUniformMapCreator.createDynamicMaterialUniform
 	S3MUniformMapCreator.createDynamicMaterialUniform (Cesium.js:201016)
