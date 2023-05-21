@@ -305,12 +305,11 @@ SuperMap iClient3D for WebGL这样一款开发包是基于Cesium这样的开源�
 1. F12搜索`clearMemoryImmediately`得到`debugger:///VM86`里源码(**是16进制混淆后的Cesium.js执行eval生成的**)
 2. 格式化是个难题, devtool格式化没反应, oschina的js格式化网址格式化完正则格式化出语法错误了,用prettier的npx工具也不行,
 	- [JS格式化_JS代码格式化-JSON在线工具 (json-online.com)](https://json-online.com/code/js1.html)可以
-3.  deuglify 2.js > 1.jsset NODE_OPTIONS="--max-old-space-size=8096"
- 
-	 1. 要求do和while之间用{}括起来
-	 2. 没有eval(..)语句
-	 3. deuglify完事后, break a_xxx;语句替换错误了,手动改一下
-
+3.  deuglify
+	 1. set NODE_OPTIONS="--max-old-space-size=8096"
+	 2. 要求do和while之间用{}括起来
+	 3. 没有eval(..)语句
+	 4. deuglify完事后, break a_xxx;语句替换错误了,手动改一下
 #### 流动管线效果实现
 ```js
 line.textureUVSpeed = line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
