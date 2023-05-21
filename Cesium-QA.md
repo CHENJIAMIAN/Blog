@@ -322,3 +322,4 @@ line.textureUVSpeed = line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
 	uc.render (Cesium.js:224741)
 	Qw.render (Cesium.js:260557)
 ```
+ deuglify source.js > source.demin.js
