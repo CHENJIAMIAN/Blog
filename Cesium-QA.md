@@ -324,3 +324,5 @@ line.textureUVSpeed = line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
 ```
  set NODE_OPTIONS="--max-old-space-size=8096"
  deuglify 2.js > 1.js
+ 1. 要求do和while之间用{}括起来
+ 2. 没有eval(..)语句
