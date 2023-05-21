@@ -321,7 +321,7 @@ line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
 				vec4 baseColor = vColor;
 				vec4 outTexColor = getTextureColor(realTexCoord, firstColor, secColor);
 					getTextureColor里: czm_getTexColorForS3M用了u_MaterialDynamicParameter.texUVOffset作为texUVoffset
-						
+						最后影响了outTexCoord.xy也就是realTexCoord也就影响了outTexColor
 	渲染时源码:	
 		S3MUniformMapCreator.createDynamicMaterialUniform
 		改变了uniformMap.uTexUVOffset (Cesium.js:201017)
