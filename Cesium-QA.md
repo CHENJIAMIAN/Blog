@@ -313,13 +313,15 @@ SuperMap iClient3D for WebGL这样一款开发包是基于Cesium这样的开源�
 #### 流动管线效果实现
 ```js
 line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
+	setter: this.traverseRenderEntity(xyspeed, YKa);
 	执行源码:
+	S3MUniformMapCreator.createDynamicMaterialUniform
 	改变了uniformMap.uTexUVOffset (Cesium.js:201017)
 		glsl:u_MaterialDynamicParameter.texUVOffset = uTexUVOffset;
 	ShaderProgram._setUniforms (Cesium.js:157907)
 	Context.draw (Cesium.js:254764)
 
-createDynamicMaterialUniform
+S3MUniformMapCreator.createDynamicMaterialUniform
 	S3MUniformMapCreator.createDynamicMaterialUniform (Cesium.js:201016)
 	S3MUniformMapCreator.create (Cesium.js:201069)
 	RenderEntityPagedLOD.createCommand (Cesium.js:205697)
