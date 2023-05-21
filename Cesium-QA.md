@@ -326,3 +326,4 @@ line.textureUVSpeed = line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
  deuglify 2.js > 1.js
  1. 要求do和while之间用{}括起来
  2. 没有eval(..)语句
+ 3. deuglify完事后, break a_xxx;语句替换错误了,手动改一下
