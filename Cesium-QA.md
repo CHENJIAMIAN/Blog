@@ -314,17 +314,22 @@ SuperMap iClient3D for WebGL这样一款开发包是基于Cesium这样的开源�
 ```js
 line.textureUVSpeed = line.textureUVSpeed = new Cesium.Cartesian2(0, -2);
 	执行源码:
-	g.uTexUVOffset (Cesium.js:152356)
-	Va._setUniforms (Cesium.js:120001)
-	xg.draw (Cesium.js:195038)
-	Na.execute (Cesium.js:118957)
-	hg (Cesium.js:61416)
-	K1 (Cesium.js:61648)
-	Kw (Cesium.js:61977)
-	pq (Cesium.js:61891)
-	$Ra (Cesium.js:62377)
-	Lw (Cesium.js:62403)
-	uc.render (Cesium.js:224741)
-	Qw.render (Cesium.js:260557)
+S3MUniformMapCreator.createDynamicMaterialUniform (Cesium.js:201016)
+
+S3MUniformMapCreator.create (Cesium.js:201069)
+
+RenderEntityPagedLOD.createCommand (Cesium.js:205697)
+
+RenderEntityPagedLOD.createAllCommands (Cesium.js:205327)
+
+RenderEntityPagedLOD.transformResource (Cesium.js:204509)
+
+RenderEntityPagedLOD.update (Cesium.js:204732)
+
+S3MLayerScheduler._updateRenderQueue (Cesium.js:216818)
+
+S3MLayerScheduler.update (Cesium.js:216782)
+
+S3MTilesLayer.update (Cesium.js:224798)
 ```
 TEXTURE_MOVE
