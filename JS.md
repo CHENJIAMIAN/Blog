@@ -140,7 +140,8 @@ Proxy
           if (key === "xxx") { word.innerHTML = value; }
         },});
       newObj.text = 'yyy';//触发setter
-      
+
+Object.defineProperties(obj, { key1:{ set(){},get(){} } })
 Object.defineProperty(obj, key, {  get() {},set(){}  })      //也可以做到,默认不可遍历,但可以用getOwnPropertyNames获得
 
 get 对比 defineProperty的区别: 
