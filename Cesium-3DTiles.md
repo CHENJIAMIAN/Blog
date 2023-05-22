@@ -358,6 +358,12 @@ CustomShader渲染堆栈：
             Cesium3DTile.update (Cesium.js:105320)
             updateTiles (Cesium.js:107633)
 ```
+### 是怎么构造请求b3dm的url?
+```js
+Cesium3DTile.constructor
+	baseResource.getDerivedResource 即 Resource.prototype.getDerivedResource
+```
+
 
 ## BoundingVolume下的region举例
 
