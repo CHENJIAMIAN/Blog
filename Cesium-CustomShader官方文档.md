@@ -152,6 +152,7 @@ const customShader = new Cesium.CustomShader({
 ```
 
 CustomShader支持以下不同类型：
+
 | Varyings      | GLSL型   |
 | :------ | :------ |
 | `FLOAT` | `float` |
@@ -165,6 +166,7 @@ CustomShader支持以下不同类型：
 ## CustomShader模式
 
 自定义片段着色器是可配置的，因此它可以在材质或照明之前/之后运行。这是可用模式的摘要。
+
 | 模式                    | 片段着色器管线            | 描述                         |
 | :-------------------- | :----------------- | :------------------------- |
 | `MODIFY_MATERIAL`（默认） | 材质 -> CustomShader -> 光照 | CustomShader修改材质阶段的结果            |
