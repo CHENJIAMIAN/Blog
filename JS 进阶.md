@@ -754,10 +754,3 @@ Reduction JSCallReducer::ReduceArrayIncludes
 		代码的最后部分使用 `Return()` 函数返回了搜索结果。
 		如果搜索不到该元素，则返回 `FalseConstant()`，否则返回 `-1`。
 ```
-|   |   |   |   |   |   |   |
-|---|---|---|---|---|---|---|
-|厂商|优诺ThingJS|迅维|飞渡|广联达|图扑|光启元|
-|产品|l 低代码数字孪生开发平台<br><br>l 森BIM插件 For Revit|Soon Builder自主研发的国产轻量化空间建模工具<br><br>Soon SDK基于WebGL技术的三维可视化引擎库，使用JavaScript语言开发|太极开发者平台|BIMFACE轻量化引擎|HT for Web<br><br>HT for Web GIS|RayData Web|
-|特色|ThingJS是Three.js的上层封装，uearth是Cesium的上层封装，低代码、配套3D开发工具和3D模型库|独有的轻量化算法引擎，生成的三维场景BIM模型体量仅为传统BIM模型的十分之一|WebRTC进行像素流的数据传输，每一帧都是后端进行渲染和绘制，然后通过视频流的方式传输到前端,效果极好|只需上传原始文件，就能在云端自动发起转换|源码自研，BIM的IFC 文件解码成 HT 可以显示渲染的私有格式|基于UnityWebGL，<br><br>无SDK纯在线制作，采用了设计师熟悉的图层式创作方式，将编辑区分为系统UI层和3D场景层|
-|费用|￥120,800元|需官网咨询商务|需官网咨询商务|公有云500 元/年<br><br>图纸10元/个<br><br>模型20元/个|需官网咨询商务|公有云部署23904元/年<br><br>私有云部署需官网咨询商务|
-|技术偏向|3D/GIS|BIM|3D/GIS|BIM/GIS|3D/GIS|3D|
