@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress'
-import AutoSidebar from 'vite-plugin-vitepress-auto-sidebar';
-import { getSideBar } from 'vitepress-plugin-autobar'
+import { getSideBar } from './getSideBar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -13,7 +12,7 @@ export default defineConfig({
     //   { text: 'Cesium-3DTiles', link: '/Cesium-3DTiles' }
     // ],
 
-    sidebar: getSideBar("./",{
+    sidebar: getSideBar(".",{
       ignoreDirectory: ['node_modules'],
     }),
     // sidebar: [

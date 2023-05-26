@@ -68,7 +68,7 @@ const getChildren = function (parentPath: string, ignoreMDFiles: Array<string> =
 // Return sidebar config for given baseDir.
 function side(baseDir: string, options?: Options) {
   const mdFiles = getChildren(baseDir, options?.ignoreMDFiles);
-
+  
   const sidebars: Sidebar = [];
   // strip number of folder's name
   mdFiles.forEach((item) => {
