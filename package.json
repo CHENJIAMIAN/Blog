@@ -5,6 +5,7 @@
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {
+    "vite-plugin-vitepress-auto-sidebar": "^1.5.0",
     "vitepress": "1.0.0-beta.1"
   }
 }
