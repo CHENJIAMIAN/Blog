@@ -2,7 +2,7 @@
   "accentColor": "",
   "cssTheme": "Things",
   "theme": "moonstone",
-  "translucency": false,
+  "translucency": true,
   "nativeMenus": false,
   "showViewHeader": true,
   "baseFontSize": 16
