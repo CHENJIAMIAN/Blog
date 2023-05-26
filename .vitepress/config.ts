@@ -13,7 +13,9 @@ export default defineConfig({
     //   { text: 'Cesium-3DTiles', link: '/Cesium-3DTiles' }
     // ],
 
-    sidebar: getSideBar("./"),
+    sidebar: getSideBar("./",{
+      ignoreDirectory: ['node_modules'],
+    }),
     // sidebar: [
     //   {
     //     text: 'Examples',
