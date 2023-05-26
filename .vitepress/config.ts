@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import AutoSidebar from 'vite-plugin-vitepress-auto-sidebar';
+import { getSideBar } from 'vitepress-plugin-autobar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -7,33 +8,24 @@ export default defineConfig({
   description: "A VitePress Site",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Cesium-3DTiles', link: '/Cesium-3DTiles' }
-    ],
+    // nav: [
+    //   { text: 'Home', link: '/' },
+    //   { text: 'Cesium-3DTiles', link: '/Cesium-3DTiles' }
+    // ],
 
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
+    sidebar: getSideBar("./"),
+    // sidebar: [
+    //   {
+    //     text: 'Examples',
+    //     items: [
+    //       { text: 'Markdown Examples', link: '/markdown-examples' },
+    //       { text: 'Runtime API Examples', link: '/api-examples' }
+    //     ]
+    //   }
+    // ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/CHENJIAMIAN' }
     ]
   },
-  vite: {
-    plugins: [
-        // add plugin
-        AutoSidebar({
-            // You can also set options to adjust sidebar data
-            // see option document below
-            path:'/'
-        })
-    ]
-},
 })
