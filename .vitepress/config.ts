@@ -1,16 +1,16 @@
 import { defineConfig } from 'vitepress'
-import { getSideBar } from './getSideBar'
+import { getSideBar } from 'vitepress-plugin-autobar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: "Blog of CHENJIAMIAN",
+  description: "个人博客",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    // nav: [
-    //   { text: 'Home', link: '/' },
-    //   { text: 'Cesium-3DTiles', link: '/Cesium-3DTiles' }
-    // ],
+    nav: [
+      { text: '介绍', link: '/' },
+      { text: '主页', link: '/README' },
+    ],
 
     sidebar: getSideBar(".",{
       ignoreDirectory: ['node_modules'],
