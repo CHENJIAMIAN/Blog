@@ -89,7 +89,7 @@ request.form.get('username')		#request.form['username']
 ```javascript
 #图片链接
 from flask import url_for
-<img src="{{url_for('static',filename='add.png')}}">			 //static目录下的add.png图片
+<img src="{{url_for('static',filename='add.png')}}"/>			 //static目录下的add.png图片
 ```
 
 
