@@ -8,6 +8,7 @@ export default defineConfig({
   description: "个人博客",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    outlineTitle: '目录',
     nav: [
       { text: '介绍', link: '/' },
       { text: '主页', link: '/README' },
