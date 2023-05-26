@@ -176,7 +176,8 @@ Layer
 ## 材质
 ```js
 材质(Material):
-    color/map纹理/normalMap法线贴图是一种模拟凹凸处光照效果的技术.是凸凹贴图的一种实现/自发光属性emissive/高光颜色属性specular
+    color/map纹理/normalMap法线贴图是一种模拟凹凸处光照效果的技术.是凸凹贴图的一种实现
+    /自发光属性emissive/高光颜色属性specular
     /粗糙度属性roughness/depthTest'被挡住还能看到'
     MeshBasicMaterial不会受到光的影响//由于MeshBasicMaterial不使用光照，如果物体显示不出来,材质设为它能显示,那物体就是出现在材质或光照了
     MeshPhongMaterial会受灯光影响的高光材质,油漆面，瓷瓦等光滑物体
