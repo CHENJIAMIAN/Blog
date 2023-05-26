@@ -734,7 +734,7 @@ struct czm_modelVertexOutput {
 
 该结构包含自定义顶点着色器的输出。这包括：
 *   `positionMC` - 模型空间坐标中的顶点位置。该结构字段可用于扰动或动画顶点。它被初始化为 `vsInput.attributes.positionMC`.  CustomShader可以修改它，结果用于计算`gl_Position`。
-*   `pointSize` - 对应于`gl_PointSize`。这仅适用于渲染为 的模型`gl.POINTS`，否则将被忽略。这会覆盖 应用于模型的任何磅值样式`Cesium3DTileStyle`。
+*   `pointSize` - 对应于`gl_PointSize`。这仅适用于渲染为`gl.POINTS`的模型，否则将被忽略。这会覆盖 应用于模型的任何磅值样式`Cesium3DTileStyle`。
 
 > **实施注意事项**：`positionMC`不修改图元的边界球体。如果顶点移动到包围球之外，则图元可能会被无意中剔除，具体取决于视锥体。
 
