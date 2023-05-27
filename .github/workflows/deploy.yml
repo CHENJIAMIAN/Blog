@@ -25,15 +25,12 @@ jobs:
       - name: Build
         run: npm run docs:build
       - uses: actions/configure-pages@v2
+        with:
+          branch: gh-pages
+          folder: /
       - uses: actions/upload-pages-artifact@v1
         with:
-          path: docs
+          path: .vitepress/dist
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v1
-        # Push generated pages to Github Pages branch
-      - name: Deploy to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
