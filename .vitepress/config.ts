@@ -3,7 +3,7 @@ import { getSideBar } from 'vitepress-plugin-autobar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base:'',
+  base:'CHENJIAMIAN',
   lang: 'zh',
   title: "CHENJIAMIAN",
   description: "个人博客",
