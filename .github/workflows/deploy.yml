@@ -31,3 +31,9 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v1
+        # Push generated pages to Github Pages branch
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
