@@ -7,3 +7,4 @@ __pycache__/
 .obsidian/plugins/smart-connections/data.json
 .obsidian/plugins/emo-uploader/data.json
 workspace.json
+node_modules
