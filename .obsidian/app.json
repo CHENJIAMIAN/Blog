@@ -15,6 +15,7 @@
   },
   "userIgnoreFilters": [
     "node_modules/*",
-    "node_modules/@eslint/"
+    "node_modules/@eslint/",
+    "node_modules/"
   ]
 }
