@@ -133,7 +133,7 @@ def query_user(user_id):
 </body>
 ```
 
-<!--继承base.html作为模板--!>
+继承base.html作为模板
 
 ```javascript
 {% extends "base.html" %} 

@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,O as o}from"./chunks/framework.4afe7240.js";const w=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"AdBlock 规则.md","filePath":"AdBlock 规则.md"}'),t={name:"AdBlock 规则.md"},l=o("",1),c=[l];function e(p,i,r,u,q,A){return a(),n("div",null,c)}const C=s(t,[["render",e]]);export{w as __pageData,C as default};

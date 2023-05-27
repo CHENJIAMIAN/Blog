@@ -912,9 +912,9 @@ function Foo() {
 
 添加或更新第三方库时：
 
-- 确保 [LICENSE.md](../../../LICENSE.md) 更新为库的名称和完整的版权声明。
-- 如果一个库作为 CesiumJS 版本的一部分发布，它应该包含在生成的 [`ThirdParty.json`](../../../ThirdParty.json) 中。
-  1. 使用包 name 更新 [`ThirdParty.extra.json`](../../../ThirdParty.extra.json)。如果它是 [`package.json`](../../../package.json) 中包含的 npm 模块，请使用确切的包名称。
+- 确保 [LICENSE.md](https://github.com/CesiumGS/cesium/blob/main//LICENSE.md) 更新为库的名称和完整的版权声明。
+- 如果一个库作为 CesiumJS 版本的一部分发布，它应该包含在生成的 [`ThirdParty.json`](https://github.com/CesiumGS/cesium/blob/main//ThirdParty.json) 中。
+  1. 使用包 name 更新 [`ThirdParty.extra.json`](https://github.com/CesiumGS/cesium/blob/main//ThirdParty.extra.json)。如果它是 [`package.json`](https://github.com/CesiumGS/cesium/blob/main//package.json) 中包含的 npm 模块，请使用确切的包名称。
   2. 如果库_不是_包含在 `package.json` 中的 npm 模块，请提供 `license`、`version` 和 `url` 字段。否则，需保证可以使用 `package.json` 检测到此信息。
   3. 如果在许可证方面存在特例，比如在多个可用许可证中选择使用单个许可证，提供许可证字段将覆盖使用 `package.json` 检测到的信息。如果需要解释异常情况，则还应在`note`s字段中提供解释。
   4. 运行 `npm run build-third-party` 并提交生成的 `ThirdParty.json` 

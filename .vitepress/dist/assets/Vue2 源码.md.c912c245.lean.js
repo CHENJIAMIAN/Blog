@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,O as l}from"./chunks/framework.4afe7240.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"Vue2 源码.md","filePath":"Vue2 源码.md"}'),p={name:"Vue2 源码.md"},o=l("",6),e=[o];function t(c,r,y,D,F,A){return n(),a("div",null,e)}const u=s(p,[["render",t]]);export{i as __pageData,u as default};

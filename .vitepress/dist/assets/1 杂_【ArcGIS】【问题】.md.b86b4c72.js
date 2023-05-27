@@ -1,0 +1,40 @@
+import{_ as s,o as n,c as a,O as l}from"./chunks/framework.4afe7240.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"1 杂/【ArcGIS】【问题】.md","filePath":"1 杂/【ArcGIS】【问题】.md"}'),p={name:"1 杂/【ArcGIS】【问题】.md"},e=l(`<div class="language-xml"><button title="Copy Code" class="copy"></button><span class="lang">xml</span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">shp不能超过2GB大！！！</span></span>
+<span class="line"><span style="color:#A6ACCD;">图层相交为空，把两个图层设为同一个参考系，比如北京54，可以一个是投影，一个是平面的</span></span>
+<span class="line"><span style="color:#A6ACCD;">每个地图文档都有一个默认地理数据库，作为地图空间内容的本地位置。</span></span>
+<span class="line"><span style="color:#A6ACCD;">函数执行错误9999，可能是工具输出的是shp，而你把shp放gdb里面了，shp只能放在文件夹里面</span></span>
+<span class="line"><span style="color:#A6ACCD;">如何根据经纬度查找某一点？？？工具栏-转到xy；注意数据框和数据的投影要一致，投影后最好加载到新的数据框</span></span>
+<span class="line"><span style="color:#A6ACCD;">分割工具——输出的是shp，输出空间只能是普通文件夹</span></span>
+<span class="line"><span style="color:#A6ACCD;">日期字段</span></span>
+<span class="line"><span style="color:#A6ACCD;">    coverage 或 shapefile 使用以下格式将日期存储在日期字段中：yyyy-mm-dd。</span></span>
+<span class="line"><span style="color:#A6ACCD;">    地理数据库的日期格式为日期时间 yyyy-mm-dd hh:mm:ss AM 或 PM。</span></span>
+<span class="line"><span style="color:#A6ACCD;">    Windows 系统中的设置决定了 ArcMap 中的日期显示方式 - M/d/yy、MM/dd/yy 和 yy/MM/dd 等。ArcMap 使用系统短日期格式（数值）显示日期。</span></span>
+<span class="line"><span style="color:#A6ACCD;">直接属性里改坐标系，栅格值分段什么的一般没有效，或者奇怪出错，建议用工具来做</span></span>
+<span class="line"><span style="color:#A6ACCD;">10*Rnd//可在属性表生成十倍随机数</span></span>
+<span class="line"><span style="color:#A6ACCD;">数据框投影：如未定义，则自动设第一个加载的图层的投影</span></span>
+<span class="line"><span style="color:#A6ACCD;">做地理处理:如相交时,要取消选择要素,否则只作用选择的要素</span></span>
+<span class="line"><span style="color:#A6ACCD;">编辑器不可用:查看其他数据框是否在占用</span></span>
+<span class="line"><span style="color:#A6ACCD;">python:等号左右边注意要有空格outExtract=ExtractByAttributes(&quot;elevzone_gd&quot;,&quot;value = 2&quot;)</span></span>
+<span class="line"><span style="color:#A6ACCD;">普通excel表导入Arcgis中使用:先在excel中把单张表转换为dbf格式,第一行作为列名,如果在excel中的修改在Arcgis中刷新不出来,就另存为另一个名字的dbf再加载</span></span>
+<span class="line"><span style="color:#A6ACCD;">网络数据集的方向不可用：没有设置name字段，方向功能要检测到name字段才可用</span></span>
+<span class="line"><span style="color:#A6ACCD;">栅格计算坡度都是九十度左右，投影问题，先定义投影为地理unKnow，再用投影栅格工具转换为投影坐标系，也就是平面上的</span></span>
+<span class="line"><span style="color:#A6ACCD;">    北坡0-22.5	337.5-360</span></span>
+<span class="line"><span style="color:#A6ACCD;">    东北坡22.5-67.5	西北坡292.5-337.5 </span></span>
+<span class="line"><span style="color:#A6ACCD;">    东坡67.5-112.5	西坡247.5-292.5</span></span>
+<span class="line"><span style="color:#A6ACCD;">    东南坡112.5-157.5	西南坡202.5-247.5</span></span>
+<span class="line"><span style="color:#A6ACCD;">    南坡157.5-202.5</span></span>
+<span class="line"><span style="color:#A6ACCD;">    无坡向 else</span></span></code></pre></div><div class="language-xml"><button title="Copy Code" class="copy"></button><span class="lang">xml</span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">shp文件 管理模式：文件和关系数据库混合管理模式</span></span>
+<span class="line"><span style="color:#A6ACCD;">    必须:</span></span>
+<span class="line"><span style="color:#A6ACCD;">        shp主文件</span></span>
+<span class="line"><span style="color:#A6ACCD;">        shx索引文件</span></span>
+<span class="line"><span style="color:#A6ACCD;">        dBASE表sbf</span></span>
+<span class="line"><span style="color:#A6ACCD;">        可选：</span></span>
+<span class="line"><span style="color:#A6ACCD;">        prj投影</span></span>
+<span class="line"><span style="color:#A6ACCD;">        sbn，sbx索引</span></span>
+<span class="line"><span style="color:#A6ACCD;">        shp.xml以XML格式保持元数据</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span></span>
+<span class="line"><span style="color:#A6ACCD;">从ArcGIS 10.1开始，arcgis官方推荐以直连方式连接SDE，因此在SDE安装时不再自动安装SDE服务</span></span>
+<span class="line"><span style="color:#A6ACCD;">ArcSDE10.2的建库方式不再是先安装软件后配置的过程，而是集成在ArcGIS Desktop中ArcToolBox的创建企业级数据库工具中。</span></span></code></pre></div><div class="language-xml"><button title="Copy Code" class="copy"></button><span class="lang">xml</span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">ArcGIS 使用三种方法来组织、存储和管理栅格数据（栅格数据模型）。这些结构和相应的表示图标为：</span></span>
+<span class="line"><span style="color:#A6ACCD;">    栅格数据集是组织成一个或多个波段的任何有效的栅格格式。每个波段由一系列像素（单元）数组组成，每个像素都有一个值。栅格数据集至少有一个波段</span></span>
+<span class="line"><span style="color:#A6ACCD;">    镶嵌数据集是一组以目录形式存储并以单个镶嵌影像或单个影像（栅格）的方式显示或访问的栅格数据集（影像）。</span></span>
+<span class="line"><span style="color:#A6ACCD;">    栅格目录以表格式定义的栅格数据集的集合</span></span>
+<span class="line"><span style="color:#A6ACCD;">        //栅格目录通常用于显示相邻、完全重叠或部分重叠的栅格数据集，而无需将它们镶嵌为一个较大的栅格数据集。</span></span></code></pre></div>`,3),c=[e];function o(t,A,C,r,i,y){return n(),a("div",null,c)}const _=s(p,[["render",o]]);export{d as __pageData,_ as default};

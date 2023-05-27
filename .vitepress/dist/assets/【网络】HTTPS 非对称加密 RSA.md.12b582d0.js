@@ -1,0 +1,76 @@
+import{_ as s,o as n,c as a,O as l}from"./chunks/framework.4afe7240.js";const p="/assets/54E71A43FE434FD0B33F31F133475413.2e315b8a.png",S=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"【网络】HTTPS 非对称加密 RSA.md","filePath":"【网络】HTTPS 非对称加密 RSA.md"}'),o={name:"【网络】HTTPS 非对称加密 RSA.md"},e=l(`<div class="language-javascript"><button title="Copy Code" class="copy"></button><span class="lang">javascript</span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#A6ACCD;">HTTP2</span></span>
+<span class="line"><span style="color:#A6ACCD;">    HTTP2中所有协议是小写字母，这点跟HTTP1不同。</span></span>
+<span class="line"><span style="color:#A6ACCD;">    另外部分新增的协议用冒号开头，称之为 pseudo header name</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;"> 冒号只是为了作为特别的区分</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">带冒号的 header 头只有几个，其余都只是小写而已</span></span></code></pre></div><p><img src="`+p+`" alt=""></p><div class="language-javascript"><button title="Copy Code" class="copy"></button><span class="lang">javascript</span><pre class="shiki material-theme-palenight"><code><span class="line"><span style="color:#FFCB6B;">与HTTPS区别</span><span style="color:#89DDFF;">:</span></span>
+<span class="line"><span style="color:#A6ACCD;">    安全</span><span style="color:#89DDFF;">|</span><span style="color:#F78C6C;">443</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFCB6B;">hash</span><span style="color:#89DDFF;">:</span><span style="color:#82AAFF;">线性散列算法</span><span style="color:#A6ACCD;">(函数)：MD5</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;"> SHA1  </span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">//哈希表存储的是键值对,由hash函数生成</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">//哈希函数(也叫消息摘要),是签名算法,将数据运算定长值,用于一致性验证</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">//加盐:MD5(123456+&#39;$1@Aa这就是盐&#39;)    </span></span>
+<span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#FFCB6B;">函数类型</span><span style="color:#89DDFF;">:</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#F78C6C;">1</span><span style="color:#A6ACCD;">、加法Hash</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#F78C6C;">2</span><span style="color:#A6ACCD;">、位运算Hash</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#F78C6C;">3</span><span style="color:#A6ACCD;">、乘法Hash</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#F78C6C;">4</span><span style="color:#A6ACCD;">、除法Hash</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#F78C6C;">5</span><span style="color:#A6ACCD;">、查表Hash</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#F78C6C;">6</span><span style="color:#A6ACCD;">、混合Hash</span><span style="color:#676E95;font-style:italic;">//各种常见的Hash算法，比方MD5、Tiger都属于这个范围。</span></span>
+<span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#FFCB6B;">哈希表处理冲突</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#676E95;font-style:italic;">//为产生冲突的关键字寻找下一个哈希地址</span></span>
+<span class="line"><span style="color:#A6ACCD;">        1</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">开放寻址法</span></span>
+<span class="line"><span style="color:#A6ACCD;">        2</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">再散列法</span></span>
+<span class="line"><span style="color:#A6ACCD;">        3</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">链地址法（拉链法）</span></span>
+<span class="line"><span style="color:#89DDFF;">            </span><span style="color:#676E95;font-style:italic;">//HashMap由数组+链表组成的，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的</span></span>
+<span class="line"><span style="color:#A6ACCD;">        4</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">建立一个公共溢出区</span></span>
+<span class="line"><span style="color:#A6ACCD;">    </span></span>
+<span class="line"><span style="color:#A6ACCD;">    </span></span>
+<span class="line"><span style="color:#FFCB6B;">对称</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;">加密和解密都使用同一个密钥</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;">在现代没法再网络上安全地交换密钥，所以不够安全</span></span>
+<span class="line"><span style="color:#A6ACCD;">    对称性加密算法：</span><span style="color:#82AAFF;">AES</span><span style="color:#A6ACCD;">(32位)</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;">3</span><span style="color:#82AAFF;">DES</span><span style="color:#A6ACCD;">(24位)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFCB6B;">非对称</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> 由于加密和解密需要两个不同的密钥</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;">比对称的好</span><span style="color:#676E95;font-style:italic;">//也叫:公开密钥密码学（Public-key cryptography)    </span></span>
+<span class="line"><span style="color:#A6ACCD;">    非对称性加密算法：RSA</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;">DSA</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;">ECC</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">//在计算上相当复杂，性能欠佳,实际情况下，往往通过非对称加密来随机创建临时的对称秘钥，亦即对话键，然后才通过对称加密来传输大量、主体的数据。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;">/</span><span style="color:#C3E88D;">HTTPS过程</span><span style="color:#89DDFF;">/</span><span style="color:#A6ACCD;"> 重点</span></span>
+<span class="line"><span style="color:#A6ACCD;">    1</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">SSL</span><span style="color:#89DDFF;">/</span><span style="color:#82AAFF;">TLS</span><span style="color:#A6ACCD;">(非对称加密)  </span><span style="color:#676E95;font-style:italic;">//3个随机数生成【会话密钥】 //直接交换随机数,再用 公私钥 交换 第3个 随机数</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#FFCB6B;">客户端</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;">  1TLS             </span><span style="color:#89DDFF;">|</span><span style="color:#A6ACCD;"> 2加密算法 </span><span style="color:#89DDFF;">|</span><span style="color:#A6ACCD;"> 3这是我的【随机字符串】</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#FFCB6B;">服务器</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;">  1SSL证书含公钥    </span><span style="color:#89DDFF;">|</span><span style="color:#A6ACCD;"> 2加密算法 </span><span style="color:#89DDFF;">|</span><span style="color:#A6ACCD;"> 3这是我的【随机字符串】</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#82AAFF;">客户端</span><span style="color:#A6ACCD;">(对服务器进行身份验证)：我问机构了</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;">你的SSL证书是真的</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;"> 这是我的另一个用你【SSL证书上的</span><span style="color:#89DDFF;">|</span><span style="color:#A6ACCD;">公钥】加密的【“premaster机密随机字符串”】</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#FFCB6B;">服务器</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;">我用我【SSL证书上的</span><span style="color:#89DDFF;">|</span><span style="color:#A6ACCD;">私钥】解密获得【“premaster机密”】了</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#89DDFF;">/</span><span style="color:#C3E88D;">创建的会话密钥：客户端和服务器均从【1客户端随机 2服务器随机 3premaster机密随机字符串】生成【会话密钥】。他们应该得出相同的结果。</span><span style="color:#89DDFF;">/</span></span>
+<span class="line"><span style="color:#89DDFF;">        </span><span style="color:#676E95;font-style:italic;">//如下：</span></span>
+<span class="line"><span style="color:#A6ACCD;">    2</span><span style="color:#89DDFF;">.</span><span style="color:#82AAFF;">会话加密</span><span style="color:#A6ACCD;">(对称加密)</span></span>
+<span class="line"><span style="color:#A6ACCD;">        客户端：【会话密钥】加密了一条消息</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;">你看能不能解开</span></span>
+<span class="line"><span style="color:#A6ACCD;">        服务器：我用【会话密钥】解开了</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;">我们以后就用【会话密钥】</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#82AAFF;">网站如何获得SSL证书</span><span style="color:#A6ACCD;">(包含[公钥][私钥]</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;"> 放在服务器): </span><span style="color:#676E95;font-style:italic;">//防止”中间人“攻击</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">//SSL证书是数字证书的一种，类似于护照本。    //因为私钥存在Web服务器上，也称为SSL服务器证书</span></span>
+<span class="line"><span style="color:#89DDFF;">    </span><span style="color:#676E95;font-style:italic;">//网站获取SSL证书，必须要提供相关真实资料给权威的证书颁发机构进行SSL认证，经过彻底验证的 真实网站才有资格获取SSL证书。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#82AAFF;">CA</span><span style="color:#A6ACCD;">(认证中心)是负责签发证书、认证证书、管理已颁发证书的机关</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;"> 拥有一个证书（内含公钥和私钥）</span></span>
+<span class="line"><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">pem </span><span style="color:#676E95;font-style:italic;">//证书编码格式,包含</span></span>
+<span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">CRT </span><span style="color:#676E95;font-style:italic;">//即 certificate的缩写，即证书。   </span></span>
+<span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">CSR </span><span style="color:#676E95;font-style:italic;">//是Certificate Signing Request的缩写，即证书签名请求，这不是证书，可以简单理解成【公钥】，生成证书时要把这个提交给权威的证书颁发机构。</span></span>
+<span class="line"><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">KEY </span><span style="color:#676E95;font-style:italic;">//通常指私钥。</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A6ACCD;">RSA加密解密：</span><span style="color:#82AAFF;">每一方都有自己的保险柜</span><span style="color:#A6ACCD;">(公钥)</span><span style="color:#82AAFF;">跟钥匙</span><span style="color:#A6ACCD;">(私钥)</span><span style="color:#89DDFF;">,</span><span style="color:#676E95;font-style:italic;">//公钥加密私钥解密还是公钥解密私钥加密其实都是一样的,只是相对的说法</span></span>
+<span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#FFCB6B;">目的</span><span style="color:#89DDFF;">:</span><span style="color:#82AAFF;">双方互相拥有对方的保险柜</span><span style="color:#A6ACCD;">(公钥)</span><span style="color:#89DDFF;">,</span><span style="color:#82AAFF;">用对方的保险柜</span><span style="color:#A6ACCD;">(公钥)加密</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;"> </span><span style="color:#82AAFF;">让对方用自己的钥匙</span><span style="color:#A6ACCD;">(私钥)解密</span></span>
+<span class="line"><span style="color:#A6ACCD;">        0</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">A拥有A公钥A私钥</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;">B拥有B公钥B私钥</span></span>
+<span class="line"><span style="color:#A6ACCD;">        1</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">B 发【B公钥】给 A</span><span style="color:#676E95;font-style:italic;">//[B公钥]可能被截获,然而别人截获没什么用,别人没有[B私钥]</span></span>
+<span class="line"><span style="color:#A6ACCD;">        2</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">A 发【A公钥】给 B</span></span>
+<span class="line"><span style="color:#A6ACCD;">            或</span><span style="color:#676E95;font-style:italic;">//A 发【B公钥加密过的A公钥】给 B (更安全)</span></span>
+<span class="line"><span style="color:#89DDFF;">            </span><span style="color:#676E95;font-style:italic;">//为什么[A公钥]不直接发过去而要发经过加密的【B公钥加密过的A公钥】,因为加密后别人截获【B公钥加密过的A公钥】也用不了,确保[A公钥]只有B拥有</span></span>
+<span class="line"><span style="color:#A6ACCD;">        3</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">B 得到【A公钥】</span><span style="color:#676E95;font-style:italic;">//B(有【B公钥加密过的A公钥】) =&gt; 用【B私钥】解开  =&gt; 得到【A公钥】</span></span>
+<span class="line"><span style="color:#A6ACCD;">        4</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">此时：</span><span style="color:#82AAFF;">双方互相拥有对方的保险柜</span><span style="color:#A6ACCD;">(公钥)</span></span>
+<span class="line"><span style="color:#A6ACCD;">        5</span><span style="color:#89DDFF;">.</span><span style="color:#A6ACCD;">下次: 要发送信息给对方</span><span style="color:#89DDFF;">,</span><span style="color:#82AAFF;">就用对方的保险柜</span><span style="color:#A6ACCD;">(公钥)加密</span><span style="color:#89DDFF;">,</span><span style="color:#A6ACCD;"> </span><span style="color:#82AAFF;">让对方用自己的钥匙</span><span style="color:#A6ACCD;">(私钥)解密</span></span>
+<span class="line"><span style="color:#A6ACCD;">    </span></span>
+<span class="line"><span style="color:#A6ACCD;">RSA数字签名</span><span style="color:#89DDFF;">-</span><span style="color:#A6ACCD;">俗称加签验签： 私钥加签，公钥验签。</span></span>
+<span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#FFCB6B;">目的</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> 公钥是可能给发送给其他系统的，你无法得知是哪个系统给你传输的这个数据，所以就有了签名这一说。</span></span>
+<span class="line"><span style="color:#A6ACCD;">        甲系统（有乙公钥）</span></span>
+<span class="line"><span style="color:#A6ACCD;">            </span><span style="color:#F78C6C;">1</span><span style="color:#A6ACCD;"> 甲私钥对信息加密，得到 甲签名字段</span></span>
+<span class="line"><span style="color:#A6ACCD;">            </span><span style="color:#F78C6C;">2</span><span style="color:#A6ACCD;"> 使用乙公钥加密 （信息</span><span style="color:#89DDFF;">+</span><span style="color:#A6ACCD;">甲签名字段），传给乙系统。</span></span>
+<span class="line"><span style="color:#A6ACCD;">        </span></span>
+<span class="line"><span style="color:#A6ACCD;">        乙系统（有甲公钥）</span></span>
+<span class="line"><span style="color:#A6ACCD;">            </span><span style="color:#F78C6C;">1</span><span style="color:#A6ACCD;"> 拿到数据后，先使用乙私钥解密数据，得到 （信息</span><span style="color:#89DDFF;">+</span><span style="color:#A6ACCD;">甲签名字段）</span></span>
+<span class="line"><span style="color:#A6ACCD;">            </span><span style="color:#F78C6C;">3</span><span style="color:#A6ACCD;"> 然后甲公钥解密的 甲签名字段 得到 信息 与 信息 进行对比，这一步叫做验签</span></span>
+<span class="line"><span style="color:#A6ACCD;">            </span><span style="color:#F78C6C;">4</span><span style="color:#A6ACCD;"> 如果相等则代表此数据时 由甲方传来 且数据没有被篡改。</span></span></code></pre></div>`,3),c=[e];function t(A,r,C,y,D,F){return n(),a("div",null,c)}const B=s(o,[["render",t]]);export{S as __pageData,B as default};

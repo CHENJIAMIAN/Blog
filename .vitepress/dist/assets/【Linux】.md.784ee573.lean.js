@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,O as l}from"./chunks/framework.4afe7240.js";const F=JSON.parse('{"title":"权限","description":"","frontmatter":{},"headers":[],"relativePath":"【Linux】.md","filePath":"【Linux】.md"}'),p={name:"【Linux】.md"},o=l("",32),e=[o];function t(c,r,y,C,D,A){return n(),a("div",null,e)}const h=s(p,[["render",t]]);export{F as __pageData,h as default};

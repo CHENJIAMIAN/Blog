@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as i,O as a}from"./chunks/framework.4afe7240.js";const I=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"BIM-QA.md","filePath":"BIM-QA.md"}'),r={name:"BIM-QA.md"},o=a("",4),_=[o];function l(p,s,c,n,v,d){return t(),i("div",null,_)}const m=e(r,[["render",l]]);export{I as __pageData,m as default};
