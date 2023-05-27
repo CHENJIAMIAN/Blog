@@ -1,1 +1,0 @@
-import{_ as e,o as r,c as i,O as a}from"./chunks/framework.4afe7240.js";const u=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"杂-GPT-QA.md","filePath":"杂-GPT-QA.md"}'),l={name:"杂-GPT-QA.md"},o=a("",18),n=[o];function t(d,s,p,c,h,P){return r(),i("div",null,n)}const _=e(l,[["render",t]]);export{u as __pageData,_ as default};

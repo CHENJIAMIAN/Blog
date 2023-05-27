@@ -1,1 +1,0 @@
-import{_ as s,o as n,c as a,O as o}from"./chunks/framework.4afe7240.js";const C=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"Cesium-GLTF.md","filePath":"Cesium-GLTF.md"}'),l={name:"Cesium-GLTF.md"},p=o("",15),t=[p];function F(e,c,r,D,y,u){return n(),a("div",null,t)}const i=s(l,[["render",F]]);export{C as __pageData,i as default};

@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as n,O as l}from"./chunks/framework.4afe7240.js";const F=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"WebGL-QA.md","filePath":"WebGL-QA.md"}'),o={name:"WebGL-QA.md"},p=l("",106),e=[p];function t(c,r,i,C,y,A){return a(),n("div",null,e)}const d=s(o,[["render",t]]);export{F as __pageData,d as default};

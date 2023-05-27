@@ -1,1 +1,0 @@
-import{_ as a,o as e,c as t,O as o}from"./chunks/framework.4afe7240.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"投资 保险/黄金.md","filePath":"投资 保险/黄金.md"}'),r={name:"投资 保险/黄金.md"},p=o("",12),_=[p];function n(s,c,i,d,h,l){return e(),t("div",null,_)}const u=a(r,[["render",n]]);export{f as __pageData,u as default};

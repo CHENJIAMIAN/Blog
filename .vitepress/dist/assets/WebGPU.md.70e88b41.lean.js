@@ -1,1 +1,0 @@
-import{_ as s,o as n,c as a,O as e}from"./chunks/framework.4afe7240.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"WebGPU.md","filePath":"WebGPU.md"}'),l={name:"WebGPU.md"},p=e("",2),o=[p];function c(t,r,i,C,D,A){return n(),a("div",null,o)}const F=s(l,[["render",c]]);export{d as __pageData,F as default};

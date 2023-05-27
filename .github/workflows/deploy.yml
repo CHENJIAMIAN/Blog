@@ -25,9 +25,6 @@ jobs:
       - name: Build
         run: npm run docs:build
       - uses: actions/configure-pages@v2
-        with:
-          branch: gh-pages
-          folder: /
       - uses: actions/upload-pages-artifact@v1
         with:
           path: .vitepress/dist

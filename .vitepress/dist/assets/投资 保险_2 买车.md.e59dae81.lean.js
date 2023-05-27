@@ -1,1 +1,0 @@
-import{_ as s,o as n,c as a,O as p}from"./chunks/framework.4afe7240.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"投资 保险/2 买车.md","filePath":"投资 保险/2 买车.md"}'),l={name:"投资 保险/2 买车.md"},o=p("",2),e=[o];function c(t,C,A,D,r,y){return n(),a("div",null,e)}const _=s(l,[["render",c]]);export{i as __pageData,_ as default};

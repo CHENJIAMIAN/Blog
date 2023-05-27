@@ -1,1 +1,0 @@
-import{_ as s,o as n,c as a,O as l}from"./chunks/framework.4afe7240.js";const C=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"【离线】渐进 SW.md","filePath":"【离线】渐进 SW.md"}'),p={name:"【离线】渐进 SW.md"},o=l("",4),e=[o];function t(c,r,y,F,D,i){return n(),a("div",null,e)}const f=s(p,[["render",t]]);export{C as __pageData,f as default};
