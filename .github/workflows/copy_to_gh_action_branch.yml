@@ -15,7 +15,7 @@ jobs:
           ref: master
           # By default, actions/checkout checks out all files in the branch that
           # triggered the workflow, but you only requested the master branch here.
-      
+          fetch-depth: 0
       - name: Create master-to-gh-action branch if it doesn't exist
         run: |
           git branch | grep -q "master-to-gh-action" || git branch -M master-to-gh-action
