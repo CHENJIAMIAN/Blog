@@ -19,10 +19,15 @@ jobs:
 
       - name: Copy files to temporary folder
         run: cp -r * ../tmp111/
+        
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: gh_action_branch
 
       - name: Switch to gh_action_branch branch
         run: |
-          git checkout -b gh_action_branch
+          # git checkout -b gh_action_branch
           ls -a
           
 
