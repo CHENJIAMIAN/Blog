@@ -367,7 +367,7 @@ tileset.root.content.batchTable._features[0].content._model._sceneGraph.componen
 	.scene.nodes[0].primitives[0].material.metallicRoughness.baseColorTexture.texture
 ```
 #### 从b3dm提取gltf提取纹理图片
-1. [从单个 B3DM 文件或整个 3DTiles tileset 中提取 gltf/glb](https://github.com/ebeaufay/B3DMExtractor#:~:text=%E4%BB%8E%E5%8D%95%E4%B8%AA%20B3DM%20%E6%96%87%E4%BB%B6%E6%88%96%E6%95%B4%E4%B8%AA%203DTiles%20tileset%20%E4%B8%AD%E6%8F%90%E5%8F%96%20gltf%2Fglb%20)
+1. [CHENJIAMIAN/ExtractorGlbFromB3DM: 提取b3dm中的glb文件, 以便获取里面的模型/材质图片等](https://github.com/CHENJIAMIAN/ExtractorGlbFromB3DM/tree/master)
 2. [免费的 GLB 资产提取器](https://products.aspose.app/3d/zh-cn/extractor/glb)
 ### 是怎么构造请求b3dm的url?
 ```js
