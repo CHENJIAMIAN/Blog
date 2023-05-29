@@ -1198,7 +1198,7 @@ primitives[i].attributes.POSITION +
 |NORMAL|VEC3|*float*|XYZ 顶点法向位移|
 |TANGENT|VEC3|*float*|XYZ 顶点切线位移|
 |TEXCOORD_n|VEC2|*float*<br>signed byte normalized  <br>signed short_规范化  <br>unsigned byte_规范化  <br>unsigned short_规范化|ST 纹理坐标位移|
-|颜色_n|VEC3  <br>VEC4|*float*<br>signed byte normalized  <br>signed short_规范化  <br>unsigned byte_规范化  <br>unsigned short_规范化|RGB 或 RGBA 颜色增量|
+|COLOR_n|VEC3  <br>VEC4|*float*<br>signed byte normalized  <br>signed short_规范化  <br>unsigned byte_规范化  <br>unsigned short_规范化|RGB 或 RGBA 颜色增量|
 
 POSITION访问器**必须**定义其最小和最大属性。
 
@@ -1491,6 +1491,7 @@ glTF 2.0 将纹理访问分为三种不同类型的对象：纹理、图像和�
 
 纹理存储在资产的纹理数组中。纹理由图像索引定义，由source属性和采样器索引 ( sampler ) 表示。例如：
 
+```js
 {
     "textures": [
         {
@@ -1499,7 +1500,7 @@ glTF 2.0 将纹理访问分为三种不同类型的对象：纹理、图像和�
         }
     ]
 }
-
+```
 glTF 2.0 仅支持静态 2D 纹理。
 
 当texture.source未定义时，图像**应该**由扩展或特定于应用程序的方式提供，否则纹理对象是未定义的。
@@ -1707,7 +1708,7 @@ glTF 使用一组通用参数定义材质，这些参数基于基于物理的渲
 
 基色_纹理_**必须包含使用**[sRGB 光电传输函数](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#srgb)编码的 8 位值，因此 RGB 值**必须**在用于任何计算之前解码为实际线性值。为了实现正确的过滤，传递函数**应该**在执行线性插值之前被解码。
 
-_金属度_和_粗糙度_属性的纹理打包在一个名为metallicRoughnessTexture的单一纹理中。它的_绿色_通道包含粗糙度值，_蓝色_通道包含金属度值。此纹理**必须**使用线性传递函数进行编码，并且每个通道**可以**使用超过 8 位。
+_金属度_ 和 _粗糙度_ 属性的纹理打包在一个名为metallicRoughnessTexture的单一纹理中。它的 _绿色_ 通道包含粗糙度值，_蓝色_ 通道包含金属度值。此纹理**必须**使用线性传递函数进行编码，并且每个通道**可以**使用超过 8 位。
 
 例如，假设从baseColorTexture中采样了8 位 RGBA 值[64, 124, 231, 255]，并假设baseColorFactor被指定为[0.2, 1.0, 0.7, 1.0]。然后，最终的_基色_值将是（在解码传递函数并乘以因子之后）
 
@@ -1735,7 +1736,7 @@ _金属度_和_粗糙度_属性的纹理打包在一个名为metallicRoughnessTe
 
     法向量在用于光照方程之前**必须被归一化。**使用缩放时，向量归一化发生在缩放之后。
 
-- **遮挡**：遮挡纹理；它表示从环境光源接收到较少间接照明的区域。直接照明不受影响。纹理的红色通道编码遮挡值，其中0.0表示完全遮挡区域（无间接照明），_1.0_表示未遮挡区域（完全间接照明）。其他纹理通道（如果存在）不影响遮挡。
+- **遮挡**：遮挡纹理；它表示从环境光源接收到较少间接照明的区域。直接照明不受影响。纹理的红色通道编码遮挡值，其中0.0表示完全遮挡区域（无间接照明），_1.0_ 表示未遮挡区域（完全间接照明）。其他纹理通道（如果存在）不影响遮挡。
 
     遮挡贴图的纹理绑定**可以**可选地包含用于减少遮挡效果的SCALAR强度值。如果存在，它会影响遮挡值 as `1.0 + strength * (occlusionTexture - 1.0)`。
 
@@ -1791,7 +1792,6 @@ _金属度_和_粗糙度_属性的纹理打包在一个名为metallicRoughnessTe
 alphaMode属性定义了如何解释 alpha 值。alpha 值取自金属粗糙度材料模型_基色的第四个分量。_
 
 alphaMode可以是以下值之一：
-
 - OPAQUE - 渲染输出完全不透明并且忽略任何 alpha 值。
 - MASK - 根据 alpha 值和指定的_alpha 截止_值，渲染输出完全不透明或完全透明；边缘的确切外观**可能**会受到特定于实现的技术的影响，例如“Alpha-to-Coverage”。
 
@@ -1893,7 +1893,6 @@ doubleSided属性指定材料是否是双面的。
 ##### [3.10.3.2. 无限透视投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31032-infinite-perspective-projection)
 
 让
-
 - a是视野的纵横比（宽度与高度），由`camera.perspective.aspectRatio`或视口的纵横比设置；
 - y是以弧度为单位的垂直视野，由camera.perspective.yfov设置；
 - n是到近裁剪平面的距离，由camera.perspective.znear设置。
@@ -1911,7 +1910,6 @@ doubleSided属性指定材料是否是双面的。
 ##### [3.10.3.3. 有限透视投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31033-finite-perspective-projection)
 
 让
-
 - a是视野的纵横比（宽度与高度），由`camera.perspective.aspectRatio`或视口的纵横比设置；
 - y是以弧度为单位的垂直视野，由camera.perspective.yfov设置；
 - f是到远裁剪平面的距离，由camera.perspective.zfar设置；
@@ -1930,7 +1928,6 @@ doubleSided属性指定材料是否是双面的。
 ##### [3.10.3.4。正投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31034-orthographic-projection)
 
 让
-
 - r是正交宽度的一半，由camera.orthographic.xmag设置；
 - t是正交高度的一半，由camera.orthographic.ymag设置；
 - f是到远裁剪平面的距离，由camera.orthographic.zfar设置；
@@ -2106,7 +2103,7 @@ glTF 2.0 还以类似的方式支持实例化变形目标的动画。
 }
 ```
 
-_通道_将关键帧动画的输出值连接到层次结构中的特定节点。通道的采样器属性包含存在于包含动画的采样器数组中的采样器之一的索引。target属性是一个对象，它标识哪个节点使用其node属性进行动画处理，以及节点的哪个属性使用path进行动画处理。非动画属性**必须**在动画期间保持它们的值。
+_通道_ 将关键帧动画的输出值连接到层次结构中的特定节点。通道的采样器属性包含存在于包含动画的采样器数组中的采样器之一的索引。target属性是一个对象，它标识哪个节点使用其node属性进行动画处理，以及节点的哪个属性使用path进行动画处理。非动画属性**必须**在动画期间保持它们的值。
 
 当节点未定义时，通道**应该**被忽略。有效路径名是"translation"、"rotation"、"scale"和"weights"。
 
@@ -2131,9 +2128,9 @@ _通道_将关键帧动画的输出值连接到层次结构中的特定节点。
 |频道.路径|存取器类型|组件类型|描述|
 |---|---|---|---|
 |“翻译”|“VEC3”|*float*|XYZ 平移矢量|
-|“回转”|“VEC4”|*float*  <br>*signed byte* normalized  <br>_unsigned byte_标准化  <br>_signed short_标准化  <br>_unsigned short_标准化|XYZW旋转四元数|
+|“回转”|“VEC4”|*float*  <br>*signed byte* normalized  <br>_unsigned byte_ 标准化  <br>_signed short_ 标准化  <br>_unsigned short_ 标准化|XYZW旋转四元数|
 |“规模”|“VEC3”|*float*|XYZ 比例矢量|
-|“权重”|“SCALAR”|*float*  <br>*signed byte* normalized  <br>_unsigned byte_标准化  <br>_signed short_标准化  <br>_unsigned short_标准化|变形目标的权重|
+|“权重”|“SCALAR”|*float*  <br>*signed byte* normalized  <br>_unsigned byte_ 标准化  <br>_signed short_ 标准化  <br>_unsigned short_ 标准化|变形目标的权重|
 
 实现**必须**使用以下等式从归一化整数c解码实浮点值f，反之亦然：
 
@@ -2284,7 +2281,7 @@ ubyte[] chunkData
 
 表 1. 块类型
 
-||块类型|ASCII码|描述|出现次数|
+| |块类型|ASCII码|描述|出现次数|
 |---|---|---|---|---|
 |1.|0x4E4F534A|JSON|结构化 JSON 内容|1个|
 |2.|0x004E4942|垃圾桶|二进制缓冲区|0 或 1|
@@ -2420,11 +2417,15 @@ material = mix(dielectric_brdf, metal_brdf, metallic)
 
 这种效应由具有波长相关折射率和消光系数的菲涅尔项conductor_fresnel描述。为了简化参数化，金属粗糙度材料将这两个量组合成一个用户定义的颜色值baseColor，它定义了垂直入射时的反射颜色，也称为f0。掠入射时的反射颜色称为f90。设置为1.0是因为任何材质的掠角反射率都接近纯白色。导体菲涅耳项调制由粗糙度参数参数化的镜面反射 BRDF 的贡献。
 
+
+```js
 metal_brdf =
   conductor_fresnel(
     f0 = baseColor,
     bsdf = specular_brdf(
       α = roughness ^ 2))
+
+```
 
 #### [B.2.2. 电介质](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b22-dielectrics)
 
@@ -2438,6 +2439,8 @@ metal_brdf =
 
 因此，介电材料被建模为镜面 BRDF 的菲涅耳加权组合，模拟表面反射，以及漫反射 BRDF，模拟光在物体内部被吸收和散射的透射部分。反射粗糙度由材料的平方粗糙度给出。漫反射 BRDF 的颜色来自baseColor。与传输相比，反射量取决于方向，因此由菲涅耳项决定。其折射率设置为1.5的固定值，这是对大多数不透明介电材料的良好折衷。
 
+
+```js
 dielectric_brdf =
   fresnel_mix(
     ior = 1.5,
@@ -2445,6 +2448,8 @@ dielectric_brdf =
       color = baseColor),
     layer = specular_brdf(
       α = roughness ^ 2))
+```
+
 
 #### [B.2.3. 微表面](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b23-microfacet-surfaces)
 
@@ -2511,29 +2516,38 @@ glTF 规范旨在允许应用程序根据他们的要求选择不同的照明实
 
 镜面反射specular_brdf(α)是一个microfacet BRDF
 
+```js
 \[\text{MicrofacetBRDF} = \frac{GD}{4 \, \left|N \cdot L \right| \, \左| N \cdot V \右|}\]
+```
 
 使用 Trowbridge-Reitz/GGX 微表面分布
 
+```js
 \[D = \frac{\alpha^2 \, \chi^{+}(N \cdot H)}{\pi ((N \cdot H)^2 (\alpha^2 - 1) + 1)^ 2}\]
+```
 
 和史密斯联合掩蔽-阴影函数的可分离形式
 
+```js
 \[G = \frac{2 \, \left| N \cdot L \右| \, \chi^{+}(H \cdot L)}{\left| N \cdot L \右| + \sqrt{\alpha^2 + (1 - \alpha^2) (N \cdot L)^2}} \frac{2 \, \left| N \cdot V \右| \, \chi^{+}(H \cdot V)}{\left| N \cdot V \右| + \sqrt{\alpha^2 + (1 - \alpha^2) (N \cdot V)^2}}\]
+```
 
 其中 χ + ( **x** ) 表示 Heaviside 函数：如果**x** > 0 则为 1，如果**x** ⇐ 0 则为 0。有关公式的推导，请参见[Heitz (2014) 。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Heitz2014)
 
 介绍可见性功能
 
+```js
 \[V = \frac{G}{4 \, \left| N \cdot L \右| \, \左| N \cdot V \右|}\]
+```
 
 将原始微面 BRDF 简化为
-
+```js
 \[\text{MicrofacetBRDF} = VD\]
-
+```
 和
-
+```js
 \[V = \frac{\, \chi^{+}(H \cdot L)}{\left| N \cdot L\右| + \sqrt{\alpha^2 + (1 - \alpha^2) (N \cdot L)^2}} \frac{\, \chi^{+}(H \cdot V)}{\left| N \cdot V \右| + \sqrt{\alpha^2 + (1 - \alpha^2) (N \cdot V)^2}}\]
+```
 
 因此，我们有函数
 
@@ -2550,11 +2564,10 @@ function specular_brdf(α) {
 |笔记|笔记<br><br>此部分包含可能无法在所有预览工具中正确显示的公式。查看完整的[漫反射 BRDF 部分](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#diffuse-brdf)。|
 
 漫反射diffuse_brdf(color)是 Lambertian BRDF
-
+```js
 \[\text{LambertianBRDF} = \frac{1}{\pi}\]
-
+```
 与颜色相乘。
-
 ```js
 function diffuse_brdf(color) {
   return (1/pi) * color
@@ -2568,11 +2581,11 @@ function diffuse_brdf(color) {
 |笔记|笔记<br><br>此部分包含可能无法在所有预览工具中正确显示的公式。查看完整的[菲涅耳部分](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#fresnel)。|
 
 [Schlick (1994)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Schlick1994)开发了一种可用于导体和电介质的菲涅耳项的廉价近似值：
-
+```js
 \[F = f_0 + (1 - f_0) (1 - \left| V \cdot H \right| )^5\]
+```
 
 导体 Fresnel`conductor_fresnel(f0, bsdf)`将依赖于视图的色调应用于 BSDF：
-
 ```js
 function conductor_fresnel(f0, bsdf) {
   return bsdf * (f0 + (1 - f0) * (1 - abs(VdotH))^5)
@@ -2580,7 +2593,6 @@ function conductor_fresnel(f0, bsdf) {
 ```
 
 对于电介质 BRDF，漫反射组件基础和镜面反射组件层通过 组合在一起`fresnel_mix(ior, base, layer)`。f0颜色现在从折射率ior导出。
-
 ```js
 function fresnel_mix(ior, base, layer) {
   f0 = ((1-ior)/(1+ior))^2
@@ -2625,11 +2637,11 @@ material = f_diffuse + f_specular
 
 #### [B.3.6. 讨论](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b36-discussion)
 
-##### [B.3.6.1。掩蔽-阴影项和多重散射](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b361-masking-shadowing-term-and-multiple-scattering)
+##### [B.3.6.1.掩蔽-阴影项和多重散射](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b361-masking-shadowing-term-and-multiple-scattering)
 
 可以通过多种方式改进镜面反射模型。[Heitz (2014)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Heitz2014)指出，由于微表面的高度，掩蔽-阴影函数的更准确形式考虑了掩蔽和阴影之间的相关性。这种相关性在高度相关的掩蔽和阴影功能中得到了解释。通过对多次散射进行建模可以实现精度的另一个提高，请参阅[“微平面表面”](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#microfacet-surfaces)部分。
 
-##### [B.3.6.2。Schlick 的菲涅耳近似](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b362-schlicks-fresnel-approximation)
+##### [B.3.6.2.Schlick 的菲涅耳近似](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b362-schlicks-fresnel-approximation)
 
 尽管 Schlick 的菲涅耳对于范围广泛的金属和介电材料是一个很好的近似，但有几个理由对菲涅耳项使用更复杂的解决方案。
 
