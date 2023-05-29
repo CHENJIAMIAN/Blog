@@ -115,16 +115,22 @@ glTF 1.0的嵌入式着色器是一种旧的技术，现已被glTF 2.0的PBR材�
                             "count": 360
                         },
                         "material": {
-                            "metallicRoughness": {
-                                "baseColorFactor": {"x": 1,"y": 1,"z": 1,"w": 1},
-                                "metallicFactor": 0,
-                                "roughnessFactor": 1
-                            },
-                            "emissiveFactor": {
-                                "x": 0,"y": 0,"z": 0},
-                            "alphaMode": "OPAQUE",
-                            "doubleSided": false,
-                            "unlit": false
+	                        alphaCutoff: undefined
+							alphaMode: "BLEND"
+							doubleSided: true
+							emissiveFactor: Cartesian3 {x: 0, y: 0, z: 0}
+							emissiveTexture: undefined
+							metallicRoughness: {
+							   baseColorTexture: TextureReader,
+							   metallicRoughnessTexture: undefined,
+							   baseColorFactor: Cartesian4{"x": 1,"y": 1,"z": 1,"w": 1},
+							   metallicFactor: 0.1,
+							   roughnessFactor: 0.7,
+							}
+							normalTexture: undefined
+							occlusionTexture: undefined
+							specularGlossiness: undefined
+                            unlit: false
                         },
                         "primitiveType": 4,
                         "featureIds": [],
