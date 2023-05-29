@@ -359,8 +359,12 @@ CustomShader渲染堆栈：
             updateTiles (Cesium.js:107633)
 ```
 ### 怎么读取b3dm的纹理下载下来?
+```js
 tileset.root.content.batchTable._features[0].content._model._defaultTexture
 
+tileset.root.content.batchTable._features[0].content._model._sceneGraph.components
+	.scene.nodes[0].primitives[0].material.metallicRoughness.baseColorTexture.texture
+```
 ### 是怎么构造请求b3dm的url?
 ```js
 Cesium3DTile.constructor

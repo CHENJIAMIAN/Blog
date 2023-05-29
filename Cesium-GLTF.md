@@ -113,7 +113,7 @@ glTF 1.0的嵌入式着色器是一种旧的技术，现已被glTF 2.0的PBR材�
                         "morphTargets": [],
                         "indices": {
                             "count": 360
-                        },
+                        },                       
                         "material": {
 	                        alphaCutoff: undefined
 							alphaMode: "BLEND"
@@ -121,7 +121,19 @@ glTF 1.0的嵌入式着色器是一种旧的技术，现已被glTF 2.0的PBR材�
 							emissiveFactor: Cartesian3 {x: 0, y: 0, z: 0}
 							emissiveTexture: undefined
 							metallicRoughness: {
-							   baseColorTexture: TextureReader,
+							   baseColorTexture: TextureReader{
+								    channels: undefined
+									index: 1
+									texCoord: 0
+									texture: Texture{
+										  _id: 'db32e01e-1e59-4a0c-9468-500edc450574',
+										   _context: Context,
+										   _textureFilterAnisotropic: EXTTextureFilterAnisotropic,
+										   _textureTarget: 3553,
+										   _texture: WebGLTexture,
+										}
+									transform: undefined
+							   },
 							   metallicRoughnessTexture: undefined,
 							   baseColorFactor: Cartesian4{"x": 1,"y": 1,"z": 1,"w": 1},
 							   metallicFactor: 0.1,
