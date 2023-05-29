@@ -6,7 +6,6 @@
     叉积（外积）是两个向量的积，表示为一个新向量。 叉积是一个向量，它的方向是两个向量所在平面的法向量，大小是两个向量所在平面面积的两倍。叉积的计算公式为 A X B = |A| * |B| * Sin(θ) * n(单位法向量)，叉积的结果是一个垂直于两个向量的向量。 叉积的应用非常广泛，在很多场景下都有用处。例如在几何学中, 叉积用于求两个向量所在平面的法向量；
 ```
 
-![](https://omnaamelx4.feishu.cn/space/api/box/stream/download/asynccode/?code=NjE0NzExYWViZWZlYmI3YjI2OWEyMThiODE3ZjA0OWNfVFZoYXZaT0xTTnlCRUpaakdKQXFpSDJxV3FhY05xRDZfVG9rZW46Ym94Y24yQUxTYTJpamxvZHN6SHhOcUpONUtnXzE2ODA1OTIzMDA6MTY4MDU5NTkwMF9WNA)
 ```javascript
 离线/实时渲染 //29fps/30fps
 /打断点在gl.drawArrays打,它通常是绘制前的最后一步/
