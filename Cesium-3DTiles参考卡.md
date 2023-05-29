@@ -1,7 +1,7 @@
 [3d-tiles/3d-tiles-reference-card.pdf at main · CesiumGS/3d-tiles · GitHub](https://github.com/CesiumGS/3d-tiles/blob/main/3d-tiles-reference-card.pdf)
 
 ## 0
-![gh|1000](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683683639000a8y1gc.jpg)
+![1683683639000a8y1gc](https://github.com/CHENJIAMIAN/Blog/assets/20126997/d54ca832-4321-4181-9396-c95b0e5d2e1f)
 ## 1
 ![微信图片_20230510095646|1000](https://github.com/CHENJIAMIAN/Blog/assets/20126997/1626bce1-88d1-4a25-8303-dc057998b1e2)
 ## 2
