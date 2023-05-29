@@ -404,7 +404,8 @@ this.$route //访问当前路由 eg: this.$route.params.username
 
 
 
-![](images/F1B2E79267AC44809D3915D034775E6F.png)
+![F1B2E79267AC44809D3915D034775E6F](https://github.com/CHENJIAMIAN/Blog/assets/20126997/92a4eb3b-5a55-40d6-b36f-777bbe82f2cb)
+
 
 
 

@@ -609,7 +609,8 @@ webpack //npm install --save-dev babel-loader @babel/core #就完事了其他都
     const transformedCode = generate(ast).code// 将处理好的 AST 放入 generate
     console.log(transformedCode)
 ```
-![](images/C50988529CA845269C8031A05A3C15FC.png)
+![C50988529CA845269C8031A05A3C15FC](https://github.com/CHENJIAMIAN/Blog/assets/20126997/3d5a5709-9aa0-4589-a531-273225bfed03)
+
 
 ## CSRF
 ```javascript
@@ -641,7 +642,8 @@ Base64:
     /图片被编码之后，生成的字符串编码大小一般而言都会比原文件稍大一些,  Man->TWFu(文本变多了)/
     用处:HTML内嵌Base64编码图片(减少不必要请求)
 ```
-![](images/46D1BE3DFB7C4959A81DDC3740279548.png)
+![46D1BE3DFB7C4959A81DDC3740279548](https://github.com/CHENJIAMIAN/Blog/assets/20126997/46654690-4d7d-41e7-bb14-f6b79c8a4d3a)
+
 
 ## 浏览器原理
 ```js

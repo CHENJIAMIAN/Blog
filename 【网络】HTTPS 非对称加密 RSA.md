@@ -8,7 +8,8 @@ HTTP2
 
 
 
-![](images/54E71A43FE434FD0B33F31F133475413.png)
+![54E71A43FE434FD0B33F31F133475413](https://github.com/CHENJIAMIAN/Blog/assets/20126997/eff408d2-ada7-4e86-9037-7030fdab47f0)
+
 
 ```javascript
 与HTTPS区别:

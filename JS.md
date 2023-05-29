@@ -173,7 +173,8 @@ Blob 对象表示一个二进制文件的数据内容，比如一个图片文件
     File 对象代表一个文件，用来读写文件信息。它继承了 Blob 对象，或者说是一种特殊的 Blob 对象，所有可以使用 Blob 对象的场合都可以使用它。
         FileReader 对象用于读取 File 对象或 Blob 对象所包含的文件内容。
 ```
-![](images/C6F35968C7E046ED80E7324398E64BD6.png)
+![C6F35968C7E046ED80E7324398E64BD6](https://github.com/CHENJIAMIAN/Blog/assets/20126997/3a47433d-0a89-4294-8f2f-7f6642d21b8b)
+
 
 
 ## 事件\异步:

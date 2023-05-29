@@ -1,6 +1,7 @@
 
 
-![](images/BE41B18D0661494485F87CC73E6EF4C6.png)
+![BE41B18D0661494485F87CC73E6EF4C6](https://github.com/CHENJIAMIAN/Blog/assets/20126997/dbb221f6-9cbe-43fa-b6f5-32c7e80a6b07)
+
 
 
 
@@ -35,7 +36,8 @@ http 长连接和 websocket 的长连接区别
 
 > WS
 
-![](images/172D5C1D0BD348F29C16E8CA8D41E22C.png)
+![172D5C1D0BD348F29C16E8CA8D41E22C](https://github.com/CHENJIAMIAN/Blog/assets/20126997/6ef684f7-d5d3-418a-a5cf-bf7ee67d4e9a)
+
 
 ```javascript
 WebSocket协议 //ws://example.com:80/some/path        
@@ -136,7 +138,8 @@ OSI(Open System Interconnect 开放式系统互联)参考模型:
 
 
 
-![](images/033C64D04F80490783A33B99FDD1F989.png)
+![033C64D04F80490783A33B99FDD1F989](https://github.com/CHENJIAMIAN/Blog/assets/20126997/a48ce9e9-ba62-48fa-beb6-af7be5318f35)
+
 
 
 

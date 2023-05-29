@@ -59,7 +59,8 @@ blender
 ```
 
 ## 类图
-![](images/AECA9D1EA33647C99D4A25A725166B5B.png)
+![AECA9D1EA33647C99D4A25A725166B5B](https://github.com/CHENJIAMIAN/Blog/assets/20126997/277600f2-03f5-495c-bec6-7dc3213bcb42)
+
 ## Web3D
 ```javascript
 HT for Web 提供了一套独特的 WebGL 层抽象，将 Model–View–Presenter (MVP) 的设计模型延伸应用到了 3D 图形领域
@@ -460,9 +461,10 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
         texture.needsUpdate = true;
 ```
 ## 坐标图
-![](images/969AD33FBF214276B7C464AE4082C7FF.png)
+![969AD33FBF214276B7C464AE4082C7FF](https://github.com/CHENJIAMIAN/Blog/assets/20126997/5eee1112-3520-4497-a284-ec5a87e584c5)
 ## 加载器
-![](images/BA0EA8F56EAE409FB3DEEA8B980C5318.png)
+![BA0EA8F56EAE409FB3DEEA8B980C5318](https://github.com/CHENJIAMIAN/Blog/assets/20126997/85a0002a-aebf-45ec-8359-a58219b11842)
+
 ## 模型加载(重点)
 ```js
 模型加载(重点)//常用的3d格式

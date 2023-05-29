@@ -1,6 +1,7 @@
 ## Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接口, 相当于一个虚拟机进程
 
-![](images/796DAD50E04D4B03810F6C73510AC893.png)
+![796DAD50E04D4B03810F6C73510AC893](https://github.com/CHENJIAMIAN/Blog/assets/20126997/7b47d6b5-156d-4298-a7d2-459dcc725cef)
+
 
 ```javascript
 win10专业版开启 Hyper-V安装 Docker Desktop for Windows即可
