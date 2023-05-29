@@ -17,7 +17,7 @@
     "node_modules/*",
     "node_modules/@eslint/",
     "node_modules/",
-    "node_modules\\eslint\\README.md",
-    "asdfsdafsdafgdgdfsg"
-  ]
+    "node_modules\\eslint\\README.md"
+  ],
+  "legacyEditor": true
 }
