@@ -1080,13 +1080,13 @@ accessor.min和accessor.max属性是分别包含每个组件的最小值和最�
 
 |姓名|存取器类型|组件类型|描述|
 |---|---|---|---|
-|位置|VEC3|*float*|无单位 XYZ 顶点位置|
-|普通的|VEC3|*float*|归一化 XYZ 顶点法线|
-|切线|VEC4|*float*|XYZW顶点切线，其中XYZ部分归一化，W分量为符号值（-1或+1），表示切线基的旋向性|
-|纹理坐标_n|VEC2|*float*<br>_unsigned byte_normalized  <br>*unsigned short* normalized|ST纹理坐标|
-|颜色_n|VEC3 <br>VEC4|*float*<br>_unsigned byte_normalized  <br>*unsigned short* normalized|RGB 或 RGBA 顶点颜色线性乘数|
+|POSITION|VEC3|*float*|无单位 XYZ 顶点位置|
+|NORMAL|VEC3|*float*|归一化 XYZ 顶点法线|
+|TANGENT|VEC4|*float*|XYZW顶点切线，其中XYZ部分归一化，W分量为符号值（-1或+1），表示切线基的旋向性|
+|TEXCOORD_n |VEC2|*float* unsigned byte_normalized *unsigned short* normalized|ST纹理坐标|
+|COLOR_n|VEC3 VEC4|*float* unsigned byte_normalized  *unsigned short* normalized|RGB 或 RGBA 顶点颜色线性乘数|
 |JOINTS_n|VEC4|*无符号字节* *无符号短*|查看[蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)|
-|重量_n|VEC4|*float*<br>_unsigned byte_normalized  <br>*unsigned short* normalized|查看[蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)|
+|WEIGHTS_n|VEC4|*float*<br>_unsigned byte_normalized  <br>*unsigned short* normalized|查看[蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)|
 
 POSITION访问器**必须**定义其最小和最大属性。
 
@@ -1119,44 +1119,31 @@ indices访问器**不得**包含所用组件类型的最大可能值（即，无
 拓扑类型定义如下。
 
 - **积分**
-
     根据等式，每个顶点定义一个单点基元：
-
-    pi = { vi }
+	    pi = { vi }
 
 - **线条**
-
     根据等式，一个线基元由每个顶点和下一个顶点定义：
-
-    p i = {vi i , v i + 1 }
+	    p i = {vi i , v i + 1 }
 
 - **线循环**
-
     循环与线带相同，不同之处在于从最终指定顶点到第一个顶点添加了最后一段。
 
 - **线条**
-
     根据以下等式，每对连续的顶点定义一个单线图元：
-
-    pi = {v 2i , v 2i+1 }
+	    pi = {v 2i , v 2i+1 }
 
 - **三角形**
-
     根据以下等式，每组连续的三个顶点定义一个三角形图元：
-
-    pi = {v 3i , v 3i+1 , v 3i+2 }
+	    pi = {v 3i , v 3i+1 , v 3i+2 }
 
 - **三角条**
-
     一个三角形基元由每个顶点和跟随它的两个顶点定义，根据等式：
-
-    p i = {vi i , v i+(1+i%2) , v i+(2-i%2) }
+	    p i = {vi i , v i+(1+i%2) , v i+(2-i%2) }
 
 - **三角扇**
-
     根据以下等式，三角形基元围绕共享公共顶点定义：
-
-    p i = {v i+1 , v i+2 , v 0 }
+	    p i = {v i+1 , v i+2 , v 0 }
 
 网格几何**不应**包含退化线或三角形，即每个拓扑图元多次使用同一顶点的线或三角形。
 
@@ -1207,11 +1194,11 @@ primitives[i].attributes.POSITION +
 
 |姓名|存取器类型|组件类型|描述|
 |---|---|---|---|
-|位置|VEC3|*float*|XYZ 顶点位置位移|
-|普通的|VEC3|*float*|XYZ 顶点法向位移|
-|切线|VEC3|*float*|XYZ 顶点切线位移|
-|纹理坐标_n|VEC2|*float*<br>_signed byte_normalized  <br>_signed short_规范化  <br>_unsigned byte_规范化  <br>_unsigned short_规范化|ST 纹理坐标位移|
-|颜色_n|VEC3  <br>VEC4|*float*<br>_signed byte_normalized  <br>_signed short_规范化  <br>_unsigned byte_规范化  <br>_unsigned short_规范化|RGB 或 RGBA 颜色增量|
+|POSITION|VEC3|*float*|XYZ 顶点位置位移|
+|NORMAL|VEC3|*float*|XYZ 顶点法向位移|
+|TANGENT|VEC3|*float*|XYZ 顶点切线位移|
+|TEXCOORD_n|VEC2|*float*<br>signed byte normalized  <br>signed short_规范化  <br>unsigned byte_规范化  <br>unsigned short_规范化|ST 纹理坐标位移|
+|颜色_n|VEC3  <br>VEC4|*float*<br>signed byte normalized  <br>signed short_规范化  <br>unsigned byte_规范化  <br>unsigned short_规范化|RGB 或 RGBA 颜色增量|
 
 POSITION访问器**必须**定义其最小和最大属性。
 
