@@ -7,6 +7,11 @@ on:
 
 jobs:
   build-and-deploy:
+    # 授予 GITHUB_TOKEN 进行页面部署所需的权限
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
