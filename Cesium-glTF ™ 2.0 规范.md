@@ -343,22 +343,17 @@ glTF 资产表示为：
 
 - [JSON](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json) glTF 文件**应该**使用.gltf扩展名和[model/gltf+json](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#gltf-json)媒体类型。
 - [存储在GLB](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification)容器中的 glTF 文件**应该**使用.glb扩展名和[model/gltf-binary](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#gltf-binary)媒体类型。
+
 - 表示二进制缓冲区的文件**应该**使用：
-
   - .bin文件扩展名，媒体类型为[application/octet-stream ；](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#octet-stream)
-
   - .bin、.glbin或.glbuf文件扩展名为[application/gltf-buffer](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#gltf-buffer)媒体类型。
 
 - [PNG](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#png)图像**应该**使用.png文件扩展名和[image/png](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#image-png)媒体类型；
-
   - PNG 图像**不应**包含动画、非正方形像素比率或嵌入的 ICC 配置文件。此类功能（如果存在）**必须**被客户端实现忽略。
-
+  
 - [JPEG](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#jpeg)图像**应该**使用.jpeg或.jpg文件扩展名和[image/jpeg](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#image-jpeg)媒体类型
-
   - JPEG 图像**必须与**[JPEG 文件交换格式](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#jfif)兼容。
-
   - JPEG 图像**不应**包含嵌入式 ICC 配置文件。如果存在，嵌入式 ICC 配置文件**必须**被客户端实现忽略。
-
   - 客户端实现**可能会忽略**[可交换图像文件格式 (Exif)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#exif)块。
 
 |   |   |
@@ -370,7 +365,6 @@ glTF 资产表示为：
 尽管 glTF 规范没有定义[JSON](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json)格式的任何子集，但实现**应该**知道它可能影响资产互操作性的特殊属性。
 
 1. glTF JSON 数据**应该**使用没有 BOM 的 UTF-8 编码编写。当 glTF 实现不控制字符串编码时，不应用此要求。glTF 实现**应该**遵守[RFC 8259](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json)的第 8.1 节。关于处理 BOM 的存在。
-
 2. 存储在 glTF JSON 中的 ASCII 字符**应该**在没有 JSON 转义的情况下写入。
 
 |   |   |
@@ -378,13 +372,40 @@ glTF 资产表示为：
 |笔记|例子<br><br>“缓冲区”而不是`"\u0062\u0075\u0066\u0066\u0065\u0072"`.|
 
 3. 存储在 glTF JSON 中的非 ASCII 字符**可能**会被转义。
+例子: 这两个示例表示相同的 glTF JSON 数据。
+```js
+{
+    "asset": {
+        "version": "2.0"
+    },
+    "nodes": [
+        {
+            "name": "куб"
+        },
+        {
+            "name": "立方體"
+        }
+    ]
+}
+```
 
-|   |   |
-|---|---|
-|笔记|例子<br><br>这两个示例表示相同的 glTF JSON 数据。<br><br>```js<br>{<br>    "asset": {<br>        "version": "2.0"<br>    },<br>    "nodes": [<br>        {<br>            "name": "куб"<br>        },<br>        {<br>            "name": "立方體"<br>        }<br>    ]<br>}<br>```<br><br>```js<br>{<br>    "asset": {<br>        "version": "2.0"<br>    },<br>    "nodes": [<br>        {<br>            "name": "\u043a\u0443\u0431"<br>        },<br>        {<br>            "name": "\u7acb\u65b9\u9ad4"<br>        }<br>    ]<br>}<br>```|
+```js
+{
+    "asset": {
+        "version": "2.0"
+    },
+    "nodes": [
+        {
+            "name": "\u043a\u0443\u0431"
+        },
+        {
+            "name": "\u7acb\u65b9\u9ad4"
+        }
+    ]
+}
+```
 
 4. JSON 对象中的属性名称（键）**应该**是唯一的。glTF 客户端实现**应该**覆盖相同键的词法前面的值。
-
 5. 某些 glTF 属性在架构中定义为整数。这些值**可以**存储为小数部分为零的小数或使用指数表示法。无论编码如何，此类属性**不得**包含任何非零小数值。
 
 |   |   |
@@ -587,7 +608,7 @@ glTF 资产**可以**定义_节点_，即包含要渲染的场景的对象。
 
 #### [3.5.3. 转换](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#353-transformations)
 
-任何节点都**可以通过提供**矩阵属性或任何translation、rotation和scale 属性（也称为_TRS 属性_）来定义局部空间变换。translation和scale是局部坐标系中的 3D 矢量。rotation是局部坐标系中的单位四元数 XYZW，其中 W 是标量。
+任何节点都**可以通过提供**矩阵属性或任何translation、rotation和scale 属性（也称为_TRS 属性_）来定义局部空间变换。translation和scale是局部坐标系中的 3D 矢量。rotation是局部坐标系中的单位四元数 XYZW，其中 W 是SCALAR。
 
 定义矩阵时，它**必须**可分解为 TRS 属性。
 
@@ -783,7 +804,7 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 
 所有访问器都存储在资产的访问器数组中。
 
-以下示例显示了两个访问器，第一个是用于检索基元索引的标量访问器，第二个是用于检索基元位置数据的 3 浮点分量向量访问器。
+以下示例显示了两个访问器，第一个是用于检索基元索引的SCALAR访问器，第二个是用于检索基元位置数据的 3 浮点分量向量访问器。
 
 ```js
 {
@@ -831,7 +852,7 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 |5122|*签短*|有符号，二进制补码|16|
 |5123|*无符号短*|未签名|16|
 |5125|*无符号整数*|未签名|32|
-|5126|*漂浮*|签|32|
+|5126|*float*|签|32|
 
 不支持带符号的 32 位整数组件。
 
@@ -841,18 +862,17 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 
 |类型|组件数量|
 |---|---|
-|“标量”|1个|
+|“SCALAR”|1个|
 |“VEC2”|2个|
 |“VEC3”|3个|
 |“VEC4”|4个|
-|“垫2”|4个|
-|“垫3”|9|
-|“垫4”|16|
+|“MAT2”|4个|
+|“MAT3”|9|
+|“MAT4”|16|
 
 元素大小（以字节为单位）为 `(size in bytes of the 'componentType') * (number of components defined by 'type')`.
 
 例如：
-
 ```js
 {
     "accessors": [
@@ -986,7 +1006,7 @@ start = accessor.byteOffset + accessor.bufferView.byteOffset
 end = 2 * 2 * accessor.count + start
 ```
 
-无需复制即可创建结果缓冲区范围的无符号短视图：从字节偏移量 5228 开始的 84 个标量值。
+无需复制即可创建结果缓冲区范围的无符号短视图：从字节偏移量 5228 开始的 84 个SCALAR值。
 
 当访问器值未紧密打包时（即，bufferView.byteStride大于元素的字节长度），对创建的数据视图的迭代将需要考虑交错的值（即，跳过它们）。
 
@@ -1060,11 +1080,10 @@ accessor.min和accessor.max属性是分别包含每个组件的最小值和最�
 
 |姓名|存取器类型|组件类型|描述|
 |---|---|---|---|
-|位置|VEC3|*漂浮*|无单位 XYZ 顶点位置|
-|普通的|VEC3|*漂浮*|归一化 XYZ 顶点法线|
-|切线|VEC4|*漂浮*|XYZW顶点切线，其中XYZ部分归一化，W分量为符号值（-1或+1），表示切线基的旋向性|
+|位置|VEC3|*float*|无单位 XYZ 顶点位置|
+|普通的|VEC3|*float*|归一化 XYZ 顶点法线|
+|切线|VEC4|*float*|XYZW顶点切线，其中XYZ部分归一化，W分量为符号值（-1或+1），表示切线基的旋向性|
 |纹理坐标_n|VEC2|*float*<br>_unsigned byte_normalized  <br>*unsigned short* normalized|ST纹理坐标|
-
 |颜色_n|VEC3 <br>VEC4|*float*<br>_unsigned byte_normalized  <br>*unsigned short* normalized|RGB 或 RGBA 顶点颜色线性乘数|
 |JOINTS_n|VEC4|*无符号字节* *无符号短*|查看[蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)|
 |重量_n|VEC4|*float*<br>_unsigned byte_normalized  <br>*unsigned short* normalized|查看[蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)|
@@ -1188,9 +1207,9 @@ primitives[i].attributes.POSITION +
 
 |姓名|存取器类型|组件类型|描述|
 |---|---|---|---|
-|位置|VEC3|*漂浮*|XYZ 顶点位置位移|
-|普通的|VEC3|*漂浮*|XYZ 顶点法向位移|
-|切线|VEC3|*漂浮*|XYZ 顶点切线位移|
+|位置|VEC3|*float*|XYZ 顶点位置位移|
+|普通的|VEC3|*float*|XYZ 顶点法向位移|
+|切线|VEC3|*float*|XYZ 顶点切线位移|
 |纹理坐标_n|VEC2|*float*<br>_signed byte_normalized  <br>_signed short_规范化  <br>_unsigned byte_规范化  <br>_unsigned short_规范化|ST 纹理坐标位移|
 |颜色_n|VEC3  <br>VEC4|*float*<br>_signed byte_normalized  <br>_signed short_规范化  <br>_unsigned byte_规范化  <br>_unsigned short_规范化|RGB 或 RGBA 颜色增量|
 
@@ -1725,13 +1744,13 @@ _金属度_和_粗糙度_属性的纹理打包在一个名为metallicRoughnessTe
 |---|---|
 |笔记|实施说明<br><br>此映射通常实现为sampledValue * 2.0 - 1.0。|
 
-    法线纹理的纹理绑定**可以**另外包含一个标量比例​​值，该值线性缩放法线向量的 X 和 Y 分量。
+    法线纹理的纹理绑定**可以**另外包含一个SCALAR比例​​值，该值线性缩放法线向量的 X 和 Y 分量。
 
     法向量在用于光照方程之前**必须被归一化。**使用缩放时，向量归一化发生在缩放之后。
 
 - **遮挡**：遮挡纹理；它表示从环境光源接收到较少间接照明的区域。直接照明不受影响。纹理的红色通道编码遮挡值，其中0.0表示完全遮挡区域（无间接照明），_1.0_表示未遮挡区域（完全间接照明）。其他纹理通道（如果存在）不影响遮挡。
 
-    遮挡贴图的纹理绑定**可以**可选地包含用于减少遮挡效果的标量强度值。如果存在，它会影响遮挡值 as `1.0 + strength * (occlusionTexture - 1.0)`。
+    遮挡贴图的纹理绑定**可以**可选地包含用于减少遮挡效果的SCALAR强度值。如果存在，它会影响遮挡值 as `1.0 + strength * (occlusionTexture - 1.0)`。
 
 - **emissive**：发射纹理和因子控制材料发出的光的颜色和强度。纹理**必须包含使用**[sRGB 光电传输函数](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#srgb)编码的 8 位值，因此 RGB 值**必须**在用于任何计算之前解码为实际线性值。为了实现正确的过滤，传递函数**应该**在执行线性插值之前被解码。
 
@@ -2112,7 +2131,7 @@ _通道_将关键帧动画的输出值连接到层次结构中的特定节点。
 |---|---|
 |笔记|实施说明<br><br>当一个目标受到两个或多个重叠采样器的影响时，这可以防止潜在的歧义。|
 
-每个动画的**采样器**都定义了输入/输出对：一组浮点标量值，表示以秒为单位的线性时间；和一组表示动画属性的向量或标量。所有值都存储在缓冲区中并通过访问器访问；请参阅下表了解输出访问器类型。使用插值属性中指定的插值方法执行键之间的插值。支持的插值值包括LINEAR、STEP和CUBICSPLINE。有关插值模式的更多信息，请参阅[附录 C。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-c-interpolation)
+每个动画的**采样器**都定义了输入/输出对：一组浮点SCALAR值，表示以秒为单位的线性时间；和一组表示动画属性的向量或SCALAR。所有值都存储在缓冲区中并通过访问器访问；请参阅下表了解输出访问器类型。使用插值属性中指定的插值方法执行键之间的插值。支持的插值值包括LINEAR、STEP和CUBICSPLINE。有关插值模式的更多信息，请参阅[附录 C。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-c-interpolation)
 
 每个采样器的输入都相对于t = 0 ，定义为父动画条目的开始。在提供的输入范围之前和之后，输出**必须**被限制在输入范围的最近端。
 
@@ -2124,10 +2143,10 @@ _通道_将关键帧动画的输出值连接到层次结构中的特定节点。
 
 |频道.路径|存取器类型|组件类型|描述|
 |---|---|---|---|
-|“翻译”|“VEC3”|*漂浮*|XYZ 平移矢量|
+|“翻译”|“VEC3”|*float*|XYZ 平移矢量|
 |“回转”|“VEC4”|*float*  <br>*signed byte* normalized  <br>_unsigned byte_标准化  <br>_signed short_标准化  <br>_unsigned short_标准化|XYZW旋转四元数|
-|“规模”|“VEC3”|*漂浮*|XYZ 比例矢量|
-|“权重”|“标量”|*float*  <br>*signed byte* normalized  <br>_unsigned byte_标准化  <br>_signed short_标准化  <br>_unsigned short_标准化|变形目标的权重|
+|“规模”|“VEC3”|*float*|XYZ 比例矢量|
+|“权重”|“SCALAR”|*float*  <br>*signed byte* normalized  <br>_unsigned byte_标准化  <br>_signed short_标准化  <br>_unsigned short_标准化|变形目标的权重|
 
 实现**必须**使用以下等式从归一化整数c解码实浮点值f，反之亦然：
 
@@ -2144,7 +2163,7 @@ _通道_将关键帧动画的输出值连接到层次结构中的特定节点。
 |---|---|
 |笔记|实施说明<br><br>具有非线性时间输入的动画，例如 Autodesk 3ds Max 或 Maya 中的时间扭曲，不能直接用 glTF 动画表示。glTF 是一种运行时格式，非线性时间输入在运行时的计算成本很高。导出器实现应该将非线性时间动画采样到线性输入和输出中，以获得准确的表示。|
 
-变形目标动画帧由长度等于动画变形目标中目标数的标量序列定义。这些标量序列**必须**作为输出访问器中的单个流端到端放置，其最终大小等于变形目标的数量乘以动画帧的数量。
+变形目标动画帧由长度等于动画变形目标中目标数的SCALAR序列定义。这些SCALAR序列**必须**作为输出访问器中的单个流端到端放置，其最终大小等于变形目标的数量乘以动画帧的数量。
 
 变形目标动画本质上是稀疏的，考虑使用[稀疏访问器](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#sparse-accessors)来存储变形目标动画。当与CUBICSPLINE插值一起使用时，切线 (a k , b k ) 和值 (v k ) 在关键帧内分组：
 
@@ -2679,7 +2698,7 @@ material = f_diffuse + f_specular
 - \$t_d = t_{k + 1} - t_k\$ 是插值段的持续时间；
 - \$t = (t_c - t_k) / t_d\$ 是分段归一化插值因子。
 
-标量向量乘法是每个向量分量。
+SCALAR向量乘法是每个向量分量。
 
 ### [C.2. 步进插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c2-step-interpolation)
 
