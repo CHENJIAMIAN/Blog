@@ -7,12 +7,13 @@ on:
 
 jobs:
   build-and-deploy:
-    # 授予 GITHUB_TOKEN 进行页面部署所需的权限
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
-
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -66,7 +67,3 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh_action_branch
-          artifact: pages
