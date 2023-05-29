@@ -4,124 +4,124 @@
 
 - [一、前言](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#foreword)
 - [2.简介](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction)
-    - [2.1. 一般的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-general)
-    - [2.2. 文档约定](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-conventions)
-        - [2.2.1. 规范术语和参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-normative-terminology)
-        - [2.2.2. 信息性语言](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-informative-language)
-        - [2.2.3. 技术术语](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-technical-terminology)
-        - [2.2.4. 规范性参考文献](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-normative-references)
-            - [2.2.4.1. 外型规格](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#external-specifications)
-            - [2.2.4.2. 媒体类型注册](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#media-type-registrations)
-    - [2.3. 动机和设计目标（资料性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#motivation)
-    - [2.4. glTF 基础知识](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#gltf-basics)
-    - [2.5. 版本控制](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#versioning)
-    - [2.6. 文件扩展名和媒体类型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#file-extensions-and-media-types)
-    - [2.7. JSON编码](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json-encoding)
-    - [2.8. URIs](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uris)
+  - [2.1. 一般的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-general)
+  - [2.2. 文档约定](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-conventions)
+    - [2.2.1. 规范术语和参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-normative-terminology)
+    - [2.2.2. 信息性语言](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-informative-language)
+    - [2.2.3. 技术术语](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-technical-terminology)
+    - [2.2.4. 规范性参考文献](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-normative-references)
+      - [2.2.4.1. 外型规格](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#external-specifications)
+      - [2.2.4.2. 媒体类型注册](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#media-type-registrations)
+  - [2.3. 动机和设计目标（资料性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#motivation)
+  - [2.4. glTF 基础知识](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#gltf-basics)
+  - [2.5. 版本控制](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#versioning)
+  - [2.6. 文件扩展名和媒体类型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#file-extensions-and-media-types)
+  - [2.7. JSON编码](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json-encoding)
+  - [2.8. URIs](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uris)
 - [3.概念](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#concepts)
-    - [3.1. 一般的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#concepts-general)
-    - [3.2. 资产](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#asset)
-    - [3.3. 索引和名称](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#indices-and-names)
-    - [3.4. 坐标系和单位](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#coordinate-system-and-units)
-    - [3.5. 场景](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#scenes)
-        - [3.5.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#scenes-overview)
-        - [3.5.2. 节点和层次结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#nodes-and-hierarchy)
-        - [3.5.3. 转换](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#transformations)
-    - [3.6. 二进制数据存储](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#binary-data-storage)
-        - [3.6.1. 缓冲区和缓冲区视图](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#buffers-and-buffer-views)
-            - [3.6.1.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#buffers-and-buffer-views-overview)
-            - [3.6.1.2. GLB 存储缓冲区](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-stored-buffer)
-        - [3.6.2. 配件](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#accessors)
-            - [3.6.2.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#accessors-overview)
-            - [3.6.2.2. 访问器数据类型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#accessor-data-types)
-            - [3.6.2.3. 稀疏访问器](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#sparse-accessors)
-            - [3.6.2.4。数据对齐](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#data-alignment)
-            - [3.6.2.5。访问器边界](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#accessors-bounds)
-    - [3.7. 几何学](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#geometry)
-        - [3.7.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#geometry-overview)
-        - [3.7.2. 网格](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#meshes)
-            - [3.7.2.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#meshes-overview)
-            - [3.7.2.2. 变形目标](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#morph-targets)
-        - [3.7.3. 皮肤](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skins)
-            - [3.7.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skins-overview)
-            - [3.7.3.2. 联合层次结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#joint-hierarchy)
-            - [3.7.3.3. 蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)
-        - [3.7.4. 实例化](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#instantiation)
-    - [3.8. 纹理数据](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#texture-data)
-        - [3.8.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#texture-data-overview)
-        - [3.8.2. 纹理](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#textures)
-        - [3.8.3. 图片](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#images)
-        - [3.8.4. 采样器](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#samplers)
-            - [3.8.4.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#overview)
-            - [3.8.4.2。过滤](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#filtering)
-            - [3.8.4.3。包装](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#wrapping)
-            - [3.8.4.4。例子](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#example)
-            - [3.8.4.5。非二次方纹理](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#non-power-of-two-textures)
-    - [3.9. 材料](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#materials)
-        - [3.9.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#materials-overview)
-        - [3.9.2. 金属粗糙度材料](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#metallic-roughness-material)
-        - [3.9.3. 额外的纹理](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#additional-textures)
-        - [3.9.4. 阿尔法覆盖率](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#alpha-coverage)
-        - [3.9.5. 两面性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#double-sided)
-        - [3.9.6. 默认材料](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#default-material)
-        - [3.9.7. 点线材质](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#point-and-line-materials)
-    - [3.10. 相机](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#cameras)
-        - [3.10.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#cameras-overview)
-        - [3.10.2. 查看矩阵](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#view-matrix)
-        - [3.10.3. 投影矩阵](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#projection-matrices)
-            - [3.10.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#projection-matrices-overview)
-            - [3.10.3.2. 无限透视投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#infinite-perspective-projection)
-            - [3.10.3.3. 有限透视投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#finite-perspective-projection)
-            - [3.10.3.4。正投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#orthographic-projection)
-    - [3.11. 动画](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#animations)
-    - [3.12. 指定扩展名](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#specifying-extensions)
+  - [3.1. 一般的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#concepts-general)
+  - [3.2. 资产](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#asset)
+  - [3.3. 索引和名称](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#indices-and-names)
+  - [3.4. 坐标系和单位](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#coordinate-system-and-units)
+  - [3.5. 场景](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#scenes)
+    - [3.5.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#scenes-overview)
+    - [3.5.2. 节点和层次结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#nodes-and-hierarchy)
+    - [3.5.3. 转换](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#transformations)
+  - [3.6. 二进制数据存储](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#binary-data-storage)
+    - [3.6.1. 缓冲区和缓冲区视图](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#buffers-and-buffer-views)
+      - [3.6.1.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#buffers-and-buffer-views-overview)
+      - [3.6.1.2. GLB 存储缓冲区](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-stored-buffer)
+    - [3.6.2. 配件](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#accessors)
+      - [3.6.2.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#accessors-overview)
+      - [3.6.2.2. 访问器数据类型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#accessor-data-types)
+      - [3.6.2.3. 稀疏访问器](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#sparse-accessors)
+      - [3.6.2.4。数据对齐](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#data-alignment)
+      - [3.6.2.5。访问器边界](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#accessors-bounds)
+  - [3.7. 几何学](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#geometry)
+    - [3.7.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#geometry-overview)
+    - [3.7.2. 网格](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#meshes)
+      - [3.7.2.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#meshes-overview)
+      - [3.7.2.2. 变形目标](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#morph-targets)
+    - [3.7.3. 皮肤](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skins)
+      - [3.7.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skins-overview)
+      - [3.7.3.2. 联合层次结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#joint-hierarchy)
+      - [3.7.3.3. 蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)
+    - [3.7.4. 实例化](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#instantiation)
+  - [3.8. 纹理数据](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#texture-data)
+    - [3.8.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#texture-data-overview)
+    - [3.8.2. 纹理](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#textures)
+    - [3.8.3. 图片](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#images)
+    - [3.8.4. 采样器](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#samplers)
+      - [3.8.4.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#overview)
+      - [3.8.4.2。过滤](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#filtering)
+      - [3.8.4.3。包装](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#wrapping)
+      - [3.8.4.4。例子](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#example)
+      - [3.8.4.5。非二次方纹理](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#non-power-of-two-textures)
+  - [3.9. 材料](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#materials)
+    - [3.9.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#materials-overview)
+    - [3.9.2. 金属粗糙度材料](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#metallic-roughness-material)
+    - [3.9.3. 额外的纹理](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#additional-textures)
+    - [3.9.4. 阿尔法覆盖率](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#alpha-coverage)
+    - [3.9.5. 两面性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#double-sided)
+    - [3.9.6. 默认材料](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#default-material)
+    - [3.9.7. 点线材质](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#point-and-line-materials)
+  - [3.10. 相机](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#cameras)
+    - [3.10.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#cameras-overview)
+    - [3.10.2. 查看矩阵](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#view-matrix)
+    - [3.10.3. 投影矩阵](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#projection-matrices)
+      - [3.10.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#projection-matrices-overview)
+      - [3.10.3.2. 无限透视投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#infinite-perspective-projection)
+      - [3.10.3.3. 有限透视投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#finite-perspective-projection)
+      - [3.10.3.4。正投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#orthographic-projection)
+  - [3.11. 动画](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#animations)
+  - [3.12. 指定扩展名](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#specifying-extensions)
 - [4. GLB文件格式规范](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification)
-    - [4.1. 一般（资料性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification-general)
-    - [4.2. 结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification-structure)
-    - [4.3. 文件扩展名和媒体类型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification-file-extension)
-    - [4.4. 二进制 glTF 布局](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#binary-gltf-layout)
-        - [4.4.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#binary-gltf-layout-overview)
-        - [4.4.2. 标头](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#binary-header)
-        - [4.4.3. 大块](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#chunks)
-            - [4.4.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#chunks-overview)
-            - [4.4.3.2. 结构化 JSON 内容](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#structured-json-content)
-            - [4.4.3.3. 二进制缓冲区](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#binary-buffer)
+  - [4.1. 一般（资料性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification-general)
+  - [4.2. 结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification-structure)
+  - [4.3. 文件扩展名和媒体类型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification-file-extension)
+  - [4.4. 二进制 glTF 布局](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#binary-gltf-layout)
+    - [4.4.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#binary-gltf-layout-overview)
+    - [4.4.2. 标头](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#binary-header)
+    - [4.4.3. 大块](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#chunks)
+      - [4.4.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#chunks-overview)
+      - [4.4.3.2. 结构化 JSON 内容](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#structured-json-content)
+      - [4.4.3.3. 二进制缓冲区](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#binary-buffer)
 - [5.属性参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#properties-reference)
 - [6.致谢（信息性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#acknowledgments)
-    - [6.1. 编辑部](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#editors)
-    - [6.2. Khronos 3D 格式工作组和校友](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#working-group-and-alumni)
-    - [6.3. 特别感谢](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#special-thanks)
+  - [6.1. 编辑部](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#editors)
+  - [6.2. Khronos 3D 格式工作组和校友](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#working-group-and-alumni)
+  - [6.3. 特别感谢](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#special-thanks)
 - [附录 A：JSON 模式参考（资料性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-a-json-schema-reference)
 - [附录 B：BRDF 实现](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-b-brdf-implementation)
-    - [B.1. 一般的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-b-brdf-implementation-general)
-    - [B.2. 材料结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#material-structure)
-        - [B.2.1. 金属](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#metals)
-        - [B.2.2. 电介质](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#dielectrics)
-        - [B.2.3. 微表面](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#microfacet-surfaces)
-        - [B.2.4. 完整模型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#complete-model)
-    - [B.3. 示例实施（信息性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#implementation)
-        - [B.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#implementation-overview)
-        - [B.3.2. 高光 BRDF](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#specular-brdf)
-        - [B.3.3. 漫反射BRDF](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#diffuse-brdf)
-        - [B.3.4. 菲涅耳](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#fresnel)
-        - [B.3.5. 金属 BRDF 和电介质 BRDF](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#metal-brdf-and-dielectric-brdf)
-        - [B.3.6. 讨论](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#discussion)
-            - [B.3.6.1。掩蔽-阴影项和多重散射](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#masking-shadowing-term-and-multiple-scattering)
-            - [B.3.6.2。Schlick 的菲涅耳近似](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#schlicks-fresnel-approximation)
-            - [B.3.6.3. 耦合漫反射和镜面反射](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#coupling-diffuse-and-specular-reflection)
-    - [B.4. 参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#references)
+  - [B.1. 一般的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-b-brdf-implementation-general)
+  - [B.2. 材料结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#material-structure)
+    - [B.2.1. 金属](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#metals)
+    - [B.2.2. 电介质](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#dielectrics)
+    - [B.2.3. 微表面](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#microfacet-surfaces)
+    - [B.2.4. 完整模型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#complete-model)
+  - [B.3. 示例实施（信息性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#implementation)
+    - [B.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#implementation-overview)
+    - [B.3.2. 高光 BRDF](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#specular-brdf)
+    - [B.3.3. 漫反射BRDF](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#diffuse-brdf)
+    - [B.3.4. 菲涅耳](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#fresnel)
+    - [B.3.5. 金属 BRDF 和电介质 BRDF](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#metal-brdf-and-dielectric-brdf)
+    - [B.3.6. 讨论](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#discussion)
+      - [B.3.6.1。掩蔽-阴影项和多重散射](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#masking-shadowing-term-and-multiple-scattering)
+      - [B.3.6.2。Schlick 的菲涅耳近似](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#schlicks-fresnel-approximation)
+      - [B.3.6.3. 耦合漫反射和镜面反射](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#coupling-diffuse-and-specular-reflection)
+  - [B.4. 参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#references)
 - [附录 C：动画采样器插值模式](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-c-interpolation)
-    - [C.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#overview-1)
-    - [C.2. 步进插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#step-interpolation)
-    - [C.3. 线性插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#interpolation-lerp)
-    - [C.4. 球面线性插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#interpolation-slerp)
-    - [C.5. 三次样条插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#interpolation-cubic)
+  - [C.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#overview-1)
+  - [C.2. 步进插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#step-interpolation)
+  - [C.3. 线性插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#interpolation-lerp)
+  - [C.4. 球面线性插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#interpolation-slerp)
+  - [C.5. 三次样条插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#interpolation-cubic)
 
 |   |   |
 |---|---|
 |笔记|笔记<br><br>Khronos 发布了 glTF 规范的 AsciiDoc 源代码，以在 CC-BY 4.0 下启用社区反馈和重新混合。规范的发布版本位于[glTF Registry](https://www.khronos.org/registry/glTF)中。|
 
-## [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#1-foreword)一、前言
+## [1.前言](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#1-foreword)
 
 版权所有 2013-2021 The Khronos Group Inc.
 
@@ -137,15 +137,15 @@ Khronos 不作任何明示或暗示的关于本规范的陈述或保证，包括
 
 Khronos® 和 Vulkan® 是注册商标，ANARI™、WebGL™、glTF™、NNEF™、OpenVX™、SPIR™、SPIR‑V™、SYCL™、OpenVG™ 和 3D Commerce™ 是 The Khronos Group Inc. 的商标。 OpenXR™ 是 The Khronos Group Inc. 拥有的商标，并在中国、欧盟、日本和英国注册为商标。OpenCL™ 是 Apple Inc. 的商标，OpenGL® 是注册商标，OpenGL ES™ 和 OpenGL SC™ 徽标是 Hewlett Packard Enterprise 的商标，经 Khronos 许可使用。ASTC 是 ARM Holdings PLC 的商标。所有其他产品名称、商标和/或公司名称仅用于识别并属于其各自所有者。
 
-## [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#2-introduction)2.简介
+## [2.简介](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#2-introduction)
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#21-general)2.1. 一般的
+### [2.1. 一般的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#21-general)
 
 本文档（以下称为“glTF 规范”或简称“规范”）描述了 glTF 文件格式。
 
 glTF 是一种 API 中立的运行时资产交付格式。glTF 通过为 3D 内容的传输和加载提供高效、可扩展、可互操作的格式，弥合了 3D 内容创建工具与现代图形应用程序之间的差距。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#22-document-conventions)2.2. 文档约定
+### [2.2. 文档约定](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#22-document-conventions)
 
 glTF 规范旨在供资产导出器或转换器（例如，数字内容创建工具）的实施者和寻求导入或加载 glTF 资产的应用程序开发人员使用，形成这些各方之间互操作性的基础。
 
@@ -153,7 +153,7 @@ glTF 规范旨在供资产导出器或转换器（例如，数字内容创建工
 
 [规范术语](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-normative-terminology)定义的任何要求、禁令、建议或选项仅适用于该文本的读者。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#221-normative-terminology-and-references)2.2.1. 规范术语和参考
+#### [2.2.1. 规范术语和参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#221-normative-terminology-and-references)
 
 本文档中的关键字**必须**、**不得**、**要求**、**应**、**不应**、**应该**、**不应该**、**推荐**、 **可以**和**可选**将按照[BCP 14](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#bcp14)中的描述进行解释。
 
@@ -161,7 +161,7 @@ glTF 规范旨在供资产导出器或转换器（例如，数字内容创建工
 
 如果规范使用本节中定义的任何规范性术语来整体或部分引用外部文件或它们的要求，则对外部文件的引用被认为是规范性的。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#222-informative-language)2.2.2. 信息性语言
+#### [2.2.2. 信息性语言](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#222-informative-language)
 
 规范中的某些语言纯粹是信息性的，旨在为实施者或开发者提供背景或建议。
 
@@ -169,7 +169,7 @@ glTF 规范旨在供资产导出器或转换器（例如，数字内容创建工
 
 所有注释、实施注释和示例均仅供参考。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#223-technical-terminology)2.2.3. 技术术语
+#### [2.2.3. 技术术语](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#223-technical-terminology)
 
 glTF 规范使用**轴**、**矩阵**、**矢量等线性代数术语来识别**[国际电工词汇表](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#iev)中定义的某些数学结构及其行为。
 
@@ -291,89 +291,89 @@ glTF 规范使用常见的工程和图形术语，例如**image**、**buffer**�
 
 基于归一化纹理坐标选择图像像素的过程。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#224-normative-references)2.2.4. 规范性参考文献
+#### [2.2.4. 规范性参考文献](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#224-normative-references)
 
 本规范的规范性章节引用了下列文件：
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#2241-external-specifications)2.2.4.1. 外型规格
+##### [2.2.4.1. 外型规格](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#2241-external-specifications)
 
 - Bradner, S.，_RFC 中用于指示要求级别的关键词_，BCP 14，RFC 2119，1997 年 3 月。Leiba, B.，_RFC 2119 关键词中大写与小写的歧义_，BCP 14，RFC 8174，2017 年 5 月。 [https://www.rfc-editor.org/info/bcp14](https://www.rfc-editor.org/info/bcp14)
-    
+
 - IEC 60050-102 _国际电工词汇 (IEV) - 第 102 部分：数学 - 一般概念和线性代数_ [https://webstore.iec.ch/publication/160](https://webstore.iec.ch/publication/160)
-    
+
     IEC 60050-103 _国际电工词汇 (IEV) - 第 103 部分：数学 - 函数_ [https://webstore.iec.ch/publication/161](https://webstore.iec.ch/publication/161)
-    
+
 |   |   |
 |---|---|
 |笔记|笔记<br><br>这些标准的在线版本可在[https://www.electropedia.org/获得](https://www.electropedia.org/)|
-    
+
 - Unicode 联盟，_Unicode 标准_ [https://www.unicode.org/versions/latest/](https://www.unicode.org/versions/latest/)
-    
+
 - Bray, T., Ed.，_JavaScript 对象表示法 (JSON) 数据交换格式_，STD 90，RFC 8259，DOI 10.17487/RFC8259，2017 年 12 月，https: [//www.rfc-editor.org/info/rfc8259](https://www.rfc-editor.org/info/rfc8259)
-    
+
 - ISO/IEC 60559 _浮点运算_ [https://www.iso.org/standard/80985.html](https://www.iso.org/standard/80985.html)
-    
+
 - ISO/IEC 15948 _便携式网络图形 (PNG)：功能规范_ [https://www.iso.org/standard/29581.html](https://www.iso.org/standard/29581.html)
-    
+
 |   |   |
 |---|---|
 |笔记|笔记<br><br>该标准的免费版本可从 W3C 获得：[https ://www.w3.org/TR/PNG/](https://www.w3.org/TR/PNG/)|
-    
+
 - ISO/IEC 10918-1 _连续色调静止图像的数字压缩和编码：要求和指南_ [https://www.iso.org/standard/18902.html](https://www.iso.org/standard/18902.html)
-    
+
 |   |   |
 |---|---|
 |笔记|笔记<br><br>该标准的早期版本称为 ITU Recommendation T.81，可从 W3C 获得：[https://www.w3.org/Graphics/JPEG/itu-t81.pdf](https://www.w3.org/Graphics/JPEG/itu-t81.pdf)|
-    
-- ISO/IEC 10918-5 _连续色调静止图像的数字压缩和编码：JPEG 文件交换格式 (JFIF)_ [https://www.iso.org/standard/54989.html](https://www.iso.org/standard/54989.html)
-    
-    |   |   |
-    |---|---|
-    |笔记|笔记<br><br>W3C 提供了该标准的早期版本：[https ://www.w3.org/Graphics/JPEG/jfif3.pdf](https://www.w3.org/Graphics/JPEG/jfif3.pdf)|
-    
-- CIPA DC-008-Translation-2019 _用于数码相机的可交换图像文件格式_ [https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E](https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E)
-    
-- Masinter, L.，_“数据”URL 方案_，RFC 2397，DOI 10.17487/RFC2397，1998 年 8 月，https: [//www.rfc-editor.org/info/rfc2397](https://www.rfc-editor.org/info/rfc2397)
-    
-- Berners-Lee, T.、Fielding, R. 和 L. Masinter，_统一资源标识符 (URI)：通用语法_，STD 66，RFC 3986，DOI 10.17487/RFC3986，2005 年 1 月，[https://www.rfc-editor .org/info/rfc3986](https://www.rfc-editor.org/info/rfc3986)
-    
-- Duerst, M. 和 M. Suignard，_国际化资源标识符 (IRI)_，RFC 3987，DOI 10.17487/RFC3987，2005 年 1 月，https: [//www.rfc-editor.org/info/rfc3987](https://www.rfc-editor.org/info/rfc3987)
-    
-- Fielding, R., Ed. 和 J. Reschke, Ed.，_超文本传输​​协议 (HTTP/1.1)：消息语法和路由_，RFC 7230，DOI 10.17487/RFC7230，2014 年 6 月，[https://www.rfc-editor .org/info/rfc7230](https://www.rfc-editor.org/info/rfc7230)
-    
-- IEC 61966-2-1 _默认 RGB 色彩空间 - sRGB_ [https://webstore.iec.ch/publication/6169](https://webstore.iec.ch/publication/6169)
-    
-    |   |   |
-    |---|---|
-    |笔记|笔记<br><br>sRGB 的编码特性可从 ICC 免费获得：[https ://www.color.org/chardata/rgb/srgb.xalter](https://www.color.org/chardata/rgb/srgb.xalter)|
-    
-- ITU-R BT.709-6 建议书_用于制作和国际节目交换的 HDTV 标准的参数值_ [https://www.itu.int/rec/R-REC-BT.709-6-201506-I](https://www.itu.int/rec/R-REC-BT.709-6-201506-I)
-    
-- _MikkTSpace_ [https://github.com/mmikk/MikkTSpace](https://github.com/mmikk/MikkTSpace)
-    
-- 托马斯·波特和汤姆·达夫。1984._合成数字图像。_SIGGRAPH 计算机。图形。18, 3（1984 年 7 月），253–259。DOI：[https://doi.org/10.1145/964965.808606](https://doi.org/10.1145/964965.808606)
-    
-    |   |   |
-    |---|---|
-    |笔记|笔记<br><br>Pixar 提供了本文的免费版本：[https ://graphics.pixar.com/library/Compositing/](https://graphics.pixar.com/library/Compositing/)|
-    
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#2242-media-type-registrations)2.2.4.2. 媒体类型注册
+- ISO/IEC 10918-5 _连续色调静止图像的数字压缩和编码：JPEG 文件交换格式 (JFIF)_ [https://www.iso.org/standard/54989.html](https://www.iso.org/standard/54989.html)
+
+|   |   |
+|---|---|
+|笔记|笔记<br><br>W3C 提供了该标准的早期版本：[https ://www.w3.org/Graphics/JPEG/jfif3.pdf](https://www.w3.org/Graphics/JPEG/jfif3.pdf)|
+
+- CIPA DC-008-Translation-2019 _用于数码相机的可交换图像文件格式_ [https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E](https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E)
+
+- Masinter, L.，_“数据”URL 方案_，RFC 2397，DOI 10.17487/RFC2397，1998 年 8 月，https: [//www.rfc-editor.org/info/rfc2397](https://www.rfc-editor.org/info/rfc2397)
+
+- Berners-Lee, T.、Fielding, R. 和 L. Masinter，_统一资源标识符 (URI)：通用语法_，STD 66，RFC 3986，DOI 10.17487/RFC3986，2005 年 1 月，[https://www.rfc-editor .org/info/rfc3986](https://www.rfc-editor.org/info/rfc3986)
+
+- Duerst, M. 和 M. Suignard，_国际化资源标识符 (IRI)_，RFC 3987，DOI 10.17487/RFC3987，2005 年 1 月，https: [//www.rfc-editor.org/info/rfc3987](https://www.rfc-editor.org/info/rfc3987)
+
+- Fielding, R., Ed. 和 J. Reschke, Ed.，_超文本传输​​协议 (HTTP/1.1)：消息语法和路由_，RFC 7230，DOI 10.17487/RFC7230，2014 年 6 月，[https://www.rfc-editor .org/info/rfc7230](https://www.rfc-editor.org/info/rfc7230)
+
+- IEC 61966-2-1 _默认 RGB 色彩空间 - sRGB_ [https://webstore.iec.ch/publication/6169](https://webstore.iec.ch/publication/6169)
+
+|   |   |
+|---|---|
+|笔记|笔记<br><br>sRGB 的编码特性可从 ICC 免费获得：[https ://www.color.org/chardata/rgb/srgb.xalter](https://www.color.org/chardata/rgb/srgb.xalter)|
+
+- ITU-R BT.709-6 建议书_用于制作和国际节目交换的 HDTV 标准的参数值_ [https://www.itu.int/rec/R-REC-BT.709-6-201506-I](https://www.itu.int/rec/R-REC-BT.709-6-201506-I)
+
+- _MikkTSpace_ [https://github.com/mmikk/MikkTSpace](https://github.com/mmikk/MikkTSpace)
+
+- 托马斯·波特和汤姆·达夫。1984._合成数字图像。_SIGGRAPH 计算机。图形。18, 3（1984 年 7 月），253–259。DOI：[https://doi.org/10.1145/964965.808606](https://doi.org/10.1145/964965.808606)
+
+|   |   |
+|---|---|
+|笔记|笔记<br><br>Pixar 提供了本文的免费版本：[https ://graphics.pixar.com/library/Compositing/](https://graphics.pixar.com/library/Compositing/)|
+
+
+##### [2.2.4.2. 媒体类型注册](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#2242-media-type-registrations)
 
 - IANA。 _模型/gltf+json 媒体类型_。 [https://www.iana.org/assignments/media-types/model/gltf+json](https://www.iana.org/assignments/media-types/model/gltf+json)
-    
-- IANA。 _模型/gltf-二进制媒体类型_。 [https://www.iana.org/assignments/media-types/model/gltf-binary](https://www.iana.org/assignments/media-types/model/gltf-binary)
-    
-- IANA。 _应用程序/gltf-buffer 媒体类型_。 [https://www.iana.org/assignments/media-types/application/gltf-buffer](https://www.iana.org/assignments/media-types/application/gltf-buffer)
-    
-- IANA。 _应用程序/八位字节流媒体类型_。 [https://www.iana.org/assignments/media-types/application/octet-stream](https://www.iana.org/assignments/media-types/application/octet-stream)
-    
-- Freed, N. 和 N. Borenstein，_多用途互联网邮件扩展 (MIME) 第二部分：媒体类型_，RFC 2046，DOI 10.17487/RFC2046，1996 年 11 月，https: [//www.rfc-editor.org/info/rfc2046](https://www.rfc-editor.org/info/rfc2046)
-    
-- IANA。 _图片/png 媒体类型_。 [https://www.iana.org/assignments/media-types/image/png](https://www.iana.org/assignments/media-types/image/png)
-    
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#23-motivation-and-design-goals-informative)2.3. 动机和设计目标（资料性）
+- IANA。 _模型/gltf-二进制媒体类型_。 [https://www.iana.org/assignments/media-types/model/gltf-binary](https://www.iana.org/assignments/media-types/model/gltf-binary)
+
+- IANA。 _应用程序/gltf-buffer 媒体类型_。 [https://www.iana.org/assignments/media-types/application/gltf-buffer](https://www.iana.org/assignments/media-types/application/gltf-buffer)
+
+- IANA。 _应用程序/八位字节流媒体类型_。 [https://www.iana.org/assignments/media-types/application/octet-stream](https://www.iana.org/assignments/media-types/application/octet-stream)
+
+- Freed, N. 和 N. Borenstein，_多用途互联网邮件扩展 (MIME) 第二部分：媒体类型_，RFC 2046，DOI 10.17487/RFC2046，1996 年 11 月，https: [//www.rfc-editor.org/info/rfc2046](https://www.rfc-editor.org/info/rfc2046)
+
+- IANA。 _图片/png 媒体类型_。 [https://www.iana.org/assignments/media-types/image/png](https://www.iana.org/assignments/media-types/image/png)
+
+
+### [2.3. 动机和设计目标（资料性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#23-motivation-and-design-goals-informative)
 
 glTF 是一种开放式可互操作的 3D 资产“传输”格式，它在运行时紧凑且高效地处理和渲染。glTF 2.0 被设计为与供应商和运行时无关，可用于各种本地和基于 Web 的引擎和应用程序，而不管底层平台和 3D 图形 API。
 
@@ -386,39 +386,39 @@ glTF 将易于解析的 JSON 场景描述与一个或多个表示几何、动画
 glTF 旨在实现以下目标：
 
 - **紧凑的文件大小。**纯文本 glTF JSON 文件描述紧凑且解析迅速。所有大数据，如几何、纹理和动画都存储在二进制文件中，这些文件比等效的文本表示小得多。
-    
+
 - **运行时独立性。**glTF 纯粹是一种资产格式，不要求任何运行时行为。这使得任何应用程序都可以出于任何目的使用它，包括使用任何渲染技术进行显示，直至并包括路径跟踪渲染器。
-    
+
 - **完整的 3D 场景表示。**不限于单个对象，glTF 可以表示整个场景，包括节点、变换、变换层次结构、网格、材质、相机和动画。
-    
+
 - **可扩展性。**glTF 是完全可扩展的，支持添加通用和特定于供应商的扩展，包括几何和纹理压缩。可以考虑将广泛采用的扩展集成到 glTF 规范的未来版本中。
-    
+
 
 以下内容不在 glTF 2.0 的范围内：
 
 - **glTF 不是流媒体格式。**glTF 中的二进制数据本质上是可流式传输的，缓冲区设计允许增量获取数据，但 glTF 2.0 中没有其他流式结构。
-    
-- **glTF 不是创作格式。**glTF 故意不保留 3D 创作信息，以保持运行时效率，但是 glTF 文件可能会被 3D 创作工具摄取以进行重新混合。
-    
-- **glTF 并不是为了人类可读的，**尽管由于以 JSON 表示，它对开发人员友好。
-    
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#24-gltf-basics)2.4. glTF 基础知识
+- **glTF 不是创作格式。**glTF 故意不保留 3D 创作信息，以保持运行时效率，但是 glTF 文件可能会被 3D 创作工具摄取以进行重新混合。
+
+- **glTF 并不是为了人类可读的，**尽管由于以 JSON 表示，它对开发人员友好。
+
+
+### [2.4. glTF 基础知识](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#24-gltf-basics)
 
 glTF 资产表示为：
 
 - 一个 JSON 格式的文件 ( .gltf )，包含完整的场景描述：节点层次结构、材质、相机，以及网格、动画和其他构造的描述符信息。
-    
+
 - 包含几何、动画和其他基于缓冲区的数据的二进制文件 ( .bin )。
-    
+
 - 包含纹理图像的图像文件（.jpg、.png）。
-    
+
 
 二进制和图像资源也**可以使用**[数据 URI](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#data-uri)直接嵌入到 JSON 中，或者与 JSON 一起存储在[GLB](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification)容器中。
 
 有效的 glTF 资产**必须**指定其版本。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#25-versioning)2.5. 版本控制
+### [2.5. 版本控制](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#25-versioning)
 
 对次要版本中的 glTF 规范所做的任何更新都**必须**向后和向前兼容。向后兼容性意味着任何支持加载 glTF 2.x 资产的客户端实现也将能够加载 glTF 2.0 资产。向前兼容性意味着仅支持 glTF 2.0 的客户端实现可以加载 glTF 2.x 资产，同时优雅地忽略它不理解的任何新功能。
 
@@ -426,83 +426,83 @@ glTF 资产表示为：
 
 主要版本更新**可能**与以前的版本不兼容。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#26-file-extensions-and-media-types)2.6. 文件扩展名和媒体类型
+### [2.6. 文件扩展名和媒体类型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#26-file-extensions-and-media-types)
 
 - [JSON](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json) glTF 文件**应该**使用.gltf扩展名和[model/gltf+json](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#gltf-json)媒体类型。
-    
+
 - [存储在GLB](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification)容器中的 glTF 文件**应该**使用.glb扩展名和[model/gltf-binary](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#gltf-binary)媒体类型。
-    
+
 - 表示二进制缓冲区的文件**应该**使用：
-    
-    - .bin文件扩展名，媒体类型为[application/octet-stream ；](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#octet-stream)
-        
-    - .bin、.glbin或.glbuf文件扩展名为[application/gltf-buffer](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#gltf-buffer)媒体类型。
-        
-    
+
+  - .bin文件扩展名，媒体类型为[application/octet-stream ；](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#octet-stream)
+
+  - .bin、.glbin或.glbuf文件扩展名为[application/gltf-buffer](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#gltf-buffer)媒体类型。
+
+
 - [PNG](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#png)图像**应该**使用.png文件扩展名和[image/png](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#image-png)媒体类型；
-    
-    - PNG 图像**不应**包含动画、非正方形像素比率或嵌入的 ICC 配置文件。此类功能（如果存在）**必须**被客户端实现忽略。
-        
-    
+
+  - PNG 图像**不应**包含动画、非正方形像素比率或嵌入的 ICC 配置文件。此类功能（如果存在）**必须**被客户端实现忽略。
+
+
 - [JPEG](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#jpeg)图像**应该**使用.jpeg或.jpg文件扩展名和[image/jpeg](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#image-jpeg)媒体类型
-    
-    - JPEG 图像**必须与**[JPEG 文件交换格式](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#jfif)兼容。
-        
-    - JPEG 图像**不应**包含嵌入式 ICC 配置文件。如果存在，嵌入式 ICC 配置文件**必须**被客户端实现忽略。
-        
-    - [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#exif)客户端实现**可能会忽略**[可交换图像文件格式 (Exif)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#exif)块。
-        
+
+  - JPEG 图像**必须与**[JPEG 文件交换格式](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#jfif)兼容。
+
+  - JPEG 图像**不应**包含嵌入式 ICC 配置文件。如果存在，嵌入式 ICC 配置文件**必须**被客户端实现忽略。
+
+  - 客户端实现**可能会忽略**[可交换图像文件格式 (Exif)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#exif)块。
+
         |   |   |
         |---|---|
         |笔记|实施说明<br><br>某些 Exif 块，例如“方向”，可能会严重影响资产的可移植性。|
-        
-    
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#27-json-encoding)2.7. JSON编码
+
+
+### [2.7. JSON编码](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#27-json-encoding)
 
 尽管 glTF 规范没有定义[JSON](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json)格式的任何子集，但实现**应该**知道它可能影响资产互操作性的特殊属性。
 
 1. glTF JSON 数据**应该**使用没有 BOM 的 UTF-8 编码编写。当 glTF 实现不控制字符串编码时，不应用此要求。glTF 实现**应该**遵守[RFC 8259](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json)的第 8.1 节。关于处理 BOM 的存在。
-    
+
 2. 存储在 glTF JSON 中的 ASCII 字符**应该**在没有 JSON 转义的情况下写入。
-    
+
     |   |   |
     |---|---|
     |笔记|例子<br><br>“缓冲区”而不是`"\u0062\u0075\u0066\u0066\u0065\u0072"`.|
-    
+
 3. 存储在 glTF JSON 中的非 ASCII 字符**可能**会被转义。
-    
+
     |   |   |
     |---|---|
     |笔记|例子<br><br>这两个示例表示相同的 glTF JSON 数据。<br><br>```<br>{<br>    "asset": {<br>        "version": "2.0"<br>    },<br>    "nodes": [<br>        {<br>            "name": "куб"<br>        },<br>        {<br>            "name": "立方體"<br>        }<br>    ]<br>}<br>```<br><br>```<br>{<br>    "asset": {<br>        "version": "2.0"<br>    },<br>    "nodes": [<br>        {<br>            "name": "\u043a\u0443\u0431"<br>        },<br>        {<br>            "name": "\u7acb\u65b9\u9ad4"<br>        }<br>    ]<br>}<br>```|
-    
+
 4. JSON 对象中的属性名称（键）**应该**是唯一的。glTF 客户端实现**应该**覆盖相同键的词法前面的值。
-    
+
 5. 某些 glTF 属性在架构中定义为整数。这些值**可以**存储为小数部分为零的小数或使用指数表示法。无论编码如何，此类属性**不得**包含任何非零小数值。
-    
+
     |   |   |
     |---|---|
     |笔记|例子<br><br>100、100.0和1e2表示相同的值。有关详细信息，请参阅[RFC 8259 的第 6 节。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json)|
-    
+
 6. 非整数数字**应该**以在这些数字被读回时保留原始值的方式写入，即它们**不应该**被 JSON 序列化/反序列化往返更改。
-    
+
     |   |   |
     |---|---|
     |笔记|实施说明<br><br>这通常是通过通用 JSON 库使用的 Grisu2 等算法实现的。|
-    
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#28-uris)2.8. URIs
+
+### [2.8. URIs](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#28-uris)
 
 glTF 资产使用[URI](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uri)或[IRI](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#iri)来引用缓冲区和图像资源。资产**可能**至少包含以下两种 URI 类型：
 
 - 按照[RFC 2397的定义，将二进制资源嵌入到 glTF JSON 中的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#data-uri)**数据 URI**。数据 URI 的媒体类型字段**必须**与编码内容相匹配。
-    
+
     |   |   |
     |---|---|
     |笔记|实施说明<br><br>数据 URI 中使用的 Base64 编码将有效负载的字节长度增加了 33%。|
-    
-- **相对路径** —  [RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uri)第 4.2 节或[RFC 3987](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#iri)第 2.2 节定义的path-noscheme或ipath-noscheme — 没有方案、权限或参数。[保留字符（由RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uri)的第 2.2 节和[RFC 3987](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#iri)的第 2.2 节定义）**必须**采用百分比编码。[](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uri)[](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#iri)[](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uri)[](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#iri)
-    
+
+- **相对路径** —  [RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uri)第 4.2 节或[RFC 3987](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#iri)第 2.2 节定义的path-noscheme或ipath-noscheme — 没有方案、权限或参数。[保留字符（由RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uri)的第 2.2 节和[RFC 3987](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#iri)的第 2.2 节定义）**必须**采用百分比编码。
+
 
 具有非 ASCII 字符的路径**可以**按原样编写，使用 JSON 字符串转义或使用百分比编码；所有这些选项都有效。例如，以下三个路径指向同一个资源：
 
@@ -534,9 +534,9 @@ URI**应该**按照[RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/spe
 |---|---|
 |笔记|实施说明<br><br>虽然该规范没有明确禁止非规范化 URI，但在某些平台上，它们的使用可能不受支持或导致不需要的副作用，例如安全警告或缓存未命中。|
 
-## [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3-concepts)3.概念
+## [3.概念](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3-concepts)
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31-general)3.1. 一般的
+### [3.1. 一般的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31-general)
 
 下图显示了 glTF 资产中顶级数组之间的关系。请参阅[属性参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#properties-reference)。
 
@@ -544,9 +544,9 @@ URI**应该**按照[RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/spe
 
 图 1. glTF 对象层次结构
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#32-asset)3.2. 资产
+### [3.2. 资产](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#32-asset)
 
-每个 glTF 资产**必须**有一个资产属性。资产对象**必须**包含指定资产的目标 glTF 版本的版本属性。此外，可选的minVersion属性**可**用于指定加载资产所需的最低 glTF 版本支持。minVersion属性允许资产创建者指定客户端实现**必须**支持的最低版本以加载资产。[这与第 3.12 节](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#specifying-extensions)中描述的extensionsRequired概念非常相似，其中资产**不应该**[](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#specifying-extensions)如果客户端不支持指定的扩展，则加载。额外的元数据**可以**存储在可选属性中，例如generator或copyright。例如，
+每个 glTF 资产**必须**有一个资产属性。资产对象**必须**包含指定资产的目标 glTF 版本的版本属性。此外，可选的minVersion属性**可**用于指定加载资产所需的最低 glTF 版本支持。minVersion属性允许资产创建者指定客户端实现**必须**支持的最低版本以加载资产。[这与第 3.12 节](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#specifying-extensions)中描述的extensionsRequired概念非常相似，其中资产**不应该**如果客户端不支持指定的扩展，则加载。额外的元数据**可以**存储在可选属性中，例如generator或copyright。例如，
 
 ```
 {
@@ -562,7 +562,7 @@ URI**应该**按照[RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/spe
 |---|---|
 |笔记|实施说明<br><br>客户端实现应首先检查是否指定了minVersion属性，并确保可以支持主要版本和次要版本。如果未指定minVersion ，则客户端应检查版本属性并确保支持主要版本。加载[GLB 格式](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification)的客户端还应检查JSON 块中的minVersion和版本属性，因为 GLB 标头中指定的版本仅指 GLB 容器版本。|
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#33-indices-and-names)3.3. 索引和名称
+### [3.3. 索引和名称](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#33-indices-and-names)
 
 glTF 资产的实体由它们在相应数组中的索引引用，例如，bufferView通过在缓冲区数组中指定缓冲区的索引来引用缓冲区。例如：
 
@@ -592,7 +592,7 @@ glTF 资产的实体由它们在相应数组中的索引引用，例如，buffer
 
 对于属性名称，glTF 通常使用驼峰式大小写，例如 This。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#34-coordinate-system-and-units)3.4. 坐标系和单位
+### [3.4. 坐标系和单位](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#34-coordinate-system-and-units)
 
 glTF 使用右手坐标系。glTF 定义 +Y 向上，+Z 向前，-X 向右；glTF 资产的正面朝向 +Z。
 
@@ -612,9 +612,9 @@ glTF 使用右手坐标系。glTF 定义 +Y 向上，+Z 向前，-X 向右；glT
 |---|---|
 |笔记|实施说明<br><br>色度坐标定义了颜色模型的每个原色通道的解释。在典型显示器的上下文中，原色描述了红色、绿色和蓝色荧光粉或滤光片的颜色。除非明确使用宽色域输出，否则客户端实现通常不需要转换颜色。未来的规范版本或扩展可能允许其他颜色原色（例如 P3）。|
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#35-scenes)3.5. 场景
+### [3.5. 场景](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#35-scenes)
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#351-overview)3.5.1. 概述
+#### [3.5.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#351-overview)
 
 glTF 2.0 资产**可能**包含零个或多个_场景_，一组要渲染的视觉对象。场景在场景数组中定义。scene.nodes数组中列出的所有节点**必须**是根节点，即它们**不得**列在任何节点的node.children数组中。同一个根节点**可以**出现在多个场景中。
 
@@ -643,7 +643,7 @@ glTF 2.0 资产**可能**包含零个或多个_场景_，一组要渲染的视�
 }
 ```
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#352-nodes-and-hierarchy)3.5.2. 节点和层次结构
+#### [3.5.2. 节点和层次结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#352-nodes-and-hierarchy)
 
 glTF 资产**可以**定义_节点_，即包含要渲染的场景的对象。
 
@@ -680,7 +680,7 @@ glTF 资产**可以**定义_节点_，即包含要渲染的场景的对象。
 
 名为Car 的节点有四个子节点。这些节点中的每一个又可以有自己的子节点，从而创建一个节点层次结构。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#353-transformations)3.5.3. 转换
+#### [3.5.3. 转换](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#353-transformations)
 
 任何节点都**可以通过提供**矩阵属性或任何translation、rotation和scale 属性（也称为_TRS 属性_）来定义局部空间变换。translation和scale是局部坐标系中的 3D 矢量。rotation是局部坐标系中的单位四元数 XYZW，其中 W 是标量。
 
@@ -763,11 +763,11 @@ glTF 资产**可以**定义_节点_，即包含要渲染的场景的对象。
 }
 ```
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#36-binary-data-storage)3.6. 二进制数据存储
+### [3.6. 二进制数据存储](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#36-binary-data-storage)
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#361-buffers-and-buffer-views)3.6.1. 缓冲区和缓冲区视图
+#### [3.6.1. 缓冲区和缓冲区视图](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#361-buffers-and-buffer-views)
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3611-overview)3.6.1.1. 概述
+##### [3.6.1.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3611-overview)
 
 缓冲区是存储为二进制 blob 的任意数据**。**缓冲区**可以**包含几何、动画、皮肤和图像的任意组合。
 
@@ -834,7 +834,7 @@ bufferView.target值使用[属性参考](https://github.com/KhronosGroup/glTF/bl
 
 缓冲区和缓冲区视图不包含类型信息。它们只是定义用于从文件中检索的原始数据。glTF 资产（网格、皮肤、动画）中的对象通过**访问器**访问缓冲区或缓冲区视图。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3612-glb-stored-buffer)3.6.1.2. GLB 存储缓冲区
+##### [3.6.1.2. GLB 存储缓冲区](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3612-glb-stored-buffer)
 
 glTF 资产**可以**使用 GLB 文件容器将 glTF JSON 和一个 glTF 缓冲区打包到一个文件中。此类缓冲区的数据通过 GLB 存储的BIN块提供。
 
@@ -866,9 +866,9 @@ BIN块的字节长度最多**可以**比 JSON 定义的buffer.byteLength值大 3
 
 [有关GLB 文件格式的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification)详细信息，请参阅GLB 文件格式规范。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#362-accessors)3.6.2. 配件
+#### [3.6.2. 配件](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#362-accessors)
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3621-overview)3.6.2.1. 概述
+##### [3.6.2.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3621-overview)
 
 网格、皮肤和动画的所有二进制数据都存储在缓冲区中并通过访问器检索。
 
@@ -917,7 +917,7 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 }
 ```
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3622-accessor-data-types)3.6.2.2. 访问器数据类型
+##### [3.6.2.2. 访问器数据类型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3622-accessor-data-types)
 
 |组件类型|数据类型|签|位|
 |---|---|---|---|
@@ -964,7 +964,7 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 
 在此访问器中，componentType为5126 ( _float_ )，因此每个组件为四个字节。类型是" VEC3"，所以有三个组件。每个元素的大小为 12 个字节 ( 4 * 3 )。因此，访问器占用 7020 个字节（缓冲区视图的[7032 … 14051]包含范围）。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3623-sparse-accessors)3.6.2.3. 稀疏访问器
+##### [3.6.2.3. 稀疏访问器](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3623-sparse-accessors)
 
 在描述相对于参考数组的增量变化时，数组的稀疏编码通常比密集编码更节省内存。编码变形目标时经常出现这种情况（通常，描述变形目标中的几个置换顶点比传输所有变形目标顶点更有效）。
 
@@ -973,11 +973,11 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 最重要的是，稀疏访问器包含一个稀疏JSON 对象，用于描述与其初始化值不同的元素。稀疏对象包含以下**必需**属性：
 
 - count：置换元素的数量。这个数字**绝不能**大于基本访问器元素的数量。
-    
+
 - indices：描述要替换的值的索引的位置和组件类型的对象。索引**必须**形成一个严格递增的序列。索引**不得**大于或等于基本访问器元素的数量。
-    
+
 - values ：描述与从indices引用的索引相对应的置换元素位置的对象。
-    
+
 
 以下示例显示了一个稀疏访问器示例，其中包含 10 个与初始化数组不同的元素。
 
@@ -1007,7 +1007,7 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 }
 ```
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3624-data-alignment)3.6.2.4。数据对齐
+##### [3.6.2.4。数据对齐](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3624-data-alignment)
 
 访问器在bufferView中的偏移量（即accessor.byteOffset ）和访问器在缓冲区中的偏移量（即`accessor.byteOffset + bufferView.byteOffset`）**必须**是访问器组件类型大小的倍数。
 
@@ -1088,7 +1088,7 @@ end = 2 * 2 * accessor.count + start
 
 当访问器值未紧密打包时（即，bufferView.byteStride大于元素的字节长度），对创建的数据视图的迭代将需要考虑交错的值（即，跳过它们）。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3625-accessors-bounds)3.6.2.5。访问器边界
+##### [3.6.2.5。访问器边界](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3625-accessors-bounds)
 
 accessor.min和accessor.max属性是分别包含每个组件的最小值和最大值的数组。这些数组的长度**必须**等于访问器组件的数量。
 
@@ -1106,15 +1106,15 @@ accessor.min和accessor.max属性是分别包含每个组件的最小值和最�
 
 动画输入和顶点位置属性访问器**必须**定义accessor.min和accessor.max。对于所有其他访问器，这些属性是可选的。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#37-geometry)3.7. 几何学
+### [3.7. 几何学](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#37-geometry)
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#371-overview)3.7.1. 概述
+#### [3.7.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#371-overview)
 
 任何节点**都可以包含一个网格，在其**网格属性中定义。**可以**使用引用皮肤对象中提供的信息对网格进行蒙皮。网格**可以**有变形目标。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#372-meshes)3.7.2. 网格
+#### [3.7.2. 网格](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#372-meshes)
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3721-overview)3.7.2.1. 概述
+##### [3.7.2.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3721-overview)
 
 网格被定义为_基元_数组。图元对应于 GPU 绘制调用所需的数据。图元指定一个或多个属性，对应于绘制调用中使用的顶点属性。索引基元还定义了一个索引属性。属性和索引被定义为对包含相应数据的访问器的引用。每个基元还**可以**指定对应于 GPU 拓扑类型（例如，三角形集）的材料和模式。
 
@@ -1189,58 +1189,58 @@ indices访问器**不得**包含所用组件类型的最大可能值（即，无
 当未定义indices属性时，要渲染的顶点索引的数量由属性访问器的计数定义（具有范围[0..count)中的隐含值）；当定义了indices属性时，要渲染的顶点索引的数量由indices引用的访问器的计数定义。在任何一种情况下，顶点索引的数量**必须**对所使用的拓扑类型有效：
 
 - 对于_points_，它**必须**是非零的。
-    
+
 - 对于_line loops_和_line strips_，它**必须**是 2 或更大。
-    
+
 - 对于_三角带_和_三角扇_，它**必须**是 3 或更大。
-    
+
 - 对于_lines_，它**必须**能被 2 整除且非零。
-    
+
 - 对于_三角形_，它**必须**能被 3 整除且非零
-    
+
 
 拓扑类型定义如下。
 
 - **积分**
-    
+
     根据等式，每个顶点定义一个单点基元：
-    
+
     pi = { vi }
-    
+
 - **线条**
-    
+
     根据等式，一个线基元由每个顶点和下一个顶点定义：
-    
+
     p i = {vi i , v i + 1 }
-    
+
 - **线循环**
-    
+
     循环与线带相同，不同之处在于从最终指定顶点到第一个顶点添加了最后一段。
-    
+
 - **线条**
-    
+
     根据以下等式，每对连续的顶点定义一个单线图元：
-    
+
     pi = {v 2i , v 2i+1 }
-    
+
 - **三角形**
-    
+
     根据以下等式，每组连续的三个顶点定义一个三角形图元：
-    
+
     pi = {v 3i , v 3i+1 , v 3i+2 }
-    
+
 - **三角条**
-    
+
     一个三角形基元由每个顶点和跟随它的两个顶点定义，根据等式：
-    
+
     p i = {vi i , v i+(1+i%2) , v i+(2-i%2) }
-    
+
 - **三角扇**
-    
+
     根据以下等式，三角形基元围绕共享公共顶点定义：
-    
+
     p i = {v i+1 , v i+2 , v 0 }
-    
+
 
 网格几何**不应**包含退化线或三角形，即每个拓扑图元多次使用同一顶点的线或三角形。
 
@@ -1256,7 +1256,7 @@ indices访问器**不得**包含所用组件类型的最大可能值（即，无
 
 扩展**可以**添加额外的属性名称、访问器类型和/或组件类型。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3722-morph-targets)3.7.2.2. 变形目标
+##### [3.7.2.2. 变形目标](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3722-morph-targets)
 
 变形目标是通过扩展网格概念来定义的。
 
@@ -1353,9 +1353,9 @@ POSITION、NORMAL和TANGENT属性的位移**必须**在影响网格顶点的任�
 |---|---|
 |笔记|实施说明<br><br>大量的创作和客户端实现将名称与变形目标相关联。虽然 glTF 2.0 规范目前不提供指定名称的方法，但大多数工具都使用字符串数组mesh.extras.targetNames来实现此目的。targetNames数组和所有原始目标数组的长度必须相同。|
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#373-skins)3.7.3. 皮肤
+#### [3.7.3. 皮肤](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#373-skins)
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3731-overview)3.7.3.1. 概述
+##### [3.7.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3731-overview)
 
 glTF 2.0 网格通过蒙皮对象、关节层次结构和指定的顶点属性支持线性混合蒙皮。
 
@@ -1373,7 +1373,7 @@ inverseBindMatrices 引用的访问器**必须具有**“MAT4”类型的浮点
 |---|---|
 |笔记|实施说明<br><br>定义如何摆出皮肤几何形状以与关节一起使用的矩阵（也称为“绑定形状矩阵”）应该预乘到网格数据或反向绑定矩阵。|
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3732-joint-hierarchy)3.7.3.2. 联合层次结构
+##### [3.7.3.2. 联合层次结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3732-joint-hierarchy)
 
 用于控制蒙皮网格姿势的关节层次结构只是节点层次结构，每个节点都通过来自skin.joints数组的引用指定为_关节_。每个皮肤的关节**必须**有一个共同的父节点（直接或间接）称为_共同根_，它可能是也可能不是关节节点本身。当场景中的节点引用皮肤时，公共根**必须**属于同一场景。
 
@@ -1429,7 +1429,7 @@ inverseBindMatrices 引用的访问器**必须具有**“MAT4”类型的浮点
 }
 ```
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3733-skinned-mesh-attributes)3.7.3.3. 蒙皮网格属性
+##### [3.7.3.3. 蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3733-skinned-mesh-attributes)
 
 蒙皮网格**必须**具有用于蒙皮计算的顶点属性。JOINTS_n属性数据包含影响顶点的相应 skin.joints 数组中的关节索引。WEIGHTS_n属性数据定义了表明关节影响顶点的强度的权重。
 
@@ -1464,9 +1464,9 @@ inverseBindMatrices 引用的访问器**必须具有**“MAT4”类型的浮点
 影响一个顶点的关节数量限制为每组 4 个，因此引用的访问器**必须**具有VEC4类型和以下组件类型：
 
 - **JOINTS_n**：_无符号字节_或_无符号短_
-    
+
 - **WEIGHTS_n** : _float_ , or _normalized unsigned byte_ , or _normalized unsigned short_
-    
+
 
 每个顶点的联合权重**不得**为负数。
 
@@ -1490,7 +1490,7 @@ _当使用标准化无符号字节_或_标准化无符号短_组件类型存储�
 
 所有关节值**必须**在皮肤的关节范围内。未使用的关节值（即，权重为零的关节）**应该**设置为零。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#374-instantiation)3.7.4. 实例化
+#### [3.7.4. 实例化](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#374-instantiation)
 
 网格由node.mesh属性实例化。许多节点可以使用相同的网格，这些节点可以有不同的变换。例如：
 
@@ -1580,13 +1580,13 @@ _当使用标准化无符号字节_或_标准化无符号短_组件类型存储�
 }
 ```
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#38-texture-data)3.8. 纹理数据
+### [3.8. 纹理数据](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#38-texture-data)
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#381-overview)3.8.1. 概述
+#### [3.8.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#381-overview)
 
 glTF 2.0 将纹理访问分为三种不同类型的对象：纹理、图像和采样器。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#382-textures)3.8.2. 纹理
+#### [3.8.2. 纹理](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#382-textures)
 
 纹理存储在资产的纹理数组中。纹理由图像索引定义，由source属性和采样器索引 ( sampler ) 表示。例如：
 
@@ -1609,18 +1609,18 @@ glTF 2.0 仅支持静态 2D 纹理。
 
 当texture.sampler未定义时，**必须**使用具有重复包装（在两个方向上）和自动过滤的采样器。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#383-images)3.8.3. 图片
+#### [3.8.3. 图片](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#383-images)
 
 纹理引用的图像存储在资产的图像数组中。
 
 每个图像包含一个
 
 - 以一种受支持的图像格式指向外部文件的 URI（或 IRI），或
-    
+
 - 带有嵌入数据的数据 URI，或
-    
+
 - 对bufferView的引用；在这种情况下，**必须**定义mimeType 。
-    
+
 
 以下示例显示了一个指向外部 PNG 图像文件的图像和另一个引用具有 JPEG 数据的bufferView 的图像。
 
@@ -1659,9 +1659,9 @@ glTF 2.0 仅支持静态 2D 纹理。
 |---|---|
 |笔记|网络实施说明<br><br>要在使用 WebGL API 时忽略嵌入的色彩空间信息，请将`UNPACK_COLORSPACE_CONVERSION_WEBGL`标志设置为NONE。<br><br>要在使用 ImageBitmap API 时忽略嵌入的色彩空间信息，请将colorSpaceConversion选项设置为none。|
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#384-samplers)3.8.4. 采样器
+#### [3.8.4. 采样器](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#384-samplers)
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3841-overview)3.8.4.1. 概述
+##### [3.8.4.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3841-overview)
 
 采样器存储在资产的采样器数组中。每个采样器指定过滤和包装模式。
 
@@ -1671,31 +1671,31 @@ glTF 2.0 仅支持静态 2D 纹理。
 
 客户端实现**必须**遵循指定的包装模式。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3842-filtering)3.8.4.2。过滤
+##### [3.8.4.2。过滤](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3842-filtering)
 
 过滤模式控制纹理的放大和缩小。
 
 放大模式包括：
 
 - _最近的_。对于每个请求的纹素坐标，采样器选择具有最近坐标的纹素。这个过程有时被称为“最近邻”。
-    
+
 - _线性的_。对于每个请求的纹素坐标，采样器计算几个相邻纹素的加权和。这个过程有时被称为“双线性插值”。
-    
+
 
 缩小模式包括：
 
 - _最近的_。对于每个请求的纹素坐标，采样器选择一个坐标与原始图像最近（曼哈顿距离）的纹素。这个过程有时被称为“最近邻”。
-    
+
 - _线性的_。对于每个请求的纹素坐标，采样器计算原始图像中几个相邻纹素的加权和。这个过程有时被称为“双线性插值”。
-    
+
 - _最近的 mipmap 最近的_。对于每个请求的纹素坐标，采样器首先选择原始图像的预缩小版本之一，然后选择与它最近（曼哈顿距离）坐标的纹素。
-    
+
 - _线性贴图最近_。对于每个请求的纹素坐标，采样器首先选择原始图像的预缩小版本之一，然后从中计算几个相邻纹素的加权和。
-    
+
 - _最近的 mipmap 线性_。对于每个请求的纹素坐标，采样器首先选择原始图像的两个预缩小版本，从每个图像中选择一个坐标最近（曼哈顿距离）的纹素，并在这两个中间结果之间执行最终的线性插值。
-    
+
 - _线性贴图线性_。对于每个请求的纹素坐标，采样器首先选择原始图像的两个预缩小版本，计算每个相邻纹素的加权和，并在这两个中间结果之间执行最终的线性插值。这个过程有时被称为“三线性插值”。
-    
+
 
 为了正确支持 mipmap 模式，客户端实现**应该**在运行时生成 mipmap。当无法生成运行时 mipmap 时，客户端实现**应该**覆盖缩小过滤模式，如下所示：
 
@@ -1704,28 +1704,28 @@ glTF 2.0 仅支持静态 2D 纹理。
 |_最近的 mipmap-最近_  <br>_最近的 mipmap 线性_|_最近的_|
 |_Linear-mipmap-最近的_  <br>_Linear-mipmap-linear_|_线性的_|
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3843-wrapping)3.8.4.3。包装
+##### [3.8.4.3。包装](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3843-wrapping)
 
 通过TEXCOORD_n属性值提供的每个顶点纹理坐标针对图像大小进行了标准化（不要与标准化访问器属性混淆，后者仅指数据编码）。即纹理坐标值(0.0, 0.0)指向第一个（左上）图像像素的开始，而纹理坐标值（1.0, 1.0）指向最后一个（右下）像素的结束) 图像像素。
 
 采样器的环绕模式定义了如何独立处理两个方向的负值或大于或等于1.0 的纹理坐标。支持的模式包括：
 
 - _重复_。仅使用纹理坐标的小数部分。
-    
+
     |   |   |
     |---|---|
     |笔记|例子<br><br>2.2映射到0.2；-0.4映射到0.6。|
-    
+
 - _镜像重复_。此模式的工作原理与_重复_相同，但当整数部分（向 −∞ 截断）为奇数时会翻转方向。
-    
+
     |   |   |
     |---|---|
     |笔记|例子<br><br>2.2映射到0.2；-0.4被视为0.4。|
-    
-- _夹到边缘_。具有图像外部值的纹理坐标被限制在边缘处最近的现有图像纹素。
-    
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3844-example)3.8.4.4。例子
+- _夹到边缘_。具有图像外部值的纹理坐标被限制在边缘处最近的现有图像纹素。
+
+
+##### [3.8.4.4。例子](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3844-example)
 
 以下示例定义了一个具有_线性_放大过滤、_线性 mipmap 线性_缩小过滤和双向_重复环绕的采样器。_
 
@@ -1742,7 +1742,7 @@ glTF 2.0 仅支持静态 2D 纹理。
 }
 ```
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3845-non-power-of-two-textures)3.8.4.5。非二次方纹理
+##### [3.8.4.5。非二次方纹理](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3845-non-power-of-two-textures)
 
 当在对此类纹理尺寸的支持有限的平台上运行时，客户端实现**应该**调整非二次方纹理的大小（以便它们的水平和垂直大小是二次方）。
 
@@ -1750,9 +1750,9 @@ glTF 2.0 仅支持静态 2D 纹理。
 |---|---|
 |笔记|实施说明<br><br>具体来说，如果采样器纹理引用：<br><br>- 具有等于_​​ repeat_或_镜像 repeat 的_环绕模式（wrapS或wrapT ） ，或者<br>    <br>- 有一个使用 mipmapping 的缩小过滤器 ( minFilter )。|
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#39-materials)3.9. 材料
+### [3.9. 材料](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#39-materials)
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#391-overview)3.9.1. 概述
+#### [3.9.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#391-overview)
 
 glTF 使用一组通用参数定义材质，这些参数基于基于物理的渲染 (PBR) 中广泛使用的材质表示。具体来说，glTF 使用金属粗糙度材料模型。使用这种材料的声明性表示可以使 glTF 文件在不同平台上呈现一致。
 
@@ -1760,7 +1760,7 @@ glTF 使用一组通用参数定义材质，这些参数基于基于物理的渲
 
 图 7. 基于物理的渲染示例
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#392-metallic-roughness-material)3.9.2. 金属粗糙度材料
+#### [3.9.2. 金属粗糙度材料](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#392-metallic-roughness-material)
 
 所有与金属粗糙度材料模型相关的参数都在材料对象的pbrMetallicRoughness属性下定义。以下示例显示如何使用金属粗糙度参数定义类金材料：
 
@@ -1782,11 +1782,11 @@ glTF 使用一组通用参数定义材质，这些参数基于基于物理的渲
 金属粗糙度材料模型由以下属性定义：
 
 - _base color_ - 材质的基色。
-    
+
 - _金属度_- 材料的金属度；值范围从0.0（非金属）到1.0（金属）；中间值的解释见[附录 B。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-b-brdf-implementation)
-    
+
 - _粗糙度_- 材料的粗糙度；值范围从0.0（平滑）到1.0（粗糙）。
-    
+
 
 基色根据_金属度值__有_两种不同的解释。当材料是金属时，基色是在法向入射 (F0) 时特定测量的反射率值。对于非金属，基色表示材料的反射漫反射颜色。在此模型中，无法为非金属指定 F0 值，并使用 4% (0.04) 的线性值。
 
@@ -1833,34 +1833,34 @@ _金属度_和_粗糙度_属性的纹理打包在一个名为metallicRoughnessTe
 
 双向反射分布函数 (BRDF) 本身的实现**可能**因设备性能和资源限制而异。有关 BRDF 计算的更多详细信息，请参阅[附录 B。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-b-brdf-implementation)
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#393-additional-textures)3.9.3. 额外的纹理
+#### [3.9.3. 额外的纹理](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#393-additional-textures)
 
 材料定义还提供了额外的纹理，这些纹理也**可以**与金属粗糙度材料模型以及其他材料模型一起使用，这些材料模型可以通过 glTF 扩展提供。
 
 支持以下附加纹理：
 
 - **normal**：切线空间法线纹理。纹理将切线空间中法向量的 XYZ 分量编码为使用线性传递函数存储的 RGB 值。普通纹理**不应该**包含_alpha_通道，因为它无论如何都不会被使用。反量化后，纹素值**必须**映射如下：_红色_[0.0 .. 1.0] 到 X [-1 .. 1]，_绿色_[0.0 .. 1.0] 到 Y [-1 .. 1]，_蓝色_（0.5 .. 1.0] 映射到 Z (0 .. 1)。普通纹理**不应**包含小于或等于0.5的蓝色值。
-    
+
     |   |   |
     |---|---|
     |笔记|实施说明<br><br>此映射通常实现为sampledValue * 2.0 - 1.0。|
-    
+
     法线纹理的纹理绑定**可以**另外包含一个标量比例​​值，该值线性缩放法线向量的 X 和 Y 分量。
-    
+
     法向量在用于光照方程之前**必须被归一化。**使用缩放时，向量归一化发生在缩放之后。
-    
+
 - **遮挡**：遮挡纹理；它表示从环境光源接收到较少间接照明的区域。直接照明不受影响。纹理的红色通道编码遮挡值，其中0.0表示完全遮挡区域（无间接照明），_1.0_表示未遮挡区域（完全间接照明）。其他纹理通道（如果存在）不影响遮挡。
-    
+
     遮挡贴图的纹理绑定**可以**可选地包含用于减少遮挡效果的标量强度值。如果存在，它会影响遮挡值 as `1.0 + strength * (occlusionTexture - 1.0)`。
-    
+
 - **emissive**：发射纹理和因子控制材料发出的光的颜色和强度。纹理**必须包含使用**[sRGB 光电传输函数](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#srgb)编码的 8 位值，因此 RGB 值**必须**在用于任何计算之前解码为实际线性值。为了实现正确的过滤，传递函数**应该**在执行线性插值之前被解码。
-    
+
     对于需要物理光单位的实现，发光纹理和因子的乘积单位是坎德拉每平方米 ( **cd / m 2** )，有时称为_尼特_。
-    
+
     |   |   |
     |---|---|
     |笔记|实施说明<br><br>因为该值是按平方米指定的，所以它表示沿表面的任何给定点的亮度。然而，从物理光单位到渲染像素亮度的精确转换需要了解相机的曝光设置，除非 glTF 扩展另有定义，否则这些设置将作为实现细节保留。<br><br>许多渲染引擎通过假设1.0的发射因子导致完全曝光的像素来简化此计算。|
-    
+
 
 以下示例显示了使用pbrMetallicRoughness参数以及其他纹理定义的材质：
 
@@ -1901,26 +1901,26 @@ _金属度_和_粗糙度_属性的纹理打包在一个名为metallicRoughnessTe
 |遮挡|模型将在本应较暗的区域显得更亮。|
 |发光的|带灯的模型不会点亮。例如，汽车模型的前灯将关闭而不是打开。|
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#394-alpha-coverage)3.9.4. 阿尔法覆盖率
+#### [3.9.4. 阿尔法覆盖率](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#394-alpha-coverage)
 
 alphaMode属性定义了如何解释 alpha 值。alpha 值取自金属粗糙度材料模型_基色的第四个分量。_
 
 alphaMode可以是以下值之一：
 
 - OPAQUE - 渲染输出完全不透明并且忽略任何 alpha 值。
-    
+
 - MASK - 根据 alpha 值和指定的_alpha 截止_值，渲染输出完全不透明或完全透明；边缘的确切外观**可能**会受到特定于实现的技术的影响，例如“Alpha-to-Coverage”。
-    
+
     |   |   |
     |---|---|
     |笔记|笔记<br><br>此模式用于模拟树叶或铁丝网等几何体。|
-    
+
 - 混合- 如[合成数字图像](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#compositing)中所述，使用“over”运算符将渲染输出与背景组合。
-    
+
     |   |   |
     |---|---|
     |笔记|笔记<br><br>该模式用于模拟纱布或动物毛皮等几何体。|
-    
+
 
 当alphaMode设置为MASK时，alphaCutoff属性指定截止阈值。如果 alpha 值大于或等于alphaCutoff值，则将其呈现为完全不透明，否则将呈现为完全透明。其他模式忽略alphaCutoff值。
 
@@ -1928,7 +1928,7 @@ alphaMode可以是以下值之一：
 |---|---|
 |笔记|实时光栅器的实现说明<br><br>实时光栅化器通常使用深度缓冲区和网格排序来支持 alpha 模式。下面描述了这些类型的渲染器的预期行为。<br><br>- 不透明- 为每个像素写入深度值，正确输出不需要网格排序。<br>    <br>- MASK - 不为在 alpha 测试后丢弃的像素写入深度值。为所有其他像素写入深度值。正确输出不需要网格排序。<br>    <br>- 混合- 对此模式的支持各不相同。没有适用于所有情况的完美且快速的解决方案。客户端实现应尝试在尽可能多的情况下实现正确的混合输出。是否写入深度值或是否排序取决于实现。例如，实现可能会丢弃具有零或接近零 alpha 值的像素以避免排序问题。|
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#395-double-sided)3.9.5. 两面性
+#### [3.9.5. 两面性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#395-double-sided)
 
 doubleSided属性指定材料是否是双面的。
 
@@ -1936,7 +1936,7 @@ doubleSided属性指定材料是否是双面的。
 
 当此值为真时，背面剔除被禁用，双面照明被启用。在评估光照方程之前，背面**必须**反转其法线。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#396-default-material)3.9.6. 默认材料
+#### [3.9.6. 默认材料](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#396-default-material)
 
 当网格未指定材料时使用的默认材料被定义为未指定属性的材料。[材料](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#reference-material)的所有默认值均适用。
 
@@ -1944,22 +1944,22 @@ doubleSided属性指定材料是否是双面的。
 |---|---|
 |笔记|实施说明<br><br>这种材料不发光，除非场景中存在一些照明，否则它将是黑色的。|
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#397-point-and-line-materials)3.9.7. 点线材质
+#### [3.9.7. 点线材质](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#397-point-and-line-materials)
 
 本规范没有定义非三角形图元（例如_点_或_线_）的大小或样式，应用程序**可以**使用各种技术来适当地渲染这些图元。**但是，为了保持一致性，建议使用**以下约定：
 
 - 点和线在视口空间中的宽度**应**为 1px。
-    
+
 - 具有NORMAL和TANGENT属性的点或线**应该**使用标准光照（包括法线纹理）进行渲染。
-    
+
 - 具有NORMAL但没有TANGENT属性的点或线**应该**使用标准照明渲染，但忽略材质上的任何法线纹理。
-    
+
 - 没有NORMAL属性的点或线**应该**在没有照明的情况下渲染，而是使用_基色_值（如上定义，当存在时乘以COLOR_0 ）和_发射_值的总和。
-    
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#310-cameras)3.10. 相机
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3101-overview)3.10.1. 概述
+### [3.10. 相机](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#310-cameras)
+
+#### [3.10.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3101-overview)
 
 相机存储在资产的相机数组中。每个相机都定义了一个指定投影类型（透视或正交）的类型属性，以及定义细节的透视或正交属性。使用node.camera属性在节点内实例化相机。
 
@@ -1967,15 +1967,15 @@ doubleSided属性指定材料是否是双面的。
 
 包含相机实例的节点定义了将场景坐标从全局空间转换到视图空间的视图矩阵。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3102-view-matrix)3.10.2. 查看矩阵
+#### [3.10.2. 查看矩阵](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3102-view-matrix)
 
 相机被定义为局部 +X 轴在右侧，“镜头”朝向局部 -Z 轴，相机顶部与局部 +Y 轴对齐。
 
 视图矩阵源自包含相机的节点的全局变换，忽略了缩放。如果节点的全局变换是恒等的，则摄像机的位置在原点。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3103-projection-matrices)3.10.3. 投影矩阵
+#### [3.10.3. 投影矩阵](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3103-projection-matrices)
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31031-overview)3.10.3.1. 概述
+##### [3.10.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31031-overview)
 
 投影可以是透视投影或正交投影。
 
@@ -2011,16 +2011,16 @@ doubleSided属性指定材料是否是双面的。
 
 客户端实现**应该**使用以下投影矩阵。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31032-infinite-perspective-projection)3.10.3.2. 无限透视投影
+##### [3.10.3.2. 无限透视投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31032-infinite-perspective-projection)
 
 让
 
 - a是视野的纵横比（宽度与高度），由`camera.perspective.aspectRatio`或视口的纵横比设置；
-    
+
 - y是以弧度为单位的垂直视野，由camera.perspective.yfov设置；
-    
+
 - n是到近裁剪平面的距离，由camera.perspective.znear设置。
-    
+
 
 然后，投影矩阵定义如下。
 
@@ -2032,18 +2032,18 @@ doubleSided属性指定材料是否是双面的。
 
 当提供的相机的纵横比与视口的纵横比不匹配时，客户端实现**不应**裁剪或执行非均匀缩放（“拉伸”）以填充视口。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31033-finite-perspective-projection)3.10.3.3. 有限透视投影
+##### [3.10.3.3. 有限透视投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31033-finite-perspective-projection)
 
 让
 
 - a是视野的纵横比（宽度与高度），由`camera.perspective.aspectRatio`或视口的纵横比设置；
-    
+
 - y是以弧度为单位的垂直视野，由camera.perspective.yfov设置；
-    
+
 - f是到远裁剪平面的距离，由camera.perspective.zfar设置；
-    
+
 - n是到近裁剪平面的距离，由camera.perspective.znear设置。
-    
+
 
 然后，投影矩阵定义如下。
 
@@ -2055,18 +2055,18 @@ doubleSided属性指定材料是否是双面的。
 
 当提供的相机的纵横比与视口的纵横比不匹配时，客户端实现**不应**裁剪或执行非均匀缩放（“拉伸”）以填充视口。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31034-orthographic-projection)3.10.3.4。正投影
+##### [3.10.3.4。正投影](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#31034-orthographic-projection)
 
 让
 
 - r是正交宽度的一半，由camera.orthographic.xmag设置；
-    
+
 - t是正交高度的一半，由camera.orthographic.ymag设置；
-    
+
 - f是到远裁剪平面的距离，由camera.orthographic.zfar设置；
-    
+
 - n是到近裁剪平面的距离，由camera.orthographic.znear设置。
-    
+
 
 然后，投影矩阵定义如下。
 
@@ -2078,7 +2078,7 @@ doubleSided属性指定材料是否是双面的。
 
 当r / t与视口的纵横比不匹配时，客户端实现**不应**裁剪或执行非均匀缩放（“拉伸”）以填充视口。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#311-animations)3.11. 动画
+### [3.11. 动画](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#311-animations)
 
 glTF 通过节点变换的关键帧动画支持关节动画和蒙皮动画。关键帧数据存储在缓冲区中，并使用访问器在动画中引用。
 
@@ -2292,7 +2292,7 @@ a 1 ,a 2 ,… a n ,v 1 ,v 2 ,… v n ,b 1 ,b 2 ,… b n
 
 蒙皮动画是通过为蒙皮的关节层次结构中的关节设置动画来实现的。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#312-specifying-extensions)3.12. 指定扩展名
+### [3.12. 指定扩展名](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#312-specifying-extensions)
 
 glTF 定义了一种扩展机制，允许使用新功能扩展基本格式。任何 glTF 对象**都可以**有一个可选的扩展属性，如下例所示：
 
@@ -2341,16 +2341,16 @@ glTF 资产中使用的所有扩展**必须**列在顶级extensionsUsed数组对
 
 extensionsRequired是extensionsUsed的子集。extensionsRequired 中的所有值也**必须**存在于extensionsUsed中。
 
-## [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#4-glb-file-format-specification)4. GLB文件格式规范
+## [4. GLB文件格式规范](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#4-glb-file-format-specification)
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#41-general-informative)4.1. 一般（资料性）
+### [4.1. 一般（资料性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#41-general-informative)
 
 glTF 提供了两种可以一起使用的传递选项：
 
 - glTF JSON 指向外部二进制数据（几何、关键帧、皮肤）和图像。
-    
+
 - glTF JSON 使用数据 URI 嵌入 base64 编码的二进制数据和内联图像。
-    
+
 
 因此，加载 glTF 文件通常需要单独的请求来获取所有二进制数据，或者由于 base64 编码而需要额外的空间。Base64 编码需要额外的处理来解码并增加文件大小（编码资源增加约 33%）。虽然传输层 gzip 减轻了文件大小的增加，但解压缩和解码仍然会显着增加加载时间。
 
@@ -2358,26 +2358,26 @@ glTF 提供了两种可以一起使用的传递选项：
 
 二进制 glTF 资产仍然可以引用外部资源。例如，想要将图像保存为单独文件的应用程序可能会将场景所需的所有内容（图像除外）嵌入到二进制 glTF 中。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#42-structure)4.2. 结构
+### [4.2. 结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#42-structure)
 
 二进制 glTF（例如，可以是文件）具有以下结构：
 
 - 一个 12 字节的前导码，称为_header_。
-    
+
 - 包含 JSON 内容和二进制数据的一个或多个_块。_
-    
+
 
 包含 JSON 的块**可以**像往常一样引用外部资源，也**可以引用**存储在其他_块中__的_资源。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#43-file-extension--media-type)4.3. 文件扩展名和媒体类型
+### [4.3. 文件扩展名和媒体类型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#43-file-extension--media-type)
 
 与 Binary glTF 一起使用的文件扩展名是.glb。
 
 注册的媒体类型是model/gltf-binary。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#44-binary-gltf-layout)4.4. 二进制 glTF 布局
+### [4.4. 二进制 glTF 布局](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#44-binary-gltf-layout)
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#441-overview)4.4.1. 概述
+#### [4.4.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#441-overview)
 
 二进制 glTF 是小端。下图显示了二进制 glTF 资产的示例。
 
@@ -2387,7 +2387,7 @@ glTF 提供了两种可以一起使用的传递选项：
 
 以下部分更详细地描述了该结构。
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#442-header)4.4.2. 标头
+#### [4.4.2. 标头](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#442-header)
 
 12 字节的标头由三个 4 字节的条目组成：
 
@@ -2396,17 +2396,17 @@ uint32 version
 uint32 length
 
 - magic **必须**等于0x46546C67。它是 ASCII 字符串glTF，可用于将数据识别为二进制 glTF。
-    
+
 - version指示二进制 glTF 容器格式的版本。本规范定义了版本 2。
-    
+
     加载 GLB 格式的客户端实现还**必须**检查JSON 块中的[资产版本属性，因为 GLB 标头中指定的版本仅指 GLB 容器版本。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#asset)
-    
+
 - length是二进制 glTF 的总长度，包括_标头_和所有_块_，以字节为单位。
-    
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#443-chunks)4.4.3. 大块
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#4431-overview)4.4.3.1. 概述
+#### [4.4.3. 大块](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#443-chunks)
+
+##### [4.4.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#4431-overview)
 
 每个块具有以下结构：
 
@@ -2415,11 +2415,11 @@ uint32 chunkType
 ubyte[] chunkData
 
 - chunkLength是chunkData的长度，以字节为单位。
-    
+
 - chunkType指示块的类型。详情见[表 1](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#table-chunktypes)。
-    
+
 - chunkData是块的二进制负载。
-    
+
 
 每个块的开始和结束**必须**与 4 字节边界对齐。请参阅填充方案的块定义。块**必须完全按照**[表 1](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#table-chunktypes)中给出的顺序出现。
 
@@ -2432,7 +2432,7 @@ ubyte[] chunkData
 
 客户端实现**必须**忽略具有未知类型的块，以使 glTF 扩展能够引用前两个块之后具有新类型的其他块。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#4432-structured-json-content)4.4.3.2. 结构化 JSON 内容
+##### [4.4.3.2. 结构化 JSON 内容](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#4432-structured-json-content)
 
 该块包含 glTF JSON，因为它将在 .gltf 文件中提供。
 
@@ -2444,7 +2444,7 @@ ubyte[] chunkData
 
 此块**必须用尾随**空格字符 ( 0x20 )填充以满足对齐要求。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#4433-binary-buffer)4.4.3.3. 二进制缓冲区
+##### [4.4.3.3. 二进制缓冲区](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#4433-binary-buffer)
 
 此块包含几何体、动画关键帧、皮肤和图像的二进制有效负载。有关从 JSON 引用此块的详细信息，请参阅[GLB 存储的缓冲区。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-stored-buffer)
 
@@ -2454,7 +2454,7 @@ ubyte[] chunkData
 
 当二进制缓冲区为空或以其他方式存储时，**应该**省略此块。
 
-## [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#5-properties-reference)5.属性参考
+## [5.属性参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#5-properties-reference)
 
 |   |   |
 |---|---|
@@ -2462,108 +2462,108 @@ ubyte[] chunkData
 
 [属性参考.adoc](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/PropertiesReference.adoc)
 
-## [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#6-acknowledgments-informative)6.致谢（信息性）
+## [6.致谢（信息性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#6-acknowledgments-informative)
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#61-editors)6.1. 编辑部
+### [6.1. 编辑部](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#61-editors)
 
 - Saurabh Bhatia，微软
-    
-- Patrick Cozzi，铯
-    
-- Alexey Knyazev，个人贡献者
-    
-- 托尼·帕里西，Unity
-    
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#62-khronos-3d-formats-working-group-and-alumni)6.2. Khronos 3D 格式工作组和校友
+- Patrick Cozzi，铯
+
+- Alexey Knyazev，个人贡献者
+
+- 托尼·帕里西，Unity
+
+
+### [6.2. Khronos 3D 格式工作组和校友](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#62-khronos-3d-formats-working-group-and-alumni)
 
 - 雷米阿诺，Vario
-    
-- 迈克·邦德，Adobe
-    
-- Leonard Daly，个人贡献者
-    
-- 埃米利亚诺·甘巴雷托，Adobe
-    
-- Tobias Häußler，达索系统
-    
-- 微软的 Gary Hsu
-    
-- Marco Hutter，个人贡献者
-    
-- Uli Klumpp，个人贡献者
-    
-- Max Limper, Fraunhofer IGD
-    
-- Ed Mackey，Analytical Graphics, Inc.
-    
-- 唐·麦柯迪，谷歌
-    
-- 斯科特·纳吉，微软
-    
-- 诺伯特·诺珀，UX3D
-    
-- Fabrice Robinet，个人贡献者（前任编辑和孵化器）
-    
-- Bastian Sdorra，达索系统
-    
-- NVIDIA 的尼尔·特雷维特
-    
-- 扬·保罗·范韦弗伦，Oculus
-    
-- 阿曼达·沃森，Oculus
-    
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#63-special-thanks)6.3. 特别感谢
+- 迈克·邦德，Adobe
+
+- Leonard Daly，个人贡献者
+
+- 埃米利亚诺·甘巴雷托，Adobe
+
+- Tobias Häußler，达索系统
+
+- 微软的 Gary Hsu
+
+- Marco Hutter，个人贡献者
+
+- Uli Klumpp，个人贡献者
+
+- Max Limper, Fraunhofer IGD
+
+- Ed Mackey，Analytical Graphics, Inc.
+
+- 唐·麦柯迪，谷歌
+
+- 斯科特·纳吉，微软
+
+- 诺伯特·诺珀，UX3D
+
+- Fabrice Robinet，个人贡献者（前任编辑和孵化器）
+
+- Bastian Sdorra，达索系统
+
+- NVIDIA 的尼尔·特雷维特
+
+- 扬·保罗·范韦弗伦，Oculus
+
+- 阿曼达·沃森，Oculus
+
+
+### [6.3. 特别感谢](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#63-special-thanks)
 
 - Sarah Chow，铯
-    
-- 汤姆·菲利，铯
-    
-- 达里尔高夫
-    
-- 埃里克·海恩斯，欧特克
-    
-- Yu Chen Hou, 个人贡献者
-    
-- Scott Hunter，Analytical Graphics, Inc.
-    
-- 布兰登·琼斯，谷歌
-    
-- Arseny Kapoulkine，个人贡献者
-    
-- Jon Leech，个人贡献者
-    
-- 肖恩·里利，铯
-    
-- 胡安·利尼茨基，戈多引擎
-    
-- Matthew McMullan，个人贡献者
-    
-- Mohamad Moneimne，宾夕法尼亚大学
-    
-- Kai Ninomiya，前身为 Cesium
-    
-- 塞德里克·品森，Sketchfab
-    
-- 杰夫·罗素，狨猴
-    
-- Miguel Sousa, Fraunhofer IGD
-    
-- Timo Sturm，弗劳恩霍夫 IGD
-    
-- Rob Taglang，铯
-    
-- Maik Thöner，弗劳恩霍夫 IGD
-    
-- Steven Vergenz，AltspaceVR
-    
-- Corentin Wallez，谷歌
-    
-- Alex Wood，分析图形公司
-    
 
-## [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-a-json-schema-reference-informative)附录 A：JSON 模式参考（资料性）
+- 汤姆·菲利，铯
+
+- 达里尔高夫
+
+- 埃里克·海恩斯，欧特克
+
+- Yu Chen Hou, 个人贡献者
+
+- Scott Hunter，Analytical Graphics, Inc.
+
+- 布兰登·琼斯，谷歌
+
+- Arseny Kapoulkine，个人贡献者
+
+- Jon Leech，个人贡献者
+
+- 肖恩·里利，铯
+
+- 胡安·利尼茨基，戈多引擎
+
+- Matthew McMullan，个人贡献者
+
+- Mohamad Moneimne，宾夕法尼亚大学
+
+- Kai Ninomiya，前身为 Cesium
+
+- 塞德里克·品森，Sketchfab
+
+- 杰夫·罗素，狨猴
+
+- Miguel Sousa, Fraunhofer IGD
+
+- Timo Sturm，弗劳恩霍夫 IGD
+
+- Rob Taglang，铯
+
+- Maik Thöner，弗劳恩霍夫 IGD
+
+- Steven Vergenz，AltspaceVR
+
+- Corentin Wallez，谷歌
+
+- Alex Wood，分析图形公司
+
+
+## [附录 A：JSON 模式参考（资料性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-a-json-schema-reference-informative)
 
 |   |   |
 |---|---|
@@ -2571,9 +2571,9 @@ ubyte[] chunkData
 
 [JsonSchemaReference.adoc](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/JsonSchemaReference.adoc)
 
-## [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-b-brdf-implementation)附录 B：BRDF 实现
+## [附录 B：BRDF 实现](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-b-brdf-implementation)
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b1-general)B.1. 一般的
+### [B.1. 一般的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b1-general)
 
 本章介绍 glTF 2.0 金属粗糙度材料的双向反射分布函数 (BRDF)。BRDF 描述了基于物理的材料表面的反射特性。对于一对方向，BRDF 返回有多少来自入射方向的光在出射方向上从表面反射。
 
@@ -2594,9 +2594,9 @@ material = mix(dielectric_brdf, metal_brdf, metallic)
 
 材料的逻辑结构如下所示，使用抽象符号将材料描述为有向无环图 (DAG)。顶点对应于材料模型的基本构建块：BRDF、混合运算符、输入参数和常量。接下来是一个信息丰富的示例实现，作为 BRDF 和混合运算符的一组方程和源代码。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b2-material-structure)B.2. 材料结构
+### [B.2. 材料结构](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b2-material-structure)
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b21-metals)B.2.1. 金属
+#### [B.2.1. 金属](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b21-metals)
 
 金属表面反射大部分光照，只有一小部分光被材料吸收。
 
@@ -2612,7 +2612,7 @@ metal_brdf =
     bsdf = specular_brdf(
       α = roughness ^ 2))
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b22-dielectrics)B.2.2. 电介质
+#### [B.2.2. 电介质](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b22-dielectrics)
 
 与金属不同，介电材料将大部分入射光传输到物体内部，菲涅耳项仅由折射率参数化。
 
@@ -2632,7 +2632,7 @@ dielectric_brdf =
     layer = specular_brdf(
       α = roughness ^ 2))
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b23-microfacet-surfaces)B.2.3. 微表面
+#### [B.2.3. 微表面](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b23-microfacet-surfaces)
 
 金属 BRDF 和电介质 BRDF 基于微面模型。
 
@@ -2660,7 +2660,7 @@ Trowbridge-Reitz / GGX 微面分布将微表面描述为由完美的镜面反射
 |---|---|
 |笔记|笔记<br><br>[Heitz (2014)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Heitz2014)详细介绍了分布和剖面之间的区别，此外，他还提供了对常见微面剖面的广泛研究。基于这项工作，我们建议使用 Smith 微表面轮廓（最初由[Smith (1967)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Smith1967)开发）及其相应的掩蔽-阴影函数。Heitz 将 Smith 剖面描述为最准确的随机高度场反射模型。它假设相邻点之间的高度和法线不相关，这意味着一组随机的微面而不是连续的表面。<br><br>微面模型通常不考虑多重散射。阴影项抑制第二次与微表面相交的光。[海茨等人。(2016)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Heitz2016)扩展了基于 Smith 的微面模型以包含多重散射分量，这显着提高了模型预测的准确性。我们建议尽可能合并多重散射，方法是使用 Heitz 引入的无偏随机评估，或稍后提出的一种近似值，例如 Kulla 和[Conty (2017)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#KullaConty2017)或[Turquin (2019)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Turquin2019)提出的。|
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b24-complete-model)B.2.4. 完整模型
+#### [B.2.4. 完整模型](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b24-complete-model)
 
 下图总结了金属粗糙度材料中使用的 BRDF 和混合算子。
 
@@ -2674,9 +2674,9 @@ glTF 规范旨在允许应用程序根据他们的要求选择不同的照明实
 
 具有物理真实 BRDF 的无偏光模拟将成为实时渲染器中近似值的基本事实，这些近似值通常有偏差，但仍能提供视觉上令人愉悦的结果。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b3-sample-implementation-informative)B.3. 示例实施（信息性）
+### [B.3. 示例实施（信息性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b3-sample-implementation-informative)
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b31-overview)B.3.1. 概述
+#### [B.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b31-overview)
 
 通常，渲染器使用近似值来求解渲染方程，例如基于图像的照明的拆分求和近似值，或简化数学以节省指令并减少寄存器压力。但是，有很多方法可以实现良好的近似值，具体取决于平台。
 
@@ -2685,15 +2685,15 @@ glTF 规范旨在允许应用程序根据他们的要求选择不同的照明实
 我们使用以下符号：
 
 - **V**是从阴影位置到眼睛的归一化向量
-    
-- **L**是从着色位置到光线的归一化向量
-    
-- **N**是与上述值相同空间中的表面法线
-    
-- **H**是半向量，其中**H** = normalize( **L** + **V** )
-    
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b32-specular-brdf)B.3.2. 高光 BRDF
+- **L**是从着色位置到光线的归一化向量
+
+- **N**是与上述值相同空间中的表面法线
+
+- **H**是半向量，其中**H** = normalize( **L** + **V** )
+
+
+#### [B.3.2. 高光 BRDF](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b32-specular-brdf)
 
 |   |   |
 |---|---|
@@ -2733,7 +2733,7 @@ function specular_brdf(α) {
 }
 ```
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b33-diffuse-brdf)B.3.3. 漫反射BRDF
+#### [B.3.3. 漫反射BRDF](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b33-diffuse-brdf)
 
 |   |   |
 |---|---|
@@ -2751,7 +2751,7 @@ function diffuse_brdf(color) {
 }
 ```
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b34-fresnel)B.3.4. 菲涅耳
+#### [B.3.4. 菲涅耳](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b34-fresnel)
 
 |   |   |
 |---|---|
@@ -2779,7 +2779,7 @@ function fresnel_mix(ior, base, layer) {
 }
 ```
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b35-metal-brdf-and-dielectric-brdf)B.3.5. 金属 BRDF 和电介质 BRDF
+#### [B.3.5. 金属 BRDF 和电介质 BRDF](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b35-metal-brdf-and-dielectric-brdf)
 
 [现在我们已经实现了 glTF 金属粗糙度材料模型中使用的所有函数，我们可以根据“完整模型”](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#complete-model)部分中显示的图表连接函数。通过将混合函数（fresnel_mix、conductor_fresnel）替换为实现，我们得到以下金属和电介质成分的 BRDF：
 
@@ -2813,21 +2813,21 @@ f_specular = F * D(α) * G(α) / (4 * abs(VdotN) * abs(LdotN))
 material = f_diffuse + f_specular
 ```
 
-#### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b36-discussion)B.3.6. 讨论
+#### [B.3.6. 讨论](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b36-discussion)
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b361-masking-shadowing-term-and-multiple-scattering)B.3.6.1。掩蔽-阴影项和多重散射
+##### [B.3.6.1。掩蔽-阴影项和多重散射](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b361-masking-shadowing-term-and-multiple-scattering)
 
 可以通过多种方式改进镜面反射模型。[Heitz (2014)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Heitz2014)指出，由于微表面的高度，掩蔽-阴影函数的更准确形式考虑了掩蔽和阴影之间的相关性。这种相关性在高度相关的掩蔽和阴影功能中得到了解释。通过对多次散射进行建模可以实现精度的另一个提高，请参阅[“微平面表面”](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#microfacet-surfaces)部分。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b362-schlicks-fresnel-approximation)B.3.6.2。Schlick 的菲涅耳近似
+##### [B.3.6.2。Schlick 的菲涅耳近似](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b362-schlicks-fresnel-approximation)
 
 尽管 Schlick 的菲涅耳对于范围广泛的金属和介电材料是一个很好的近似，但有几个理由对菲涅耳项使用更复杂的解决方案。
 
-金属通常在掠射角附近表现出反射率“下降”，这在 Schlick Fresnel 中不存在。[Lazányi 和 Szirmay-Kalos (2005)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#LazanyiSzirmayKalos2005)用误差项扩展了 Schlick Fresnel 来解释它。[Hoffman (2019)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Hoffman2019)通过引入艺术家友好的f82颜色（大约 82° 角的颜色）改进了该术语的参数化。[Gulbrandsen (2014)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Gulbrandsen2014)还介绍了金属的附加颜色参数[](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Gulbrandsen2014). Gulbrandson 将其称为“边缘色调”并在完整的菲涅尔方程中使用它而不是 Schlick 的近似值。尽管完整的菲涅尔方程应该给出更准确的结果，但 Hoffman 表明它在 RGB 渲染器的上下文中比 Schlick 的近似更差。由于我们以 RGB 渲染器为目标并且不为 glTF 中的金属提供额外的颜色参数，因此我们建议对金属使用原始的 Schlick Fresnel。
+金属通常在掠射角附近表现出反射率“下降”，这在 Schlick Fresnel 中不存在。[Lazányi 和 Szirmay-Kalos (2005)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#LazanyiSzirmayKalos2005)用误差项扩展了 Schlick Fresnel 来解释它。[Hoffman (2019)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Hoffman2019)通过引入艺术家友好的f82颜色（大约 82° 角的颜色）改进了该术语的参数化。[Gulbrandsen (2014)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#Gulbrandsen2014)还介绍了金属的附加颜色参数. Gulbrandson 将其称为“边缘色调”并在完整的菲涅尔方程中使用它而不是 Schlick 的近似值。尽管完整的菲涅尔方程应该给出更准确的结果，但 Hoffman 表明它在 RGB 渲染器的上下文中比 Schlick 的近似更差。由于我们以 RGB 渲染器为目标并且不为 glTF 中的金属提供额外的颜色参数，因此我们建议对金属使用原始的 Schlick Fresnel。
 
 大多数电介质的折射率为 1.5。因此，介电菲涅耳项使用固定的f0 = 0.04. 对于范围 [1.2, 2.2] 内的折射率，Schlick Fresnel 可以很好地近似完整的 Fresnel 方程。材质超出此范围的主要原因是透明度和嵌套对象。如果一个透明物体与另一个透明物体重叠并且两者具有相同（或相似）的折射率，则边界处的结果比率为 1（或接近 1）。根据完整的菲涅尔方程，在这种情况下没有（或几乎没有）反射。从 Schlick Fresnel 近似计算的反射强度将太高。鼓励在嵌套电介质的情况下关心精度的实现对电介质使用完整的菲涅尔方程。对于金属，Schlick 的近似值仍然是一个不错的选择。
 
-##### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b363-coupling-diffuse-and-specular-reflection)B.3.6.3. 耦合漫反射和镜面反射
+##### [B.3.6.3. 耦合漫反射和镜面反射](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b363-coupling-diffuse-and-specular-reflection)
 
 虽然本节中提出的fresnel_mix中漫反射和镜面反射分量的耦合计算起来简单且成本低廉，但它不是很准确并且破坏了基于物理的 BRDF 必须满足的基本属性 - 能量守恒。能量守恒意味着 BRDF 反射的光不能多于接收到的光。已经提出了几个修复方案，每个修复方案在性能和质量方面都有自己的权衡。
 
@@ -2837,44 +2837,44 @@ material = f_diffuse + f_specular
 
 [Kulla 和 Conty (2017)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#KullaConty2017)找到了一种针对耦合漫反射和镜面反射分量的特殊情况量身定制的解决方案，该解决方案易于计算。它需要预先计算菲涅尔加权镜面反射 BRDF 的方向反照率并制成表格，但他们发现该函数很平滑，低分辨率 3D 纹理（16³ 像素）就足够了。他们耦合的漫反射-镜面反射模型不仅能量_守恒_，而且能量_保存_，这意味着如果镜面反射和漫反射分量都不吸收任何能量，所有能量都会被反射。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b4-references)B.4. 参考
+### [B.4. 参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b4-references)
 
 - [Burley, B. (2012)：迪士尼的基于物理的着色。](https://disneyanimation.com/publications/physically-based-shading-at-disney/)
-    
+
 - [Cook、RL 和 KE Torrance (1982)：计算机图形学的反射模型。ACM 图形交易 1 (1), 7-24。](https://graphics.pixar.com/library/ReflectanceModel/paper.pdf)
-    
+
 - [Gulbrandsen, O. (2014)：艺术家友好的金属菲涅耳](http://jcgt.org/published/0003/04/03/paper-lowres.pdf)
-    
+
 - [Heitz, E. (2014)：了解基于微面的 BRDF 中的掩蔽-阴影函数](http://jcgt.org/published/0003/02/03/paper.pdf)
-    
+
 - [Heitz, E.、J. Hanika、E. d'Eon 和 C. Dachsbacher (2016)：使用 Smith 模型的多重散射微面 BSDF](https://eheitzresearch.wordpress.com/240-2/)
-    
+
 - [Naty Hoffman (2019)：菲涅尔方程被认为是有害的](https://renderwonk.com/publications/mam2019/)
-    
+
 - [Jakob, W., E. d'Eon, O. Jakob, S. Marschner (2014)：渲染分层材质的综合框架](https://research.cs.cornell.edu/layered-sg14/)
-    
+
 - [Kulla, C. 和 A. Conty (2017)：重温 Imageworks 的基于物理的着色](https://blog.selfshadow.com/publications/s2017-shading-course/imageworks/s2017_pbs_imageworks_slides_v2.pdf)
-    
+
 - [Lazanyi, I. 和 L. Szirmay-Kalos (2005)：金属的菲涅耳项近似](http://wscg.zcu.cz/WSCG2005/Papers_2005/Short/H29-full.pdf)
-    
+
 - [Pharr, M.、W. Jakob 和 G. Humphreys (2016)：基于物理的渲染：从理论到实施，第 3 版。](https://www.pbr-book.org/)
-    
+
 - [Schlick, C. (1994)：用于基于物理的渲染的廉价 BRDF 模型。计算机图形学论坛 13, 233-246。](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.50.2297&rep=rep1&type=pdf)
-    
+
 - [Smith, B. (1967)：随机粗糙表面的几何阴影。IEEE 天线和传播汇刊 15 (5), 668-671。](https://ieeexplore.ieee.org/document/1138991)
-    
+
 - [Torrance, KE, EM Sparrow (1967)：粗糙表面的非镜面反射理论。美国光学学会杂志 57 (9), 1105-1114。](https://www.graphics.cornell.edu/~westin/pubs/TorranceSparrowJOSA1967.pdf)
-    
+
 - [Trowbridge, T. 和 KP Reitz (1975)：用于光线反射的粗糙表面的平均不规则表示。美国光学学会杂志 65 (5), 531-536。](https://www.osapublishing.org/josa/abstract.cfm?uri=josa-65-5-531)
-    
+
 - [Turquin E. (2019)：微面模型的实用多重散射补偿](https://blog.selfshadow.com/publications/turquin/ms_comp_final.pdf)
-    
+
 - [Walter, B.、S. Marschner、H. Li 和 K. Torrance (2007)：用于通过粗糙表面进行折射的微平面模型。](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.html)
-    
 
-## [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-c-animation-sampler-interpolation-modes)附录 C：动画采样器插值模式
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c1-overview)C.1. 概述
+## [附录 C：动画采样器插值模式](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-c-animation-sampler-interpolation-modes)
+
+### [C.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c1-overview)
 
 |   |   |
 |---|---|
@@ -2885,21 +2885,21 @@ material = f_diffuse + f_specular
 对于以下部分，让
 
 - \$n\$为关键帧总数，\$n > 0\$；
-    
+
 - \$t_k\$ 是第 \$k\$ 个关键帧的时间戳，\$k \in [1,n]\$；
-    
+
 - \$v_k\$ 是第 \$k\$ 关键帧的动画属性值；
-    
+
 - \$t_c\$ 是当前（请求的）时间戳，\$t_k < t_c < t_{k+1}\$；
-    
+
 - \$t_d = t_{k + 1} - t_k\$ 是插值段的持续时间；
-    
+
 - \$t = (t_c - t_k) / t_d\$ 是分段归一化插值因子。
-    
+
 
 标量向量乘法是每个向量分量。
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c2-step-interpolation)C.2. 步进插值
+### [C.2. 步进插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c2-step-interpolation)
 
 当动画采样器插值模式设置为STEP时使用此模式。
 
@@ -2907,7 +2907,7 @@ material = f_diffuse + f_specular
 
 \[v_t = v_k\]
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c3-linear-interpolation)C.3. 线性插值
+### [C.3. 线性插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c3-linear-interpolation)
 
 当动画采样器插值模式设置为LINEAR并且动画属性不是rotation时使用此模式。
 
@@ -2915,16 +2915,16 @@ material = f_diffuse + f_specular
 
 \[v_t = (1 - t) * v_k + t * v_{k+1}\]
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c4-spherical-linear-interpolation)C.4. 球面线性插值
+### [C.4. 球面线性插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c4-spherical-linear-interpolation)
 
 当动画采样器插值模式设置为LINEAR且动画属性为rotation时使用此模式，即动画属性的值是单位四元数。
 
 让
 
 - \$a = arccos(|v_k \cdot v_{k+1}|)\$为连续两个四元数点积的绝对值的反余弦；
-    
+
 - \(s = \frac{v_k \cdot v_{k+1}}{|v_k \cdot v_{k+1}|}\) 是两个连续四元数点积的符号。
-    
+
 
 时间戳 \$t_c\$ 处的内插采样器值 \$v_t\$ 计算如下。
 
@@ -2940,7 +2940,7 @@ material = f_diffuse + f_specular
 |---|---|
 |笔记|实施说明<br><br>当 \$a\$ 接近于零时，球面线性插值变为规则线性插值。|
 
-### [](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c5-cubic-spline-interpolation)C.5. 三次样条插值
+### [C.5. 三次样条插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c5-cubic-spline-interpolation)
 
 当动画采样器插值模式设置为CUBICSPLINE时使用此模式。
 
@@ -2951,7 +2951,7 @@ material = f_diffuse + f_specular
 让
 
 - \$a_k\$、\$v_k\$ 和 \$b_k\$ 分别是第 \$k\$ 帧的入切线、属性值和出切线。
-    
+
 
 时间戳 \$t_c\$ 处的内插采样器值 \$v_t\$ 计算如下。
 
