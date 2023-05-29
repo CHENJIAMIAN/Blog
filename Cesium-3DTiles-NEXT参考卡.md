@@ -3,7 +3,7 @@
 ## 1
 ![gh|1000](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683680925000b2k1mi.jpg)
 ## 2
-![gh|1000](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683681222000h7dyy2.jpg)
+![1683681222000h7dyy2](https://github.com/CHENJIAMIAN/Blog/assets/20126997/62b81f7f-c098-47a3-ba39-b74cd8598b15)
 ## 3
 ![gh|1000](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/1683681336000mqey2y.jpg)
 ## 4
