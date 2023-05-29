@@ -14,12 +14,12 @@ jobs:
 
       - name: Create temporary folder
         run: |
-          mkdir tmp111
+          mkdir ../tmp111
           cd ..
           pwd
 
       - name: Copy files to temporary folder
-        run: cp -r * tmp111/
+        run: cp -r * ../tmp111/
 
       - name: Switch to gh_action_branch branch
         run: |
@@ -29,7 +29,7 @@ jobs:
           git status
 
       - name: Copy files from temporary folder to gh_action_branch branch root
-        run: cp -r tmp111/* ./
+        run: cp -r ../tmp111/* ./
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
