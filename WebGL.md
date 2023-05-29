@@ -381,7 +381,8 @@ gl.shaderSource//设置着色器源代码。
 gl.stencilFunc//设置模板测试函数。
 gl.stencilMask//设置模板写入掩码。
 gl.stencilOp//设置模板操作。
-gl.texImage2D(gl.TEXTURE_2D, 1, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, mipmapImage);//如果你想手动提供mipmaps，你需要在调用texImage2D时主动传入一个非0的参数作为函数的第二个参数。
+gl.texImage2D(gl.TEXTURE_2D, 1, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, mipmapImage);//定义纹理图像
+//如果你想手动提供mipmaps，你需要在调用texImage2D时主动传入一个非0的参数作为函数的第二个参数。
     立体地图创建方式和纹理一样，唯一不同的就是纹理对象：
         gl.texImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, positiveXImage);
             TEXTURE_CUBE_MAP
@@ -391,6 +392,13 @@ gl.texImage2D(gl.TEXTURE_2D, 1, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, mipmapImage)
             TEXTURE_CUBE_MAP_NEGATIVE_Y
             TEXTURE_CUBE_MAP_POSITIVE_Z
             TEXTURE_CUBE_MAP_NEGATIVE_Z
+gl.texSubImage2D;// texImage2D() 函数会创建一个新的纹理或者完全替换现有纹理的图像数据，而 texSubImage2D() 函数则可以对纹理中的某一个 2D 图像级别子图的某一个矩形区域进行更新，比如可以实现动态更新纹理的效果。因此，在一些需要动态更新的 Web3D 应用中，texSubImage2D() 函数可以发挥出很大的作用。
+gl.hint(gl.GENERATE_MIPMAP_HINT, hint);//提示webgl优化性能
+	// 定义可用的提示类型，来告诉WebGL实现如何处理特定的渲染操作
+	提示级别可以设置为以下值之一：
+		- gl.FASTEST：表示可以忽略质量进行最快的处理
+		- gl.NICEST：表示需要最好的质量，可能速度较慢
+		- gl.DONT_CARE：表示对速度和质量没有特殊要求，WebGL 应该自己决定
 gl.texParameteri//设置纹理参数。
     包裹模式
             CLAMP_TO_EDGE表示超出纹理范围的部分会被截断并用纹理边界上的颜色进行填充。
