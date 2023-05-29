@@ -23,7 +23,7 @@ jobs:
     - name: Sync master branch to gh_action_branch
       run: |
         git checkout gh_action_branch
-        git merge --allow-unrelated-histories --strategy-option=theirs master -m "Syncing master to gh_action_branch"
+        git merge --allow-unrelated-histories --strategy-option=ours master -m "Syncing master to gh_action_branch"
         git push origin gh_action_branch
 # 这个 GitHub Action 工作流包含以下几个步骤：
 
