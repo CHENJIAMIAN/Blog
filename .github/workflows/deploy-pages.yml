@@ -21,13 +21,13 @@ jobs:
 
       - name: Switch to gh_action_branch branch
         run: |
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
           git checkout -b gh_action_branch
-          git status
+          
 
       - name: Copy files from temporary folder to gh_action_branch branch root
-        run: cp -r ../tmp111/* ./
+        run: |
+          cp -r ../tmp111/* ./
+          git status
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
