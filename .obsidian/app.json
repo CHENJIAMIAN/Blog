@@ -19,5 +19,5 @@
     "node_modules/",
     "node_modules\\eslint\\README.md"
   ],
-  "legacyEditor": true
+  "legacyEditor": false
 }
