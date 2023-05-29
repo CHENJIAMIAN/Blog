@@ -175,120 +175,63 @@ glTF 规范使用**轴**、**矩阵**、**矢量等线性代数术语来识别**
 
 glTF 规范使用常见的工程和图形术语，例如**image**、**buffer**、**texture**等来识别和描述某些_glTF_构造及其属性、状态和行为。本节定义了规范上下文中这些术语的基本含义。规范文本提供了更完整的术语定义，并详细阐述、扩展或阐明了这些定义。当本节中定义的术语在规范中以规范语言使用时，规范中的定义支配并取代这些术语在其他技术上下文（即规范之外）中可能具有的任何含义。
 
-存取器
-
+*存取器*
 描述存储在二进制缓冲区中的数据元素的数量和格式的对象。
-
-动画片
-
+*动画片*
 描述关键帧数据的对象，包括时间戳和受其影响的目标属性。
-
-背面
-
+*背面*
 见朝向。
-
-缓冲
-
+*缓冲*
 表示线性字节数组的外部或嵌入式资源。
-
-缓冲区视图
-
+*缓冲区视图*
 表示特定缓冲区范围的对象，以及控制如何解释缓冲区内容的可选元数据。
-
-相机
-
+*相机*
 定义用于渲染场景的投影参数的对象。
-
-朝向
-
+*朝向*
 根据顶点的方向（缠绕顺序）将三角形分类为正面或背面。
-
-正面
-
+*正面*
 见朝向。
-
-图像
-
+*图像*
 编码为标准化比特流的二维像素数组，例如[PNG](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#png)。
-
-索引几何
-
+*索引几何*
 使用单独的数据源（索引值）来组装图元拓扑的网格图元。
-
-线性混合蒙皮
-
+*线性混合蒙皮*
 一种蒙皮方法，将每个顶点的变换矩阵计算为指定节点的变换矩阵的线性加权和。
-
-材料
-
+*材料*
 由网格图元表示的真实世界对象的视觉属性的参数化近似。
-
-网
-
+*网*
 网格图元的集合。
-
-网格图元
-
+*网格图元*
 将索引或非索引几何体与材质绑定的对象。
-
-贴图
-
+*贴图*
 一组图像表示在每个维度上连续减少 2 倍。
-
-变形目标
-
+*变形目标*
 定义为其顶点属性的一组差异值的网格图元的更改状态。
-
-节点
-
+*节点*
 定义层次结构关系及其内容的局部转换的对象。
-
-非索引几何
-
+*非索引几何*
 使用顶点属性值的线性顺序来组装图元拓扑的网格图元。
-
-普通的
-
+*普通的*
 定义垂直于表面的单位 XYZ 矢量。
-
-根节点
-
+*根节点*
 不是任何其他节点的子节点的节点。
-
-采样器
-
+*采样器*
 控制图像数据采样方式的对象。
-
-场景
-
+*场景*
 包含要呈现的根节点列表的对象。
-
-蒙皮
-
+*蒙皮*
 为网格图元的每个顶点计算和应用单独变换的过程。
-
-切线
-
+*切线*
 定义曲面上的切线方向的单位 XYZ 向量。
-
-质地
-
+*质地*
 结合图像及其采样器的对象。
-
-拓扑类型
-
+*拓扑类型*
 控制顶点如何组装的状态，例如作为三角形列表、线带等。
-
-顶点属性
-
+*顶点属性*
 与顶点关联的属性。
-
-缠绕顺序
-
+*缠绕顺序*
 三角形内顶点定义的相对顺序
-
-包装
-
+*包装*
 基于归一化纹理坐标选择图像像素的过程。
 
 #### [2.2.4. 规范性参考文献](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#224-normative-references)
@@ -297,51 +240,51 @@ glTF 规范使用常见的工程和图形术语，例如**image**、**buffer**�
 
 ##### [2.2.4.1. 外型规格](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#2241-external-specifications)
 
-- Bradner, S.，_RFC 中用于指示要求级别的关键词_，BCP 14，RFC 2119，1997 年 3 月。Leiba, B.，_RFC 2119 关键词中大写与小写的歧义_，BCP 14，RFC 8174，2017 年 5 月。 [https://www.rfc-editor.org/info/bcp14](https://www.rfc-editor.org/info/bcp14)
+- Bradner, S.，*RFC 中用于指示要求级别的关键词*，BCP 14，RFC 2119，1997 年 3 月。Leiba, B.，*RFC 2119 关键词中大写与小写的歧义*，BCP 14，RFC 8174，2017 年 5 月。 [https://www.rfc-editor.org/info/bcp14](https://www.rfc-editor.org/info/bcp14)
 
-- IEC 60050-102 _国际电工词汇 (IEV) - 第 102 部分：数学 - 一般概念和线性代数_ [https://webstore.iec.ch/publication/160](https://webstore.iec.ch/publication/160)
+- IEC 60050-102 *国际电工词汇 (IEV) - 第 102 部分：数学 - 一般概念和线性代数* [https://webstore.iec.ch/publication/160](https://webstore.iec.ch/publication/160)
 
-    IEC 60050-103 _国际电工词汇 (IEV) - 第 103 部分：数学 - 函数_ [https://webstore.iec.ch/publication/161](https://webstore.iec.ch/publication/161)
+    IEC 60050-103 *国际电工词汇 (IEV) - 第 103 部分：数学 - 函数* [https://webstore.iec.ch/publication/161](https://webstore.iec.ch/publication/161)
 
 |   |   |
 |---|---|
 |笔记|笔记<br><br>这些标准的在线版本可在[https://www.electropedia.org/获得](https://www.electropedia.org/)|
 
-- Unicode 联盟，_Unicode 标准_ [https://www.unicode.org/versions/latest/](https://www.unicode.org/versions/latest/)
+- Unicode 联盟，*Unicode 标准* [https://www.unicode.org/versions/latest/](https://www.unicode.org/versions/latest/)
 
-- Bray, T., Ed.，_JavaScript 对象表示法 (JSON) 数据交换格式_，STD 90，RFC 8259，DOI 10.17487/RFC8259，2017 年 12 月，https: [//www.rfc-editor.org/info/rfc8259](https://www.rfc-editor.org/info/rfc8259)
+- Bray, T., Ed.，*JavaScript 对象表示法 (JSON) 数据交换格式*，STD 90，RFC 8259，DOI 10.17487/RFC8259，2017 年 12 月，https: [//www.rfc-editor.org/info/rfc8259](https://www.rfc-editor.org/info/rfc8259)
 
-- ISO/IEC 60559 _浮点运算_ [https://www.iso.org/standard/80985.html](https://www.iso.org/standard/80985.html)
+- ISO/IEC 60559 *浮点运算* [https://www.iso.org/standard/80985.html](https://www.iso.org/standard/80985.html)
 
-- ISO/IEC 15948 _便携式网络图形 (PNG)：功能规范_ [https://www.iso.org/standard/29581.html](https://www.iso.org/standard/29581.html)
+- ISO/IEC 15948 *便携式网络图形 (PNG)：功能规范* [https://www.iso.org/standard/29581.html](https://www.iso.org/standard/29581.html)
 
 |   |   |
 |---|---|
 |笔记|笔记<br><br>该标准的免费版本可从 W3C 获得：[https ://www.w3.org/TR/PNG/](https://www.w3.org/TR/PNG/)|
 
-- ISO/IEC 10918-1 _连续色调静止图像的数字压缩和编码：要求和指南_ [https://www.iso.org/standard/18902.html](https://www.iso.org/standard/18902.html)
+- ISO/IEC 10918-1 *连续色调静止图像的数字压缩和编码：要求和指南* [https://www.iso.org/standard/18902.html](https://www.iso.org/standard/18902.html)
 
 |   |   |
 |---|---|
 |笔记|笔记<br><br>该标准的早期版本称为 ITU Recommendation T.81，可从 W3C 获得：[https://www.w3.org/Graphics/JPEG/itu-t81.pdf](https://www.w3.org/Graphics/JPEG/itu-t81.pdf)|
 
-- ISO/IEC 10918-5 _连续色调静止图像的数字压缩和编码：JPEG 文件交换格式 (JFIF)_ [https://www.iso.org/standard/54989.html](https://www.iso.org/standard/54989.html)
+- ISO/IEC 10918-5 *连续色调静止图像的数字压缩和编码：JPEG 文件交换格式 (JFIF)* [https://www.iso.org/standard/54989.html](https://www.iso.org/standard/54989.html)
 
 |   |   |
 |---|---|
 |笔记|笔记<br><br>W3C 提供了该标准的早期版本：[https ://www.w3.org/Graphics/JPEG/jfif3.pdf](https://www.w3.org/Graphics/JPEG/jfif3.pdf)|
 
-- CIPA DC-008-Translation-2019 _用于数码相机的可交换图像文件格式_ [https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E](https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E)
+- CIPA DC-008-Translation-2019 *用于数码相机的可交换图像文件格式* [https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E](https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2019-E)
 
-- Masinter, L.，_“数据”URL 方案_，RFC 2397，DOI 10.17487/RFC2397，1998 年 8 月，https: [//www.rfc-editor.org/info/rfc2397](https://www.rfc-editor.org/info/rfc2397)
+- Masinter, L.，*“数据”URL 方案*，RFC 2397，DOI 10.17487/RFC2397，1998 年 8 月，https: [//www.rfc-editor.org/info/rfc2397](https://www.rfc-editor.org/info/rfc2397)
 
-- Berners-Lee, T.、Fielding, R. 和 L. Masinter，_统一资源标识符 (URI)：通用语法_，STD 66，RFC 3986，DOI 10.17487/RFC3986，2005 年 1 月，[https://www.rfc-editor .org/info/rfc3986](https://www.rfc-editor.org/info/rfc3986)
+- Berners-Lee, T.、Fielding, R. 和 L. Masinter，*统一资源标识符 (URI)：通用语法*，STD 66，RFC 3986，DOI 10.17487/RFC3986，2005 年 1 月，[https://www.rfc-editor .org/info/rfc3986](https://www.rfc-editor.org/info/rfc3986)
 
-- Duerst, M. 和 M. Suignard，_国际化资源标识符 (IRI)_，RFC 3987，DOI 10.17487/RFC3987，2005 年 1 月，https: [//www.rfc-editor.org/info/rfc3987](https://www.rfc-editor.org/info/rfc3987)
+- Duerst, M. 和 M. Suignard，*国际化资源标识符 (IRI)*，RFC 3987，DOI 10.17487/RFC3987，2005 年 1 月，https: [//www.rfc-editor.org/info/rfc3987](https://www.rfc-editor.org/info/rfc3987)
 
-- Fielding, R., Ed. 和 J. Reschke, Ed.，_超文本传输​​协议 (HTTP/1.1)：消息语法和路由_，RFC 7230，DOI 10.17487/RFC7230，2014 年 6 月，[https://www.rfc-editor .org/info/rfc7230](https://www.rfc-editor.org/info/rfc7230)
+- Fielding, R., Ed. 和 J. Reschke, Ed.，*超文本传输​​协议 (HTTP/1.1)：消息语法和路由*，RFC 7230，DOI 10.17487/RFC7230，2014 年 6 月，[https://www.rfc-editor .org/info/rfc7230](https://www.rfc-editor.org/info/rfc7230)
 
-- IEC 61966-2-1 _默认 RGB 色彩空间 - sRGB_ [https://webstore.iec.ch/publication/6169](https://webstore.iec.ch/publication/6169)
+- IEC 61966-2-1 *默认 RGB 色彩空间 - sRGB* [https://webstore.iec.ch/publication/6169](https://webstore.iec.ch/publication/6169)
 
 |   |   |
 |---|---|
@@ -349,7 +292,7 @@ glTF 规范使用常见的工程和图形术语，例如**image**、**buffer**�
 
 - ITU-R BT.709-6 建议书_用于制作和国际节目交换的 HDTV 标准的参数值_ [https://www.itu.int/rec/R-REC-BT.709-6-201506-I](https://www.itu.int/rec/R-REC-BT.709-6-201506-I)
 
-- _MikkTSpace_ [https://github.com/mmikk/MikkTSpace](https://github.com/mmikk/MikkTSpace)
+- *MikkTSpace* [https://github.com/mmikk/MikkTSpace](https://github.com/mmikk/MikkTSpace)
 
 - 托马斯·波特和汤姆·达夫。1984._合成数字图像。_SIGGRAPH 计算机。图形。18, 3（1984 年 7 月），253–259。DOI：[https://doi.org/10.1145/964965.808606](https://doi.org/10.1145/964965.808606)
 
@@ -357,21 +300,14 @@ glTF 规范使用常见的工程和图形术语，例如**image**、**buffer**�
 |---|---|
 |笔记|笔记<br><br>Pixar 提供了本文的免费版本：[https ://graphics.pixar.com/library/Compositing/](https://graphics.pixar.com/library/Compositing/)|
 
-
 ##### [2.2.4.2. 媒体类型注册](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#2242-media-type-registrations)
 
-- IANA。 _模型/gltf+json 媒体类型_。 [https://www.iana.org/assignments/media-types/model/gltf+json](https://www.iana.org/assignments/media-types/model/gltf+json)
-
-- IANA。 _模型/gltf-二进制媒体类型_。 [https://www.iana.org/assignments/media-types/model/gltf-binary](https://www.iana.org/assignments/media-types/model/gltf-binary)
-
-- IANA。 _应用程序/gltf-buffer 媒体类型_。 [https://www.iana.org/assignments/media-types/application/gltf-buffer](https://www.iana.org/assignments/media-types/application/gltf-buffer)
-
-- IANA。 _应用程序/八位字节流媒体类型_。 [https://www.iana.org/assignments/media-types/application/octet-stream](https://www.iana.org/assignments/media-types/application/octet-stream)
-
-- Freed, N. 和 N. Borenstein，_多用途互联网邮件扩展 (MIME) 第二部分：媒体类型_，RFC 2046，DOI 10.17487/RFC2046，1996 年 11 月，https: [//www.rfc-editor.org/info/rfc2046](https://www.rfc-editor.org/info/rfc2046)
-
-- IANA。 _图片/png 媒体类型_。 [https://www.iana.org/assignments/media-types/image/png](https://www.iana.org/assignments/media-types/image/png)
-
+- IANA。 *模型/gltf+json 媒体类型*。 [https://www.iana.org/assignments/media-types/model/gltf+json](https://www.iana.org/assignments/media-types/model/gltf+json)
+- IANA。 *模型/gltf-二进制媒体类型*。 [https://www.iana.org/assignments/media-types/model/gltf-binary](https://www.iana.org/assignments/media-types/model/gltf-binary)
+- IANA。 *应用程序/gltf-buffer 媒体类型*。 [https://www.iana.org/assignments/media-types/application/gltf-buffer](https://www.iana.org/assignments/media-types/application/gltf-buffer)
+- IANA。 *应用程序/八位字节流媒体类型*。 [https://www.iana.org/assignments/media-types/application/octet-stream](https://www.iana.org/assignments/media-types/application/octet-stream)
+- Freed, N. 和 N. Borenstein，*多用途互联网邮件扩展 (MIME) 第二部分：媒体类型*，RFC 2046，DOI 10.17487/RFC2046，1996 年 11 月，https: [//www.rfc-editor.org/info/rfc2046](https://www.rfc-editor.org/info/rfc2046)
+- IANA。 *图片/png 媒体类型*。 [https://www.iana.org/assignments/media-types/image/png](https://www.iana.org/assignments/media-types/image/png)
 
 ### [2.3. 动机和设计目标（资料性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#23-motivation-and-design-goals-informative)
 
@@ -393,7 +329,6 @@ glTF 旨在实现以下目标：
 
 - **可扩展性。**glTF 是完全可扩展的，支持添加通用和特定于供应商的扩展，包括几何和纹理压缩。可以考虑将广泛采用的扩展集成到 glTF 规范的未来版本中。
 
-
 以下内容不在 glTF 2.0 的范围内：
 
 - **glTF 不是流媒体格式。**glTF 中的二进制数据本质上是可流式传输的，缓冲区设计允许增量获取数据，但 glTF 2.0 中没有其他流式结构。
@@ -401,7 +336,6 @@ glTF 旨在实现以下目标：
 - **glTF 不是创作格式。**glTF 故意不保留 3D 创作信息，以保持运行时效率，但是 glTF 文件可能会被 3D 创作工具摄取以进行重新混合。
 
 - **glTF 并不是为了人类可读的，**尽管由于以 JSON 表示，它对开发人员友好。
-
 
 ### [2.4. glTF 基础知识](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#24-gltf-basics)
 
@@ -412,7 +346,6 @@ glTF 资产表示为：
 - 包含几何、动画和其他基于缓冲区的数据的二进制文件 ( .bin )。
 
 - 包含纹理图像的图像文件（.jpg、.png）。
-
 
 二进制和图像资源也**可以使用**[数据 URI](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#data-uri)直接嵌入到 JSON 中，或者与 JSON 一起存储在[GLB](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#glb-file-format-specification)容器中。
 
@@ -438,11 +371,9 @@ glTF 资产表示为：
 
   - .bin、.glbin或.glbuf文件扩展名为[application/gltf-buffer](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#gltf-buffer)媒体类型。
 
-
 - [PNG](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#png)图像**应该**使用.png文件扩展名和[image/png](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#image-png)媒体类型；
 
   - PNG 图像**不应**包含动画、非正方形像素比率或嵌入的 ICC 配置文件。此类功能（如果存在）**必须**被客户端实现忽略。
-
 
 - [JPEG](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#jpeg)图像**应该**使用.jpeg或.jpg文件扩展名和[image/jpeg](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#image-jpeg)媒体类型
 
@@ -452,11 +383,9 @@ glTF 资产表示为：
 
   - 客户端实现**可能会忽略**[可交换图像文件格式 (Exif)](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#exif)块。
 
-        |   |   |
-        |---|---|
-        |笔记|实施说明<br><br>某些 Exif 块，例如“方向”，可能会严重影响资产的可移植性。|
-
-
+|   |   |
+|---|---|
+|笔记|实施说明<br><br>某些 Exif 块，例如“方向”，可能会严重影响资产的可移植性。|
 
 ### [2.7. JSON编码](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#27-json-encoding)
 
@@ -466,30 +395,29 @@ glTF 资产表示为：
 
 2. 存储在 glTF JSON 中的 ASCII 字符**应该**在没有 JSON 转义的情况下写入。
 
-    |   |   |
-    |---|---|
-    |笔记|例子<br><br>“缓冲区”而不是`"\u0062\u0075\u0066\u0066\u0065\u0072"`.|
+|   |   |
+|---|---|
+|笔记|例子<br><br>“缓冲区”而不是`"\u0062\u0075\u0066\u0066\u0065\u0072"`.|
 
 3. 存储在 glTF JSON 中的非 ASCII 字符**可能**会被转义。
 
-    |   |   |
-    |---|---|
-    |笔记|例子<br><br>这两个示例表示相同的 glTF JSON 数据。<br><br>```<br>{<br>    "asset": {<br>        "version": "2.0"<br>    },<br>    "nodes": [<br>        {<br>            "name": "куб"<br>        },<br>        {<br>            "name": "立方體"<br>        }<br>    ]<br>}<br>```<br><br>```<br>{<br>    "asset": {<br>        "version": "2.0"<br>    },<br>    "nodes": [<br>        {<br>            "name": "\u043a\u0443\u0431"<br>        },<br>        {<br>            "name": "\u7acb\u65b9\u9ad4"<br>        }<br>    ]<br>}<br>```|
+|   |   |
+|---|---|
+|笔记|例子<br><br>这两个示例表示相同的 glTF JSON 数据。<br><br>```js<br>{<br>    "asset": {<br>        "version": "2.0"<br>    },<br>    "nodes": [<br>        {<br>            "name": "куб"<br>        },<br>        {<br>            "name": "立方體"<br>        }<br>    ]<br>}<br>```<br><br>```js<br>{<br>    "asset": {<br>        "version": "2.0"<br>    },<br>    "nodes": [<br>        {<br>            "name": "\u043a\u0443\u0431"<br>        },<br>        {<br>            "name": "\u7acb\u65b9\u9ad4"<br>        }<br>    ]<br>}<br>```|
 
 4. JSON 对象中的属性名称（键）**应该**是唯一的。glTF 客户端实现**应该**覆盖相同键的词法前面的值。
 
 5. 某些 glTF 属性在架构中定义为整数。这些值**可以**存储为小数部分为零的小数或使用指数表示法。无论编码如何，此类属性**不得**包含任何非零小数值。
 
-    |   |   |
-    |---|---|
-    |笔记|例子<br><br>100、100.0和1e2表示相同的值。有关详细信息，请参阅[RFC 8259 的第 6 节。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json)|
+|   |   |
+|---|---|
+|笔记|例子<br><br>100、100.0和1e2表示相同的值。有关详细信息，请参阅[RFC 8259 的第 6 节。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#json)|
 
 6. 非整数数字**应该**以在这些数字被读回时保留原始值的方式写入，即它们**不应该**被 JSON 序列化/反序列化往返更改。
 
-    |   |   |
-    |---|---|
-    |笔记|实施说明<br><br>这通常是通过通用 JSON 库使用的 Grisu2 等算法实现的。|
-
+|   |   |
+|---|---|
+|笔记|实施说明<br><br>这通常是通过通用 JSON 库使用的 Grisu2 等算法实现的。|
 
 ### [2.8. URIs](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#28-uris)
 
@@ -497,16 +425,15 @@ glTF 资产使用[URI](https://github.com/KhronosGroup/glTF/blob/main/specificat
 
 - 按照[RFC 2397的定义，将二进制资源嵌入到 glTF JSON 中的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#data-uri)**数据 URI**。数据 URI 的媒体类型字段**必须**与编码内容相匹配。
 
-    |   |   |
-    |---|---|
-    |笔记|实施说明<br><br>数据 URI 中使用的 Base64 编码将有效负载的字节长度增加了 33%。|
+|   |   |
+|---|---|
+|笔记|实施说明<br><br>数据 URI 中使用的 Base64 编码将有效负载的字节长度增加了 33%。|
 
 - **相对路径** —  [RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uri)第 4.2 节或[RFC 3987](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#iri)第 2.2 节定义的path-noscheme或ipath-noscheme — 没有方案、权限或参数。[保留字符（由RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#uri)的第 2.2 节和[RFC 3987](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#iri)的第 2.2 节定义）**必须**采用百分比编码。
 
-
 具有非 ASCII 字符的路径**可以**按原样编写，使用 JSON 字符串转义或使用百分比编码；所有这些选项都有效。例如，以下三个路径指向同一个资源：
 
-```
+```js
 {
     "images": [
         {
@@ -522,7 +449,7 @@ glTF 资产使用[URI](https://github.com/KhronosGroup/glTF/blob/main/specificat
 }
 ```
 
-客户端实现**可以**选择性地支持额外的 URI 组件。例如http://或file://方案、权限、主机名、绝对路径以及查询或片段参数。包含这些附加 URI 组件的资产的可移植性较差。
+客户端实现**可以**选择性地支持额外的 URI 组件。例如<http://或file://方案、权限、主机名、绝对路径以及查询或片段参数。包含这些附加> URI 组件的资产的可移植性较差。
 
 |   |   |
 |---|---|
@@ -548,7 +475,7 @@ URI**应该**按照[RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/spe
 
 每个 glTF 资产**必须**有一个资产属性。资产对象**必须**包含指定资产的目标 glTF 版本的版本属性。此外，可选的minVersion属性**可**用于指定加载资产所需的最低 glTF 版本支持。minVersion属性允许资产创建者指定客户端实现**必须**支持的最低版本以加载资产。[这与第 3.12 节](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#specifying-extensions)中描述的extensionsRequired概念非常相似，其中资产**不应该**如果客户端不支持指定的扩展，则加载。额外的元数据**可以**存储在可选属性中，例如generator或copyright。例如，
 
-```
+```js
 {
     "asset": {
         "version": "2.0",
@@ -566,7 +493,7 @@ URI**应该**按照[RFC 3986](https://github.com/KhronosGroup/glTF/blob/main/spe
 
 glTF 资产的实体由它们在相应数组中的索引引用，例如，bufferView通过在缓冲区数组中指定缓冲区的索引来引用缓冲区。例如：
 
-```
+```js
 {
     "buffers": [
         {
@@ -624,7 +551,7 @@ glTF 2.0 资产**可能**包含零个或多个_场景_，一组要渲染的视�
 
 以下示例定义了一个 glTF 资产，该资产具有包含单个节点的单个场景。
 
-```
+```js
 {
     "nodes": [
         {
@@ -655,7 +582,7 @@ glTF 资产**可以**定义_节点_，即包含要渲染的场景的对象。
 
 节点层次结构是使用节点的子属性定义的，如以下示例所示：
 
-```
+```js
 {
     "nodes": [
         {
@@ -692,7 +619,7 @@ glTF 资产**可以**定义_节点_，即包含要渲染的场景的对象。
 
 当一个节点是动画的目标时（由animation.channel.target引用），只有 TRS 属性**可以**存在；矩阵 **不得**存在。
 
-要组成局部变换矩阵，**必须**将 TRS 属性转换为矩阵并按T * R * S顺序进行后乘；首先将比例应用于顶点，然后是旋转，然后是平移。
+要组成局部变换矩阵，**必须**将 TRS 属性转换为矩阵并按T *R* S顺序进行后乘；首先将比例应用于顶点，然后是旋转，然后是平移。
 
 |   |   |
 |---|---|
@@ -706,7 +633,7 @@ glTF 资产**可以**定义_节点_，即包含要渲染的场景的对象。
 
 在下面的示例中，名为Box 的节点定义了非默认旋转和平移。
 
-```
+```js
 {
     "nodes": [
         {
@@ -734,7 +661,7 @@ glTF 资产**可以**定义_节点_，即包含要渲染的场景的对象。
 
 下一个示例使用matrix属性而不是使用单独的 TRS 值定义带有附加摄像头的节点的变换：
 
-```
+```js
 {
     "nodes": [
         {
@@ -781,7 +708,7 @@ glTF 资产**可以**有任意数量的缓冲资源。缓冲区在资产的缓�
 
 以下示例定义了一个缓冲区。byteLength属性指定缓冲区文件的大小。uri属性是缓冲区数据的 URI 。
 
-```
+```js
 {
    "buffers": [
        {
@@ -810,7 +737,7 @@ bufferView.target值使用[属性参考](https://github.com/KhronosGroup/glTF/bl
 
 下面的示例定义了两个缓冲区视图：第一个包含索引三角形集的索引，第二个包含三角形集的顶点数据。
 
-```
+```js
 {
     "bufferViews": [
         {
@@ -850,7 +777,7 @@ BIN块的字节长度最多**可以**比 JSON 定义的buffer.byteLength值大 3
 
 在下面的示例中，第一个缓冲区对象引用 GLB 存储的数据，而第二个指向外部资源：
 
-```
+```js
 {
     "buffers": [
         {
@@ -880,7 +807,7 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 
 以下示例显示了两个访问器，第一个是用于检索基元索引的标量访问器，第二个是用于检索基元位置数据的 3 浮点分量向量访问器。
 
-```
+```js
 {
     "accessors": [
         {
@@ -921,12 +848,12 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 
 |组件类型|数据类型|签|位|
 |---|---|---|---|
-|5120|_有符号字节_|有符号，二进制补码|8个|
-|5121|_无符号字节_|未签名|8个|
-|5122|_签短_|有符号，二进制补码|16|
-|5123|_无符号短_|未签名|16|
-|5125|_无符号整数_|未签名|32|
-|5126|_漂浮_|签|32|
+|5120|*有符号字节*|有符号，二进制补码|8个|
+|5121|*无符号字节*|未签名|8个|
+|5122|*签短*|有符号，二进制补码|16|
+|5123|*无符号短*|未签名|16|
+|5125|*无符号整数*|未签名|32|
+|5126|*漂浮*|签|32|
 
 不支持带符号的 32 位整数组件。
 
@@ -948,7 +875,7 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 
 例如：
 
-```
+```js
 {
     "accessors": [
         {
@@ -962,7 +889,7 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 }
 ```
 
-在此访问器中，componentType为5126 ( _float_ )，因此每个组件为四个字节。类型是" VEC3"，所以有三个组件。每个元素的大小为 12 个字节 ( 4 * 3 )。因此，访问器占用 7020 个字节（缓冲区视图的[7032 … 14051]包含范围）。
+在此访问器中，componentType为5126 ( *float* )，因此每个组件为四个字节。类型是" VEC3"，所以有三个组件。每个元素的大小为 12 个字节 ( 4 * 3 )。因此，访问器占用 7020 个字节（缓冲区视图的[7032 … 14051]包含范围）。
 
 ##### [3.6.2.3. 稀疏访问器](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3623-sparse-accessors)
 
@@ -978,10 +905,9 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 
 - values ：描述与从indices引用的索引相对应的置换元素位置的对象。
 
-
 以下示例显示了一个稀疏访问器示例，其中包含 10 个与初始化数组不同的元素。
 
-```
+```js
 {
     "accessors": [
         {
@@ -1017,7 +943,7 @@ byteOffset属性指定第一个数据元素在引用的缓冲区视图中的位�
 
 每个访问器**必须**适合其bufferView，即
 
-```
+```js
 accessor.byteOffset + EFFECTIVE_BYTE_STRIDE * (accessor.count - 1) + SIZE_OF_COMPONENT * NUMBER_OF_COMPONENTS
 ```
 
@@ -1049,7 +975,7 @@ accessor.byteOffset + EFFECTIVE_BYTE_STRIDE * (accessor.count - 1) + SIZE_OF_COM
 
 考虑以下示例：
 
-```
+```js
 {
     "bufferViews": [
         {
@@ -1074,13 +1000,13 @@ accessor.byteOffset + EFFECTIVE_BYTE_STRIDE * (accessor.count - 1) + SIZE_OF_COM
 
 底层缓冲区的相应段将从字节 5228 开始
 
-```
+```js
 start = accessor.byteOffset + accessor.bufferView.byteOffset
 ```
 
 并继续直到字节 5396 独占
 
-```
+```js
 end = 2 * 2 * accessor.count + start
 ```
 
@@ -1126,7 +1052,7 @@ accessor.min和accessor.max属性是分别包含每个组件的最小值和最�
 
 以下示例定义了一个包含一个索引三角形基元的网格：
 
-```
+```js
 {
     "meshes": [
         {
@@ -1158,13 +1084,13 @@ accessor.min和accessor.max属性是分别包含每个组件的最小值和最�
 
 |姓名|存取器类型|组件类型|描述|
 |---|---|---|---|
-|位置|VEC3|_漂浮_|无单位 XYZ 顶点位置|
-|普通的|VEC3|_漂浮_|归一化 XYZ 顶点法线|
-|切线|VEC4|_漂浮_|XYZW顶点切线，其中XYZ部分归一化，W分量为符号值（-1或+1），表示切线基的旋向性|
-|纹理坐标_n|VEC2|_float_  <br>_unsigned byte_ normalized  <br>_unsigned short_ normalized|ST纹理坐标|
-|颜色_n|VEC3  <br>VEC4|_float_  <br>_unsigned byte_ normalized  <br>_unsigned short_ normalized|RGB 或 RGBA 顶点颜色线性乘数|
-|JOINTS_n|VEC4|_无符号字节_ _无符号短_|查看[蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)|
-|重量_n|VEC4|_float_  <br>_unsigned byte_ normalized  <br>_unsigned short_ normalized|查看[蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)|
+|位置|VEC3|*漂浮*|无单位 XYZ 顶点位置|
+|普通的|VEC3|*漂浮*|归一化 XYZ 顶点法线|
+|切线|VEC4|*漂浮*|XYZW顶点切线，其中XYZ部分归一化，W分量为符号值（-1或+1），表示切线基的旋向性|
+|纹理坐标_n|VEC2|*float*<br>_unsigned byte_normalized  <br>*unsigned short* normalized|ST纹理坐标|
+|颜色_n|VEC3  <br>VEC4|*float*<br>_unsigned byte_normalized  <br>*unsigned short* normalized|RGB 或 RGBA 顶点颜色线性乘数|
+|JOINTS_n|VEC4|*无符号字节* *无符号短*|查看[蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)|
+|重量_n|VEC4|*float*<br>_unsigned byte_normalized  <br>*unsigned short* normalized|查看[蒙皮网格属性](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#skinned-mesh-attributes)|
 
 POSITION访问器**必须**定义其最小和最大属性。
 
@@ -1197,7 +1123,6 @@ indices访问器**不得**包含所用组件类型的最大可能值（即，无
 - 对于_lines_，它**必须**能被 2 整除且非零。
 
 - 对于_三角形_，它**必须**能被 3 整除且非零
-
 
 拓扑类型定义如下。
 
@@ -1241,7 +1166,6 @@ indices访问器**不得**包含所用组件类型的最大可能值（即，无
 
     p i = {v i+1 , v i+2 , v 0 }
 
-
 网格几何**不应**包含退化线或三角形，即每个拓扑图元多次使用同一顶点的线或三角形。
 
 当未指定位置时，客户端实现**应该**跳过图元的呈现，除非其位置由其他方式（例如，通过扩展）提供。这适用于索引和非索引几何。
@@ -1264,7 +1188,7 @@ indices访问器**不得**包含所用组件类型的最大可能值（即，无
 
 例如，索引**i**处基元的变形目标顶点POSITION以这种方式计算：
 
-```
+```js
 primitives[i].attributes.POSITION +
   weights[0] * primitives[i].targets[0].POSITION +
   weights[1] * primitives[i].targets[1].POSITION +
@@ -1291,11 +1215,11 @@ primitives[i].attributes.POSITION +
 
 |姓名|存取器类型|组件类型|描述|
 |---|---|---|---|
-|位置|VEC3|_漂浮_|XYZ 顶点位置位移|
-|普通的|VEC3|_漂浮_|XYZ 顶点法向位移|
-|切线|VEC3|_漂浮_|XYZ 顶点切线位移|
-|纹理坐标_n|VEC2|_float_  <br>_signed byte_ normalized  <br>_signed short_规范化  <br>_unsigned byte_规范化  <br>_unsigned short_规范化|ST 纹理坐标位移|
-|颜色_n|VEC3  <br>VEC4|_float_  <br>_signed byte_ normalized  <br>_signed short_规范化  <br>_unsigned byte_规范化  <br>_unsigned short_规范化|RGB 或 RGBA 颜色增量|
+|位置|VEC3|*漂浮*|XYZ 顶点位置位移|
+|普通的|VEC3|*漂浮*|XYZ 顶点法向位移|
+|切线|VEC3|*漂浮*|XYZ 顶点切线位移|
+|纹理坐标_n|VEC2|*float*<br>_signed byte_normalized  <br>_signed short_规范化  <br>_unsigned byte_规范化  <br>_unsigned short_规范化|ST 纹理坐标位移|
+|颜色_n|VEC3  <br>VEC4|*float*<br>_signed byte_normalized  <br>_signed short_规范化  <br>_unsigned byte_规范化  <br>_unsigned short_规范化|RGB 或 RGBA 颜色增量|
 
 POSITION访问器**必须**定义其最小和最大属性。
 
@@ -1315,7 +1239,7 @@ POSITION、NORMAL和TANGENT属性的位移**必须**在影响网格顶点的任�
 
 以下示例通过添加两个变形目标将上一示例中定义的网格扩展为可变形网格：
 
-```
+```js
 {
     "primitives": [
         {
@@ -1391,7 +1315,7 @@ inverseBindMatrices 引用的访问器**必须具有**“MAT4”类型的浮点
 
 在下面的示例中，应用了node_0的平移和node_1的缩放，而忽略了node_3的平移和node_4的旋转。
 
-```
+```js
 {
     "nodes": [
         {
@@ -1437,7 +1361,7 @@ inverseBindMatrices 引用的访问器**必须具有**“MAT4”类型的浮点
 
 在以下示例中，网格基元定义了JOINTS_0和WEIGHTS_0顶点属性：
 
-```
+```js
 {
     "meshes": [
         {
@@ -1463,10 +1387,9 @@ inverseBindMatrices 引用的访问器**必须具有**“MAT4”类型的浮点
 
 影响一个顶点的关节数量限制为每组 4 个，因此引用的访问器**必须**具有VEC4类型和以下组件类型：
 
-- **JOINTS_n**：_无符号字节_或_无符号短_
+- **JOINTS_n**：*无符号字节_或_无符号短*
 
-- **WEIGHTS_n** : _float_ , or _normalized unsigned byte_ , or _normalized unsigned short_
-
+- **WEIGHTS_n** : *float* , or *normalized unsigned byte* , or *normalized unsigned short*
 
 每个顶点的联合权重**不得**为负数。
 
@@ -1494,7 +1417,7 @@ _当使用标准化无符号字节_或_标准化无符号短_组件类型存储�
 
 网格由node.mesh属性实例化。许多节点可以使用相同的网格，这些节点可以有不同的变换。例如：
 
-```
+```js
 {
     "nodes": [
         {
@@ -1514,7 +1437,7 @@ _当使用标准化无符号字节_或_标准化无符号短_组件类型存储�
 
 应用节点的全局变换后，网格顶点位置值为米。
 
-当网格图元使用任何基于三角形的拓扑（即_triangles_、_triangle strip_或_triangle fan_）时，节点全局变换的行列式定义该图元的缠绕顺序。如果行列式为正值，则三角形面的缠绕顺序为逆时针方向；在相反的情况下，缠绕顺序是顺时针的。
+当网格图元使用任何基于三角形的拓扑（即_triangles_、*triangle strip_或_triangle fan*）时，节点全局变换的行列式定义该图元的缠绕顺序。如果行列式为正值，则三角形面的缠绕顺序为逆时针方向；在相反的情况下，缠绕顺序是顺时针的。
 
 |   |   |
 |---|---|
@@ -1524,7 +1447,7 @@ _当使用标准化无符号字节_或_标准化无符号短_组件类型存储�
 
 下面的示例实例化了一个具有非默认权重的变形目标。
 
-```
+```js
 {
     "nodes": [
         {
@@ -1539,7 +1462,7 @@ _当使用标准化无符号字节_或_标准化无符号短_组件类型存储�
 
 以下示例显示了蒙皮网格实例：蒙皮对象、具有蒙皮网格的节点和两个关节节点。
 
-```
+```js
 {
     "skins": [
         {
@@ -1621,10 +1544,9 @@ glTF 2.0 仅支持静态 2D 纹理。
 
 - 对bufferView的引用；在这种情况下，**必须**定义mimeType 。
 
-
 以下示例显示了一个指向外部 PNG 图像文件的图像和另一个引用具有 JPEG 数据的bufferView 的图像。
 
-```
+```js
 {
     "images": [
         {
@@ -1677,32 +1599,30 @@ glTF 2.0 仅支持静态 2D 纹理。
 
 放大模式包括：
 
-- _最近的_。对于每个请求的纹素坐标，采样器选择具有最近坐标的纹素。这个过程有时被称为“最近邻”。
+- *最近的*。对于每个请求的纹素坐标，采样器选择具有最近坐标的纹素。这个过程有时被称为“最近邻”。
 
-- _线性的_。对于每个请求的纹素坐标，采样器计算几个相邻纹素的加权和。这个过程有时被称为“双线性插值”。
-
+- *线性的*。对于每个请求的纹素坐标，采样器计算几个相邻纹素的加权和。这个过程有时被称为“双线性插值”。
 
 缩小模式包括：
 
-- _最近的_。对于每个请求的纹素坐标，采样器选择一个坐标与原始图像最近（曼哈顿距离）的纹素。这个过程有时被称为“最近邻”。
+- *最近的*。对于每个请求的纹素坐标，采样器选择一个坐标与原始图像最近（曼哈顿距离）的纹素。这个过程有时被称为“最近邻”。
 
-- _线性的_。对于每个请求的纹素坐标，采样器计算原始图像中几个相邻纹素的加权和。这个过程有时被称为“双线性插值”。
+- *线性的*。对于每个请求的纹素坐标，采样器计算原始图像中几个相邻纹素的加权和。这个过程有时被称为“双线性插值”。
 
-- _最近的 mipmap 最近的_。对于每个请求的纹素坐标，采样器首先选择原始图像的预缩小版本之一，然后选择与它最近（曼哈顿距离）坐标的纹素。
+- *最近的 mipmap 最近的*。对于每个请求的纹素坐标，采样器首先选择原始图像的预缩小版本之一，然后选择与它最近（曼哈顿距离）坐标的纹素。
 
-- _线性贴图最近_。对于每个请求的纹素坐标，采样器首先选择原始图像的预缩小版本之一，然后从中计算几个相邻纹素的加权和。
+- *线性贴图最近*。对于每个请求的纹素坐标，采样器首先选择原始图像的预缩小版本之一，然后从中计算几个相邻纹素的加权和。
 
-- _最近的 mipmap 线性_。对于每个请求的纹素坐标，采样器首先选择原始图像的两个预缩小版本，从每个图像中选择一个坐标最近（曼哈顿距离）的纹素，并在这两个中间结果之间执行最终的线性插值。
+- *最近的 mipmap 线性*。对于每个请求的纹素坐标，采样器首先选择原始图像的两个预缩小版本，从每个图像中选择一个坐标最近（曼哈顿距离）的纹素，并在这两个中间结果之间执行最终的线性插值。
 
-- _线性贴图线性_。对于每个请求的纹素坐标，采样器首先选择原始图像的两个预缩小版本，计算每个相邻纹素的加权和，并在这两个中间结果之间执行最终的线性插值。这个过程有时被称为“三线性插值”。
-
+- *线性贴图线性*。对于每个请求的纹素坐标，采样器首先选择原始图像的两个预缩小版本，计算每个相邻纹素的加权和，并在这两个中间结果之间执行最终的线性插值。这个过程有时被称为“三线性插值”。
 
 为了正确支持 mipmap 模式，客户端实现**应该**在运行时生成 mipmap。当无法生成运行时 mipmap 时，客户端实现**应该**覆盖缩小过滤模式，如下所示：
 
 |Mipmap 缩小模式|回退模式|
 |---|---|
-|_最近的 mipmap-最近_  <br>_最近的 mipmap 线性_|_最近的_|
-|_Linear-mipmap-最近的_  <br>_Linear-mipmap-linear_|_线性的_|
+|*最近的 mipmap-最近*  <br>*最近的 mipmap 线性*|*最近的*|
+|*Linear-mipmap-最近的*  <br>*Linear-mipmap-linear*|*线性的*|
 
 ##### [3.8.4.3。包装](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3843-wrapping)
 
@@ -1710,26 +1630,25 @@ glTF 2.0 仅支持静态 2D 纹理。
 
 采样器的环绕模式定义了如何独立处理两个方向的负值或大于或等于1.0 的纹理坐标。支持的模式包括：
 
-- _重复_。仅使用纹理坐标的小数部分。
+- *重复*。仅使用纹理坐标的小数部分。
 
-    |   |   |
-    |---|---|
-    |笔记|例子<br><br>2.2映射到0.2；-0.4映射到0.6。|
+|   |   |
+|---|---|
+|笔记|例子<br><br>2.2映射到0.2；-0.4映射到0.6。|
 
-- _镜像重复_。此模式的工作原理与_重复_相同，但当整数部分（向 −∞ 截断）为奇数时会翻转方向。
+- *镜像重复*。此模式的工作原理与_重复_相同，但当整数部分（向 −∞ 截断）为奇数时会翻转方向。
 
-    |   |   |
-    |---|---|
-    |笔记|例子<br><br>2.2映射到0.2；-0.4被视为0.4。|
+|   |   |
+|---|---|
+|笔记|例子<br><br>2.2映射到0.2；-0.4被视为0.4。|
 
-- _夹到边缘_。具有图像外部值的纹理坐标被限制在边缘处最近的现有图像纹素。
-
+- *夹到边缘*。具有图像外部值的纹理坐标被限制在边缘处最近的现有图像纹素。
 
 ##### [3.8.4.4。例子](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3844-example)
 
-以下示例定义了一个具有_线性_放大过滤、_线性 mipmap 线性_缩小过滤和双向_重复环绕的采样器。_
+以下示例定义了一个具有_线性_放大过滤、*线性 mipmap 线性_缩小过滤和双向_重复环绕的采样器。*
 
-```
+```js
 {
     "samplers": [
         {
@@ -1764,7 +1683,7 @@ glTF 使用一组通用参数定义材质，这些参数基于基于物理的渲
 
 所有与金属粗糙度材料模型相关的参数都在材料对象的pbrMetallicRoughness属性下定义。以下示例显示如何使用金属粗糙度参数定义类金材料：
 
-```
+```js
 {
     "materials": [
         {
@@ -1781,12 +1700,11 @@ glTF 使用一组通用参数定义材质，这些参数基于基于物理的渲
 
 金属粗糙度材料模型由以下属性定义：
 
-- _base color_ - 材质的基色。
+- *base color* - 材质的基色。
 
-- _金属度_- 材料的金属度；值范围从0.0（非金属）到1.0（金属）；中间值的解释见[附录 B。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-b-brdf-implementation)
+- *金属度*- 材料的金属度；值范围从0.0（非金属）到1.0（金属）；中间值的解释见[附录 B。](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-b-brdf-implementation)
 
-- _粗糙度_- 材料的粗糙度；值范围从0.0（平滑）到1.0（粗糙）。
-
+- *粗糙度*- 材料的粗糙度；值范围从0.0（平滑）到1.0（粗糙）。
 
 基色根据_金属度值__有_两种不同的解释。当材料是金属时，基色是在法向入射 (F0) 时特定测量的反射率值。对于非金属，基色表示材料的反射漫反射颜色。在此模型中，无法为非金属指定 F0 值，并使用 4% (0.04) 的线性值。
 
@@ -1794,7 +1712,7 @@ glTF 使用一组通用参数定义材质，这些参数基于基于物理的渲
 
 以下示例显示了一种材质，该材质使用纹理作为其_基色_属性。
 
-```
+```js
 {
     "materials": [
         {
@@ -1825,7 +1743,7 @@ _金属度_和_粗糙度_属性的纹理打包在一个名为metallicRoughnessTe
 
 例如，假设从baseColorTexture中采样了8 位 RGBA 值[64, 124, 231, 255]，并假设baseColorFactor被指定为[0.2, 1.0, 0.7, 1.0]。然后，最终的_基色_值将是（在解码传递函数并乘以因子之后）
 
-```
+```js
 [0.051 * 0.2, 0.202 * 1.0, 0.799 * 0.7, 1.0 * 1.0] = [0.0102, 0.202, 0.5593, 1.0]
 ```
 
@@ -1839,11 +1757,11 @@ _金属度_和_粗糙度_属性的纹理打包在一个名为metallicRoughnessTe
 
 支持以下附加纹理：
 
-- **normal**：切线空间法线纹理。纹理将切线空间中法向量的 XYZ 分量编码为使用线性传递函数存储的 RGB 值。普通纹理**不应该**包含_alpha_通道，因为它无论如何都不会被使用。反量化后，纹素值**必须**映射如下：_红色_[0.0 .. 1.0] 到 X [-1 .. 1]，_绿色_[0.0 .. 1.0] 到 Y [-1 .. 1]，_蓝色_（0.5 .. 1.0] 映射到 Z (0 .. 1)。普通纹理**不应**包含小于或等于0.5的蓝色值。
+- **normal**：切线空间法线纹理。纹理将切线空间中法向量的 XYZ 分量编码为使用线性传递函数存储的 RGB 值。普通纹理**不应该**包含_alpha_通道，因为它无论如何都不会被使用。反量化后，纹素值**必须**映射如下：*红色*[0.0 .. 1.0] 到 X [-1 .. 1]，*绿色*[0.0 .. 1.0] 到 Y [-1 .. 1]，*蓝色*（0.5 .. 1.0] 映射到 Z (0 .. 1)。普通纹理**不应**包含小于或等于0.5的蓝色值。
 
-    |   |   |
-    |---|---|
-    |笔记|实施说明<br><br>此映射通常实现为sampledValue * 2.0 - 1.0。|
+|   |   |
+|---|---|
+|笔记|实施说明<br><br>此映射通常实现为sampledValue * 2.0 - 1.0。|
 
     法线纹理的纹理绑定**可以**另外包含一个标量比例​​值，该值线性缩放法线向量的 X 和 Y 分量。
 
@@ -1857,14 +1775,13 @@ _金属度_和_粗糙度_属性的纹理打包在一个名为metallicRoughnessTe
 
     对于需要物理光单位的实现，发光纹理和因子的乘积单位是坎德拉每平方米 ( **cd / m 2** )，有时称为_尼特_。
 
-    |   |   |
-    |---|---|
-    |笔记|实施说明<br><br>因为该值是按平方米指定的，所以它表示沿表面的任何给定点的亮度。然而，从物理光单位到渲染像素亮度的精确转换需要了解相机的曝光设置，除非 glTF 扩展另有定义，否则这些设置将作为实现细节保留。<br><br>许多渲染引擎通过假设1.0的发射因子导致完全曝光的像素来简化此计算。|
-
+|   |   |
+|---|---|
+|笔记|实施说明<br><br>因为该值是按平方米指定的，所以它表示沿表面的任何给定点的亮度。然而，从物理光单位到渲染像素亮度的精确转换需要了解相机的曝光设置，除非 glTF 扩展另有定义，否则这些设置将作为实现细节保留。<br><br>许多渲染引擎通过假设1.0的发射因子导致完全曝光的像素来简化此计算。|
 
 以下示例显示了使用pbrMetallicRoughness参数以及其他纹理定义的材质：
 
-```
+```js
 {
     "materials": [
         {
@@ -1911,16 +1828,15 @@ alphaMode可以是以下值之一：
 
 - MASK - 根据 alpha 值和指定的_alpha 截止_值，渲染输出完全不透明或完全透明；边缘的确切外观**可能**会受到特定于实现的技术的影响，例如“Alpha-to-Coverage”。
 
-    |   |   |
-    |---|---|
-    |笔记|笔记<br><br>此模式用于模拟树叶或铁丝网等几何体。|
+|   |   |
+|---|---|
+|笔记|笔记<br><br>此模式用于模拟树叶或铁丝网等几何体。|
 
 - 混合- 如[合成数字图像](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#compositing)中所述，使用“over”运算符将渲染输出与背景组合。
 
-    |   |   |
-    |---|---|
-    |笔记|笔记<br><br>该模式用于模拟纱布或动物毛皮等几何体。|
-
+|   |   |
+|---|---|
+|笔记|笔记<br><br>该模式用于模拟纱布或动物毛皮等几何体。|
 
 当alphaMode设置为MASK时，alphaCutoff属性指定截止阈值。如果 alpha 值大于或等于alphaCutoff值，则将其呈现为完全不透明，否则将呈现为完全透明。其他模式忽略alphaCutoff值。
 
@@ -1956,7 +1872,6 @@ doubleSided属性指定材料是否是双面的。
 
 - 没有NORMAL属性的点或线**应该**在没有照明的情况下渲染，而是使用_基色_值（如上定义，当存在时乘以COLOR_0 ）和_发射_值的总和。
 
-
 ### [3.10. 相机](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#310-cameras)
 
 #### [3.10.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3101-overview)
@@ -1983,7 +1898,7 @@ doubleSided属性指定材料是否是双面的。
 
 以下示例定义了两个透视相机，其中提供了 Y 视野、宽高比和剪裁信息的值。
 
-```
+```js
 {
     "cameras": [
         {
@@ -2021,7 +1936,6 @@ doubleSided属性指定材料是否是双面的。
 
 - n是到近裁剪平面的距离，由camera.perspective.znear设置。
 
-
 然后，投影矩阵定义如下。
 
 |   |   |
@@ -2044,7 +1958,6 @@ doubleSided属性指定材料是否是双面的。
 
 - n是到近裁剪平面的距离，由camera.perspective.znear设置。
 
-
 然后，投影矩阵定义如下。
 
 |   |   |
@@ -2066,7 +1979,6 @@ doubleSided属性指定材料是否是双面的。
 - f是到远裁剪平面的距离，由camera.orthographic.zfar设置；
 
 - n是到近裁剪平面的距离，由camera.orthographic.znear设置。
-
 
 然后，投影矩阵定义如下。
 
@@ -2100,7 +2012,7 @@ glTF 2.0 还以类似的方式支持实例化变形目标的动画。
 
 以下示例显示了动画的预期用法。
 
-```
+```js
 {
     "animations": [
         {
@@ -2262,19 +2174,19 @@ _通道_将关键帧动画的输出值连接到层次结构中的特定节点。
 
 |频道.路径|存取器类型|组件类型|描述|
 |---|---|---|---|
-|“翻译”|“VEC3”|_漂浮_|XYZ 平移矢量|
-|“回转”|“VEC4”|_float_  <br>_signed byte_ normalized  <br>_unsigned byte_标准化  <br>_signed short_标准化  <br>_unsigned short_标准化|XYZW旋转四元数|
-|“规模”|“VEC3”|_漂浮_|XYZ 比例矢量|
-|“权重”|“标量”|_float_  <br>_signed byte_ normalized  <br>_unsigned byte_标准化  <br>_signed short_标准化  <br>_unsigned short_标准化|变形目标的权重|
+|“翻译”|“VEC3”|*漂浮*|XYZ 平移矢量|
+|“回转”|“VEC4”|*float*  <br>*signed byte* normalized  <br>_unsigned byte_标准化  <br>_signed short_标准化  <br>_unsigned short_标准化|XYZW旋转四元数|
+|“规模”|“VEC3”|*漂浮*|XYZ 比例矢量|
+|“权重”|“标量”|*float*  <br>*signed byte* normalized  <br>_unsigned byte_标准化  <br>_signed short_标准化  <br>_unsigned short_标准化|变形目标的权重|
 
 实现**必须**使用以下等式从归一化整数c解码实浮点值f，反之亦然：
 
 |访问器.componentType|整数到浮点数|浮点数到整数|
 |---|---|---|
-|_有符号字节_|f = max(c / 127.0, -1.0)|c = 圆（f * 127.0）|
-|_无符号字节_|f = c / 255.0|c = 圆（f * 255.0）|
-|_签短_|`f = max(c / 32767.0, -1.0)`|c = 圆（f * 32767.0）|
-|_无符号短_|f = c / 65535.0|c = 圆（f * 65535.0）|
+|*有符号字节*|f = max(c / 127.0, -1.0)|c = 圆（f * 127.0）|
+|*无符号字节*|f = c / 255.0|c = 圆（f * 255.0）|
+|*签短*|`f = max(c / 32767.0, -1.0)`|c = 圆（f * 32767.0）|
+|*无符号短*|f = c / 65535.0|c = 圆（f * 65535.0）|
 
 动画采样器的输入访问器**必须**定义其最小和最大属性。
 
@@ -2296,7 +2208,7 @@ a 1 ,a 2 ,… a n ,v 1 ,v 2 ,… v n ,b 1 ,b 2 ,… b n
 
 glTF 定义了一种扩展机制，允许使用新功能扩展基本格式。任何 glTF 对象**都可以**有一个可选的扩展属性，如下例所示：
 
-```
+```js
 {
     "material": [
         {
@@ -2317,7 +2229,7 @@ glTF 定义了一种扩展机制，允许使用新功能扩展基本格式。任
 
 glTF 资产中使用的所有扩展**必须**列在顶级extensionsUsed数组对象中，例如，
 
-```
+```js
 {
     "extensionsUsed": [
         "KHR_materials_sheen",
@@ -2328,7 +2240,7 @@ glTF 资产中使用的所有扩展**必须**列在顶级extensionsUsed数组对
 
 加载和/或呈现资产所需的所有 glTF 扩展**必须**列在顶级extensionsRequired数组中，例如，
 
-```
+```js
 {
     "extensionsRequired": [
         "KHR_texture_transform"
@@ -2351,7 +2263,6 @@ glTF 提供了两种可以一起使用的传递选项：
 
 - glTF JSON 使用数据 URI 嵌入 base64 编码的二进制数据和内联图像。
 
-
 因此，加载 glTF 文件通常需要单独的请求来获取所有二进制数据，或者由于 base64 编码而需要额外的空间。Base64 编码需要额外的处理来解码并增加文件大小（编码资源增加约 33%）。虽然传输层 gzip 减轻了文件大小的增加，但解压缩和解码仍然会显着增加加载时间。
 
 为了避免这种文件大小和处理开销，引入了一种容器格式_Binary glTF ，它使 glTF 资产（包括 JSON、缓冲区和图像）能够存储在单个二进制 blob 中。_
@@ -2365,7 +2276,6 @@ glTF 提供了两种可以一起使用的传递选项：
 - 一个 12 字节的前导码，称为_header_。
 
 - 包含 JSON 内容和二进制数据的一个或多个_块。_
-
 
 包含 JSON 的块**可以**像往常一样引用外部资源，也**可以引用**存储在其他_块中__的_资源。
 
@@ -2403,7 +2313,6 @@ uint32 length
 
 - length是二进制 glTF 的总长度，包括_标头_和所有_块_，以字节为单位。
 
-
 #### [4.4.3. 大块](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#443-chunks)
 
 ##### [4.4.3.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#4431-overview)
@@ -2419,7 +2328,6 @@ ubyte[] chunkData
 - chunkType指示块的类型。详情见[表 1](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#table-chunktypes)。
 
 - chunkData是块的二进制负载。
-
 
 每个块的开始和结束**必须**与 4 字节边界对齐。请参阅填充方案的块定义。块**必须完全按照**[表 1](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#table-chunktypes)中给出的顺序出现。
 
@@ -2474,7 +2382,6 @@ ubyte[] chunkData
 
 - 托尼·帕里西，Unity
 
-
 ### [6.2. Khronos 3D 格式工作组和校友](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#62-khronos-3d-formats-working-group-and-alumni)
 
 - 雷米阿诺，Vario
@@ -2512,7 +2419,6 @@ ubyte[] chunkData
 - 扬·保罗·范韦弗伦，Oculus
 
 - 阿曼达·沃森，Oculus
-
 
 ### [6.3. 特别感谢](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#63-special-thanks)
 
@@ -2562,7 +2468,6 @@ ubyte[] chunkData
 
 - Alex Wood，分析图形公司
 
-
 ## [附录 A：JSON 模式参考（资料性）](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-a-json-schema-reference-informative)
 
 |   |   |
@@ -2583,7 +2488,7 @@ ubyte[] chunkData
 
 金属粗糙度材质的 BRDF 是金属 BRDF 和电介质 BRDF 的线性插值。BRDF 共享粗糙度和基色的参数。混合因子金属描述了材料的金属度。
 
-```
+```js
 material = mix(dielectric_brdf, metal_brdf, metallic)
          = (1.0 - metallic) * dielectric_brdf + metallic * metal_brdf
 ```
@@ -2692,7 +2597,6 @@ glTF 规范旨在允许应用程序根据他们的要求选择不同的照明实
 
 - **H**是半向量，其中**H** = normalize( **L** + **V** )
 
-
 #### [B.3.2. 高光 BRDF](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#b32-specular-brdf)
 
 |   |   |
@@ -2727,7 +2631,7 @@ glTF 规范旨在允许应用程序根据他们的要求选择不同的照明实
 
 因此，我们有函数
 
-```
+```js
 function specular_brdf(α) {
   return V * D
 }
@@ -2745,7 +2649,7 @@ function specular_brdf(α) {
 
 与颜色相乘。
 
-```
+```js
 function diffuse_brdf(color) {
   return (1/pi) * color
 }
@@ -2763,7 +2667,7 @@ function diffuse_brdf(color) {
 
 导体 Fresnel`conductor_fresnel(f0, bsdf)`将依赖于视图的色调应用于 BSDF：
 
-```
+```js
 function conductor_fresnel(f0, bsdf) {
   return bsdf * (f0 + (1 - f0) * (1 - abs(VdotH))^5)
 }
@@ -2771,7 +2675,7 @@ function conductor_fresnel(f0, bsdf) {
 
 对于电介质 BRDF，漫反射组件基础和镜面反射组件层通过 组合在一起`fresnel_mix(ior, base, layer)`。f0颜色现在从折射率ior导出。
 
-```
+```js
 function fresnel_mix(ior, base, layer) {
   f0 = ((1-ior)/(1+ior))^2
   fr = f0 + (1 - f0)*(1 - abs(VdotH))^5
@@ -2783,7 +2687,7 @@ function fresnel_mix(ior, base, layer) {
 
 [现在我们已经实现了 glTF 金属粗糙度材料模型中使用的所有函数，我们可以根据“完整模型”](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#complete-model)部分中显示的图表连接函数。通过将混合函数（fresnel_mix、conductor_fresnel）替换为实现，我们得到以下金属和电介质成分的 BRDF：
 
-```
+```js
 metal_brdf = specular_brdf(roughness^2) * (baseColor.rgb + (1 - baseColor.rgb) * (1 - abs(VdotH))^5)
 dielectric_brdf = mix(diffuse_brdf(baseColor.rgb), specular_brdf(roughness^2), 0.04 + (1 - 0.04) * (1 - abs(VdotH))^5)
 ```
@@ -2792,13 +2696,13 @@ dielectric_brdf = mix(diffuse_brdf(baseColor.rgb), specular_brdf(roughness^2), 0
 
 金属和电介质按金属度混合：
 
-```
+```js
 material = mix(dielectric_brdf, metal_brdf, metallic)
 ```
 
 利用金属和电介质共享粗糙度以及使用 Schlick Fresnel 的事实，我们可以简化混合并得出材料的最终 BRDF：
 
-```
+```js
 const black = 0
 
 c_diff = lerp(baseColor.rgb, black, metallic)
@@ -2871,7 +2775,6 @@ material = f_diffuse + f_specular
 
 - [Walter, B.、S. Marschner、H. Li 和 K. Torrance (2007)：用于通过粗糙表面进行折射的微平面模型。](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.html)
 
-
 ## [附录 C：动画采样器插值模式](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#appendix-c-animation-sampler-interpolation-modes)
 
 ### [C.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c1-overview)
@@ -2896,7 +2799,6 @@ material = f_diffuse + f_specular
 
 - \$t = (t_c - t_k) / t_d\$ 是分段归一化插值因子。
 
-
 标量向量乘法是每个向量分量。
 
 ### [C.2. 步进插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c2-step-interpolation)
@@ -2913,7 +2815,7 @@ material = f_diffuse + f_specular
 
 当前（请求的）时间戳 \$t_c\$ 的内插采样器值 \$v_t\$ 计算如下。
 
-\[v_t = (1 - t) * v_k + t * v_{k+1}\]
+\[v_t = (1 - t) *v_k + t* v_{k+1}\]
 
 ### [C.4. 球面线性插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#c4-spherical-linear-interpolation)
 
@@ -2925,10 +2827,9 @@ material = f_diffuse + f_specular
 
 - \(s = \frac{v_k \cdot v_{k+1}}{|v_k \cdot v_{k+1}|}\) 是两个连续四元数点积的符号。
 
-
 时间戳 \$t_c\$ 处的内插采样器值 \$v_t\$ 计算如下。
 
-\[v_t = \frac{sin(a(1 - t))}{sin(a)} * v_k + s * \frac{sin(at)}{sin(a)} * v_{k+1}\ ]
+\[v_t = \frac{sin(a(1 - t))}{sin(a)} *v_k + s* \frac{sin(at)}{sin(a)} * v_{k+1}\ ]
 
 |   |   |
 |---|---|
@@ -2952,10 +2853,9 @@ material = f_diffuse + f_specular
 
 - \$a_k\$、\$v_k\$ 和 \$b_k\$ 分别是第 \$k\$ 帧的入切线、属性值和出切线。
 
-
 时间戳 \$t_c\$ 处的内插采样器值 \$v_t\$ 计算如下。
 
-\[v_t = (2t^3 - 3t^2 + 1) * v_k + t_d(t^3 - 2t^2 + t) * b_k + (-2t^3 + 3t^2) * v_{k+1} + t_d(t^3 - t^2) * a_{k+1}\]
+\[v_t = (2t^3 - 3t^2 + 1) *v_k + t_d(t^3 - 2t^2 + t)* b_k + (-2t^3 + 3t^2) _v_{k+1} + t_d(t^3 - t^2)*a*{k+1}\]
 
 当动画采样器以节点的旋转属性为目标时，插值的四元数**必须**在将结果应用于节点的旋转之前进行归一化。
 
