@@ -393,8 +393,12 @@ gl.texImage2D(gl.TEXTURE_2D, 1, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, mipmapImage)
             TEXTURE_CUBE_MAP_POSITIVE_Z
             TEXTURE_CUBE_MAP_NEGATIVE_Z
 gl.texSubImage2D;// texImage2D() 函数会创建一个新的纹理或者完全替换现有纹理的图像数据，而 texSubImage2D() 函数则可以对纹理中的某一个 2D 图像级别子图的某一个矩形区域进行更新，比如可以实现动态更新纹理的效果。因此，在一些需要动态更新的 Web3D 应用中，texSubImage2D() 函数可以发挥出很大的作用。
-gl.hint(gl.GENERATE_MIPMAP_HINT, hint);//提示webgl优化性能
+gl.compressedTexImage2D;// 用于在2D纹理图像中压缩像素数据
+gl.copyTexImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 0, 0, 512, 512, 0);// 将当前绑定的帧缓冲区中的一部分像素数据复制到纹理对象中，纹理对象类型为2D，纹理对象的内部格式为RGBA格式，复制的像素区域起始坐标为(0, 0)，大小为512*512。
+gl.copyTexSubImage2D;// 将部分现有纹理图像复制到另一个矩形中
+gl.hint(gl.GENERATE_MIPMAP_HINT, 提示级别);//提示webgl优化性能
 	// 定义可用的提示类型，来告诉WebGL实现如何处理特定的渲染操作
+	`gl.GENERATE_MIPMAP_HINT` 表示我们想要设置的是 mipmap 层次结构的提示级别
 	提示级别可以设置为以下值之一：
 		- gl.FASTEST：表示可以忽略质量进行最快的处理
 		- gl.NICEST：表示需要最好的质量，可能速度较慢
@@ -423,6 +427,8 @@ gl.texStorage2D//分配二维纹理的存储。
 gl.uniformBlockBinding//绑定统一块到一个绑定点。
 gl.useProgram//使用 WebGL 程序对象。
 gl.viewport//设置视口。定义了绘制在 canvas 上的图像的区域
+gl.drawingBufferHeight;// 屏幕的高度，也即可视区域的高度（以像素计）
+gl.drawingBufferWidth;// 屏幕的宽度，也即可视区域的宽度（以像素计）
 ```
 
 ## 实践
