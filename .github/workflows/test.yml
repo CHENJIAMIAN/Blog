@@ -1,0 +1,31 @@
+name: test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v2
+
+      - name: Upload Pages artifact
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: .vitepress/dist
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v1
+
+
