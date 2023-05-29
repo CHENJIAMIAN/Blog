@@ -15,6 +15,7 @@ jobs:
       - name: Create temporary folder
         run: |
           mkdir ../tmp111
+          ls -a
 
       - name: Copy files to temporary folder
         run: cp -r * ../tmp111/
