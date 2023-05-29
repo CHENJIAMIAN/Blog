@@ -23,11 +23,13 @@ jobs:
       - name: Switch to gh_action_branch branch
         run: |
           git checkout -b gh_action_branch
+          ls -a
           
 
       - name: Copy files from temporary folder to gh_action_branch branch root
         run: |
           cp -r ../tmp111/* ./
+          ls -a
           git status
 
       - name: Set up Node.js
