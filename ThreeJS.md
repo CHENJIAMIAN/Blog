@@ -13,6 +13,7 @@ blender
     选中模型 【X】键 -删除
 	【Shift+A】 键 添加模型
 	- 切换透视模式【Alt+Z】
+	- yi'do
 	- 
 - 鼠标
 	- 【shift+鼠标中键】视图平移
