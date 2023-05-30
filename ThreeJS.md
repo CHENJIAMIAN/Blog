@@ -1,5 +1,5 @@
 ## Blender
-
+[blender基础教程- 第四集【星巴克杯子建模+渲染初体验】_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Ar4y1K7RQ/?p=4&spm_id_from=pageDriver)
 ```javascript
 模型  地编场景 ue交互开发
 
@@ -28,6 +28,9 @@ TAB 切换模式 编辑/物体 Ctrl + TAB 其他模式如权重模式等
 		做树枝:线->蒙皮->缩小蒙皮->添加修改器->蒙皮->缩小蒙皮直到树枝形状出来->修改视图层级变光滑
 	顶点倒角: 切掉切平角
 	L 选择相连的元素/模型
+	CTRL+R 插入循环边 S缩小,可以把柱体的腰勒小
+	SHIFT+ALT+左键 选中循环边
+	CTRL+B 添加倒角
 	
 选中后
 	G 移动 可选+XYZ键 可选+输入数值 '就算是在UI改xyz值也是可以多选的!'
