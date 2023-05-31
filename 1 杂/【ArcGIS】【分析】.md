@@ -15,7 +15,7 @@
 
 
 
-![](images/168D3634E4C842D69B9E222DFC5A45F8.png)
+![168D3634E4C842D69B9E222DFC5A45F8](https://github.com/CHENJIAMIAN/Blog/assets/20126997/326c0f80-4804-4988-853c-afaf1efbc67b)
 
 
 
@@ -25,7 +25,7 @@
 
 
 
-![](images/3A0AF8C4974D49B292A750E81393E0DE.png)
+![3A0AF8C4974D49B292A750E81393E0DE](https://github.com/CHENJIAMIAN/Blog/assets/20126997/466d17dc-7171-492a-a19f-f4b21b3ea024)
 
 
 
@@ -115,7 +115,7 @@ Contour：等值线（等高线）
 
 
 
-![](images/D394F0383C8349FEAAF30A7E06449526.png)
+![D394F0383C8349FEAAF30A7E06449526](https://github.com/CHENJIAMIAN/Blog/assets/20126997/bff36474-2c5c-42c3-a4b8-519bba431144)
 
 
 
@@ -125,7 +125,7 @@ Contour：等值线（等高线）
 
 
 
-![](images/E65B6819EFB748ECA9E2A83640086CF9.png)
+![E65B6819EFB748ECA9E2A83640086CF9](https://github.com/CHENJIAMIAN/Blog/assets/20126997/78525cd7-453b-4863-8032-2020a0e60514)
 
 
 
@@ -135,7 +135,7 @@ Contour：等值线（等高线）
 
 
 
-![](images/D38E5E8F2C8F4CD7A8516E7F1D27422E.png)
+![D38E5E8F2C8F4CD7A8516E7F1D27422E](https://github.com/CHENJIAMIAN/Blog/assets/20126997/038e06fb-fcfb-48cc-9ef9-b0f15b77721c)
 
 
 
@@ -145,7 +145,7 @@ Contour：等值线（等高线）
 
 
 
-![](images/F05DA6BAF323404794F3D738DB1852BC.png)
+![F05DA6BAF323404794F3D738DB1852BC](https://github.com/CHENJIAMIAN/Blog/assets/20126997/7276e301-c0b8-48d8-aa41-3c7875f609e1)
 
 ```java
 一个盆域是一个大流域，由好多分水岭组成
@@ -178,11 +178,6 @@ Contour：等值线（等高线）
 反地形：abs(dem-2000),原来1400米就变成了600米，原来-500米就变成了2500米！即地形反过来了！！！
 ```
 
-
-
-![](images/0B6B313452194F6B80CBED4CA4247BF7.png)
-
-
+![0B6B313452194F6B80CBED4CA4247BF7](https://github.com/CHENJIAMIAN/Blog/assets/20126997/4ed7db52-d332-4288-b24b-021fb6c29f84)
 
 ---
-
