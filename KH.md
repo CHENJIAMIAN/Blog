@@ -13,32 +13,14 @@
 体系文件的编制和维护是组织或系统管理的一项重要工作，能够帮助组织或系统更好地实现目标和任务，提高效率和质量，确保一致性和稳定性。
 
 ## IPD概念
+1. 需求管理
+2. CDP 产品立项
+3. 产品开发
+4. 产品线组织与绩效
+
 *   IPD: Integrated Product Development, 集成产品开发
-    *   ITM: Idea To Market, 从机会到商业变现
-    *   NPI: New Product Introduction, 新产品导入
-    *   PLM: Product Lifecycle Management, 产品生命周期管理
     *   IPMT: Integrated Project Management Team，项目管理团队，由建设方、投资方、项目管理方和其他参与各方代表组成，负责协调和监督项目的实施
         *   PDT: Product Development Team, 产品开发团队
-*   GA: General Availability，意思是产品向公众发布
-*   LDCP: Launch Development and Control Plan, 发布开发与控制计划
-*   LPDT是领导型产品开发团队，由各个PDT的经理组成，负责协调各个PDT之间的资源和沟通；
-*   FPDT是财务型产品开发团队，由PDT的财务代表组成，负责管理项目的成本和收益；
-*   RDPDT是研发型产品开发团队，由PDT的开发代表组成，负责实施技术方案和模块设计；
-*   TSPDT是技术支持型产品开发团队，由PDT的技术支援代表组成，负责提供技术服务和培训；
-*   MNPDT是制造型产品开发团队，由PDT的制造代表组成，负责生产工艺和转产准备；
-*   PROPDT是采购型产品开发团队，由PDT的采购代表组成，负责供应链管理和物料控制；
-*   MKPDT是市场型产品开发团队，由PDT的市场代表组成，负责市场调研和营销策划；
-*   EE是硬件工程师，负责电路设计和硬件测试；
-*   TE(测试工程师）
-*   SWE是软件工程师，负责软件编程和软件测试；
-*   ME是结构工程师，负责机械设计和结构测试；
-*   IDE是工业设计师，负责外观设计和用户体验；
-*   MOPS是市场运营专员，负责市场推广和销售支持；
-*   PP是项目计划员，负责项目进度管理和风险控制；
-*   AME是先进制造工程师，负责新工艺研究和验证；
-*   TSS是技术服务专员，负责客户培训和售后服务；
-*   PRO是项目经理/主管/总监/副总裁等高级职位，负责整个项目或部门或公司的决策和领导；
-*   ESP是额外支持人员（Extra Support Personnel），指在某些特定阶段或任务中需要参与协助的其他人员。例如：法务、审计、品牌、公关等。
 
 *   TR: Technical Review, 技术评审
     *   TR1：概念阶段
