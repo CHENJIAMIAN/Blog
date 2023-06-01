@@ -1,4 +1,4 @@
-zhuo's
+## 着色方法历史
 ## 当vertices变换后，法线向量也相应的需要变换。如果你对前面说到的东西有点映像的话，或许你能想到是使用Model-view matrix（MVMatrix）进行变换。但是MVMatrix会有一些问题：  在只对一个轴收缩或是剪切变换(shear transformation)时，就如图一样，可能会导致法线失准。那么如何解决呢？
 
 ![](http://gtms03.alicdn.com/tps/i3/T14486Fz4oXXXAvXb2-622-248.png) 
