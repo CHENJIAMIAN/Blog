@@ -516,7 +516,7 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 "http://data.mars3d.cn/3dtiles/max-fsdzm/tileset.json",   //水利闸门  
 "http://data.mars3d.cn/3dtiles/max-piping/tileset.json",   //地下管网  
 "http://data.mars3d.cn/3dtiles/max-shihua/tileset.json",   //石化工厂  
-"http://data.mars3d.cn/3dtiles/max-ytlhz/tileset.json",   //油田联合站  
+"http://data.mars3d.cn/3dtiles/max-ytlhz/tileset.json",   //油田联合站精细 
 "http://data.mars3d.cn/3dtiles/pnts-ganta/tileset.json",   //高压线塔杆点云  
 "http://data.mars3d.cn/3dtiles/qx-dyt/tileset.json",   //大雁塔倾斜摄影  
 "http://data.mars3d.cn/3dtiles/qx-hfdxy/tileset.json",   //合肥大学科技园倾斜摄影  
