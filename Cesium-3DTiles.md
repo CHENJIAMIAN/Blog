@@ -505,19 +505,24 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 ## 在线 3DTiles 数据
 #### Mars3D的所有3DTiles
 ```js
+//BIM
 "http://data.mars3d.cn/3dtiles/bim-daxue/tileset.json",   //大学教学楼  
 "http://data.mars3d.cn/3dtiles/bim-ditiezhan/tileset.json",   //轻轨地铁站  
 "http://data.mars3d.cn/3dtiles/bim-qiaoliang/tileset.json",   //桥梁  
+//粗模
 "http://data.mars3d.cn/3dtiles/jzw-hefei/tileset.json",   //合肥市建筑物  
 "http://data.mars3d.cn/3dtiles/jzw-hefei2/tileset.json",   //合肥市建筑物  
 "http://data.mars3d.cn/3dtiles/jzw-shanghai/tileset.json",   //上海市建筑物  
+//精细模型
 "http://data.mars3d.cn/3dtiles/max-daqiao/tileset.json",   // 大桥
 "http://data.mars3d.cn/3dtiles/max-fcfh/tileset.json",   //居民楼(分层分户)  
 "http://data.mars3d.cn/3dtiles/max-fsdzm/tileset.json",   //水利闸门  
 "http://data.mars3d.cn/3dtiles/max-piping/tileset.json",   //地下管网  
-"http://data.mars3d.cn/3dtiles/max-shihua/tileset.json",   //石化工厂  
-"http://data.mars3d.cn/3dtiles/max-ytlhz/tileset.json",   //油田联合站精细 
+"http://data.mars3d.cn/3dtiles/max-shihua/tileset.json",   //石化工厂精细模型   
+"http://data.mars3d.cn/3dtiles/max-ytlhz/tileset.json",   //油田联合站精细模型 
+//点云
 "http://data.mars3d.cn/3dtiles/pnts-ganta/tileset.json",   //高压线塔杆点云  
+//倾斜摄影
 "http://data.mars3d.cn/3dtiles/qx-dyt/tileset.json",   //大雁塔倾斜摄影  
 "http://data.mars3d.cn/3dtiles/qx-hfdxy/tileset.json",   //合肥大学科技园倾斜摄影  
 "http://data.mars3d.cn/3dtiles/qx-shequ/tileset.json",   //县城社区倾斜摄影  
