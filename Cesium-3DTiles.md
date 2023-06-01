@@ -502,3 +502,27 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 1. 从 2019 开始原软件名称 《BimAngle Forge Engine》更名为《BimAngle Engine》； 
 2. 2019 年 3 月新增 Express 系列，主要是屏蔽了对 Forge 格式的支持
 
+## 在线 3DTiles 数据
+#### Mars3D的所有3DTiles
+```js
+"http://data.mars3d.cn/3dtiles/bim-daxue/tileset.json",   //大学教学楼  
+"http://data.mars3d.cn/3dtiles/bim-ditiezhan/tileset.json",   //轻轨地铁站  
+"http://data.mars3d.cn/3dtiles/bim-qiaoliang/tileset.json",   //桥梁  
+"http://data.mars3d.cn/3dtiles/jzw-hefei/tileset.json",   //合肥市建筑物  
+"http://data.mars3d.cn/3dtiles/jzw-hefei2/tileset.json",   //合肥市建筑物  
+"http://data.mars3d.cn/3dtiles/jzw-shanghai/tileset.json",   //上海市建筑物  
+"http://data.mars3d.cn/3dtiles/max-daqiao/tileset.json",   // 大桥
+"http://data.mars3d.cn/3dtiles/max-fcfh/tileset.json",   //居民楼(分层分户)  
+"http://data.mars3d.cn/3dtiles/max-fsdzm/tileset.json",   //水利闸门  
+"http://data.mars3d.cn/3dtiles/max-piping/tileset.json",   //地下管网  
+"http://data.mars3d.cn/3dtiles/max-shihua/tileset.json",   //石化工厂  
+"http://data.mars3d.cn/3dtiles/max-ytlhz/tileset.json",   //油田联合站  
+"http://data.mars3d.cn/3dtiles/pnts-ganta/tileset.json",   //高压线塔杆点云  
+"http://data.mars3d.cn/3dtiles/qx-dyt/tileset.json",   //大雁塔倾斜摄影  
+"http://data.mars3d.cn/3dtiles/qx-hfdxy/tileset.json",   //合肥大学科技园倾斜摄影  
+"http://data.mars3d.cn/3dtiles/qx-shequ/tileset.json",   //县城社区倾斜摄影  
+"http://data.mars3d.cn/3dtiles/qx-simiao/tileset.json",   //文庙倾斜摄影  
+"http://data.mars3d.cn/3dtiles/qx-teh/tileset.json",   //合肥天鹅湖  
+"http://data.mars3d.cn/3dtiles/qx-xuexiao-dth/tileset.json",   //学校-单体classifytileset
+"http://data.mars3d.cn/3dtiles/qx-xuexiao/tileset.json",   //校园  
+```

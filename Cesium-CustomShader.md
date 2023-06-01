@@ -65,5 +65,6 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的Model架构来�
 [mars3d-link-supermap/map.js at master · marsgis/mars3d-link-supermap · GitHub --- mars3d-link-supermap/map.js at master · marsgis/mars3d-link-supermap · GitHub](https://github.com/marsgis/mars3d-link-supermap/blob/master/mars3d-vue-example/src/example/graphic/primitive/model/map.js)
 	1. 纹理坐标移动成动画
 	2. 官方的彩色点云波示例
-	3. 
 ### 管线流动
+1. [graphic/primitive/polylineVolume | 火星科技](http://mars3d.cn/editor-vue.html?id=graphic/primitive/polylineVolume)
+2. [graphic/primitive/polyline | 火星科技](http://mars3d.cn/editor-vue.html?id=graphic/primitive/polyline)
