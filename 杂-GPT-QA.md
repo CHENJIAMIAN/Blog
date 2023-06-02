@@ -1,3 +1,34 @@
+## 可以完美验证是否是GPT-4的问题
+已知  
+attribute vec4 a_pos; // 定义顶点位置的attribute变量  
+attribute vec4 a_normal; // 定义顶点法线的attribute变量  
+attribute vec4 a_color; // 定义颜色的attribute变量  
+且  
+vertexAttribPointer(0, 3, 5126, undefined, 28, 0)  
+vertexAttribPointer(1, 3, 5126, undefined, 28, 12)  
+vertexAttribPointer(2, 4, 5121, true, 28, 24)  
+给出vertexAttribPointer的第五个参数计算公式和过程
+
+```js
+`vertexAttribPointer()` 函数的第五个参数是 `stride`，它表示顶点数据中每个顶点属性的间距（以字节为单位）。在这个例子中，我们有3个属性：顶点位置（`a_pos`）、顶点法线（`a_normal`）和颜色（`a_color`）。这些属性都是顶点数据中的一部分，我们需要计算它们的总大小来得到 `stride`。
+
+给定的属性有：
+
+1. 顶点位置（`a_pos`）: `vec4` 类型，包含4个 `float` 类型的值。每个 `float` 占用4字节，因此 `a_pos` 的大小为 4 * 4 = 16字节。
+2. 顶点法线（`a_normal`）: `vec4` 类型，包含4个 `float` 类型的值。每个 `float` 占用4字节，因此 `a_normal` 的大小为 4 * 4 = 16字节。
+3. 颜色（`a_color`）: `vec4` 类型，包含4个 `unsigned byte` 类型的值。每个 `unsigned byte` 占用1字节，因此 `a_color` 的大小为 4 * 1 = 4字节。
+
+现在，我们可以计算 `stride`：顶点位置大小（16字节）+ 顶点法线大小（16字节）+ 颜色大小（4字节）= 36字节。
+
+但是在这个例子中，`vertexAttribPointer` 的第五个参数（`stride`）给出的是28字节。这意味着这个顶点数据可能是紧凑的（没有任何填充字节），或者是有意省略了某些属性的组件。从给出的 `vertexAttribPointer` 调用中，我们可以看到：
+
+1. 顶点位置（`a_pos`）: 使用了3个组件（第二个参数为3），而不是`vec4` 的4个组件。因此，实际大小为 3 * 4 = 12字节。
+2. 顶点法线（`a_normal`）: 使用了3个组件（第二个参数为3），而不是`vec4` 的4个组件。因此，实际大小为 3 * 4 = 12字节。
+3. 颜色（`a_color`）: 使用了4个组件（第二个参数为4），与`vec4` 的4个组件相同。大小仍为 4 * 1 = 4字节。
+
+现在我们可以得到正确的 `stride` 计算：顶点位置大小（12字节）+ 顶点法线大小（12字节）+ 颜色大小（4字节）= 28字节。这与给定的 `stride` 值相符。
+```
+
 ### 为什么中国在2023年有大量失业？
 
 中国在2023年有大量失业的原因是多方面的，主要包括以下几个方面：
