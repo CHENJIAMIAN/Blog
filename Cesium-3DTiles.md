@@ -377,9 +377,7 @@ Cesium3DTile.constructor
 
 
 ## BoundingVolume下的region举例
-
 下面是一个 `BoundingVolume` 中 `region` 属性的示例：
-
 ```
 "boundingVolume": {
     "region": [
