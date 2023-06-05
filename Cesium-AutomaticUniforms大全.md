@@ -56,8 +56,8 @@ const AutomaticUniforms = {
    * //GLSL声明
    * uniform vec4 czm_viewport;
    *
-   * //通过除法将窗口坐标分量缩放到[0, 1]
-   * //根据视口的宽度和高度。
+   * ///根据视口的宽度和高度通过除法将窗口坐标分量缩放到[0, 1]
+   * /。
    * vec2 v = gl_FragCoord.xy /czm_viewport.zw;
    *
    * @see 上下文#getViewport
