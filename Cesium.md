@@ -22,7 +22,7 @@ Scene//是一个Cesium应用程序的根对象，它包含用于场景渲染和�
     Globe//是Scene的一部分，表示在场景中渲染地球的部分。它包括地球的几何形状、地形、图像纹理和其他相关属性，使得场景中的地球可以进行交互和探索。
 ```
 ## 执行流程 与 对象
-![20230424120853](https://github.com/CHENJIAMIAN/Blog/assets/20126997/4d816c11-82a7-4efa-8868-3245e47703c8)
+![20230424120853 | 800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/4d816c11-82a7-4efa-8868-3245e47703c8)
 
 ```javascript
 多源//来源于遥感影像、摄像头、问卷调查、手机信令、GPS追踪等
@@ -158,6 +158,7 @@ when：一个实用工具，对带有错误处理的 promise 进行分装， 允
 
 ## 类图 
 [cesium.jpg (3561×3574)](http://mars3d.cn/dev/img/jiagou/cesium.jpg)
+
 ```javascript
 通用类/空间计算
 	Cartesian3
@@ -647,7 +648,7 @@ proj_right_up = dot((1,0,0), (0,1,0)) * (0,1,0) = 0 * (0,1,0) = (0,0,0)
 
 
 ## 矩阵
-![20230411101658](https://github.com/CHENJIAMIAN/Blog/assets/20126997/119e71e1-9346-41af-908c-688ccd4bc1ea)
+![20230411101658 | 600](https://github.com/CHENJIAMIAN/Blog/assets/20126997/119e71e1-9346-41af-908c-688ccd4bc1ea)
 
 
 ```js
@@ -760,14 +761,14 @@ Cesium.Matrix4.multiplyByMatrix3(m, rotation, m);替代了Cesium.Matrix4.multipl
 ```
 
 ### 坐标系
-![20230419164035](https://github.com/CHENJIAMIAN/Blog/assets/20126997/f75c59ef-8fd9-42f3-800b-a75c750582f2)
+![20230419164035 | 600](https://github.com/CHENJIAMIAN/Blog/assets/20126997/f75c59ef-8fd9-42f3-800b-a75c750582f2)
 
 
 ```js
 - 在左手坐标系中，“east”对应笛卡尔坐标系中的x轴，即东方向；“north”对应笛卡尔坐标系中的y轴，即北方向；“up”对应笛卡尔坐标系中的z轴，即垂直于地面向上的方向。
 - 在右手坐标系中，“east”对应笛卡尔坐标系中的x轴，即东方向；“north”对应笛卡尔坐标系中的y轴，即北方向；“up”则与笛卡尔坐标系中的z轴相反，即指向地心的方向。
 ```
-![20230409173031](https://github.com/CHENJIAMIAN/Blog/assets/20126997/3de239ef-5194-4a9d-b487-bbf3ecab04fb)
+![20230409173031 | 400](https://github.com/CHENJIAMIAN/Blog/assets/20126997/3de239ef-5194-4a9d-b487-bbf3ecab04fb)
 
 ```js
 Cesium.Transforms.eastNorthUpToFixedFrame //是回退变换, 在地球上，每个点都有一个本地坐标系，它是以该点为原点，以地球表面的法线方向为z轴建立的一个坐标系。然而，当我们需要在计算机中对地球上的点进行处理时，通常需要将这些点转换为一个固定的坐标系，方便进行计算和可视化。
@@ -942,7 +943,7 @@ camera.position//相对于transform的位置
 - `upWC`：相机在世界坐标系中的上向量，即相机坐标系的 y 轴方向在世界坐标系中的方向。
 - `rightWC`：相机在世界坐标系中的右向量，即相机坐标系的 x 轴方向在世界坐标系中的方向。
 ```
-![20230411105231](https://github.com/CHENJIAMIAN/Blog/assets/20126997/6911333b-917b-4558-9d73-8e1b9afe4ed3)
+![20230411105231 | 600](https://github.com/CHENJIAMIAN/Blog/assets/20126997/6911333b-917b-4558-9d73-8e1b9afe4ed3)
 
  
 ```js
@@ -1068,9 +1069,9 @@ pass表示渲染过程中的通道，主要用于渲染优化。在Cesium中，�
 
 在这段代码中，pass指定为OPAQUE不透明的通道。这意味着所有不透明的物体（无论是地形、建筑、树木等）都会在这个通道中被渲染。这是渲染的第一个基础阶段，所有不透明的像素（即alpha小于1）都会被绘制。
 ```
-![20230426092257](https://github.com/CHENJIAMIAN/Blog/assets/20126997/13bdb9d3-1b99-46a4-8914-eb6ab0eb64c8)
+![20230426092257 | 600](https://github.com/CHENJIAMIAN/Blog/assets/20126997/13bdb9d3-1b99-46a4-8914-eb6ab0eb64c8)
 
-![20230426092252](https://github.com/CHENJIAMIAN/Blog/assets/20126997/d49ad873-a89e-4fe4-aabd-6d4b6c127343)
+![20230426092252 | 600](https://github.com/CHENJIAMIAN/Blog/assets/20126997/d49ad873-a89e-4fe4-aabd-6d4b6c127343)
 
 ## 着色器源码
 
