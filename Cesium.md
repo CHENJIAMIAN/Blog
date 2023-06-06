@@ -761,7 +761,7 @@ Cesium.Matrix4.multiplyByMatrix3(m, rotation, m);替代了Cesium.Matrix4.multipl
 ```
 
 ### 坐标系
-![20230419164035 | 600](https://github.com/CHENJIAMIAN/Blog/assets/20126997/f75c59ef-8fd9-42f3-800b-a75c750582f2)
+![20230419164035 | 400](https://github.com/CHENJIAMIAN/Blog/assets/20126997/f75c59ef-8fd9-42f3-800b-a75c750582f2)
 
 
 ```js
