@@ -76,23 +76,28 @@ DLSWBR的英文全称是"Dynamic Limiting Speed Web Behavior Recognition"。是�
 如: dlswbr.baidu.com
 
 ## )]}'
-[[[]]]
+## [[[]]]
     这种格式的响应是一种防止跨站脚本攻击（Cross-Site Scripting, XSS）的技术，称为“防止XSS攻击的JSON”（XSS-Protection JSON）。它会在JSON响应前添加 )]}', 这个前缀，以防止浏览器将JSON响应解析成脚本，保证响应数据的安全性。开发者可以在前端对这种格式的响应进行解析，使用JSON.parse()函数时需要先去除这个前缀。
 
-Patrick Wied与h337的由来
+## Patrick Wied与h337的由来
     Patrick Wied是一位来自奥地利的前端开发者，他创造了一些流行的可视化工具和JavaScript库，如Datamaps和d3-tip。
     h337是他的GitHub用户名，它来源于他曾经在创建一个三维游戏引擎时使用的hash算法。h337也用于他的一些开源项目的名称中，例如heatmap.js和cloud.js。
     
-webpack打包后的两种闭包
+## webpack打包后的两种闭包
     function(t, e) {//(module, exports)
     function(t, e, n) { //module, __webpack_exports__, __webpack_require__?
    
-wasm在前端的rsa领域有什么应用
+## wasm在前端的rsa领域有什么应用
     在前端领域，通过WebAssembly的方式使用RSA加密是一种更有效和安全的方法。由于RSA加密需要大量计算操作，而WebAssembly能够在浏览器中提供高性能和低延迟的运行环境，使得RSA算法能够在浏览器中高效地运行。此外，使用WebAssembly的方式进行RSA算法的计算也可以保护RSA加密算法的源代码不被恶意攻击者窃取和利用。因此，在前端领域，WebAssembly在RSA加密领域有着广泛的应用。
-    使用 Rust 和 WebAssembly 技术开发
+
+## 使用 Rust 和 WebAssembly 技术开发
     "__wbindgen_is_object"或"__wbg_crypto_2bc4d5b05161de5b" 中 wbindgen或wbg是WebAssembly和JavaScript之间的绑定的缩写。在使用Rust编写WebAssembly模块时，通常要使用另一个称为 wasm-bindgen 的工具来帮助创建这些绑定。创建绑定时，wasm-bindgen将自动生成一些 JavaScript 当中内部使用的函数名，这些简略但难以记忆的函数名都以 __wbg_ 开头。
-    
-scene.json索引
+
+
+## 命名实体识别
+是一种自然语言处理技术，它旨在从文本中识别出具有特定命名实体类别的实体，如人名、地名、组织机构名称等。通过对文本中的命名实体进行识别和分类，可以更好地理解文本的语义和结构，为信息提取、文本分类、搜索引擎优化等应用提供有力支持。
+
+## 优锘模型 scene.json索引
     很多模型的index.json
     其他的jpg/png/bin/gltf不知道是怎么来的,应该在代码中定义的?JSON.parseX搞怪了由thing.thingGLTFLoader.JSONXLoader解密
     generator: "FBX2glTF"
@@ -110,5 +115,3 @@ scene.json索引
         scene: 定义了哪个节点是默认场景中的根节点；
         scenes: 在.glb文件中定义多个.scene文件的列表；
         samplers: 定义纹理的过滤模式。
-        
-命名实体识别是一种自然语言处理技术，它旨在从文本中识别出具有特定命名实体类别的实体，如人名、地名、组织机构名称等。通过对文本中的命名实体进行识别和分类，可以更好地理解文本的语义和结构，为信息提取、文本分类、搜索引擎优化等应用提供有力支持。
