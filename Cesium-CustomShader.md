@@ -1,7 +1,11 @@
 # Cesium 1.97 发布
 
-CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的Model架构来加载 glTF 模型和 tilesets 以启用：用户定义的 GLSL 着色器通过[`CustomShader`](https://github.com/CesiumGS/cesium/blob/main/Documentation/CustomShaderGuide/README.md)
-[CesiumJS 更新日志 1.96 与 1.97 - 新构建工具 esbuild 体验及 Model API 更替完成 - 岭南灯火 - 博客园](https://www.cnblogs.com/onsummer/p/16560461.html)
+CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的Model架构来加载 glTF 模型和 tilesets 以启用：
+> [CesiumJS 更新日志 1.96 与 1.97 - 新构建工具 esbuild 体验及 Model API 更替完成 - 岭南灯火 - 博客园](https://www.cnblogs.com/onsummer/p/16560461.html)
+- 用户定义的 GLSL 着色器通过[`CustomShader`](https://github.com/CesiumGS/cesium/blob/main/Documentation/CustomShaderGuide/README.md)
+- **glTF 1.0 版本的支持已移除**，请尽快转换你的数据到 glTF 2.0 版本；
+- **glTF 的一项扩展 KHR_techniques_webgl 已移除**，如果你有自定义着色需求，请使用 CustomShader API
+- `ModelInstanceCollection`这个私有类使用的 CPU 端实例化技术已移除；(最后一版: [cesium/ModelInstanceCollection.js at 1.96 · CesiumGS/cesium · GitHub](https://github.com/CesiumGS/cesium/blob/1.96/Source/Scene/ModelInstanceCollection.js))
 
 找到[vue-vite-cesium-demo/](https://lihanqiang.github.io/vue-vite-cesium-demo/) 可用，包含
 	1. 经度、纬度、高度/距离/面积
