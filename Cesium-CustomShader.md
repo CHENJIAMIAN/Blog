@@ -7,6 +7,15 @@ CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的Model架构来�
 - **glTF 的一项扩展 KHR_techniques_webgl 已移除**，如果你有自定义着色需求，请使用 CustomShader API
 - `ModelInstanceCollection`这个私有类使用的 CPU 端实例化技术已移除；(最后一版: [cesium/ModelInstanceCollection.js at 1.96 · CesiumGS/cesium · GitHub](https://github.com/CesiumGS/cesium/blob/1.96/Source/Scene/ModelInstanceCollection.js))
 	- [mars3d/ModelCombine](http://mars3d.cn/api/ModelCombine.html#:~:text=%E5%AE%9E%E4%BE%8B%20)依赖于它
+	- 1.96还可选的:
+```js
+//Source\Scene\Cesium3DTileContentFactory.js
+if (tileset.enableModelExperimental) {
+	  return ModelExperimental3DTileContent.fromI3dm(tileset,tile,resource,arrayBuffer,byteOffset);
+}
+return new Instanced3DModel3DTileContent(tileset,tile,resource,arrayBuffer,byteOffset);
+```
+
 
 找到[vue-vite-cesium-demo/](https://lihanqiang.github.io/vue-vite-cesium-demo/) 可用，包含
 	1. 经度、纬度、高度/距离/面积
