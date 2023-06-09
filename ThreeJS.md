@@ -179,7 +179,7 @@ Geometry和BufferGeomety内置了一些常用的方法:
     RectAreaLight=> 条形照明或明亮的窗户
     SpotLight=> 聚光灯
     
-    AmbientLight从各个方向向每个对象添加恒定数量的光。
+    AmbientLight环境光从各个方向向每个对象添加恒定数量的光。
         new THREE.AmbientLight( 0x404040 ); // 创建一个灰色的环境光 
     HemisphereLight天空颜色和地面颜色之间的渐变 ，可用于模拟许多常见的照明场景。//环境光会影响场景中的所有对象。因此，无需为场景添加多个环境光
 
