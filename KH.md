@@ -5,7 +5,7 @@ BAS 环境与设备监控系统 Building Automation System
 HMI（Human Machine Interaction）人机界面
 
 [RTU英文全称 Remote Terminal Unit](https://zhuanlan.zhihu.com/p/330528187)
-
+[南向接口 高层级 向 低层级 设备的连接接口](https://blog.51cto.com/u_15776384/5658954)
 
 ## 什么是体系文件
 体系文件（System Documentation）指的是一个组织或系统中用来记录和描述组织或系统结构、功能、过程、政策、程序、标准等方面的文件。体系文件通常用于帮助组织或系统的成员更好地理解和掌握组织或系统的各个方面，并且确保组织或系统能够按照一定的标准和程序运作，以达到预期的目标。
