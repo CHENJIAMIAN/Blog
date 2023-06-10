@@ -8,12 +8,10 @@
 
 以上表格对比了CUDA、OpenCL、OpenGL和DirectX的主要特点。CUDA和OpenCL主要用于通用计算，但CUDA专注于 NVIDIA GPU，而OpenCL是跨平台的。OpenGL和DirectX主要用于图形渲染和游戏开发，其中OpenGL跨平台而DirectX主要面向Windows操作系统。它们在编程模型、功能和开发者方便性方面也存在一些差异。
 
-通过OpenCL和OpenGL的集成，可以实现以下工作流程：
+通过OpenCL和OpenGL的集成，可以实现以下高的性能和效果 工作流程：
 1. 使用OpenCL进行并行计算任务，例如图像处理、物理模拟等。在这个过程中，计算任务会在GPU上执行。
 2. 计算完成后，可以将计算结果从GPU内存中读取出来。
 3. 将计算结果传递给OpenGL，使用OpenGL的绘制函数将结果渲染到屏幕上。可以将计算结果作为纹理或顶点数据传递给OpenGL进行渲染。
-
-这种集成的优势在于，可以利用GPU的并行计算能力进行复杂的数据处理，然后直接将结果传递给OpenGL进行实时渲染，从而在图形应用中实现更。
 
 [Orillusion/orillusion - GitHub1s](https://github1s.com/Orillusion/orillusion)
 ```js 
