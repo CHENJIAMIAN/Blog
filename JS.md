@@ -121,9 +121,6 @@ var a = b = 3;    //等同于    b = 3;    var a = b;
 a.x=b=3;          //等同于    a.x=undefined;   b=3; a.x=b;
 
 
-WebAssembly是一种新的编码方式，可以在现代的网络浏览器中运行 － 它是一种低级的类汇编语言，文件后缀名.wasm，可以编译为
-    WebAssembly还没有和<script type='module'>或ES6的import语句集成，也就是说，当前还没有内置的方式让浏览器为你获取模块。
-    当前唯一的方式就是创建一个包含你的WebAssembly模块二进制代码的 ArrayBuffer 并且使用WebAssembly.instantiate()编译它。
     
 /单个\被当成转义字符，是底层的实现，无法进行查找和替换/
     '123253\2345' //输出:"1232535"
