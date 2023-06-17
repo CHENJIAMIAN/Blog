@@ -1,5 +1,7 @@
-an
-### flutter doctor 报错 `A network error occurred while checking "https://maven.google.com/": 信号灯超时时间已到`
+### 在线环境
+[dartpad](https://dartpad.dev/?)
+
+### 安装时验证环境 flutter doctor 报错 `A network error occurred while checking "https://maven.google.com/": 信号灯超时时间已到`
 ```js
 1.改源, D:\flutter_windows_3.10.5-stable\packages\flutter_tools\lib\src\http_host_validator.dart
 	改为
@@ -13,5 +15,15 @@ an
 2.删除D:\flutter_windows_3.10.5-stable\bin\cache
 3.重新运行flutter doctor
 ```
+
 ### 快速入门
 [你的第一个 Flutter 应用](https://codelabs.developers.google.com/codelabs/flutter-codelab-first#6)
+1. Flutter 工作原理的基础知识
+2. 在 Flutter 中创建布局
+3. 将用户交互（如按钮按下）与应用程序行为联系起来
+4. 让你的 Flutter 代码井井有条
+5. 使您的应用响应
+6. 使您的应用程序具有一致的外观和感觉
+7. 高级版本(带丝滑动画)
+### 组件们
+### 图标们
