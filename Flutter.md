@@ -12,3 +12,5 @@
 2.删除D:\flutter_windows_3.10.5-stable\bin\cache
 3.重新运行flutter doctor
 ```
+
+[你的第一个 Flutter 应用](https://codelabs.developers.google.com/codelabs/flutter-codelab-first#6)
