@@ -26,4 +26,6 @@
 6. 使您的应用程序具有一致的外观和感觉
 7. 高级版本(带丝滑动画/渐变/淡入淡出)[DartPad](https://dartpad.dev/?id=e7076b40fb17a0fa899f9f7a154a02e8)
 ### 组件们
+[小部件库 - Dart API](https://api.flutter.dev/flutter/widgets/widgets-library.html)
 ### 图标们
+[Material Symbols and Icons - Google Fonts](https://fonts.google.com/icons)
