@@ -1,4 +1,5 @@
 [3d-tiles/3d-tiles-reference-card.pdf at main · CesiumGS/3d-tiles · GitHub](https://github.com/CesiumGS/3d-tiles/blob/main/3d-tiles-reference-card.pdf)
+[raw.githubusercontent.com/puxiao/notes/master/master/3D瓦片规范-简体中文版.pdf](https://raw.githubusercontent.com/puxiao/notes/master/master/3D%E7%93%A6%E7%89%87%E8%A7%84%E8%8C%83-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E7%89%88.pdf)
 
 ## 0
 ![1683683639000a8y1gc](https://github.com/CHENJIAMIAN/Blog/assets/20126997/d54ca832-4321-4181-9396-c95b0e5d2e1f)
