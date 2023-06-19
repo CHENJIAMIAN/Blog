@@ -1,3 +1,4 @@
+##
 ## 可以完美验证是否是GPT-4的问题
 已知  
 attribute vec4 a_pos; // 定义顶点位置的attribute变量  
