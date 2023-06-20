@@ -85,4 +85,11 @@ Flutter 使用与 Unity 相同的基本架构模型
 2. Dart-to-JavaScript 编译器（dart2js）：Dart-to-JavaScript 编译器是用于将 Dart 代码转译为 JavaScript 的工具。它将 Dart 代码转换为等效的 JavaScript 代码，使其能够在现代的 Web 浏览器中执行。Dart-to-JavaScript 编译器主要用于构建 Dart Web 应用程序，以在浏览器中运行。
 **dart编译命令替换了 dart2native、dart2aot和dart2js命令**
 	**使用[webdev工具](https://dart.dev/tools/webdev)而不是运行 dart2js 将 Dart 代码编译为可部署的 JavaScript**
-#### fina
+#### final和const
+```js
+final int x = 10; // final变量
+final int y = getX(); // final变量，可以在运行时计算赋值
+
+const int a = 5; // const常量
+const int b = a * 2; // const常量，在编译时计算赋值
+```
