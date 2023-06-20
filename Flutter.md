@@ -33,6 +33,7 @@
 [Material Symbols and Icons - Google Fonts](https://fonts.google.com/icons)
 
 ### 编译原理
+[google/skia：Skia 是一个完整的 2D 图形库，用于绘制文本、几何图形和图像。](https://github.com/google/skia)
 1. 开发者使用flutter build apk命令来构建安卓APK。
 2. flutter工具通过daemon模块启动Flutter守护进程。
 3. 守护进程使用build_runner工具编译Flutter工程。
@@ -48,3 +49,8 @@
 
 ### 编译成Web
 flutter build web --web-renderer canvaskit
+1. 用skia的canvaskit 将Skia C++库编译到Wasm,并在HTML中引入。
+	- [skia/modules/canvaskit at main · google/skia · GitHub](https://github.com/google/skia/tree/main/modules/canvaskit)
+1. Wasm初始化Skia上下文API, 通过Emscripten与JavaScript进行交互。
+2. Flutter通过Dart调用Skia API,最终映射到Wasm和Canvas API。
+3. CSS样式通过Emscripten映射到Skia,实现高保真视觉效果。
