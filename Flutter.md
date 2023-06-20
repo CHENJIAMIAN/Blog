@@ -32,3 +32,10 @@
 ### 图标们
 [Material Symbols and Icons - Google Fonts](https://fonts.google.com/icons)
 
+### 编译原理
+1. 开发者使用flutter build apk命令来构建安卓APK。
+2. flutter工具通过daemon模块启动Flutter守护进程。
+3. 守护进程使用build_runner工具编译Flutter工程。
+4. build_runner工具会解析Flutter工程的pubspec.yaml文件,找到需要编译的Dart文件。
+5. 对Dart代码进行编译,生成相应的Java代码,Java代码与原生安卓程序一起构建成APK。
+6. APK构建完成后,守护进程会通知Flutter工具,并将最终的APK文件返回给开发者。
