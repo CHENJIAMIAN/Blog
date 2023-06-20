@@ -1,4 +1,4 @@
->  Flutter是一个dart写的UI 工具包,  得益于dart, Flutter 在六个平台（Android、iOS、Web、Windows、macOS 和 Linux）上的支持
+>  Flutter是一个dart写的UI 工具包(有一层薄薄的 C/C++ 代码),  得益于dart, Flutter 在六个平台（Android、iOS、Web、Windows、macOS 和 Linux）上的支持
 
 ### 在线环境
 [dartpad](https://dartpad.dev/?)
