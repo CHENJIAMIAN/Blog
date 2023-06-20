@@ -1,6 +1,7 @@
 ### 在线环境
 [dartpad](https://dartpad.dev/?)
 
+
 ### 安装时验证环境 flutter doctor 报错 `A network error occurred while checking "https://maven.google.com/": 信号灯超时时间已到`
 ```js
 1.改源, D:\flutter_windows_3.10.5-stable\packages\flutter_tools\lib\src\http_host_validator.dart
@@ -15,6 +16,7 @@
 2.删除D:\flutter_windows_3.10.5-stable\bin\cache
 3.重新运行flutter doctor
 ```
+> 以上是我自己想的, 后面发现可以参考 [在中国使用 Flutter | 扑](https://docs.flutter.dev/community/china)
 
 ### 快速入门
 [你的第一个 Flutter 应用](https://codelabs.developers.google.com/codelabs/flutter-codelab-first#6)
@@ -29,8 +31,11 @@
 
 ### 组件们
 [小部件库 - Dart API](https://api.flutter.dev/flutter/widgets/widgets-library.html)
+
+
 ### 图标们
-[Material Symbols and Icons - Google Fonts](https://fonts.google.com/icons)
+1. [Material Symbols and Icons - Google Fonts](https://fonts.google.com/icons)
+2. [Icons class - material library - Dart API](https://api.flutter.dev/flutter/material/Icons-class.html)
 
 ### 编译原理
 [google/skia：Skia 是一个完整的 2D 图形库，用于绘制文本、几何图形和图像。](https://github.com/google/skia)
@@ -55,4 +60,10 @@ flutter build web --web-renderer canvaskit
 2. Flutter通过Dart调用Skia API,最终映射到Wasm和Canvas API。
 3. CSS样式通过Emscripten映射到Skia,实现高保真视觉效果。
 
-Dart
+### Dart
+[飞镖编译 | 镖](https://dart.dev/tools/dart-compile#exe)
+对于 Dart 语言，有以下两种常用的编译工具：
+1. Dart Native 编译器（dart）：Dart Native 编译器是用于将 Dart 代码编译为本机代码的工具。它通过 Ahead-of-Time（AOT）编译技术将 Dart 代码转换为目标平台的机器码。Dart Native 编译器通常用于构建移动应用程序（如 Flutter 应用）或桌面应用程序（如 Dart 桌面应用）。
+2. Dart-to-JavaScript 编译器（dart2js）：Dart-to-JavaScript 编译器是用于将 Dart 代码转译为 JavaScript 的工具。它将 Dart 代码转换为等效的 JavaScript 代码，使其能够在现代的 Web 浏览器中执行。Dart-to-JavaScript 编译器主要用于构建 Dart Web 应用程序，以在浏览器中运行。
+**dart编译命令替换了 dart2native、dart2aot和dart2js命令**
+	**使用[webdev工具](https://dart.dev/tools/webdev)而不是运行 dart2js 将 Dart 代码编译为可部署的 JavaScript**
