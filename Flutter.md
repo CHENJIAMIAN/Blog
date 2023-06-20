@@ -1,10 +1,13 @@
 >  Flutter是一个dart写的UI 工具包(有一层薄薄的 C/C++ 代码),  得益于dart, Flutter 在六个平台（Android、iOS、Web、Windows、macOS 和 Linux）上的支持
+### 架构图
+[Flutter System Architecture - Google 幻灯片](https://docs.google.com/presentation/d/1cw7A4HbvM_Abv320rVgPVGiUP2msVs7tfGbkgdrTy0I/edit#slide=id.p)
+Flutter 使用与 Unity 相同的基本架构模型
 
 ### 在线环境
 [dartpad](https://dartpad.dev/?)
 
 
-### 安装时验证环境 flutter doctor 报错 `A network error occurred while checking "https://maven.google.com/": 信号灯超时时间已到`
+### 安装Flutter SDK时验证环境 flutter doctor 报错 `A network error occurred while checking "https://maven.google.com/": 信号灯超时时间已到`
 ```js
 1.改源, D:\flutter_windows_3.10.5-stable\packages\flutter_tools\lib\src\http_host_validator.dart
 	改为
@@ -19,6 +22,18 @@
 3.重新运行flutter doctor
 ```
 > 以上是我自己想的, 后面发现可以参考 [在中国使用 Flutter | 扑](https://docs.flutter.dev/community/china)
+#### Flutter SDK 包含
+> Flutter 是用 C、C++、Dart、Skia（一种 2D 渲染引擎）和[Impeller](https://docs.flutter.dev/perf/impeller)（iOS 上的默认渲染引擎）构建的
+1. 高度优化的移动优先 2D 渲染引擎，对文本具有出色的支持
+2. 现代反应式框架
+3. 丰富的小部件集，实现了 Material Design 和 iOS 风格
+4. 用于单元和集成测试的 API
+5. 用于连接到系统和第 3 方 SDK 的互操作和插件 API
+6. 用于在 Windows、Linux 和 Mac 上运行测试的无头测试运行器
+7. 用于测试、调试和分析您的应用程序的[Flutter DevTools （也称为 Dart DevTools）](https://docs.flutter.dev/tools/devtools/overview)
+8. 用于创建、构建、测试和编译应用程序的命令行工具
+
+###
 
 ### 快速入门
 [你的第一个 Flutter 应用](https://codelabs.developers.google.com/codelabs/flutter-codelab-first#6)
