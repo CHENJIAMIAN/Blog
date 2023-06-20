@@ -38,4 +38,13 @@
 3. 守护进程使用build_runner工具编译Flutter工程。
 4. build_runner工具会解析Flutter工程的pubspec.yaml文件,找到需要编译的Dart文件。
 5. 对Dart代码进行编译,生成相应的Java代码,Java代码与原生安卓程序一起构建成APK。
-6. APK构建完成后,守护进程会通知Flutter工具,并将最终的APK文件返回给开发者。
+1. Dart代码解析为IR(抽象语法树);
+2. IR优化;
+3. IR转化为LIR(低级平台无关IR);
+    
+4. LIR转化为Android特定IR;
+    
+5. Android IR映射为Java代码;
+    
+6. Java代码编译为APK。
+7. APK构建完成后,守护进程会通知Flutter工具,并将最终的APK文件返回给开发者。
