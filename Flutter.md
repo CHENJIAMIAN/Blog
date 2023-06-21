@@ -94,5 +94,3 @@ final int y = getX(); // final变量，可以在运行时计算赋值
 const int a = 5; // const常量
 const int b = a * 2; // const常量，在编译时计算赋值
 ```
-
-1. DeviceOrientation
