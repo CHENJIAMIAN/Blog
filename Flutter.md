@@ -96,3 +96,4 @@ const int b = a * 2; // const常量，在编译时计算赋值
 ```
 
 https://github.com/miguelpruivo/flutter_file_picker
+https://github.com/juliansteenbakker/mobile_scanner
