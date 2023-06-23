@@ -101,3 +101,5 @@ plugins.flutter.io/url_launcher
 plugins.flutter.io/path_provider
 plugins.flutter.io/image_picker
 plugins.hunghd.vn/image_cropper
+
+style: Theme.of(context).textTheme.headline4,
