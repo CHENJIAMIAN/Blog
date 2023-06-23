@@ -104,3 +104,4 @@ plugins.hunghd.vn/image_cropper
 
 style: Theme.of(context).textTheme.xxx,
 Image(image: AssetImage('assets/p1_qidongye_logo.png'))
+lib.src.app._BookstoreState._guard
