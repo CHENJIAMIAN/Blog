@@ -102,4 +102,4 @@ plugins.flutter.io/path_provider
 plugins.flutter.io/image_picker
 plugins.hunghd.vn/image_cropper
 
-style: Theme.of(context).textTheme.headline4,
+style: Theme.of(context).textTheme.xxx,
