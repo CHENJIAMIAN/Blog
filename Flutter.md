@@ -108,5 +108,9 @@ plugins.hunghd.vn/image_cropper
 lib.main.main
 	lib.src.app._MyAppState._guard 决定第一页面
 		lib.src.screens.navigator._MyAppNavigatorState.build
-			lib.src.screens.scaffold.MyAppScaffold的AdaptiveNavigationScaffold决定底部栏
+			Navigator的pages中:
+			[
+			lib.src.screens.scaffold.MyAppScaffold的AdaptiveNavigationScaffold决定底部栏,
+			要跳转的其他二级页面
+			]
 ```
