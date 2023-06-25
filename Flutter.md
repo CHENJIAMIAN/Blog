@@ -102,11 +102,11 @@ plugins.flutter.io/path_provider
 plugins.flutter.io/image_picker
 plugins.hunghd.vn/image_cropper
 
-style: Theme.of(context).textTheme.xxx,
-Image(image: AssetImage('assets/p1_qidongye_logo.png'))
 
-lib.src.app._BookstoreState._guard 决定第一页面
-lib.src.screens.scaffold.BookstoreScaffold.build 决定底部栏
 
+```js
 lib.main.main
-	
+	lib.src.app._MyAppState._guard 决定第一页面
+		lib.src.screens.navigator._MyAppNavigatorState.build
+			lib.src.screens.scaffold.MyAppScaffold的AdaptiveNavigationScaffold决定底部栏
+```
