@@ -107,3 +107,5 @@ Image(image: AssetImage('assets/p1_qidongye_logo.png'))
 
 lib.src.app._BookstoreState._guard 决定第一页面
 lib.src.screens.scaffold.BookstoreScaffold.build 决定底部栏
+
+lib.main.main
