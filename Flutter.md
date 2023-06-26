@@ -103,7 +103,6 @@ plugins.flutter.io/image_picker
 plugins.hunghd.vn/image_cropper
 
 
-
 ```js
 lib.main.main
 	lib.src.app._MyAppState._guard 决定第一页面
