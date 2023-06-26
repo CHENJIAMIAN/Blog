@@ -2,7 +2,7 @@
 ### 架构图
 [Flutter System Architecture - Google 幻灯片](https://docs.google.com/presentation/d/1cw7A4HbvM_Abv320rVgPVGiUP2msVs7tfGbkgdrTy0I/edit#slide=id.p)
 Flutter 使用与 Unity 相同的基本架构模型
-![1-1.82c25693.png | 600](https://book.flutterchina.club/assets/img/1-1.82c25693.png)
+![1-1.82c25693.png | 800](https://book.flutterchina.club/assets/img/1-1.82c25693.png)
 
 ### 在线环境
 [dartpad](https://dartpad.dev/?)
