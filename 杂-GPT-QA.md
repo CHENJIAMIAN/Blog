@@ -118,4 +118,18 @@ DLSWBR的英文全称是"Dynamic Limiting Speed Web Behavior Recognition"。是�
         scene: 定义了哪个节点是默认场景中的根节点；
         scenes: 在.glb文件中定义多个.scene文件的列表；
         samplers: 定义纹理的过滤模式。
-    
+## chrome.storage.local跟localStorage有什么区别
+一个是会上传到云上, 一个在本地
+`chrome.storage.local`和`localStorage`有几个区别：
+
+1. 用途：`chrome.storage.local`专门为Chrome扩展和应用程序设计，用于在更集中的位置存储数据[^2](https://stackoverflow.com/questions/24279495/window-localstorage-vs-chrome-storage-local)。而`localStorage`是一个Web API，允许Web应用程序在用户的浏览器中存储数据[^1](https://www.oreilly.com/library/view/programming-chrome-apps/9781491905272/ch03.html)。
+
+2. 存储限制：`chrome.storage.local`通常提供较大的存储容量，约为5.2MB[^4](https://dev.to/milandhar/chrome-local-storage-in-extensions-4k9m)，而`localStorage`通常限制在约2.5MB[^3](https://sidewise.userecho.com/communities/1/topics/169-use-chromestoragelocal-rather-than-localstorage)。
+
+3. 同步功能：当用户在不同设备上登录到Chrome时，`chrome.storage.local`具有数据同步的能力[^2](https://stackoverflow.com/questions/24279495/window-localstorage-vs-chrome-storage-local)。`localStorage`没有内置的同步功能，仅限于当前设备。
+
+4. 异步和同步：`chrome.storage.local`是异步操作的，意味着它使用回调函数或Promises来处理数据的存储和检索[^2](https://stackoverflow.com/questions/24279495/window-localstorage-vs-chrome-storage-local)。`localStorage`是同步操作的，可以直接使用简单的属性访问方式来访问存储的数据。
+
+5. 数据寿命：存储在`chrome.storage.local`中的数据可以长时间持久存在，即使浏览器关闭或重新启动[^2](https://stackoverflow.com/questions/24279495/window-localstorage-vs-chrome-storage-local)。`localStorage`中的数据通常是持久的，但可以在明确清除或清除浏览器缓存时被清除。
+
+需要注意的是，`chrome.storage.local`主要用于Chrome扩展和应用程序，而`localStorage`是一种更通用的Web API，用于在浏览器中本地存储数据。
