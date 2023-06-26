@@ -94,9 +94,16 @@ final int y = getX(); // final变量，可以在运行时计算赋值
 
 const int a = 5; // const常量
 const int b = a * 2; // const常量，在编译时计算赋值
+
+final List<int> numbers = [1, 2, 3];//可以numbers.add(4)
+const List<int> numbers = [1, 2, 3];//不可以numbers.add(4)
+
 ```
-dynamic value = 5;
-value = "Hello";
+#### dynamic 和 Object
+```dart
+dynamic value = 5;      value = "Hello";
+```
+
 
 https://github.com/miguelpruivo/flutter_file_picker
 https://github.com/juliansteenbakker/mobile_scanner
