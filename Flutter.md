@@ -123,6 +123,8 @@ lib.main.main
 			要跳转的其他二级页面
 			]
 ```
+### 实践经验
+1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要加mainAxisSize: MainAxisSize.min尽量占少的空间
 ### 路由
 MaterialApp.routes:{}
 ### 生命周期
