@@ -2,6 +2,7 @@
 ### 架构图
 [Flutter System Architecture - Google 幻灯片](https://docs.google.com/presentation/d/1cw7A4HbvM_Abv320rVgPVGiUP2msVs7tfGbkgdrTy0I/edit#slide=id.p)
 Flutter 使用与 Unity 相同的基本架构模型
+![1-1.82c25693.png | 700](https://book.flutterchina.club/assets/img/1-1.82c25693.png)
 
 ### 在线环境
 [dartpad](https://dartpad.dev/?)
@@ -93,7 +94,16 @@ final int y = getX(); // final变量，可以在运行时计算赋值
 
 const int a = 5; // const常量
 const int b = a * 2; // const常量，在编译时计算赋值
+
+final List<int> numbers = [1, 2, 3];//可以numbers.add(4)
+const List<int> numbers = [1, 2, 3];//不可以numbers.add(4)
+
 ```
+#### dynamic 和 Object
+```dart
+dynamic value = 5;      value = "Hello";
+```
+
 
 https://github.com/miguelpruivo/flutter_file_picker
 https://github.com/juliansteenbakker/mobile_scanner
@@ -101,7 +111,6 @@ plugins.flutter.io/url_launcher
 plugins.flutter.io/path_provider
 plugins.flutter.io/image_picker
 plugins.hunghd.vn/image_cropper
-
 
 
 ```js
@@ -116,3 +125,19 @@ lib.main.main
 ```
 ### 实践经验
 1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要加mainAxisSize: MainAxisSize.min尽量占少的空间
+### 路由
+MaterialApp.routes:{}
+### 生命周期
+
+| 生命周期方法                | 调用时机                                                     | 主要用途                                                     |
+| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 构造函数                   | 创建组件对象时调用                                           | 初始化组件的状态和属性                                       |
+| initState()               | 在构造函数执行之后调用                                       | 初始化组件的状态                                             |
+| didChangeDependencies()    | 当组件依赖的数据发生变化时调用                               | 更新组件的状态                                               |
+| build()                   | 在初始化阶段和每次组件需要被重建时调用                         | 构建组件的UI，返回一个Widget对象                             |
+| didUpdateWidget()          | 当父组件发生重建时调用                                       | 更新组件的状态                                               |
+| deactivate()              | 在组件被移除渲染树之前调用                                   | 释放资源、取消订阅等清理操作                                 |
+| dispose()                 | 在组件被永久从渲染树中移除时调用                             | 释放资源、取消订阅等最终清理操作                             |
+| didChangeAppLifecycleState() | 当应用的生命周期状态发生变化时调用（仅适用于StatefulWidget的State对象） | 响应应用程序生命周期的变化，如进入后台、返回前台等             |
+| reassemble()               | 在调试模式下，热重载时调用                                   | 在热重载时重新构建组件的UI，用于调试和快速开发                 |
+
