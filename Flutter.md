@@ -124,22 +124,12 @@ lib.main.main
 			]
 ```
 ### 实践经验
-1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要加mainAxisSize: MainAxisSize.min尽量占少的空间
+1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要加 `mainAxisSize: MainAxisSize.min` 尽量占少的空间
 2. Row可以挤开宽度到满
-3. Navigation and Routing案例中添加子ji一个页面: app.dart的allowedPaths添加页面路径,navigator.dart添加的pages添加页面,通过RouteStateScope.of(context)!.go('/shoukuanfangshi');跳转
+3. Navigation and Routing案例中添加子级一个页面:
+	1. app.dart 的 `allowedPaths` 添加页面路径,
+	2. navigator.dart 添加的 `pages` 添加页面,
+	3. 通过`RouteStateScope.of(context)!.go('/shoukuanfangshi');`跳转
+	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
 ### 路由
 MaterialApp.routes:{}
-### 生命周期
-
-| 生命周期方法                | 调用时机                                                     | 主要用途                                                     |
-| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 构造函数                   | 创建组件对象时调用                                           | 初始化组件的状态和属性                                       |
-| initState()               | 在构造函数执行之后调用                                       | 初始化组件的状态                                             |
-| didChangeDependencies()    | 当组件依赖的数据发生变化时调用                               | 更新组件的状态                                               |
-| build()                   | 在初始化阶段和每次组件需要被重建时调用                         | 构建组件的UI，返回一个Widget对象                             |
-| didUpdateWidget()          | 当父组件发生重建时调用                                       | 更新组件的状态                                               |
-| deactivate()              | 在组件被移除渲染树之前调用                                   | 释放资源、取消订阅等清理操作                                 |
-| dispose()                 | 在组件被永久从渲染树中移除时调用                             | 释放资源、取消订阅等最终清理操作                             |
-| didChangeAppLifecycleState() | 当应用的生命周期状态发生变化时调用（仅适用于StatefulWidget的State对象） | 响应应用程序生命周期的变化，如进入后台、返回前台等             |
-| reassemble()               | 在调试模式下，热重载时调用                                   | 在热重载时重新构建组件的UI，用于调试和快速开发                 |
-
