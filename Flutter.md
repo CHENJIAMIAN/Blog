@@ -121,7 +121,7 @@ lib.main.main
 			]
 ```
 ### 实践经验
-1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要加 `mainAxisSize: MainAxisSize.min` 尽量占少的空间
+1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要尽量占少的空间 mainAxisSize: MainAxisSize.min,
 2. Row可以挤开宽度到满
 3. Navigation and Routing案例中添加子级一个页面:
 	1. app.dart 的 `allowedPaths` 添加页面路径,
