@@ -105,11 +105,9 @@ dynamic value = 5;      value = "Hello";
 ```
 
 
-https://github.com/miguelpruivo/flutter_file_picker
-https://github.com/juliansteenbakker/mobile_scanner
-plugins.flutter.io/path_provider
-plugins.flutter.io/image_picker
-plugins.hunghd.vn/image_cropper
+https://github.com/miguelpruivo/flutter_file_picker 文件选择器
+https://github.com/juliansteenbakker/mobile_scanner 二维码扫描
+plugins.hunghd.vn/image_cropper# 图像裁剪器#
 
 
 ```js
