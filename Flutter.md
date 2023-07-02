@@ -133,3 +133,4 @@ lib.main.main
 	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
 ### 路由
 MaterialApp.routes:{}
+通用
