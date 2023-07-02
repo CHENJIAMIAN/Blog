@@ -128,7 +128,7 @@ lib.main.main
 	2. navigator.dart 添加的 `pages` 添加页面,
 	3. 通过`RouteStateScope.of(context)!.go('/shoukuanfangshi');`跳转
 	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
-4. cong'x
+4. 从下往上弹出是# BottomSheet
 ### 路由
 MaterialApp.routes:{}
 
