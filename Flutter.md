@@ -107,7 +107,6 @@ dynamic value = 5;      value = "Hello";
 
 https://github.com/miguelpruivo/flutter_file_picker
 https://github.com/juliansteenbakker/mobile_scanner
-plugins.flutter.io/url_launcher
 plugins.flutter.io/path_provider
 plugins.flutter.io/image_picker
 plugins.hunghd.vn/image_cropper
