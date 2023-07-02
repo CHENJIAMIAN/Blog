@@ -129,6 +129,7 @@ lib.main.main
 	3. 通过`RouteStateScope.of(context)!.go('/shoukuanfangshi');`跳转
 	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
 4. 从下往上弹出是# BottomSheet
+5. tu'b
 ### 路由
 MaterialApp.routes:{}
 
