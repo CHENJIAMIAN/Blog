@@ -136,3 +136,4 @@ MaterialApp.routes:{}
 ```js
 帮我写一个flutter页面,页面名称为"搬砖规则",类的名称为"BanzhuanguizePage",页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/');},),"""
 ```
+assets/.*\.png
