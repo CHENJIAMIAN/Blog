@@ -130,6 +130,7 @@ lib.main.main
 	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
 4. 从下往上弹出是# BottomSheet, # CupertinoPicker是类似的滚轮选择
 5. 图标Image.asset('assets/images/p1_chongzhi_icon_usdt.png',width: 20,height: 20,)
+6. 
 ### 路由
 MaterialApp.routes:{}
 
