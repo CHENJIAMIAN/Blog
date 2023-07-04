@@ -368,7 +368,8 @@ tileset.root.content.batchTable._features[0].content._model._sceneGraph.componen
 ```
 #### 从b3dm提取gltf提取纹理图片
 1. [CHENJIAMIAN/ExtractorGlbFromB3DM: 提取b3dm中的glb文件, 以便获取里面的模型/材质图片等](https://github.com/CHENJIAMIAN/ExtractorGlbFromB3DM/tree/master)
-2. [免费的 GLB 资产提取器](https://products.aspose.app/3d/zh-cn/extractor/glb)
+2. https://github.com/CesiumGS/3d-tiles-tools
+3. [免费的 GLB 资产提取器](https://products.aspose.app/3d/zh-cn/extractor/glb)
 ### 是怎么构造请求b3dm的url?
 ```js
 Cesium3DTile.constructor
