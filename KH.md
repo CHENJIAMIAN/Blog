@@ -1,6 +1,7 @@
 ISCS  综合监控系统 - Integrated Supervisory Control System 
 PSCADA 电力监控系统Power Supervisory Control And Data Acquisition 
 BAS 环境与设备监控系统 Building Automation System
+DCOM 指的是“数据中心运营管理”(Data Center Operations Management)
 
 HMI（Human Machine Interaction）人机界面
 
