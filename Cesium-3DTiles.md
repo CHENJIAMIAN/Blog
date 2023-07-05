@@ -6,6 +6,13 @@
 > 3D Tiles 支持多个其他 JSON 文件的 JSON 索引。这是通过使用external tilesets外部瓦片集实现的，外部瓦片集是使用 URL 或相对路径引用其他瓦片集的 JSON 文件。 通过这种方式，单个顶级 tileset JSON 文件可以引用和索引多个其他 tilesets，从而实现大型 3D 数据集的高效组织和管理。每个引用的图块集都可以包含自己的图块集、属性和元数据，并且可以独立于其他图块加载和显示。
 3. [CHENJIAMIAN/xt3d-local-debug: xt3d.js本地调试](https://github.com/CHENJIAMIAN/xt3d-local-debug) 里包含了2023年5月5日最新可用的几个下载器，是我整理归纳的
 
+### 处理与转换
+#### 压缩/组合/合并/升级/封包, glb/gltf/b3dm/i3dm互转
+1. https://github.com/CesiumGS/3d-tiles-tools 
+	- npx 3d-tiles-tools b3dmToGlb -i ./specs/data/batchedWithBatchTableBinary.b3dm -o ./output/extracted.glb
+#### gltf/glb互转 1.0/2.0互转
+1. https://github.com/CesiumGS/gltf-pipeline
+
 ## 3DTiles
 ```js
 3DTiles 1.0 规范允许异构数据共存于一个数据集上。3D 瓦片只是空间划分的单元，并不是该块三维空域内的具体三维物体。这些三维物体被称作“瓦片内容”。
@@ -368,10 +375,8 @@ tileset.root.content.batchTable._features[0].content._model._sceneGraph.componen
 ```
 #### 从b3dm提取gltf提取纹理图片
 1. [CHENJIAMIAN/ExtractorGlbFromB3DM: 提取b3dm中的glb文件, 以便获取里面的模型/材质图片等](https://github.com/CHENJIAMIAN/ExtractorGlbFromB3DM/tree/master)
-2. https://github.com/CesiumGS/3d-tiles-tools
-	- npx 3d-tiles-tools b3dmToGlb -i ./specs/data/batchedWithBatchTableBinary.b3dm -o ./output/extracted.glb
-3. [免费的 GLB 资产提取器](https://products.aspose.app/3d/zh-cn/extractor/glb)
-#### 
+2. [免费的 GLB 资产提取器](https://products.aspose.app/3d/zh-cn/extractor/glb)
+
 ### 是怎么构造请求b3dm的url?
 ```js
 Cesium3DTile.constructor
