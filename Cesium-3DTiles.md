@@ -10,10 +10,11 @@
 #### 3dtiles压缩/组合/合并/升级/封包, glb/gltf/b3dm/i3dm互转
 1. https://github.com/CesiumGS/3d-tiles-tools 
 	- npx 3d-tiles-tools b3dmToGlb -i ./specs/data/batchedWithBatchTableBinary.b3dm -o ./output/extracted.glb
+		- 2023年7月5日测试出现'v_texCoord_0' : undeclared identifier的错误
 #### gltf/glb互转 1.0/2.0互转
 1. https://github.com/CesiumGS/gltf-pipeline 
-### obj转3dtile
-https://github.com/PrincessGod/objTo3d-tiles 最后一次更新是19年
+#### obj转3dtile
+https://github.com/PrincessGod/objTo3d-tiles 最后一次更新是19年,2023年7月5日测试有效
 #### osgb转3dtiles
 [fanvanzh/3dtiles: The fastest tools for 3dtiles convert in the world!](https://github.com/fanvanzh/3dtiles#%E7%AE%80%E4%BB%8B) 2023年5月刚更新
 1. 要编译出来, 需要安装rust环境(前提是安装vs studio的c++环境)
