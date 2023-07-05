@@ -29,9 +29,12 @@ HMI（Human Machine Interaction）人机界面
 4. 产品线组织与绩效
 
 *   IPD: Integrated Product Development, 集成产品开发
-    *   IPMT: Integrated Project Management Team，项目管理团队，由建设方、投资方、项目管理方和其他参与各方代表组成，负责协调和监督项目的实施
-        *   PDT: Product Development Team, 产品开发团队
-	* 
+	*   IPMT: Integrated Portfolio Management Team 集成组合管理团队
+		*   PDT: Product Development Team, 产品开发团队
+	* C-PMT Corporation 公司级组合管理团队
+		* PL-PMT 产品线
+			* PF-RMT Family 产品族需求管理团队
+				* RAT 需求分析团队
 
 *   TR: Technical Review, 技术评审
     *   TR1：概念阶段
