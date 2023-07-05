@@ -31,7 +31,7 @@ HMI（Human Machine Interaction）人机界面
 *   IPD: Integrated Product Development, 集成产品开发
     *   IPMT: Integrated Project Management Team，项目管理团队，由建设方、投资方、项目管理方和其他参与各方代表组成，负责协调和监督项目的实施
         *   PDT: Product Development Team, 产品开发团队
-
+	* 
 
 *   TR: Technical Review, 技术评审
     *   TR1：概念阶段
