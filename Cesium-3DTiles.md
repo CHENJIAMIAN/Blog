@@ -371,6 +371,7 @@ tileset.root.content.batchTable._features[0].content._model._sceneGraph.componen
 2. https://github.com/CesiumGS/3d-tiles-tools
 	- npx 3d-tiles-tools b3dmToGlb -i ./specs/data/batchedWithBatchTableBinary.b3dm -o ./output/extracted.glb
 3. [免费的 GLB 资产提取器](https://products.aspose.app/3d/zh-cn/extractor/glb)
+4
 ### 是怎么构造请求b3dm的url?
 ```js
 Cesium3DTile.constructor
