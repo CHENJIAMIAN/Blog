@@ -13,6 +13,8 @@
 #### gltf/glb互转 1.0/2.0互转
 1. https://github.com/CesiumGS/gltf-pipeline
 
+https://github.com/PrincessGod/objTo3d-tiles
+
 ## 3DTiles
 ```js
 3DTiles 1.0 规范允许异构数据共存于一个数据集上。3D 瓦片只是空间划分的单元，并不是该块三维空域内的具体三维物体。这些三维物体被称作“瓦片内容”。
