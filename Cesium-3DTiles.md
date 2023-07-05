@@ -7,17 +7,17 @@
 3. [CHENJIAMIAN/xt3d-local-debug: xt3d.js本地调试](https://github.com/CHENJIAMIAN/xt3d-local-debug) 里包含了2023年5月5日最新可用的几个下载器，是我整理归纳的
 
 ### 处理与转换
-#### 压缩/组合/合并/升级/封包, glb/gltf/b3dm/i3dm互转
+#### 3dtiles压缩/组合/合并/升级/封包, glb/gltf/b3dm/i3dm互转
 1. https://github.com/CesiumGS/3d-tiles-tools 
 	- npx 3d-tiles-tools b3dmToGlb -i ./specs/data/batchedWithBatchTableBinary.b3dm -o ./output/extracted.glb
 #### gltf/glb互转 1.0/2.0互转
 1. https://github.com/CesiumGS/gltf-pipeline 
 
 https://github.com/PrincessGod/objTo3d-tiles 最后一次更新是19年
-
+#### osgb转3dtiles
 [fanvanzh/3dtiles: The fastest tools for 3dtiles convert in the world!](https://github.com/fanvanzh/3dtiles#%E7%AE%80%E4%BB%8B) 2023年5月刚更新
 1. 要编译出来, 需要安装rust环境(前提是安装vs studio的c++环境)
-2. 看了源码,只能把OSGB转为3dtiles
+2. 看了源码,只能把OSGB转为3dtiles(readme说可以转fbx,骗人的,issue里作者说一直没开发它)
 
 ## 3DTiles
 ```js
