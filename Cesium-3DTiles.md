@@ -12,7 +12,7 @@
 	- npx 3d-tiles-tools b3dmToGlb -i ./specs/data/batchedWithBatchTableBinary.b3dm -o ./output/extracted.glb
 #### gltf/glb互转 1.0/2.0互转
 1. https://github.com/CesiumGS/gltf-pipeline 
-
+### o
 https://github.com/PrincessGod/objTo3d-tiles 最后一次更新是19年
 #### osgb转3dtiles
 [fanvanzh/3dtiles: The fastest tools for 3dtiles convert in the world!](https://github.com/fanvanzh/3dtiles#%E7%AE%80%E4%BB%8B) 2023年5月刚更新
