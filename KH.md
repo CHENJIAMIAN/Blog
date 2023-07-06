@@ -48,7 +48,7 @@ HMI（Human Machine Interaction）人机界面
     *   ADCP: 可获得性评审
 
 ## CDP(Charter契约/任务书 开发流程)
-#### IPMT->PL-PMT1->CDT1从上到下
+#### IPMT->PL-PMT1----组建---->CDT1 `从上到下`
 - IPMT: 集成 组合(Protfolio) 管理团队
 	- PL-PMT：是Product Line（产品线）
 		1. CDT: 任务书开发团队
