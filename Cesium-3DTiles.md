@@ -7,6 +7,7 @@
 3. [CHENJIAMIAN/xt3d-local-debug: xt3d.js本地调试](https://github.com/CHENJIAMIAN/xt3d-local-debug) 里包含了2023年5月5日最新可用的几个下载器，是我整理归纳的
 
 ### 处理与转换
+> [三维模型：人工建模模型转为3DTiles格式 | Mars3D开发教程](http://mars3d.cn/dev/guide/data/tileset.html#_1-%E4%BA%BA%E5%B7%A5%E5%BB%BA%E6%A8%A1%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D)
 #### 1. Github 开源的小工具
 ##### 3dtiles压缩/组合/合并/升级/封包, glb/gltf/b3dm/i3dm互转
 1. https://github.com/CesiumGS/3d-tiles-tools 
