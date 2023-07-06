@@ -7,24 +7,25 @@
 3. [CHENJIAMIAN/xt3d-local-debug: xt3d.js本地调试](https://github.com/CHENJIAMIAN/xt3d-local-debug) 里包含了2023年5月5日最新可用的几个下载器，是我整理归纳的
 
 ### 处理与转换
-1. 最简单的办法: [My Assets | Cesium ion --- 我的资产 |铯离子](https://ion.cesium.com/assets/)可以在线免费转3DTiles再下载下来
-2. [Construkted-Reality/3DTG：将 3d 模型转换为 3d tiles](https://github.com/Construkted-Reality/3DTG)目前该工具只接受带纹理的 OBJ 文件
-3. 1. Github 开源的小工具
-2. Cesium 官方推出的 Cesium Ion 在线平台（对国内企业来说有点鸡肋）
-3. 一些商家推出的工具集（如 cesiumlab）
-#### 3dtiles压缩/组合/合并/升级/封包, glb/gltf/b3dm/i3dm互转
+#### 1. Github 开源的小工具
+##### 3dtiles压缩/组合/合并/升级/封包, glb/gltf/b3dm/i3dm互转
 1. https://github.com/CesiumGS/3d-tiles-tools 
 	- npx 3d-tiles-tools b3dmToGlb -i ./specs/data/batchedWithBatchTableBinary.b3dm -o ./output/extracted.glb
 		- 2023年7月5日测试出现'v_texCoord_0' : undeclared identifier的错误
-#### gltf/glb互转 1.0/2.0互转
+##### gltf/glb互转 1.0/2.0互转
 1. https://github.com/CesiumGS/gltf-pipeline 
-#### obj转3dtile
+##### obj转3dtile
 https://github.com/PrincessGod/objTo3d-tiles 最后一次更新是19年,2023年7月5日测试有效
 1. 好像不能切成多个b3dm
-#### osgb转3dtiles
-[fanvanzh/3dtiles: The fastest tools for 3dtiles convert in the world!](https://github.com/fanvanzh/3dtiles#%E7%AE%80%E4%BB%8B) 2023年5月刚更新
-1. 要编译出来, 需要安装rust环境(前提是安装vs studio的c++环境)
-2. 看了源码,只能把OSGB转为3dtiles(readme说可以转fbx,骗人的,issue里作者说一直没开发它)
+##### osgb转3dtiles
+1. [fanvanzh/3dtiles: The fastest tools for 3dtiles convert in the world!](https://github.com/fanvanzh/3dtiles#%E7%AE%80%E4%BB%8B) 2023年5月刚更新
+	1. 要编译出来, 需要安装rust环境(前提是安装vs studio的c++环境)
+	2. 看了源码,只能把OSGB转为3dtiles(readme说可以转fbx,骗人的,issue里作者说一直没开发它)
+2. [Construkted-Reality/3DTG：将 3d 模型转换为 3d tiles](https://github.com/Construkted-Reality/3DTG)目前该工具只接受带纹理的 OBJ 文件
+#### 2. Cesium 官方推出的 Cesium Ion 在线平台（对国内企业来说有点鸡肋）
+- 最简单的办法: [My Assets | Cesium ion --- 我的资产 |铯离子](https://ion.cesium.com/assets/)可以在线免费转3DTiles再下载下来
+#### 3. 一些商家推出的工具集（如 cesiumlab）
+
 
 ## 3DTiles
 ```js
