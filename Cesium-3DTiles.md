@@ -17,6 +17,7 @@
 1. https://github.com/CesiumGS/gltf-pipeline 
 #### obj转3dtile
 https://github.com/PrincessGod/objTo3d-tiles 最后一次更新是19年,2023年7月5日测试有效
+1. 好像不能切成多个b3dm
 #### osgb转3dtiles
 [fanvanzh/3dtiles: The fastest tools for 3dtiles convert in the world!](https://github.com/fanvanzh/3dtiles#%E7%AE%80%E4%BB%8B) 2023年5月刚更新
 1. 要编译出来, 需要安装rust环境(前提是安装vs studio的c++环境)
