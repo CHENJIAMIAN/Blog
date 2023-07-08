@@ -116,7 +116,7 @@ lib.main.main
 		lib.src.screens.navigator._MyAppNavigatorState.build
 			Navigator的pages中:
 			[
-			lib.src.screens.scaffold.MyAppScaffold的AdaptiveNavigationScaffold决定底部栏,
+			lib.src.screens.scaffold.MyAppScaffold的 AdaptiveNavigationScaffold 决定底部栏,
 			要跳转的其他二级页面
 			]
 ```
