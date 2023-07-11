@@ -1,6 +1,5 @@
 > `ModelExperimental` 这个新架构（2022年5月，此架构正在启动对原 `Model` 类相关架构的替换）的更新而随时可能会更新。2023年4月24日已然更新!
 
-
 ```js
 glTF 数据在几何数据部分有三层：Node ← Mesh ← Primitive。
 其中，Primitive 即 glTF 数据规范中最小的图形单位
