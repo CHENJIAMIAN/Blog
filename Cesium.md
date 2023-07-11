@@ -439,8 +439,33 @@ createTaskProcessorWorker根据"workerModule"匹配 TaskProcessor根据传入的
 ```
 ## 源码-选择物体
 
-```
-
+```js
+PickId (Context.js:1563)
+Context.createPickId (Context.js:1618)
+createPickTexture (BatchTexture.js:466)
+BatchTexture.update (BatchTexture.js:507)
+ModelFeatureTable.update (ModelFeatureTable.js:166)
+updateFeatureTables (Model.js:1899)
+Model.update (Model.js:1785)
+Model3DTileContent.update (Model3DTileContent.js:257)
+updateContent (Cesium3DTile.js:1992)
+Cesium3DTile.update (Cesium3DTile.js:2036)
+updateTiles (Cesium3DTileset.js:2915)
+update (Cesium3DTileset.js:3203)
+Cesium3DTileset.updateForPass (Cesium3DTileset.js:3303)
+Cesium3DTileset.update (Cesium3DTileset.js:3246)
+PrimitiveCollection.update (PrimitiveCollection.js:377)
+updateAndRenderPrimitives (Scene.js:3339)
+executeCommandsInViewport (Scene.js:3115)
+Scene4.updateAndExecuteCommands (Scene.js:2860)
+Picking.pick (Picking.js:299)
+Scene4.pick (Scene.js:3935)
+pickEntity (Viewer.js:117)
+pickAndSelectObject (Viewer.js:948)
+cancelMouseEvent (ScreenSpaceEventHandler.js:295)
+handleMouseUp (ScreenSpaceEventHandler.js:317)
+handlePointerUp (ScreenSpaceEventHandler.js:868)
+listener (ScreenSpaceEventHandler.js:54)
 ```
 
 ## 实践
