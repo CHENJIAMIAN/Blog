@@ -329,10 +329,10 @@ CustomShader渲染堆栈：
             initialize19 (Cesium.js:88021)
             Model (Cesium.js:87953)
             Model.fromB3dm (Cesium.js:89114) 
-	            本质是modelMatrix决定了位置而 ModelSceneGraph.buildDrawCommands 用 ModelDrawCommand 决定了 modelMatrix取决于: 
+	            本质是modelMatrix 决定了位置而 ModelSceneGraph.buildDrawCommands 用 ModelDrawCommand 决定了 modelMatrix 取决于: 
 		            1.this.runtimePrimitive.boundingSphere//取决于GLTF中定义的scene.nodes[i].primitives[j].attributes[k].min|max的xyz坐标  
 					2.this._modelMatrix//取决与我们代码传入的modelMatrix  
-					3.this._boundingVolume //取决于GLTF中定义的scene.nodes[i].primitives[j].attributes[k].min|max的xyz坐标, 但还判断是场景是2D模式还是3D模式
+					3.this._boundingVolume //同this.runtimePrimitive.boundingSphere, 但还判断是场景是2D模式还是3D模式
 	            //是 model._boundingSphere
 	            //是 model._sceneGraph.boundingSphere.center 
 	            //是 ModelSceneGraph.js 的 ModelSceneGraph.buildDrawCommands的model 的 
