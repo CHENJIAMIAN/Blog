@@ -446,7 +446,7 @@ createTaskProcessorWorker根据"workerModule"匹配 TaskProcessor根据传入的
 	createPickTexture (BatchTexture.js:466)
 	BatchTexture.update (BatchTexture.js:507)
 	ModelFeatureTable.update (ModelFeatureTable.js:166)
-	---
+	---/Model(b3dm等)的_featureTables存在才会继续
 	updateFeatureTables (Model.js:1899)
 	Model.update (Model.js:1785)
 	---
