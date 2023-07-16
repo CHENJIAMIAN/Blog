@@ -1,6 +1,7 @@
 ISCS  综合监控系统 - Integrated Supervisory Control System 
 PSCADA 电力监控系统Power Supervisory Control And Data Acquisition 
 BAS 环境与设备监控系统 Building Automation System
+DCOM 指的是“数据中心运营管理”(Data Center Operations Management)
 
 HMI（Human Machine Interaction）人机界面
 
@@ -28,8 +29,12 @@ HMI（Human Machine Interaction）人机界面
 4. 产品线组织与绩效
 
 *   IPD: Integrated Product Development, 集成产品开发
-    *   IPMT: Integrated Project Management Team，项目管理团队，由建设方、投资方、项目管理方和其他参与各方代表组成，负责协调和监督项目的实施
-        *   PDT: Product Development Team, 产品开发团队
+	*   IPMT: Integrated Portfolio Management Team 集成组合管理团队
+		*   PDT: Product Development Team, 产品开发团队
+	* C-PMT Corporation 公司级组合管理团队
+		* PL-PMT 产品线
+			* PF-RMT Family 产品族需求管理团队
+				* RAT 需求分析团队
 
 *   TR: Technical Review, 技术评审
     *   TR1：概念阶段
@@ -43,7 +48,7 @@ HMI（Human Machine Interaction）人机界面
     *   ADCP: 可获得性评审
 
 ## CDP(Charter契约/任务书 开发流程)
-#### IPMT->PL-PMT1->CDT1从上到下
+#### IPMT->PL-PMT1----组建---->CDT1 `从上到下`
 - IPMT: 集成 组合(Protfolio) 管理团队
 	- PL-PMT：是Product Line（产品线）
 		1. CDT: 任务书开发团队

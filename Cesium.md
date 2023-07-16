@@ -1,10 +1,11 @@
+现在是2023年7月6日,cesium版本是1.107了
+#### 踩坑
+1. 怎么设置trackedEntity的角度?entity的viewFrom属性是用来设置相机相对于实体的位置
 ## 资源
 [gw3_construkted/construkted.js at master · stefanciorici/gw3_construkted · GitHub](https://github.com/stefanciorici/gw3_construkted/blob/master/wp-content/themes/gowatch-child/js/construkted.js)泄露了官方的测量/距离/面积/模型位置编辑器插件
 [Construkted-Reality/edd6b-Construkted](https://github.com/Construkted-Reality/edd6b-Construkted/tree/ba5418eaa26710e0b63440167c177a5014e046e5)具体分支
 [master](https://github1s.com/Construkted-Reality/edd6b-Construkted/blob/master/edd-cesiumjs-customize/includes/js/CesiumIonSDKPlugin.js)
 [Construkted-Reality/3DT-Local-viewer: Local viewer for 3D Tiles --- Construkted-Reality/3DT-Local-viewer：3D Tiles 的本地查看器](https://github.com/Construkted-Reality/3DT-Local-viewer)2023年4月6日尝试了，不可用
-[Construkted-Reality/3DTG：将 3d 模型转换为 3d tiles](https://github.com/Construkted-Reality/3DTG)目前该工具只接受带纹理的 OBJ 文件
-[My Assets | Cesium ion --- 我的资产 |铯离子](https://ion.cesium.com/assets/)可以在线免费转3DTiles再下载下来
 
 ```javascript
 Cesium.Resource.fetchJson(url)
@@ -435,6 +436,52 @@ createTaskProcessorWorker根据"workerModule"匹配 TaskProcessor根据传入的
 			},
 			"canTransferArrayBuffer": true
 		}
+```
+## 源码-选择物体
+> 根据像素对应颜色匹配
+```js
+存起来:
+	PickId (Context.js:1563)
+	Context.createPickId (Context.js:1618)
+	createPickTexture (BatchTexture.js:466)
+	BatchTexture.update (BatchTexture.js:507)
+	ModelFeatureTable.update (ModelFeatureTable.js:166)
+	---/Model(b3dm等)的_featureTables存在才会继续
+	updateFeatureTables (Model.js:1899)
+	Model.update (Model.js:1785)
+	---
+	Model3DTileContent.update (Model3DTileContent.js:257)
+	updateContent (Cesium3DTile.js:1992)
+	Cesium3DTile.update (Cesium3DTile.js:2036)
+	updateTiles (Cesium3DTileset.js:2915)
+	update (Cesium3DTileset.js:3203)
+	Cesium3DTileset.updateForPass (Cesium3DTileset.js:3303)
+	Cesium3DTileset.update (Cesium3DTileset.js:3246)
+	PrimitiveCollection.update (PrimitiveCollection.js:377)
+	updateAndRenderPrimitives (Scene.js:3339)
+	executeCommandsInViewport (Scene.js:3115)
+	Scene4.updateAndExecuteCommands (Scene.js:2860)
+	---
+	Picking.pick (Picking.js:299)
+	Scene4.pick (Scene.js:3935)
+	pickEntity (Viewer.js:117)
+	pickAndSelectObject (Viewer.js:948)
+	cancelMouseEvent (ScreenSpaceEventHandler.js:295)
+	handleMouseUp (ScreenSpaceEventHandler.js:317)
+	handlePointerUp (ScreenSpaceEventHandler.js:868)
+	listener (ScreenSpaceEventHandler.js:54)
+	
+获取:
+	Context.getObjectByPickColor (Context.js:1556)
+	PickFramebuffer.end (PickFramebuffer.js:96)
+	Picking.pick (Picking.js:302)
+	Scene4.pick (Scene.js:3935)
+	pickEntity (Viewer.js:117)
+	pickAndSelectObject (Viewer.js:948)
+	cancelMouseEvent (ScreenSpaceEventHandler.js:295)
+	handleMouseUp (ScreenSpaceEventHandler.js:317)
+	handlePointerUp (ScreenSpaceEventHandler.js:868)
+	listener (ScreenSpaceEventHandler.js:54)
 ```
 
 ## 实践

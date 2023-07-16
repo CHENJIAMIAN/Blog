@@ -1,3 +1,6 @@
+##### 踩坑
+1. 另一个窗口改localStorage才会触发这个窗口的`storage`事件,自己是触发不了自己的
+2. 
 ```javascript
 <script>         //html等它下载和执行完再加载
 <script async src=''>   //同加载 同执行 (执行script.js时，html解析暂停,且第二个脚本文件可能会在第一个脚本文件之前执行)

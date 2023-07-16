@@ -648,10 +648,10 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 
 | 格式                                                                                                                        | 用途                                    |
 | :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------ |
-| [批量 3D 模型 ( b3dm )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel/README.md)    | 异构 3D 模型。例如带纹理的地形和表面、3D 建筑外部和内部、大型模型。 |
-| [实例化 3D 模型 ( i3dm )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel/README.md) | 3D 模型实例。例如树木、风车、螺栓。                   |
-| [点云 ( pnts )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/PointCloud/README.md)              | 大量的点。                                 |
-| [复合 ( cmpt )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md)               | 将不同格式的tile连接成一个tile。                      |
+| [批量 3D 模型 ( b3dm )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Batched3DModel)    | 异构 3D 模型。例如带纹理的地形和表面、3D 建筑外部和内部、大型模型。 |
+| [实例化 3D 模型 ( i3dm )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Instanced3DModel) | 3D 模型实例。例如树木、风车、螺栓。                   |
+| [点云 ( pnts )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/PointCloud)              | 大量的点。                                 |
+| [复合 ( cmpt )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite)               | 将不同格式的tile连接成一个tile。                      |
 
 Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composite](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md) tile在同一个 tile 中支持不同的格式。
 

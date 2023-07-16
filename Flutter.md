@@ -1,4 +1,4 @@
->  Flutter是一个dart写的UI 工具包(有一层薄薄的 C/C++ 代码),  得益于dart, Flutter 在六个平台（Android、iOS、Web、Windows、macOS 和 Linux）上的支持
+>  Flutter是一个dart写的**UI 工具包**(有一层薄薄的 C/C++ 代码),  得益于dart, Flutter 在六个平台（Android、iOS、Web、Windows、macOS 和 Linux）上的支持
 ### 架构图
 [Flutter System Architecture - Google 幻灯片](https://docs.google.com/presentation/d/1cw7A4HbvM_Abv320rVgPVGiUP2msVs7tfGbkgdrTy0I/edit#slide=id.p)
 Flutter 使用与 Unity 相同的基本架构模型
@@ -171,10 +171,23 @@ lib.main.main
 		lib.src.screens.navigator._MyAppNavigatorState.build
 			Navigator的pages中:
 			[
-			lib.src.screens.scaffold.MyAppScaffold的AdaptiveNavigationScaffold决定底部栏,
+			lib.src.screens.scaffold.MyAppScaffold的 AdaptiveNavigationScaffold 决定底部栏,
 			要跳转的其他二级页面
 			]
 ```
+### 实践经验
+1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要尽量占少的空间 mainAxisSize: MainAxisSize.min,
+2. Row可以挤开宽度到满
+3. Navigation and Routing案例中添加子级一个页面:
+	1. app.dart 的 `allowedPaths` 添加页面路径,
+	2. navigator.dart 添加的 `pages` 添加页面,
+	3. 通过`RouteStateScope.of(context)!.go('/shoukuanfangshi');`跳转
+	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
+4. 从下往上弹出是# BottomSheet, # CupertinoPicker是类似的滚轮选择
+5. 图标Image.asset('assets/images/p1_chongzhi_icon_usdt.png',width: 20,height: 20,)
+6. 文本换行,用Flexible包裹文本
+### 路由
+MaterialApp.routes:{}
 
 ### 原理
 1. import 'dart:ui'; 实际是引入 `D:\flutter_windows_3.10.5-stable\bin\cache\pkg\sky_engine\lib\ui\ui.dart
