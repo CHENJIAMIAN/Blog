@@ -34,8 +34,6 @@ Flutter 使用与 Unity 相同的基本架构模型
 7. 用于测试、调试和分析您的应用程序的[Flutter DevTools （也称为 Dart DevTools）](https://docs.flutter.dev/tools/devtools/overview)
 8. 用于创建、构建、测试和编译应用程序的命令行工具
 
-###
-
 ### 快速入门
 [你的第一个 Flutter 应用](https://codelabs.developers.google.com/codelabs/flutter-codelab-first#6)
 > vscode直接`F5`运行
@@ -104,12 +102,69 @@ const List<int> numbers = [1, 2, 3];//不可以numbers.add(4)
 dynamic value = 5;      value = "Hello";
 ```
 
-
+### 常用库
 https://github.com/miguelpruivo/flutter_file_picker 文件选择器
 https://github.com/juliansteenbakker/mobile_scanner 二维码扫描
 plugins.hunghd.vn/image_cropper# 图像裁剪器#
+https://pub.dev/packages/uni_links  打开网页或应用#
+https://pub.dev/packages/path_provider 获取文件系统目录
+https://pub.dev/packages/device_info_plus 获取设备信息
+https://pub.dev/packages/audioplayers 音频播放
+
+### 实践经验
+1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要尽量占少的空间 mainAxisSize: MainAxisSize.min,
+	- 一行3个占行的控件,用Expanded使它们平均分配行宽,(检查所有必要的都加上Expanded了)
+	- listview会尽量占据更多的高度, 从来使得页面白屏, 解决:加入 shrinkWrap: true, physics: NeverScrollableScrollPhysics(),
+1. Row可以挤开宽度到满
+2. Navigation and Routing案例中添加子级一个页面:
+	1. app.dart 的 `allowedPaths` 添加页面路径,
+	2. navigator.dart 添加的 `pages` 添加页面,
+	3. 通过`RouteStateScope.of(context)!.go('/shoukuanfangshi');`跳转
+	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
+3. 从下往上弹出是# BottomSheet
+4. 图标 Image.asset('assets/images/p1_chongzhi_icon_usdt.png',width: 20,height: 20,)
+5. SingleChildScrollView不滚动, 包个Expanded即可
+6. showModalBottomSheet 背景透明,不然给了圆角看不出来: 其backgroundColor: const Color.fromRGBO(0, 0, 0, 0),即可
+7. Row里的Collum里加spacer白屏,  给Row包Expaned即可解决
+### 路由
+MaterialApp.routes:{}
+#### 路由架构
+```js
+MaterialApp.router:
+	->routerDelegate = SimpleRouterDelegate(是个RouterDelegate包装了MyAppNavigator) 
+		//监听路由信息的改变,改变时，提供一个新的Navigator的pages列表
+		->routeState: _routeState,
+		->builder:MyAppNavigator(Navigator)
+						MyAppNavigator:
+								pages[
+										final pathTemplate = routeState.route.pathTemplate;
+										MyAppScaffold (Navigator)					
+										//根 据pathTemplate 决定要渲染的page
+								]]
+								
+```
+#### 跳转原理
+```js
+RouteStateScope.of(context).go('/shezhizhifumima');//改变了 routeState 的 route.pathTemplate
+//RouteStateScope 是个InheritedNotifier<RouteState>, go方法由 RouteState提供 (RouteState是个 ChangeNotifier)
+	this.route = xxx 
+		notifyListeners	
+		通知与_routeState绑定的[RouterDelegate包装了MyAppNavigator]根据pathTemplate重新渲染
+```
+#### 原生用法
+```js
+Navigator.push( context, MaterialPageRoute(builder: (context) => DetailPage(itemId: '123')), );
+Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), settings: RouteSettings(arguments: '123'), ), );
+```
 
 
+
+### 通用Prompt
+```js
+帮我写一个flutter页面,页面名称为"搬砖规则",类的名称为"BanzhuanguizePage",页面导入了'../routing.dart','../auth.dart', '../http.dart','package:oktoast/oktoast.dart';页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/');},),"""
+```
+
+### 实战项目
 ```js
 lib.main.main
 	lib.src.app._MyAppState._guard 决定第一页面
@@ -120,22 +175,11 @@ lib.main.main
 			要跳转的其他二级页面
 			]
 ```
-### 实践经验
-1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要尽量占少的空间 mainAxisSize: MainAxisSize.min,
-2. Row可以挤开宽度到满
-3. Navigation and Routing案例中添加子级一个页面:
-	1. app.dart 的 `allowedPaths` 添加页面路径,
-	2. navigator.dart 添加的 `pages` 添加页面,
-	3. 通过`RouteStateScope.of(context)!.go('/shoukuanfangshi');`跳转
-	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
-4. 从下往上弹出是# BottomSheet
-5. 图标Image.asset('assets/images/p1_chongzhi_icon_usdt.png',width: 20,height: 20,)
-### 路由
-MaterialApp.routes:{}
 
-### 通用Prompt
+### 原理
+1. import 'dart:ui'; 实际是引入 `D:\flutter_windows_3.10.5-stable\bin\cache\pkg\sky_engine\lib\ui\ui.dart
 
-```js
-帮我写一个flutter页面,页面名称为"搬砖规则",类的名称为"BanzhuanguizePage",页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/');},),"""
-```
-assets/.*\.png
+1. showToast('请输入正确的邮箱账号',duration: Duration(seconds: 2),radius: 3.0,);
+2. final authState = MyAppAuthScope.of(context);
+4. Aa.11111111
+8. 会员： 设置法币国家-  绑定手机号（手机发送）- 绑定姓名 - 实名认证（会员上传）    更新头像
