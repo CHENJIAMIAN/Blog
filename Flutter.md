@@ -191,7 +191,6 @@ MaterialApp.routes:{}
 
 ### 原理
 1. import 'dart:ui'; 实际是引入 `D:\flutter_windows_3.10.5-stable\bin\cache\pkg\sky_engine\lib\ui\ui.dart
-
 1. showToast('请输入正确的邮箱账号',duration: Duration(seconds: 2),radius: 3.0,);
 2. final authState = MyAppAuthScope.of(context);
 4. Aa.11111111
