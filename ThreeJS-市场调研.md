@@ -108,7 +108,7 @@
 54. http://www.hightopo.com/demo/flight-monitor 数字孪生-民航飞机
 55. http://www.hightopo.com/demo/gas-pipeline 2D燃气管道监控系统-燃气管道组态图
 56. http://www.hightopo.com/demo/heat-station/blue 2D换热站监控系统-换热系统组态（蓝）
-57. http://www.hightopo.com/demo/heatmap-airflow 气流组织仿真与智能运维aster-production-line
+57. http://www.hightopo.com/demo/heatmap-airflow 气流组织仿真与智能运维
 58. http://www.hightopo.com/demo/ht-excavator 3D挖掘机
 59. http://www.hightopo.com/demo/ht-gas-station 智慧加油站
 60. http://www.hightopo.com/demo/ht-ironworks 炼铁高炉2.0
