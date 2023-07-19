@@ -166,6 +166,7 @@ DLSWBR的英文全称是"Dynamic Limiting Speed Web Behavior Recognition"。是�
         scenes: 在.glb文件中定义多个.scene文件的列表；
         samplers: 定义纹理的过滤模式。
         animations: 动画
+> 一个node可以包含一个或多个meshes，每个mesh可以包含一个或多个primitives。每个primitive代表一个几何体的基本单元，可以具有不同的样式和材质。同时，每个node可以具有坐标、旋转、缩放等属性，以控制它在场景中的位置和方向。通过这些概念的组合，可以创建包含多个几何体的复杂3D场景。
 ## chrome.storage.local跟localStorage有什么区别
 一个是会上传到云上, 一个在本地
 `chrome.storage.local`和`localStorage`有几个区别：
