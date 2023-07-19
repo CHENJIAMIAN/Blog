@@ -27,6 +27,7 @@ https://github.com/PrincessGod/objTo3d-tiles 最后一次更新是19年,2023年7
 - 最简单的办法: [My Assets | Cesium ion --- 我的资产 |铯离子](https://ion.cesium.com/assets/)可以在线免费转3DTiles再下载下来
 - 装个**[cesium-ion-3ds-max-plugin](https://github.com/CesiumGS/cesium-ion-3ds-max-plugin)** , 在3dmax里点击上传,在下载下来
 	- 铯离子需要将所有 Autodesk 材质烘焙为纹理。如果在铯离子上材质未正确渲染，您需要在导出之前将材质烘焙到 3ds Max 中的纹理。
+	- **有个致命的问题: 无法单体选择( cesiumlab转的可以拿到单体的id(随机)和name(对象名称) )**
 #### 3. 一些商家推出的工具集（如 cesiumlab）
 
 
