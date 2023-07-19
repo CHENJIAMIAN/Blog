@@ -654,7 +654,7 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 | [复合 ( cmpt )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite)               | 将不同格式的tile连接成一个tile。                      |
 
 Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composite](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md) tile在同一个 tile 中支持不同的格式。
-
+b3dm
 ## 声明式样式规范
 
 3D Tiles 包括使用 JSON 定义的简明声明式样式和用一小部分 JavaScript 编写的表达式，以增强样式。
