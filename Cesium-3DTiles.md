@@ -14,6 +14,7 @@
 	- 官方开源,用ts编写,逻辑清晰,清晰展现b3dm等的原理
 	- npx 3d-tiles-tools b3dmToGlb -i ./specs/data/batchedWithBatchTableBinary.b3dm -o ./output/extracted.glb
 		- 2023年7月5日测试出现'v_texCoord_0' : undeclared identifier的错误
+	- **但要手动计算tileset.json**[3dtiles-tree-generator.js - CrashedBboy/blender-3d-tiler - GitHub1s](https://github1s.com/CrashedBboy/blender-3d-tiler/blob/HEAD/3dtiles-tree-generator.js#L67) 这里有计算方法
 ##### gltf/glb互转 1.0/2.0互转
 1. https://github.com/CesiumGS/gltf-pipeline 
 ##### obj转3dtile
