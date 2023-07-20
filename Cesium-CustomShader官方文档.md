@@ -220,21 +220,7 @@ struct FragmentInput {
 
 内置属性的完整列表如下。`0, 1, 2, ...`一些属性有一个集合索引，它是（例如）之一`texCoord_0`，这些用`N`.
 
-| 模型中对应的属性           | 着色器中的变量       | 类型      | 在顶点着色器中可用吗？ | 在片段着色器中可用吗？ | 描述                                                      |
-| :----------------- | :------------ | :------ | :---------- | :---------- | :------------------------------------------------------ |
-| `POSITION`         | `positionMC`  | `vec3`  | 是的          | 是的          | 在模型坐标中的位置                                               |
-| `POSITION`         | `positionWC`  | `vec3`  | 不           | 是的          | 世界坐标中的位置 (WGS84 ECEF `(x, y, z)`)。精度低。                  |
-| `POSITION`         | `positionEC`  | `vec3`  | 不           | 是的          | 在眼睛坐标中的位置。                                              |
-| `NORMAL`           | `normalMC`    | `vec3`  | 是的          | 不           | 模型坐标中的单位长度法向量。仅在顶点着色器中可用                                |
-| `NORMAL`           | `normalEC`    | `vec3`  | 不           | 是的          | 眼睛坐标中的单位长度法向量。仅在片段着色器中可用                                |
-| `TANGENT`          | `tangentMC`   | `vec3`  | 是的          | 不           | 模型坐标中的单位长度切向量。这始终是一个`vec3`. 对于提供`w`组件的模型，在计算双切线向量后将其删除。 |
-| `TANGENT`          | `tangentEC`   | `vec3`  | 不           | 是的          | 眼睛坐标中的单位长度切向量。这始终是一个`vec3`. 对于提供`w`组件的模型，在计算双切线向量后将其删除。 |
-| `NORMAL`&`TANGENT` | `bitangentMC` | `vec3`  | 是的          | 不           | 模型坐标中的单位长度双切线向量。仅当法线和切线向量都可用时才可用。                       |
-| `NORMAL`&`TANGENT` | `bitangentEC` | `vec3`  | 不           | 是的          | 眼睛坐标中的单位长度双切线向量。仅当法线和切线向量都可用时才可用。                       |
-| `TEXCOORD_N`       | `texCoord_N`  | `vec2`  | 是的          | 是的          | 第`N`组纹理坐标。                                           |
-| `COLOR_N`          | `color_N`     | `vec4`  | 是的          | 是的          | 第`N`组顶点颜色。这总是一个`vec4`; 如果模型未指定 alpha 值，则假定为 1。       |
-| `JOINTS_N`         | `joints_N`    | `ivec4` | 是的          | 是的          | 第`N`组联合指数                                            |
-| `WEIGHTS_N`        | `weights_N`   | `vec4`  |             |             |                                                         |
+normalEC
 
 自定义属性也可用，但它们被重命名为使用小写字母和下划线。例如，`_SURFACE_TEMPERATURE` 模型中调用的属性将成为`fsInput.attributes.surface_temperature`着色器中的属性。
 
