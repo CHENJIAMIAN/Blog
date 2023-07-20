@@ -16,3 +16,4 @@ gltf-transform instance out.glb out.glb
 
 不过，如果您只有一个 GLB，其中包含您想要在整个场景中重复的事物的一个示例，那么这可能超出了 glTF-Transform 的能力范围。R3F 对此很有用，对于普通的 Three.js，您必须稍微解构场景，而且我不知道这方面的通用示例。
 [cli.ts - donmccurdy/glTF-Transform - GitHub1s](https://github1s.com/donmccurdy/glTF-Transform/blob/HEAD/packages/cli/src/cli.ts#L338)
+[palette | glTF Transform](https://gltf-transform.dev/modules/functions/functions/palette)
