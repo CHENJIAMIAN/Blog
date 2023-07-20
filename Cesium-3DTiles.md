@@ -11,6 +11,7 @@
 #### 1. Github 开源的小工具
 ##### 3dtiles压缩/组合/合并/升级/封包, glb/gltf/b3dm/i3dm互转
 1. https://github.com/CesiumGS/3d-tiles-tools 
+	- 官方开源,用ts编写,逻辑清晰,清晰展现b3dm等的原理
 	- npx 3d-tiles-tools b3dmToGlb -i ./specs/data/batchedWithBatchTableBinary.b3dm -o ./output/extracted.glb
 		- 2023年7月5日测试出现'v_texCoord_0' : undeclared identifier的错误
 ##### gltf/glb互转 1.0/2.0互转
@@ -27,7 +28,7 @@ https://github.com/PrincessGod/objTo3d-tiles 最后一次更新是19年,2023年7
 - 最简单的办法: [My Assets | Cesium ion --- 我的资产 |铯离子](https://ion.cesium.com/assets/)可以在线免费转3DTiles再下载下来
 - 装个**[cesium-ion-3ds-max-plugin](https://github.com/CesiumGS/cesium-ion-3ds-max-plugin)** , 在3dmax里点击上传,在下载下来
 	- 铯离子需要将所有 Autodesk 材质烘焙为纹理。如果在铯离子上材质未正确渲染，您需要在导出之前将材质烘焙到 3ds Max 中的纹理。
-	- **有个致命的问题: 无法单体选择( cesiumlab转的可以拿到zi单体的id(随机)和name(对象名称) )**
+	- **有个致命的问题: 无法单体选择( cesiumlab转的可以拿到一个mesh一个单体的id(随机)和name(对象名称),一组几个mesh不行,是按mesh不是按组 )**
 #### 3. 一些商家推出的工具集（如 cesiumlab）
 
 
