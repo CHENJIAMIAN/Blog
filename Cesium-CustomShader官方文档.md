@@ -250,7 +250,7 @@ Feature ID 表示为 GLSL `int`，但在 WebGL 1 中这有几个限制：
 当使用glTF 扩展`EXT_mesh_features`或时，Feature ID 出现在两个地方：`EXT_instance_features`
 
 1.  任何 glTF 基元都可以有一个`featureIds`数组。该`featureIds`数组可能包含Feature ID 属性、隐式Feature ID 属性和/或Feature ID 纹理。无论Feature ID 的类型如何，它们都会出现在CustomShader中，因为数组中Feature ID 的索引在`(vsInput|fsInput).featureIds.featureId_N`哪里。`NfeatureIds`
-2.  `EXT_mesh_gpu_instancing`任何带有和 的glTF 节点都`EXT_instance_features`可以定义Feature ID。这些可能是Feature ID 属性或隐式Feature ID 属性，但不是Feature ID 纹理。这些将出现在CustomShader中，因为数组中Feature ID 的索引在`(vsInput|fsInput).featureIds.instanceFeatureId_N`哪里。`NfeatureIds`
+2.  `EXT_mesh_gpu_instancing`任何带有和 的glTF 节点都可以定义Feature ID。这些可能是Feature ID 属性或隐式Feature ID 属性，但不是Feature ID 纹理。这些将出现在CustomShader中，因为数组中Feature ID 的索引在`(vsInput|fsInput).featureIds.instanceFeatureId_N`哪里。`NfeatureIds`
 
 此外，Feature ID 纹理仅在片段着色器中受支持。
 
