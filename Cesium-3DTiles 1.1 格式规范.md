@@ -57,7 +57,7 @@
 
 可以选择将[3D Tiles Style](https://github.com/CesiumGS/3d-tiles/blob/main/specification/Styling/README.adoc#styling-styling)或_style_应用于图块集。样式定义要评估的表达式，这些表达式修改每个功能的显示方式。
 
-## [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#file-extensions-and-media-types)文件扩展名和媒体类型
+## [文件扩展名和媒体类型](https://github.com/CesiumGS/3d-tiles/tree/main/specification#file-extensions-and-media-types)
 
 3D Tiles 使用以下文件扩展名和媒体类型。
 
@@ -78,7 +78,7 @@
 
 显式文件扩展名是可选的。有效的实现可能会忽略它并通过其标头中的魔术字段来识别内容的格式。
 
-## [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#json-encoding)JSON编码
+## [JSON编码](https://github.com/CesiumGS/3d-tiles/tree/main/specification#json-encoding)
 
 3D Tiles 对 JSON 格式和编码有以下限制。
 
@@ -93,7 +93,7 @@
 5. 某些属性在架构中定义为整数。这些值可以存储为小数部分为零的小数或使用指数表示法，如[RFC 8259 第 6 节](https://www.rfc-editor.org/rfc/rfc8259.html#section-6)中所定义。
     
 
-## [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#uris)URI
+## [URI](https://github.com/CesiumGS/3d-tiles/tree/main/specification#uris)
 
 3D Tiles 使用 URI 来引用图块内容。这些 URI 可能指向[相对外部引用 (RFC3986)](https://tools.ietf.org/html/rfc3986#section-4.2)，或者是在 JSON 中嵌入资源的数据 URI。嵌入式资源使用[“数据”URL 方案 (RFC2397)](https://tools.ietf.org/html/rfc2397)。
 
@@ -101,13 +101,13 @@
 
 客户端实现需要支持相关的外部引用和嵌入资源。或者，客户端实现可以支持其他方案（例如http://）。所有 URI 均应有效且可解析。
 
-## [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#units)单位
+## [单位](https://github.com/CesiumGS/3d-tiles/tree/main/specification#units)
 
 所有直线距离的单位都是米。
 
 所有角度均以弧度为单位。
 
-## [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#coordinate-reference-system-crs)坐标参考系（CRS）
+## [坐标参考系（CRS）](https://github.com/CesiumGS/3d-tiles/tree/main/specification#coordinate-reference-system-crs)
 
 3D Tiles 使用右手笛卡尔坐标系；也就是说，_x_和_y_的叉积产生_z_。3D Tiles 将_z_轴定义为局部笛卡尔坐标系。图块集的全局坐标系通常位于[WGS 84](https://epsg.org/ellipsoid_7030/WGS-84.html)地心固定 (ECEF) 参考系 ( [EPSG 4978](https://epsg.org/crs_4978/WGS-84.html) ) 中，但不一定如此，例如，发电厂可以在其本地完全定义。与没有地理空间上下文的建模工具一起使用的坐标系。
 
@@ -117,13 +117,13 @@
 
 区域边界体积使用地理坐标系（纬度、经度、高度）指定边界[。](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-region)具体来说，[EPSG 4979](https://epsg.org/crs_4979/WGS-84.html)，但纬度和经度以_弧度_而不是_度数_给出。假设参考椭球与图块集的参考椭球相同。
 
-## [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#concepts)概念
+## [概念](https://github.com/CesiumGS/3d-tiles/tree/main/specification#concepts)
 
-### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tiles)瓷砖
+### [瓷砖](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tiles)
 
 图块由用于确定是否渲染图块的元数据、对可渲染内容的引用以及任何子图块的数组组成。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-content)平铺内容
+#### [平铺内容](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-content)
 
 图块可以与可渲染内容相关联。一个图块可以有一个tile.content对象，也可以有多个内容对象，存储在tile.contents数组中。后者允许灵活的图块集结构：例如，单个图块可以包含相同几何数据的多个表示。
 
@@ -134,7 +134,7 @@ content.group属性将内容分配给一个组。可以将不同图块的内容�
 
 每个内容可以与包围体相关联。虽然tile.boundingVolume是包围图块的_所有_内容的包围体，但每个单独的content.boundingVolume是仅包围各自内容的紧密配合的包围体。[有关图块和内容包围体的作用的更多详细信息在包围体](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-bounding-volumes)部分中给出。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#geometric-error)几何误差
+#### [几何误差](https://github.com/CesiumGS/3d-tiles/tree/main/specification#geometric-error)
 
 _图块被构造成包含分层细节级别_(HLOD)的树，以便在运行时客户端实现需要确定图块是否足够详细以进行渲染，以及图块的内容是否应由更高分辨率的子图块连续细化。实现将考虑最大允许的_屏幕空间误差_（SSE），即以像素为单位测量的误差。
 
@@ -144,7 +144,7 @@ _图块被构造成包含分层细节级别_(HLOD)的树，以便在运行时客
 
 几何误差是基于点密度、网格或纹理抽取等度量或特定于该图块集的其他因素来制定的。一般来说，较高的几何误差意味着图块将被更积极地细化，并且子图块将被更快地加载和渲染。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#refinement)细化
+#### [细化](https://github.com/CesiumGS/3d-tiles/tree/main/specification#refinement)
 
 细化确定当选择渲染较高分辨率的子图块时，较低分辨率的父图块的渲染过程。允许的细化类型是替换（“REPLACE”）和添加（“ADD”）。如果图块具有替换细化，则子图块将代替父图块进行渲染，即不再渲染父图块。如果图块具有附加细化，则除了父图块之外还会渲染子图块。
 
@@ -152,7 +152,7 @@ _图块被构造成包含分层细节级别_(HLOD)的树，以便在运行时客
 
 图块集的根图块需要细化类型；对于所有其他图块来说，它是可选的。省略时，图块将继承其父级的细化类型。
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#replacement)替代品
+##### [替代品](https://github.com/CesiumGS/3d-tiles/tree/main/specification#replacement)
 
 如果图块使用替换细化，则细化时它会渲染其子级来代替其自身。
 
@@ -162,7 +162,7 @@ _图块被构造成包含分层细节级别_(HLOD)的树，以便在运行时客
 |---|---|
 |[![更换1](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/replacement_1.jpg)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/replacement_1.jpg)|[![替换2](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/replacement_2.jpg)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/replacement_2.jpg)|
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#additive)添加剂
+##### [添加剂](https://github.com/CesiumGS/3d-tiles/tree/main/specification#additive)
 
 如果图块使用附加细化，则细化时它会同时渲染自身及其子级。
 
@@ -172,7 +172,7 @@ _图块被构造成包含分层细节级别_(HLOD)的树，以便在运行时客
 |---|---|
 |[![添加剂1](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/additive_1.jpg)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/additive_1.jpg)|[![添加剂2](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/additive_2.jpg)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/additive_2.jpg)|
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volumes)包围体
+#### [包围体](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volumes)
 
 包围体定义包围图块或图块内容的空间范围。为了支持各种数据集的紧密拟合体积，例如规则划分的地形、不与纬度或经度线对齐的城市或任意点云，边界体积类型包括定向边界框、边界球和地理区域由最小和最大纬度、经度和高度定义。
 
@@ -182,7 +182,7 @@ _图块被构造成包含分层细节级别_(HLOD)的树，以便在运行时客
 |---|---|---|
 |[![边界框](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/BoundingBox.jpg)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/BoundingBox.jpg)|[![边界球体](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/BoundingSphere.jpg)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/BoundingSphere.jpg)|[![边界区域](https://github.com/CesiumGS/3d-tiles/raw/main/specification/figures/BoundingRegion.jpg)](https://github.com/CesiumGS/3d-tiles/blob/main/specification/figures/BoundingRegion.jpg)|
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#region)地区
+##### [地区](https://github.com/CesiumGS/3d-tiles/tree/main/specification#region)
 
 boundingVolume.region属性是一个由六个数字组成的数组，它们定义了边界地理区域，其纬度、经度和高度坐标的顺序为`[west, south, east, north, minimum height, maximum height]`。纬度和经度位于[EPSG 4979](https://epsg.org/crs_4979/WGS-84.html)中定义的 WGS 84 基准中，并以弧度为单位。[高度以WGS 84 椭球](https://epsg.org/ellipsoid_7030/WGS-84.html)上方（或下方）米为单位。
 
@@ -207,7 +207,7 @@ boundingVolume.region属性是一个由六个数字组成的数组，它们定�
 }
 ```
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#box)盒子
+##### [盒子](https://github.com/CesiumGS/3d-tiles/tree/main/specification#box)
 
 boundingVolume.box属性是一个由 12 个数字组成的数组，用于定义右手 3 轴 (x, y, z) 笛卡尔坐标系中的定向边界框，其中 z轴向_上_。前三个元素定义框中心的 x、y 和 z 值。接下来的三个元素（索引为 3、4 和 5）定义_x_轴方向和半长。接下来的三个元素（索引 6、7 和 8）定义_y_轴方向和半长。最后三个元素（索引 9、10 和 11）定义_z_轴方向和半长。
 
@@ -230,7 +230,7 @@ boundingVolume.box属性是一个由 12 个数字组成的数组，用于定义�
 }
 ```
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#sphere)领域
+##### [领域](https://github.com/CesiumGS/3d-tiles/tree/main/specification#sphere)
 
 boundingVolume.sphere属性是一个由四个数字组成的数组，用于定义边界球体。前三个元素定义右手 3 轴 (x, y, z) 笛卡尔坐标系中球体中心的 x、y 和 z 值，其中 z 轴向_上_。最后一个元素（索引为 3）定义半径（以米为单位）。
 
@@ -249,7 +249,7 @@ boundingVolume.sphere属性是一个由四个数字组成的数组，用于定�
 }
 ```
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#content-bounding-volume)内容边界体积
+##### [内容边界体积](https://github.com/CesiumGS/3d-tiles/tree/main/specification#content-bounding-volume)
 
 可以通过tile.boundingVolume属性为每个图块指定边界体积。此外，还可以单独指定每个[图块内容](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-tile-content)的边界体积。content.boundingVolume可能是更紧密拟合的边界体积。这可以实现严格的视锥体剔除，排除渲染不在潜在视图体积中的任何内容。当未定义时，图块的边界体积仍用于剔除（请参阅[网格](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-grids)）。
 
@@ -259,14 +259,14 @@ boundingVolume.sphere属性是一个由四个数字组成的数组，用于定�
 
 图 5. 切片集根切片的边界体积。[从Cyber​​City3D](http://www.cybercity3d.com/)构建数据。[来自Bing 地图](https://www.microsoft.com/maps/)的图像数据[](https://www.microsoft.com/maps/)
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#extensions)扩展
+##### [扩展](https://github.com/CesiumGS/3d-tiles/tree/main/specification#extensions)
 
 通过扩展支持其他包围体类型。
 
 - [3DTILES_bounding_volume_S2](https://github.com/CesiumGS/3d-tiles/tree/main/extensions/3DTILES_bounding_volume_S2)
     
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#viewer-request-volume)观众请求量
+#### [观众请求量](https://github.com/CesiumGS/3d-tiles/tree/main/specification#viewer-request-volume)
 
 图块的viewerRequestVolume可用于组合异构数据集，并且可以与[外部图块集](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-external-tilesets)组合。
 
@@ -316,9 +316,9 @@ boundingVolume.sphere属性是一个由四个数字组成的数组，用于定�
 
 有关请求量的更多信息，请参阅[示例tileset](https://github.com/CesiumGS/3d-tiles-samples/tree/main/1.0/TilesetWithRequestVolume)。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#transforms)变换
+#### [变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#transforms)
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-transforms)平铺变换
+##### [平铺变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-transforms)
 
 为了支持局部坐标系 - 例如，城市瓦片集中的建筑物瓦片集可以在其自己的坐标系中定义，并且建筑物内的点云瓦片集也可以在其自己的坐标系中定义 - 每个图块都有可选的变换属性。
 
@@ -359,15 +359,15 @@ Transform属性是一个 4x4 仿射变换矩阵，以列优先顺序存储，从
 
 从每个图块的局部坐标系到图块集的全局坐标系的变换是通过图块集自上而下的遍历以及通过将子级变换与其父级变换后乘来计算的，就像计算机图形学中的传统场景图或节点层次结构一样。
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-transforms)glTF 变换
+##### [变换](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-transforms)glTF 
 
 glTF 定义了自己的节点层次结构并使用_y_向上坐标系。解析这些转换后，将应用特定于图块格式的任何转换和tile.transform属性。
 
-###### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-node-hierarchy)glTF 节点层次结构
+###### [节点层次结构](https://github.com/CesiumGS/3d-tiles/tree/main/specification#gltf-node-hierarchy)glTF 
 
 首先，根据 glTF[规范](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#transformations)应用 glTF 节点层次结构变换。
 
-###### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)_y_向上到_z_向上
+###### [向上](https://github.com/CesiumGS/3d-tiles/tree/main/specification#y-up-to-z-up)_y_向上到_z_
 
 接下来，为了与3D Tiles 的_z向上坐标系保持一致，glTF 应在运行时从__y_向上转换为_z_向上。这是通过将模型绕_x_轴旋转 π/2 弧度来完成的。同样，应用以下矩阵变换（此处显示为行优先）：
 
@@ -393,7 +393,7 @@ glTF 定义了自己的节点层次结构并使用_y_向上坐标系。解析这
 |---|---|
 |笔记|信息丰富<br><br>当使用本质上_z_向上的源数据（例如 WGS 84 坐标或本地_z_向上坐标系中的数据）时，常见的工作流程是：<br><br>- 网格数据（包括位置和法线）不会被修改 - 它们保持_z_向上。<br>    <br>- 根节点矩阵指定列主_z_向上到_y_向上变换。这将根据 glTF 的要求将源数据转换为_y向上坐标系。_<br>    <br>- 在运行时，glTF使用上面的矩阵从_y_向上转换回_z向上。_实际上，变换抵消了。<br>    <br><br>glTF 根节点示例：<br><br>```json<br>"nodes": [<br> {<br>   "matrix": [1,0,0,0,0,0,-1,0,0,1,0,0,0,0,0,1],<br>   "mesh": 0,<br>   "name": "rootNode"<br> }<br>]<br>```|
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#example)例子
+##### [例子](https://github.com/CesiumGS/3d-tiles/tree/main/specification#example)
 
 对于图块集的计算变换（上面代码中的transformToRoot ）的示例，请考虑：
 
@@ -427,7 +427,7 @@ glTF 定义了自己的节点层次结构并使用_y_向上坐标系。解析这
 - T4：`[T0][T1][T4][glTF y-up to z-up][glTF transform]`
     
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#implementation-example)实施示例
+##### [实施示例](https://github.com/CesiumGS/3d-tiles/tree/main/specification#implementation-example)
 
 _本节内容丰富_
 
@@ -461,7 +461,7 @@ function computeTransform(tile, transformToRoot) {
 }
 ```
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-json)平铺 JSON
+#### [平铺JSON](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-json) 
 
 磁贴 JSON 对象包含以下属性。
 
@@ -508,11 +508,11 @@ GeometricError属性是一个非负数，它定义了此图块被渲染而其子
 
 可选的viewerRequestVolume属性（上面未显示）定义一个体积，使用与boundingVolume相同的模式，在请求图块的内容之前以及在基于geometricError细化图块之前，查看器应位于该体积内。请参阅[“查看者请求量”](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-viewer-request-volume)部分。
 
-细化属性是一个字符串，可以是“REPLACE”（用于替换细化）或“ADD”（用于附加细化），请参阅[Refinement](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-refinement)。它是图块集的根图块所必需的；对于所有其他图块来说，它是可选的。图块集可以使用附加和替换细化的任意组合。当省略fine属性时，它会从父tile继承。[](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-refinement)
+细化属性是一个字符串，可以是“REPLACE”（用于替换细化）或“ADD”（用于附加细化），请参阅[Refinement](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-refinement)。它是图块集的根图块所必需的；对于所有其细化属性是一个字符串，可以是“REPLACE”（用于替换细化）或“ADD”（用于附加细化），请参阅[Refinement](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-refinement)。它是图块集的根图块所必需的；对于所有其他图块来说，它是可选的。图块集可以使用附加和替换细化的任意组合。当省略fine属性时，它会从父tile继承。[](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-refinement)
 
 content属性是一个描述[图块内容的](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-tile-content)对象。content.uri不需要文件扩展名。内容的[图块格式可以通过其标头中的](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-tile-format-specifications)magic字段来识别，或者如果内容是 JSON，则可以识别为外部图块集。
 
-content.boundingVolume属性定义了一个可选的[边界体积](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-bounding-volumes)，类似于顶级的tile.boundingVolume属性。但与顶级boundingVolume属性不同，content.boundingVolume是一个紧密贴合的边界体积，仅包含图块的内容。[](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-bounding-volumes)
+content.boundingVolume属性定义了一个可选的[边界体积](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-bounding-volumes)，类似于顶级的tile.boundingVolume属性。但与顶级boundingVolume属性不同，content.boundingVolume属性定义了一个可选的[边界体积](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-bounding-volumes)，类似于顶级的tile.boundingVolume属性。但与顶级boundingVolume属性不同，content.boundingVolume是一个紧密贴合的边界体积，仅包含图块的内容。[](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-bounding-volumes)
 
 还可以为一个图块定义多个内容：contents属性（上面未显示）是一个包含一个或多个内容的数组。内容和内容是相互排斥的。当图块具有单一内容时，它应该使用与仅支持 3D Tiles 1.0 的引擎向后兼容的内容。多个内容允许对图块内容进行不同的表示 - 例如，一种作为三角形网格，另一种作为点云：
 
@@ -562,7 +562,7 @@ Children属性是定义子图块的对象数组。每个子图块的内容完全
 
 [完整的 JSON 模式可以在tile.schema.json](https://github.com/CesiumGS/3d-tiles/tree/main/specification/schema/tile.schema.json)中找到 。
 
-### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tileset-json)图块集 JSON
+### [图块集JSON](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tileset-json) 
 
 3D Tiles 使用一个主图块集 JSON 文件作为定义图块集的入口点。条目和外部tileset JSON 文件不需要遵循特定的命名约定。
 
@@ -626,7 +626,7 @@ GeometricError是一个非负数，定义误差（以米为单位），该误差
 
 root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/specification#core-tiles)中描述的瓦片 JSON 定义根瓦片的对象。root.geometricError与图块集的顶级GeometricError不同。在运行时使用tileset的geometricError来确定tileset的根tile渲染的SSE；root.geometricError在运行时用于确定渲染根图块子级的 SSE。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#external-tilesets)外部图块集
+#### [外部图块集](https://github.com/CesiumGS/3d-tiles/tree/main/specification#external-tilesets)
 
 要创建树中的树，图块的content.uri可以指向外部图块集（另一个图块集 JSON 文件的 uri）。例如，这使得可以将每个城市存储在图块集中，然后拥有图块集的全局图块集。
 
@@ -649,7 +649,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 
 如果外部图块集定义asset.tilesetVersion，则会覆盖父图块集中的值。如果外部图块集未定义asset.tilesetVersion，则该值将从父图块集（如果已定义）继承。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volume-spatial-coherence)包围体空间相干性
+#### [包围体空间相干性](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volume-spatial-coherence)
 
 如上所述，树具有空间相干性；每个图块都有一个完全包围其内容的包围体，并且子图块的内容完全位于父图块的包围体内部。这并不意味着子项的包围盒完全位于其父项的包围盒内。例如：
 
@@ -661,7 +661,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 
 图 13. 四个子图块的边界球。子级的内容完全位于父级的包围盒内，但子级的包围盒则不然，因为它们没有紧密配合。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#spatial-data-structures)空间数据结构
+#### [空间数据结构](https://github.com/CesiumGS/3d-tiles/tree/main/specification#spatial-data-structures)
 
 3D Tiles 结合了层次细节层次 (HLOD) 的概念，以实现空间数据的最佳渲染。图块集由一棵树组成，该树由根及其子图块递归定义，可以通过不同类型的空间数据结构进行组织。
 
@@ -671,7 +671,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 
 下面简要描述了 3D Tiles 如何表示各种空间数据结构。
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#quadtrees)四叉树
+##### [四叉树](https://github.com/CesiumGS/3d-tiles/tree/main/specification#quadtrees)
 
 当每个图块具有四个均匀细分的子代（例如，使用中心纬度和经度）时，创建四叉树，类似于典型的2D地理空间图块方案。空的子图块可以省略。
 
@@ -703,7 +703,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 
 [图 18. 从Cyber​​City3D](http://www.cybercity3d.com/)构建数据。[来自Bing 地图](https://www.microsoft.com/maps/)的图像数据[](https://www.microsoft.com/maps/)
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#k-d-trees)Kd树
+##### [Kd树](https://github.com/CesiumGS/3d-tiles/tree/main/specification#k-d-trees)
 
 当每个图块有两个被平行于_x_、_y_或_z_轴（或纬度、经度、高度）的_分割_平面分隔开的子元素时，就会创建 kd 树。随着级别沿树向下增加，分割轴通常会循环旋转，并且可以使用中值分割、表面积启发法或其他方法来选择分割平面。
 
@@ -715,7 +715,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 
 3D Tiles 支持 kd 树的变化，例如[多路 kd 树](http://www.crs4.it/vic/cgi-bin/bib-page.cgi?id=%27Goswami:2013:EMF%27)，其中树的每个叶子沿轴有多个分割。每个图块不是有两个孩子，而是有n 个孩子。
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#octrees)八叉树
+##### [八叉树](https://github.com/CesiumGS/3d-tiles/tree/main/specification#octrees)
 
 八叉树通过使用三个正交分割平面将图块细分为八个子级来扩展四叉树。与四叉树一样，3D Tiles 允许八叉树的变化，例如非均匀细分、紧密边界体积和重叠子项。
 
@@ -727,7 +727,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 
 图 21. 使用加性细化对点云进行非均匀八叉树细分。[法国查普斯圣玛丽教堂](http://robotics.cs.columbia.edu/~atroccol/ijcv/chappes.html)的点云，由哥伦比亚大学机器人实验室的 Peter Allen 教授绘制。由 Alejandro Troccoli 和 Matei Ciocarlie 扫描。
 
-##### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#grids)网格
+##### [网格](https://github.com/CesiumGS/3d-tiles/tree/main/specification#grids)
 
 3D Tiles 通过支持任意数量的子图块来实现均匀、非均匀和重叠的网格。例如，这是剑桥非均匀重叠网格的自上而下视图：
 
@@ -737,7 +737,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 
 3D 瓷砖利用空瓷砖：那些具有边界体积但没有内容的瓷砖。由于不需要定义图块的内容属性，因此可以使用空的非叶图块通过分层剔除来加速非均匀网格。这本质上创建了一个没有详细层次结构 (HLOD) 的四叉树或八叉树。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#implicit-tiling)隐式平铺
+#### [隐式平铺](https://github.com/CesiumGS/3d-tiles/tree/main/specification#implicit-tiling)
 
 包围体层次结构可以明确定义_（_ 如前所示），这支持多种空间数据结构。某些常见的数据结构（例如四叉树和八叉树）可以_隐式_定义，而无需为每个图块提供包围体。这种规则模式允许根据图块坐标随机访问图块，从而实现加速空间查询、新的遍历算法以及图块内容的高效更新等用例。
 
@@ -776,7 +776,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 
 有关隐式平铺对象结构和子树文件格式的更多详细信息，请参阅[隐式平铺。](https://github.com/CesiumGS/3d-tiles/blob/main/specification/ImplicitTiling/README.adoc#implicittiling-implicit-tiling)
 
-### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#metadata)元数据
+### [元数据](https://github.com/CesiumGS/3d-tiles/tree/main/specification#metadata)
 
 可以在图块集中以多个粒度提供特定于应用程序的元_数据。_元数据可以与诸如图块集、图块、内容或特征之类的高级实体相关联，或者与单独的顶点和纹素相关联。元数据符合[3D 元数据规范](https://github.com/CesiumGS/3d-tiles/blob/main/specification/Metadata/README.adoc#metadata-3d-metadata-specification)描述的明确定义的类型系统，可以使用特定于应用程序或特定领域的语义进行扩展。
 
@@ -812,7 +812,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 
 尽管它们是独立定义的，但 3D Tiles 和 glTF EXT_structural_metadata扩展中的元数据结构都符合[3D 元数据规范](https://github.com/CesiumGS/3d-tiles/blob/main/specification/Metadata/README.adoc#metadata-3d-metadata-specification)，并建立在[3D 元数据规范的参考实现](https://github.com/CesiumGS/3d-tiles/blob/main/specification/Metadata/ReferenceImplementation/README.adoc#metadata-referenceimplementation-3d-metadata-reference-implementation)之上。这里使用的概念和术语指的是 3D 元数据规范，它应被视为定义和要求的规范性参考。本文档在适当的情况下提供了术语的内联定义。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#metadata-schema)元数据架构
+#### [元数据架构](https://github.com/CesiumGS/3d-tiles/tree/main/specification#metadata-schema)
 
 元数据模式定义元数据的结构。它包含元数据类的定义，这些类是元数据实例的模板，并定义每个元数据实例具有的属性集。[根据元数据模式参考实现，元数据](https://github.com/CesiumGS/3d-tiles/blob/main/specification/Metadata/ReferenceImplementation/Schema/README.adoc#metadata-referenceimplementation-schema-schema-implementation)模式以 JSON 表示形式存储在图块集中。此参考实现包括元数据模式的 JSON 模式的定义。
 
@@ -826,7 +826,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 |---|---|
 |笔记|例子<br><br>由 URI 引用的外部架构。<br><br>```json<br>{<br>  "schemaUri": "https://example.com/metadata/buildings/1.0/schema.json"<br>}<br>```|
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#assigning-metadata)分配元数据
+#### [分配元数据](https://github.com/CesiumGS/3d-tiles/tree/main/specification#assigning-metadata)
 
 虽然模式中的类定义了数据类型和属性的含义，但在元数据被分配（即类被“实例化”）为 3D Tiles 层次结构中的特定元数据实体之前，属性不会呈现特定值。
 
@@ -838,7 +838,7 @@ root是一个使用[上一节](https://github.com/CesiumGS/3d-tiles/tree/main/sp
 
 大多数属性值在实体内编码为 JSON。一个值得注意的例外是分配给隐式图块和内容的元数据，以更紧凑的二进制形式存储。请参阅[隐式平铺](https://github.com/CesiumGS/3d-tiles/blob/main/specification/ImplicitTiling/README.adoc#implicittiling-implicit-tiling)。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#metadata-statistics)元数据统计
+#### [元数据统计](https://github.com/CesiumGS/3d-tiles/tree/main/specification#metadata-statistics)
 
 统计信息提供有关属性值分布的聚合信息，对图块集中元数据类的所有实例进行汇总。例如，统计数据可能包括数字属性的最小/最大值，或特定枚举值的出现次数。
 
@@ -876,11 +876,11 @@ Tileset 作者可以定义自己的附加统计信息，例如下面示例中的
 |---|---|
 |笔记|例子<br><br>“建筑”类的定义，具有三个属性。摘要统计数据提供了数字“高度”属性的最小值、最大值和（特定于应用程序的）“_mode”。枚举“buildingType”属性通过不同枚举值出现的次数进行汇总。<br><br>```json<br>{<br>  "schema": {<br>    "classes": {<br>      "building": {<br>        "properties": {<br>          "height": {<br>            "type": "SCALAR",<br>            "componentType": "FLOAT32"<br>          },<br>          "owners": {<br>            "type": "STRING",<br>            "array": true<br>          },<br>          "buildingType": {<br>            "type": "ENUM",<br>            "enumType": "buildingType"<br>          }<br>        }<br>      }<br>    },<br>    "enums": {<br>      "buildingType": {<br>        "valueType": "UINT16",<br>        "values": [<br>          {"name": "Residential", "value": 0},<br>          {"name": "Commercial", "value": 1},<br>          {"name": "Hospital", "value": 2},<br>          {"name": "Other", "value": 3}<br>        ]<br>      }<br>    }<br>  },<br>  "statistics": {<br>    "classes": {<br>      "building": {<br>        "count": 100000,<br>        "properties": {<br>          "height": {<br>            "min": 3.9,<br>            "max": 341.7,<br>            "_mode": 5.0<br>          },<br>          "buildingType": {<br>            "occurrences": {<br>              "Residential": 50000,<br>              "Commercial": 40950,<br>              "Hospital": 50<br>            }<br>          }<br>        }<br>      }<br>    }<br>  }<br>}{“模式”：{“类”：{“建筑”：{“属性”：{“高度”：{“类型”：“SCALAR”，“组件类型”：“FLOAT32”}，“所有者”：{“类型” ": "STRING", "array": true }, "buildingType": { "type": "ENUM", "enumType": "buildingType" } } } }, "enums": { "buildingType": { "valueType ": "UINT16", "values": [ {"name": "住宅", "value": 0}, {"name": "商业", "value": 1}, {"name": "医院", "value": 2}, {"name": "其他", "value": 3} ] } } }, "统计": { "classes": { "building": { "count": 100000, “属性”：{“高度”：{“最小值”：3.9，“最大值”：341.7，“_mode”：5.0}，“建筑类型”：{“发生次数”：{“住宅”：50000，“商业”：40950 ，“医院”：50 } } } } } } }<br>```|
 
-### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#specifying-extensions-and-application-specific-extras)指定扩展和特定于应用程序的附加功能
+### [指定扩展和特定于应用程序的附加功能](https://github.com/CesiumGS/3d-tiles/tree/main/specification#specifying-extensions-and-application-specific-extras)
 
 3D Tiles 定义了扩展，以允许基本规范具有新功能的可扩展性。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#extensions-1)扩展
+#### [扩展](https://github.com/CesiumGS/3d-tiles/tree/main/specification#extensions-1)
 
 扩展允许使用新功能扩展基本规范。可选的扩展字典属性可以添加到任何 3D Tiles JSON 对象中，其中包含扩展的名称和扩展特定的对象。以下示例显示了一个具有假设供应商扩展的图块对象，该扩展指定了单独的碰撞体积。
 
@@ -929,7 +929,7 @@ Tileset 作者可以定义自己的附加统计信息，例如下面示例中的
 
 加载和渲染tileset或任何后代外部tileset所需的所有扩展也应在顶级extensionsRequired数组属性的条目tileset JSON中列出，这样extensionsRequired是extensionsUsed的子集。ExtensionsRequired中的所有值也应存在于extensionsUsed中。
 
-#### [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#extras)附加功能
+#### [附加功能](https://github.com/CesiumGS/3d-tiles/tree/main/specification#extras)
 
 extras属性允许将应用程序特定的元数据添加到任何 3D Tiles JSON 对象中。以下示例显示了具有附加应用程序特定名称属性的图块对象。
 
@@ -961,7 +961,7 @@ extras属性允许将应用程序特定的元数据添加到任何 3D Tiles JSON
 
 [完整的 JSON 架构可以在tileset.schema.json](https://github.com/CesiumGS/3d-tiles/tree/main/specification/schema/tileset.schema.json)中找到 。
 
-## [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-format-specifications)瓷砖格式规格
+## [瓷砖格式规格](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-format-specifications)
 
 每个图块的content.uri属性是包含用于渲染图块 3D 内容的信息的文件的 uri。内容是下面列出的格式之一的实例。
 
@@ -987,7 +987,7 @@ extras属性允许将应用程序特定的元数据添加到任何 3D Tiles JSON
 |[点云 ( pnts )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/PointCloud/README.adoc#tileformats-pointcloud-point-cloud)|海量点数|
 |[复合材料（cmpt）](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.adoc#tileformats-composite-composite)|将不同格式的图块连接成一个图块|
 
-## [](https://github.com/CesiumGS/3d-tiles/tree/main/specification#declarative-styling-specification)声明式样式规范
+## [声明式样式规范](https://github.com/CesiumGS/3d-tiles/tree/main/specification#declarative-styling-specification)
 
 3D Tiles 包括使用 JSON 定义的简洁声明式样式以及以 JavaScript 增强样式子集编写的表达式。
 
