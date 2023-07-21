@@ -644,3 +644,24 @@ queryObjects(Object)
 	keyskeys = keys(Cesium);
 	temp1.filter(i=>!keyskeys.includes(i.constructor.name));
 ```
+#### 获取打印整个对象,不管它多大(接触循环引用限制)
+```js
+function stringifyWithoutCircularAndKeys(obj) {
+  const cache = new Set();
+  return JSON.stringify(obj, (key, value) => {
+    if (typeof value === 'object' && value !== null) {
+      if (cache.has(value)) {
+        return; // remove circular reference
+      }
+      cache.add(value);
+    }
+    if (key === '_typedArray' || key === '_shaders' || key === "_vertexShaderSource" || key === "sources"
+    || key === "keyword" || key==="_vertexShaderText"|| key==="_fragmentShaderText"
+    ) {
+      return; // remove unwanted keys
+    }
+    return value;
+  });
+}
+stringifyWithoutCircularAndKeys(model.sceneGraph.components.scene.nodes)
+```
