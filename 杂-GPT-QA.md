@@ -157,7 +157,7 @@ DLSWBR的英文全称是"Dynamic Limiting Speed Web Behavior Recognition"。是�
         images: 存储图像资源，包括颜色、法线和透明度纹理等；
         textures: 存储用于着色和光照计算的纹理映射；
         meshes: 存储网格数据，包括顶点坐标、连接不同顶点的面以及每个顶点上的 UV 和法向量等信息；
-        buffers: 存储二进制形式的几何、声音、特效等相关数据；
+        buffers: 存储二进制形式的几何、声音、特效等相关数据；scene
         bufferViews: 指定一部分存储在buffer中的数据所需描述信息的视图；
         accessors: 通过描述符访问存储在缓冲区中的数据对象；
         nodes: 组成场景中的所有对象并且处理它们之间的关系；
