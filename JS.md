@@ -644,7 +644,7 @@ queryObjects(Object)
 	keyskeys = keys(Cesium);
 	temp1.filter(i=>!keyskeys.includes(i.constructor.name));
 ```
-#### 获取打印整个对象,不管它多大(接触循环引用限制)
+#### 获取打印整个对象,不管它多大(解除循环引用限制)
 ```js
 function stringifyWithoutCircularAndKeys(obj) {
   const cache = new Set();
@@ -656,7 +656,8 @@ function stringifyWithoutCircularAndKeys(obj) {
       cache.add(value);
     }
     if (key === '_typedArray' || key === '_shaders' || key === "_vertexShaderSource" || key === "sources"
-    || key === "keyword" || key==="_vertexShaderText"|| key==="_fragmentShaderText"
+    || key === "keyword" || key==="_vertexShaderText"|| key==="_fragmentShaderText" || key==="_shadersByTexturesFlags" 
+    || key==="vertices" || key==="_html" || key==="_owner"||key==="_us"||key==="primitive"||key==="primitives"
     ) {
       return; // remove unwanted keys
     }
