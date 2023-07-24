@@ -10,7 +10,7 @@ xhr.open('GET', '/api', true);
 xhr.setRequestHeader('Referer', 'http://example.com');
 xhr.onreadystatechange = function() {
   if (xhr.readyState === XMLHttpRequest.DONE) {
-    // 处理响应
+    // 处理响应在 readyState变为4（即请求已完成）时，可以获取响应数据并进行处理
   }
 };
 xhr.send();
