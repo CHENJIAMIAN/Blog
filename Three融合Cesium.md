@@ -126,6 +126,7 @@ e (thing-1.2.7.1.min.js:formatted:103765)
 ```js
 过滤请求: -/appmaptile -r.png
 过滤日志: -url:https://city.thingjs.com/js/chunk-libs.c79cf7ef.js
+
 _createLayerMesh(t, e, n, a) {
             console.time("开始创建" + a);
             var i = this;
@@ -151,8 +152,17 @@ https://city.thingjs.com/ra/file/fetch/cache/layer/923BA52EE6E238918A3969077A1D0
 
 https://city.thingjs.com/ra/file/fetch/earthEffectData/2021/11/file_20211103102102409_198585.geojson.cbencrypt 加密的geojson国家省区划等请求
 
+lib/wasmNew/thing.wasm.js
+lib/wasmNew/thing.wasm.wasm
+创建出thing.wasm.workder.jsworkers们
 
 thing.min-V1.4.23.js:wasmLoader.init
 		thing.wasm.loader.umd.min.js:TWASMModule().then
 			thing.wasm.js:TWASMModule
+
+获取建筑物: 在y.dataSource = b 处打日志断点  y.name,b
+	geoBuilding_
+	d["a"].createLayer(y)
+	y.dataSource = b, //就是geojson
+		此处闭包(n)的变量y //包含geojson所属图层的说明
 ```
