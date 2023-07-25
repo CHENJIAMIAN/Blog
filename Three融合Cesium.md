@@ -124,6 +124,7 @@ e (thing-1.2.7.1.min.js:formatted:103765)
 
 ### 获取https://thingmap.thingjs.com/theme全国任意地方的geojson
 ```js
+过滤请求: -/appmaptile -r.png
 _createLayerMesh(t, e, n, a) {
             console.time("开始创建" + a);
             var i = this;
@@ -137,5 +138,7 @@ _createLayerMesh(t, e, n, a) {
 
 VoidValFunctor_XMLHttpRequest$opcall 是接收接口返回的地方
 
-https://city.thingjs.com/ra/file/fetch/cache/layer/923BA52EE6E238918A3969077A1D0B9B26AC0E2DC63C4D34 一个是加密的geojson请求
+https://city.thingjs.com/ra/file/fetch/cache/layer/923BA52EE6E238918A3969077A1D0B9B26AC0E2DC63C4D34 可能是加密的建筑物geojson请求
+
+https://city.thingjs.com/ra/file/fetch/earthEffectData/2021/11/file_20211103102102409_198585.geojson.cbencrypt 加密的geojson国家省区划等请求
 ```
