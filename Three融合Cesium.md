@@ -183,3 +183,16 @@ Wasm鉴权
 					的a.open = function(e, n) {
 					的p.apply(a, i), //用到了thing.wasm.loader.umd.min.js的function i(t) {附近定义了 t.XMLHttpRequest = function() {其中t是window对象, 从WasmLoader.init走到这里的
 ```
+### 全局效果模板的实现
+- `code` 和 `templateId`：是地图的唯一标识符和模板ID。
+- `map`：包含了地形数据和地图的参考位置。
+- `baseMap`：定义了底图的样式，包括URL，最大级别，和图像源等。
+- `tileLayerStyle`：定义了瓦片图层的样式，包括灰度滤镜，颜色校正，亮度，对比度等。
+- `light`：定义了地图的光照设置，包括环境光，主光源，次光源等。
+- `postEffect`：定义了地图的后期处理效果，包括颜色校正，边缘模糊，色差，环境光遮蔽等。
+- `background`：定义了地图的背景图片。
+- `mapStyle`：定义了地图的风格，包括雾效果，大气效果等。
+- `overlay`：定义了地图的覆盖层，包括云层，渐变颜色覆盖等。
+- `postEffectId`，`lightId`，`scanId`，`skyBoxId`：定义了地图使用的后期处理，光照，扫描，天空盒的ID。
+
+分类: 场景, 地形, 地图, 灯光, 后处理, 
