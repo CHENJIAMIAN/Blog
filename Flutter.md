@@ -111,21 +111,7 @@ https://pub.dev/packages/path_provider 获取文件系统目录
 https://pub.dev/packages/device_info_plus 获取设备信息
 https://pub.dev/packages/audioplayers 音频播放
 
-### 实践经验
-1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要尽量占少的空间 mainAxisSize: MainAxisSize.min,
-	- 一行3个占行的控件,用Expanded使它们平均分配行宽,(检查所有必要的都加上Expanded了)
-	- listview会尽量占据更多的高度, 从来使得页面白屏, 解决:加入 shrinkWrap: true, physics: NeverScrollableScrollPhysics(),
-1. Row可以挤开宽度到满
-2. Navigation and Routing案例中添加子级一个页面:
-	1. app.dart 的 `allowedPaths` 添加页面路径,
-	2. navigator.dart 添加的 `pages` 添加页面,
-	3. 通过`RouteStateScope.of(context)!.go('/shoukuanfangshi');`跳转
-	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
-3. 从下往上弹出是# BottomSheet
-4. 图标 Image.asset('assets/images/p1_chongzhi_icon_usdt.png',width: 20,height: 20,)
-5. SingleChildScrollView不滚动, 包个Expanded即可
-6. showModalBottomSheet 背景透明,不然给了圆角看不出来: 其backgroundColor: const Color.fromRGBO(0, 0, 0, 0),即可
-7. Row里的Collum里加spacer白屏,  给Row包Expaned即可解决
+
 ### 路由
 MaterialApp.routes:{}
 #### 路由架构
@@ -157,12 +143,40 @@ Navigator.push( context, MaterialPageRoute(builder: (context) => DetailPage(item
 Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), settings: RouteSettings(arguments: '123'), ), );
 ```
 
-
-
 ### 通用Prompt
 ```js
-帮我写一个flutter页面,页面名称为"搬砖规则",类的名称为"BanzhuanguizePage",页面导入了'../routing.dart','../auth.dart', '../http.dart','package:oktoast/oktoast.dart';页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/');},),"""
+帮我写一个flutter页面,页面名称为"搬砖规则",类的名称为"BanzhuanguizePage",页面导入了'../routing.dart','../auth.dart', '../http.dart','package:oktoast/oktoast.dart';页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/');},),""",页面的主要字体大小为16.
 ```
+
+### 实践经验
+1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要尽量占少的空间 mainAxisSize: MainAxisSize.min,
+	- 一行3个占行的控件,用Expanded使它们平均分配行宽,(检查所有必要的都加上Expanded了)
+2. Row可以挤开宽度到满
+3. Navigation and Routing案例中添加子级一个页面:
+	1. app.dart 的 `allowedPaths` 添加页面路径,
+	2. navigator.dart 添加的 `pages` 添加页面,
+	3. 通过`RouteStateScope.of(context)!.go('/shoukuanfangshi');`跳转
+	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
+4. 从下往上弹出是# BottomSheet, # CupertinoPicker是类似的滚轮选择
+5. 图标Image.asset('assets/images/p1_chongzhi_icon_usdt.png',width: 20,height: 20,)
+6. 文本换行,用Flexible包裹文本
+7. showToast('请输入正确的邮箱账号',duration: Duration(seconds: 2),radius: 3.0,);
+8. final authState = MyAppAuthScope.of(context);
+9.  final myCountry = _countries.firstWhere((country) => country['countryId'] == authState.userInfo?.countryId,   orElse: () => null, );
+	- 不加orElse: () => null,会抛出异常
+10. formKey.currentState!.save();//调用每个表单项的onSaved
+11. 列表引起白屏 ListView.separated(    shrinkWrap: true,
+12. ListView会尽量占据更多的高度, 从来使得页面白屏, 解决:加入 shrinkWrap: true, physics: NeverScrollableScrollPhysics(),
+14. SingleChildScrollView不滚动, 包个Expanded即可
+15. showModalBottomSheet 背景透明,不然给了圆角看不出来: 其backgroundColor: const Color.fromRGBO(0, 0, 0, 0),即可
+16. Row里的Collum里加spacer白屏,  给Row包Expaned即可解决
+17. 
+
+### 路由
+MaterialApp.routes:{}
+
+### 原理
+1. import 'dart:ui'; 实际是引入 `D:\flutter_windows_3.10.5-stable\bin\cache\pkg\sky_engine\lib\ui\ui.dart
 
 ### 实战项目
 ```js
@@ -174,25 +188,11 @@ lib.main.main
 			lib.src.screens.scaffold.MyAppScaffold的 AdaptiveNavigationScaffold 决定底部栏,
 			要跳转的其他二级页面
 			]
+
+  
+  
+最后接   区块链钱包
+
+
+游戏钱包  -   订单模块  -  订单维权  
 ```
-### 实践经验
-1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要尽量占少的空间 mainAxisSize: MainAxisSize.min,
-2. Row可以挤开宽度到满
-3. Navigation and Routing案例中添加子级一个页面:
-	1. app.dart 的 `allowedPaths` 添加页面路径,
-	2. navigator.dart 添加的 `pages` 添加页面,
-	3. 通过`RouteStateScope.of(context)!.go('/shoukuanfangshi');`跳转
-	4. 右上角返回:AppBar加:leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/wode');},),
-4. 从下往上弹出是# BottomSheet, # CupertinoPicker是类似的滚轮选择
-5. 图标Image.asset('assets/images/p1_chongzhi_icon_usdt.png',width: 20,height: 20,)
-6. 文本换行,用Flexible包裹文本
-### 路由
-MaterialApp.routes:{}
-
-### 原理
-1. import 'dart:ui'; 实际是引入 `D:\flutter_windows_3.10.5-stable\bin\cache\pkg\sky_engine\lib\ui\ui.dart
-
-1. showToast('请输入正确的邮箱账号',duration: Duration(seconds: 2),radius: 3.0,);
-2. final authState = MyAppAuthScope.of(context);
-4. Aa.11111111
-8. 会员： 设置法币国家-  绑定手机号（手机发送）- 绑定姓名 - 实名认证（会员上传）    更新头像
