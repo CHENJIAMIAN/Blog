@@ -181,5 +181,5 @@ Wasm鉴权
 					 _this._instance //await WebAssembly.compile(byteCode);获取到了内嵌在thing.js里的wasm byteCode提供的方法们memory,memset,memcpy,memmove,memcmp,isPrime,toUpper,toLower,stringEquals,stringLength,searchStringL2R,searchStringR2L,startWiths,copyString,mixString,getFileName,allocString,appendString,subString,consoleNumber,consoleBuffer,consoleLog,runScript,jsmn_parse,jsmn_init,parseJSONString,findJSONToken,freeJSONToken,gcd,ExtEuclid,rsa_modExp,rsaGenKeys,rsaGetEncryptSize,initGlobal,initKeys,freeGlobal,setRandomSeeds,__random,randomUint,requestFileSize,onRecvFileSize,getEncodingStringSize,getEncodingStringData,encodeString,getDecodingStringSize,decodeString,encodeStringWithKeys,decodeStringWithKeys,getAttributes,getID,getPluginsNumber,getPluginVersion,getPluginName,getPluginDesc,setAttributes,getRandomValue,eval
 					chunk-libs.c79cf7ef.js的c.prototype.request
 					的a.open = function(e, n) {
-					的p.apply(a, i), //用到了thing.wasm.loader.umd.min.js的function i(t) {附近定义了t.XMLHttpRequest
+					的p.apply(a, i), //用到了thing.wasm.loader.umd.min.js的function i(t) {附近定义了 t.XMLHttpRequest = function() {其中t是window对象, 从WasmLoader.init走到这里的
 ```
