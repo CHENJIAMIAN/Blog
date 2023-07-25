@@ -487,7 +487,6 @@ createTaskProcessorWorker根据"workerModule"匹配 TaskProcessor根据传入的
 ## 实践
 ```javascript
 概念
-    Cesium ion是一个提供瓦片图和3D地理空间数据的平台
     使用geojson加载线数据在30万左右，矢量建筑面8万左右尚可
     OSGB//Open Scene Gragh Binary 是模型的二进制表示，所有纹理都包含在一个独立文件中。 OpenSceneGraph 是一个开源的高性能 3D 图形工具包 
 

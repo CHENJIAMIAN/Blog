@@ -157,7 +157,7 @@ DLSWBR的英文全称是"Dynamic Limiting Speed Web Behavior Recognition"。是�
         images: 存储图像资源，包括颜色、法线和透明度纹理等；
         textures: 存储用于着色和光照计算的纹理映射；
         meshes: 存储网格数据，包括顶点坐标、连接不同顶点的面以及每个顶点上的 UV 和法向量等信息；
-        buffers: 存储二进制形式的几何、声音、特效等相关数据；
+        buffers: 存储二进制形式的几何、声音、特效等相关数据；scene
         bufferViews: 指定一部分存储在buffer中的数据所需描述信息的视图；
         accessors: 通过描述符访问存储在缓冲区中的数据对象；
         nodes: 组成场景中的所有对象并且处理它们之间的关系；
@@ -165,6 +165,8 @@ DLSWBR的英文全称是"Dynamic Limiting Speed Web Behavior Recognition"。是�
         scene: 定义了哪个节点是默认场景中的根节点；
         scenes: 在.glb文件中定义多个.scene文件的列表；
         samplers: 定义纹理的过滤模式。
+        animations: 动画
+> 一个node可以包含一个或多个meshes，每个mesh可以包含一个或多个primitives。每个primitive代表一个几何体的基本单元，可以具有不同的样式和材质。同时，每个node可以具有坐标、旋转、缩放等属性，以控制它在场景中的位置和方向。通过这些概念的组合，可以创建包含多个几何体的复杂3D场景。
 ## chrome.storage.local跟localStorage有什么区别
 一个是会上传到云上, 一个在本地
 `chrome.storage.local`和`localStorage`有几个区别：

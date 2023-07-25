@@ -1,5 +1,15 @@
-[3d-tiles/specification at main · CesiumGS/3d-tiles · GitHub](https://github.com/CesiumGS/3d-tiles/tree/main/specification)
-[超详细的OGC 网页书: 3D Tiles Specification](https://portal.ogc.org/files/102132) 提交日期： 2022-08-18 **非标准,审议中,此文件可能会发生更改**
+- [3D Tiles 1.0](https://github.com/CesiumGS/3d-tiles/tree/1.0)：[3D Tiles 规范 1.0](http://docs.opengeospatial.org/cs/18-053r2/18-053r2.html)已提交给开放地理空间联盟 (OGC)，并被批准为 OGC 社区标准_(2018-12-14)_
+- [3D 瓷砖 1.1](https://github.com/CesiumGS/3d-tiles)
+    - 补充：
+        - 支持可与图块集、图块、图块内容和图块内容组关联的结构化元数据
+        - 直接支持 glTF 资源作为图块内容
+        - 支持多个图块内容
+        - 支持隐式切片方案
+    - 弃用：
+        - 原始图块格式（b3dm、i3dm、pnts 和 cmpt）已弃用，转而使用 glTF 内容
+        - tileset.properties已弃用，有利于更通用的元数据支持
+
+[有关 3D Tiles 1.0 和 3D Tiles 1.1 之间变化的更多详细信息可以在CHANGES.md](https://github.com/CesiumGS/3d-tiles/blob/main/CHANGES.md)中找到。
 
 **1.0 版**，2018 年 6 月 6 日
 本文档描述了 3D Tiles 的规范，这是一种用于流式传输大量异构 3D 地理空间数据集的开放标准。
@@ -39,9 +49,11 @@ Tileset可以使用类似于栅格和矢量tile方案（如 Web 地图tile服务
 *   tile内容文件使用特定于其[tile格式规范](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-format-specifications)的文件类型和媒体类型。
 *   Tileset 样式文件使用.json扩展名和application/json媒体类型。
 
-显式文件扩展名是可选的。有效的实现可能会忽略它并通过其标头中的魔术字段来识别内容的格式。
-> 魔术字段（Magic number）是一种特殊的字节序列，通常出现在文件的开头或结尾，用于识别该文件的格式或类型。这些字节序列可以被用来唯一地标识一个文件的类型，无论它是否有扩展名，从而避免了使用扩展名时可能存在的不确定性和问题。例如，对于JPEG图像文件，其魔术字段为0xFFD8FFE0，在读取文件时可以检查这个字段来确认该文件的格式是JPEG。
-
+显式文件扩展名是可选的。有效的实现可能会忽略它并通过其标头中的Magic字段来识别内容的格式。
+> Magic字段（Magic number）是一种特殊的字节序列，通常出现在文件的开头或结尾，用于识别该文件的格式或类型。这些字节序列可以被用来唯一地标识一个文件的类型，无论它是否有扩展名，从而避免了使用扩展名时可能存在的不确定性和问题。例如，对于JPEG图像文件，其Magic字段为0xFFD8FFE0，在读取文件时可以检查这个字段来确认该文件的格式是JPEG。
+magic === "cmpt"
+magic === "i3dm"
+magic === "b3dm"
 ## JSON编码
 
 3D Tiles 对 JSON 格式和编码有以下限制。
@@ -398,7 +410,7 @@ refine属性是一个字符串，对于替换优化是“REPLACE”，对于添�
 
 content属性是一个对象，其中包含有关 tile 的可渲染内容的元数据 。content.uri是一个 uri，它指向 tile 的二进制内容（参见[Tile 格式规范](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-format-specifications)），或者另一个 tileset JSON 来创建一个 tileset 的 tileset（参见[External tilesets](https://github.com/CesiumGS/3d-tiles/tree/main/specification#external-tilesets)）。
 
-content.uri不需要文件扩展名。内容的[tile 格式可以通过其标头中的](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-format-specifications)魔术字段来标识，或者如果内容是 JSON，则作为外部 tileset。
+content.uri不需要文件扩展名。内容的[tile 格式可以通过其标头中的](https://github.com/CesiumGS/3d-tiles/tree/main/specification#tile-format-specifications)Magic字段来标识，或者如果内容是 JSON，则作为外部 tileset。
 
 content.boundingVolume属性定义了一个类似于顶级boundingVolume属性的可选[boundingVolumes](https://github.com/CesiumGS/3d-tiles/tree/main/specification#bounding-volumes)。但与顶级boundingVolume属性不同的是，content.boundingVolume是一个紧密配合的boundingVolumes，仅包含tile的内容。 boundingVolume提供空间连贯性，而content.boundingVolume支持紧密的视锥体剔除，排除渲染不在潜在视图体积内的任何内容。未定义时，tile的boundingVolumes仍用于剔除（请参阅[网格](https://github.com/CesiumGS/3d-tiles/tree/main/specification#grids)）。
 
@@ -654,7 +666,7 @@ extras属性允许将特定于应用程序的元数据添加到任何 3D Tiles J
 | [复合 ( cmpt )](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite)               | 将不同格式的tile连接成一个tile。                      |
 
 Tileset可以包含tile格式的任意组合。[3D Tiles 还可以使用Composite](https://github.com/CesiumGS/3d-tiles/blob/main/specification/TileFormats/Composite/README.md) tile在同一个 tile 中支持不同的格式。
-
+b3dm
 ## 声明式样式规范
 
 3D Tiles 包括使用 JSON 定义的简明声明式样式和用一小部分 JavaScript 编写的表达式，以增强样式。

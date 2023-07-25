@@ -170,14 +170,16 @@ Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), 
 14. SingleChildScrollView不滚动, 包个Expanded即可
 15. showModalBottomSheet 背景透明,不然给了圆角看不出来: 其backgroundColor: const Color.fromRGBO(0, 0, 0, 0),即可
 16. Row里的Collum里加spacer白屏,  给Row包Expaned即可解决
-17. 
 
 ### 路由
 MaterialApp.routes:{}
 
 ### 原理
 1. import 'dart:ui'; 实际是引入 `D:\flutter_windows_3.10.5-stable\bin\cache\pkg\sky_engine\lib\ui\ui.dart
-
+1. showToast('请输入正确的邮箱账号',duration: Duration(seconds: 2),radius: 3.0,);
+2. final authState = MyAppAuthScope.of(context);
+4. Aa.11111111
+8. 会员： 设置法币国家-  绑定手机号（手机发送）- 绑定姓名 - 实名认证（会员上传）    更新头像
 ### 实战项目
 ```js
 lib.main.main
