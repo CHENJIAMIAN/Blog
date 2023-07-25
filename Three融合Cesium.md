@@ -125,6 +125,7 @@ e (thing-1.2.7.1.min.js:formatted:103765)
 ### 获取https://thingmap.thingjs.com/theme全国任意地方的geojson
 ```js
 过滤请求: -/appmaptile -r.png
+过滤日志: -url:https://city.thingjs.com/js/chunk-libs.c79cf7ef.js
 _createLayerMesh(t, e, n, a) {
             console.time("开始创建" + a);
             var i = this;
