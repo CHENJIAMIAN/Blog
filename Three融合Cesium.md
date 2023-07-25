@@ -136,4 +136,6 @@ _createLayerMesh(t, e, n, a) {
               , c = []
 
 VoidValFunctor_XMLHttpRequest$opcall 是接收接口返回的地方
+
+https://city.thingjs.com/ra/file/fetch/cache/layer/923BA52EE6E238918A3969077A1D0B9B26AC0E2DC63C4D34 一个是加密的geojson请求
 ```
