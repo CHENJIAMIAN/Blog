@@ -138,32 +138,39 @@ _createLayerMesh(t, e, n, a) {
               , u = o.rendererInfo
               , c = []
 
-VoidValFunctor_XMLHttpRequest$opcall 是接收接口返回的地方
+
 
 https://city.thingjs.com/ra/file/fetch/cache/layer/923BA52EE6E238918A3969077A1D0B9B26AC0E2DC63C4D34 可能是
 	Building 拉伸高度的面
-	Roadlmportant
-	RoadMain
-	RoadSub
-	RoadNorm
-	Railway
-	Water
-	Greenland
+	Roadlmportant	RoadMain	RoadSub	RoadNorm	Railway	Water	Greenland
 
 https://city.thingjs.com/ra/file/fetch/earthEffectData/2021/11/file_20211103102102409_198585.geojson.cbencrypt 加密的geojson国家省区划等请求
 
 主线程:
 lib/wasmNew/thing.wasm.js操作了
-lib/wasmNew/thing.wasm.wasm //requestAnimationFrame postMessage给了workder线程
+lib/wasmNew/thing.wasm.wasm //创建了4个worker ,并requestAnimationFrame在需要时postMessage给了workder线程
 很多个workder线程:
 	lib/wasmNew/thing.wasm.worker.js操作了
 	lib/wasmNew/thing.wasm.worker.wasm
 
-thing.min-V1.4.23.js:wasmLoader.init
-		thing.wasm.loader.umd.min.js:TWASMModule().then
-			thing.wasm.js:TWASMModule //onmessage接收请求
+html
+thing.wasm.loader.umd.min.js的cd = Ve.toText("166,149,61,44,125,106,57,87,196,244,63,177,50")也就是"thing.wasm.js"插入了"/static/lib/wasmNew/thing.wasm.js"
 
-获取建筑物: 在y.dataSource = b 处打日志断点  y.name,b
+thing.wasm.js:TWASMModule //onmessage接收请求
+thing.wasm.loader.umd.min.js:TWASMModule().then
+thing.min-V1.4.23.js:wasmLoader.init
+
+Wasm鉴权
+	在app.e6a7a813.js去THING.Utils.login({
+				method: "GET",
+				url: "".concat(i["a"].BaseUrl, "city/WasmAuth"),
+				wasmRootPath: "/static/lib/wasmNew"
+			}).then((function() {
+				e({					isUseBundle: !0				})			}
+
+
+获取建筑物: 
+					 在y.dataSource = b 处打日志断点  y.name,b
 	geoBuilding_
 	d["a"].createLayer(y)
 	y.dataSource = b, //就是geojson
