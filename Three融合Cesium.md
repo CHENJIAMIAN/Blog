@@ -138,7 +138,20 @@ _createLayerMesh(t, e, n, a) {
 
 VoidValFunctor_XMLHttpRequest$opcall 是接收接口返回的地方
 
-https://city.thingjs.com/ra/file/fetch/cache/layer/923BA52EE6E238918A3969077A1D0B9B26AC0E2DC63C4D34 可能是加密的建筑物geojson请求
+https://city.thingjs.com/ra/file/fetch/cache/layer/923BA52EE6E238918A3969077A1D0B9B26AC0E2DC63C4D34 可能是
+	Building 拉伸高度的面
+	Roadlmportant
+	RoadMain
+	RoadSub
+	RoadNorm
+	Railway
+	Water
+	Greenland
 
 https://city.thingjs.com/ra/file/fetch/earthEffectData/2021/11/file_20211103102102409_198585.geojson.cbencrypt 加密的geojson国家省区划等请求
+
+
+thing.min-V1.4.23.js:wasmLoader.init
+		thing.wasm.loader.umd.min.js:TWASMModule().then
+			thing.wasm.js:TWASMModule
 ```
