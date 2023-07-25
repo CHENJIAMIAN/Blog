@@ -152,13 +152,16 @@ https://city.thingjs.com/ra/file/fetch/cache/layer/923BA52EE6E238918A3969077A1D0
 
 https://city.thingjs.com/ra/file/fetch/earthEffectData/2021/11/file_20211103102102409_198585.geojson.cbencrypt 加密的geojson国家省区划等请求
 
-lib/wasmNew/thing.wasm.js
-lib/wasmNew/thing.wasm.wasm
-创建出thing.wasm.workder.jsworkers们
+主线程:
+lib/wasmNew/thing.wasm.js操作了
+lib/wasmNew/thing.wasm.wasm //requestAnimationFrame postMessage给了workder线程
+很多个workder线程:
+	lib/wasmNew/thing.wasm.worker.js操作了
+	lib/wasmNew/thing.wasm.worker.wasm
 
 thing.min-V1.4.23.js:wasmLoader.init
 		thing.wasm.loader.umd.min.js:TWASMModule().then
-			thing.wasm.js:TWASMModule
+			thing.wasm.js:TWASMModule //onmessage接收请求
 
 获取建筑物: 在y.dataSource = b 处打日志断点  y.name,b
 	geoBuilding_
