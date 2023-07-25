@@ -156,7 +156,9 @@ wasm文件关系
 
 wasm如何初始化
 	html
-	thing.wasm.loader.umd.min.js插入了"/static/lib/wasmNew/thing.wasm.js"
+	thing.wasm.loader.umd.min.js//把一些异步请求交给workder去做
+		!!!!!!!!重写了window.XMLHttpRequest = gc!!!!!!!!!!!!!
+		插入了"/static/lib/wasmNew/thing.wasm.js"
 		//cd = Ve.toText("166,149,61,44,125,106,57,87,196,244,63,177,50")也就是"thing.wasm.js"
 	
 	thing.wasm.js:TWASMModule //onmessage接收请求
@@ -178,4 +180,6 @@ Wasm鉴权
 					 WebAssembly.instantiate
 					 _this._instance //await WebAssembly.compile(byteCode);获取到了内嵌在thing.js里的wasm byteCode提供的方法们memory,memset,memcpy,memmove,memcmp,isPrime,toUpper,toLower,stringEquals,stringLength,searchStringL2R,searchStringR2L,startWiths,copyString,mixString,getFileName,allocString,appendString,subString,consoleNumber,consoleBuffer,consoleLog,runScript,jsmn_parse,jsmn_init,parseJSONString,findJSONToken,freeJSONToken,gcd,ExtEuclid,rsa_modExp,rsaGenKeys,rsaGetEncryptSize,initGlobal,initKeys,freeGlobal,setRandomSeeds,__random,randomUint,requestFileSize,onRecvFileSize,getEncodingStringSize,getEncodingStringData,encodeString,getDecodingStringSize,decodeString,encodeStringWithKeys,decodeStringWithKeys,getAttributes,getID,getPluginsNumber,getPluginVersion,getPluginName,getPluginDesc,setAttributes,getRandomValue,eval
 					chunk-libs.c79cf7ef.js的c.prototype.request
+					的a.open = function(e, n) {
+					的p.apply(a, i), //用到了thing.wasm.loader.umd.min.js的function i(t) {附近定义了t.XMLHttpRequest
 ```
