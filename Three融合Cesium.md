@@ -128,51 +128,53 @@ e (thing-1.2.7.1.min.js:formatted:103765)
 过滤日志: -url:https://city.thingjs.com/js/chunk-libs.c79cf7ef.js
 
 _createLayerMesh(t, e, n, a) {
-            console.time("开始创建" + a);
-            var i = this;
-            console.time("解析数据");
-            let o = this._parseData(t, e);
-            console.timeEnd("解析数据");
-            let s = o.groupInfo
-              , l = Object.keys(s).length
-              , u = o.rendererInfo
-              , c = []
+	console.time("开始创建" + a);
+	var i = this;
+	console.time("解析数据");
+	let o = this._parseData(t, e);
+	console.timeEnd("解析数据");
 
 
+获取建筑物: 
+	在y.dataSource = b 处打日志断点  y.name,b
+	geoBuilding_
+	d["a"].createLayer(y)
+	y.dataSource = b, //就是geojson
+		此处闭包(n)的变量y //包含geojson所属图层的说明
+	https://city.thingjs.com/ra/file/fetch/cache/layer/923BA52EE6E238918A3969077A1D0B9B26AC0E2DC63C4D34 可能是
+		Building 拉伸高度的面
+		Roadlmportant	RoadMain	RoadSub	RoadNorm	Railway	Water	Greenland
+	https://city.thingjs.com/ra/file/fetch/earthEffectData/2021/11/file_20211103102102409_198585.geojson.cbencrypt 加密的geojson国家省区划等请求
 
-https://city.thingjs.com/ra/file/fetch/cache/layer/923BA52EE6E238918A3969077A1D0B9B26AC0E2DC63C4D34 可能是
-	Building 拉伸高度的面
-	Roadlmportant	RoadMain	RoadSub	RoadNorm	Railway	Water	Greenland
+wasm文件关系
+	主线程:
+	lib/wasmNew/thing.wasm.js操作了
+	lib/wasmNew/thing.wasm.wasm //创建了4个worker ,并requestAnimationFrame在需要时postMessage给了workder线程
+	很多个workder线程:
+		lib/wasmNew/thing.wasm.worker.js操作了
+		lib/wasmNew/thing.wasm.worker.wasm
 
-https://city.thingjs.com/ra/file/fetch/earthEffectData/2021/11/file_20211103102102409_198585.geojson.cbencrypt 加密的geojson国家省区划等请求
-
-主线程:
-lib/wasmNew/thing.wasm.js操作了
-lib/wasmNew/thing.wasm.wasm //创建了4个worker ,并requestAnimationFrame在需要时postMessage给了workder线程
-很多个workder线程:
-	lib/wasmNew/thing.wasm.worker.js操作了
-	lib/wasmNew/thing.wasm.worker.wasm
-
-html
-thing.wasm.loader.umd.min.js的cd = Ve.toText("166,149,61,44,125,106,57,87,196,244,63,177,50")也就是"thing.wasm.js"插入了"/static/lib/wasmNew/thing.wasm.js"
-
-thing.wasm.js:TWASMModule //onmessage接收请求
-thing.wasm.loader.umd.min.js:TWASMModule().then
-thing.min-V1.4.23.js:wasmLoader.init
+wasm如何初始化
+	html
+	thing.wasm.loader.umd.min.js插入了"/static/lib/wasmNew/thing.wasm.js"
+		//cd = Ve.toText("166,149,61,44,125,106,57,87,196,244,63,177,50")也就是"thing.wasm.js"
+	
+	thing.wasm.js:TWASMModule //onmessage接收请求
+	thing.wasm.loader.umd.min.js:TWASMModule().then
+	thing.min-V1.4.23.js:wasmLoader.init
 
 Wasm鉴权
 	在app.e6a7a813.js去THING.Utils.login({
 				method: "GET",
 				url: "".concat(i["a"].BaseUrl, "city/WasmAuth"),
 				wasmRootPath: "/static/lib/wasmNew"
-			}).then((function() {
-				e({					isUseBundle: !0				})			}
+			}).then((function() {e({isUseBundle: !0})}
 
-
-获取建筑物: 
-					 在y.dataSource = b 处打日志断点  y.name,b
-	geoBuilding_
-	d["a"].createLayer(y)
-	y.dataSource = b, //就是geojson
-		此处闭包(n)的变量y //包含geojson所属图层的说明
+如何把复杂任务提交给wasm,处理完如何交回去
+					 _App.prototype.setupComplete
+					 initPluginAndSetAuth
+					 new WebAssemblyEngine
+					 _WebAssemblyEngine.prototype._loadFromByteCode
+					 WebAssembly.instantiate
+					 _this._instance //获取到了wasm提供的方法们memory,memset,memcpy,memmove,memcmp,isPrime,toUpper,toLower,stringEquals,stringLength,searchStringL2R,searchStringR2L,startWiths,copyString,mixString,getFileName,allocString,appendString,subString,consoleNumber,consoleBuffer,consoleLog,runScript,jsmn_parse,jsmn_init,parseJSONString,findJSONToken,freeJSONToken,gcd,ExtEuclid,rsa_modExp,rsaGenKeys,rsaGetEncryptSize,initGlobal,initKeys,freeGlobal,setRandomSeeds,__random,randomUint,requestFileSize,onRecvFileSize,getEncodingStringSize,getEncodingStringData,encodeString,getDecodingStringSize,decodeString,encodeStringWithKeys,decodeStringWithKeys,getAttributes,getID,getPluginsNumber,getPluginVersion,getPluginName,getPluginDesc,setAttributes,getRandomValue,eval
 ```
