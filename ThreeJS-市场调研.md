@@ -180,3 +180,7 @@ iview+vue
 124. http://www.hightopo.com/demo/zutaituomin 石油组态2D
 125. https://www.hightopo.com/demo/heat-station/blue/ 换热站远程监控系统
 126. https://www.hightopo.com/demo/Simple3DEditor/index.html 组态编辑器
+
+### 数维图
+https://www.sovitjs.com/
+基于three.js+indexdb+three.js的scene去Json化(自封.svt格式)+objectloader
