@@ -125,12 +125,13 @@ e (thing-1.2.7.1.min.js:formatted:103765)
 过滤请求: -/appmaptile -r.png
 过滤日志: -url:https://city.thingjs.com/js/chunk-libs.c79cf7ef.js
 
-_createLayerMesh(t, e, n, a) {
-	console.time("开始创建" + a);
-	var i = this;
-	console.time("解析数据");
-	let o = this._parseData(t, e);
-	console.timeEnd("解析数据");
+this.app.create({ type: "BigBuildingLayer",
+	_createLayerMesh(t, e, n, a) {
+		console.time("开始创建" + a);
+		var i = this;
+		console.time("解析数据");
+		let o = this._parseData(t, e);
+		console.timeEnd("解析数据"); //得到geojson
 
 
 获取建筑物: 
