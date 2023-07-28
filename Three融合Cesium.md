@@ -132,7 +132,8 @@ this.app.create({ type: "BigBuildingLayer",
 		console.time("解析数据");
 		let o = this._parseData(t, e);
 		console.timeEnd("解析数据"); //得到geojson
-
+		之后调用:
+		webpack:///src/geometry/GeometryManager.js的dispose去销毁四个worker
 
 获取建筑物: 
 	在y.dataSource = b 处打日志断点  y.name,b
@@ -149,7 +150,7 @@ wasm文件关系
 	主线程:
 	lib/wasmNew/thing.wasm.js操作了
 	lib/wasmNew/thing.wasm.wasm //创建了4个worker ,并requestAnimationFrame在需要时postMessage给了workder线程
-	很多个workder线程:
+	四个workder线程:
 		lib/wasmNew/thing.wasm.worker.js操作了
 		lib/wasmNew/thing.wasm.worker.wasm
 
