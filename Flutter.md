@@ -182,7 +182,7 @@ MaterialApp.routes:{}
 8. 会员： 设置法币国家-  绑定手机号（手机发送）- 绑定姓名 - 实名认证（会员上传）    更新头像
 
 ### 表单
-1. Form   key: _formKey
+1. Form   key: _formKey, 劫持
 ### 实战项目
 ```js
 lib.main.main
