@@ -170,6 +170,7 @@ Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), 
 14. SingleChildScrollView不滚动, 包个Expanded即可
 15. showModalBottomSheet 背景透明,不然给了圆角看不出来: 其backgroundColor: const Color.fromRGBO(0, 0, 0, 0),即可
 16. Row里的Collum里加spacer白屏,  给Row包Expaned即可解决
+17. 自动换行Wrap组件设置  spacing: 8, // 水平间距  runSpacing: 8, // 垂直间距, 相对于css的flex-wrap
 
 ### 路由
 MaterialApp.routes:{}
