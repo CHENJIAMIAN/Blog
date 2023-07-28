@@ -182,8 +182,28 @@ MaterialApp.routes:{}
 8. 会员： 设置法币国家-  绑定手机号（手机发送）- 绑定姓名 - 实名认证（会员上传）    更新头像
 
 ### 表单
-1. Form   key: _formKey, 劫持整个表单
-2. 
+1. Form   key: _formKey, 劫持整个表单, 在提交时 _formKey.currentState!.validate();验证
+2. TextFormField 输入框, validator被回调校验, onChanged去取值
+3.  `FormField<bool>` 的builder提供formFieldState, 通过在如checkbox的onChanged通知 formFieldState.didChange(value); 去触发formFieldState.isValid值的变化
+4. 通过构造  FormData formData = FormData();在TextFormField的onChanged做 formData.email = value; 去收集表单
+
+
+### 数据模型Model
+```dart
+dddd.dart
+	import 'package:json_annotation/json_annotation.dart';
+	@JsonSerializable()
+	class XXX(){}
+
+
+//自动生成一个文件两个方法
+dddd.g.dart
+	part of 'dddd.dart';
+	_$FormDataFromJson()
+	_$FormDataToJson()
+```
+
+
 ### 实战项目
 ```js
 lib.main.main
