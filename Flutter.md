@@ -145,7 +145,11 @@ Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), 
 
 ### 通用Prompt
 ```js
-帮我写一个flutter页面,页面名称为"搬砖规则",类的名称为"BanzhuanguizePage",页面导入了'../routing.dart','../auth.dart', '../http.dart','package:oktoast/oktoast.dart';页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/');},),""",页面的主要字体大小为16.
+帮我写一个flutter页面,页面名称为"搬砖转出",类的名称为"BanzhuanzhuanchuPage",页面导入了'../routing.dart','../auth.dart', '../http.dart','package:oktoast/oktoast.dart';页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/banzhuanzhuanqian');},),""",页面的主要字体大小为16.
+
+页面的第一部分是个卡片.
+页面的第二部分是个卡片.
+页面的第三部分是个占满整行的按钮"确定转出".按钮高度为40
 ```
 
 ### 实践经验
@@ -231,8 +235,6 @@ lib.main.main
 	2. 查看维护进展
 	
  区块链钱包
-	1. 总资产 （ 数字货币 ）
-	2. 钱包列表
 	3. 协议列表
 	4. 新增会员链上钱包
 	5. 会员链上钱包列表
