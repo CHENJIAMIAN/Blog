@@ -125,7 +125,7 @@ GlobeVS：定义所有 3D 地球场景（又名“球体”）上的“顶点着
 GroundAtmosphere: 该类管理和呈现地球大气层。
 HeadingPitchRoll 是由三个实数分别表示方向角、俯仰角、旋转角的类。
 ImageryLayerCollection: 该类表示多个图像图层的集合。
-Instanced3DModel3DTileContent: 该类表示一个可重用的3D模型实例。
+Instanced3D  Model3DTileContent: 该类表示一个可重用的3D模型实例。
 JulianDate: 该类表示一个儒略日日期。
 kdbush: 该类提供了一种使用kd树进行快速空间搜索的方法。
 knockout 用于一个变量跟另一个变量联动，是 JavaScript 的 MVVM 框架，也是Cesium中关键的一部分，是cesium总体架构中，MVC 模式实现MVVM的另一种表现方式。提供相关的工具函数，常常作为依赖注入框架使用。

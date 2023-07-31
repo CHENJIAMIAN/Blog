@@ -175,7 +175,6 @@ vendor文件
                 //原理:先转ast,再将a.css、b.css和c.css的样式内容以字符串的形式拼接在一起
             'style-loader',//通过注入<style>标记将CSS添加到DOM     
             loader: 'style-loader!css-loader'//感叹号!用来连接不同的loader， 而且执行顺序是从右到左webpack5已废弃
-            
             }]                
     plugins:[   /增强和优化打包的过程/
                 HtmlWebpackPlugin//简单创建HTML文件并自动注入打包后的资源,用于服务器访问             
