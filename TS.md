@@ -21,7 +21,8 @@ let a= {a:1,b:2,c:3,d:4} as {a:number,b:number} //{xx} as XX表示包容地�
 
 解决Variable 'globalString' is used before being assigned错误
     let globalString: string; 
-    console.log(`globalString : ${globalString!}`);//用!号来表示变量还未赋值
+    //console.log(`globalString : ${globalString!}`); 
+    //用!号来表示变量还未赋值
 
 '类型{ ... }的参数不能赋给类型“Options”的参数 对象文字可以只指定已知属性，并且“title”不在类型“Options”中。ts(2345)'
      //给对象添加它本来没有的属性:
@@ -58,7 +59,6 @@ let a= {a:1,b:2,c:3,d:4} as {a:number,b:number} //{xx} as XX表示包容地�
        declare module 'vue' {
             interface ComponentCustomProperties {//扩充vue的实例上挂的对象}
         }
-
 
 ```
 

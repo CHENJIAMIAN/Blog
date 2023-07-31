@@ -393,7 +393,7 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
         geometry.merge(何体mesh.geometry, 几何体mesh.matrix); //将几何体合并
     在循环渲染中避免使用更新：
         //几何体：
-        geometry.verticesNeedUpdate = true; //顶点发生了修改
+        geometry.verticesNeedUpdate = true; //顶点发生了修改ht
         geometry.elementsNeedUpdate = true; //面发生了修改
         geometry.morphTargetsNeedUpdate = true; //变形目标发生了修改
         geometry.uvsNeedUpdate = true; //uv映射发生了修改
@@ -513,6 +513,7 @@ src\renderers\WebGLRenderer.js
 7. **如何在 Three.js 中实现镜面反射效果？**  
    这个问题将引导你研究立方体贴图实现环境反射，或者使用渲染到纹理（Render to Texture）实现动态反射。
 这些问题都是从实际项目中可能遇到的需求出发，引导你深入理解 Three.js 和 WebGL 的原理和实践。通过研究这些问题，你可以更好地理解 Three.js 的工作原理，以及如何使用它实现各种复杂的 3D 效果。
+
 WebGL 的知识体系可以大致分为以下几个部分：
 1. **基础知识**：包括 WebGL 的工作原理，如何在 HTML5 `<canvas>` 上创建 WebGL 渲染上下文，以及如何使用 WebGL API。
 2. **图形渲染管线**：理解 WebGL 的图形渲染管线，包括顶点着色器和片段着色器，以及它们如何处理和渲染 3D 几何体。
@@ -537,6 +538,7 @@ WebGL 的知识体系可以大致分为以下几个部分：
 - **如何在 Three.js 中实现镜面反射效果？**  
   对应知识点：高级技术（实时反射和折射）
 这些知识点都是 WebGL 的重要组成部分，理解和掌握这些知识点可以帮助你更好地理解 WebGL 的工作原理，以及如何使用 WebGL 创建复杂的 3D 应用。
+
 以下是一些针对 WebGL 知识体系 1-7 的问题：
 1. **基础知识**：如何在 HTML5 `<canvas>` 上创建 WebGL 渲染上下文？如何使用 WebGL API 绘制一个简单的 2D 形状，例如一个三角形？
 2. **图形渲染管线**：解释 WebGL 的图形渲染管线的工作流程。如何写一个简单的顶点着色器和片段着色器，以及如何将它们用于 WebGL 渲染？
