@@ -143,14 +143,6 @@ Navigator.push( context, MaterialPageRoute(builder: (context) => DetailPage(item
 Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), settings: RouteSettings(arguments: '123'), ), );
 ```
 
-### 通用Prompt
-```js
-帮我写一个flutter页面,页面名称为"搬砖转出",类的名称为"BanzhuanzhuanchuPage",页面导入了'../routing.dart','../auth.dart', '../http.dart','package:oktoast/oktoast.dart';页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/banzhuanzhuanqian');},),""",页面的主要字体大小为16.
-
-页面的第一部分是个卡片.
-页面的第二部分是个卡片.
-页面的第三部分是个占满整行的按钮"确定转出".按钮高度为40
-```
 
 ### 实践经验
 1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要尽量占少的空间 mainAxisSize: MainAxisSize.min,
@@ -222,8 +214,22 @@ lib.main.main
 			]
 
 ```
+### 通用Prompt
+```js
+帮我写一个flutter页面,页面名称为"收款方投诉",类的名称为"ShoukuanfangtousuPage",
+
+页面导入了'../routing.dart','../auth.dart', 'package:flutter_widget_from_html/flutter_widget_from_html.dart','../data/apidata.dart','../http.dart','package:oktoast/oktoast.dart';
+
+页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/banzhuanzhuanqian');},),""";
+
+页面的主要字体大小为16.
+
+页面的第一部分是个卡片.
+页面的第二部分是个HtmlWidget('')
+页面有bottomNavigationBar, 其中有按钮"发起投诉".按钮高度为40
+```
 
 1. 提交维杈资料 {{HOST}}/complaint/add
 2. 查看维护进展 {{HOST}}/complaint/query
-	5. 币种充值记录 {{HOST}}/address/listDeposit
-	6. 币种转入搬砖(USDT) {{HOST}}/balance/transferMove
+3. 币种充值记录 {{HOST}}/address/listDeposit
+4. 币种转入搬砖(USDT) {{HOST}}/balance/transferMove 404
