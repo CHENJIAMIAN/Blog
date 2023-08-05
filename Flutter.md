@@ -225,7 +225,5 @@ lib.main.main
 
 1. 提交维杈资料 {{HOST}}/complaint/add
 2. 查看维护进展 {{HOST}}/complaint/query
-	3. 会员链上钱包列表 {{HOST}}/address/list
-	4. 修改会员链上钱包状 {{HOST}}/address/update
 	5. 币种充值记录 {{HOST}}/address/listDeposit
 	6. 币种转入搬砖(USDT) {{HOST}}/balance/transferMove
