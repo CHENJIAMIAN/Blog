@@ -175,6 +175,7 @@ Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), 
 15. showModalBottomSheet 背景透明,不然给了圆角看不出来: 其backgroundColor: const Color.fromRGBO(0, 0, 0, 0),即可
 16. Row里的Collum里加spacer白屏,  给Row包Expaned即可解决
 17. 自动换行Wrap组件设置  spacing: 8, // 水平间距  runSpacing: 8, // 垂直间距, 相对于css的flex-wrap
+18. 页面的build嵌套dialog的build的context时去用setState 容易混乱,setState只能引起页面自身的rebuild而无法影响dialog组件
 
 ### 路由
 MaterialApp.routes:{}
@@ -222,11 +223,9 @@ lib.main.main
 
 ```
 
-1. 提交维杈资料
-2. 查看维护进展
-	1. 协议列表
-	2. 新增会员链上钱包
-	3. 会员链上钱包列表
-	4. 修改会员链上钱包状
-	5. 币种充值记录
-	6. 币种转入搬砖(USDT)
+1. 提交维杈资料 {{HOST}}/complaint/add
+2. 查看维护进展 {{HOST}}/complaint/query
+	3. 会员链上钱包列表 {{HOST}}/address/list
+	4. 修改会员链上钱包状 {{HOST}}/address/update
+	5. 币种充值记录 {{HOST}}/address/listDeposit
+	6. 币种转入搬砖(USDT) {{HOST}}/balance/transferMove
