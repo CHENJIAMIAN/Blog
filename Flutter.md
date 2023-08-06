@@ -236,6 +236,4 @@ lib.main.main
 页面有bottomNavigationBar, 其中有按钮"发起投诉".按钮高度为40
 ```
 
-2. 查看维护进展 {{HOST}}/complaint/query
 3. 币种充值记录 {{HOST}}/address/listDeposit
-4. 币种转入搬砖(USDT) {{HOST}}/balance/transferMove 404
