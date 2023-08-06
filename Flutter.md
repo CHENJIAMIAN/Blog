@@ -216,7 +216,7 @@ lib.main.main
 ```
 ### 通用Prompt
 ```js
-帮我写一个flutter页面,页面名称为"收款方投诉",类的名称为"ShoukuanfangtousuPage",
+帮我写一个flutter页面,页面名称为"收款方投诉",类的名称为"ShoukuanfangtousuPage",页面是statefull的
 
 页面导入了'../routing.dart','../auth.dart', 'package:flutter_widget_from_html/flutter_widget_from_html.dart','../data/apidata.dart','../http.dart','package:oktoast/oktoast.dart';
 
@@ -225,6 +225,13 @@ lib.main.main
 页面的主要字体大小为16.
 
 页面的第一部分是个卡片.
+页面的第一部分第一行是灰色文本'投诉类型' + spacer + 灰色文本'请选择投诉类型' + 灰色右角括号图标
+页面的第一部分第二行是divider
+页面的第一部分第三行是灰色文本'描述'
+页面的第一部分第四行是一个带外边框的输入框,输入框的高度为五行,输入框文本字数限制不能多于四百,在输入框内部右下角有当前字数/总字数
+页面的第一部分第五行是图标'assets/images/p1_tousuweiquan_tianjiafujian.png'  + spacer + 图标'assets/images/p1_tousuweiquan_tianjiafujian.png'
+页面的第一部分第六行是灰色文本'可先投诉, 后补资料, 截图或视频均可' + spacer + 灰色文本'截图或录屏参考'
+
 页面的第二部分是个HtmlWidget('')
 页面有bottomNavigationBar, 其中有按钮"发起投诉".按钮高度为40
 ```
