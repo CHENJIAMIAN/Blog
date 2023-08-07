@@ -470,7 +470,7 @@ src\renderers\WebGLRenderer.js
 ```
 
 ## PostEffect
-1. MSAA：多重采样抗锯齿，用于平滑图像边缘并减少锯齿。基于硬件，对性能的影响相对较小。
+1. MSAA：多重采样抗锯齿，用于平滑图像边缘并减少锯齿。基于硬件，对性能的影响相对较小。THREE.WebGLRenderer({ antialias: true, });
 2. FXAA：快速近似抗锯齿，用于平滑图像边缘并减少锯齿。对性能的影响较小，但可能会导致一些细节的模糊或失真。
 3.  SMAA (Subpixel Morphological Anti-Aliasing): 亚像素形态抗锯齿，通过组合多种算法来减少锯齿效果。它使用子像素分析和形态滤波等技术来识别和模糊锯齿边缘。SMAA相对于FXAA提供了更高的图像质量，但对性能的要求也更高。
 4. Color Correction：色彩校正，用于调整图像颜色、亮度和对比度等属性。
