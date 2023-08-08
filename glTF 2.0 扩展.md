@@ -10,6 +10,9 @@ gltf-transform --help
 # deduplicate and instance
 gltf-transform dedup in.glb out.glb
 gltf-transform instance out.glb out.glb
+
+# 优化
+gltf-transform optimize out.glb out_optimize.glb
 ```
 - [cli.ts - donmccurdy/glTF-Transform - GitHub1s](https://github1s.com/donmccurdy/glTF-Transform/blob/HEAD/packages/cli/src/cli.ts#L338)
 - [palette | glTF Transform](https://gltf-transform.dev/modules/functions/functions/palette)
