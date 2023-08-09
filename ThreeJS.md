@@ -382,26 +382,7 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
 
 WebGLRenderTarget 渲染目标: 是一种存在帧缓冲区中的纹理(计算结果)
 ```
-## 性能
-```js
-性能:
-    material/geometry.dispose(); //删除材质/几何体
-    使用merge方法合并不需要单独操作的模型
-        几何体mesh.updateMatrix(); //提取位置.position、缩放.scale和四元数.quaternion的属性值 转化为 变换矩阵设置本地矩阵属性.matrix        
-        geometry.merge(何体mesh.geometry, 几何体mesh.matrix); //将几何体合并
-    在循环渲染中避免使用更新：
-        //几何体：
-        geometry.verticesNeedUpdate = true; //顶点发生了修改ht
-        geometry.elementsNeedUpdate = true; //面发生了修改
-        geometry.morphTargetsNeedUpdate = true; //变形目标发生了修改
-        geometry.uvsNeedUpdate = true; //uv映射发生了修改
-        geometry.normalsNeedUpdate = true; //法向发生了修改
-        geometry.colorsNeedUpdate = true; //顶点颜色发生的修改
-        //材质
-        material.needsUpdate = true
-        //纹理
-        texture.needsUpdate = true;
-```
+
 ## 坐标图
 ![969AD33FBF214276B7C464AE4082C7FF](https://github.com/CHENJIAMIAN/Blog/assets/20126997/5eee1112-3520-4497-a284-ec5a87e584c5)
 ## 模型加载(重点)

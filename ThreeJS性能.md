@@ -13,3 +13,29 @@
 12. **清除物体**：如果你需要从场景中永久性地移除物体，需要读这篇文章：如何清除物体。
 13. **更新场景中的物体**：如果你需要更新场景中的物体，可以阅读这篇文章：如何更新物体。
 14. **性能测试**：测试应用的性能时，首先需要检查它是 CPU 受限，还是 GPU 受限。通过将所有材质替换为基础材质来进行测试。
+### 性能
+```js
+material/geometry.dispose(); //删除材质/几何体
+
+使用merge方法合并不需要单独操作的模型
+	几何体mesh.updateMatrix(); //提取位置.position、缩放.scale和四元数.quaternion的属性值 转化为 变换矩阵设置本地矩阵属性.matrix        
+	geometry.merge(何体mesh.geometry, 几何体mesh.matrix); //将几何体合并
+	
+在循环渲染中避免使用更新：
+	//几何体：
+	geometry.verticesNeedUpdate = true; //顶点发生了修改ht
+	geometry.elementsNeedUpdate = true; //面发生了修改
+	geometry.morphTargetsNeedUpdate = true; //变形目标发生了修改
+	geometry.uvsNeedUpdate = true; //uv映射发生了修改
+	geometry.normalsNeedUpdate = true; //法向发生了修改
+	geometry.colorsNeedUpdate = true; //顶点颜色发生的修改
+	//材质
+	material.needsUpdate = true
+	//纹理
+	texture.needsUpdate = true;
+```
+
+1. 多个数据集(渲染19000个立方体)之间进行动画切换
+	- 使用 MorphTargets（变形目标）来实现动画过渡
+	- MorphTargets 是一种在几何体的每个顶点处都提供多个值，并通过线性插值（Linear Interpolation）在它们之间进行过渡的方法
+2. OffscreenCanvas 允许 web worker 渲染到 canvas
