@@ -87,10 +87,12 @@ gltf-transform 3.5.0 — glTF Transform SDK的命令行界面（CLI）。
                                          一个值为 "interleaved" 或 "separate"，默认值为 "interleaved"
     --config <path>                      安装自定义命令或扩展。（实验性功能）
 ```
-### PBR，即物理渲染（Physically Based Rendering），是一种用于计算机图形学中的渲染技术。它基于物理原理模拟光线的行为，以更加真实地渲染场景。
+### PBR，即物理渲染（Physically Based Rendering）
+> 它基于物理原理模拟光线的行为，以更加真实地渲染场景
+
 通常情况下，PBR可以分为两种主要类型：
-1. 金属度（Metallic）PBR：这种类型的PBR基于金属度属性来描述材质的特性。金属度材质通常具有金属质感，如钢铁、铜等。金属度PBR使用金属度（Metallic）和粗糙度（Roughness）两个参数来描述材质的外观。金属度为0表示非金属材质，金属度为1表示完全金属的材质。
-2. 非金属度（Specular/Glossiness）PBR：这种类型的PBR使用非金属度（Specular）和光泽度（Glossiness）来描述材质的特性。非金属度材质通常具有非金属的外观，如木材、塑料等。非金属度PBR使用非金属度和光泽度两个参数来定义材质的外观，其中非金属度表示材质的镜面反射率，光泽度表示材质的平滑程度。
+1. **新**: 金属度（Metallic）PBR：这种类型的PBR基于金属度属性来描述材质的特性。金属度材质通常具有金属质感，如钢铁、铜等。金属度PBR使用金属度（Metallic）和粗糙度（Roughness）两个参数来描述材质的外观。金属度为0表示非金属材质，金属度为1表示完全金属的材质。
+2. **gltf2.0废弃**: 非金属度（Specular/Glossiness）PBR：这种类型的PBR使用非金属度（Specular）和光泽度（Glossiness）来描述材质的特性。非金属度材质通常具有非金属的外观，如木材、塑料等。非金属度PBR使用非金属度和光泽度两个参数来定义材质的外观，其中非金属度表示材质的镜面反射率，光泽度表示材质的平滑程度。
 ### 研究一下 glb,为什么会和展示的不一样
 - 现在平台的three版本是129最新是155  
 - win10的3D查看器导出的glb的KHR_materials_pbrSpecularGlossiness是最新的three废弃掉的.
