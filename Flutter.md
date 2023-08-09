@@ -163,7 +163,7 @@ Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), 
 10. formKey.currentState!.save();//调用每个表单项的onSaved
 11. 列表引起白屏 ListView.separated(    shrinkWrap: true,
 12. ListView会尽量占据更多的高度, 从来使得页面白屏, 解决:加入 shrinkWrap: true, physics: NeverScrollableScrollPhysics(),
-14. SingleChildScrollView不滚动, 包个Expanded即可
+14. SingleChildScrollView不滚动, 包个Expanded即可,
 15. showModalBottomSheet 背景透明,不然给了圆角看不出来: 其backgroundColor: const Color.fromRGBO(0, 0, 0, 0),即可
 16. Row里的Collum里加spacer白屏,  给Row包Expaned即可解决
 17. 自动换行Wrap组件设置  spacing: 8, // 水平间距  runSpacing: 8, // 垂直间距, 相对于css的flex-wrap
