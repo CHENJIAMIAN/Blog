@@ -100,7 +100,13 @@ vertexAttribPointer(2, 4, 5121, true, 28, 24)
 Pro Engineer Wildfire，也称为Creo Parametric，是一款由美国PTC公司开发的3D CAD软件。它主要用于机械设计和产品制造领域，可以帮助工程师进行设计、仿真分析、优化和制造等各个环节。Pro Engineer Wildfire提供了全面的建模工具，支持多种文件格式的导入和导出，包括STL、STEP、IGES、DXF等，适用于从小型零件到复杂装配体的设计和制造。在制造方面，Pro Engineer Wildfire还支持数控机床编程，帮助工程师实现工艺规划和生产流程控制。
 
 5. PTC Creo：PTC Creo（旧名Pro/ENGINEER）是一款全面的3D CAD软件，适用于机械设计、产品研发等领域，提供了强大的建模、仿真、可视化和数据管理功能。
-6. 
+6. Altium和ProE（Pro/ENGINEER）是两种不同的软件，用于不同的工程设计领域。
+
+1. Altium Designer：Altium Designer是一款电子设计自动化（EDA）软件，用于电子电路设计、PCB设计和原型制造。它提供了一个综合的设计环境，允许工程师进行原理图设计、电路仿真、PCB布局和布线，以及生成制造文件。Altium Designer被广泛用于电子产品开发和制造，如消费电子、通信设备和工业控制系统等。
+
+2. ProE（Pro/ENGINEER）：ProE是一款计算机辅助设计（CAD）软件，现在被称为PTC Creo。它被广泛应用于机械工程领域，用于三维建模、装配设计、工程图纸生成等。ProE具有强大的建模和设计功能，可以帮助工程师创建复杂的机械零部件和装配体，并进行工程分析和优化。它在汽车、航空航天、工业制造和其他机械设计领域得到广泛应用。
+
+这两个软件都是专业的工程设计工具，用于不同的设计领域。Altium Designer主要用于电子电路和PCB设计，而ProE（PTC Creo）则用于机械设计。
 ### 跟它类似的软件有哪些
 
 1. SolidWorks：SolidWorks是一款流行的3D CAD软件，提供了强大的建模工具和实时仿真分析功能，适用于机械设计、工业设计等领域。
