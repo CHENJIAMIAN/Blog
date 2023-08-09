@@ -1,3 +1,4 @@
+### gltf-transform/cli
 如果您的 GLB 模型包含相同网格的多次重复，则 glTF Transform 可以检测到这一点，合并任何冗余数据，并（可选）添加 EXT_mesh_gpu_instancing 扩展，使 GLTFLoader 创建 THREE.InstancedMesh对象。
 > CLI 中的典型用法如下所示：
 ```bash
@@ -87,7 +88,7 @@ gltf-transform 3.5.0 — glTF Transform SDK的命令行界面（CLI）。
                                          一个值为 "interleaved" 或 "separate"，默认值为 "interleaved"
     --config <path>                      安装自定义命令或扩展。（实验性功能）
 ```
-### PBR，即物理渲染（Physically Based Rendering）
+### PBR
 > 它基于物理原理模拟光线的行为，以更加真实地渲染场景
 
 通常情况下，PBR可以分为两种主要类型：
@@ -98,3 +99,4 @@ gltf-transform 3.5.0 — glTF Transform SDK的命令行界面（CLI）。
 - win10的3D查看器导出的glb的KHR_materials_pbrSpecularGlossiness是最新的three废弃掉的.
 	- 在最新的three.js版本中，GLTFLoader废弃了对KHR_materials_pbrSpecularGlossiness的支持，因为这个扩展已经不再是GLTF 2.0的一部分了。KHR_materials_pbrSpecularGlossiness是在GLTF 2.0规范发布之前开发的一个扩展，它添加了一些额外的参数，例如镜面反射和粗糙度，以支持基于镜面反射和粗糙度的PBR材质模型。
 	- 然而，后来GLTF 2.0规范添加了对基于金属度的PBR材质模型的支持，这个模型更为通用，使得KHR_materials_pbrSpecularGlossiness变得不再必要。因此，最新的three.js版本不再支持这个扩展，而是使用GLTF 2.0规范中的基于金属度的PBR材质模型来处理GLTF文件中的材质。这样可以使得three.js的GLTFLoader与GLTF 2.0规范更加兼容，并且简化了代码实现。
+- Win10的3D查看器的光: 一个正面光(偏上,偏右), 一个后面光(偏上,偏左), 一个纯正面光, 环境光40

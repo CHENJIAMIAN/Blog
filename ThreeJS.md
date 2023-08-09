@@ -248,13 +248,11 @@ Geometry和BufferGeomety内置了一些常用的方法:
 
 ## 选中物体
 在计算机图形学中，通过 GPU 选择物体是一种常见的技术，通常用于处理用户与 3D 场景中的物体进行交互的情况，例如点击或拖动物体。以下是一种常用的方法——颜色编码（Color Picking）方法。
-
 #### 颜色编码（Color Picking）性能高,但无法处理透明物体
 颜色编码是一种使用 GPU 来选择物体的常用技术。基本步骤如下：
 1. **渲染阶段**：首先，你需要为场景中的每个物体分配一个唯一的颜色。然后，在渲染阶段，你将这些颜色（而不是物体的实际颜色）渲染到一个隐藏的帧缓冲区（不显示给用户）。
 2. **选择阶段**：当用户点击屏幕时，你可以检查隐藏的帧缓冲区在点击位置的颜色。然后，你就可以通过这个颜色找回之前分配给物体的唯一颜色，从而确定用户点击的是哪个物体。
 这种方法的优点是实现简单，执行速度快。但是，**它的缺点是不能处理透明物体**，因为颜色混合会破坏唯一颜色的特性。
-
 #### 射线追踪（Ray Tracing）性能低
 另一种常见的方法是射线追踪。这种方法不依赖于颜色编码，而是通过几何计算来确定用户点击的物体。步骤如下：
 1. **射线投射**：首先，你需要从相机位置，通过用户点击的屏幕位置，向场景中投射一条射线。
@@ -343,7 +341,7 @@ Geometry和BufferGeomety内置了一些常用的方法:
             for (let i = 0; i < modelsList.length; i++) {modelsList[i].component.material = modelsList[i].normalMaterial;}
         }
 ```
-## EffectComposer效果合成器
+## EffectComposer
 ```js
 EffectComposer（效果合成器）post-processing//应用一个或多个图形效果，例如景深、发光、胶片微粒或是各种类型的抗锯齿
     //https://r105.threejsfundamentals.org/threejs/lessons/resources/images/threejs-postprocessing.svg
@@ -382,7 +380,7 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
     const lineBasematerial = new THREE.LineBasicMaterial({ color: new THREE.Color(0.1, 0.3, 1), side: THREE.FrontSide, linecap: 'round', linejoin: 'round', });
     const line = new THREE.LineSegments(edges, lineBasematerial);
 
-
+WebGLRenderTarget 渲染目标: 是一种存在帧缓冲区中的纹理
 ```
 ## 性能
 ```js
@@ -406,15 +404,12 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
 ```
 ## 坐标图
 ![969AD33FBF214276B7C464AE4082C7FF](https://github.com/CHENJIAMIAN/Blog/assets/20126997/5eee1112-3520-4497-a284-ec5a87e584c5)
-## 加载器
-![BA0EA8F56EAE409FB3DEEA8B980C5318](https://github.com/CHENJIAMIAN/Blog/assets/20126997/85a0002a-aebf-45ec-8359-a58219b11842)
-
 ## 模型加载(重点)
 ```js
-模型加载(重点)//常用的3d格式
-    问题: 导入到场景内的模型无法查看，而且也没有报错?
+问题: 导入到场景内的模型无法查看，而且也没有报错?
         尝试放大一千倍或者缩小一千倍来查看效果, 将模型居中到相机照射的焦点位置查看
-    1.GLTFLoader(官方推荐)//const loadedData = await loader.loadAsync('path/to/yourModel.glb');
+        
+1.GLTFLoader(官方推荐)//const loadedData = await loader.loadAsync('path/to/yourModel.glb');
         //由于glTF专注于传输，因此它的传输和解析的速度都很快。glTF模型功能包括：网格，材质，纹理，蒙皮，骨骼，变形动画，骨骼动画，灯光以及相机。
         在传输到前端的过程中，通常可能传输gltf文件、附属的.bin文件（存储二进制数据）、图片纹理文件（.jpg或.png格式）等
         glTF 导出格式有两种后缀格式可供选择：'.gltf' 和 '.glb'    
@@ -427,12 +422,13 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
     //Draco 是 Google 推出的一个用于 3D 模型压缩和解压缩的工具库    
     
     //如果当前的首选不是glTF格式，那么推荐Three.js定期维护并且流行的格式FBX，OBJ或者COLLADA格式，Three.js也有自己独有的JSON格式
-    2.'.json' new ObjectLoader().parse(obj) //加载.json格式, 3d对象.toJSON()转成JSON
-    3.'.obj'  OBJ格式模型导入      
-        OBJ文件的导出通常会和MTL格式一同导出，MTL作为OBJ文件的附属文件，却有着OBJ文件需要贴图材质        
-    4.FBX模型导入        
-    5.(.dae)COLLADA模型导入      
+2.'.json' new ObjectLoader().parse(obj) //加载.json格式, 3d对象.toJSON()转成JSON
+3.'.obj'  OBJ格式模型导入      
+	OBJ文件的导出通常会和MTL格式一同导出，MTL作为OBJ文件的附属文件，却有着OBJ文件需要贴图材质        
+4.FBX模型导入        
+5.(.dae)COLLADA模型导入  
 ```
+
 ## canvas
 ```javascript
 canvas
@@ -497,58 +493,3 @@ src\renderers\WebGLRenderer.js
 9. 环境贴图（Environment Map）：是一种用于模拟物体周围环境的贴图，可以为模型添加反射和折射效果。
 10. 光照贴图（Light Map）：是一种用于模拟物体表面光照效果的贴图，可以为模型添加阴影和明暗效果。
 11. 环境光遮蔽贴图（Ambient Occlusion Map）：是一种用于模拟物体表面遮蔽效果的贴图，可以为模型添加阴影和明暗效果。
-
-以下是一些可能引发对 Three.js 和 WebGL 原理思考的问题：
-1. **如何在 Three.js 中实现阴影效果？**  
-   这个问题可以引导你深入了解光照模型、阴影映射技术如深度映射（Shadow Mapping）或百分比更近过滤（Percentage-Closer Filtering）等。
-2. **如何在 Three.js 中实现后处理效果，如模糊、泛光等？**  
-   这个问题会引导你研究帧缓冲对象（Frame Buffer Objects）、全屏四边形渲染和着色器编程。
-3. **如何在 Three.js 中实现物体的 LOD（Level Of Detail）？**  
-   这个问题将引导你深入了解多级别细节模型的概念和实现，以及如何根据相机距离动态选择不同的模型。
-4. **如何在 Three.js 中实现粒子系统？**  
-   这个问题将引导你研究粒子系统的基本原理，如何使用顶点着色器来动画化大量粒子，以及如何使用纹理来给粒子着色。
-5. **如何在 Three.js 中实现天空盒（Skybox）？**  
-   这个问题将引导你研究立方体贴图和环境映射的概念和实现。
-6. **如何在 Three.js 中实现地形加载和渲染？**  
-   这个问题将引导你研究地形数据的来源，例如 DEM（数字高程模型），如何使用这些数据生成高度图，以及如何使用自定义着色器实现地形渲染。
-7. **如何在 Three.js 中实现镜面反射效果？**  
-   这个问题将引导你研究立方体贴图实现环境反射，或者使用渲染到纹理（Render to Texture）实现动态反射。
-这些问题都是从实际项目中可能遇到的需求出发，引导你深入理解 Three.js 和 WebGL 的原理和实践。通过研究这些问题，你可以更好地理解 Three.js 的工作原理，以及如何使用它实现各种复杂的 3D 效果。
-
-WebGL 的知识体系可以大致分为以下几个部分：
-1. **基础知识**：包括 WebGL 的工作原理，如何在 HTML5 `<canvas>` 上创建 WebGL 渲染上下文，以及如何使用 WebGL API。
-2. **图形渲染管线**：理解 WebGL 的图形渲染管线，包括顶点着色器和片段着色器，以及它们如何处理和渲染 3D 几何体。
-3. **3D 数学**：包括向量、矩阵和四元数等概念，以及它们在 3D 变换、光照计算和动画中的应用。
-4. **纹理和材质**：理解纹理坐标、纹理过滤、纹理映射等概念，以及如何使用纹理创建各种材质效果。
-5. **光照和阴影**：理解基础的光照模型，如 Phong 和 Blinn-Phong，以及如何实现阴影映射。
-6. **性能优化**：理解如何优化 WebGL 应用的性能，包括网格优化、纹理优化、批量渲染、LOD 等技术。
-7. **高级技术**：包括后处理效果、粒子系统、地形渲染、环境映射、纹理贴图、实时反射和折射等。
-以上问题在 WebGL 的知识体系中对应的知识点如下：
-- **如何在 Three.js 中实现阴影效果？**  
-  对应知识点：光照和阴影
-- **如何在 Three.js 中实现后处理效果，如模糊、泛光等？**  
-  对应知识点：高级技术（后处理效果）
-- **如何在 Three.js 中实现物体的 LOD（Level Of Detail）？**  
-  对应知识点：性能优化（LOD）
-- **如何在 Three.js 中实现粒子系统？**  
-  对应知识点：高级技术（粒子系统）
-- **如何在 Three.js 中实现天空盒（Skybox）？**  
-  对应知识点：高级技术（环境映射）
-- **如何在 Three.js 中实现地形加载和渲染？**  
-  对应知识点：高级技术（地形渲染）
-- **如何在 Three.js 中实现镜面反射效果？**  
-  对应知识点：高级技术（实时反射和折射）
-这些知识点都是 WebGL 的重要组成部分，理解和掌握这些知识点可以帮助你更好地理解 WebGL 的工作原理，以及如何使用 WebGL 创建复杂的 3D 应用。
-
-以下是一些针对 WebGL 知识体系 1-7 的问题：
-1. **基础知识**：如何在 HTML5 `<canvas>` 上创建 WebGL 渲染上下文？如何使用 WebGL API 绘制一个简单的 2D 形状，例如一个三角形？
-2. **图形渲染管线**：解释 WebGL 的图形渲染管线的工作流程。如何写一个简单的顶点着色器和片段着色器，以及如何将它们用于 WebGL 渲染？
-3. **3D 数学**：如何使用向量进行基本的几何操作，例如点积和叉积？如何使用矩阵进行 3D 变换，例如平移、旋转和缩放？什么是四元数，它在 3D 旋转中有什么优点？
-4. **纹理和材质**：解释纹理坐标和纹理过滤的概念。如何在 WebGL 中加载和使用纹理？如何使用纹理创建反射或透明的材质？
-5. **光照和阴影**：解释基础的光照模型，例如 Phong 模型。如何实现基础的阴影效果，例如使用阴影映射技术？
-6. **性能优化**：如何优化 WebGL 应用的性能，例如通过优化网格或纹理，或者使用批量渲染？什么是 LOD，它如何帮助提高渲染性能？
-7. **高级技术**：如何实现一个简单的后处理效果，例如屏幕空间模糊？如何创建一个基础的粒子系统？如何使用立方体贴图实现天空盒？
-
-Win10的3D查看器的光: 一个正面光(偏上,偏右), 一个后面光(偏上,偏左), 一个纯正面光, 环境光40
-
-WebGLRenderTarget 渲染目标: 是一种把结果存在帧缓冲区中的纹理
