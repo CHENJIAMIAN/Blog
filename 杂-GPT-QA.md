@@ -1,4 +1,4 @@
-## 好用的Prompt
+### 好用的Prompt
 - 作为子主题生成器和世界上最好的推荐引擎，你的工作是给我更多的子主题，比如当我问一个主题时，你会以初学者易于理解的方式快速给我最好的相关答案。在回答后，再给我10个与该主题相关的其他最相关的子主题推荐，不要给我一般推荐，这些建议应具有高质量和相关性。这个建议应该能让我对这个话题有更多的想法，从而发现更好的信息
 #### 我自己想的
 1. 类似的概念有哪些, 整理出一个上下级关系的树形结构
@@ -52,7 +52,7 @@ Continue until you have reviewed all sources, then move to the next step.
 Generate book title with provided keyword Generate 11 book chapters with the title provided and list them Generate detailed book intro with the title provided and more then 500 word Write Chapter 1 with detailed information and more then 1000 words Write Chapter 2 with detailed information and more then 1000 words Write Chapter 3 with detailed information and more then 1000 words Write Chapter 4 with detailed information and more then 1000 words Write Chapter 5 with detailed information and more then 1000 words Write Chapter 6 with detailed information and more then 1000 words Write Chapter 7 with detailed information and more then 1000 words Write Chapter 8 with detailed information and more then 1000 words Write Chapter 9 with detailed information and more then 1000 words Write Chapter 10 with detailed information and more then 1000 words Write Chapter 11 with detailed information and more then 1000 words #Topic that you want to write a book for
 ```
 
-## 可以完美验证是否是GPT-4的问题
+### 可以完美验证是否是GPT-4的问题
 已知  
 attribute vec4 a_pos; // 定义顶点位置的attribute变量  
 attribute vec4 a_normal; // 定义顶点法线的attribute变量  
@@ -95,19 +95,17 @@ vertexAttribPointer(2, 4, 5121, true, 28, 24)
 
 综上所述，中国在2023年有大量失业是一个复杂而多元的问题，需要从多个角度来分析和解决。政府、企业和个人都应该采取积极有效的措施，以促进经济发展、优化产业结构、提高教育质量、增加就业机会、改善社会保障等方面，共同应对这一挑战。
 
-## Pro Engineer Wildfire
+### Altium和ProE
 
 Pro Engineer Wildfire，也称为Creo Parametric，是一款由美国PTC公司开发的3D CAD软件。它主要用于机械设计和产品制造领域，可以帮助工程师进行设计、仿真分析、优化和制造等各个环节。Pro Engineer Wildfire提供了全面的建模工具，支持多种文件格式的导入和导出，包括STL、STEP、IGES、DXF等，适用于从小型零件到复杂装配体的设计和制造。在制造方面，Pro Engineer Wildfire还支持数控机床编程，帮助工程师实现工艺规划和生产流程控制。
 
-5. PTC Creo：PTC Creo（旧名Pro/ENGINEER）是一款全面的3D CAD软件，适用于机械设计、产品研发等领域，提供了强大的建模、仿真、可视化和数据管理功能。
-6. Altium和ProE（Pro/ENGINEER）是两种不同的软件，用于不同的工程设计领域。
 
 1. Altium Designer：Altium Designer是一款电子设计自动化（EDA）软件，用于电子电路设计、PCB设计和原型制造。它提供了一个综合的设计环境，允许工程师进行原理图设计、电路仿真、PCB布局和布线，以及生成制造文件。Altium Designer被广泛用于电子产品开发和制造，如消费电子、通信设备和工业控制系统等。
 
 2. ProE（Pro/ENGINEER）：ProE是一款计算机辅助设计（CAD）软件，现在被称为PTC Creo。它被广泛应用于机械工程领域，用于三维建模、装配设计、工程图纸生成等。ProE具有强大的建模和设计功能，可以帮助工程师创建复杂的机械零部件和装配体，并进行工程分析和优化。它在汽车、航空航天、工业制造和其他机械设计领域得到广泛应用。
 
 这两个软件都是专业的工程设计工具，用于不同的设计领域。Altium Designer主要用于电子电路和PCB设计，而ProE（PTC Creo）则用于机械设计。
-### 跟它类似的软件有哪些
+#### 跟它类似的软件有哪些
 
 1. SolidWorks：SolidWorks是一款流行的3D CAD软件，提供了强大的建模工具和实时仿真分析功能，适用于机械设计、工业设计等领域。
 
@@ -118,7 +116,7 @@ Pro Engineer Wildfire，也称为Creo Parametric，是一款由美国PTC公司�
 4. NX：NX（又称为Unigraphics）是一款由西门子公司开发的集成化的CAD/CAM/CAE软件，适用于机械设计、工业设计等领域，提供了全面的设计、仿真、加工和数据管理功能。
 
 5. PTC Creo：PTC Creo（旧名Pro/ENGINEER）是一款全面的3D CAD软件，适用于机械设计、产品研发等领域，提供了强大的建模、仿真、可视化和数据管理功能。
-### 用pro engineer wildfire做结构设计对比用3dsmax做有什么优势
+#### 用pro engineer wildfire做结构设计对比用3dsmax做有什么优势
 
 Pro Engineer Wildfire和3ds Max的应用场景不同，Pro Engineer Wildfire主要用于机械设计领域，而3ds Max则是一款专业的三维建模、动画和渲染软件，适用于游戏开发、影视制作、建筑设计等领域。
 
@@ -128,36 +126,36 @@ Pro Engineer Wildfire和3ds Max的应用场景不同，Pro Engineer Wildfire主�
 
 因此，在机械结构设计方面，使用Pro Engineer Wildfire会更加适合，而在影视、游戏等领域的建模和渲染方面，3ds Max则更为优秀。
 
-## Axure 怎么让容器滚动
+### Axure 怎么让容器滚动
 右键太长的容器，转换为动态面板，概要-动态面板的State1选中，样式-更改高度（限定死高度），样式-Scroll Vertical，就可以了。说到底就是限定动态面板的高度再打开它的滚动条，超出的部分就会自动显示滚动条。
 
-## dlswbr 可能和反爬虫有关
+### dlswbr 可能和反爬虫有关
 DLSWBR的英文全称是"Dynamic Limiting Speed Web Behavior Recognition"。是“动态限速Web行为识别”。
 如: dlswbr.baidu.com
 
-## )]}'
-## [[[]]]
+### )]}'
+### [[[]]]
     这种格式的响应是一种防止跨站脚本攻击（Cross-Site Scripting, XSS）的技术，称为“防止XSS攻击的JSON”（XSS-Protection JSON）。它会在JSON响应前添加 )]}', 这个前缀，以防止浏览器将JSON响应解析成脚本，保证响应数据的安全性。开发者可以在前端对这种格式的响应进行解析，使用JSON.parse()函数时需要先去除这个前缀。
 
-## Patrick Wied与h337的由来
+### Patrick Wied与h337的由来
     Patrick Wied是一位来自奥地利的前端开发者，他创造了一些流行的可视化工具和JavaScript库，如Datamaps和d3-tip。
     h337是他的GitHub用户名，它来源于他曾经在创建一个三维游戏引擎时使用的hash算法。h337也用于他的一些开源项目的名称中，例如heatmap.js和cloud.js。
     
-## webpack打包后的两种闭包
+### webpack打包后的两种闭包
     function(t, e) {//(module, exports)
     function(t, e, n) { //module, __webpack_exports__, __webpack_require__?
    
-## wasm在前端的rsa领域有什么应用
+### wasm在前端的rsa领域有什么应用
     在前端领域，通过WebAssembly的方式使用RSA加密是一种更有效和安全的方法。由于RSA加密需要大量计算操作，而WebAssembly能够在浏览器中提供高性能和低延迟的运行环境，使得RSA算法能够在浏览器中高效地运行。此外，使用WebAssembly的方式进行RSA算法的计算也可以保护RSA加密算法的源代码不被恶意攻击者窃取和利用。因此，在前端领域，WebAssembly在RSA加密领域有着广泛的应用。
 
-## 使用 Rust 和 WebAssembly 技术开发
+### 使用 Rust 和 WebAssembly 技术开发
     "__wbindgen_is_object"或"__wbg_crypto_2bc4d5b05161de5b" 中 wbindgen或wbg是WebAssembly和JavaScript之间的绑定的缩写。在使用Rust编写WebAssembly模块时，通常要使用另一个称为 wasm-bindgen 的工具来帮助创建这些绑定。创建绑定时，wasm-bindgen将自动生成一些 JavaScript 当中内部使用的函数名，这些简略但难以记忆的函数名都以 __wbg_ 开头。
 
 
-## 命名实体识别
+### 命名实体识别
 是一种自然语言处理技术，它旨在从文本中识别出具有特定命名实体类别的实体，如人名、地名、组织机构名称等。通过对文本中的命名实体进行识别和分类，可以更好地理解文本的语义和结构，为信息提取、文本分类、搜索引擎优化等应用提供有力支持。
 
-## 优锘模型 scene.json索引
+### 优锘模型 scene.json索引
     很多模型的index.json
     其他的jpg/png/bin/gltf不知道是怎么来的,应该在代码中定义的?JSON.parseX搞怪了由thing.thingGLTFLoader.JSONXLoader解密
     generator: "FBX2glTF"
@@ -177,7 +175,7 @@ DLSWBR的英文全称是"Dynamic Limiting Speed Web Behavior Recognition"。是�
         samplers: 定义纹理的过滤模式。
         animations: 动画
 > 一个node可以包含一个或多个meshes，每个mesh可以包含一个或多个primitives。每个primitive代表一个几何体的基本单元，可以具有不同的样式和材质。同时，每个node可以具有坐标、旋转、缩放等属性，以控制它在场景中的位置和方向。通过这些概念的组合，可以创建包含多个几何体的复杂3D场景。
-## chrome.storage.local跟localStorage有什么区别
+### chrome.storage.local跟localStorage有什么区别
 一个是会上传到云上, 一个在本地
 `chrome.storage.local`和`localStorage`有几个区别：
 
