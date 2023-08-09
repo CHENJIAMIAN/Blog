@@ -146,7 +146,7 @@ Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), 
 
 ### 实践经验
 1. 某个部件注释就不会白屏, 解决: 部件的大小没有限制, 如Row要尽量占少的空间 mainAxisSize: MainAxisSize.min,
-	- 一行3个占行的控件,用Expanded使它们平均分配行宽,(检查所有必要的都加上Expanded了)
+	- 一行3个占行的控件,用Expanded使它们平均分配行宽,(检查所有必要的都加上Expanded了)**`Expanded`小部件将子组件的大小调整为可用空间的剩余部分**
 2. Row可以挤开宽度到满
 3. Navigation and Routing案例中添加子级一个页面:
 	1. app.dart 的 `allowedPaths` 添加页面路径,
