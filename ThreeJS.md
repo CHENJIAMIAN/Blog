@@ -380,7 +380,7 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
     const lineBasematerial = new THREE.LineBasicMaterial({ color: new THREE.Color(0.1, 0.3, 1), side: THREE.FrontSide, linecap: 'round', linejoin: 'round', });
     const line = new THREE.LineSegments(edges, lineBasematerial);
 
-WebGLRenderTarget 渲染目标: 是一种存在帧缓冲区中的纹理
+WebGLRenderTarget 渲染目标: 是一种存在帧缓冲区中的纹理(计算结果)
 ```
 ## 性能
 ```js

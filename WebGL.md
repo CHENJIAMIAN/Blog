@@ -1,17 +1,25 @@
 [学习了fem-d/webGL: for webGL learning](https://github.com/fem-d/webGL)
 
 ```javascript
-点积用来测量两个向量的相似性和相对角度关系，而叉积用来计算两个向量间垂直的向量并且用来计算面积，旋转等等。
-    点积（内积）是两个向量的积，它表示为向量A 和向量B 之间的夹角的余弦值。点积的计算公式为 A·B = |A| * |B| * cos(θ) , 其中|A|和|B|分别是向量A和向量B的模长，θ是两个向量之间的夹角。通过点积的值可以判断两个向量是否垂直，在一定程度上点积可以表示向量之间的相似性。
-    叉积（外积）是两个向量的积，表示为一个新向量。 叉积是一个向量，它的方向是两个向量所在平面的法向量，大小是两个向量所在平面面积的两倍。叉积的计算公式为 A X B = |A| * |B| * Sin(θ) * n(单位法向量)，叉积的结果是一个垂直于两个向量的向量。 叉积的应用非常广泛，在很多场景下都有用处。例如在几何学中, 叉积用于求两个向量所在平面的法向量；
-```
-
-```javascript
 离线/实时渲染 //29fps/30fps
 /打断点在gl.drawArrays打,它通常是绘制前的最后一步/
     在绘制之前，需要使用 gl.drawXXX 系列函数来指定要绘制的图形和绘制的方式，例如 gl.drawArrays 和 gl.drawElements。这些函数通常是绘制前的最后一个方法，因为它们会实际执行绘制操作。
 ```
-## 渲染管线
+### 点积和叉积
+1. 点积用来测量两个向量的相似性和相对角度关系
+    - 点积（内积）是两个向量的积，它表示为向量A 和向量B 之间的夹角的余弦值。
+    - 点积的计算公式为 A·B = |A| * |B| * cos(θ) , 其中|A|和|B|分别是向量A和向量B的模长，θ是两个向量之间的夹角。
+    - 通过点积的值可以判断两个向量是否垂直，在一定程度上点积可以表示向量之间的相似性。
+2. 叉积用来计算两个向量间垂直的向量并且用来计算面积，旋转
+    - 叉积（外积）是两个向量的积，表示为一个新向量。 
+    - 叉积是一个向量，它的方向是两个向量所在平面的法向量，大小是两个向量所在平面面积的两倍。叉积的计算公式为 A X B = |A| * |B| * Sin(θ) * n(单位法向量)，
+    - 叉积的结果是一个垂直于两个向量的向量。 
+    - 叉积的应用非常广泛，在很多场景下都有用处。例如在几何学中, 叉积用于求两个向量所在平面的法向量；
+### 四元数 Quaternions
+- 四元数是一种数学工具，用于表示和计算3D旋转。与旋转矩阵相比，四元数具有一些优点，例如避免万向节锁（Gimbal Lock）问题和更高的计算效率。
+- 四元数可以表示为一个四元组（w, x, y, z），其中w是实部，(x, y, z)是虚部。它们可以用来表示旋转轴和旋转角度。
+- 在3D旋转中，可以使用四元数进行插值（如球面插值）和组合（如连续旋转的叠加）操作。
+## 渲染管线(重点)
 ```javascript
 三维图形渲染管线（Graphics pipeline）就是将三维场景转化为一幅二维图像的过程。 常说有4个阶段（实际不止）:    
     1.应用阶段（Application stage）就是写代码定义阶段 //负责将摄像机位置、光照和模型的图元信息输出到几何阶段。渲染管线的状态（如深度测试状态、模板测试状态等）会被设置
@@ -403,26 +411,7 @@ gl.hint(gl.GENERATE_MIPMAP_HINT, 提示级别);//提示webgl优化性能
 		- gl.FASTEST：表示可以忽略质量进行最快的处理
 		- gl.NICEST：表示需要最好的质量，可能速度较慢
 		- gl.DONT_CARE：表示对速度和质量没有特殊要求，WebGL 应该自己决定
-gl.texParameteri//设置纹理参数。
-    包裹模式
-            CLAMP_TO_EDGE表示超出纹理范围的部分会被截断并用纹理边界上的颜色进行填充。
-            REPEAT表示纹理会以平铺的方式重复出现。
-            MIRRORED_REPEAT表示纹理会镜像重复出现
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); //Wrap S和Wrap T是两个纹理坐标轴，分别对应x方向和y方向
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);    
-    纹理过滤器//用于控制纹理在渲染过程中的采样方式
-        MIN Filter//缩小物体到很小时,纹理缩小的方式
-            Nearest：使用最近的纹理像素作为采样点。这是最简单和最快速的方式，但可能会导致图片过于锐利或出现锯齿。
-            Linear：使用相邻的纹理像素的加权平均值作为采样点。这可以产生更平滑的结果，但可能会产生模糊或失真。
-            Mipmap(一种技术)：使用预先生成的纹理金字塔(一种数据组织形式)来进行采样，以提供不同层次的细节级别。这可以提供更加逼真的结果。
-                NEAREST_MIPMAP_NEAREST(最快但质量最低)//这种过滤方式会选取最接近屏幕上纹理的mipmap，并且使用NEAREST来实现。
-                LINEAR__MIPMAP_NEAREST//这种过滤方式会选取最接近屏幕上纹理的mipmap，并且使用LINEAR来实现。
-                NEAREST_MIPMAP_LINEAR//这种过滤方式会选取两个最接近的mipmap，并且使用NEAREST来实现，最后的颜色会是两种样本的平均值。
-                LINEAR_MIPMAP_LINEARS(最慢但质量最高,8成选它)//这种过滤方式会选取两个最接近的mipmap，并且使用LINEAR来实现，最后的颜色会是两种样本的平均值。这也叫做三线性过滤(trilinear filtering)。
-        MAG Filter//放大物体到很大时,纹理拉伸采样方法
-            Nearest或Linear
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+
 gl.texStorage2D//分配二维纹理的存储。
 gl.uniformBlockBinding//绑定统一块到一个绑定点。
 gl.useProgram//使用 WebGL 程序对象。
@@ -430,12 +419,48 @@ gl.viewport//设置视口。定义了绘制在 canvas 上的图像的区域
 gl.drawingBufferHeight;// 屏幕的高度，也即可视区域的高度（以像素计）
 gl.drawingBufferWidth;// 屏幕的宽度，也即可视区域的宽度（以像素计）
 ```
+## 纹理
+gl.texParameteri   //设置纹理参数。
+### 包裹模式
+1. CLAMP_TO_EDGE表示超出纹理范围的部分会被截断并用纹理边界上的颜色进行填充。
+2. REPEAT表示纹理会以平铺的方式重复出现。
+3. MIRRORED_REPEAT表示纹理会镜像重复出现
+```js
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); //Wrap S和Wrap T是两个纹理坐标轴，分别对应x方向和y方向
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);    
+```
+### 纹理过滤器(图片采样方式)
+用于控制纹理在渲染过程中的采样方式
+#### MIN Filter
+缩小物体到很小时,纹理缩小的方式
+	1. Nearest：使用最近的纹理像素作为采样点。这是最简单和最快速的方式，但可能会导致图片过于锐利或出现锯齿。
+	2. Linear：使用相邻的纹理像素的加权平均值作为采样点。这可以产生更平滑的结果，但可能会产生模糊或失真。
+	3. Mipmap(一种技术)：使用预先生成的纹理金字塔(一种数据组织形式)来进行采样，以提供不同层次的细节级别。这可以提供更加逼真的结果。
+```js
+NEAREST_MIPMAP_NEAREST(最快但质量最低)//这种过滤方式会选取最接近屏幕上纹理的mipmap，并且使用NEAREST来实现。
+LINEAR__MIPMAP_NEAREST//这种过滤方式会选取最接近屏幕上纹理的mipmap，并且使用LINEAR来实现。
+NEAREST_MIPMAP_LINEAR//这种过滤方式会选取两个最接近的mipmap，并且使用NEAREST来实现，最后的颜色会是两种样本的平均值。
+LINEAR_MIPMAP_LINEARS(最慢但质量最高,8成选它)//这种过滤方式会选取两个最接近的mipmap，并且使用LINEAR来实现，最后的颜色会是两种样本的平均值。这也叫做三线性过滤(trilinear filtering)。
+```
+#### MAG Filter
+放大物体到很大时,纹理拉伸采样方法
+```js
+//Nearest或Linear
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+```
 
+## 阴影映射
+1. 阴影映射是一种常用的实现阴影效果的技术。它使用两个主要组件：光源的投影和深度贴图。
+2. 在阴影映射中，首先需要从光源的透视角度创建一个深度贴图（也称为阴影贴图）。深度贴图记录了从光源视角下每个像素的深度值。
+3. 在渲染阴影时，首先将场景从摄像机的视角渲染到帧缓冲区，同时使用光源的透视矩阵将场景渲染到深度贴图中。
+4. 然后，使用深度贴图对每个像素进行采样，并与当前像素的深度值进行比较。如果当前像素的深度值大于深度贴图中对应位置的深度值，那么当前像素就位于阴影中。
+5. 根据阴影的存在与否，可以调整像素的颜色或透明度，从而实现基础的阴影效果。
 ## 实践
-根据program获取shader源码
+### 根据program获取shader源码
 gl.getShaderSource(gl.getAttachedShaders(program)[0])
 gl.getShaderSource(gl.getAttachedShaders(program)[1])
-#### 如何绑定多个bufferData
+### 如何绑定多个bufferData
 ```javascript
 // 创建顶点缓冲区对象
 var vertexBuffer = gl.createBuffer();
