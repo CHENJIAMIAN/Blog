@@ -190,3 +190,4 @@ DLSWBR的英文全称是"Dynamic Limiting Speed Web Behavior Recognition"。是�
 5. 数据寿命：存储在`chrome.storage.local`中的数据可以长时间持久存在，即使浏览器关闭或重新启动[^2](https://stackoverflow.com/questions/24279495/window-localstorage-vs-chrome-storage-local)。`localStorage`中的数据通常是持久的，但可以在明确清除或清除浏览器缓存时被清除。
 
 需要注意的是，`chrome.storage.local`主要用于Chrome扩展和应用程序，而`localStorage`是一种更通用的Web API，用于在浏览器中本地存储数据。
+### "misc"是"miscellaneous"的缩写，表示"杂项"或"其他"
