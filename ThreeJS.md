@@ -142,7 +142,7 @@ Layer
         scene.background = new RGBELoader()
 	        .setPath( 'textures/' )
 	        .load( 'royal_esplanade_1k.hdr', 
-			        ()=>{hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;} 
+			        ()=>{hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;/*全景反射映射*/} 
 				 ); 
 ```
 ## 精灵Sprite/粒子points
