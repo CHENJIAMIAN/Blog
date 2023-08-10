@@ -47,6 +47,17 @@ Three.js中级封装做3D, 万物皆三角形
     document.body.appendChild(renderer.domElement);
     动画循环调用renderer.render(scene, camera);
 ```
+### 色调映射 renderer.toneMapping = THREE.ACESFilmicToneMapping;
+1. 一种在渲染过程中将高动态范围（High Dynamic Range, HDR）图像转换为低动态范围（Low Dynamic Range, LDR）图像的技术。
+2. 在计算机图形学中，颜色通常以线性空间进行处理，以准确地表示光照和颜色的叠加、混合和计算。然而，显示设备（例如计算机显示器）通常使用伽马矫正（Gamma Correction）来将线性空间的颜色值转换为非线性空间，以适应人眼对亮度的感知特性。
+	1. 人眼对亮度的感知也是非线性的，较低亮度的变化更为敏感，而较高亮度的变化则相对不太敏感。
+	2. **伽马校正**的目的是将图像的亮度值进行**非线性变换**，以使其在显示设备上呈现出线性感知。
+3. 高动态范围图像捕捉到了现实世界中广泛的亮度和颜色细节，但直接在标准显示设备上显示会导致过曝（Overexposure）或细节丢失。
+4. 算法
+	1. 线性映射（Linear Mapping）：简单地按比例缩放高动态范围图像的亮度值，使其适应显示设备的范围。这种方法简单直接，但可能导致亮度和对比度的损失。
+	2. Reinhard 算法：Reinhard 算法通过应用一个非线性映射函数来调整图像的曝光度和对比度，以在较低动态范围内保留更多细节。它是一种常用的全局色调映射算法。
+	3. ACES Filmic 算法：ACES Filmic 是一种基于电影工业标准的色调映射算法，旨在提供更加真实和自然的色彩和光照表现。它通过非线性映射和曝光度调整来处理高动态范围图像，以实现更好的视觉效果。
+
 ## 曲线
 ```js
 曲线
@@ -72,6 +83,7 @@ Three.js中级封装做3D, 万物皆三角形
     OrthographicCamera正交//类似某一方向来个截图
     相机插件//https://github.com/mrdoob/three.js/blob/master/examples/js/controls/OrbitControls.js
         OrbitControls 轨道控制器,让相机可以放近放远, 可以360°绕着物体看, 方便调试'没有它鼠标操作什么反应都没有'
+		   `controls.enableDamping = true;`启用阻尼效果
         DeviceOrientationControls 陀螺仪相机控制器，实现移动端陀螺仪控制相机。
         DragControls 控制鼠标拖拽移动物体的功能。
         EditorControls 实现相机的旋转，缩放，平移功能，相对于OrbitControls的功能差不少，不建议使用
@@ -141,9 +153,9 @@ Layer
         可以用作scene的背景,
         scene.background = new RGBELoader()
 	        .setPath( 'textures/' )
-	        .load( 'royal_esplanade_1k.hdr', 
-			        ()=>{hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;/*全景反射映射*/} 
-				 ); 
+	        .load( 'royal_esplanade_1k.hdr', ()=>{
+				        hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;/*全景反射映射*/
+				}); 
 ```
 ## 精灵Sprite/粒子points
 ```
