@@ -207,58 +207,6 @@ MVP矩阵是一种常用的图形变换方式，用于将 3D 模型变换到 2D 
    mat4 mvpMatrix = projectionMatrix * viewMatrix * modelMatrix; // 计算MVP矩阵
 ```
 
-
-
-```javascript
-gl.bindBuffer 是 WebGL 中的一个方法，用于将缓冲区绑定到 WebGL 的指定目标上。
-    //gl.bindBuffer 方法通常在绘制图形前调用，以在 WebGL 中使用缓冲区数据。绑定缓冲区后，可以使用其他 WebGL 方法来配置缓冲区的数据，例如 gl.bufferData 和 gl.bufferSubData。
-    //它有两个参数：
-    target: 缓冲区的目标。可以是以下值之一：
-        gl.ARRAY_BUFFER: 表示顶点属性数据的缓冲区。
-        gl.ELEMENT_ARRAY_BUFFER: 表示索引数据的缓冲区。
-        //gl.COPY_READ_BUFFER: 可读取的缓冲区副本。
-        //gl.COPY_WRITE_BUFFER: 可写入的缓冲区副本。
-        //gl.PIXEL_PACK_BUFFER: 用于从纹理图像中获取像素数据的缓冲区。
-        //gl.PIXEL_UNPACK_BUFFER: 用于向纹理图像中存储像素数据的缓冲区。
-        //gl.TRANSFORM_FEEDBACK_BUFFER: 用于转换反馈的缓冲区。
-        //gl.UNIFORM_BUFFER: 用于存储 uniform 变量的缓冲区。
-    buffer: 要绑定的缓冲区对象。
-    
-设置变量
-    gl.uniform1f：设置单个浮点型uniform变量。
-    uniform4f: 将4个浮点数值分别赋值给uniform变量
-    gl.uniform1i(Program.uSampler, 0) 设置单个整型uniform变量。
-    uniform1ui：设置单个无符号整型uniform变量。
-    uniform1uiv：设置单个无符号整型uniform变量的值（使用数组）。
-    uniform3fv：设置3维浮点型uniform变量的值（使用数组）。
-    gl.niform4fv：设置4维浮点型uniform变量的值（使用数组）。
-将矩阵变量传给着色器
-    gl.uniformMatrix3fv 用于将一个3x3矩阵数组 传递给shader program。
-    gl.uniformMatrix4fv 用于将一个4x4矩阵数组 传递给shader program。
-    gl.uniformMatrix4f  用于将一个4x4矩阵值   传递给shader program。
-将向量变量传给着色器
-    gl.uniform3fv(location是向量变量在着色器中的位置，v是一个包含向量数据的数组)
-    
-设置顶点//配置在绘制函数gl.drawArrays()时候，如何提取数据
-    vertexAttribIPointer 函数用于设置'整数型'的顶点属性。它接受以下参数：
-        index：着色器程序中的 attribute 变量的位置,通过 gl.getAttribLocation(shaderProgram, "aVertexPosition")获得
-        size：每个顶点属性的分量数，必须为 1、2、3 或 4。
-        type：数据类型，可以是 gl.BYTE、gl.UNSIGNED_BYTE、gl.SHORT、gl.UNSIGNED_SHORT 或 gl.INT。
-        normalized：布尔值，指定当被访问时，固定点数据值是否应当被归一化。            
-            //例如，假设您有一个顶点属性，它的值范围为 [0,255]，并且 normalizeFlag 设置为 true。当 WebGL 渲染这个顶点时，它会将属性值除以 255，将它转换为 [0,1] 范围内的浮点数。
-        stride：指定连续顶点属性间的偏移量。
-        offset：顶点属性数组中的偏移量。
-    vertexAttribPointer 函数用于设置'浮点型'的顶点属性。它接受以下参数：//告诉WebGL如何解析 顶点属性数据 (从gl.bindBuffer绑的缓冲区来)
-        type：数据类型，可以是 gl.FLOAT 或 gl.HALF_FLOAT。
-
-
-
-    
-gl.vertexAttribDivisor 是 WebGL 2.0 中的一个函数，用于设置顶点属性的递增因子。它接受两个参数：第一个参数是顶点属性的索引，第二个参数是递增因子。
-    当启用了多路绘制（使用 gl.drawElementsInstanced 和 gl.drawArraysInstanced 函数）时，顶点属性的递增因子会告诉 WebGL，当渲染下一个实例时，顶点属性数组应该在顶点着色器中的哪个偏移量处跳过若干个元素。
-    例如，如果你有一个顶点属性数组，包含了 3 个元素（例如，一个位置和两个纹理坐标），并且你将顶点属性的递增因子设置为 3，那么在渲染下一个实例时，顶点属性数组将会跳过 3 个元素，以便让下一个实例使用。
-    默认情况下，顶点属性的递增因子被设置为 0。
-```
 ## 方法大全
 ```javascript
 gl.activeTexture(gl.TEXTURE0);//激活纹理单元0，因为WebGL支持多个纹理单元
@@ -418,6 +366,86 @@ gl.useProgram//使用 WebGL 程序对象。
 gl.viewport//设置视口。定义了绘制在 canvas 上的图像的区域
 gl.drawingBufferHeight;// 屏幕的高度，也即可视区域的高度（以像素计）
 gl.drawingBufferWidth;// 屏幕的宽度，也即可视区域的宽度（以像素计）
+```
+## 设置参数
+```javascript
+gl.bindBuffer 是 WebGL 中的一个方法，用于将缓冲区绑定到 WebGL 的指定目标上。
+    //gl.bindBuffer 方法通常在绘制图形前调用，以在 WebGL 中使用缓冲区数据。绑定缓冲区后，可以使用其他 WebGL 方法来配置缓冲区的数据，例如 gl.bufferData 和 gl.bufferSubData。
+    //它有两个参数：
+    target: 缓冲区的目标。可以是以下值之一：
+        gl.ARRAY_BUFFER: 表示顶点属性数据的缓冲区。
+        gl.ELEMENT_ARRAY_BUFFER: 表示索引数据的缓冲区。
+        //gl.COPY_READ_BUFFER: 可读取的缓冲区副本。
+        //gl.COPY_WRITE_BUFFER: 可写入的缓冲区副本。
+        //gl.PIXEL_PACK_BUFFER: 用于从纹理图像中获取像素数据的缓冲区。
+        //gl.PIXEL_UNPACK_BUFFER: 用于向纹理图像中存储像素数据的缓冲区。
+        //gl.TRANSFORM_FEEDBACK_BUFFER: 用于转换反馈的缓冲区。
+        //gl.UNIFORM_BUFFER: 用于存储 uniform 变量的缓冲区。
+    buffer: 要绑定的缓冲区对象。
+    
+设置变量
+    gl.uniform1f：设置单个浮点型uniform变量。
+    uniform4f: 将4个浮点数值分别赋值给uniform变量
+    gl.uniform1i(Program.uSampler, 0) 设置单个整型uniform变量。
+    uniform1ui：设置单个无符号整型uniform变量。
+    uniform1uiv：设置单个无符号整型uniform变量的值（使用数组）。
+    uniform3fv：设置3维浮点型uniform变量的值（使用数组）。
+    gl.niform4fv：设置4维浮点型uniform变量的值（使用数组）。
+将矩阵变量传给着色器
+    gl.uniformMatrix3fv 用于将一个3x3矩阵数组 传递给shader program。
+    gl.uniformMatrix4fv 用于将一个4x4矩阵数组 传递给shader program。
+    gl.uniformMatrix4f  用于将一个4x4矩阵值   传递给shader program。
+将向量变量传给着色器
+    gl.uniform3fv(location是向量变量在着色器中的位置，v是一个包含向量数据的数组)
+    
+设置顶点//配置在绘制函数gl.drawArrays()时候，如何提取数据
+    vertexAttribIPointer 函数用于设置'整数型'的顶点属性。它接受以下参数：
+        index：着色器程序中的 attribute 变量的位置,通过 gl.getAttribLocation(shaderProgram, "aVertexPosition")获得
+        size：每个顶点属性的分量数，必须为 1、2、3 或 4。
+        type：数据类型，可以是 gl.BYTE、gl.UNSIGNED_BYTE、gl.SHORT、gl.UNSIGNED_SHORT 或 gl.INT。
+        normalized：布尔值，指定当被访问时，固定点数据值是否应当被归一化。            
+            //例如，假设您有一个顶点属性，它的值范围为 [0,255]，并且 normalizeFlag 设置为 true。当 WebGL 渲染这个顶点时，它会将属性值除以 255，将它转换为 [0,1] 范围内的浮点数。
+        stride：指定连续顶点属性间的偏移量。
+        offset：顶点属性数组中的偏移量。
+    vertexAttribPointer 函数用于设置'浮点型'的顶点属性。它接受以下参数：//告诉WebGL如何解析 顶点属性数据 (从gl.bindBuffer绑的缓冲区来)
+        type：数据类型，可以是 gl.FLOAT 或 gl.HALF_FLOAT。
+```
+## 渲染多个实例
+```js
+// 创建 WebGL 上下文和着色器程序等
+
+// 创建顶点缓冲区（顶点数据）
+const vertexBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, verticesData, gl.STATIC_DRAW);
+
+// 创建实例缓冲区（实例数据）
+const instanceBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, instanceBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, instancesData, gl.STATIC_DRAW);
+
+// 设置顶点属性指针
+const positionAttributeLocation = gl.getAttribLocation(shaderProgram, 'a_position');
+gl.enableVertexAttribArray(positionAttributeLocation);
+gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+gl.vertexAttribPointer(positionAttributeLocation, 3, gl.FLOAT, false, 0, 0);
+
+// 设置实例属性指针
+const instanceAttributeLocation = gl.getAttribLocation(shaderProgram, 'a_instanceData');
+gl.enableVertexAttribArray(instanceAttributeLocation);
+gl.bindBuffer(gl.ARRAY_BUFFER, instanceBuffer);
+gl.vertexAttribPointer(instanceAttributeLocation, 4, gl.FLOAT, false, 0, 0);
+gl.vertexAttribDivisor(instanceAttributeLocation, 1); // 设置实例化属性的更新频率,设置顶点属性的递增因子
+	//它接受两个参数：第一个参数是顶点属性的索引，第二个参数是递增因子。
+	//例如，如果你有一个顶点属性数组，包含了 3 个元素（例如，一个位置和两个纹理坐标）
+    //并且你将顶点属性的递增因子设置为 3，那么在渲染下一个实例时，顶点属性数组将会跳过 3 个元素，
+    //以便让下一个实例使用。
+	
+// 绘制调用
+gl.drawArraysInstanced(gl.TRIANGLES, 0, numVertices, numInstances);
+//启用了多路绘制（使用 gl.drawElementsInstanced 和 gl.drawArraysInstanced 函数）
+
+  
 ```
 ## 纹理
 gl.texParameteri   //设置纹理参数。
