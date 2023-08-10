@@ -1,5 +1,5 @@
 ### gltf-transform/cli
-如果您的 GLB 模型包含相同网格的多次重复，则 glTF Transform 可以检测到这一点，合并任何冗余数据，并（可选）添加 EXT_mesh_gpu_instancing 扩展，使 GLTFLoader 创建 THREE.InstancedMesh对象。
+如果您的 GLB 模型包含相同网格的多次重复，则 glTF Transform 可以检测到这一点，合并任何冗余数据，并（可选）添加 EXT_mesh_gpu_instancing 扩展，使 GLTFLoader 创建 THREE.InstancedMesh 对象。
 > CLI 中的典型用法如下所示：
 ```bash
 # install
