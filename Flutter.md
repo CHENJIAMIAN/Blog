@@ -244,4 +244,3 @@ flutter build apk
 
 
 
-MaterialApp.router
