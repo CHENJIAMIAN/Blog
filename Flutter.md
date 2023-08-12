@@ -243,4 +243,8 @@ flutter build apk
 3. text_button.dart    text_field.dart   text_theme.dart text类组件只有这三个有用到textTheme
 
 
-
+#### 问题
+1. 全局字体写活
+2. web端放大
+3. 大UI调整
+4. 接口的所有可能情况
