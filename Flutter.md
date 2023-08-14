@@ -247,8 +247,8 @@ flutter build apk
 1. web端放大
 2. 大UI调整
 3. 接口的所有可能情况
+4. 
 币种汇率 /coin/coinRate
 生成谷歌认证码 /google/generate
- 
 币种转入游戏(USDT) /balance/coinTransferGame 
 提币 /address/withdrawApply
