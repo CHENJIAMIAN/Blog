@@ -249,7 +249,6 @@ flutter build apk
 3. 接口的所有可能情况
 币种汇率 /coin/coinRate
 生成谷歌认证码 /google/generate
-
-币种转入游戏(USDT) /balance/coinTransferGame提币
-
-/address/withdrawApply
+ 
+币种转入游戏(USDT) /balance/coinTransferGame 
+提币 /address/withdrawApply
