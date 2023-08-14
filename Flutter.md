@@ -247,13 +247,9 @@ flutter build apk
 1. web端放大
 2. 大UI调整
 3. 接口的所有可能情况
-币种汇率
+币种汇率/coin/coinRate
 
-/coin/coinRate
-
-生成谷歌认证码
-
-已发布
+生成谷歌认证码已发布
 
 /google/generate
 
