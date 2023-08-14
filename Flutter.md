@@ -232,8 +232,7 @@ lib.main.main
 页面的第一部分第五行是图标'assets/images/p1_tousuweiquan_tianjiafujian.png'  + spacer + 图标'assets/images/p1_tousuweiquan_tianjiafujian.png'
 页面的第一部分第六行是灰色文本'可先投诉, 后补资料, 截图或视频均可' + spacer + 灰色文本'截图或录屏参考'
 
-页面的第二部分是个HtmlWidget('')
-页面有bottomNavigationBar, 其中有按钮"发起投诉".按钮高度为40
+页面的第二部分是个z按钮"发起投诉".按钮高度为40
 ```
 flutter build apk
 
