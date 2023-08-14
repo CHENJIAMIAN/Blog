@@ -250,9 +250,6 @@ flutter build apk
 币种汇率 /coin/coinRate
 生成谷歌认证码 /google/generate
 
-币种转入游戏(USDT)
-/balance/coinTransferGame
-
-提币
+币种转入游戏(USDT) /balance/coinTransferGame提币
 
 /address/withdrawApply
