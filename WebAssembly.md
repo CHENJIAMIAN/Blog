@@ -38,3 +38,42 @@
 				1. `WebAssembly.instantiate()`适用于异步加载和实例化WebAssembly模块的情况，更适合于在模块加载过程中执行其他操作，如对导入对象进行自定义处理。返回`result.instance`和`result.module`
 				2. `WebAssembly.Instance`适用于在模块已经加载完毕
 2. 验证(实例化 或 编译 的时候自动验证了)
+
+
+1. WebAssembly基础介绍  
+    1.1 定义和作用 
+    1.2 与JavaScript的关系  
+    1.3 优势和适用场景
+    
+2. WebAssembly模块的加载和使用  
+    2.1 使用WebAssembly JavaScript API加载模块  
+    2.2 创建WebAssembly.Instance实例  
+    2.3 WebAssembly.Module和WebAssembly.Instance的区别和用途  
+    2.4 Result对象的处理和使用  
+    2.5 WebAssembly.validate函数的作用和用途
+    
+3. JavaScript和WebAssembly的函数交互  
+    3.1 导出函数供JavaScript调用  
+    3.2 导入JavaScript函数供WebAssembly调用  
+    3.3 使用WebAssembly.Table实现函数指针的功能
+    
+4. JavaScript和WebAssembly的变量和内存操作  
+    4.1 全局变量的定义和使用  
+    4.2 WebAssembly内存的概念和使用方式  
+    4.3 在多线程环境中使用WebAssembly.Memory
+    
+5. 异常处理和调试  
+    5.1 处理WebAssembly实例化错误  
+    5.2 运行时错误的处理方法  
+    5.3 调试WebAssembly应用程序中的错误和问题
+    
+6. 不同的WebAssembly运行时环境  
+    6.1 在Node.js中使用WebAssembly  
+    6.2 使用WebAssembly System Interface (WASI)  
+    6.3 使用Wasmtime运行WebAssembly模块
+    
+7. 常用的工具和语言  
+    7.1 工具介绍  
+    7.2 使用C++和Emscripten进行开发  
+    7.3 使用Rust编写WebAssembly模块  
+    7.4 使用Blazor开发WebAssembly应用程序
