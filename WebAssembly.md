@@ -29,10 +29,12 @@
 2. 运行时	
 	1. node.js  
 	2. WASMTIME (使用WASI访问文件和网络 )
-3. 实例化->编译->验证
-	1. 实例化
-		1. `WebAssembly.instantiateStreaming()`方法可直接从网络流中异步加载和实例化WebAssembly模块，适用于较大模块且提供更快的加载性能。
-			1. 返回result.instance和result.module
-		2. `WebAssembly.compileStreaming()`方法用于异步编译WebAssembly模块，但不进行实例化，适用于需要在编译和实例化之间执行其他操作的场景(如多个实例在多个web worker)
-			1. 返回module, 用WebAssembly.Instance(module)获得实例
-4. WebAssembly.Instance.exports{方法1/方法2
+3. 实例化 `WebAssembly.instantiateStreaming()`方法可直接从网络流中异步加载和实例化WebAssembly模块，适用于较大模块且提供更快的加载性能。
+			- 返回`result.instance`和`result.module`
+				- WebAssembly.Instance.exports{方法1/方法2
+				- WebAssembly.Module.exports{方法1/方法2
+1. 编译`WebAssembly.compileStreaming()`方法用于异步编译WebAssembly模块，但不进行实例化，适用于需要在编译和实例化之间执行其他操作的场景, **如多个实例在多个web worker**
+			- 返回module, 用WebAssembly.Instance(module)获得实例
+				1. `WebAssembly.instantiate()`适用于异步加载和实例化WebAssembly模块的情况，更适合于在模块加载过程中执行其他操作，如对导入对象进行自定义处理。返回`result.instance`和`result.module`
+				2. `WebAssembly.Instance`适用于在模块已经加载完毕
+2. 验证(实例化 或 编译 的时候自动验证了)
