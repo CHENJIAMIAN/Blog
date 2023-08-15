@@ -25,3 +25,8 @@
 | 开发工具   | Microsoft Visual Studio | Apple Xcode | 多种开发工具和SDK支持 |
 | 生态系统     | 丰富的游戏开发和工具支持 | 针对苹果生态系统的集成 | 多个平台的广泛应用和支持 |
 
+1. wat(人类可读)<->wasm 可互转
+2. 运行时	
+	1. node.js  
+	2. WASMTIME (使用WASI访问文件和网络 )
+3. 实例化->编译->验证
