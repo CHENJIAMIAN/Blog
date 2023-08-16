@@ -56,7 +56,7 @@
     3.1 导出函数供JavaScript调用  
     3.2 导入JavaScript函数供WebAssembly调用  
     3.3 使用WebAssembly.Table实现函数指针的功能
-		- 
+		- 类似数组
     
 4. JavaScript和WebAssembly的变量和内存操作  
     4.1 全局变量的定义和使用  
