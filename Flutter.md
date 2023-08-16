@@ -244,6 +244,5 @@ flutter build apk
 2. 大UI调整
 3. 接口的所有可能情况
 4. 
-币种汇率 /coin/coinRate
 币种转入游戏(USDT) /balance/coinTransferGame 
 提币 /address/withdrawApply
