@@ -53,7 +53,7 @@
     2.5 WebAssembly.validate函数的作用和用途
     
 3. JavaScript和WebAssembly的函数交互  
-    3.1. 导出函数供JavaScript调用  
+	3.1. 导出函数供JavaScript调用  
     3.2 导入JavaScript函数供WebAssembly调用  
     3.3 使用WebAssembly.Table实现函数指针的功能
 		- 类似数组
