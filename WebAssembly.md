@@ -62,15 +62,22 @@
     
 4. JavaScript和WebAssembly的变量和内存操作  
     4.1 全局变量的定义和使用  
+	    - 用作跨语言边界传递数据的机制
     4.2 WebAssembly内存的概念和使用方式  
+	    - 共享内存
 	    - initial一个数字64kb
     4.3 在多线程环境中使用WebAssembly.Memory
+	    - SharedArrayBuffer允许多个Web Worker共享同一块内存
     
 5. 异常处理和调试  
-    5.1 处理WebAssembly实例化错误  
-    5.2 运行时错误的处理方法  
-    5.3 调试WebAssembly应用程序中的错误和问题
-    
+	1. **CompileError**：在编译阶段，如果WebAssembly模块的代码存在错误，将抛出此异常。通常表示语法错误或模块结构问题。
+	2. **TypeError**：在验证阶段，如果WebAssembly模块不符合类型要求，将抛出此异常。通常发生在函数签名不匹配或无效的内存访问等类型不匹配的情况。
+	3. **LinkError**：在链接阶段，如果将WebAssembly模块与其依赖项连接时出现问题，将抛出此异常。如果缺少必需的函数或导入项不兼容，就可能发生这种情况。
+	4. **RuntimeError**：当WebAssembly模块在执行过程中发生异常时，将抛出此异常。可能是由于除以零、越界内存访问或其他运行时错误引起的异常。
+	为了改善WebAssembly中异常的透明度，引入了两个额外的实体：
+	1. **WebAssembly.Exception**：这是表示异常的WebAssembly值。它允许在WebAssembly模块内部捕获和传播异常。
+	2. **WebAssembly.Tag**：这是一个WebAssembly结构，将特定的异常类型与一段代码关联起来。它提供了一种结构化的方式来处理异常，并在WebAssembly中实现更明确的异常处理。
+
 6. 不同的WebAssembly运行时环境  
     6.1 在Node.js中使用WebAssembly  
     6.2 使用WebAssembly System Interface (WASI)  
