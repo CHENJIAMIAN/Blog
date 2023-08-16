@@ -68,4 +68,6 @@
 7.2 使用C++和Emscripten进行开发  
 7.3 使用Rust编写WebAssembly模块  
 7.4 使用Blazor开发WebAssembly应用程序
+- 由Microsoft开发的Web框架
+- Blazor利用WebAssembly在浏览器中直接运行C#代码，可以在不需要JavaScript的情况下使用C#进行全栈Web开发
 ### 
