@@ -55,8 +55,10 @@
 3. JavaScript和WebAssembly的函数交互  
 	3.1 导出函数供JavaScript调用  
     3.2 导入JavaScript函数供WebAssembly调用  
+	    - WebAssembly.instantiateStreaming(fetch('multiply.wasm'), importObject/*给wasm的js对象*/)
     3.3 使用WebAssembly.Table实现函数指针的功能
 		- 类似数组
+		- 用于将多个 JavaScript 和 WebAssembly 模块绑定在一起。它允许模块之间共享并调用函数，通过将函数引用存储在类似表格的数据结构中
     
 4. JavaScript和WebAssembly的变量和内存操作  
     4.1 全局变量的定义和使用  
