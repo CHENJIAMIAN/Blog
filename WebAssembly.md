@@ -63,6 +63,7 @@
 4. JavaScript和WebAssembly的变量和内存操作  
     4.1 全局变量的定义和使用  
     4.2 WebAssembly内存的概念和使用方式  
+	    - initial一个数字64kb
     4.3 在多线程环境中使用WebAssembly.Memory
     
 5. 异常处理和调试  
