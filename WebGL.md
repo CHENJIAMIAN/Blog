@@ -518,3 +518,4 @@ gl.drawArrays(gl.TRIANGLES, 0, numVertices);
 
 其中 `vertexLoc` 和 `colorLoc` 分别是顶点和颜色 attribute 变量的位置（通常使用 `gl.getAttribLocation()` 函数来获取），`numVertices` 表示顶点数。
 ```
+周期bian'h
