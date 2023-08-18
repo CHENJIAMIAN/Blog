@@ -1,7 +1,7 @@
 
 ```javascript
 技巧
-    模板重:[name]="sdf" 或 @[name]="" 动态属性|事件名
+    模板重:[name]="xxx" 或 @[name]="" 动态属性|事件名
     fragment获取传进来的属性 <frament1 属性1="1" 属性2="2"/>
         <div :class="$attrs.属性1">1</div>
         <div :class="$attrs.属性2">2</div>
