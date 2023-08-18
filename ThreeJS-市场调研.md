@@ -1,5 +1,5 @@
 ### 厂商对比
-智汇云舟(ji'yu/51WORLD /UINO优诺/数字冰雹/RAYKITE 光启元/飞渡科技/光辉城市/DataMesh/山海鲸可视化/EasyV
+智汇云舟(基于web/51WORLD /UINO优诺/数字冰雹/RAYKITE 光启元/飞渡科技/光辉城市/DataMesh/山海鲸可视化/EasyV
 
 |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|
