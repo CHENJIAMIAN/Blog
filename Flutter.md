@@ -241,7 +241,7 @@ flutter build apk
 
 #### 问题
 1. web端放大
-2. 大UI调整
+2. UI调整
 3. 接口的所有可能情况
 
 提币 /address/withdrawApply
