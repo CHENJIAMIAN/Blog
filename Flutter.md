@@ -241,7 +241,7 @@ flutter build apk
 
 #### 问题
 1. web端放大
-2. 统一DPIUI调整
+2. 统一DPI的UI调整
 3. 接口的所有可能情况
 
 提币 /address/withdrawApply
