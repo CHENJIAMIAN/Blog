@@ -525,3 +525,5 @@ gl.drawArrays(gl.TRIANGLES, 0, numVertices);
 	- sin函数则用于描述和模拟周期性的连续变化，例如音频波形、动画效果等。
 ### 非此即彼
 - step相当于高级的 `value>0 ? 0 : 1`
+### [线性插值](https://mattdesl.svbtle.com/linear-interpolation)
+- lerp或mix
