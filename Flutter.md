@@ -242,6 +242,17 @@ flutter build apk
                   minimumSize: Size.fromHeight(55),
                 ),
 
+`MappedListIterable`是一个实现了`Iterable`接口的类，它代表了通过映射函数转换后的列表。它通常作为`Iterable`的结果返回，例如在`Iterable`的`map`方法中使用。
+
+`MappedListIterable`与`List`之间的主要区别在于它们的类型和行为：
+
+1. 类型：`MappedListIterable`的类型是泛型`MappedListIterable<S, E>`，其中`S`是原始列表的元素类型，`E`是映射函数转换后的元素类型。而`List`的类型是泛型`List<E>`，其中`E`是列表的元素类型。
+
+1. 存储方式：`MappedListIterable`并不直接存储列表元素，它是通过映射函数按需转换原始列表的元素来提供结果。相比之下，`List`直接存储元素。
+
+1. 惰性计算：`MappedListIterable`具有惰性计算的特性。它只在需要访问元素时才会调用映射函数进行转换，而不会提前计算和存储所有元素。这使得它在处理大型数据集时更加高效。
+
+总结来说，`MappedListIterable`是一个惰性计算的可迭代对象，通过映射函数将原始列表的元素转换为新的元素类型。与之相反，`List`是一个包含实际元素的有序集合。
 #### 问题
 1. web端放大
 2. 统一DPI的UI调整
