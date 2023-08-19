@@ -238,6 +238,9 @@ flutter build apk
 2. .flutter_windows_3.10.flutter.packages.flutter.lib.src.painting.text_style.TextStyle的final double? fontSize;定义了默认为 14 逻辑像素，如果字体大小未指定
 3. text_button.dart    text_field.dart   text_theme.dart text类组件只有这三个有用到textTheme
 
+    style: ElevatedButton.styleFrom(
+                  minimumSize: Size.fromHeight(55),
+                ),
 
 #### 问题
 1. web端放大
