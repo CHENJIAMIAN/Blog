@@ -21,7 +21,7 @@
 跨域通信的 5种 方式：
     1、JSONP
     2、WebSocket
-    3、CORS
+    3、CORS // "credentials": "include"会造成该错误
     4、Hash//Hash的改变，页面不会刷新。这就是用 Hash 做跨域通信的基本原理。window.onhashchange=获取数据
     5、postMessage
         window1.postMessage('data', 'http://B.com');
