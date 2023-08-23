@@ -7,7 +7,7 @@ Map引用了TileEarth，它的customSetup是
 uearth.CMap的TileEarth是其核心
 抛弃了new Cesium.Viewer/new Cesium.Scene/ new Cesium.Globe那一套Cesium原生的构建地球的方法,自己利用Cesium的API重写了一套
 
-TileEarth用了Cesium.FrameState的在update循环中更新
+TileEarth用了Cesium.FrameState 的在update循环中更新
 	利用new Cesium.Globe做的事情来新建地球:
 		this._surface =  new Cesium.QuadtreePrimitive({ tileProvider: new Cesium.GlobeSurfaceTileProvider({  
 		那么是哪里引用了dom呢,没有看到用了Cesium.Context对象,所以是用了Three.js的webgl
