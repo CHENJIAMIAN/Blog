@@ -254,3 +254,7 @@ lib.main.main
 2. 统一DPI的UI调整
 3. 接口的所有可能情况
 4. 保留game, 不保留move
+
+ "validTime": 595,
+
+<120 可以点延长
