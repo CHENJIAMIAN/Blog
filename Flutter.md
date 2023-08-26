@@ -77,7 +77,8 @@ Flutter 使用与 Unity 相同的基本架构模型
 1. Wasm初始化Skia上下文API, 通过Emscripten与JavaScript进行交互。
 2. Flutter通过Dart调用Skia API,最终映射到Wasm和Canvas API。
 3. CSS样式通过Emscripten映射到Skia,实现高保真视觉效果。
-
+### 编译成apk
+- flutter build apk
 ### Dart
 [飞镖编译 | 镖](https://dart.dev/tools/dart-compile#exe)
 对于 Dart 语言，有以下两种常用的编译工具：
@@ -111,9 +112,8 @@ https://pub.dev/packages/path_provider 获取文件系统目录
 https://pub.dev/packages/device_info_plus 获取设备信息
 https://pub.dev/packages/audioplayers 音频播放
 
-
 ### 路由
-MaterialApp.routes:{}
+- MaterialApp.routes:{}
 #### 路由架构
 ```js
 MaterialApp.router:
@@ -169,22 +169,22 @@ Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), 
 17. 自动换行Wrap组件设置  spacing: 8, // 水平间距  runSpacing: 8, // 垂直间距, 相对于css的flex-wrap
 18. 页面的build嵌套dialog的build的context时去用setState 容易混乱,setState只能引起页面自身的rebuild而无法影响dialog组件
 
-### 路由
-MaterialApp.routes:{}
-
 ### 原理
 1. import 'dart:ui'; 实际是引入 `D:\flutter_windows_3.10.5-stable\bin\cache\pkg\sky_engine\lib\ui\ui.dart
-1. showToast('请输入正确的邮箱账号',duration: Duration(seconds: 2),radius: 3.0,);
-2. final authState = MyAppAuthScope.of(context);
-4. Aa.11111111
-8. 会员： 设置法币国家-  绑定手机号（手机发送）- 绑定姓名 - 实名认证（会员上传）    更新头像
+### 代码片段
+```js
+showToast('请输入正确的邮箱账号',duration: Duration(seconds: 2),radius: 3.0,);
+
+final authState = MyAppAuthScope.of(context);
+
+style: ElevatedButton.styleFrom(minimumSize: Size.fromHeight(55),),
+```
 
 ### 表单
 1. Form   key: _formKey, 劫持整个表单, 在提交时 _formKey.currentState!.validate();验证
 2. TextFormField 输入框, validator被回调校验, onChanged去取值
 3.  `FormField<bool>` 的builder提供formFieldState, 通过在如checkbox的onChanged通知 formFieldState.didChange(value); 去触发formFieldState.isValid值的变化
 4. 通过构造  FormData formData = FormData();在TextFormField的onChanged做 formData.email = value; 去收集表单
-
 
 ### 数据模型Model
 ```dart
@@ -200,7 +200,6 @@ dddd.g.dart
 	_$FormDataFromJson()
 	_$FormDataToJson()
 ```
-
 
 ### 实战项目
 ```js
@@ -231,25 +230,22 @@ lib.main.main
 
 页面的第二部分是个占满全行的按钮"确定".按钮高度为40
 ```
-flutter build apk
 
-什么决定了一个text的默认字体?
+### 什么决定了一个text的默认字体?
 1. 父级的DefaultTextStyle
-2. .flutter_windows_3.10.flutter.packages.flutter.lib.src.painting.text_style.TextStyle的final double? fontSize;定义了默认为 14 逻辑像素，如果字体大小未指定
-3. text_button.dart    text_field.dart   text_theme.dart text类组件只有这三个有用到textTheme
+2. `.flutter_windows_3.10.flutter.packages.flutter.lib.src.painting.text_style.TextStyle`的`final double? fontSize;`定义了默认为 14 逻辑像素，如果字体大小未指定
+3. `text_button.dart`    `text_field.dart`   `text_theme.dart` text类组件只有这3个有用到`textTheme`
 
-    style: ElevatedButton.styleFrom(
-                  minimumSize: Size.fromHeight(55),
-                ),
 
-`MappedListIterable`是一个实现了`Iterable`接口的类，它代表了通过映射函数转换后的列表。它通常作为`Iterable`的结果返回，例如在`Iterable`的`map`方法中使用。
-
-`MappedListIterable`与`List`之间的主要区别在于它们的类型和行为：
-
+### `MappedListIterable`与`List`之间的主要区别在于它们的类型和行为：
 1. 类型：`MappedListIterable`的类型是泛型`MappedListIterable<S, E>`，其中`S`是原始列表的元素类型，`E`是映射函数转换后的元素类型。而`List`的类型是泛型`List<E>`，其中`E`是列表的元素类型。
 2. 存储方式：`MappedListIterable`并不直接存储列表元素，它是通过映射函数按需转换原始列表的元素来提供结果。相比之下，`List`直接存储元素。
 3. 惰性计算：`MappedListIterable`具有惰性计算的特性。它只在需要访问元素时才会调用映射函数进行转换，而不会提前计算和存储所有元素。这使得它在处理大型数据集时更加高效。
 总结来说，`MappedListIterable`是一个惰性计算的可迭代对象，通过映射函数将原始列表的元素转换为新的元素类型。与之相反，`List`是一个包含实际元素的有序集合。
+
+#### 备忘
+- Aa.11111111
+- 会员： 设置法币国家-  绑定手机号（手机发送）- 绑定姓名 - 实名认证（会员上传）    更新头像
 #### 问题
 1. web端放大
 2. 统一DPI的UI调整
