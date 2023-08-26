@@ -243,6 +243,9 @@ lib.main.main
 3. 惰性计算：`MappedListIterable`具有惰性计算的特性。它只在需要访问元素时才会调用映射函数进行转换，而不会提前计算和存储所有元素。这使得它在处理大型数据集时更加高效。
 总结来说，`MappedListIterable`是一个惰性计算的可迭代对象，通过映射函数将原始列表的元素转换为新的元素类型。与之相反，`List`是一个包含实际元素的有序集合。
 
+### `ButtonStyle` 和 `ElevatedButton.styleFrom`的区别
+- 使用 `ButtonStyle` 来设置按钮的背景颜色和文本样式。可以根据不同的 `MaterialState`（例如按下、禁用等）设置不同的样式属性
+- `ButtonStyle` 提供了更高级和更灵活的样式定制选项，而 `ElevatedButton.styleFrom` 则是一种更简洁和方便的方式来设置按钮的样式
 #### 备忘
 - Aa.11111111
 - 会员： 设置法币国家-  绑定手机号（手机发送）- 绑定姓名 - 实名认证（会员上传）    更新头像
