@@ -264,3 +264,48 @@ lib.main.main
 订单
 	购买详情
 	出售详情
+
+```dart
+Widget build(BuildContext context) {
+  return DefaultTabController(
+    length: 2,
+    child: Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            floating: false,
+            backgroundColor: Theme.of(context).primaryColor,
+            bottom: TabBar(
+              tabs: [
+                Tab(text: "买卖"),
+                Tab(text: "订单"),
+              ],
+            ),
+            title: Text(
+              '买卖(游戏)',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            actions: [
+              // ... your actions here ...
+            ],
+          ),
+          SliverFillRemaining(
+            child: TabBarView(
+              children: [
+                // Here, replace with your current page content for 买卖 page
+                YourCurrentPageContent(),
+
+                // Here, replace with your Order page
+                DingdanScreen(),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+```
