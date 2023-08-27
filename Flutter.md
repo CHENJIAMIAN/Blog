@@ -254,8 +254,47 @@ lib.main.main
 2. 统一DPI的UI调整
 3. 接口的所有可能情况
 4. 保留game, 不保留move
+5. 
+6. 订单详情->投诉
+7. 买卖详情
+8. "validTime": 595, <120 可以点延长
+9. 切TAB刷新, 状态变更刷新
+10. 订单搬到上面去
 
- "validTime": 595,
+订单
+	购买详情
+	出售详情
 
-<120 可以点延长
 
+```
+|orderInfo|[object]|是|||||
+	|validTime|[string]|是|有效时间(秒), 距离取消时间剩余（秒）||@date('yyyy-MM-dd')||
+	|cancelTime|[string]|是|取消时间 (到达该时间订单自动取消)||@date('yyyy-MM-dd')||
+	|status|[int]|是|状态 1待付款 2延时付款 3待放行 4延时放行 5交易成功 6投诉中 7维权中 8取消交易 9交易失败||||
+	|orderNo|[string]|是|订单号||@pick(["desc", "asc"])||
+	|actualAmount|[double]|是|到账金额||@natural(1,100)||
+	|turnoverAmount|[double]|是|只需转账金额||@natural(1,100)||
+|paymentInfo|[object]|是|||||
+	|otherPaymentInfo|[array]|是|其他所有可选收款信息||||
+		|id|[int]|是|会员收款方式ID||||
+		|paymentId|[int]|是|收款方式ID||||
+		|paymentName|[string]|是|收款方式名称||||
+		|paymentMethod|[int]|是|1 账号 2图片||||
+		|paymentIconUrl|[string]|是|收款方式图标||||
+		|bankId|[int]|-|银行ID||||
+		|bankName|[string]|-|银行名称||||
+		|bankIconUrl|[string]|-|银行图标||||
+		|accountNo|[string]|-|账号 二维码图片 paymentMethod == 1是必传||||
+		|qrCodeUrl|[string]|-|二维码图片 paymentMethod == 2是必传||||
+	|defaultPaymentInfo|[object]|是|默认收款信息||||
+		|id|[int]|是|会员收款方式ID||||
+		|paymentId|[int]|是|收款方式ID||||
+		|paymentName|[string]|是|收款方式名称||||
+		|paymentMethod|[int]|是|1 账号 2图片||||
+		|paymentIconUrl|[string]|是|收款方式图标||||
+		|bankId|[int]|-|银行ID||||
+		|bankName|[string]|-|银行名称||||
+		|bankIconUrl|[string]|-|银行图标||||
+		|accountNo|[string]|-|账号 二维码图片 paymentMethod == 1是必传||||
+		|qrCodeUrl|[string]|-|二维码图片 paymentMethod == 2是必传||
+```
