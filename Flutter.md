@@ -263,3 +263,18 @@ lib.main.main
 订单
 	购买详情
 	出售详情
+
+    "paymentInfo": {
+      "otherPaymentInfo": [
+        {
+          "memberRealName": "李四",
+          "paymentId": 80173,
+          "paymentMethod": 1
+        }
+      ],
+      "defaultPaymentInfo": {
+        "memberRealName": "李四",
+        "paymentId": 80173,
+        "paymentMethod": 1
+      }
+    }
