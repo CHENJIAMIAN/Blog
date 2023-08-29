@@ -258,8 +258,23 @@ lib.main.main
 6. 订单详情->投诉
 7. 买卖详情
 8. "validTime": 595, <120 可以点延长
-9. 切TAB刷新, 状态变更刷新
+9. 状态变更刷新
 
 订单
 	购买详情
 	出售详情
+
+    "paymentInfo": {
+      "otherPaymentInfo": [
+        {
+          "memberRealName": "李四",
+          "paymentId": 80173,
+          "paymentMethod": 1
+        }
+      ],
+      "defaultPaymentInfo": {
+        "memberRealName": "李四",
+        "paymentId": 80173,
+        "paymentMethod": 1
+      }
+    }
