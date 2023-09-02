@@ -7,7 +7,7 @@ Flutter 使用与 Unity 相同的基本架构模型
 ### 在线环境
 [dartpad](https://dartpad.dev/?)
 
-DefaultTextStyle### 安装Flutter SDK时验证环境 flutter doctor 报错 `A network error occurred while checking "https://maven.google.com/": 信号灯超时时间已到`
+### 安装Flutter SDK时验证环境 flutter doctor 报错 `A network error occurred while checking "https://maven.google.com/": 信号灯超时时间已到`
 ```js
 1.改源, D:\flutter_windows_3.10.5-stable\packages\flutter_tools\lib\src\http_host_validator.dart
 	改为
@@ -231,7 +231,7 @@ lib.main.main
 ```
 
 ### 什么决定了一个text的默认字体?
-1. 父级的DefaultTextStyle
+1. 父级的DefaultTextStyle, 如果在子组件的 `build` 方法中找到了与文本样式相关的代码，比如调用了 `DefaultTextStyle.of(context)` 或者使用了 `TextStyle` 参数，那么可以推断该组件使用了 `DefaultTextStyle`
 2. `.flutter_windows_3.10.flutter.packages.flutter.lib.src.painting.text_style.TextStyle`的`final double? fontSize;`定义了默认为 14 逻辑像素，如果字体大小未指定
 3. `text_button.dart`    `text_field.dart`   `text_theme.dart` text类组件只有这3个有用到`textTheme`
 
