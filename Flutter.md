@@ -7,7 +7,7 @@ Flutter 使用与 Unity 相同的基本架构模型
 ### 在线环境
 [dartpad](https://dartpad.dev/?)
 
-### 安装Flutter SDK时验证环境 flutter doctor 报错 `A network error occurred while checking "https://maven.google.com/": 信号灯超时时间已到`
+DefaultTextStyle### 安装Flutter SDK时验证环境 flutter doctor 报错 `A network error occurred while checking "https://maven.google.com/": 信号灯超时时间已到`
 ```js
 1.改源, D:\flutter_windows_3.10.5-stable\packages\flutter_tools\lib\src\http_host_validator.dart
 	改为
