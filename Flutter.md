@@ -7,7 +7,6 @@ Flutter 使用与 Unity 相同的基本架构模型
 ### 在线环境
 [dartpad](https://dartpad.dev/?)
 
-
 ### 安装Flutter SDK时验证环境 flutter doctor 报错 `A network error occurred while checking "https://maven.google.com/": 信号灯超时时间已到`
 ```js
 1.改源, D:\flutter_windows_3.10.5-stable\packages\flutter_tools\lib\src\http_host_validator.dart
@@ -248,31 +247,3 @@ lib.main.main
 - `ButtonStyle` 提供了更高级和更灵活的样式定制选项，而 `ElevatedButton.styleFrom` 则是一种更简洁和方便的方式来设置按钮的样式
 #### 备忘
 - Aa.11111111
-- 会员： 设置法币国家-  绑定手机号（手机发送）- 绑定姓名 - 实名认证（会员上传）    更新头像
-#### 问题
-1. web端放大
-2. 统一DPI的UI调整
-3. 接口的所有可能情况
-4. 保留game, 不保留move
-5. 
-8. "validTime": 595, <120 可以点延长
-9. 状态变更刷新
-
-订单
-	购买详情
-	出售详情
-
-    "paymentInfo": {
-      "otherPaymentInfo": [
-        {
-          "memberRealName": "李四",
-          "paymentId": 80173,
-          "paymentMethod": 1
-        }
-      ],
-      "defaultPaymentInfo": {
-        "memberRealName": "李四",
-        "paymentId": 80173,
-        "paymentMethod": 1
-      }
-    }
