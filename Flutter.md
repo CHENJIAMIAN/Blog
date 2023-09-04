@@ -71,6 +71,7 @@ Flutter 使用与 Unity 相同的基本架构模型
 ### 编译成Web
 - flutter run -d chrome
 - flutter build web --web-renderer canvaskit
+- -
 1. 用skia的canvaskit 将Skia C++库编译到Wasm,并在HTML中引入。
 	1. [skia/modules/canvaskit at main · google/skia · GitHub](https://github.com/google/skia/tree/main/modules/canvaskit)
 2. Wasm初始化Skia上下文API, 通过Emscripten与JavaScript进行交互。
