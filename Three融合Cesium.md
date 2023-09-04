@@ -184,6 +184,7 @@ Wasm鉴权
 					的p.apply(a, i), //用到了thing.wasm.loader.umd.min.js的function i(t) {附近定义了 t.XMLHttpRequest = function() {其中t是window对象, 从WasmLoader.init走到这里的
 ```
 ### 全局效果模板的实现
+> 可参考babylon定义的xxx.babylon场景文件
 - **场景配置.json**如下:
 	- `code` 和 `templateId`：是地图的唯一标识符和模板ID。
 	- `map`：包含了地形数据和地图的参考位置。
