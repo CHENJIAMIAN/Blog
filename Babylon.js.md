@@ -1,3 +1,4 @@
+> wei
 ### [优化您的场景 | Babylon.js 文档](https://doc.babylonjs.com/features/featuresDeepDive/scene/optimize_your_scene)
 1. **提高渲染效率：**
    - 使用TransformNode替代AbstractMesh或空meshes：减少相机需要检测的对象数量来提升性能。
