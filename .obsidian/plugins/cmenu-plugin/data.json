@@ -30,6 +30,19 @@
       "id": "workspace:split-vertical",
       "name": "左右分屏",
       "icon": "lucide-separator-vertical"
+    },
+    {
+      "id": "editor:toggle-bold",
+      "name": "加粗/取消加粗",
+      "icon": "lucide-bold",
+      "hotkeys": [
+        {
+          "modifiers": [
+            "Mod"
+          ],
+          "key": "B"
+        }
+      ]
     }
   ],
   "appendMethod": "workspace",
