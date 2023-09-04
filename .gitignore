@@ -10,3 +10,5 @@ workspace.json
 node_modules
 docs
 .obsidian/plugins/remember-cursor-position/cursor-positions.json
+
+private/
