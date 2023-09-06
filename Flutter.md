@@ -168,7 +168,8 @@ Navigator.push( context, MaterialPageRoute( builder: (context) => DetailPage(), 
 16. Row里的Collum里加spacer白屏,  给Row包Expaned即可解决
 17. 自动换行Wrap组件设置  spacing: 8, // 水平间距  runSpacing: 8, // 垂直间距, 相对于css的flex-wrap
 18. 页面的build嵌套dialog的build的context时去用setState 容易混乱,setState只能引起页面自身的rebuild而无法影响dialog组件
-19. [【Flutter】支持多平台 多端保存图片到本地相册 (兼容 Web端 移动端 android 保存到本地)_CHENJIAMIAN PRO的博客-CSDN博客](https://blog.csdn.net/a571574085/article/details/132725436)
+19. [【Flutter】支持多平台 多端保存图片到本地相册 (兼容 Web端 移动端 android 保存到本地)_CHENJIAMIAN PRO的博客-CSDN博客](https://blog.csdn.net/a571574085/article/details/132725436) 
+	- 关键是用'`package:universal_html/html.dart`' 替代`dart:html`,不然在安卓调试直接编译不通过
 20. 
 
 ### 原理
