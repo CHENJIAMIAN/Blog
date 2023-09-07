@@ -256,30 +256,11 @@ lib.main.main
 -  direction: 2, //1出售  2购买
 - -
 - 使用手机号登录 2. 忘记密码? (待做接口)
-- 实现买卖-action-扫码
-
-    case 1:
-      return '待付款';
-    case 2:
-      return '延时付款';
-    case 3:
-      return '待放行';//等待收款方查账放行
-    case 4:
-      return '延时放行';
-    case 5:
-      return '交易成功';
-    case 6:
-      return '投诉中';
-    case 7:
-      return '维权中';
-    case 8:
-      return '取消交易';
-    case 9:
-      return '交易失败';
-    default:
-      return '未知状态';
 
 发布出售 返回 刷新列表
 
-另外还有一个从 h5 调起app的监听路径
-那个登录失效了好像不会跳回登录页
+- 另外还有一个从 h5 调起app的监听路径
+	- h5启动App 付款 kzpay://platformapi/startapp?a=1&o=2
+	- 扫码付款 kzpay://platformapi/qrCode?a=1&o=2
+- 那个登录失效了好像不会跳回登录页
+
