@@ -263,5 +263,5 @@ lib.main.main
 	- h5启动App 付款 kzpay://platformapi/startapp?a=1&o=2
 	- 扫码付款 kzpay://platformapi/qrCode?a=1&o=2
 - 那个登录失效了好像不会跳回登录页
-	- 因为错的token后台不会返回给我正确 接送
+	- 因为错的token后台不会返回给我正确json
 
