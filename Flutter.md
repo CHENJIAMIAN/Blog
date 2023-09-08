@@ -115,7 +115,8 @@ https://pub.dev/packages/audioplayers 音频播放
 ### 路由
 - MaterialApp.routes:{}
 #### 路由架构
-MaterialApp本身就包含了一个默认的Navigator
+- **MaterialApp本身就包含了一个默认的Navigator**
+- MaterialApp.router是一个更高级的导航器
 ```js
 MaterialApp.router:
 	->routerDelegate = SimpleRouterDelegate(是个RouterDelegate包装了MyAppNavigator) 
