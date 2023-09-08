@@ -260,7 +260,8 @@ lib.main.main
 发布出售 返回 刷新列表
 
 - 另外还有一个从 h5 调起app的监听路径
-	- h5启动App 付款 kzpay://platformapi/startapp?a=1&o=2
+	- h5启动App 付款  
+
 - 那个登录失效了好像不会跳回登录页
 	- 因为错的token后台不会返回给我正确json
 
