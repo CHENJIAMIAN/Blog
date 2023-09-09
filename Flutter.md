@@ -256,6 +256,13 @@ lib.main.main
 ### `ButtonStyle` 和 `ElevatedButton.styleFrom`的区别
 - 使用 `ButtonStyle` 来设置按钮的背景颜色和文本样式。可以根据不同的 `MaterialState`（例如按下、禁用等）设置不同的样式属性
 - `ButtonStyle` 提供了更高级和更灵活的样式定制选项，而 `ElevatedButton.styleFrom` 则是一种更简洁和方便的方式来设置按钮的样式
+### 为什么在Flutter中，build方法不会等待didChangeDependencies方法中的异步操作执行完毕再执行。
+1. 在Flutter中，`build`方法不会等待`didChangeDependencies`方法中的异步操作执行完毕再执行的主要原因是为了保持应用的响应性和流畅性。
+2. Flutter的UI渲染是基于异步的事件循环机制，它通过渲染帧来更新UI。当Flutter接收到一个触发UI重建的信号时，它会将`build`方法标记为“脏”，然后在下一个渲染帧中调用`build`方法来重新构建UI。
+3. 如果`build`方法需要等待`didChangeDependencies`方法中的异步操作执行完毕再执行，那么UI的更新可能会被阻塞，导致界面卡顿或无响应的现象。这是因为`didChangeDependencies`方法中的异步操作可能会耗费一定的时间，如果在此期间阻塞`build`方法的执行，会导致应用在用户交互和动画效果方面的体验变差。
+4. 为了保持应用的响应性和流畅性，Flutter采用了异步的机制，即使在`didChangeDependencies`方法中存在异步操作，也不会阻塞`build`方法的执行。相反，你可以在异步操作完成后使用`setState`来触发UI的重新构建，以确保使用最新的数据进行渲染。
+5. 这种设计使得Flutter应用能够在后台执行耗时的操作，同时保持UI的实时更新和用户交互的响应性。
+6. 总结来说，Flutter中的`build`方法不会等待`didChangeDependencies`方法中的异步操作执行完毕再执行，以保持应用的响应性和流畅性。你可以使用`setState`来在异步操作完成后触发UI的重新构建，以更新UI并提供良好的用户体验。
 #### 备忘
 - Aa.11111111
 - 333 Aa.33333333 123654
