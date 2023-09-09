@@ -259,4 +259,4 @@ lib.main.main
 - -
 - 使用手机号登录 2. 忘记密码? (待做接口)
 - 发布出售 返回 刷新列表
-{{HOST}}/adveriseTransaction/list
+-  就是登录问题， 关掉网页， 再打开看能不能保持登录状态
