@@ -138,6 +138,10 @@ RouteStateScope.of(context).go('/shezhizhifumima');//改变了 routeState 的 ro
 	this.route = xxx 
 		notifyListeners	
 		通知与_routeState绑定的[RouterDelegate包装了MyAppNavigator]根据pathTemplate重新渲染
+
+InheritedNotifier是用来告知某个组件是否该重新构建了吗?
+	是的，你理解得很对！`InheritedNotifier`的一个主要作用就是通知与之相关联的子widget是否需要重新构建。
+	当`InheritedNotifier`中的通知对象发生变化时，它会调用`notifyListeners()`方法通知所有依赖它的子widget重新构建。这意味着子widget可以根据通知对象的变化来更新自身的状态、重新渲染UI等。
 ```
 #### 原生用法
 ```js
@@ -260,3 +264,4 @@ lib.main.main
 - 使用手机号登录 2. 忘记密码? (待做接口)
 - 发布出售 返回 刷新列表
 - 就是登录问题， 关掉网页， 再打开看能不能保持登录状态
+- app 也是一样， 登录过后， 如果关掉 app 进程， 再打开， 还能保持登录状态
