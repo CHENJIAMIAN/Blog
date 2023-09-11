@@ -103,23 +103,7 @@ uearth.min.<function>.define("Scene/ImageryLayer") callback.C._createTexture
 - 3DMax打开rvt文件，用插件Babylon.js - Export scene to babylon or gITF format w20220601.2导
   - 开源的dynamo图形编程导出属性数据
   - 导出插件利用导出接口可以减少模型的精细程度
-### setup方法的调用过程
-```js
-    Thing.customSetup (thing-1.2.7.1.min.js:formatted:66090)
-    Thing._setup (thing-1.2.7.1.min.js:formatted:65967) 
-    或
-    Map地图._setup (thing-1.2.7.1.min.js:formatted:65967)
-    Map的父类BaseObject.loadFromURL (thing-1.2.7.1.min.js:formatted:65929)
-    Map的父类BaseObject.setupFromURL (thing-1.2.7.1.min.js:formatted:65938)
-Thing.setup (thing-1.2.7.1.min.js:formatted:65980)  根据传入的options里有没有url进行条件分支
-App.objectManager._createObject (thing-1.2.7.1.min.js:formatted:91931)
-App.objectManager.create (thing-1.2.7.1.min.js:formatted:91943)
-App.create (thing-1.2.7.1.min.js:formatted:104240)
-App.init (thing-1.2.7.1.min.js:formatted:104025)
-e (thing-1.2.7.1.min.js:formatted:103765)
-（匿名） (d5712b8fda2c91bdb4cf3cce:formatted:185)
-```
-
+  
 ### 全局效果模板的实现
 > 可参考babylon定义的xxx.babylon场景文件
 - **场景配置.json**如下:
@@ -178,7 +162,3 @@ e (thing-1.2.7.1.min.js:formatted:103765)
 9. 粒子
 	1. 地球粒子
 	2. 粒子
-
-
-
-唯易云服务、麦景和优锘
