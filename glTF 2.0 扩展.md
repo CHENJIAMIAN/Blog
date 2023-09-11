@@ -101,3 +101,4 @@ gltf-transform 3.5.0 — glTF Transform SDK的命令行界面（CLI）。
 	- 然而，后来GLTF 2.0规范添加了对基于金属度的PBR材质模型的支持，这个模型更为通用，使得KHR_materials_pbrSpecularGlossiness变得不再必要。因此，最新的three.js版本不再支持这个扩展，而是使用GLTF 2.0规范中的基于金属度的PBR材质模型来处理GLTF文件中的材质。这样可以使得three.js的GLTFLoader与GLTF 2.0规范更加兼容，并且简化了代码实现。
 - Win10的3D查看器的光: 一个正面光(偏上,偏右), 一个后面光(偏上,偏左), 一个纯正面光, 环境光40
 - 不同的gltf版本, 不兼容, 导出的glb版本会在查看器查看, 查看时要确保查看器支持的glb版本跟该文件glb版本一致, 此外还有很多扩展, 要确保glb中的扩展(如果有)有被查看器实现
+- 
