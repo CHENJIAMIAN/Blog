@@ -271,4 +271,3 @@ lib.main.main
 - 使用手机号登录 2. 忘记密码? (待做接口)
 - 消息的筛选有问题
 - /send/mobile 加个 countryld 改为免登录
-	- 绑定手机页面- 多一个下拉列表， 选择国家区号,  多一个下拉选择  国家（区号）：  zhName（areaCode新增的）
