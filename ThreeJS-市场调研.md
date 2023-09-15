@@ -7,6 +7,7 @@
 	- `process.wasm`涵盖了一些三维建模和几何计算的功能，例如顶点、面、边的操作，拓扑数据的获取和释放，网格数据的获取和释放，UV生成，顶点和元素的删除和修改，缓存操作，变换操作，法线和位置的获取，射线碰撞，BVH（包围盒层次结构）的构建和使用等
 	- [goldfire/howler.js：现代网络的 Javascript 音频库。](https://github.com/goldfire/howler.js)
 	- [sindresorhus/screenfull：JavaScript 全屏 API 跨浏览器使用的简单包装器](https://github.com/sindresorhus/screenfull)
+	- 如何免费导出: 覆写文件, 注释掉 `if (C) { d(!0), p("goSuper");`块
 
 ### 厂商对比
 1. 智汇云舟(基于websocket/webrtc推视频,不是基于webgl/技术独特,但风格过时了)
