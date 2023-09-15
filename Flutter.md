@@ -268,10 +268,8 @@ lib.main.main
 - 333 Aa.33333333 123654
 - aaa Aa123!@#
 - -
-- 使用手机号登录 2. 忘记密码? (待做接口)
+- 忘记密码
 - 消息的筛选有问题
 - 取消投诉没有接口
-
-9. 游戏钱包余额保留2位小数
-10.  进入系统， 默认显示  游戏钱包， 游戏钱包-订单， 默认显示全部
-11.  增加游戏钱包余额 转入USDT  - 游戏转入币种(USDT){{HOST}}/balance/gameTransferCoin
+-  增加游戏钱包余额 转入USDT  - 游戏转入币种(USDT) /balance/gameTransferCoin
+	- https://www.eolink.com/share/inside/396a7691110145b3f05d164dfea96731/api/2562738/detail/52343932
