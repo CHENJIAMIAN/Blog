@@ -1,10 +1,12 @@
 ### 国外
 - [spline](https://app.spline.design/file/f0552ab4-b0eb-4723-8287-ed833ca1507f)
-	- __THREE__: "149" + `React`
+	- __THREE__: "149" + `React v17.0.2`
 	- [创建导航网格 | Babylon.js 文档](https://doc.babylonjs.com/features/featuresDeepDive/crowdNavigation/createNavMesh)
 	- [dimforge/rapier：专注于性能的 2D 和 3D 物理引擎。](https://github.com/dimforge/rapier)
 	- [rhino3dm - npm](https://www.npmjs.com/package/rhino3dm)使用Rhino 3D模型和几何数据。通过wasm实现了与Rhino 3D文件格式的交互。
-	- 乎涵盖了一些三维建模和几何计算的功能，例如顶点、面、边的操作，拓扑数据的获取和释放，网格数据的获取和释放，UV生成，顶点和元素的删除和修改，缓存操作，变换操作，法线和位置的获取，射线碰撞，BVH（包围盒层次结构）的构建和使用等
+	- `process.wasm`涵盖了一些三维建模和几何计算的功能，例如顶点、面、边的操作，拓扑数据的获取和释放，网格数据的获取和释放，UV生成，顶点和元素的删除和修改，缓存操作，变换操作，法线和位置的获取，射线碰撞，BVH（包围盒层次结构）的构建和使用等
+	- [goldfire/howler.js：现代网络的 Javascript 音频库。](https://github.com/goldfire/howler.js)
+	- [sindresorhus/screenfull：JavaScript 全屏 API 跨浏览器使用的简单包装器](https://github.com/sindresorhus/screenfull)
 
 ### 厂商对比
 1. 智汇云舟(基于websocket/webrtc推视频,不是基于webgl/技术独特,但风格过时了)
