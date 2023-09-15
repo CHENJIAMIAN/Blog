@@ -1,4 +1,11 @@
-### g
+### 国外
+- [spline](https://app.spline.design/file/f0552ab4-b0eb-4723-8287-ed833ca1507f)
+	- __THREE__: "149" + `React`
+	- [创建导航网格 | Babylon.js 文档](https://doc.babylonjs.com/features/featuresDeepDive/crowdNavigation/createNavMesh)
+	- [dimforge/rapier：专注于性能的 2D 和 3D 物理引擎。](https://github.com/dimforge/rapier)
+	- [rhino3dm - npm](https://www.npmjs.com/package/rhino3dm)使用Rhino 3D模型和几何数据。通过wasm实现了与Rhino 3D文件格式的交互。
+	- 
+
 ### 厂商对比
 1. 智汇云舟(基于websocket/webrtc推视频,不是基于webgl/技术独特,但风格过时了)
 2. 51WORLD(UE的视频推流(跟UE官方关系好), 类似智汇云舟, 但效果很好) 
