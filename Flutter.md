@@ -269,6 +269,3 @@ lib.main.main
 - aaa Aa123!@#
 - -
 - 忘记密码 |  取消投诉 没有接口
-- 
--  增加游戏钱包余额 转入USDT  - 游戏转入币种(USDT) /balance/gameTransferCoin
-	- https://www.eolink.com/share/inside/396a7691110145b3f05d164dfea96731/api/2562738/detail/52343932 
