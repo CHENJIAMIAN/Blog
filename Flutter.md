@@ -269,6 +269,7 @@ lib.main.main
 - aaa Aa123!@#
 - -
 - 忘记密码 |  取消投诉 没有接口
-- 消息的筛选有问题
+- 
 -  增加游戏钱包余额 转入USDT  - 游戏转入币种(USDT) /balance/gameTransferCoin
-	- https://www.eolink.com/share/inside/396a7691110145b3f05d164dfea96731/api/2562738/detail/52343932
+	- https://www.eolink.com/share/inside/396a7691110145b3f05d164dfea96731/api/2562738/detail/52343932 
+- 帮助中心加了接口 这三个要从接口取数据 另外文章要支持  富文本  显示
