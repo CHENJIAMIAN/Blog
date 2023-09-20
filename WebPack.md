@@ -34,7 +34,7 @@ new ModuleFederationPlugin({
 1. 依赖的应用没有启动会发生什么?
 	- 网络报错: http://localhost:3002/remoteEntry.js `ERR_CONNECTION_REFUSED`
 	- 控制台报错: `Uncaught ScriptExternalLoadError: Loading script failed.`
-#### MSFU(阿里umi团队如何利用模块联邦)
+#### MSFU(阿里Umi团队如何利用模块联邦)
 通过模块联邦技术实现了源码和依赖编译的解耦分离,并充分利用了Webpack和Esbuild的高效能力,最大限度地并行和高效地构建了项目
 **核心思想**
 - 分而治之,将应用源码和依赖代码编译过程解耦和并行化。
@@ -49,9 +49,11 @@ new ModuleFederationPlugin({
 6. 支持配置排除特定包,解决依赖循环带来的问题。
 所以MFSU快的底层原因在于,。
 #### garfishjs(字节头条号出品,官方库[module-federation/module-federation-examples](https://github.com/module-federation/module-federation-examples)推荐)
-Zack Jackson是基础设施架构师@字节跳动。模块联盟的创建者
-字节跳动的**Modern.js** 对标 案例的umi, **Modern.js 和 Umi 的主要区别在于构建优化方式不同**。
-Umi 采用了 **MFSU** 技术来提升构建速度，而 Modern.js 则使用 **Rspack** 来提升 5 ~ 10 倍构建速度
+1. 字节跳动Web基础设施团队[web-infra-dev](https://github.com/web-infra-dev)/garfishjs 2.2k类似阿里的umijs/qiankun 14.8k
+3. Zack Jackson是基础设施架构师@**字节跳动**。**模块联盟的创建者**
+4. 字节跳动的**Modern.js** 对标 案例的 Umi, **Modern.js 和 Umi 的主要区别在于构建优化方式不同**。
+	1. Umi 1.7k 采用了 **MFSU** 技术来提升构建速度
+	2. Modern.js 3.8k 则使用 **Rspack** 来提升 5 ~ 10 倍构建速度
 ### 性能
 ```javascript
 性能(重点):  
