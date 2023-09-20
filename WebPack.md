@@ -1,4 +1,5 @@
 ### 模块联邦    
+> webpack作者(非模块联邦作者)亲自讲解 [幻灯片/内容/ModuleFederationWebpack5.md at master · sokra/slides](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5.md)
 #### MSFU(阿里Umi团队如何利用模块联邦)
 通过模块联邦技术实现了源码和依赖编译的解耦分离,并充分利用了Webpack和Esbuild的高效能力,最大限度地并行和高效地构建了项目
 **核心思想**
@@ -15,12 +16,12 @@
 所以MFSU快的底层原因在于,。
 #### garfishjs(字节头条号出品,官方库[module-federation/module-federation-examples](https://github.com/module-federation/module-federation-examples)推荐)
 1. 字节跳动Web基础设施团队[web-infra-dev](https://github.com/web-infra-dev)/garfishjs 2.2k类似阿里的umijs/qiankun 14.8k
-3. Zack Jackson是基础设施架构师@**字节跳动**。**模块联盟的创建者**
-4. 字节跳动的**Modern.js** 对标 案例的 Umi, **Modern.js 和 Umi 的主要区别在于构建优化方式不同**。
+2. [ScriptedAlchemy (Zack Jackson)](https://github.com/ScriptedAlchemy)是基础设施架构师@**字节跳动**。**联邦作者
+	- [模块联邦的原始合并提案 · Issue #10352 · webpack/webpack](https://github.com/webpack/webpack/issues/10352) ScriptedAlchemy-2020年2月7日创建(讲了预期/好处/实现)
+3. 字节跳动的**Modern.js** 对标 案例的 Umi, **Modern.js 和 Umi 的主要区别在于构建优化方式不同**。
 	1. Umi 1.7k 采用了 **MFSU** 技术来提升构建速度
 	2. Modern.js 3.8k 则使用 **Rspack** 来提升 5 ~ 10 倍构建速度
 #### 源码
-![](https://raw.githubusercontent.com/sokra/slides/master/content/ModuleFederationWebpack5/11.png)
 ```javascript
 1.在入口文件搜索"webpack/sharing/consume/default/"即可看到共享的东西
 2.在localhost:3002/remoteEntry.js 的"getSingletonVersion"打断点可以看到共享的react-dom库来自主APP的main.js, 是main.js之前存在__webpack_require__.S[scopeName]的
@@ -49,6 +50,8 @@ new ModuleFederationPlugin({
       }
     对于 Node.js，我们总是使用 CommonJs 版本并使用 ESM 包装器在 ESM 中公开命名导出
 ```
+![](https://raw.githubusercontent.com/sokra/slides/master/content/ModuleFederationWebpack5/11.png)
+![](https://github.com/sokra/slides/blob/master/content/ModuleFederationWebpack5/28.png?raw=true)
 #### 疑问
 1. A应用引用了B应用, A应用设置了shared: { react: { singleton: true }, 'react-dom': { singleton: true } },  B应用也设置了shared: { react: { singleton: true }, 'react-dom': { singleton: true } }, 优先用哪个?
 	- 用了B应用的
