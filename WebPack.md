@@ -61,6 +61,16 @@ new ModuleFederationPlugin({
 3. 依赖的应用没有启动会发生什么?
 	- 网络报错: http://localhost:3002/remoteEntry.js `ERR_CONNECTION_REFUSED`
 	- 控制台报错: `Uncaught ScriptExternalLoadError: Loading script failed.`
+##### `requiredVersion`的判断方式
+当在 `ModuleFederationPlugin` 配置中设置 `singleton: true` 选项时，webpack 会尝试解决版本冲突，确保在所有使用该模块的应用中，只有一个版本被使用。
+
+| 场景 | 解决方式 |
+| :--- | :--- |
+| 所有 `requiredVersion` 满足共享模块版本 | 选择满足所有要求的最高版本 |
+| `requiredVersion` 存在冲突 | 引发错误 |
+| 应用未指定 `requiredVersion`，其他已指定 | 选择满足所有已指定 `requiredVersion` 的最高版本 |
+| 所有应用都未指定 `requiredVersion` | 选择所有可能版本中的最高版本 |
+在实际应用中，由于版本冲突可能导致运行时错误，通常建议确保所有的应用都使用相同的 `React` 版本，或者至少确保所有 `singleton` 的应用都使用相同的 `React` 版本。这是一个最佳实践，可以避免由于版本差异导致的潜在问题。
 ### 性能
 ```javascript
 性能(重点):  
