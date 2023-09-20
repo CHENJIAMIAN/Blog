@@ -29,7 +29,25 @@ new ModuleFederationPlugin({
 ```
 1. A应用引用了B应用, A应用设置了shared: { react: { singleton: true }, 'react-dom': { singleton: true } },  B应用也设置了shared: { react: { singleton: true }, 'react-dom': { singleton: true } }, 优先用哪个?
 	- 用了B应用的
-2. 循环引用会
+2. 模块联邦的循环引用循环引用会发生什么?
+	- 直接爆栈卡死
+1. 依赖的应用没有启动会发生什么?
+	- 网络报错: http://localhost:3002/remoteEntry.js `ERR_CONNECTION_REFUSED`
+	- 控制台报错: `Uncaught ScriptExternalLoadError: Loading script failed.`
+#### MSFU(阿里如何利用模块联邦)
+通过模块联邦技术实现了源码和依赖编译的解耦分离,并充分利用了Webpack和Esbuild的高效能力,最大限度地并行和高效地构建了项目
+**核心思想**
+- 分而治之,将应用源码和依赖代码编译过程解耦和并行化。
+**核心原理**
+1. 正确识别和隔离应用源码与依赖之间的关系。
+2. 使用Module Federation技术,将依赖打包成独立的remote包,实现源码和依赖构建的解耦。
+3. 提供两种构建策略实现构建过程的并行化:
+	- normal策略:编译时同步收集依赖,但构建过程串行。
+	- eager策略:通过扫描方式快速异步获取整体依赖,实现源码和依赖构建能完全并行。
+4. 利用Webpack或Esbuild的高效构建能力,专注打包优化依赖部分。
+5. 自动处理常见依赖问题,如版本兼容、多实例问题等,避免手动配置。
+6. 支持配置排除特定包,解决依赖循环带来的问题。
+所以MFSU快的底层原因在于,。
 ### 性能
 ```javascript
 性能(重点):  
