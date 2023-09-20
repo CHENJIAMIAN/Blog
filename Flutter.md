@@ -225,20 +225,22 @@ lib.main.main
 ```
 ### 通用Prompt
 ```js
-帮我写一个flutter页面,页面名称为"修改支付密码",类的名称为"XiugaizhifumimaPage",页面是statefull的
+帮我写一个flutter页面,页面名称为"修改登录密码",类的名称为"XiugaidenglumimaPage",页面是statefull的
 
 页面导入了'../routing.dart','../auth.dart', 'package:flutter_widget_from_html/flutter_widget_from_html.dart','../data/apidata.dart','../http.dart','package:oktoast/oktoast.dart';
 
-页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).go('/banzhuanzhuanqian');},),""";
+页面的appbar的leading为"""IconButton(icon: const Icon(Icons.arrow_back),onPressed: () {RouteStateScope.of(context).back(null);},),""";
+
+如无特殊说明, 字体的颜色为Colors.black54
 
 页面的第一部分是个卡片.
-页面的第一部分第一行是灰色文本'修改支付密码'
-页面的第一部分第二行是组件SixDigitPasswordForm(onChanged: _updatePassword,)
-页面的第一部分第三行是灰色文本'确认支付密码'
-页面的第一部分第四行是组件SixDigitPasswordForm(onChanged: _updatePassword,)
-注意要验证两次输入输入的两次支付密码是否一致, _updatePassword的回调参数就是输入值
+页面的第一部分第一行是文本'修改登录密码'
+页面的第一部分第二行是输入框, 其prefixIcon为图标'assets\images\p1_zhuce_icon_mima.png'+文本'新密码', hintText为'8-20位的数字和字符密码',suffixIcon为显示和隐藏密码的图标
+页面的第一部分第三行是输入框, 其prefixIcon为图标'assets\images\p1_zhuce_icon_mima.png'+文本'确认密码', hintText为'8-20位的数字和字符密码',suffixIcon为显示和隐藏密码的图标
 
-页面的第二部分是个占满全行的按钮"确定".按钮高度为40
+注意要验证两次输入输入的两次密码是否一致
+
+页面的第二部分是个占满全行的按钮"确定".按钮高度为55
 ```
 
 ### 什么决定了一个text的默认字体?
