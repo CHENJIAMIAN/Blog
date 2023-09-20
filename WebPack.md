@@ -1,4 +1,26 @@
 ### 模块联邦    
+#### MSFU(阿里Umi团队如何利用模块联邦)
+通过模块联邦技术实现了源码和依赖编译的解耦分离,并充分利用了Webpack和Esbuild的高效能力,最大限度地并行和高效地构建了项目
+**核心思想**
+- 分而治之,将应用源码和依赖代码编译过程解耦和并行化。
+**核心原理**
+1. 正确识别和隔离应用源码与依赖之间的关系。
+2. 使用Module Federation技术,将依赖打包成独立的remote包,实现源码和依赖构建的解耦。
+3. 提供两种构建策略实现构建过程的并行化:
+	- normal策略:编译时同步收集依赖,但构建过程串行。
+	- eager策略:通过扫描方式快速异步获取整体依赖,实现源码和依赖构建能完全并行。
+4. 利用Webpack或Esbuild的高效构建能力,专注打包优化依赖部分。
+5. 自动处理常见依赖问题,如版本兼容、多实例问题等,避免手动配置。
+6. 支持配置排除特定包,解决依赖循环带来的问题。
+所以MFSU快的底层原因在于,。
+#### garfishjs(字节头条号出品,官方库[module-federation/module-federation-examples](https://github.com/module-federation/module-federation-examples)推荐)
+1. 字节跳动Web基础设施团队[web-infra-dev](https://github.com/web-infra-dev)/garfishjs 2.2k类似阿里的umijs/qiankun 14.8k
+3. Zack Jackson是基础设施架构师@**字节跳动**。**模块联盟的创建者**
+4. 字节跳动的**Modern.js** 对标 案例的 Umi, **Modern.js 和 Umi 的主要区别在于构建优化方式不同**。
+	1. Umi 1.7k 采用了 **MFSU** 技术来提升构建速度
+	2. Modern.js 3.8k 则使用 **Rspack** 来提升 5 ~ 10 倍构建速度
+#### 源码
+![](https://raw.githubusercontent.com/sokra/slides/master/content/ModuleFederationWebpack5/11.png)
 ```javascript
 1.在入口文件搜索"webpack/sharing/consume/default/"即可看到共享的东西
 2.在localhost:3002/remoteEntry.js 的"getSingletonVersion"打断点可以看到共享的react-dom库来自主APP的main.js, 是main.js之前存在__webpack_require__.S[scopeName]的
@@ -27,33 +49,14 @@ new ModuleFederationPlugin({
       }
     对于 Node.js，我们总是使用 CommonJs 版本并使用 ESM 包装器在 ESM 中公开命名导出
 ```
+#### 疑问
 1. A应用引用了B应用, A应用设置了shared: { react: { singleton: true }, 'react-dom': { singleton: true } },  B应用也设置了shared: { react: { singleton: true }, 'react-dom': { singleton: true } }, 优先用哪个?
 	- 用了B应用的
 2. 模块联邦的循环引用循环引用会发生什么?
 	- 直接爆栈卡死
-1. 依赖的应用没有启动会发生什么?
+3. 依赖的应用没有启动会发生什么?
 	- 网络报错: http://localhost:3002/remoteEntry.js `ERR_CONNECTION_REFUSED`
 	- 控制台报错: `Uncaught ScriptExternalLoadError: Loading script failed.`
-#### MSFU(阿里Umi团队如何利用模块联邦)
-通过模块联邦技术实现了源码和依赖编译的解耦分离,并充分利用了Webpack和Esbuild的高效能力,最大限度地并行和高效地构建了项目
-**核心思想**
-- 分而治之,将应用源码和依赖代码编译过程解耦和并行化。
-**核心原理**
-1. 正确识别和隔离应用源码与依赖之间的关系。
-2. 使用Module Federation技术,将依赖打包成独立的remote包,实现源码和依赖构建的解耦。
-3. 提供两种构建策略实现构建过程的并行化:
-	- normal策略:编译时同步收集依赖,但构建过程串行。
-	- eager策略:通过扫描方式快速异步获取整体依赖,实现源码和依赖构建能完全并行。
-4. 利用Webpack或Esbuild的高效构建能力,专注打包优化依赖部分。
-5. 自动处理常见依赖问题,如版本兼容、多实例问题等,避免手动配置。
-6. 支持配置排除特定包,解决依赖循环带来的问题。
-所以MFSU快的底层原因在于,。
-#### garfishjs(字节头条号出品,官方库[module-federation/module-federation-examples](https://github.com/module-federation/module-federation-examples)推荐)
-1. 字节跳动Web基础设施团队[web-infra-dev](https://github.com/web-infra-dev)/garfishjs 2.2k类似阿里的umijs/qiankun 14.8k
-3. Zack Jackson是基础设施架构师@**字节跳动**。**模块联盟的创建者**
-4. 字节跳动的**Modern.js** 对标 案例的 Umi, **Modern.js 和 Umi 的主要区别在于构建优化方式不同**。
-	1. Umi 1.7k 采用了 **MFSU** 技术来提升构建速度
-	2. Modern.js 3.8k 则使用 **Rspack** 来提升 5 ~ 10 倍构建速度
 ### 性能
 ```javascript
 性能(重点):  
