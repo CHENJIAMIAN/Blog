@@ -26,12 +26,10 @@ new ModuleFederationPlugin({
         },
       }
     对于 Node.js，我们总是使用 CommonJs 版本并使用 ESM 包装器在 ESM 中公开命名导出
-
-A应用引用了B应用, A应用设置了shared: { react: { singleton: true }, 'react-dom': { singleton: true } },  B应用也设置了shared: { react: { singleton: true }, 'react-dom': { singleton: true } }, 优先用哪个?
-	用了B应用的.
-
-
 ```
+1. A应用引用了B应用, A应用设置了shared: { react: { singleton: true }, 'react-dom': { singleton: true } },  B应用也设置了shared: { react: { singleton: true }, 'react-dom': { singleton: true } }, 优先用哪个?
+	- 用了B应用的
+2. 循环引用会
 ### 性能
 ```javascript
 性能(重点):  
