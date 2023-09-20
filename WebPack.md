@@ -67,7 +67,7 @@ new ModuleFederationPlugin({
 | 场景 | 解决方式 |
 | :--- | :--- |
 | 所有 `requiredVersion` 满足共享模块版本 | 选择满足所有要求的最高版本 |
-| `requiredVersion` 存在冲突 | 引发错误 |
+| `requiredVersion` 存在冲突 | 引发警告 `Unsatisfied version 18.2.0 from @dynamic-remotes/app1 of shared singleton module react (required ^16.13.0)`|
 | 应用未指定 `requiredVersion`，其他已指定 | 选择满足所有已指定 `requiredVersion` 的最高版本 |
 | 所有应用都未指定 `requiredVersion` | 选择所有可能版本中的最高版本 |
 > 在实际应用中，由于版本冲突可能导致运行时错误，通常建议确保所有的应用都使用相同的 `React` 版本，或者至少确保所有 `singleton` 的应用都使用相同的 `React` 版本。这是一个最佳实践，可以避免由于版本差异导致的潜在问题。
