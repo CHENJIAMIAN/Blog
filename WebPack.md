@@ -18,7 +18,8 @@
 1. 字节跳动Web基础设施团队[web-infra-dev](https://github.com/web-infra-dev)/garfishjs 2.2k类似阿里的umijs/qiankun 14.8k
 2. [ScriptedAlchemy (Zack Jackson)](https://github.com/ScriptedAlchemy)是基础设施架构师@**字节跳动**。**联邦作者
 	- [模块联邦的原始合并提案 · Issue #10352 · webpack/webpack](https://github.com/webpack/webpack/issues/10352) ScriptedAlchemy-2020年2月7日创建(讲了预期/好处/实现)
-3. 字节跳动的**Modern.js** 对标 案例的 Umi, **Modern.js 和 Umi 的主要区别在于构建优化方式不同**。
+	- sokra作为Webpack的创始人,在功能设计和实现方面提供了很多指导和建议。ScriptedAlchemy则在编码和测试方面起到很大作用。
+1. 字节跳动的**Modern.js** 对标 案例的 Umi, **Modern.js 和 Umi 的主要区别在于构建优化方式不同**。
 	1. Umi 1.7k 采用了 **MFSU** 技术来提升构建速度
 	2. Modern.js 3.8k 则使用 **Rspack** 来提升 5 ~ 10 倍构建速度
 #### 源码
