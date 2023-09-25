@@ -32,7 +32,7 @@
 new ModuleFederationPlugin({
 	  name: 'app2',
 	  filename: 'remoteEntry.js',
-	  runt
+	  runtime:false,//在ContainerPlugin的配置中指定了一个runtime，那么这个runtime将会被用于创建一个新的运行时块，该块负责加载和解析从其他构建中共享的模块。
 	  exposes: {  './Widget': './src/Widget'},
 	  shared: { //在shared里声明的了,才会使用主APP共享的库,没声明就用自己的(到时会是两个不同的实例)
 		'react-dom': {
