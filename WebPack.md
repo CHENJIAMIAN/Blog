@@ -81,6 +81,31 @@ new ModuleFederationPlugin({
 | 应用未指定 `requiredVersion`，其他已指定 | 选择满足所有已指定 `requiredVersion` 的最高版本 |
 | 所有应用都未指定 `requiredVersion` | 选择所有可能版本中的最高版本 |
 > 在实际应用中，由于版本冲突可能导致运行时错误，通常建议确保所有的应用都使用相同的 `React` 版本，或者至少确保所有 `singleton` 的应用都使用相同的 `React` 版本。这是一个最佳实践，可以避免由于版本差异导致的潜在问题。
+#### 踩坑
+1. vue-cli如何实现模块联邦, 才不会报错 `ScriptExternalLoadError: Loading script failed.`
+```js
+  optimization: {
+      splitChunks: {
+        cacheGroups: {
+          defaultVendors: {
+            name: 'chunk-vendors',
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+            chunks: 'async',//关键是异步化两个vuecli配置的默认的chunk
+            reuseExistingChunk: true
+          },
+          common: {
+            name: 'chunk-common',
+            minChunks: 2,
+            priority: -20,
+            chunks: 'async',//关键是异步化两个vuecli配置的默认的chunk
+            reuseExistingChunk: true
+          }
+        }
+      }
+```
+
+    },
 ### 性能
 ```javascript
 性能(重点):  
