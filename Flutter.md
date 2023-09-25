@@ -55,7 +55,7 @@ Flutter 使用与 Unity 相同的基本架构模型
 
 ### 编译原理
 [google/skia：Skia 是一个完整的 2D 图形库，用于绘制文本、几何图形和图像。](https://github.com/google/skia)
-1. 开发者使用flutter build apk命令来构建安卓APK。
+1. 开发者使用`flutter build apk`命令来构建安卓APK。
 2. flutter工具通过daemon模块启动Flutter守护进程。
 3. 守护进程使用build_runner工具编译Flutter工程。
 4. build_runner工具会解析Flutter工程的pubspec.yaml文件,找到需要编译的Dart文件。
