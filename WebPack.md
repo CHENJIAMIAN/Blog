@@ -32,7 +32,13 @@
 new ModuleFederationPlugin({
 	  name: 'app2',
 	  filename: 'remoteEntry.js',
-	  runtime:false,在ContainerPlugin的配置中指定了一个runtime，那么这个runtime将会被用于创建一个新的运行时块，该块负责加载和解析从其他构建中共享的模块。
+	  library: { type: 'var', name: 'app2' },
+		  `type`属性它决定了库中的内容应该如何被暴露。有多种类型的库可以选择，包括`var`、`this`、`commonjs`、`commonjs2`、`amd`、`umd`、`window`等。`name`属性指定了暴露库内容的全局变量的名称
+		  var 声明, Webpack会创建一个名为`app2`的变量，这个变量是在当前的作用域下，通常是`window`（如果在浏览器环境中）或者`global`（如果在Node.js环境中）。这样，你可以通过`app2`访问到库中的内容。
+		  window 声明, Webpack会在全局`window`对象上创建一个名为`app2`的属性。这样，你可以通过`window.app2`访问到库中的内容。这种方式主要用于浏览器环境。
+	  runtime:false,在ContainerPlugin的配置中指定了一个runtime
+		1. 当`runtime`的值为一个字符串，例如 `'my-runtime-name'`，Webpack 将为这个特定的 entry 创建一个新的运行时。这样做的好处是可以更好地控制各个入口点的缓存。例如，你可能只想在某个入口点的代码发生改变时，才更新这个入口点的缓存。如果所有的入口点都共享一个运行时，那么只要任何一个入口点的代码发生改变，所有的入口点的缓存都需要更新。
+		2. 当`runtime`的值为`false`，Webpack 不会为这个入口点创建新的运行时。这意味着这个入口点的运行时会与其他入口点共享。这样做的话，如果任何一个入口点的代码发生改变，那么所有的入口点的缓存都需要更新。
 	  exposes: {  './Widget': './src/Widget'},
 	  shared: { //在shared里声明的了,才会使用主APP共享的库,没声明就用自己的(到时会是两个不同的实例)
 		'react-dom': {
