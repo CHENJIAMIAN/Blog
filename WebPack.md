@@ -32,6 +32,7 @@
 new ModuleFederationPlugin({
 	  name: 'app2',
 	  filename: 'remoteEntry.js',
+	  runt
 	  exposes: {  './Widget': './src/Widget'},
 	  shared: { //在shared里声明的了,才会使用主APP共享的库,没声明就用自己的(到时会是两个不同的实例)
 		'react-dom': {
