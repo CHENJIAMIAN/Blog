@@ -32,7 +32,7 @@
 new ModuleFederationPlugin({
 	  name: 'app2',
 	  filename: 'remoteEntry.js',
-	  library: { type: 'var', name: 'app2' },
+	  library: { type: 'var', name: 'app2222' },
 		  `type`属性它决定了库中的内容应该如何被暴露。有多种类型的库可以选择，包括`var`、`this`、`commonjs`、`commonjs2`、`amd`、`umd`、`window`等。`name`属性指定了暴露库内容的全局变量的名称
 		  var 声明, Webpack会创建一个名为`app2`的变量，这个变量是在当前的作用域下，通常是`window`（如果在浏览器环境中）或者`global`（如果在Node.js环境中）。这样，你可以通过`app2`访问到库中的内容。
 		  window 声明, Webpack会在全局`window`对象上创建一个名为`app2`的属性。这样，你可以通过`window.app2`访问到库中的内容。这种方式主要用于浏览器环境。
@@ -44,7 +44,9 @@ new ModuleFederationPlugin({
 		'react-dom': {
 		  requiredVersion: require('./package.json').dependencies['react-dom'],
 		  singleton: true, //不允许主APP的react版本是'16.14.0'而子APP是'16.12.0'
-		},
+	  },
+	  remotes: {
+          在我用的时候别名是什么: '远程的library的name变量名@http://localhost:9000/remoteEntry.js',
 	  },
 })
     
