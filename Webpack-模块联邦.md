@@ -133,6 +133,14 @@ node_modules/.pnpm/http-proxy-middleware@2.0.6_bwlemkrjb22k3yqlwsvvolpocy/node_m
 1. 删掉`.babelrc`
 2. 删掉`.browserslistrc`
 3. 删掉`babel.config.js`
+4. [vue-cli/packages/@vue/babel-preset-app 位于 dev · vuejs/vue-cli](https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/babel-preset-app)
+	- Browserslist 将使用来自以下来源之一的浏览器和 Node.js 版本查询：
+		1. 当前或父目录中的.browserslistrc配置文件。
+		2. 当前目录或父目录中的package.json文件中的browserslist键。
+		3. browserslist当前或父目录中的配置文件。
+		4. BROWSESLIST环境变量。
+		5. 如果上述方法没有产生有效的结果，Browserslist 将使用默认值： `> 0.5%, last 2 versions, Firefox ESR, not dead`
+5. [SaltyFish6952/vue-cli-plugin-mfsu: Vue-CLI support mfsu](https://github.com/SaltyFish6952/vue-cli-plugin-mfsu)
 ```js
 (browserslist\node.js:324) findConfig 
 (browserslist\node.js:237) loadConfig 
