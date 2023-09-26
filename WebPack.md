@@ -103,9 +103,10 @@ new ModuleFederationPlugin({
           }
         }
       }
+    },
+      
 ```
 
-    },
 ### 性能
 ```javascript
 性能(重点):  
