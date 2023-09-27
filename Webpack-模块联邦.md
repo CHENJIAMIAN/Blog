@@ -113,22 +113,23 @@ node_modules/.pnpm/http-proxy-middleware@2.0.6_bwlemkrjb22k3yqlwsvvolpocy/node_m
 
 可以考虑自定义http-proxy-middleware, 而不是用webpack-dev-server默认的
 ```
-### 难题
-1. 项目运行不起来, 报错`Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__`
-	1. webpack版本问题? 不是
-	2. 配置问题?
-		1. 作为被引用的那个的optimization: { splitChunks: false } 才行, 分割了就不行
-		2. `.browserslistrc`支持太老版本的浏览器造成的,删掉就可以了!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!, 
-			- `webpack/lib/Compilation.js`的`chunkGraphEntries`的`AllReferencedChunks`没有需要`ensureChunkHandlers: "__webpack_require__.f"`的, 造成`ContainerReferencePlugin.js`的`compilation.addRuntimeModule(chunk, new RemoteRuntimeModule();`没有运行到, 打包出来的模块缺失
-				- 可能因为`add(RuntimeGlobals.ensureChunkHandlers`没有执行? 
-					- `const hasAsyncChunks = chunk.hasAsyncChunks();`是`false`造成的? 
-						- 是没有`addRuntimeModule.(RuntimeGlobals.ensureChunk)即'__webpack_require__.e'`造成的
-							- `RuntimeTemplate.js`的`blockPromise`方法没有执行
-								- `ImportDependency`才会用`RuntimeTemplate`
-									- `ImportDependency`的`constructor`
-										- `JavascriptParser.js`的`walkImportExpression`
-										- `NormalModule.js`的`build`的`_doBuild() callback`的`const source = this._source.source();`
-	- **根源在于`const source = this._source.source();`也即项目编译后的源码中有没有`import(` 语句, 不能是`require(`语句而没有`import(`语句** 
+###  项目运行不起来, 报错`Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__`
+1. webpack版本问题? 不是
+2. 配置问题?
+	1. 作为被引用的那个的optimization: { splitChunks: false } 才行, 分割了就不行
+	2. `.browserslistrc`支持太老版本的浏览器造成的,删掉就可以了!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!, 
+		- `webpack/lib/Compilation.js`的`chunkGraphEntries`的`AllReferencedChunks`没有需要`ensureChunkHandlers: "__webpack_require__.f"`的, 造成`ContainerReferencePlugin.js`的`compilation.addRuntimeModule(chunk, new RemoteRuntimeModule();`没有运行到, 打包出来的模块缺失
+			- 可能因为`add(RuntimeGlobals.ensureChunkHandlers`没有执行? 
+				- `const hasAsyncChunks = chunk.hasAsyncChunks();`是`false`造成的? 
+					- 是没有`addRuntimeModule.(RuntimeGlobals.ensureChunk)即'__webpack_require__.e'`造成的
+						- `RuntimeTemplate.js`的`blockPromise`方法没有执行
+							- `ImportDependency`才会用`RuntimeTemplate`
+								- `ImportDependency`的`constructor`
+									- `JavascriptParser.js`的`walkImportExpression`
+									- `NormalModule.js`的`build`的`_doBuild() callback`的`const source = this._source.source();`
+- **根源在于`const source = this._source.source();`也即项目编译后的源码中有没有`import(` 语句, 不能是`require(`语句而没有`import(`语句** 
+#### 造成
+1. 单单`babel.config.js`里的`presets: ['@vue/cli-plugin-babel/preset']`也会造成
 #### 解决方案
 1. 删掉`.babelrc`
 2. 删掉`.browserslistrc`
@@ -196,12 +197,12 @@ blockPromise:
 		2. {module?.blocks[0]?.dependencies}: 存在一个ImportDependency,其他全是undefined
 		3. ImportParserPlugin.js的parser.hooks.importCall.tap("ImportParserPlugin", expr => {} 不会进入
 		4. JavascriptParser.js的walkImportExpression不会进入
-		5. 形成的源码为:
+		5. 形成的源码为:			
 			var _interopRequireWildcard = require("D:/Desktop/模块联邦拆分测试/纯TB/node_modules/.pnpm/@babel+runtime@7.19.0/node_modules/@babel/runtime/helpers/interopRequireWildcard.js").default;
 			require("D:\Desktop\模块联邦拆分测试\纯TB\node_modules\.pnpm\core-js@3.7.0\node_modules\core-js\modules\es.array.iterator.js");
 			require("D:\Desktop\模块联邦拆分测试\纯TB\node_modules\.pnpm\core-js@3.7.0\node_modules\core-js\modules\es.promise.js");
 			require("D:\Desktop\模块联邦拆分测试\纯TB\node_modules\.pnpm\core-js@3.7.0\node_modules\core-js\modules\es.object.assign.js");
-			require("D:\Desktop\模块联邦拆分测试\纯TB\node_modules\.pnpm\core-js@3.7.0\node_modules\core-js\modules\es.promise.finally.js");
+			require("D:\Desktop\模块联邦拆分测试\纯TB\node_modules\.pnpm\core-js@3.7.0\node_modules\core-js\modules\es.promise.finally.js");//`babel.config.js`的`@vue/babel-preset-app/index.js`注入了这4个东西
 			require("core-js/modules/es.object.to-string.js");
 			Promise.resolve().then(function () {
 			  return _interopRequireWildcard(require('./bootstrap'));
@@ -215,7 +216,7 @@ blockPromise:
 			require("D:\Desktop\模块联邦拆分测试\纯TB\node_modules\.pnpm\core-js@3.7.0\node_modules\core-js\modules\es.array.iterator.js");
 			require("D:\Desktop\模块联邦拆分测试\纯TB\node_modules\.pnpm\core-js@3.7.0\node_modules\core-js\modules\es.promise.js");
 			require("D:\Desktop\模块联邦拆分测试\纯TB\node_modules\.pnpm\core-js@3.7.0\node_modules\core-js\modules\es.object.assign.js");
-			require("D:\Desktop\模块联邦拆分测试\纯TB\node_modules\.pnpm\core-js@3.7.0\node_modules\core-js\modules\es.promise.finally.js");
+			require("D:\Desktop\模块联邦拆分测试\纯TB\node_modules\.pnpm\core-js@3.7.0\node_modules\core-js\modules\es.promise.finally.js");//`babel.config.js`的`@vue/babel-preset-app/index.js`注入了这4个东西
 			require("core-js/modules/es.object.to-string.js");
 			require("core-js/modules/es.string.iterator.js");
 			require("core-js/modules/web.dom-collections.iterator.js");
@@ -236,3 +237,43 @@ walkImportExpression:
 (lib\NormalModule.js:803) processResult 
 babel-loader\lib\index.js: 59 loader.call
 ```
+
+### babel多个配置文件是怎么合并的
+```js
+node_modules/.pnpm/@babel+core@7.19.3/node_modules/@babel/core/lib/config/config-chain.js
+	buildRootChain
+		findRootConfig //configFile即babel.config.js
+		findRelativeConfig //.babelrc
+```
+#### babelrc和babel.config用了哪个? 
+- 先babel.config后babelrc, 然后将两者的配置合并, 如target.plugins.push(...source.plugins);, 即后读的合并到先读的,再进行去重
+### 为什么加tb端 import 'babel-polyfill' 会造成依赖找不到 
+- 加import 'babel-polyfill' 报错
+	- 由platform/store的找不到   "./node_modules/.pnpm/@babel+runtime@7.19.0/node_modules/@babel/runtime/helpers/interopRequireDefault.js", 的报错导入造成
+		- 少了31个node_modules/@babel/runtime/helpers/xxx
+		-     "./src/bootstrap.js",隔着因为import 'babel-polyfill' 而新增的331个依赖就到"webpack/sharing/consume/default/vue/vue"
+		- "webpack/sharing/consume/default/vue/vue"是哪行代码加的?????????
+- 不加import 'babel-polyfill' 正常
+	-     "./src/bootstrap.js",隔4000多个依赖后才到"webpack/sharing/consume/default/vue/vue"
+#### 解决
+##### 1. 两边都给vue加上**eager**就好了, 在源码中,eager为true就会与共享范围内的同种库做对比, 都为true会公用一个该库
+```js
+eager为true时, 主chunk即app.xxx.js多了vue模块:
+	"./node_modules/.pnpm/vue@2.6.12/node_modules/vue/dist/vue.esm.js": 
+	 即不从远程加载了,直接本地打包进去
+否则会拿远端的chunk-vendors.xxx.js加载里面的vue :__webpack_require__(/*! vue */"./node_modules/.pnpm/vue@2.6.12/node_modules/vue/dist/vue.esm.js");
+```
+#####  2.跟`package.json`的name有关, name改为不同的话, `eager` 不加也可以.
+```js
+window下有变量 webpackChunkvue_platform111_2_0_0 存着chunk, 如果同名会相互覆盖
+
+/* webpack/runtime/jsonp chunk loading */
+(typeof self !== 'undefined' ? self : this)["webpackHotUpdatevue_platform111_2_0_0"] = function(chunkId, moreModules, runtime) {
+var chunkLoadingGlobal = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] || [];
+//
+((typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] || []).push([["chunk-vendors"], {
+    "./node_modules/.pnpm/vue@2.6.12/node_modules/vue/dist/vue.esm.js": 
+((typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] || []).push([["src_bootstrap_js"], {
+    "./src/bootstrap.js":
+
+
