@@ -81,7 +81,58 @@ new ModuleFederationPlugin({
 | 应用未指定 `requiredVersion`，其他已指定 | 选择满足所有已指定 `requiredVersion` 的最高版本 |
 | 所有应用都未指定 `requiredVersion` | 选择所有可能版本中的最高版本 |
 > 在实际应用中，由于版本冲突可能导致运行时错误，通常建议确保所有的应用都使用相同的 `React` 版本，或者至少确保所有 `singleton` 的应用都使用相同的 `React` 版本。这是一个最佳实践，可以避免由于版本差异导致的潜在问题。
-#### 踩坑
+
+### 动态配置代理(不用重启项目)
+```js
+node_modules/.pnpm/http-proxy-middleware@2.0.6_bwlemkrjb22k3yqlwsvvolpocy/node_modules/http-proxy-middleware/dist/http-proxy-middleware.js
+	初始化:this.proxy = httpProxy.createProxyServer({}); //形成闭包了, 没办法改了
+	运行时: this.shouldProxy(this.config.context, req)	        
+
+可以考虑自定义http-proxy-middleware, 而不是用webpack-dev-server默认的
+```
+### babel多个配置文件是怎么合并的
+```js
+node_modules/.pnpm/@babel+core@7.19.3/node_modules/@babel/core/lib/config/config-chain.js
+	buildRootChain
+		findRootConfig //configFile即babel.config.js
+		findRelativeConfig //.babelrc
+```
+#### babelrc和babel.config用了哪个? 
+- 先babel.config后babelrc, 然后将两者的配置合并, 如target.plugins.push(...source.plugins);, 即后读的合并到先读的,再进行去重
+### 为什么加tb端 import 'babel-polyfill' 会造成依赖找不到 
+- 加import 'babel-polyfill' 报错
+	- 由platform/store的找不到   "./node_modules/.pnpm/@babel+runtime@7.19.0/node_modules/@babel/runtime/helpers/interopRequireDefault.js", 的报错导入造成
+		- 少了31个node_modules/@babel/runtime/helpers/xxx
+		-     "./src/bootstrap.js",隔着因为import 'babel-polyfill' 而新增的331个依赖就到"webpack/sharing/consume/default/vue/vue"
+		- "webpack/sharing/consume/default/vue/vue"是哪行代码加的?????????
+- 不加import 'babel-polyfill' 正常
+	-     "./src/bootstrap.js",隔4000多个依赖后才到"webpack/sharing/consume/default/vue/vue"
+#### 解决
+##### 1. 两边都给vue加上**eager**就好了, 在源码中,eager为true就会与共享范围内的同种库做对比, 都为true会公用一个该库
+```js
+eager为true时, 主chunk即app.xxx.js多了vue模块:
+	"./node_modules/.pnpm/vue@2.6.12/node_modules/vue/dist/vue.esm.js": 
+	 即不从远程加载了,直接本地打包进去
+否则会拿远端的chunk-vendors.xxx.js加载里面的vue :__webpack_require__(/*! vue */"./node_modules/.pnpm/vue@2.6.12/node_modules/vue/dist/vue.esm.js");
+```
+#####  2.跟`package.json`的name有关, name改为不同的话, `eager` 不加也可以.
+```js
+window下有变量 webpackChunkvue_platform111_2_0_0 存着chunk, 如果同名会相互覆盖
+
+/* webpack/runtime/jsonp chunk loading */
+(typeof self !== 'undefined' ? self : this)["webpackHotUpdatevue_platform111_2_0_0"] = function(chunkId, moreModules, runtime) {
+var chunkLoadingGlobal = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] || [];
+//
+((typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] || []).push([["chunk-vendors"], {
+    "./node_modules/.pnpm/vue@2.6.12/node_modules/vue/dist/vue.esm.js": 
+((typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] || []).push([["src_bootstrap_js"], {
+    "./src/bootstrap.js":
+
+
+```
+
+### 坑
+#### 代码分割需异步化
 1. vue-cli如何实现模块联邦, 才不会报错 `ScriptExternalLoadError: Loading script failed.`
 ```js
   optimization: {
@@ -105,15 +156,66 @@ new ModuleFederationPlugin({
       }
     },
 ```
-### 动态配置代理(不用重启项目)
+#### 项目名称需不一致
 ```js
-node_modules/.pnpm/http-proxy-middleware@2.0.6_bwlemkrjb22k3yqlwsvvolpocy/node_modules/http-proxy-middleware/dist/http-proxy-middleware.js
-	初始化:this.proxy = httpProxy.createProxyServer({}); //形成闭包了, 没办法改了
-	运行时: this.shouldProxy(this.config.context, req)	        
-
-可以考虑自定义http-proxy-middleware, 而不是用webpack-dev-server默认的
+package.json
+  "name": "vue-tb-2.0.0",//不能和主平台一致, 否则依赖覆盖错乱
 ```
-###  项目运行不起来, 报错`Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__`
+#### 子产品请求平台的跨域与重刷新404
+```js
+  devServer: {
+	// @MKLB_MODIFY
+    historyApiFallback: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
+  },
+```
+#### 请求平台资源404
+```js
+publicPath: 'https://localhost:3001/',
+```
+#### 平台代码作为模块时不执行main文件的渲染逻辑
+1. 注释掉平台main文件代码
+2. 或 编译前区分执行
+#### 产品无法拿平台的sass文件来编译,无法共享主题色
+---
+#### 报错Uncaught (in promise) Error: Shared module is not available for eager consumption: webpack/sharing/consume/default/vue/vue
+1. 因为平台有`import vue`的语句, 产品也有`import vue`的语句
+2. 跑产品的时候,vue已经打包,跑到引入平台的代码时,再次打包vue就会报错
+3. 如果用的是shared下声明的库, 则会增加以下代码, 确保库不会被多次打包
+```js
+platformEntry.js
+	多了:
+	    var initialConsumes = ["webpack/sharing/consume/default/vue/vue"];
+		/******/
+		initialConsumes.forEach(function(id) {
+			/******/
+			__webpack_require__.m[id] = function(module) {
+				/******/
+				// Handle case when module is used sync
+				/******/
+				installedModules[id] = 0;
+				/******/
+				delete __webpack_require__.c[id];
+				/******/
+				var factory = moduleToHandlerMapping[id]();
+				/******/
+				if (typeof factory !== "function")
+					throw new Error("Shared module is not available for eager consumption: " + id);
+				/******/
+				module.exports = factory();
+				/******/
+			}
+			/******/
+		});
+	少了:
+		// no consumes in initial chunks
+```
+
+####  项目运行不起来, 报错`Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__`
 1. webpack版本问题? 不是
 2. 配置问题?
 	1. 作为被引用的那个的optimization: { splitChunks: false } 才行, 分割了就不行
@@ -128,9 +230,9 @@ node_modules/.pnpm/http-proxy-middleware@2.0.6_bwlemkrjb22k3yqlwsvvolpocy/node_m
 									- `JavascriptParser.js`的`walkImportExpression`
 									- `NormalModule.js`的`build`的`_doBuild() callback`的`const source = this._source.source();`
 - **根源在于`const source = this._source.source();`也即项目编译后的源码中有没有`import(` 语句, 不能是`require(`语句而没有`import(`语句** 
-#### 造成
+##### 造成
 1. 单单`babel.config.js`里的`presets: ['@vue/cli-plugin-babel/preset']`也会造成
-#### 解决方案
+##### 解决方案
 1. 删掉`.babelrc`
 2. 删掉`.browserslistrc`
 3. 删掉`babel.config.js`
@@ -238,42 +340,113 @@ walkImportExpression:
 babel-loader\lib\index.js: 59 loader.call
 ```
 
-### babel多个配置文件是怎么合并的
+#### 报错app.1696925057553.js:36439 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__ (app.1696925057553.js:36439:33)
+1. 因为配置的`@vue/babel-preset-app/`引入了`babel-plugin-dynamic-import-node`导致所有import() 转成 require()了
 ```js
-node_modules/.pnpm/@babel+core@7.19.3/node_modules/@babel/core/lib/config/config-chain.js
-	buildRootChain
-		findRootConfig //configFile即babel.config.js
-		findRelativeConfig //.babelrc
+@vue/babel-preset-app/index.js
+的
+if (process.env.VUE_CLI_BABEL_TRANSPILE_MODULES) {
+    envOptions.modules = 'commonjs'
+    if (process.env.VUE_CLI_BABEL_TARGET_NODE) {
+      // necessary for dynamic import to work in tests
+      plugins.push(require('babel-plugin-dynamic-import-node'))
+    }
+  }
 ```
-#### babelrc和babel.config用了哪个? 
-- 先babel.config后babelrc, 然后将两者的配置合并, 如target.plugins.push(...source.plugins);, 即后读的合并到先读的,再进行去重
-### 为什么加tb端 import 'babel-polyfill' 会造成依赖找不到 
-- 加import 'babel-polyfill' 报错
-	- 由platform/store的找不到   "./node_modules/.pnpm/@babel+runtime@7.19.0/node_modules/@babel/runtime/helpers/interopRequireDefault.js", 的报错导入造成
-		- 少了31个node_modules/@babel/runtime/helpers/xxx
-		-     "./src/bootstrap.js",隔着因为import 'babel-polyfill' 而新增的331个依赖就到"webpack/sharing/consume/default/vue/vue"
-		- "webpack/sharing/consume/default/vue/vue"是哪行代码加的?????????
-- 不加import 'babel-polyfill' 正常
-	-     "./src/bootstrap.js",隔4000多个依赖后才到"webpack/sharing/consume/default/vue/vue"
-#### 解决
-##### 1. 两边都给vue加上**eager**就好了, 在源码中,eager为true就会与共享范围内的同种库做对比, 都为true会公用一个该库
+### 核心代码配置
 ```js
-eager为true时, 主chunk即app.xxx.js多了vue模块:
-	"./node_modules/.pnpm/vue@2.6.12/node_modules/vue/dist/vue.esm.js": 
-	 即不从远程加载了,直接本地打包进去
-否则会拿远端的chunk-vendors.xxx.js加载里面的vue :__webpack_require__(/*! vue */"./node_modules/.pnpm/vue@2.6.12/node_modules/vue/dist/vue.esm.js");
+平台:
+	new ModuleFederationPlugin({
+            name: 'platform',
+            filename: 'platformEntry.js',
+            library: { type: 'var', name: 'platform' },
+            
+            exposes: {
+              './3d/MapScene3D':'./src/modules/3d/MapScene3D',
+              './3d/threeEdit/ThreeEdit':'./src/modules/3d/threeEdit/ThreeEdit',
+              './assets/css/main.scss':'./src/frameworks/assets/css/main.scss',
+              './assets/css/theme/dark/index.css':'./src/frameworks/assets/css/theme/dark/index.css',
+              './assets/css/theme/default/index.css':'./src/frameworks/assets/css/theme/default/index.css',
+              './assets/data/menus':'./src/frameworks/assets/data/menus.js',
+              './assets/icon/base/iconfont.css':'./src/frameworks/assets/icon/base/iconfont.css',
+              './assets/js/Ajax':'./src/frameworks/assets/js/Ajax',
+              './assets/js/Common':'./src/frameworks/assets/js/Common',
+              './assets/js/Crud':'./src/frameworks/assets/js/Crud',
+              './assets/js/Filters.js':'./src/frameworks/assets/js/Filters.js',
+              './assets/js/Filters':'./src/frameworks/assets/js/Filters',
+              './assets/js/Loading':'./src/frameworks/assets/js/Loading',
+              './assets/js/MixinRouter':'./src/frameworks/assets/js/MixinRouter',
+              './assets/js/permission':'./src/frameworks/assets/js/permission',
+              './assets/js/Rules':'./src/frameworks/assets/js/Rules',
+              './assets/js/Utils.js':'./src/frameworks/assets/js/Utils.js',
+              './assets/js/Utils':'./src/frameworks/assets/js/Utils',
+              './baselayout/assets/css/element-variables.scss':'./src/modules/baselayout/assets/css/element-variables.scss',
+              './baselayout/Layout':'./src/modules/baselayout/Layout',
+              './baselayout/views/TBLayout':'./src/modules/baselayout/views/TBLayout',
+              './baselogin/Login':'./src/modules/baselogin/Login',
+              './common':'./src/frameworks/common',
+              './conf/api':'./src/frameworks/conf/api',
+              './conf/apis':'./src/frameworks/conf/apis',
+              './conf/consts':'./src/frameworks/conf/consts',
+              './conf/dicts':'./src/frameworks/conf/dicts',
+              './configuration/components/template/defaultTemplate':'./src/modules/configuration/components/template/defaultTemplate',
+              './configuration/views/App':'./src/modules/configuration/views/App',
+              './configuration/views/configView':'./src/modules/configuration/views/configView',
+              './configuration/views/configView/pixels-register':'./src/modules/configuration/views/configView/pixels-register',
+              './kehua/assets/factory/common/btns-fields.js':'./src/frameworks/kehua/assets/factory/common/btns-fields.js',
+              './kehua/assets/factory/common/comm.js':'./src/frameworks/kehua/assets/factory/common/comm.js',
+              './kehua/assets/factory/fert/channel-fields.js':'./src/frameworks/kehua/assets/factory/fert/channel-fields.js',
+              './kehua/assets/factory/fert/device-fields.js':'./src/frameworks/kehua/assets/factory/fert/device-fields.js',
+              './kehua/assets/factory/fert/fert-fields.js':'./src/frameworks/kehua/assets/factory/fert/fert-fields.js',
+              './kehua/assets/factory/fert/points-fields.js':'./src/frameworks/kehua/assets/factory/fert/points-fields.js',
+              './kehua/components':'./src/frameworks/kehua/components',
+              './kehua/components/validate/Rules':'./src/frameworks/kehua/components/validate/Rules',
+              './langs':'./src/common/langs/index.js',
+              './langs/i18n':'./src/common/langs/i18n.js',
+              './plugins/scrollbar':'./src/frameworks/plugins/scrollbar.js',
+              './store':'./src/common/store/index.js',
+            },
+            remotes: {
+              tb: 'tb@https://localhost:3002/tbEntry.js'
+            },
+            shared: {
+              vue: {
+                singleton: true,
+                requiredVersion: deps.vue,
+                // eager:true
+              },
+              'vue-router': {
+                singleton: true,
+                requiredVersion: deps['vue-router'],
+                // eager:true
+              },
+            },
+          })
+
+产品:
+	new ModuleFederationPlugin({
+            name: 'tb',
+            filename: 'tbEntry.js',
+            // library: { type: 'var', name: 'tb' },
+            // exposes: {
+            //     './AlarmCover': './src/subsystem/tb/pages/alarm/AlarmCover.vue'
+            //   },
+            remotes: {
+              platform: 'platform@https://localhost:3001/platformEntry.js'
+            },
+            shared: {
+              vue: {
+                singleton: true,
+                requiredVersion: deps.vue,
+                // eager:true
+              },
+              'vue-router': {
+                singleton: true,
+                requiredVersion: deps['vue-router'],
+                // eager:true
+              },
+            },
+          })
+
 ```
-#####  2.跟`package.json`的name有关, name改为不同的话, `eager` 不加也可以.
-```js
-window下有变量 webpackChunkvue_platform111_2_0_0 存着chunk, 如果同名会相互覆盖
-
-/* webpack/runtime/jsonp chunk loading */
-(typeof self !== 'undefined' ? self : this)["webpackHotUpdatevue_platform111_2_0_0"] = function(chunkId, moreModules, runtime) {
-var chunkLoadingGlobal = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] || [];
-//
-((typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] || []).push([["chunk-vendors"], {
-    "./node_modules/.pnpm/vue@2.6.12/node_modules/vue/dist/vue.esm.js": 
-((typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] = (typeof self !== 'undefined' ? self : this)["webpackChunkvue_platform111_2_0_0"] || []).push([["src_bootstrap_js"], {
-    "./src/bootstrap.js":
-
 
