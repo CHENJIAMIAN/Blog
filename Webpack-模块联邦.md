@@ -222,7 +222,7 @@ platformEntry.js
 		// no consumes in initial chunks
 ```
 
-####  项目运行不起来, 报错`Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__`
+####  报错`Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__`
 1. webpack版本问题? 不是
 2. 配置问题?
 	1. 作为被引用的那个的optimization: { splitChunks: false } 才行, 分割了就不行
