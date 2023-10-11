@@ -33,6 +33,7 @@ new ModuleFederationPlugin({
 	  name: 'app2',
 	  filename: 'remoteEntry.js',
 	  library: { type: 'var', name: 'app2222' }, //源码在lib/ExternalModule.js
+	  // library: { type: 'var', name: 'tb' },//library的声明与否会影响 ContainerReferencePlugin的remoteType(默认为script,否则同这里声明的type), 决定了从当前全局变量读取remotes里声明的库,还是从远端加载
 		  `type`属性它决定了库中的内容应该如何被暴露。有多种类型的库可以选择，包括`var`、`this`、`commonjs`、`commonjs2`、`amd`、`umd`、`window`等。`name`属性指定了暴露库内容的全局变量的名称
 		  var 声明, Webpack会创建一个名为`app2`的变量，这个变量是在当前的作用域下，通常是`window`（如果在浏览器环境中）或者`global`（如果在Node.js环境中）。这样，你可以通过`app2`访问到库中的内容。
 		  window 声明, Webpack会在全局`window`对象上创建一个名为`app2`的属性。这样，你可以通过`window.app2`访问到库中的内容。这种方式主要用于浏览器环境。
@@ -132,6 +133,12 @@ var chunkLoadingGlobal = (typeof self !== 'undefined' ? self : this)["webpackChu
 ```
 
 ### 坑
+#### ScriptExternalLoadError: Loading script failed.
+```js
+library的声明与否会影响 ContainerReferencePlugin的remoteType(默认为script,否则同这里声明的type)
+这决定了是从当前全局变量读取remotes里声明的库,还是从远端加载
+```
+
 #### 代码分割需异步化
 1. vue-cli如何实现模块联邦, 才不会报错 `ScriptExternalLoadError: Loading script failed.`
 ```js
