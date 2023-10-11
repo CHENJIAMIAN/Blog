@@ -239,6 +239,19 @@ platformEntry.js
 - **根源在于`const source = this._source.source();`也即项目编译后的源码中有没有`import(` 语句, 不能是`require(`语句而没有`import(`语句** 
 ##### 造成
 1. 单单`babel.config.js`里的`presets: ['@vue/cli-plugin-babel/preset']`也会造成
+2. **因为配置的`@vue/babel-preset-app/`引入了`babel-plugin-dynamic-import-node`导致所有import() 转成 require()了**
+```js
+@vue/babel-preset-app/index.js
+的
+if (process.env.VUE_CLI_BABEL_TRANSPILE_MODULES) {
+    envOptions.modules = 'commonjs'
+    if (process.env.VUE_CLI_BABEL_TARGET_NODE) {
+      // necessary for dynamic import to work in tests
+      plugins.push(require('babel-plugin-dynamic-import-node'))
+    }
+  }
+```
+3. 如果用import('xxx')就可以了, 可以能项目名一致造成全局变量window下的`webpackChunk项目名`相互覆盖造成的
 ##### 解决方案
 1. 删掉`.babelrc`
 2. 删掉`.browserslistrc`
@@ -347,19 +360,6 @@ walkImportExpression:
 babel-loader\lib\index.js: 59 loader.call
 ```
 
-#### 报错app.1696925057553.js:36439 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__ (app.1696925057553.js:36439:33)
-1. 因为配置的`@vue/babel-preset-app/`引入了`babel-plugin-dynamic-import-node`导致所有import() 转成 require()了
-```js
-@vue/babel-preset-app/index.js
-的
-if (process.env.VUE_CLI_BABEL_TRANSPILE_MODULES) {
-    envOptions.modules = 'commonjs'
-    if (process.env.VUE_CLI_BABEL_TARGET_NODE) {
-      // necessary for dynamic import to work in tests
-      plugins.push(require('babel-plugin-dynamic-import-node'))
-    }
-  }
-```
 ### 核心代码配置
 ```js
 平台:
