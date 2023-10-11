@@ -353,7 +353,7 @@ if (process.env.VUE_CLI_BABEL_TRANSPILE_MODULES) {
     }
   }
 ```
-re### 核心代码配置
+### 核心代码配置
 ```js
 平台:
 	new ModuleFederationPlugin({
