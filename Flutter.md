@@ -318,4 +318,5 @@ return '请输入$pageTypeText绑定的手机号';
 '必须$pageTypeText绑定手机号才能转账，且开启允许手机号转账功能',
 ? '下一步  ($_countdownSeconds)'
 _isCodeSent ? '$_counter秒后重发' : '获取验证码',
+final List<String> _durations = ['1 天', '15 天', '30 天', '永久'];
 ```
