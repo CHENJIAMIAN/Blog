@@ -273,4 +273,49 @@ lib.main.main
 - 333 Aa.33333333 123654
 - aaa Aa123!@#
 - -
-- 
+- (Text\(|text:|title:|hintText:|value:|labelText:)\s*['"]([\u4e00-\u9fff]+)['"]
+- Text\(\n *'\p{Script=Han}*'
+	- Text\((\n *)('\p{Script=Han}*')
+	- Text($2
+
+```dart
+'温馨提示：当前地址只能充入${zichan?.name}，且主网公链为 ${protocolName}，不能充值其他币种，否则会丢失且无法追回。',
+? Text('获取验证码(${_remainingSeconds}s)')
+? Text('获取验证码(${_remainingSeconds}s)')
+? Text('获取验证码(${_remainingSeconds}s)')
+'(${formatDuration(_remainingSeconds)}后超时异常)',
+'${formatDuration(_remainingSeconds)} 后可能被取消，记得操作哦',
+'创建时间 ${DateFormat('yyyy年M月d日 HH点mm分').format(DateTime.parse(widget.wallet.createTime.toString()))}',
+'出售后剩余${gameUsableBalance - (planAmount == '' ? 0.0 : double.parse(planAmount))}',
+Text('可用余额(${authState.userInfo?.currency ?? '--'})',
+? Text('获取验证码(${_remainingSeconds}s)')
+'${getStatusText(transactionItem.orderType)}单号: ',
+'钱包余额: ${transactionItem.balance}',
+'语言：${_country.language}',
+'assets/images/p1_shoukuanfangshi_${paymentMethodObj?.name == '微信支付' ? 'weixin' : 'zhifubao'}.png',
+'assets/images/p1_shoukuanfangshi_${paymentMethodObj?.name == '微信支付' ? 'weixin' : 'zhifubao'}.png',
+'账号: ${authState.userInfo?.username}',
+'法币国家(${authState.userInfo?.currency ?? '未设置'})',
+'${messageDetail?.details ?? '暂无详情'}',
+child: Text('请求失败，错误原因：${snapshot.error}'),
+'剩余: ${widget.transactionItem.balance.toStringAsFixed(2)}',
+Text('订单编号: ${widget.transactionItem.orderNo}',
+Text(i == _numOfSplits - 1 ? '最后一笔' : '第${_numbers[i]}笔',
+Text('创建时间${myAdvertise.createTime.toString()}',
+' ${myAdvertise.tradeMode == 0 ? /* 交易方式：0分拆交易 1整笔交易 */
+'${advertise.tradeMode == 0 ? /* 交易方式：0分拆交易 1整笔交易 */
+'${formatDuration(_remainingSeconds)}后取消',
+ '验证码已发送至手机号：$mobile',
+'验证码已发送至邮箱：$email',
+'已绑定邮箱$email',
+_isCountdownStarted ? '$_counter秒后重发' : '获取验证码',
+title: Text('$pageTypeText收款码'),
+Text('$pageTypeText收款码',
+'请务必上传与实名(xxx)一致的$pageTypeText收款码',
+'$pageTypeText转账(手机号)',
+hintText: '请输入$pageTypeText绑定的手机号',
+return '请输入$pageTypeText绑定的手机号';
+'必须$pageTypeText绑定手机号才能转账，且开启允许手机号转账功能',
+? '下一步  ($_countdownSeconds)'
+_isCodeSent ? '$_counter秒后重发' : '获取验证码',
+```
