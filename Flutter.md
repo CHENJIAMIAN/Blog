@@ -319,4 +319,6 @@ return '请输入$pageTypeText绑定的手机号';
 ? '下一步  ($_countdownSeconds)'
 _isCodeSent ? '$_counter秒后重发' : '获取验证码',
 final List<String> _durations = ['1 天', '15 天', '30 天', '永久'];
+final List<String> _numbers = ['一', '二', '三', '四', '最后'];
+items: ['全部地址', '其他地址']
 ```
