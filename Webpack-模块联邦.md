@@ -33,6 +33,7 @@ new ModuleFederationPlugin({
 	  name: 'app2',
 	  filename: 'remoteEntry.js',
 	  library: { type: 'var', name: 'app2222' }, //源码在lib/ExternalModule.js
+	  // library: { type: 'var', name: 'tb' },//library的声明与否会影响 ContainerReferencePlugin的remoteType(默认为script,否则同这里声明的type), 决定了从当前全局变量读取remotes里声明的库,还是从远端加载
 		  `type`属性它决定了库中的内容应该如何被暴露。有多种类型的库可以选择，包括`var`、`this`、`commonjs`、`commonjs2`、`amd`、`umd`、`window`等。`name`属性指定了暴露库内容的全局变量的名称
 		  var 声明, Webpack会创建一个名为`app2`的变量，这个变量是在当前的作用域下，通常是`window`（如果在浏览器环境中）或者`global`（如果在Node.js环境中）。这样，你可以通过`app2`访问到库中的内容。
 		  window 声明, Webpack会在全局`window`对象上创建一个名为`app2`的属性。这样，你可以通过`window.app2`访问到库中的内容。这种方式主要用于浏览器环境。
@@ -132,6 +133,12 @@ var chunkLoadingGlobal = (typeof self !== 'undefined' ? self : this)["webpackChu
 ```
 
 ### 坑
+#### ScriptExternalLoadError: Loading script failed.
+```js
+library的声明与否会影响 ContainerReferencePlugin的remoteType(默认为script,否则同这里声明的type)
+这决定了是从当前全局变量读取remotes里声明的库,还是从远端加载
+```
+
 #### 代码分割需异步化
 1. vue-cli如何实现模块联邦, 才不会报错 `ScriptExternalLoadError: Loading script failed.`
 ```js
@@ -215,7 +222,7 @@ platformEntry.js
 		// no consumes in initial chunks
 ```
 
-####  项目运行不起来, 报错`Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__`
+####  报错`Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__`
 1. webpack版本问题? 不是
 2. 配置问题?
 	1. 作为被引用的那个的optimization: { splitChunks: false } 才行, 分割了就不行
@@ -232,6 +239,19 @@ platformEntry.js
 - **根源在于`const source = this._source.source();`也即项目编译后的源码中有没有`import(` 语句, 不能是`require(`语句而没有`import(`语句** 
 ##### 造成
 1. 单单`babel.config.js`里的`presets: ['@vue/cli-plugin-babel/preset']`也会造成
+2. **因为配置的`@vue/babel-preset-app/`引入了`babel-plugin-dynamic-import-node`导致所有import() 转成 require()了**
+```js
+@vue/babel-preset-app/index.js
+的
+if (process.env.VUE_CLI_BABEL_TRANSPILE_MODULES) {
+    envOptions.modules = 'commonjs'
+    if (process.env.VUE_CLI_BABEL_TARGET_NODE) {
+      // necessary for dynamic import to work in tests
+      plugins.push(require('babel-plugin-dynamic-import-node'))
+    }
+  }
+```
+3. 如果用import('xxx')就可以了, 可以能项目名一致造成全局变量window下的`webpackChunk项目名`相互覆盖造成的
 ##### 解决方案
 1. 删掉`.babelrc`
 2. 删掉`.browserslistrc`
@@ -340,19 +360,6 @@ walkImportExpression:
 babel-loader\lib\index.js: 59 loader.call
 ```
 
-#### 报错app.1696925057553.js:36439 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')    at __webpack_require__ (app.1696925057553.js:36439:33)
-1. 因为配置的`@vue/babel-preset-app/`引入了`babel-plugin-dynamic-import-node`导致所有import() 转成 require()了
-```js
-@vue/babel-preset-app/index.js
-的
-if (process.env.VUE_CLI_BABEL_TRANSPILE_MODULES) {
-    envOptions.modules = 'commonjs'
-    if (process.env.VUE_CLI_BABEL_TARGET_NODE) {
-      // necessary for dynamic import to work in tests
-      plugins.push(require('babel-plugin-dynamic-import-node'))
-    }
-  }
-```
 ### 核心代码配置
 ```js
 平台:
