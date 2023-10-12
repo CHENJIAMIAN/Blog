@@ -267,7 +267,8 @@ lib.main.main
 6. 总结来说，Flutter中的`build`方法不会等待`didChangeDependencies`方法中的异步操作执行完毕再执行，以保持应用的响应性和流畅性。你可以使用`setState`来在异步操作完成后触发UI的重新构建，以更新UI并提供良好的用户体验。
 
 ### 国际化
-[国际化 Flutter 应用程序 | 扑](https://docs.flutter.dev/ui/accessibility-and-localization/internationalization)
+1. [国际化 Flutter 应用程序 | 扑](https://docs.flutter.dev/ui/accessibility-and-localization/internationalization)
+2. flutter gen-l10n
 #### 备忘
 - 11111111   123789  Aa.11111111
 - 333 Aa.33333333 123654
