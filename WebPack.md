@@ -425,6 +425,7 @@ exports.util1=util1 模块化的体现，输出该模块
 
 
 ## 原理流程
+1. `NODE_PATH` 是一个环境变量，用于告诉 Node.js 在模块解析过程中额外搜索模块的路径, pnpm会干这件事自动往.bin脚本里加这个参数指定`node_modules\.pnpm\node_modules`等为额外搜索路径
 ```javascript
 compliler = Webpack(config)
 
