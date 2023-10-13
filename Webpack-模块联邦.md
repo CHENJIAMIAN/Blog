@@ -240,6 +240,7 @@ platformEntry.js
 ##### 造成
 1. 单单`babel.config.js`里的`presets: ['@vue/cli-plugin-babel/preset']`也会造成
 2. **因为配置的`@vue/babel-preset-app/`引入了`babel-plugin-dynamic-import-node`导致所有import() 转成 require()了**
+	1. VUE_CLI_BABEL_TRANSPILE_MODULES = 任意值都会进入条件,  .env的键值对的值写成false或true都是字符串'false'或'true'**坑点**
 ```js
 @vue/babel-preset-app/index.js
 的
