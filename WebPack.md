@@ -437,3 +437,4 @@ compliler = Webpack(config)
 Compilation 实例会调⽤ createHash ⽅法来⽣成这次构建的 hash。
 在 webpack 的配置中，我们可以在 output . filename 中配置 [ hash ] 占位符，最终就会替换成这个 hash
 ```
+NODE_PATH
