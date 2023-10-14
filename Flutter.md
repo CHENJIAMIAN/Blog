@@ -301,15 +301,12 @@ child: Text('请求失败，错误原因：${snapshot.error}'),
 Text('订单编号: ${widget.transactionItem.orderNo}',
 Text(i == _numOfSplits - 1 ? '最后一笔' : '第${_numbers[i]}笔',
 Text('创建时间${myAdvertise.createTime.toString()}',
-' ${myAdvertise.tradeMode == 0 ? /* 交易方式：0分拆交易 1整笔交易 */
-'${advertise.tradeMode == 0 ? /* 交易方式：0分拆交易 1整笔交易 */
 '${formatDuration(_remainingSeconds)}后取消',
  '验证码已发送至手机号：$mobile',
 '验证码已发送至邮箱：$email',
 '已绑定邮箱$email',
 _isCountdownStarted ? '$_counter秒后重发' : '获取验证码',
 title: Text('$pageTypeText收款码'),
-Text('$pageTypeText收款码',
 '请务必上传与实名(xxx)一致的$pageTypeText收款码',
 '$pageTypeText转账(手机号)',
 hintText: '请输入$pageTypeText绑定的手机号',
@@ -317,7 +314,4 @@ return '请输入$pageTypeText绑定的手机号';
 '必须$pageTypeText绑定手机号才能转账，且开启允许手机号转账功能',
 ? '下一步  ($_countdownSeconds)'
 _isCodeSent ? '$_counter秒后重发' : '获取验证码',
-final List<String> _durations = ['1 天', '15 天', '30 天', '永久'];
-final List<String> _numbers = ['一', '二', '三', '四', '最后'];
-items: ['全部地址', '其他地址']
 ```
