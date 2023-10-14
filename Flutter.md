@@ -276,8 +276,6 @@ lib.main.main
 - -
 - (Text\(|text:|title:|hintText:|value:|labelText:)\s*['"]([\u4e00-\u9fff]+)['"]
 - Text\(\n *'\p{Script=Han}*'
-	- Text\((\n *)('\p{Script=Han}*')
-	- Text($2
 
 ```dart
 '温馨提示：当前地址只能充入${zichan?.name}，且主网公链为 ${protocolName}，不能充值其他币种，否则会丢失且无法追回。',
