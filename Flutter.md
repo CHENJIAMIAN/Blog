@@ -274,4 +274,5 @@ lib.main.main
 - 333 Aa.33333333 123654
 - aaa Aa123!@#
 - -
-paymentMethodObj?.name == AppLocalizations.of(context)!.weiXinZhiFu 的判断是不对的
+paymentMethodObj?.name = name 的判断是不对的
+type 1银行 2其他
