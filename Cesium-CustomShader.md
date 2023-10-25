@@ -1,4 +1,4 @@
-## 来源于Cesium 1.97 发布
+### 来源于Cesium 1.97 发布
 
 CesiumJS 1.97 现已可用。CesiumJS 已经切换到一个新的Model架构来加载 glTF 模型和 tilesets 以启用：
 > [CesiumJS 更新日志 1.96 与 1.97 - 新构建工具 esbuild 体验及 Model API 更替完成 - 岭南灯火 - 博客园](https://www.cnblogs.com/onsummer/p/16560461.html)
@@ -16,14 +16,21 @@ if (tileset.enableModelExperimental) {
 return new Instanced3DModel3DTileContent(tileset,tile,resource,arrayBuffer,byteOffset);
 ```
 
-## 可借鉴的源码
-找到[vue-vite-cesium-demo/](https://lihanqiang.github.io/vue-vite-cesium-demo/) 可用，包含
+### 可借鉴的源码
+#### 找到[vue-vite-cesium-demo/](https://lihanqiang.github.io/vue-vite-cesium-demo/) 可用，包含
 	1. 经度、纬度、高度/距离/面积
 	2. 生成大量节点/视场分析/扩散培/加载 Tileset/高危报警/动态连线/对空雷达/动态河流/白模建筑/显示卫星/可视域分析/加载 Geojson/加载地形/地面雷达/菲涅尔区/河流淹没/追踪扫描Echarts结合
 	3. 天气/雨天/雪天/雾天
 	4. 飞行模拟/直飞/绕飞/环飞/
 	5. 飞机探测(视频推流)
-## 业界
+#### [https://juejin.cn/post/7290157103674032182](https://juejin.cn/post/7290157103674032182) 从中可以学习到什么有用的知识点或技巧?
+1. 使用Shader实现渐变背景色：文章介绍了如何使用Shader编写渐变色背景的代码，并使用smoothstep函数和UV坐标来实现渐变效果。
+2. 利用遮罩纹理创建背景云效果：文章演示了如何使用遮罩纹理和Shader来创建背景云层，并通过采样遮罩纹理的透明度数据来定义颜色和透明度。
+3. 实例化网格和渲染优化：文章介绍了如何使用实例化网格（THREE.InstancedMesh）来同时创建大量的网格，并通过同步位置数据来优化渲染性能。
+4. 使用噪声生成雾效：文章展示了如何使用噪声函数在Shader中生成雾气的效果，通过调整参数和噪声函数可以实现不同的雾气效果。
+5. 后期处理和滤镜效果：文章提到了使用postprocessing库中的辉光滤镜和色调映射滤镜来增强渲染效果。
+6. 修改材质的Shader：文章介绍了如何使用three.js的onBeforeCompile方法来修改材质的Shader，以实现自定义的光照效果。
+### 业界
 1. [earthsdk digitalCity](http://earthsdk.com/v/last/Apps/Examples/?menu=true&url=./earth-digitalCity.html#:~:text=%20v_elevationPos.z%20-%20_baseHeight%3B%20) 176个示例, 包含多个特效案例vue-vite-cesium-demo的Tileset特效根源于它，作者是[在cesiumlab工作的唐晓飞vtxf (Tang Xiaofei)](https://github.com/vtxf) 
 2. [FreeXGIS online](http://www.freexgis.com/online/#/)
 3. [mars3d-vue-example/map.js at d141900bea02b8daa2e2834b347067f73967ce48 · marsgis/mars3d-vue-example](https://github.com/marsgis/mars3d-vue-example/blob/d141900bea02b8daa2e2834b347067f73967ce48/src/example/layer-tileset/style/customShader/map.js#L24) 这里也有几个shader可以参考
@@ -69,7 +76,7 @@ return new Instanced3DModel3DTileContent(tileset,tile,resource,arrayBuffer,byteO
         .catch((error) => console.error(error));
 ```
 
-## 特效参考地址
+### 特效参考地址
 1. [mars3d-vue-example/map.js at 20011b390505b80445a0ce553745210613311fd1 · marsgis/mars3d-vue-example](https://github.com/marsgis/mars3d-vue-example/blob/20011b390505b80445a0ce553745210613311fd1/src/example/layer-tileset/style/customShader/map.js#L24)
 2. [功能示例(Vue版) | Mars3D三维可视化平台 | 火星科技](http://mars3d.cn/editor-vue.html?id=layer-tileset/type/jzw)
 	- 动态渐变+动态光环的特效
@@ -81,10 +88,10 @@ return new Instanced3DModel3DTileContent(tileset,tile,resource,arrayBuffer,byteO
 5. 纹理坐标移动成动画
 6. 官方的彩色点云波示例
 
-## 管线流动
+### 管线流动
 1. [graphic/primitive/polylineVolume | 火星科技](http://mars3d.cn/editor-vue.html?id=graphic/primitive/polylineVolume)
 2. [graphic/primitive/polyline | 火星科技](http://mars3d.cn/editor-vue.html?id=graphic/primitive/polyline)
-## 官方案例
+### 官方案例
 ```js
 const viewer = new Cesium.Viewer("cesiumContainer", {
   orderIndependentTranslucency: false,
