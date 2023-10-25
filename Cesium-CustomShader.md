@@ -84,8 +84,433 @@ return new Instanced3DModel3DTileContent(tileset,tile,resource,arrayBuffer,byteO
 ## 管线流动
 1. [graphic/primitive/polylineVolume | 火星科技](http://mars3d.cn/editor-vue.html?id=graphic/primitive/polylineVolume)
 2. [graphic/primitive/polyline | 火星科技](http://mars3d.cn/editor-vue.html?id=graphic/primitive/polyline)
+## 官方案例
+```js
+const viewer = new Cesium.Viewer("cesiumContainer", {
+  orderIndependentTranslucency: false,
+});
 
+viewer.clock.currentTime = Cesium.JulianDate.fromIso8601(
+  "2021-11-09T20:27:37.016064475348684937Z"
+);
 
-```
+// 模型定位=================================================
+
+const position = Cesium.Cartesian3.fromDegrees(
+  -123.0744619,
+  44.0503706,
+  0
+);
+const hpr = new Cesium.HeadingPitchRoll(0, 0, 0);
+const fixedFrameTransform = Cesium.Transforms.localFrameToFixedFrameGenerator(
+  "north",
+  "west"
+);
+
+// 自定义着色器定义==========================================
+// 拖动鼠标将放大/缩小模型。
+const expandModelShader = new Cesium.CustomShader({
+  uniforms: {
+    // 从最新拖动中心到鼠标的向量
+    u_drag: {
+      type: Cesium.UniformType.VEC2,
+      value: new Cesium.Cartesian2(0.0, 0.0),
+    },
+  },
+  vertexShaderText: `
+    // 如果鼠标向右拖动，模型就会变大
+// 如果鼠标向左拖动，模型会缩小
+    void vertexMain(VertexInput vsInput, inout czm_modelVertexOutput vsOutput)
+    {
+        vsOutput.positionMC += 0.01 * u_drag.x * vsInput.attributes.normalMC;
+    }
+    `,
+});
+
+const textureUniformShader = new Cesium.CustomShader({
+  uniforms: {
+    // 动画经过的时间（以秒为单位）
+    u_time: {
+      type: Cesium.UniformType.FLOAT,
+      value: 0,
+    },
+    // 用户定义的纹理
+    u_stripes: {
+      type: Cesium.UniformType.SAMPLER_2D,
+      value: new Cesium.TextureUniform({
+        url: "../SampleData/cesium_stripes.png",
+      }),
+    },
+  },
+  // 将纹理应用到模型，但随着时间的推移稍微移动纹理坐标，以便它具有动画效果。
+  fragmentShaderText: `
+    void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material)
+    {
+        vec2 texCoord = fsInput.attributes.texCoord_0 + 0.1 * vec2(u_time, 0.0);
+        material.diffuse = texture(u_stripes, texCoord).rgb;
+    }
+    `,
+});
+
+// 制作一个棋盘纹理，其 alpha 值随着
+// 对角线数
+function makeCheckerboardTexture(textureSize) {
+  const checkerboard = new Uint8Array(4 * textureSize * textureSize);
+
+  const maxDiagonal = 2 * (textureSize - 1);
+  for (let i = 0; i < textureSize; i++) {
+    for (let j = 0; j < textureSize; j++) {
+      const index = i * textureSize + j;
+      // 检查对角线数字的奇偶性会给出棋盘图案。
+      const diagonal = i + j;
+      if (diagonal % 2 === 0) {
+        // 将正方形设置为红色。我们只需要设置红色通道即可！
+        checkerboard[4 * index] = 255;
+      }
+      // 否则我们会将方块设置为黑色。但数组已经
+// 初始化为 0，所以这里不需要任何东西。
+// 对于 alpha 通道，将对角线数字映射到 [0, 255]
+      checkerboard[4 * index + 3] = (255 * diagonal) / maxDiagonal;
+    }
+  }
+  return new Cesium.TextureUniform({
+    typedArray: checkerboard,
+    width: textureSize,
+    height: textureSize,
+    // 不要插值，我们想要清晰的棋盘边缘
+    minificationFilter: Cesium.TextureMinificationFilter.NEAREST,
+    magnificationFilter: Cesium.TextureMagnificationFilter.NEAREST,
+  });
+}
+const checkerboardTexture = makeCheckerboardTexture(8);
+
+// 使用棋盘红色通道作为遮罩
+const checkerboardMaskShader = new Cesium.CustomShader({
+  uniforms: {
+    u_checkerboard: {
+      type: Cesium.UniformType.SAMPLER_2D,
+      value: checkerboardTexture,
+    },
+  },
+  fragmentShaderText: `  
+    void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material)
+    {
+        vec2 texCoord = fsInput.attributes.texCoord_0;
+        vec4 checkerboard = texture(u_checkerboard, texCoord);
+        material.diffuse = mix(material.diffuse, vec3(0.0), checkerboard.r);
+    }
+    `,
+});
+
+// 颜色像棋盘，但透明度随对角线变化
+const checkerboardAlphaShader = new Cesium.CustomShader({
+  uniforms: {
+    u_checkerboard: {
+      type: Cesium.UniformType.SAMPLER_2D,
+      value: checkerboardTexture,
+    },
+  },
+  // 该模型通常呈现不透明，因此材质.alpha 将被忽略。
+// 此设置强制着色器在半透明通道中渲染。
+  translucencyMode: Cesium.CustomShaderTranslucencyMode.TRANSLUCENT,
+  fragmentShaderText: `
+    void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material)
+    {
+        vec2 texCoord = fsInput.attributes.texCoord_0;
+        vec4 checkerboard = texture(u_checkerboard, texCoord);
+        material.diffuse = checkerboard.rgb;
+        material.alpha = checkerboard.a;
+    }
+    `,
+});
+
+// 使用棋盘在模型上打孔
+const checkerboardHolesShader = new Cesium.CustomShader({
+  uniforms: {
+    u_checkerboard: {
+      type: Cesium.UniformType.SAMPLER_2D,
+      value: checkerboardTexture,
+    },
+  },
+  fragmentShaderText: `
+    void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material)
+    {
+        vec2 texCoord = fsInput.attributes.texCoord_0;
+        vec4 checkerboard = texture(u_checkerboard, texCoord);
+        if (checkerboard.r > 0.0) {
+            discard;
+        }
+    }
+    `,
+});
+
+// 此示例旨在演示用于定向纹理的约定。 +x 是在右边，+y 是从**下到上**。
+// 这是为了与 WebGL 约定保持一致。
+//
+// 此示例还演示了如何使用不同的像素格式，在本例中为 RGB。
+function makeGradientTexture() {
+  const size = 256;
+  const typedArray = new Uint8Array(3 * size * size);
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      const index = i * size + j;
+      // 红色沿 +x 方向（向右）增加
+      typedArray[3 * index + 0] = j;
+      // 绿色沿 +y 方向增加（从下到上）
+      typedArray[3 * index + 1] = i;
+      // 蓝色为 0，因此被省略。
+    }
+  }
+
+  return new Cesium.TextureUniform({
+    typedArray: typedArray,
+    width: size,
+    height: size,
+    pixelFormat: Cesium.PixelFormat.RGB,
+  });
+}
+const gradientTexture = makeGradientTexture();
+
+// 沿着 UV 坐标为纹理着色。
+const gradientShader = new Cesium.CustomShader({
+  uniforms: {
+    u_gradient: {
+      type: Cesium.UniformType.SAMPLER_2D,
+      value: gradientTexture,
+    },
+  },
+  fragmentShaderText: `
+    void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material)
+    {
+        material.diffuse = texture(u_gradient, fsInput.attributes.texCoord_0).rgb;
+    }
+    `,
+});
+
+// 拖动鼠标会修改PBR值
+const modifyPbrShader = new Cesium.CustomShader({
+  uniforms: {
+    // 从最新拖动中心到鼠标的向量
+    u_drag: {
+      type: Cesium.UniformType.VEC2,
+      value: new Cesium.Cartesian2(0.0, 0.0),
+    },
+  },
+  fragmentShaderText: `
+    // 单击并拖动以改变 PBR 值
+    void fragmentMain(FragmentInput vsInput, inout czm_modelMaterial material)
+    {
+        float dragDistance = length(u_drag);
+        float variation = smoothstep(0.0, 300.0, dragDistance);
+    // 变化为镜面高光添加了金色色调
+        material.specular = mix(material.specular, vec3(0.8, 0.5, 0.1), variation);
+    // 变化使材料更有光泽
+        material.roughness = clamp(1.0 - variation, 0.01, 1.0);
+    // 变化将一些红色混合到漫反射颜色中
+        material.diffuse += vec3(0.5, 0.0, 0.0) * variation;
+    }
+    `,
+});
+
+const pointCloudWaveShader = new Cesium.CustomShader({
+  uniforms: {
+    // 动画经过的时间（以秒为单位）
+    u_time: {
+      type: Cesium.UniformType.FLOAT,
+      value: 0,
+    },
+  },
+  vertexShaderText: `
+    void vertexMain(VertexInput vsInput, inout czm_modelVertexOutput vsOutput)
+    {
+    // 该模型的 x 和 y 坐标在 [0, 1] 范围内，可以方便地兼作 UV 坐标。
+        vec2 uv = vsInput.attributes.positionMC.xy;
+    // 使点云在空间和时间上变化的复杂波浪中波动。幅度基于点云的原始形状（已经是波状表面）。波是相对于模型中心计算的，因此转换为 [0, 1] -> [-1, 1] -> [0, 1]
+        float amplitude = 2.0 * vsInput.attributes.positionMC.z - 1.0;
+        float wave = amplitude * sin(2.0 * czm_pi * uv.x - 2.0 * u_time) * sin(u_time);
+        vsOutput.positionMC.z = 0.5 + 0.5 * wave;
+    // 通过改变点的大小使点脉动
+        vsOutput.pointSize = 10.0 + 5.0 * sin(u_time);
+    }
+    `,
+  fragmentShaderText: `
+    void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material)
+    {
+    // 将点设为圆形而不是方形
+        float distance = length(gl_PointCoord - 0.5);
+        if (distance > 0.5) {
+            discard;
+        }
+    // 制作一个正弦曲线调色板，该调色板沿波浪的总体方向移动，但速度不同。
+// 系数是任意选择的
+        vec2 uv = fsInput.attributes.positionMC.xy;
+        material.diffuse = 0.2 * fsInput.attributes.color_0.rgb;
+        material.diffuse += vec3(0.2, 0.3, 0.4) + vec3(0.2, 0.3, 0.4) * sin(2.0 * czm_pi * vec3(3.0, 2.0, 1.0) * uv.x - 3.0 * u_time);
+    }
+    `,
+});
+
+// 演示=================================================== =============
+
+const models = {
+  balloon: "../SampleData/models/CesiumBalloon/CesiumBalloon.glb",
+  drone: "../SampleData/models/CesiumDrone/CesiumDrone.glb",
+  pawns: "../SampleData/models/CesiumDrone/Pawns.glb",
+  milkTruck:
+    "../SampleData/models/CesiumMilkTruck/CesiumMilkTruck.glb",
+  groundVehicle:
+    "../SampleData/models/GroundVehicle/GroundVehicle.glb",
+  pointCloudWave:
+    "../SampleData/models/PointCloudWave/PointCloudWave.glb",
+};
+
+let needsDrag = false;
+const demos = [
+  {
+    text: "Custom Texture",
+    onselect: function () {
+      selectModel(models.groundVehicle, textureUniformShader);
+      needsDrag = false;
+    },
+  },
+  {
+    text: "Procedural Texture",
+    onselect: function () {
+      selectModel(models.balloon, checkerboardMaskShader);
+      needsDrag = false;
+    },
+  },
+  {
+    text: "Translucent materials",
+    onselect: function () {
+      selectModel(models.balloon, checkerboardAlphaShader);
+      needsDrag = false;
+    },
+  },
+  {
+    text: "Use Texture as Mask",
+    onselect: function () {
+      selectModel(models.balloon, checkerboardHolesShader);
+      needsDrag = false;
+    },
+  },
+  {
+    text: "Procedural Gradient Texture",
+    onselect: function () {
+      selectModel(models.balloon, gradientShader);
+      needsDrag = false;
+    },
+  },
+  {
+    text: "Modify PBR values via Mouse Drag",
+    onselect: function () {
+      selectModel(models.groundVehicle, modifyPbrShader);
+      needsDrag = true;
+    },
+  },
+  {
+    text: "Expand Model via Mouse Drag",
+    onselect: function () {
+      selectModel(models.milkTruck, expandModelShader);
+      needsDrag = true;
+    },
+  },
+  {
+    text: "Animated Point Cloud",
+    onselect: function () {
+      selectModel(models.pointCloudWave, pointCloudWaveShader);
+      needsDrag = false;
+    },
+  },
+];
+
+async function selectModel(url, customShader) {
+  viewer.scene.primitives.removeAll();
+  try {
+    const model = viewer.scene.primitives.add(
+      await Cesium.Model.fromGltfAsync({
+        url: url,
+        customShader: customShader,
+        modelMatrix: Cesium.Transforms.headingPitchRollToFixedFrame(
+          position,
+          hpr,
+          Cesium.Ellipsoid.WGS84,
+          fixedFrameTransform
+        ),
+      })
+    );
+
+    const removeListener = model.readyEvent.addEventListener(() => {
+      viewer.camera.flyToBoundingSphere(model.boundingSphere, {
+        duration: 0.0,
+      });
+
+      removeListener();
+    });
+  } catch (error) {
+    console.log(`Error loading model: ${error}`);
+  }
+}
+Sandcastle.addToolbarMenu(demos);
+
+// 事件处理程序================================================== =====
+
+const startTime = performance.now();
+viewer.scene.postUpdate.addEventListener(function () {
+  const elapsedTimeSeconds = (performance.now() - startTime) / 1000;
+  textureUniformShader.setUniform("u_time", elapsedTimeSeconds);
+  pointCloudWaveShader.setUniform("u_time", elapsedTimeSeconds);
+});
+
+let dragActive = false;
+const dragCenter = new Cesium.Cartesian2();
+
+viewer.screenSpaceEventHandler.setInputAction(function (movement) {
+  if (!needsDrag) {
+    return;
+  }
+
+  const pickedFeature = viewer.scene.pick(movement.position);
+  if (!Cesium.defined(pickedFeature)) {
+    return;
+  }
+
+  viewer.scene.screenSpaceCameraController.enableInputs = false;
+
+  // 设置新的拖动中心
+  dragActive = true;
+  movement.position.clone(dragCenter);
+}, Cesium.ScreenSpaceEventType.LEFT_DOWN);
+
+const scratchDrag = new Cesium.Cartesian2();
+viewer.screenSpaceEventHandler.setInputAction(function (movement) {
+  if (!needsDrag) {
+    return;
+  }
+
+  if (dragActive) {
+    // 获取鼠标相对于屏幕中心的位置
+    const drag = Cesium.Cartesian3.subtract(
+      movement.endPosition,
+      dragCenter,
+      scratchDrag
+    );
+
+    // 更新制服
+    expandModelShader.setUniform("u_drag", drag);
+    modifyPbrShader.setUniform("u_drag", drag);
+  }
+}, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
+
+viewer.screenSpaceEventHandler.setInputAction(function (movement) {
+  if (!needsDrag) {
+    return;
+  }
+
+  viewer.scene.screenSpaceCameraController.enableInputs = true;
+
+  dragActive = false;
+}, Cesium.ScreenSpaceEventType.LEFT_UP);
+
 
 ```
