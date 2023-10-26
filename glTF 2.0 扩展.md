@@ -106,10 +106,15 @@ gltf-transform 3.5.0 — glTF Transform SDK的命令行界面（CLI）。
 
 ### gltf文件组成
 - scene = nodes + extras 场景包含节点信息和自定义扩展数据。
-- node = mesh + transform 节点包括网格引用和变换矩阵。 
-- mesh = primitives + weights + extras 网格包含几何体原始形状和皮肤权重等信息。
+- node = mesh + transform 节点是一个对象实例, 包括网格引用和变换矩阵。 
+- mesh = primitives + weights + extras 网格是一个图形片段, 包含几何体原始形状和皮肤权重等信息。
 - primitive = attributes + indices + material 几何体原始形状由顶点属性、索引和材质组成。
+	- attribute 属性:顶点的特征,像位置、法线、UV等。
+	- indices 索引:定义三角形面片的顶点索引列表。
 - material = textures + parameters 材质包含纹理和参数(颜色、金属度等)。
 - texture = source + sampler 纹理包含图像源和采样器设置。
+	- sampler 采样器:读取纹理像素的设置,如过滤方式。
 - animation = samplers + channels 动画包含采样器和通道信息。
+	- samplers 采样器:保存关键帧中的数据值和时间信息。
+	- channels 通道:指示要运行动画的对象及其属性。
 - asset = metadata 资产包含元数据如版本、生成工具等。
