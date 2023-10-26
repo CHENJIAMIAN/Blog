@@ -1561,11 +1561,12 @@ glTF 2.0 仅支持静态 2D 纹理。
 #### [3.8.4. 采样器](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#384-samplers)
 
 ##### [3.8.4.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3841-overview)
-> 在[README.md - KhronosGroup/glTF - GitHub1s](https://github1s.com/KhronosGroup/glTF/blob/HEAD/specification/1.0/README.md) 可以查到
+
 
 采样器存储在资产的采样器数组中。每个采样器指定过滤和包装模式。
 
 采样器属性使用[属性参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#reference-sampler)中定义的整数枚举。
+> 在[README.md - KhronosGroup/glTF - GitHub1s](https://github1s.com/KhronosGroup/glTF/blob/HEAD/specification/1.0/README.md) 可以查到对应整数枚举
 
 客户端实现**应该**遵循指定的过滤模式。当后者未定义时，客户端实现**可以**设置自己的默认纹理过滤设置。
 

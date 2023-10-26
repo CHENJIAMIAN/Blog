@@ -103,3 +103,13 @@ gltf-transform 3.5.0 — glTF Transform SDK的命令行界面（CLI）。
 - 不同的gltf版本, 不兼容, 导出的glb版本会在查看器查看, 查看时要确保查看器支持的glb版本跟该文件glb版本一致, 此外还有很多扩展, 要确保glb中的扩展(如果有)有被查看器实现
 - 用3dsmax2023版导出可用新增的 `glTF材质`
 - 用于 Babylon.js 导出的模型[可使用 3ds Max 标准材质或物理材质](http://www.tuguan.net/doc/scene-editor/createmodel/software/)
+
+### gltf文件组成
+- scene = nodes + extras 场景包含节点信息和自定义扩展数据。
+- node = mesh + transform 节点包括网格引用和变换矩阵。 
+- mesh = primitives + weights + extras 网格包含几何体原始形状和皮肤权重等信息。
+- primitive = attributes + indices + material 几何体原始形状由顶点属性、索引和材质组成。
+- material = textures + parameters 材质包含纹理和参数(颜色、金属度等)。
+- texture = source + sampler 纹理包含图像源和采样器设置。
+- animation = samplers + channels 动画包含采样器和通道信息。
+- asset = metadata 资产包含元数据如版本、生成工具等。
