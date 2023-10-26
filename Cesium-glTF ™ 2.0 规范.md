@@ -1562,6 +1562,7 @@ glTF 2.0 仅支持静态 2D 纹理。
 
 ##### [3.8.4.1. 概述](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#3841-overview)
 
+
 采样器存储在资产的采样器数组中。每个采样器指定过滤和包装模式。
 
 采样器属性使用[属性参考](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#reference-sampler)中定义的整数枚举。
