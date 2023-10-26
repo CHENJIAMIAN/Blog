@@ -31,6 +31,7 @@ return new Instanced3DModel3DTileContent(tileset,tile,resource,arrayBuffer,byteO
 5. 后期处理和滤镜效果：文章提到了使用postprocessing库中的辉光滤镜和色调映射滤镜来增强渲染效果。
 6. 修改材质的Shader：文章介绍了如何使用three.js的onBeforeCompile方法来修改材质的Shader，以实现自定义的光照效果。
 7. [alphardex/kokomi.js: A growing three.js helper library.](https://github.com/alphardex/kokomi.js#shadertoy-integration) 特效很多
+	1. 参考了[pmndrs/drei：🥉 react-three-fiber的有用助手](https://github.com/pmndrs/drei)  实现了很多特效, 如反射镜ban
 ### 业界
 1. [earthsdk digitalCity](http://earthsdk.com/v/last/Apps/Examples/?menu=true&url=./earth-digitalCity.html#:~:text=%20v_elevationPos.z%20-%20_baseHeight%3B%20) 176个示例, 包含多个特效案例vue-vite-cesium-demo的Tileset特效根源于它，作者是[在cesiumlab工作的唐晓飞vtxf (Tang Xiaofei)](https://github.com/vtxf) 
 2. [FreeXGIS online](http://www.freexgis.com/online/#/)
