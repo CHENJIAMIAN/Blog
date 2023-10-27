@@ -493,3 +493,4 @@ src\renderers\WebGLRenderer.js
 10. 光照贴图（Light Map）：是一种用于模拟物体表面光照效果的贴图，可以为模型添加阴影和明暗效果。
 11. 环境光遮蔽贴图（Ambient Occlusion Map）：是一种用于模拟物体表面遮蔽效果的贴图，可以为模型添加阴影和明暗效果。
 ### 踩坑
+1. 
