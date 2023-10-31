@@ -10,8 +10,7 @@
     4.只支持 beforCreate 和 created
 ```
 
-> VueCli
-
+### VueCli
 ```javascript
 vue inspect > outputwebpackconfig.js 
 
@@ -46,13 +45,13 @@ vue-cli-service build 后, 部署静态资源dist文件夹后,访问的页面是
                                             //暂未发现造成问题的正则的规律
     所以最终原因是,配置了splitChunks,造成相关资源被splitChunks抽走了, 所以/dist/js/index.73eb22e6.js缺了被抽走的部分
 ```
-
-
-
----
-
-> Vue
-
+#### vue-cli用tailwindcss不生效?(耗时半天)
+1. npx tailwindcss init -p #自动生成postcss.config.js和tailwind.config.js
+2. vue-cli配置文件不用改,会自动读取postcss.config.js
+3. tailwind.config.js里content路径匹配要包含*.vue格式的文件
+4. //以上三点齐全,还不生效,考虑是webpack5持久化缓存的问题 ? 因为有时不进postcss.config.js和tailwind.config.js的断点
+5. 终极解决: npm uninstall tailwindcss postcss autoprefixer 然后 vue add tailwind 
+### Vue
 ```javascript
 : //相当于v-bind:href='js代码/变量' eg：  :href='js代码/变量'
     v-bind="{ id: someProp, 'other-attr': otherProp }" //绑定一个对象, 该对象的属性都作为绑定属性 /内外引号不能都是双引号或都是单引号/    
@@ -251,11 +250,7 @@ new Vue({
         4、vuex        
 ```
 
-
-
----
-
-> 自定义指令directive eg:注册一个全局自定义指令 `v-focus`
+### 自定义指令directive eg:注册一个全局自定义指令 `v-focus`
 
 ```javascript
 全局注册:
@@ -276,12 +271,7 @@ new Vue({
     }            
 ```
 
-
-
----
-
-> VueX: 用于状态管理, 引用它的vue组件都可以用它的方法和数据   
-
+### VueX: 用于状态管理, 引用它的vue组件都可以用它的方法和数据   
 ```javascript
 用: this.$store.state.对象   
  
@@ -345,12 +335,7 @@ export default new Vuex.Store({ //重点 5个说出来
         }
 ```
 
-
-
----
-
-> Vue-Router:用于地址路由,作用不仅切组件,还有[回退]
-
+### Vue-Router:用于地址路由,作用不仅切组件,还有[回退]
 ```javascript
 每个组件在执⾏ beforeCreated 钩⼦函数的时候，都会执⾏ router.init ⽅法
 
@@ -403,16 +388,9 @@ this.$route //访问当前路由 eg: this.$route.params.username
 ```
 
 
-
 ![F1B2E79267AC44809D3915D034775E6F](https://github.com/CHENJIAMIAN/Blog/assets/20126997/92a4eb3b-5a55-40d6-b36f-777bbe82f2cb)
 
-
-
-
----
-
-## vue-cli 执行流程：
-
+### vue-cli 执行流程：
 ```javascript
 //简单vue调用顺序:  (index.html-> main.js → app.vue → components → router → 切换到某组件) 
 
