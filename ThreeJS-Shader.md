@@ -7,3 +7,4 @@
 6. 修改材质的Shader：文章介绍了如何使用three.js的onBeforeCompile方法来修改材质的Shader，以实现自定义的光照效果。
 7. [alphardex/kokomi.js: A growing three.js helper library.](https://github.com/alphardex/kokomi.js#shadertoy-integration) 特效很多
 	1. 参考了[pmndrs/drei：🥉 react-three-fiber的有用助手](https://github.com/pmndrs/drei)  实现了很多特效, 如[Shaders / MeshReflectorMaterial - Docs ⋅ Storybook](https://drei.pmnd.rs/?path=/docs/shaders-meshreflectormaterial--docs)
+8. 
