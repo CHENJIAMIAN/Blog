@@ -7,4 +7,7 @@
 6. 修改材质的Shader：文章介绍了如何使用three.js的onBeforeCompile方法来修改材质的Shader，以实现自定义的光照效果。
 7. [alphardex/kokomi.js: A growing three.js helper library.](https://github.com/alphardex/kokomi.js#shadertoy-integration) 特效很多
 	1. 参考了[pmndrs/drei：🥉 react-three-fiber的有用助手](https://github.com/pmndrs/drei)  实现了很多特效, 如[Shaders / MeshReflectorMaterial - Docs ⋅ Storybook](https://drei.pmnd.rs/?path=/docs/shaders-meshreflectormaterial--docs)
-8. 
+	2. 将kokomi.js的demo都放到vercel上了[![](https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/3f843e8626a3844c624fb596dddd9674.svg)kokomi-playground.vercel.app](https://link.juejin.cn/?target=https%3A%2F%2Fkokomi-playground.vercel.app%2F%23rotateImage "https://kokomi-playground.vercel.app/#rotateImage")
+	3. [fragment.glsl - alphardex/threejs-playground - GitHub1s](https://github1s.com/alphardex/threejs-playground/blob/HEAD/src/shaders/noiseWave/fragment.glsl)
+
+1. [stemkoski.github.com/Three.js/js/ParticleEngineExamples.js 大学教授有很多特效](https://github.com/stemkoski/stemkoski.github.com/blob/master/Three.js/js/ParticleEngineExamples.js)
