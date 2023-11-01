@@ -13,4 +13,6 @@
 
 1. [stemkoski.github.com/Three.js/js/ParticleEngineExamples.js 大学教授有很多特效](https://github.com/stemkoski/stemkoski.github.com/blob/master/Three.js/js/ParticleEngineExamples.js)
 
-### 编辑器
+### 开源组态工具
+1. [vis-three/vis-three: A web 3D development framework for assembled based on three.js](https://github.com/vis-three/vis-three) vis-three: 策略设计模式的封装
+2. [zhangbo126/Three3d-view：🔥 🎉基于Three3d开发的3D模型可视化编辑系统。 js包含模型加载、模型外部导入、模型背景图、全景图、模型动画、模型光照、模型定位、辅助线、模型发光、模型拖拽、模型拆解、](https://github.com/zhangbo126/Three3d-view)
