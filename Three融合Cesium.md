@@ -1,5 +1,4 @@
 ### 优锘是怎么实现three跟cesium的融合的
-
 ```JavaScript
 Map引用了TileEarth，它的customSetup是
 	TileEarth是作为Control被App.prototype._tick回调其onUpdate函数
