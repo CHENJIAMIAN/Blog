@@ -498,3 +498,5 @@ src\renderers\WebGLRenderer.js
 	1. 是的，你的理解是正确的。在 `physicallyCorrectLights` 设置为 `false` （默认设置）时，Three.js 会使用一个简化的光照模型。在这个模型中，平行光源（`THREE.DirectionalLight`）的光线强度不会随着距离的增加而衰减。无论光源离物体有多远，光的强度和颜色都保持不变。但是，如果你把 `physicallyCorrectLights` 设为 `true`，Three.js 将使用一个物理光照模型。在这个模型中，光的强度会随着距离的平方增加而减小，这更符合现实世界的光线传播规则。然而，对于平行光源，由于它们模拟的是实际上相当远的光源（例如太阳），因此即使在物理正确的模式下，光强也不会随距离而衰减，因为其光线被视为平行且不衰减。
 3. 都已经obj.material.color.clone()了, 为什么颜色还是变得跟原来不一样了?
 	1. 在 Three.js 中，多个 Mesh 对象可以共享相同的材质。在这种情况下，如果你改变其中一个 Mesh 对象的材质颜色，那么所有使用这个材质的 Mesh 对象的颜色都将改变，因为它们实际上是引用的同一个 Material 对象。
+
+黄志阳
