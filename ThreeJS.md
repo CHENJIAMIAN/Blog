@@ -494,3 +494,5 @@ src\renderers\WebGLRenderer.js
 11. 环境光遮蔽贴图（Ambient Occlusion Map）：是一种用于模拟物体表面遮蔽效果的贴图，可以为模型添加阴影和明暗效果。
 ### 踩坑
 1. `THREE.NumberKeyframeTrack( '.material.map.offeset.x',`是不支持的, 只支持两级的属性, 如 `THREE.NumberKeyframeTrack( '.material.opacity`
+
+this.curObject可为group
