@@ -492,7 +492,7 @@ src\renderers\WebGLRenderer.js
 9. 环境贴图（Environment Map）：是一种用于模拟物体周围环境的贴图，可以为模型添加反射和折射效果。
 10. 光照贴图（Light Map）：是一种用于模拟物体表面光照效果的贴图，可以为模型添加阴影和明暗效果。
 11. 环境光遮蔽贴图（Ambient Occlusion Map）：是一种用于模拟物体表面遮蔽效果的贴图，可以为模型添加阴影和明暗效果。
-### 踩坑
+## 踩坑
 1. `THREE.NumberKeyframeTrack( '.material.map.offeset.x',`是不支持的, 只支持两级的属性, 如 `THREE.NumberKeyframeTrack( '.material.opacity`
-
-this.curObject可为group
+2. 加载的glb看起来很暗?
+	1. 是的，你的理解是正确的。在 `physicallyCorrectLights` 设置为 `false` （默认设置）时，Three.js 会使用一个简化的光照模型。在这个模型中，平行光源（`THREE.DirectionalLight`）的光线强度不会随着距离的增加而衰减。无论光源离物体有多远，光的强度和颜色都保持不变。但是，如果你把 `physicallyCorrectLights` 设为 `true`，Three.js 将使用一个物理光照模型。在这个模型中，光的强度会随着距离的平方增加而减小，这更符合现实世界的光线传播规则。然而，对于平行光源，由于它们模拟的是实际上相当远的光源（例如太阳），因此即使在物理正确的模式下，光强也不会随距离而衰减，因为其光线被视为平行且不衰减。
