@@ -499,4 +499,4 @@ src\renderers\WebGLRenderer.js
 3. 都已经obj.material.color.clone()了, 为什么颜色还是变得跟原来不一样了?
 	1. 在 Three.js 中，多个 Mesh 对象可以共享相同的材质。在这种情况下，如果你改变其中一个 Mesh 对象的材质颜色，那么所有使用这个材质的 Mesh 对象的颜色都将改变，因为它们实际上是引用的同一个 Material 对象。
 
-黄志阳
+黄志阳0000000
