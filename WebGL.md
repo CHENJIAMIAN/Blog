@@ -527,3 +527,13 @@ gl.drawArrays(gl.TRIANGLES, 0, numVertices);
 - step相当于高级的 `value>0 ? 0 : 1`
 ### [线性插值](https://mattdesl.svbtle.com/linear-interpolation)
 - lerp或mix
+
+"MRT" 在计算机图形学和WebGL中代表"Multiple Render Targets"，即多重渲染目标。这是一项技术，允许在一个渲染过程中将图像渲染到多个不同的目标，而不仅仅是主颜色缓冲区。以下是关于MRT的一些信息：
+
+1. MRT常用于延迟渲染、透明物体排序、单通道拾取等图形渲染技术[[1](https://www.realtimerendering.com/blog/webgl-2-basics/)]。
+    
+2. 在WebGL中，你可以使用MRT来从着色器一次性绘制到多个缓冲区，这对于一些延迟渲染技术非常有用[[4](https://www.oreilly.com/library/view/real-time-3d-graphics/9781788629690/e03ce610-5df3-4900-b267-13a9a01d929d.xhtml)]。
+    
+3. MRT还可以用于实现一些特效，如后期处理效果[[3](https://www.youtube.com/watch?v=COu-hMABjY8)]。
+    
+4. 在WebGL 2.0中，MRT的支持更强大，允许更多灵活性的渲染[[5](https://wgld.org/d/webgl2/w011.html)]。
