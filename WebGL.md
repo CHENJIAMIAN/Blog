@@ -1,5 +1,4 @@
 [学习了fem-d/webGL: for webGL learning](https://github.com/fem-d/webGL)
-
 ```javascript
 离线/实时渲染 //29fps/30fps
 /打断点在gl.drawArrays打,它通常是绘制前的最后一步/
@@ -40,7 +39,6 @@
     //
     5.Output 阶段（The Output Stage）将帧缓存的图像输出到屏幕或者保存成图片文件
 //Compute 阶段（The Compute Stage）是图形渲染管线的一部分，但并不是属于传统的三维图形渲染管线的一部分。它可以在任意时刻被调用，用于执行大量并行计算任务。Compute 阶段允许在渲染时间之外使用 GPU 进行计算。
-    
 渲染管线是指渲染一个 3D 场景的流程。在渲染管线中，顶点着色器会被用来处理顶点的数据，片段着色器会用来处理像素的颜色和其他属性。在这个过程中，3D 图形会被转换成二维像素，并被渲染到屏幕上。
     渲染管线包括以下几个步骤：
         几何处理：将 3D 图形转换成适合屏幕显示的 2D 图形。
@@ -52,14 +50,11 @@
 ## 介绍
 ```javascript
 WebGL 2.0是基于OpenGL ES 3.0的Web图形渲染API，用于在Web浏览器中进行高性能图形渲染。WebGL 2.0包含了大部分OpenGL ES 3.0的功能，并添加了一些WebGL特定的功能和改进，以便更好地适应Web平台。WebGL 2.0支持更高的渲染质量、更快的性能和更广泛的硬件支持，同时还支持一些新的渲染技术，如几何着色器、实例化渲染和可编程渲染管线。由于其高性能和跨平台特性，WebGL 2.0已成为Web游戏和应用程序开发的重要工具。因此，可以说WebGL 2.0是建立在OpenGL ES 3.0之上的Web图形渲染API。
-
 2007年，Vladimir Vukicevic， 一个塞尔维亚裔美国软件工程师开始编写一个名为Canvas 3D的OpenGL原型，以适用于即将到来的canvas元素上。2011年3月，他的工作指引着Kronos Group（一个OpenGL背后的非盈利组织）创建了WebGL：一个允许浏览器使用GPU的规范。
 不同于OpenGL:
     WebGL并没有提供单独操作单个点进行渲染的API
-    
 webgl的核心:
     WebGL 可以有多个着色器程序（Program）
-    
     类C语言GLSL编写//着色语言编写着色器
         顶点着色器 //顶点坐标信息 和 颜色值 被GPU的可编程顶点处理器(Programmable Vertex Processor)处理
             转换为缩放坐标系,保存到gl_Position中 //gl_PointSize是缩放距离的直径
@@ -70,14 +65,12 @@ webgl的核心:
        调用 gl.drawArrays 或 gl.drawElements 运行一个着色方法对，通知GPU执行着色器代码 
            gl.drawArrays可操作帧缓冲区，可调用多次，复用之前的结果//执行gl.drawArrays(gl.TRIANGLES,0,36);语句的时候，渲染管线会生成立方体图像的像素值，像素值存储在帧缓冲区的颜色缓冲区中，你可以把帧缓冲区当成一个RGB像素值仓库， 每执行一次gl.drawArrays(gl.TRIANGLES,0,36);生成一组RGB值，这些数据会被送进帧缓冲去中，默认不会覆盖前面的RGB数据
            gl.drawArrays可以多次调用，绘制部分顶点，这也就是说不透明的物体和半透明或透明的可以分开绘制
-            
     最小示例:https://github1s.com/HDongjian/visualization-games/blob/HEAD/02-WebGL/1-2-%E7%9D%80%E8%89%B2%E5%99%A8%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2.html#L19-L61
     多点绘制
         attribute vec4 a_变量名;//attribute是传入的只读变量
         uniform mat4 u_变量名;//uniform是传入的可变量
         in 和 out 关键字用于在着色器之间传递数据,/在 GLSL 1.30 及更高版本中，varying 关键字已被废弃，取而代之的是 in 和 out 关键字/
-        构建一个缓冲区来存传入的值  
-    
+        构建一个缓冲区来存传入的值
           
     一个片元可能包含的信息有：
         颜色信息：每个片元都有一个颜色值，这个颜色值可以由顶点着色器或片段着色器计算得出。
@@ -93,7 +86,6 @@ webgl的核心:
         深度测试（Depth Test）: 用于测试当前像素的深度值与帧缓冲区中的像素的深度值的大小关系，如果当前像素的深度值较小，则通过测试，否则不通过。
         透明度测试（Alpha Test）: 用于测试当前像素的透明度（Alpha 值）是否达到了指定阈值，如果达到了则通过测试，否则不通过。
         模板测试（Stencil Test）: 用于测试当前像素的模板值（Stencil 值）与帧缓冲区中的像素的模板值的大小关系，如果满足指定条件则通过测试，否则不通过。
- 
  
 缓冲区
     //最常见对象的三种数据类型,共9种
@@ -122,24 +114,20 @@ webgl的核心:
     VBO (Vertex Buffer Object)：    VBO 表示一个顶点缓冲对象，它用于存储顶点数据的缓冲区。VBO 可以让你将顶点数据储存在显卡的内存中，这样就可以在渲染时直接从显卡内存中读取数据，而不必从 CPU 内存中拷贝数据。const vbo = gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
     FBO (Framebuffer Object)：    FBO 表示一个帧缓冲对象，它可以用于渲染到纹理。FBO 是一种常用的技术，可以用于实现多种效果，如屏幕后处理效果、渲染到纹理、多视口渲染等。const fbo = gl.createFramebuffer();gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
     PBO (Pixel Buffer Object)：    PBO 表示一个像素缓冲对象，它可以用于异步地读取像素数据。PBO 可以让你将像素数据从 GPU 拷贝到 CPU，而不必等待渲染完成。这对于实时视频处理、图像处理等应用非常有用。const pbo = gl.createBuffer();gl.bindBuffer(gl.PIXEL_PACK_BUFFER, pbo);
-    
 offscreen离屏渲染//效率比较低，因为它需要额外的内存和带宽，将图形渲染到内存中的帧缓冲区，而不是直接渲染到屏幕上，
     用于选中物体//将每个物体都渲染成不同的颜色，并且将场景渲染到offscreen framebuffer中。接着，当用户点击屏幕时，我们使用offscreen framebuffer中的数据获取点击坐标对应的颜色
     //可以用于实现复杂的渲染效果，如阴影贴图、混合图像、视差贴图等
     //常用于解决图形较复杂时，屏幕绘制帧率下降的问题。 
     例如//在游戏中，当场景中的物体数量较多时，可以使用离屏渲染来提升渲染效率。通常，我们会将场景先渲染到纹理中，然后将纹理绑定到一个平面上，最后将平面绘制到屏幕上。这样做的好处是，渲染复杂的场景时只需要绘制一个平面，而不是绘制所有的物体，这样就可以大大提升渲染效率。
-
 UV//坐标用来表示纹理图片上的哪些像素要被渲染到3D模型的顶点上，从而让3D模型上的顶点获得纹理。uv坐标0-1代表在像素坐标的相对位置
     左上 → 右下 //0,0 → 1,1 中心是[0.5, 0.5]
     /OpenGL使用S和T表示，DirectX使用U和V。因此你可能会发现有人使用“UVs”来代表texture coordinates，使用“UV Mapping”来表示三维重建（unwrapping）。/
     为了使纹理在mipmap中被使用,纹理的宽高必须是2的幂次,否则在NEAREST和LINEAR过滤器中可以不用
         
-        
 存在形式
     uniform 全局变量
     varying 仅用来从 顶点着色器 -> 片断着色器 中传输变量, WebGL会将同名的可变量传输,要在片段着色器中使用顶点着色器中的信息，就必须要把这些信息从顶点着色器中传递给片段着色器。在顶点着色器中，使用varying关键字声明变量，然后在片段着色器中使用相同的变量名来获取传递过来的信息。
     //mipmap 为了加快渲染速度和减少图像锯齿，贴图被处理成由一系列被预先计算和优化过的图片组成的文件,在远处看时使用较低分辨率的纹理,这样的贴图被称为MIP map
-    
 类型
     sampler2D //texture的类型一般是它
     为什么shader uniforms被叫做samplers而不是textures？
@@ -148,26 +136,19 @@ UV//坐标用来表示纹理图片上的哪些像素要被渲染到3D模型的�
 方法    
     颜色 = texture2D(texture,vUv) //从纹理中提取颜色信息, 颜色是一个vec4变量
     vec4(1) 等同于 vec4(1, 1, 1, 1)
-
 normalize:
     标准化向量可以使得向量的长度一致，方便进行比较和计算,那么这个向量的长度会影响运算结果。'如果向量没有被单位化，这通常不是我们想要的，因为我们通常更关心向量的方向而不是其长度'
     在许多计算机图形学的应用中，如计算光照、变换矩阵等，都需要对向量进行单位化，即将向量的长度调整为1，从而得到一个只包含方向信息的向量。
-    
 径向点光源 //指光线从一个点向外辐射，且在所有方向上都具有相同的光强的光源。这种光源通常被用于照亮球形或圆柱形物体，因为它们可以提供均匀的照明效果。在三维计算机图形学中，径向点光源也常用于计算阴影和光照效果。
-
 openlayer缩放原理, 改变u_resolution //u_resolution 是画布尺寸，即代表画布宽高
     uniform float u_zoom; // 一个浮点数，表示由滚轮改变的值,从 html ui 传递的缩放值
     uniform vec2 u_mousePos; //鼠标的X和Y坐标
-    
 Transform Feedback是WebGL的一个功能，它允许我们在渲染过程中捕捉顶点着色器输出的结果，对其进行处理和修改，然后将结果传递回GPU进行绘制或存储。
     Transform Feedback可以帮助我们实现一些高级渲染技术，如粒子系统、布料模拟等，通过捕捉每个顶点的运动轨迹，我们可以更加精确地模拟物理效果。
 SSAO：屏幕空间环境光遮蔽，一种用于模拟环境光在场景中的反弹效果的技术。
 SSR：屏幕空间反射，一种用于模拟镜面反射效果的技术，在屏幕空间中计算反射向量并对其采样。
-
 ```
-
 ## 矩阵
-
 ```javascript
 矩阵运算
     在WebGL中矩阵操作的顺序和它们作用于vertices的顺序相反，矩阵相乘的顺序很重要TR != RT
@@ -182,7 +163,6 @@ SSR：屏幕空间反射，一种用于模拟镜面反射效果的技术，在�
         mat4.rotateY(mvMatrix, rotation[1]*Math.PI/180);
         mat4.rotateZ(mvMatrix, rotation[2]*Math.PI/180);
         mat4.translate(mvMatrix, position);
-    
 模型矩阵///描述三维物体的变换，包括平移、旋转、缩放等
 模型逆矩阵//将世界坐标转换回物体坐标, 他使得我们可以计算变换的“反向”或相反变换功能,所以，如果向量v用矩阵M来进行变换，接着用M的逆矩阵进行变换，将会得到原来的向量
 ```
@@ -198,15 +178,13 @@ MVP矩阵是一种常用的图形变换方式，用于将 3D 模型变换到 2D 
             orbiting 旋转世界
     3.投影矩阵//用于将观察坐标系变换到裁剪坐标系中，即将 3D 坐标转换为 2D 坐标。描述投影方式的，比如透视投影、正交投影。
             Perspective 透视投影   //是近大远小       
-            orthogonal  正交投影 
-            
+            orthogonal  正交投影
     
    mat4 modelMatrix = ...; // 创建模型矩阵
    mat4 viewMatrix = ...; // 创建视图矩阵
    mat4 projectionMatrix = ...; // 创建投影矩阵    
    mat4 mvpMatrix = projectionMatrix * viewMatrix * modelMatrix; // 计算MVP矩阵
 ```
-
 ## 方法大全
 ```javascript
 gl.activeTexture(gl.TEXTURE0);//激活纹理单元0，因为WebGL支持多个纹理单元
@@ -214,7 +192,6 @@ gl.activeTexture(gl.TEXTURE0);//激活纹理单元0，因为WebGL支持多个纹
 gl.bindTexture(gl.TEXTURE_2D, myTexture);//绑定myTexture纹理对象到2D纹理目标（gl.TEXTURE_2D），将myTexture纹理对象赋值给目标，以便后面可以对这个纹理对象进行操作。
 	myTexture = gl.createTexture();
     myTexture.image = new Image();
-    
 gl.attachShader(program, shader)//将着色器对象附加到程序对象上。
 gl.bindBufferBase(target, index, buffer)//将缓存区绑定到绑定点。绘制立方体时使用UBO中保存的矩阵变量。这样就可以避免在每一帧都将矩阵变量从JavaScript代码传递到着色器中    
     第二个参数 index 可以取的值取决于缓冲区的类型，例如：
@@ -236,7 +213,6 @@ gl.bindBufferBase(target, index, buffer)//将缓存区绑定到绑定点。绘�
               gl_Position = matrices.projection * matrices.view * matrices.model * vec4(position, 1.0);
             }
         其中, binding=1 是绑定点的值
-        
 gl.bindFramebuffer(target, framebuffer)//将帧缓存区对象绑定到目标上。
     //为了创建一个framebuffer，我们至少需要用于保存颜色和深度信息
     //使用一个纹理来存储颜色
@@ -247,14 +223,11 @@ gl.bindFramebuffer(target, framebuffer)//将帧缓存区对象绑定到目标上
         gl.bindRenderbuffer(target, renderbuffer)//将渲染缓存区绑定到目标上。        
         gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, width, height);//设置渲染缓冲区的存储。
 
-
 gl.bindVertexArray(array)//绑定顶点数组对象。
-
 多个物体重叠创建透明物体需要：开启α混合并选择混合函数,/从后往前的渲染物体/
 gl.blendEquation(gl.FUNC_SUBTRACT) //让中间的加号变减号, Color output = S * blendFunc设置的因子1 - D * blendFunc设置的因子2，它使得后绘制的像素颜色值减去先绘制的像素颜色值，然后再与混合颜色相混合。
 gl.blendFunc(gl.ONE, gl.ONE) //让Color output = S * 1 + D * 1，这里将混合因子设置为两个ONE，即将绘制的像素颜色值与原来的像素颜色值进行完全叠加。
 gl.blendFuncSeparate(gl.SRC_ALPHA源'颜色'使用Alpha通道作为混合因子, gl.ONE_MINUS_SRC_ALPHA'目标颜色'使用1减去Alpha通道作为混合因子, gl.ONE'源alpha通道和颜色'使用1作为混合因子, gl.ZERO'目标alpha通道和颜色'使用0作为混合因子)//决定RGB通道和α通道如何混合
-
 gl.blitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter)//将帧缓存区的一部分拷贝到另一个帧缓存区的一部分。
 gl.bufferData(target, sizeOrData, usage)//创建并初始化缓存区对象的数据存储。
 gl.bufferSubData(target, offset, data)//更新缓存区对象的数据存储。
@@ -275,10 +248,8 @@ gl.createShader//创建一个着色器对象
 gl.createTexture//创建一个纹理对象
 gl.createVertexArray//创建一个顶点数组对象
 
-
 单个物体创建透明物体//如果显示背景，把前景挖掉；如果显示前景，把背景挖掉。如果都有，那么全都渲染了。
 gl.cullFace//设置剔除面的方向,要先gl.enable(gl.FACE_CULLING);
-
 gl.deleteBuffer//删除 WebGL 缓存区对象。
 gl.deleteFramebuffer//删除由 gl.createFramebuffer 创建的帧缓冲区对象。
 gl.deleteRenderbuffer//删除由 gl.createRenderbuffer 创建的渲染缓冲区对象。
@@ -288,15 +259,12 @@ gl.deleteVertexArray//删除由 gl.createVertexArray 创建的顶点数组对象
 gl.depthFunc//设置深度缓冲区测试的函数。改变默认的深度测试规则,gl.LESS会作为默认值
 gl.depthMask//设置深度缓冲区写入开关。
 gl.disable//关闭指定的功能。
-
 //不是绘制的最后一个方法。在WebGL中，绘制的最后一个方法通常是gl.drawArrays或gl.drawElements
 gl.drawBuffers//指定要写入渲染缓冲区的 帧缓冲的颜色附件(颜色缓冲区)。这个函数需要使用多输出帧缓冲，如果你使用的是单输出帧缓冲，则不能使用这个函数。
-
 /最终步骤，在绘制之前，需要使用 gl.drawXXX 系列函数来指定要绘制的图形和绘制的方式，通知GPU执行着色器代码:/
 //drawArrays和drawElements只能使用被激活的数组们（enabled arrays）。
     gl.drawArrays//按照vertex data buffers按顺序创建对象。
     gl.drawElements//使用IBO来处理vertex data buffers并创建对象,
-    
 	gl.drawElements(gl.TRIANGLES, 要绘制的顶点数, gl.UNSIGNED_SHORT, 0);
 		//gl.drawElements(mode, count, type, offset); 
 	     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, vertexIndexBuffer);//drawElements从这个buffer拿顶点索引
@@ -311,7 +279,6 @@ gl.drawBuffers//指定要写入渲染缓冲区的 帧缓冲的颜色附件(颜�
             gl.TRIANGLE_FAN
             gl.TRIANGLES: 为一组三个顶点绘制一个三角形。
     gl.drawElementsInstanced//方法与gl.drawElements()方法相似，但是它会多次执行渲染操作, 绘制多个实例，每个实例都是由索引缓冲区描述的。
-
 gl.enable//启用或禁用 WebGL 渲染状态功能。
 gl.enableVertexAttribArray//启用或禁用着色器属性数组。这样做的原因是，使用顶点属性数组可能会消耗大量的 CPU 资源，如果不使用它们，可以减少不必要的开销。
 gl.framebufferRenderbuffer//将渲染缓冲区绑定到帧缓冲区的指定目标。
@@ -359,7 +326,6 @@ gl.hint(gl.GENERATE_MIPMAP_HINT, 提示级别);//提示webgl优化性能
 		- gl.FASTEST：表示可以忽略质量进行最快的处理
 		- gl.NICEST：表示需要最好的质量，可能速度较慢
 		- gl.DONT_CARE：表示对速度和质量没有特殊要求，WebGL 应该自己决定
-
 gl.texStorage2D//分配二维纹理的存储。
 gl.uniformBlockBinding//绑定统一块到一个绑定点。
 gl.useProgram//使用 WebGL 程序对象。
@@ -382,7 +348,6 @@ gl.bindBuffer 是 WebGL 中的一个方法，用于将缓冲区绑定到 WebGL �
         //gl.TRANSFORM_FEEDBACK_BUFFER: 用于转换反馈的缓冲区。
         //gl.UNIFORM_BUFFER: 用于存储 uniform 变量的缓冲区。
     buffer: 要绑定的缓冲区对象。
-    
 设置变量
     gl.uniform1f：设置单个浮点型uniform变量。
     uniform4f: 将4个浮点数值分别赋值给uniform变量
@@ -397,7 +362,6 @@ gl.bindBuffer 是 WebGL 中的一个方法，用于将缓冲区绑定到 WebGL �
     gl.uniformMatrix4f  用于将一个4x4矩阵值   传递给shader program。
 将向量变量传给着色器
     gl.uniform3fv(location是向量变量在着色器中的位置，v是一个包含向量数据的数组)
-    
 设置顶点//配置在绘制函数gl.drawArrays()时候，如何提取数据
     vertexAttribIPointer 函数用于设置'整数型'的顶点属性。它接受以下参数：
         index：着色器程序中的 attribute 变量的位置,通过 gl.getAttribLocation(shaderProgram, "aVertexPosition")获得
@@ -413,23 +377,19 @@ gl.bindBuffer 是 WebGL 中的一个方法，用于将缓冲区绑定到 WebGL �
 ## 渲染多个实例
 ```js
 // 创建 WebGL 上下文和着色器程序等
-
 // 创建顶点缓冲区（顶点数据）
 const vertexBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 gl.bufferData(gl.ARRAY_BUFFER, verticesData, gl.STATIC_DRAW);
-
 // 创建实例缓冲区（实例数据）
 const instanceBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, instanceBuffer);
 gl.bufferData(gl.ARRAY_BUFFER, instancesData, gl.STATIC_DRAW);
-
 // 设置顶点属性指针
 const positionAttributeLocation = gl.getAttribLocation(shaderProgram, 'a_position');
 gl.enableVertexAttribArray(positionAttributeLocation);
 gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 gl.vertexAttribPointer(positionAttributeLocation, 3, gl.FLOAT, false, 0, 0);
-
 // 设置实例属性指针
 const instanceAttributeLocation = gl.getAttribLocation(shaderProgram, 'a_instanceData');
 gl.enableVertexAttribArray(instanceAttributeLocation);
@@ -440,11 +400,9 @@ gl.vertexAttribDivisor(instanceAttributeLocation, 1); // 设置实例化属性�
 	//例如，如果你有一个顶点属性数组，包含了 3 个元素（例如，一个位置和两个纹理坐标）
     //并且你将顶点属性的递增因子设置为 3，那么在渲染下一个实例时，顶点属性数组将会跳过 3 个元素，
     //以便让下一个实例使用。
-	
 // 绘制调用
 gl.drawArraysInstanced(gl.TRIANGLES, 0, numVertices, numInstances);
 //启用了多路绘制（使用 gl.drawElementsInstanced 和 gl.drawArraysInstanced 函数）
-
   
 ```
 ## 纹理
@@ -477,7 +435,6 @@ LINEAR_MIPMAP_LINEARS(最慢但质量最高,8成选它)//这种过滤方式会�
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
 ```
-
 ## 阴影映射
 1. 阴影映射是一种常用的实现阴影效果的技术。它使用两个主要组件：光源的投影和深度贴图。
 2. 在阴影映射中，首先需要从光源的透视角度创建一个深度贴图（也称为阴影贴图）。深度贴图记录了从光源视角下每个像素的深度值。
@@ -494,28 +451,22 @@ gl.getShaderSource(gl.getAttachedShaders(program)[1])
 var vertexBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
 // 创建颜色缓冲区对象
 var colorBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
 gl.bufferData(gl.ARRAY_BUFFER, colors, gl.STATIC_DRAW);
 
-
 //在绘制图形时，需要分别绑定各自的缓冲区对象并设置到指定的 attribute 变量上：
-
 // 设置顶点坐标数据
 gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 gl.enableVertexAttribArray(vertexLoc);
 gl.vertexAttribPointer(vertexLoc, 3, gl.FLOAT, false, 0, 0);
-
 // 设置颜色数据
 gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
 gl.enableVertexAttribArray(colorLoc);
 gl.vertexAttribPointer(colorLoc, 3, gl.FLOAT, false, 0, 0);
-
 // 绘制图形
 gl.drawArrays(gl.TRIANGLES, 0, numVertices);
-
 其中 `vertexLoc` 和 `colorLoc` 分别是顶点和颜色 attribute 变量的位置（通常使用 `gl.getAttribLocation()` 函数来获取），`numVertices` 表示顶点数。
 ```
 ## 周期变化
@@ -527,13 +478,18 @@ gl.drawArrays(gl.TRIANGLES, 0, numVertices);
 - step相当于高级的 `value>0 ? 0 : 1`
 ### [线性插值](https://mattdesl.svbtle.com/linear-interpolation)
 - lerp或mix
-
-"MRT" 在计算机图形学和WebGL中代表"Multiple Render Targets"，即多重渲染目标。这是一项技术，允许在一个渲染过程中将图像渲染到多个不同的目标，而不仅仅是主颜色缓冲区。以下是关于MRT的一些信息：
-
-1. MRT常用于延迟渲染、透明物体排序、单通道拾取等图形渲染技术[[1](https://www.realtimerendering.com/blog/webgl-2-basics/)]。
-    
-2. 在WebGL中，你可以使用MRT来从着色器一次性绘制到多个缓冲区，这对于一些延迟渲染技术非常有用[[4](https://www.oreilly.com/library/view/real-time-3d-graphics/9781788629690/e03ce610-5df3-4900-b267-13a9a01d929d.xhtml)]。
-    
-3. MRT还可以用于实现一些特效，如后期处理效果[[3](https://www.youtube.com/watch?v=COu-hMABjY8)]。
-    
-4. 在WebGL 2.0中，MRT的支持更强大，允许更多灵活性的渲染[[5](https://wgld.org/d/webgl2/w011.html)]。
+## MRT多重渲染目标
+"MRT" 在计算机图形学和WebGL中代表"Multiple Render Targets"，即多重渲染目标。这是一项技术，允许在一个渲染过程中将图像渲染到多个不同的目标，而不仅仅是主颜色缓冲区。
+1. MRT常用于延迟渲染、透明物体排序、单通道拾取等图形渲染技术[1]。
+2. 在WebGL中，你可以使用MRT来从着色器一次性绘制到多个缓冲区，这对于一些延迟渲染技术非常有用[4]。
+3. MRT还可以用于实现一些特效，如后期处理效果[3]。
+4. 在WebGL 2.0中，MRT的支持更强大，允许更多灵活性的渲染[5]。
+## Transform Feedback
+Transform Feedback（变换反馈）是OpenGL和WebGL中的一个重要功能，用于捕获由顶点处理步骤生成的图元，并记录来自这些图元的数据。以下是关于Transform Feedback的一些关键信息：
+定义：Transform Feedback允许在渲染管线的顶点处理阶段中捕获数据，并将其保存在缓冲区中，而不是传递给下一个阶段，如片段着色器。
+1. 应用：它在各种图形和计算任务中都有用，例如粒子系统、物理模拟、GPU粒子排序等。
+2. WebGL：在WebGL中，Transform Feedback是WebGL 2 API的一部分，用于实现变换反馈功能，可以在浏览器中进行高性能的图形计算。
+3. Geometry Shader：通常，Transform Feedback与几何着色器一起使用，以捕获几何着色器生成的顶点数据。
+4. 缓冲区：Transform Feedback的结果可以保存在缓冲区中，以供后续使用或传输到CPU端进行处理。
+5. 资源链接：你可以参考OpenGL Wiki的文章[1]和MDN的WebGLTransformFeedback文档[3]，以获取更多详细信息和示例代码。
+6. 使用场景：尽管Transform Feedback功能强大，但需要谨慎使用，因为在某些情况下可能会导致性能问题。确保只在需要捕获和处理顶点数据时使用它。
