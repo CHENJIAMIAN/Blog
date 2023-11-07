@@ -1,5 +1,5 @@
 ## 概念
-
+ `.rfa` 文件类似`.glb`都是模型文件, 但专注于详细的建筑信息
 ```js
 CAD//像SU、MS、ArchiCAD、Inventor、Allplan、 VevtorWorks、Civil 3D等软件
     BIM//将以前的CAD图纸转化为立体模型，真到每个窗户都是真实具体尺寸的。具有小场景精细化的业务
