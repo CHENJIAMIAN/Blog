@@ -127,23 +127,3 @@ gltf-transform 3.5.0 — glTF Transform SDK的命令行界面（CLI）。
 	2. Cesium ion插件
 5. 在线转换
 6. blender导入导出
-13. 使用Assimp库进行转换。
-14. 使用Three.js库进行转换。
-16. 使用Sketchfab网站进行转换。
-18. 使用Don McCurdy的gltf-pipeline工具进行转换。
-19. 使用FBX2glTF-NODE工具进行转换。
-20. 使用FBX Converter软件进行转换。
-21. 使用RapidCompact软件进行转换。
-22. 使用MeshLab软件进行转换。
-23. 使用Noesis软件进行转换。
-24. 使用Rhino软件进行转换。
-25. 使用Substance Painter软件进行转换。
-26. 使用MagicaVoxel软件进行转换。
-27. 使用GLB Packer工具进行转换。
-28. 使用gltfjsx工具进行转换。
-29. 使用Archilogic Convert工具进行转换。
-32. 使用Jeston Leonard's FBX2glTF工具进行转换。
-33. 使用gltf-pipeline工具进行转换。
-34. 使用COLLADA2GLTF工具进行转换。
-35. 使用Google的 Draco压缩库进行转换。
-36. 自行编写脚本或程序进行转换。
