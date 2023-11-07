@@ -4,7 +4,7 @@
 /打断点在gl.drawArrays打,它通常是绘制前的最后一步/
     在绘制之前，需要使用 gl.drawXXX 系列函数来指定要绘制的图形和绘制的方式，例如 gl.drawArrays 和 gl.drawElements。这些函数通常是绘制前的最后一个方法，因为它们会实际执行绘制操作。
 ```
-### 点积和叉积
+#### 点积和叉积
 1. 点积用来测量两个向量的相似性和相对角度关系
     - 点积（内积）是两个向量的积，它表示为向量A 和向量B 之间的夹角的余弦值。
     - 点积的计算公式为 A·B = |A| * |B| * cos(θ) , 其中|A|和|B|分别是向量A和向量B的模长，θ是两个向量之间的夹角。
@@ -14,11 +14,11 @@
     - 叉积是一个向量，它的方向是两个向量所在平面的法向量，大小是两个向量所在平面面积的两倍。叉积的计算公式为 A X B = |A| * |B| * Sin(θ) * n(单位法向量)，
     - 叉积的结果是一个垂直于两个向量的向量。 
     - 叉积的应用非常广泛，在很多场景下都有用处。例如在几何学中, 叉积用于求两个向量所在平面的法向量；
-### 四元数 Quaternions
+#### 四元数 Quaternions
 - 四元数是一种数学工具，用于表示和计算3D旋转。与旋转矩阵相比，四元数具有一些优点，例如避免万向节锁（Gimbal Lock）问题和更高的计算效率。
 - 四元数可以表示为一个四元组（w, x, y, z），其中w是实部，(x, y, z)是虚部。它们可以用来表示旋转轴和旋转角度。
 - 在3D旋转中，可以使用四元数进行插值（如球面插值）和组合（如连续旋转的叠加）操作。
-## 渲染管线(重点)
+### 渲染管线(重点)
 ```javascript
 三维图形渲染管线（Graphics pipeline）就是将三维场景转化为一幅二维图像的过程。 常说有4个阶段（实际不止）:    
     1.应用阶段（Application stage）就是写代码定义阶段 //负责将摄像机位置、光照和模型的图元信息输出到几何阶段。渲染管线的状态（如深度测试状态、模板测试状态等）会被设置
@@ -47,7 +47,7 @@
         片段着色：为像素添加颜色和其他属性。
         合成：将像素添加到帧缓冲区，完成最终图像的渲染。//framebuffer是WebGL渲染的终点。当你看屏幕时，其他就是在看framebuffer中的内容。
 ```
-## 介绍
+### 介绍
 ```javascript
 WebGL 2.0是基于OpenGL ES 3.0的Web图形渲染API，用于在Web浏览器中进行高性能图形渲染。WebGL 2.0包含了大部分OpenGL ES 3.0的功能，并添加了一些WebGL特定的功能和改进，以便更好地适应Web平台。WebGL 2.0支持更高的渲染质量、更快的性能和更广泛的硬件支持，同时还支持一些新的渲染技术，如几何着色器、实例化渲染和可编程渲染管线。由于其高性能和跨平台特性，WebGL 2.0已成为Web游戏和应用程序开发的重要工具。因此，可以说WebGL 2.0是建立在OpenGL ES 3.0之上的Web图形渲染API。
 2007年，Vladimir Vukicevic， 一个塞尔维亚裔美国软件工程师开始编写一个名为Canvas 3D的OpenGL原型，以适用于即将到来的canvas元素上。2011年3月，他的工作指引着Kronos Group（一个OpenGL背后的非盈利组织）创建了WebGL：一个允许浏览器使用GPU的规范。
@@ -148,7 +148,7 @@ Transform Feedback是WebGL的一个功能，它允许我们在渲染过程中捕
 SSAO：屏幕空间环境光遮蔽，一种用于模拟环境光在场景中的反弹效果的技术。
 SSR：屏幕空间反射，一种用于模拟镜面反射效果的技术，在屏幕空间中计算反射向量并对其采样。
 ```
-## 矩阵
+### 矩阵
 ```javascript
 矩阵运算
     在WebGL中矩阵操作的顺序和它们作用于vertices的顺序相反，矩阵相乘的顺序很重要TR != RT
@@ -166,7 +166,7 @@ SSR：屏幕空间反射，一种用于模拟镜面反射效果的技术，在�
 模型矩阵///描述三维物体的变换，包括平移、旋转、缩放等
 模型逆矩阵//将世界坐标转换回物体坐标, 他使得我们可以计算变换的“反向”或相反变换功能,所以，如果向量v用矩阵M来进行变换，接着用M的逆矩阵进行变换，将会得到原来的向量
 ```
-## MVP矩阵预算
+### MVP矩阵预算
 ```js
 MVP矩阵是一种常用的图形变换方式，用于将 3D 模型变换到 2D 视口中。它通常由三个矩阵组成，分别是模型矩阵（Model）、观察矩阵（View）、投影矩阵（Projection）。
     1.模型矩阵//用于将模型变换到世界坐标系中。描述模型的变换的，比如旋转、缩放、平移。
@@ -185,7 +185,7 @@ MVP矩阵是一种常用的图形变换方式，用于将 3D 模型变换到 2D 
    mat4 projectionMatrix = ...; // 创建投影矩阵    
    mat4 mvpMatrix = projectionMatrix * viewMatrix * modelMatrix; // 计算MVP矩阵
 ```
-## 方法大全
+### 方法大全
 ```javascript
 gl.activeTexture(gl.TEXTURE0);//激活纹理单元0，因为WebGL支持多个纹理单元
 	可以在一个场景中使用多个纹理对象,一次draw中操作多纹理，这也被叫做多纹理渲染（multitexturing）
@@ -333,7 +333,7 @@ gl.viewport//设置视口。定义了绘制在 canvas 上的图像的区域
 gl.drawingBufferHeight;// 屏幕的高度，也即可视区域的高度（以像素计）
 gl.drawingBufferWidth;// 屏幕的宽度，也即可视区域的宽度（以像素计）
 ```
-## 设置参数
+### 设置参数
 ```javascript
 gl.bindBuffer 是 WebGL 中的一个方法，用于将缓冲区绑定到 WebGL 的指定目标上。
     //gl.bindBuffer 方法通常在绘制图形前调用，以在 WebGL 中使用缓冲区数据。绑定缓冲区后，可以使用其他 WebGL 方法来配置缓冲区的数据，例如 gl.bufferData 和 gl.bufferSubData。
@@ -374,7 +374,7 @@ gl.bindBuffer 是 WebGL 中的一个方法，用于将缓冲区绑定到 WebGL �
     vertexAttribPointer 函数用于设置'浮点型'的顶点属性。它接受以下参数：//告诉WebGL如何解析 顶点属性数据 (从gl.bindBuffer绑的缓冲区来)
         type：数据类型，可以是 gl.FLOAT 或 gl.HALF_FLOAT。
 ```
-## 渲染多个实例
+### 渲染多个实例
 ```js
 // 创建 WebGL 上下文和着色器程序等
 // 创建顶点缓冲区（顶点数据）
@@ -405,9 +405,9 @@ gl.drawArraysInstanced(gl.TRIANGLES, 0, numVertices, numInstances);
 //启用了多路绘制（使用 gl.drawElementsInstanced 和 gl.drawArraysInstanced 函数）
   
 ```
-## 纹理
+### 纹理
 gl.texParameteri   //设置纹理参数。
-### 包裹模式
+#### 包裹模式
 1. CLAMP_TO_EDGE表示超出纹理范围的部分会被截断并用纹理边界上的颜色进行填充。
 2. REPEAT表示纹理会以平铺的方式重复出现。
 3. MIRRORED_REPEAT表示纹理会镜像重复出现
@@ -415,9 +415,9 @@ gl.texParameteri   //设置纹理参数。
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); //Wrap S和Wrap T是两个纹理坐标轴，分别对应x方向和y方向
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);    
 ```
-### 纹理过滤器(图片采样方式)
+#### 纹理过滤器(图片采样方式)
 用于控制纹理在渲染过程中的采样方式
-#### MIN Filter
+###### MIN Filter
 缩小物体到很小时,纹理缩小的方式
 	1. Nearest：使用最近的纹理像素作为采样点。这是最简单和最快速的方式，但可能会导致图片过于锐利或出现锯齿。
 	2. Linear：使用相邻的纹理像素的加权平均值作为采样点。这可以产生更平滑的结果，但可能会产生模糊或失真。
@@ -428,24 +428,24 @@ LINEAR__MIPMAP_NEAREST//这种过滤方式会选取最接近屏幕上纹理的mi
 NEAREST_MIPMAP_LINEAR//这种过滤方式会选取两个最接近的mipmap，并且使用NEAREST来实现，最后的颜色会是两种样本的平均值。
 LINEAR_MIPMAP_LINEARS(最慢但质量最高,8成选它)//这种过滤方式会选取两个最接近的mipmap，并且使用LINEAR来实现，最后的颜色会是两种样本的平均值。这也叫做三线性过滤(trilinear filtering)。
 ```
-#### MAG Filter
+###### MAG Filter
 放大物体到很大时,纹理拉伸采样方法
 ```js
 //Nearest或Linear
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
 gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
 ```
-## 阴影映射
+### 阴影映射
 1. 阴影映射是一种常用的实现阴影效果的技术。它使用两个主要组件：光源的投影和深度贴图。
 2. 在阴影映射中，首先需要从光源的透视角度创建一个深度贴图（也称为阴影贴图）。深度贴图记录了从光源视角下每个像素的深度值。
 3. 在渲染阴影时，首先将场景从摄像机的视角渲染到帧缓冲区，同时使用光源的透视矩阵将场景渲染到深度贴图中。
 4. 然后，使用深度贴图对每个像素进行采样，并与当前像素的深度值进行比较。如果当前像素的深度值大于深度贴图中对应位置的深度值，那么当前像素就位于阴影中。
 5. 根据阴影的存在与否，可以调整像素的颜色或透明度，从而实现基础的阴影效果。
-## 实践
-### 根据program获取shader源码
+### 实践
+#### 根据program获取shader源码
 gl.getShaderSource(gl.getAttachedShaders(program)[0])
 gl.getShaderSource(gl.getAttachedShaders(program)[1])
-### 如何绑定多个bufferData
+#### 如何绑定多个bufferData
 ```javascript
 // 创建顶点缓冲区对象
 var vertexBuffer = gl.createBuffer();
@@ -469,22 +469,22 @@ gl.vertexAttribPointer(colorLoc, 3, gl.FLOAT, false, 0, 0);
 gl.drawArrays(gl.TRIANGLES, 0, numVertices);
 其中 `vertexLoc` 和 `colorLoc` 分别是顶点和颜色 attribute 变量的位置（通常使用 `gl.getAttribLocation()` 函数来获取），`numVertices` 表示顶点数。
 ```
-## 周期变化
+### 周期变化
 - "mod"运算符用于计算除法的余数，并将结果限制在一个固定的范围内。它可以实现将数值限制在一个周期内，例如将计数器限制在特定范围内循环计数。
 	- "mod"运算符主要用于计算和控制数值的周期性行为
 - sin函数是一种三角函数，它在数学上用于描述周期性的振荡或波动。sin函数的输出在-1到1之间变化，并且具有连续的周期性。sin函数的周期是2π（或360度），当输入的角度增加或减少2π时，sin函数的值将重复。
 	- sin函数则用于描述和模拟周期性的连续变化，例如音频波形、动画效果等。
-### 非此即彼
+#### 非此即彼
 - step相当于高级的 `value>0 ? 0 : 1`
-### [线性插值](https://mattdesl.svbtle.com/linear-interpolation)
+#### [线性插值](https://mattdesl.svbtle.com/linear-interpolation)
 - lerp或mix
-## MRT多重渲染目标
+### MRT多重渲染目标
 "MRT" 在计算机图形学和WebGL中代表"Multiple Render Targets"，即多重渲染目标。这是一项技术，允许在一个渲染过程中将图像渲染到多个不同的目标，而不仅仅是主颜色缓冲区。
 1. MRT常用于延迟渲染、透明物体排序、单通道拾取等图形渲染技术[1]。
 2. 在WebGL中，你可以使用MRT来从着色器一次性绘制到多个缓冲区，这对于一些延迟渲染技术非常有用[4]。
 3. MRT还可以用于实现一些特效，如后期处理效果[3]。
 4. 在WebGL 2.0中，MRT的支持更强大，允许更多灵活性的渲染[5]。
-## Transform Feedback
+### Transform Feedback
 Transform Feedback（变换反馈）是OpenGL和WebGL中的一个重要功能，用于捕获由顶点处理步骤生成的图元，并记录来自这些图元的数据。以下是关于Transform Feedback的一些关键信息：
 定义：Transform Feedback允许在渲染管线的顶点处理阶段中捕获数据，并将其保存在缓冲区中，而不是传递给下一个阶段，如片段着色器。
 1. 应用：它在各种图形和计算任务中都有用，例如粒子系统、物理模拟、GPU粒子排序等。
@@ -494,4 +494,27 @@ Transform Feedback（变换反馈）是OpenGL和WebGL中的一个重要功能，
 5. 资源链接：你可以参考OpenGL Wiki的文章[1]和MDN的WebGLTransformFeedback文档[3]，以获取更多详细信息和示例代码。
 6. 使用场景：尽管Transform Feedback功能强大，但需要谨慎使用，因为在某些情况下可能会导致性能问题。确保只在需要捕获和处理顶点数据时使用它。
 
-## 
+### G缓冲区与延迟渲染
+延迟渲染（Deferred Rendering）是一种计算机图形学中的渲染技术，它将渲染过程分为两个阶段：
+
+1. **几何处理阶段（G-Buffer Pass）**：
+   在这个阶段，场景中的几何信息（如顶点位置、法线、颜色、材质属性等）被渲染到一组纹理中，统称为G缓冲区（Geometry Buffer）。这个过程不涉及光照计算。G缓冲区通常包括以下类型的纹理：
+   - **位置纹理**：存储每个像素的世界空间位置。
+   - **法线纹理**：存储每个像素的法线向量。
+   - **颜色纹理**：存储每个像素的漫反射颜色。
+   - **镜面纹理**：存储每个像素的镜面反射强度和光泽度。
+   - **深度纹理**：存储每个像素的深度信息。
+   - **其他属性纹理**：如粗糙度、金属度等。
+
+2. **光照计算阶段（Lighting Pass）**：
+   在这个阶段，使用G缓冲区中的数据对场景进行光照计算。这个过程是在屏幕空间进行的，意味着它是基于像素的。对于场景中的每个光源，着色器读取G缓冲区的纹理，计算该光源对屏幕上每个像素的影响。由于所有必要的数据都已经在G缓冲区中，因此可以非常高效地对多个光源进行计算。
+
+延迟渲染的主要优点是它能够处理大量的动态光源而不会显著降低性能，因为光照计算是独立于场景中物体数量的。这使得延迟渲染非常适合复杂场景和动态光照效果，如游戏和实时渲染应用。
+
+然而，延迟渲染也有一些缺点和限制：
+
+- **内存占用**：G缓冲区需要额外的纹理来存储数据，这会占用更多的显存。
+- **透明度处理**：延迟渲染不擅长处理透明物体，因为透明物体的光照通常需要知道背后物体的信息，而这在延迟渲染的第一阶段是不可用的。
+- **抗锯齿**：由于延迟渲染在屏幕空间进行，传统的多重采样抗锯齿（MSAA）不容易直接应用。
+
+尽管有这些限制，延迟渲染因其在处理复杂光照场景时的高效性而被广泛使用。随着图形硬件的发展，这些限制也在逐渐被新技术和方法所克服。
