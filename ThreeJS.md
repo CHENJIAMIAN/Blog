@@ -495,6 +495,8 @@ src\renderers\WebGLRenderer.js
 ## 原理
 1. 灯光颜色的作用原理是灯光颜色和物体颜色去乘积
 2. threejs如何判断一个面是正明还是反面? 规定: 看过去的三角形的顶点顺序是逆时针为正面
+3. 更改position有时并不会生效, 因为用的可能是matrixworld去设置位置, 所以要先obj.updateMatrix() 再 obj.updateMatrixworld()
+4. threejs认识鼠标位置的方式是: 以画布中心点为圆心的单位坐标系
 ## 踩坑
 1. `THREE.NumberKeyframeTrack( '.material.map.offeset.x',`是不支持的, 只支持两级的属性, 如 `THREE.NumberKeyframeTrack( '.material.opacity`
 2. 加载的glb看起来很暗?
