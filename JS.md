@@ -649,29 +649,40 @@ queryObjects(Object)
 const cache = new Set();
 
 function safeStringify(key, value) {
-  try {
-    // 检查value是否是一个可能的跨域对象
-    if (typeof value === "object" && value !== null) {
-      if (cache.has(value)) {
-        // 移除循环引用
-        return;
-      }
-      cache.add(value);
+  if (typeof value === "object" && value !== null) {
+    if (cache.has(value)) {
+      // 移除循环引用
+      return;
+    }
+    cache.add(value);
 
-    if (key === '_typedArray' || key === '_shaders' || key === "_vertexShaderSource" || key === "sources"
-    || key === "keyword" || key==="_vertexShaderText"|| key==="_fragmentShaderText" || key==="_shadersByTexturesFlags" 
-    || key==="vertices" || key==="_html" || key==="_owner"||key==="_us"||key==="primitive"||key==="primitives"
+    if (
+      key === "_typedArray" ||
+      key === "_shaders" ||
+      key === "_vertexShaderSource" ||
+      key === "sources" ||
+      key === "keyword" ||
+      key === "_vertexShaderText" ||
+      key === "_fragmentShaderText" ||
+      key === "_shadersByTexturesFlags" ||
+      key === "vertices" ||
+      key === "_html" ||
+      key === "_owner" ||
+      key === "_us" ||
+      key === "primitive" ||
+      key === "primitives"
     ) {
       return; // remove unwanted keys
     }
 
-  return value;
+    return value;
+  }
 }
-
 try {
   JSON.stringify(temp1.scene.root, safeStringify);
 } catch (e) {
   // 如果JSON.stringify失败了，这里捕获异常
   debugger;
 }
+
 ```
