@@ -84,6 +84,39 @@ return new Instanced3DModel3DTileContent(tileset,tile,resource,arrayBuffer,byteO
 ### 管线流动
 1. [graphic/primitive/polylineVolume | 火星科技](http://mars3d.cn/editor-vue.html?id=graphic/primitive/polylineVolume)
 2. [graphic/primitive/polyline | 火星科技](http://mars3d.cn/editor-vue.html?id=graphic/primitive/polyline)
+
+### 物体边缘高亮闪烁(GPT-4写的)
+```js
+const customShader = new Cesium.CustomShader({
+  uniforms: {
+    u_time: {
+      value: 0, // 初始时间值
+      type: Cesium.UniformType.FLOAT
+    }
+  },
+  fragmentShaderText: `
+    void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material) {
+        // 法线边缘检测，通过增加梯度计算的尺度来增加轮廓线的粗细
+        float edge = length(cross(dFdx(fsInput.attributes.normalEC * 2.0), dFdy(fsInput.attributes.normalEC * 2.0)));
+
+        // 闪烁效果
+        float time = mod(u_time, 6.28318); // 2 * PI，保持时间在一个循环内
+        float intensity = abs(sin(time)); // 正弦函数闪烁
+
+        // 当检测到边缘时，调整材质颜色来高亮显示
+        if (edge > 0.0001) { // 边缘检测阈值，减小这个值可以使轮廓线更粗
+            material.emissive = vec3(1.0, 0.5, 0.0) * intensity; // 以橙色高亮边缘
+        }
+    }
+  `,
+});
+
+// 更新shader时间
+viewer.scene.postUpdate.addEventListener(() => {
+  customShader.setUniform('u_time', (Date.now() % 10000) / 1000.0); // 更新时间，取模以防数值过大
+});
+```
+
 ### 官方案例
 ```js
 const viewer = new Cesium.Viewer("cesiumContainer", {
