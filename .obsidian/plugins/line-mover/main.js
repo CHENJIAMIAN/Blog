@@ -1,7 +1,7 @@
-import { Plugin } from 'obsidian';
+const { Plugin } = require('obsidian');
 
-export default class LineMoverPlugin extends Plugin {
-    async onload() {
+class LineMoverPlugin extends Plugin {
+    onload() {
         this.addCommand({
             id: 'move-line-up',
             name: 'Move Line Up',
@@ -45,3 +45,5 @@ export default class LineMoverPlugin extends Plugin {
         editor.setCursor({ line: targetLine, ch: cursor.ch });
     }
 }
+
+module.exports = LineMoverPlugin;
