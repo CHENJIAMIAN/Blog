@@ -1,10 +1,10 @@
 {
-  "id": "hotkeysplus-obsidian",
-  "name": "Hotkeys++",
-  "description": "Additional hotkeys to do common things in Obsidian",
-  "version": "0.2.7",
-  "author": "Argentina Ortega Sainz",
-  "authorUrl": "https://argentinaos.com",
-  "isDesktopOnly": false,
-  "minAppVersion": "0.12.19"
+  "id": "line-mover",
+  "name": "Line Mover",
+  "version": "1.0.0",
+  "minAppVersion": "0.12.0",
+  "description": "A simple Obsidian plugin to move the current line up or down using ALT+↑ and ALT+↓.",
+  "author": "Your Name",
+  "authorUrl": "https://yourwebsite.com",
+  "isDesktopOnly": false
 }
