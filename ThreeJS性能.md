@@ -58,3 +58,4 @@ material/geometry.dispose(); //删除材质/几何体
 	- MorphTargets 是一种在几何体的每个顶点处都提供多个值，并通过线性插值（Linear Interpolation）在它们之间进行过渡的方法
 2. OffscreenCanvas 允许 web worker 渲染到 canvas
 3. OrbitControls 是一个用来控制 3D 场景视图的工具，它需要监听鼠标和键盘事件来调整场景中的相机位置。然而，由于 Web Worker 无法直接操作 DOM，OrbitControls 无法在 Web Worker 中正常工作。所以，让主线程监听 DOM 事件，转发给伪装成 HTMLElement的代理对象,  然后 Web Worker 从它拿事件，从而让 OrbitControls 能够在 Web Worker 中正常工作。
+-
