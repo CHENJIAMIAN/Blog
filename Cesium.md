@@ -1159,7 +1159,7 @@ ArcType.RHUMB
 2. obj转gltf转换:https://qithub.com/AnalyticalGraphicsInc/obi2gltf
 3. 或 https://github.com/PrincessGod/objTo3d-tiles
 4. 或 https://github.com/fanvanzh/3DTiles
-5. gltf内部优化处理: https://github.com/AnalyticalGraphicsInc/altf-pipeline
+5. gltf内部优化处理: https://github.com/AnalyticalGraphicsInc/gltf-pipeline
 
 ## CDN
 ```bash
