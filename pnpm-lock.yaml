@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 devDependencies:
+  busuanzi.pure.js:
+    specifier: ^1.0.3
+    version: 1.0.3
   tslib:
     specifier: ^2.5.2
     version: 2.5.2
@@ -603,6 +606,10 @@ packages:
     resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
     dependencies:
       balanced-match: 1.0.2
+    dev: true
+
+  /busuanzi.pure.js@1.0.3:
+    resolution: {integrity: sha512-tPULdyx+8NNb9geZYDpktKmHAYx9f2LEOBaHyWCaM7iPEMIa/43KgYAUluuU7YG9UFSOFpj4dO7Nj2Vlu3V9Rg==}
     dev: true
 
   /csstype@3.1.2:

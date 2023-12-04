@@ -1,0 +1,23 @@
+{
+  "hash": "b8d4122e",
+  "browserHash": "ecc84c7d",
+  "optimized": {
+    "vue": {
+      "src": "../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "8e88dbe3",
+      "needsInterop": false
+    },
+    "busuanzi.pure.js": {
+      "src": "../../../node_modules/.pnpm/busuanzi.pure.js@1.0.3/node_modules/busuanzi.pure.js/index.js",
+      "file": "busuanzi__pure__js.js",
+      "fileHash": "326f4d48",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-RSJERJUL": {
+      "file": "chunk-RSJERJUL.js"
+    }
+  }
+}
