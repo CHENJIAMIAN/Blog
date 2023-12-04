@@ -145,5 +145,5 @@ git clone --depth=30 https://github.com/mrdoob/three.js.git
 
 ### 向 `.gitignore` 文件中新增内容但发现它不生效时
 ```sh
- git rm --cached -r . && git add . && git commit -m "Untrack files in .gitignore"
+ git rm --cached -r . && git add . && git commit -m "Untrack files in .gitignore" 
 ```
