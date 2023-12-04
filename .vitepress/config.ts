@@ -1,21 +1,21 @@
-import { defineConfig } from 'vitepress'
-import { getSideBar } from 'vitepress-plugin-autobar'
+import { defineConfig } from "vitepress";
+import { getSideBar } from "vitepress-plugin-autobar";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base:'/Blog',
-  lang: 'zh',
+  base: "/Blog",
+  lang: "zh",
   title: "CHENJIAMIAN",
   description: "个人博客",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    outlineTitle: '目录',
+    outlineTitle: "目录",
     nav: [
-      { text: '介绍', link: '/' },
-      { text: '主页', link: '/README' },
+      { text: "介绍", link: "/" },
+      { text: "主页", link: "/README" },
     ],
 
-    sidebar: getSideBar(".",{
+    sidebar: getSideBar(".", {
       ignoreDirectory: [
         "node_modules/@eslint-community/eslint-utils/README",
         "node_modules/@eslint-community/regexpp/README",
@@ -45,8 +45,12 @@ export default defineConfig({
     //   }
     // ],
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/CHENJIAMIAN' }
-    ]
+    socialLinks: [{ icon: "github", link: "https://github.com/CHENJIAMIAN" }],
+
+    footer: {
+      // 你可以在这里添加 HTML 代码
+      message: `1111111111111111111`,
+      copyright: `2222222222222222`,
+    },
   },
-})
+});
