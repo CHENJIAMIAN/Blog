@@ -6,6 +6,7 @@
   },
   "devDependencies": {
     "busuanzi.pure.js": "^1.0.3",
+    "gitalk": "^1.8.0",
     "tslib": "^2.5.2",
     "vitepress": "1.0.0-beta.1",
     "vitepress-plugin-autobar": "^1.0.8"
