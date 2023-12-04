@@ -1,15 +1,26 @@
 <!-- Index.vue -->
-<script setup>
+<script lang="ts" setup>
 import Theme from 'vitepress/theme'
+import { watch, ref } from 'vue'
+import { useRoute } from 'vitepress'
+
 import Comment from './Comment.vue'
 
 const { Layout } = Theme
+const route = useRoute()
+const num = ref(0)
+
+watch(
+  () => route.path,
+  () => {
+    num.value++
+  }
+)
 </script>
 <template>
   <Layout>
-    <!-- #doc-after 表示在每篇文章的最后位置添加 Comment组件 -->
     <template #doc-after>
-      <Comment />
+      <Comment :key="num" />
     </template>
   </Layout>
 </template>

@@ -1,17 +1,23 @@
 {
-  "hash": "b8d4122e",
-  "browserHash": "ecc84c7d",
+  "hash": "d8644460",
+  "browserHash": "15ce9cb6",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "8e88dbe3",
+      "fileHash": "06f5b8be",
       "needsInterop": false
     },
     "busuanzi.pure.js": {
       "src": "../../../node_modules/.pnpm/busuanzi.pure.js@1.0.3/node_modules/busuanzi.pure.js/index.js",
       "file": "busuanzi__pure__js.js",
-      "fileHash": "326f4d48",
+      "fileHash": "a4715efd",
+      "needsInterop": true
+    },
+    "gitalk": {
+      "src": "../../../node_modules/.pnpm/gitalk@1.8.0_react-dom@15.7.0_react@15.7.0/node_modules/gitalk/dist/gitalk.js",
+      "file": "gitalk.js",
+      "fileHash": "bc2c6039",
       "needsInterop": true
     }
   },
