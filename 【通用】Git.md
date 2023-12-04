@@ -142,3 +142,8 @@ git rm --cached file来停止跟踪这些文件
 使用 --depth 参数来防止获取所有提交历史记录
 git clone --depth=30 https://github.com/mrdoob/three.js.git
 ```
+
+### 向 `.gitignore` 文件中新增内容但发现它不生效时
+```sh
+ git rm --cached -r . && git add . && git commit -m "Untrack files in .gitignore"
+```
