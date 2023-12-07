@@ -511,3 +511,4 @@ src\renderers\WebGLRenderer.js
 			- `factor`（对应于`polygonOffsetFactor`）：影响深度偏移量与面相对于摄像机视线的角度的关系。
 			- `units`（对应于`polygonOffsetUnits`）：向最终的深度值添加一个固定的偏移量。
 	2. 简而言之, 设置越小, 越会被优先显示
+1. 
