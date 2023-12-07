@@ -54,9 +54,11 @@ Three.js中级封装做3D, 万物皆三角形
 	2. **伽马校正**的目的是将图像的亮度值进行**非线性变换**，以使其在显示设备上呈现出线性感知。
 3. 高动态范围图像捕捉到了现实世界中广泛的亮度和颜色细节，但直接在标准显示设备上显示会导致过曝（Overexposure）或细节丢失。
 4. 算法
-	1. 线性映射（Linear Mapping）：`THREE.LinearToneMapping; `简单地按比例缩放高动态范围图像的亮度值，使其适应显示设备的范围。这种方法简单直接，但可能导致亮度和对比度的损失。
-	2. Reinhard 算法：`THREE.ReinhardToneMapping;` Reinhard 算法通过应用一个非线性映射函数来调整图像的曝光度和对比度，以在较低动态范围内保留更多细节。它是一种常用的全局色调映射算法。
-	3. ACES Filmic 算法：`THREE.ACESFilmicToneMapping;` ACES Filmic 是一种基于电影工业标准的色调映射算法，旨在提供更加真实和自然的色彩和光照表现。它通过非线性映射和曝光度调整来处理高动态范围图像，以实现更好的视觉效果。**伽马校正**可以作为其中的一部分，用于调整图像的颜色和亮度
+	1. **LinearToneMapping**：线性色调映射保持颜色的原始比例，不进行任何调整。这种映射适合那些已经预调整好颜色的模型，或者在你希望保持最原始颜色时使用。
+	2. **ReinhardToneMapping**：Reinhard色调映射是一种比较自然的映射方式，它能较好地平衡高光和暗部细节。适用于大多数场景，特别是那些需要较为真实感的场景。
+	3. **Uncharted2ToneMapping**：这种映射模仿了游戏《神秘海域2》中的色调映射算法。它提供了一种动态范围广泛且对比度高的效果，适合需要强烈视觉冲击的场景。
+	4. **CineonToneMapping**：这种映射模拟电影胶片的色彩，适合想要电影感或者复古感的场景。
+	5. **ACESFilmicToneMapping**：模拟了ACES工作流中使用的色调映射。它能提供富有电影感的色彩和对比度，适合追求电影级视觉效果的场景。
 
 ## 曲线
 ```js
@@ -517,4 +519,5 @@ src\renderers\WebGLRenderer.js
 	  directionalLight.shadow.mapSize.height = 1024; // 新的高度 
 	  // **强制更新阴影贴图** 
 	  directionalLight.shadow.map = null;
-1. 
+1. 机柜一团黑, 加光了也有某些角度是一团黑的
+	1. 改色调映射就可以了
