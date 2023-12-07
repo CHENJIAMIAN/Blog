@@ -517,3 +517,4 @@ src\renderers\WebGLRenderer.js
 	  directionalLight.shadow.mapSize.height = 1024; // 新的高度 
 	  // **强制更新阴影贴图** 
 	  directionalLight.shadow.map = null;
+1. 
