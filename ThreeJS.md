@@ -519,5 +519,5 @@ src\renderers\WebGLRenderer.js
 	  directionalLight.shadow.mapSize.height = 1024; // 新的高度 
 	  // **强制更新阴影贴图** 
 	  directionalLight.shadow.map = null;
-1. 机柜一团黑, 加光了也有某些角度是一团黑的
-	1. 改色调映射就可以了
+1. 机柜一团黑, 加了很多光了也有某些角度是一团黑的
+	1. 改色调映射的曝光强度就可以了toneMappingExposure
