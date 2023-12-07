@@ -511,4 +511,8 @@ src\renderers\WebGLRenderer.js
 			- `factor`（对应于`polygonOffsetFactor`）：影响深度偏移量与面相对于摄像机视线的角度的关系。
 			- `units`（对应于`polygonOffsetUnits`）：向最终的深度值添加一个固定的偏移量。
 	2. 简而言之, 设置越小, 越会被优先显示
-1. 
+1. ![User](https://s.gravatar.com/avatar/12960e85c212ac4ec8ca1547178470c8?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2F99.png)
+
+You
+
+更改directionalLight.shadow.mapSize是实时生效的吗
