@@ -21,11 +21,11 @@ gltf-transform optimize out.glb out_optimize.glb
 ```shell
 gltf-transform 3.5.0 — glTF Transform SDK的命令行界面（CLI）。
 
- 使用方法 
+使用方法 
 
-   ▸ gltf-transform <command> [ARGUMENTS...] [OPTIONS...]
+gltf-transform <command> [ARGUMENTS...] [OPTIONS...]
 
- 命令 — 输入 'gltf-transform help <command>' 以获取有关命令的帮助信息
+命令 — 输入 'gltf-transform help <command>' 以获取有关命令的帮助信息
 
                                          🔎 INSPECT ──────────────────────────────────────────  
     inspect                              检查模型的内容                                      
@@ -59,7 +59,7 @@ gltf-transform 3.5.0 — glTF Transform SDK的命令行界面（CLI）。
     simplify                             简化网格，减少顶点数量                               
                                                                                                 
                                          🎨 MATERIAL ─────────────────────────────────────────  
-    metalrough                           从spec/gloss转换材质为metal/rough                     # KHR_materials_pbrSpecularGlossiness
+    metalrough                           从spec/gloss转换材质为metal/rough # KHR_materials_pbrSpecularGlossiness
     palette                              创建调色板纹理并合并材质                              
     unlit                                从metal/rough转换材质为unlit                         
                                                                                                 
