@@ -95,11 +95,15 @@ gltf-transform <command> [ARGUMENTS...] [OPTIONS...]
 1. **新**: 金属度（Metallic）PBR：这种类型的PBR基于金属度属性来描述材质的特性。金属度材质通常具有金属质感，如钢铁、铜等。金属度PBR使用金属度（Metallic）和粗糙度（Roughness）两个参数来描述材质的外观。金属度为0表示非金属材质，金属度为1表示完全金属的材质。
 2. **gltf2.0废弃**: 非金属度（Specular/Glossiness）PBR：这种类型的PBR使用非金属度（Specular）和光泽度（Glossiness）来描述材质的特性。非金属度材质通常具有非金属的外观，如木材、塑料等。非金属度PBR使用非金属度和光泽度两个参数来定义材质的外观，其中非金属度表示材质的镜面反射率，光泽度表示材质的平滑程度。
 ### 研究一下 glb,为什么会和展示的不一样
-- 现在平台的three版本是129最新是155  
-- win10的3D查看器导出的glb的KHR_materials_pbrSpecularGlossiness是最新的three废弃掉的.
+- 现在平台的three版本是r129最新是r159(2023年12月15日)
+- win10的3D查看器导出的glb的**KHR_materials_pbrSpecularGlossiness**是最新的three废弃掉的.
 	- r146还支持的, r147就没了
-	- 在最新的three.js版本中，GLTFLoader废弃了对KHR_materials_pbrSpecularGlossiness的支持，因为这个扩展已经不再是GLTF 2.0的一部分了。KHR_materials_pbrSpecularGlossiness是在GLTF 2.0规范发布之前开发的一个扩展，它添加了一些额外的参数，例如镜面反射和粗糙度，以支持基于镜面反射和粗糙度的PBR材质模型。
-	- 然而，后来GLTF 2.0规范添加了对基于金属度的PBR材质模型的支持，这个模型更为通用，使得KHR_materials_pbrSpecularGlossiness变得不再必要。因此，最新的three.js版本不再支持这个扩展，而是使用GLTF 2.0规范中的基于金属度的PBR材质模型来处理GLTF文件中的材质。这样可以使得three.js的GLTFLoader与GLTF 2.0规范更加兼容，并且简化了代码实现。
+	- [GLTFLoader、GLTFExporter：通过 donmccurdy 删除 KHR_materials_pbrSpecularGlossiness · Pull 请求 #24950 · mrdoob/ Three.js](https://github.com/mrdoob/three.js/pull/24950)
+		- 作者推荐适配的方法:
+			1. 在线gltf.report 查看器,会自动转为2.0规范: [glTF Report --- GLTF报告](https://gltf.report/)
+			2. 用gltf-transform
+	- 在最新的three.js版本中，GLTFLoader废弃了对`KHR_materials_pbrSpecularGlossiness`的支持，因为这个扩展已经不再是GLTF 2.0的一部分了。`KHR_materials_pbrSpecularGlossiness`是在GLTF 2.0规范发布之前开发的一个扩展，它添加了一些额外的参数，例如镜面反射和粗糙度，以支持基于镜面反射和粗糙度的PBR材质模型。
+	- 然而，后来GLTF 2.0规范添加了对基于金属度的PBR材质模型的支持，这个模型更为通用，使得`KHR_materials_pbrSpecularGlossiness`变得不再必要。因此，最新的three.js版本不再支持这个扩展，而是使用GLTF 2.0规范中的基于金属度的PBR材质模型来处理GLTF文件中的材质。这样可以使得three.js的GLTFLoader与GLTF 2.0规范更加兼容，并且简化了代码实现。
 - Win10的3D查看器的光: 一个正面光(偏上,偏右), 一个后面光(偏上,偏左), 一个纯正面光, 环境光40
 - 不同的gltf版本, 不兼容, 导出的glb版本会在查看器查看, 查看时要确保查看器支持的glb版本跟该文件glb版本一致, 此外还有很多扩展, 要确保glb中的扩展(如果有)有被查看器实现
 - 用3dsmax2023版导出可用新增的 `glTF材质`
