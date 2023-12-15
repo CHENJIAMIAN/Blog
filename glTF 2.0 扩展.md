@@ -96,7 +96,7 @@ gltf-transform <command> [ARGUMENTS...] [OPTIONS...]
 2. **gltf2.0废弃**: 非金属度（Specular/Glossiness）PBR：这种类型的PBR使用非金属度（Specular）和光泽度（Glossiness）来描述材质的特性。非金属度材质通常具有非金属的外观，如木材、塑料等。非金属度PBR使用非金属度和光泽度两个参数来定义材质的外观，其中非金属度表示材质的镜面反射率，光泽度表示材质的平滑程度。
 ### 研究一下 glb,为什么会和展示的不一样
 - 现在平台的three版本是r129最新是r159(2023年12月15日)
-- win10的3D查看器导出的glb的**KHR_materials_pbrSpecularGlossiness**是最新的three废弃掉的.
+- **win10的3D查看器导出的glb的****KHR_materials_pbrSpecularGlossiness**是最新的three废弃掉的.
 	- r146还支持的, r147就没了
 	- [GLTFLoader、GLTFExporter：通过 donmccurdy 删除 KHR_materials_pbrSpecularGlossiness · Pull 请求 #24950 · mrdoob/ Three.js](https://github.com/mrdoob/three.js/pull/24950)
 		- 作者推荐适配的方法:
