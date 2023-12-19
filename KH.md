@@ -33,6 +33,7 @@ HMI（Human Machine Interaction）人机界面
 
 *   IPD: Integrated Product Development, 集成产品开发
 	*   IPMT: Integrated Portfolio Management Team 集成组合管理团队
+		* PMT
 		*   PDT: Product Development Team, 产品开发团队
 	* C-PMT Corporation 公司级组合管理团队
 		* PL-PMT 产品线
