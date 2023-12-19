@@ -1,5 +1,9 @@
 > 最初于 2013 年由两名微软员工开发.
-> v1.12
+
+1. v1.12    2014 开始完全使用 TypeScript 开发`Babylon\Particles\babylon.particle.js`
+2. v2.2.0   2015 重构了目录结构`src\Particles\particle.ts`
+3. v2.5.0   2016 完全删除了.js文件只剩下.ts文件(之前是共存)
+4. v5.0.0   2022 重构了目录结构`packages\dev\core\src\Particles\particle.ts`
 ### [优化您的场景 | Babylon.js 文档](https://doc.babylonjs.com/features/featuresDeepDive/scene/optimize_your_scene)
 1. **提高渲染效率：**
    - 使用TransformNode替代AbstractMesh或空meshes：减少相机需要检测的对象数量来提升性能。
