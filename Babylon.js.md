@@ -4,6 +4,61 @@
 2. v2.2.0   2015 重构了目录结构`src\Particles\particle.ts`
 3. v2.5.0   2016 完全删除了.js文件只剩下.ts文件(之前是共存)
 4. v5.0.0   2022 重构了目录结构`packages\dev\core\src\Particles\particle.ts`
+
+### `packages/dev/core/src/Shaders/particles.vertex.fx`如何被使用?
+#### 编译
+1. 引入
+	1. import "../Shaders/particles.fragment";
+	2. import "../Shaders/particles.vertex";
+2. 编译
+	1. packages/dev/buildTools/src/buildShaders.ts
+##### 编译举例
+fx文件
+```c
+// myShader.fx
+void main(void) {
+    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0); // 红色
+}
+```
+执行编译
+```javascript
+// 假设 buildShader 函数和相关的工具函数已经定义好了
+buildShader("/path/to/myShader.fx");
+```
+变成
+```javascript
+// myShader.ts
+import { ShaderStore } from "path/to/shaderStore";
+
+const name = "myShader";
+const shader = `void main(void) {
+    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0); // 红色
+}`;
+
+// Sideeffect
+ShaderStore.ShadersStore[name] = shader;
+
+/** @internal */
+export const myShader = { name, shader };
+```
+#### 使用
+```ts
+packages.dev.core.src.Particles.particleSystem.ParticleSystem._getWrapper
+	drawWrapper.setEffect(
+		this._engine.createEffect("particles", attributesNamesOrOptions, effectCreationOption, samplers, join), 
+		join
+	);
+	
+packages.dev.core.src.Engines.thinEngine.ThinEngine.createEffect
+	const effect = new Effect(
+
+packages.dev.core.src.Materials.effect.Effect.constructor
+packages.dev.core.src.Materials.effect.Effect._processShaderCode
+packages.dev.core.src.Materials.effect.Effect._loadShader
+	const shaderStore = EngineShaderStore.GetShadersStore(this._shaderLanguage);
+```
+
+
 ### [优化您的场景 | Babylon.js 文档](https://doc.babylonjs.com/features/featuresDeepDive/scene/optimize_your_scene)
 1. **提高渲染效率：**
    - 使用TransformNode替代AbstractMesh或空meshes：减少相机需要检测的对象数量来提升性能。
