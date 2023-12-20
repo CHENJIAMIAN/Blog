@@ -31,7 +31,7 @@
 | 灯光设置 | 灯光设置需要根据场景进行手动调整，每个场景都需要重新设置灯光 | 灯光设置基于现实光照情况，无需手动调整。PBR 工作流可以更好地应用现实世界中的光照环境，并根据光源的颜色、强度和距离等属性来自动进行计算。 |
 | 投影贴图 | 投影贴图的使用在传统着色中不常用 | 基于物理原理的 PBR 工作流可以准确地模拟投影的阴影，在各种材质下都可以获得逼真的效果。 |
 | 渲染效果 | 渲染效果通常是基于艺术家的主观意愿进行调整，难以获得真实和逼真的效果 | PBR 工作流能够更准确地模拟真实光照和材质属性，制作出更真实和逼真的效果，能够帮助艺术家更好地实现视觉效果。 |
-##### 以下是创建金属/粗糙材质的 PBR 工作流：
+#### 以下是创建金属/粗糙材质的 PBR 工作流：
 1. 建立基础色信息。基础颜色将是材质的主要颜色，可以使用 RGB 值或纹理图像来定义它。
 2. 开始定义粗糙度。粗糙度表示材质表面的粗糙程度。使用白色为光面和黑色为非常粗糙。可以使用灰度级调整该值，而不是黑白两色，以更精细地控制粗糙度。
 3. 为金属/非金属表面设置反射率。如果材质是金属，反射率将在纹理中表示金属的镜面反射程度。如果材质是非金属，反射率将表示光线反射的强度。可以使用 RGB 值或纹理图像来定义它。
@@ -39,18 +39,14 @@
 5. 添加法线贴图。法线图可以使材质看起来更凸起或凹陷，这可以通过添加 2D 纹理来实现。
 6. 添加粗糙度贴图。如果您有要模仿的真实材料，则更改粗糙度可能还需要添加粗糙度贴图，以更好地控制该材料的外观。
 7. 添加自发光。如果您需要使材质发光，则可以添加自发光纹理。这可以使红外材料或灯光看起来更真实。
-##### 基础光照模型（Phong模型）：
+#### 基础光照模型（Phong模型）：
 其中包括三个主要成分：1环境光 2漫反射光 3镜面反射光
-### 当vertices变换后，法线向量也相应的需要变换。如果你对前面说到的东西有点映像的话，或许你能想到是使用Model-view matrix（MVMatrix）进行变换。但是MVMatrix会有一些问题：  在只对一个轴收缩或是剪切变换(shear transformation)时，就如图一样，可能会导致法线失准。那么如何解决呢？
-
-![](http://gtms03.alicdn.com/tps/i3/T14486Fz4oXXXAvXb2-622-248.png) 
+### 当vertices变换后，法线向量也相应的需要变换。使用MVMatrix会有一些问题：  在只对一个轴收缩或是剪切变换(shear transformation)时，就如图一样，可能会导致法线失准。那么如何解决呢？
+![|300](http://gtms03.alicdn.com/tps/i3/T14486Fz4oXXXAvXb2-622-248.png) 
 
 解决方法是使用法线矩阵来变换法线向量。法线矩阵是模型视图矩阵的逆转置矩阵，可以保证在进行任何线性变换时，法线的方向不会发生改变。实现方法如下：
-
 1.  首先计算MVMatrix的逆矩阵(保证长度计算正确但不受平移和缩放的影响)
-
 2.  对逆矩阵进行转置得到法线矩阵(转置可: 保证方向恢复到原来的方向)
-
 3.  将法线向量乘以法线矩阵即可
 
 具体实现代码如下：
@@ -66,7 +62,6 @@ glm::vec3 transformedNormal = normalMatrix \* originalNormal;
 矩阵的逆转置可以将变换矩阵的旋转部分倒转回去，即将变换逆转回去，并将其对应的法线向量进行逆转置变换。这是因为在变换后的坐标系中，法线经过了与顶点相同的变换，如果不将其矩阵逆转置，法线所面向的方向会发生改变，导致光照计算出现错误。通过逆转置操作，可以正确地将法线和变换相对应，确保法线的方向正确性。
 
 ### 摄像头矩阵转换的WebGL的实现
-
 [![](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67)](https://camo.githubusercontent.com/d9683169ae960eef70e272b74cb89607e89a834e39dbc0697178b05cc8dc7a67/687474703a2f2f67746d7330332e616c6963646e2e636f6d2f7470732f69332f543169754f51464438615858616f5277634b2d313038342d3536342e706e67)
 *   Theory:
     *   ObjectCoordinates ModelTransform ViewTransform ProjectionTransform PerspectiveDivision ViewportTransform Viewport(Canvas)Coordinates
@@ -293,79 +288,16 @@ Tx Ty Tz 1
 
 透视投影矩阵的作用是将三维坐标系中的点投影到二维坐标系中，以实现透视效果。在顶点着色器中，通常将模型视图矩阵和投影矩阵相乘，将物体从模型空间转换到裁剪空间。然后，将裁剪坐标除以其w分量，得到标准化设备坐标。最后，将标准化设备坐标变换为屏幕坐标，以在屏幕上显示物体。
 
+### dot(N, -L)被用来计算漫反射光的亮度 的意思
 
-### gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);是怎么来的，为什么要三个相乘， uPMatrix，uMVMatrix 是怎么来的
-在计算机图形学中，gl_Position是OpenGL用于存储顶点位置的系统变量，它是顶点着色器的输出之一。顶点着色器计算出每个顶点的最终位置后，将其写入gl_Position中。在这段代码中，gl_Position的计算公式如下：
+`dot(N, -L)` 表示向量 N 和向量 -L 的点积。点积是两个向量在空间中的投影乘积，其结果是一个标量，可以表示两个向量之间的**夹角和长度**关系。
 
-gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+1. 向量 N 是当前顶点的法向量（垂直于该点表面的向量）
+2. 向量 -L 是从该点指向光源的向量。
+3. 因此 `dot(N, -L)` 的值表示光线方向与表面法线方向之间的夹角余弦值，也就是表示光线和表面的相对方向。
+4. 如果光线方向与表面法线方向越接近，余弦值越大，表面就越接近光线的方向，
 
-其中，uPMatrix和uMVMatrix分别是投影矩阵和模型视图矩阵，它们是顶点着色器中的uniform变量，通过将这些变换矩阵与顶点位置向量相乘，可以将顶点从模型坐标系（或世界坐标系）转换到裁剪坐标系（或屏幕坐标系）。
-
-- 具体来说，
-- uPMatrix是一个4x4的矩阵，用于将裁剪坐标系的坐标转换为标准化设备坐标系的坐标，其中，标准化设备坐标系是一个以屏幕中心为原点，范围在[-1, 1]之间的二维坐标系。
-- uMVMatrix是一个4x4的矩阵，用于将顶点从模型坐标系（或世界坐标系）转换到观察坐标系（或相机坐标系），也就是将顶点的位置和朝向从模型空间转换到相机空间。
-
-因此，通过将这两个矩阵相乘，可以将顶点从模型坐标系（或世界坐标系）转换到观察坐标系，然后再将其乘以顶点的位置向量，得到在观察坐标系中的位置。最后，再将其乘以投影矩阵，得到在裁剪坐标系中的位置，最终将这个位置向量写入gl_Position中。
-
-综上所述，gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0)的含义是将顶点从模型坐标系（或世界坐标系）转换到裁剪坐标系（或屏幕坐标系）。
-![image](https://user-images.githubusercontent.com/20126997/222026433-da4636de-6e82-47c8-b5dd-ed2a446997f9.png)
-
-### 解释一下mvp矩阵，以让小学生也能听懂的举例
-MVP矩阵是3D图形学中的一个重要概念，代表Model-View-Projection的缩写，它是一个4x4的矩阵，由三个矩阵相乘得到：Model矩阵、View矩阵和Projection矩阵。
-
-*   Model矩阵代表物体的本地坐标系，它将物体从其本地坐标系变换到世界坐标系中。它可以用来缩放、旋转或平移物体。
-*   View矩阵代表相机的位置和方向，它将物体从世界坐标系变换到相机坐标系中，它决定了我们如何观察场景。
-*   Projection矩阵代表投影方式，它将物体从相机坐标系变换到裁剪坐标系中，它决定了场景如何投影到屏幕上。
-
-例如，我们可以想象一个人在一个房间里看着一只狗。这里的狗是我们的模型，人的眼睛是相机，房间是世界。在这种情况下，Model矩阵用于变换狗的大小和位置，View矩阵用于确定人的位置和朝向，Projection矩阵用于确定人的视野范围。
-
-最后，MVP矩阵将这三个变换合并在一起，得到了物体从本地坐标系到屏幕坐标系的变换。在渲染管线的过程中，MVP矩阵将被应用于每个顶点，将其从物体本地坐标系变换到屏幕坐标系，从而呈现出3D图形。
-#### 用伪代码举个实例
-以下是一个使用 MVP 矩阵进行坐标变换的简单伪代码示例：
-
-```javascript
-// 定义模型坐标系中的三角形顶点坐标
-const triangle = [  { x: 0.0, y: 1.0, z: 0.0 },  { x: -1.0, y: -1.0, z: 0.0 },  { x: 1.0, y: -1.0, z: 0.0 }];
-
-// 定义模型矩阵，将三角形绕 z 轴旋转 45 度
-const modelMatrix = rotateZ(45.0);
-
-// 定义视图矩阵，将相机位置设置为 (0, 0, 3)，指向原点
-const viewMatrix = lookAt([0, 0, 3], [0, 0, 0], [0, 1, 0]);
-
-// 定义投影矩阵，使用透视投影方式
-const projectionMatrix = perspective(45, canvas.width / canvas.height, 0.1, 100.0);
-
-// 计算 MVP 矩阵，将三个矩阵相乘
-const mvpMatrix = multiplyMatrices(projectionMatrix, multiplyMatrices(viewMatrix, modelMatrix));
-
-// 将三角形顶点坐标从模型坐标系变换到裁剪空间坐标系
-const transformedTriangle = triangle.map(vertex => {
-  const transformedVertex = transformVector(mvpMatrix, [vertex.x, vertex.y, vertex.z, 1.0]);
-  const w = transformedVertex[3];
-  return { x: transformedVertex[0] / w, y: transformedVertex[1] / w, z: transformedVertex[2] / w };
-});
-
-// 渲染三角形
-renderTriangle(transformedTriangle);
-
-```
-
-在这个示例中，我们使用三个矩阵来定义 MVP 矩阵：模型矩阵、视图矩阵和投影矩阵。模型矩阵定义了模型坐标系到世界坐标系的变换，视图矩阵定义了世界坐标系到相机坐标系的变换，投影矩阵定义了相机坐标系到裁剪空间坐标系的变换。将这三个矩阵相乘，就得到了 MVP 矩阵，可以用它将模型坐标系中的顶点坐标变换到裁剪空间坐标系中。
-
-### 为什么是 `vNormal = vec3(uNMatrix * vec4(aVertexNormal, 1.0));` 而不是 `vNormal = vec3(uMVMatrix* vec4(aVertexNormal, 1.0));`
-
-在3D图形渲染中，物体的表面法向量是非常重要的一个属性，用于计算光照、阴影和材质等效果。通常，表面法向量是在模型空间中定义的，即物体的本地坐标系中。但是，在进行物体变换时，模型空间中的法向量也会跟随变换而改变，需要重新计算。
-
-在上面的代码中，aVertexNormal是一个在模型空间中定义的法向量，表示物体表面某个点的法向量。如果直接使用uMVMatrix对其进行变换，则得到的结果可能不是一个正确的法向量，因为变换矩阵uMVMatrix通常包含了平移、旋转和缩放等多种变换操作，这些操作可能会改变向量的长度和方向，导致法向量不再垂直于物体表面。
-
-### dot(N, -L)的意思
-
-`dot(N, -L)` 表示向量 N 和向量 -L 的点积。点积是两个向量在空间中的投影乘积，其结果是一个标量，可以表示两个向量之间的夹角和长度关系。
-
-在这个例子中，向量 N 是当前顶点的法向量（垂直于该点表面的向量），而向量 -L 是从该点指向光源的向量。因此 `dot(N, -L)` 的值表示光线方向与表面法线方向之间的夹角余弦值，也就是表示光线和表面的相对方向。如果光线方向与表面法线方向越接近，余弦值越大，表面就越接近光线的方向，反之亦然。这个值在光照计算中被用来计算漫反射光的亮度。
-
-### 除此之外webgl中的瓶颈有哪些
+### webgl的性能瓶颈
 1. 着色器：着色器编写不当或运行缓慢可能会导致性能下降。
 2. 图形绘制调用：每个图形绘制调用都会增加CPU中与GPU通信的开销。减少图形绘制调用次数可以优化性能。
 3. 纹理采样：纹理采样是GPU中的运算密集型操作，可能会影响性能。
@@ -373,8 +305,7 @@ renderTriangle(transformedTriangle);
 5. 网络传输：在WebGL应用程序中加载大型纹理或模型可能会导致网络传输问题，从而影响性能。
 6. DOM操作：将WebGL画布插入到DOM中或频繁修改DOM可能会影响性能。
 7. 设置uniform：设置uniform通常是WebGL中的瓶颈，因为uniform是CPU和GPU之间的数据传输，而CPU和GPU之间的数据传输速度很慢。每次设置uniform都需要将数据从CPU传输到GPU，这会导致额外的延迟和CPU负担，并可能限制WebGL应用程序的性能。
-
-### 为什么它不用基于上一帧的状态来计算这一帧的状态
+#### 为什么它不用基于上一帧的状态来计算这一帧的状态
 一般情况下，基于上一帧状态来计算这一帧状态的方式是非常直观和自然的。但在WebGL中，由于要处理大量的图形数据和复杂的变换操作，这种方式会导致大量的运算和内存占用，从而降低图形的性能和流畅度。
 
 相比之下，基于时间差和初始状态来计算这一帧状态，可以有效地避免导致的性能问题。因为我们只需要保存初始状态和时间差，就可以通过单次运算得到当前帧状态，大大降低了运算量和内存占用。此外，这种方式也可以有效地避免“误差累积”，保证了图形的准确性和稳定性。
@@ -443,6 +374,43 @@ for (int i = 0; i < 8; ++i) {
     viewSpaceVertices[i] = (viewMatrix * vec4(cubeVertices[i], 1.0)).xyz;
 }
 ```
+##### 给我lookAt的代码
+`lookAt` 函数用于创建视图矩阵，这个矩阵定义了相机（或观察者）在世界空间中的位置、观察的目标点以及上方向。以下是一个简化版的 `lookAt` 函数的实现，通常用于计算机图形学和OpenGL或WebGL等图形API中。
+```c
+vec3 normalize(vec3 v) {
+    float length = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+    // 确保不除以0
+    if (length > 0.0) {
+        return v / length;
+    }
+    return v;
+}
+
+vec3 cross(vec3 a, vec3 b) {
+    return vec3(a.y * b.z - a.z * b.y,
+                a.z * b.x - a.x * b.z,
+                a.x * b.y - a.y * b.x);
+}
+
+mat4 lookAt(vec3 eye, vec3 center, vec3 up) {
+    vec3 zaxis = normalize(eye - center);    // 前向量
+    vec3 xaxis = normalize(cross(up, zaxis)); // 右向量
+    vec3 yaxis = cross(zaxis, xaxis);         // 上向量
+
+    mat4 viewMatrix = mat4(
+        vec4(xaxis.x, yaxis.x, zaxis.x, 0),
+        vec4(xaxis.y, yaxis.y, zaxis.y, 0),
+        vec4(xaxis.z, yaxis.z, zaxis.z, 0),
+        vec4(-dot(xaxis, eye), -dot(yaxis, eye), -dot(zaxis, eye), 1)
+    );
+    return viewMatrix;
+}
+```
+这个函数接受三个参数：
+1. **`eye`**: 相机（或观察者）在世界空间中的位置。
+2. **`center`**: 相机正在观察的点。
+3. **`up`**: 世界空间中的上方向向量。
+函数首先计算出相机的前（z轴）、右（x轴）和上（y轴）向量，然后使用这些向量来构造一个视图矩阵。这个矩阵将用于将坐标从世界空间变换到视图空间。
 
 #### 步骤 3: 投影变换（Projection Transformation）
 
@@ -455,6 +423,38 @@ for (int i = 0; i < 8; ++i) {
     clipSpaceVertices[i] = projectionMatrix * vec4(viewSpaceVertices[i], 1.0);
 }
 ```
+##### 给我perspective的代码
+`perspective` 函数用于创建透视投影矩阵，这个矩阵定义了一个可视的视锥体，用于确定哪些对象应该被渲染以及它们是如何被映射到屏幕上的。以下是一个基本的 `perspective` 函数实现，它用于计算机图形学和OpenGL或WebGL等图形API中。
+```c
+mat4 perspective(float fov, float aspect, float near, float far) {
+    float tanHalfFovy = tan(fov / 2.0);
+
+    mat4 result = mat4(0.0); // 初始化一个0矩阵
+    result[0][0] = 1.0 / (aspect * tanHalfFovy);
+    result[1][1] = 1.0 / tanHalfFovy;
+    result[2][2] = -(far + near) / (far - near);
+    result[2][3] = -1.0;
+    result[3][2] = -(2.0 * far * near) / (far - near);
+
+    return result;
+}
+//假设（90度视场，16:9的纵横比，近裁剪面为0.1，远裁剪面为100.0），透视投影矩阵 `result` 如下所示：
+[[ 0.5625    0.         0.         0.      ]
+ [ 0.        1.         0.         0.      ]
+ [ 0.        0.       -1.002002   -1.      ]
+ [ 0.        0.       -0.2002002   0.      ]]
+//这个矩阵代表了透视投影的变换。它的作用是将视锥体内的点映射到一个标准化的立方体（范围在 [-1, 1] 内的每个维度）中。
+//请注意，这个矩阵中的第四列和第四行与普通的仿射变换矩阵不同，这是因为透视投影涉及到齐次坐标和透视除法。 ​
+```
+
+这个函数接受四个参数：
+
+1. **`fov`**: 视场（Field of View），即视锥体的垂直张角，通常以弧度为单位。
+2. **`aspect`**: 纵横比（Aspect Ratio），通常是画面的宽度除以高度。
+3. **`near`**: 近裁剪面的距离。
+4. **`far`**: 远裁剪面的距离。
+
+函数的主要目的是计算一个矩阵，该矩阵将视锥体内的所有坐标映射到一个标准化的立方体内，这个立方体的每个维度的范围都是 [-1, 1]。这个过程包括了透视除法，确保了物体随距离的增加而看起来更小的效果。
 
 #### 渲染管线中的位置
 
@@ -463,3 +463,60 @@ for (int i = 0; i < 8; ++i) {
 - 最后，**投影变换**将这些顶点映射到**裁剪空间**，准备进行裁剪和最终的屏幕映射。
 
 这个过程中的每一步都是通过矩阵乘法来完成的，这是3D图形渲染中的标准做法。在实际的应用程序中，这些计算通常在顶点着色器中完成。
+
+
+#### gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);是怎么来的，为什么要三个相乘， uPMatrix，uMVMatrix 是怎么来的
+1. gl_Position的计算公式如下：gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+其中，uPMatrix和uMVMatrix分别是投影矩阵和模型视图矩阵，它们是顶点着色器中的uniform变量，通过将这些变换矩阵与顶点位置向量相乘，可以将顶点从模型坐标系（或世界坐标系）转换到裁剪坐标系（或屏幕坐标系）。
+
+- 具体来说，
+- uPMatrix是一个4x4的矩阵，用于将裁剪坐标系的坐标转换为标准化设备坐标系的坐标，其中，标准化设备坐标系是一个以屏幕中心为原点，范围在[-1, 1]之间的二维坐标系。
+- uMVMatrix是一个4x4的矩阵，用于将顶点从模型坐标系（或世界坐标系）转换到观察坐标系（或相机坐标系），也就是将顶点的位置和朝向从模型空间转换到相机空间。
+
+因此，通过将这两个矩阵相乘，可以将顶点从模型坐标系（或世界坐标系）转换到观察坐标系，然后再将其乘以顶点的位置向量，得到在观察坐标系中的位置。最后，再将其乘以投影矩阵，得到在裁剪坐标系中的位置，最终将这个位置向量写入gl_Position中。
+
+综上所述，gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0)的含义是将顶点从模型坐标系（或世界坐标系）转换到裁剪坐标系（或屏幕坐标系）。
+![image](https://user-images.githubusercontent.com/20126997/222026433-da4636de-6e82-47c8-b5dd-ed2a446997f9.png)
+
+#### 解释一下mvp矩阵，以让小学生也能听懂的举例
+MVP矩阵是3D图形学中的一个重要概念，代表Model-View-Projection的缩写，它是一个4x4的矩阵，由三个矩阵相乘得到：Model矩阵、View矩阵和Projection矩阵。
+
+*   Model矩阵代表物体的本地坐标系，它将物体从其本地坐标系变换到世界坐标系中。它可以用来缩放、旋转或平移物体。
+*   View矩阵代表相机的位置和方向，它将物体从世界坐标系变换到相机坐标系中，它决定了我们如何观察场景。
+*   Projection矩阵代表投影方式，它将物体从相机坐标系变换到裁剪坐标系中，它决定了场景如何投影到屏幕上。
+
+例如，我们可以想象一个人在一个房间里看着一只狗。这里的狗是我们的模型，人的眼睛是相机，房间是世界。在这种情况下，Model矩阵用于变换狗的大小和位置，View矩阵用于确定人的位置和朝向，Projection矩阵用于确定人的视野范围。
+
+最后，MVP矩阵将这三个变换合并在一起，得到了物体从本地坐标系到屏幕坐标系的变换。在渲染管线的过程中，MVP矩阵将被应用于每个顶点，将其从物体本地坐标系变换到屏幕坐标系，从而呈现出3D图形。
+##### 用伪代码举个实例
+以下是一个使用 MVP 矩阵进行坐标变换的简单伪代码示例：
+
+```javascript
+// 定义模型坐标系中的三角形顶点坐标
+const triangle = [  { x: 0.0, y: 1.0, z: 0.0 },  { x: -1.0, y: -1.0, z: 0.0 },  { x: 1.0, y: -1.0, z: 0.0 }];
+
+// 定义模型矩阵，将三角形绕 z 轴旋转 45 度
+const modelMatrix = rotateZ(45.0);
+
+// 定义视图矩阵，将相机位置设置为 (0, 0, 3)，指向原点
+const viewMatrix = lookAt([0, 0, 3], [0, 0, 0], [0, 1, 0]);
+
+// 定义投影矩阵，使用透视投影方式
+const projectionMatrix = perspective(45, canvas.width / canvas.height, 0.1, 100.0);
+
+// 计算 MVP 矩阵，将三个矩阵相乘
+const mvpMatrix = multiplyMatrices(projectionMatrix, multiplyMatrices(viewMatrix, modelMatrix));
+
+// 将三角形顶点坐标从模型坐标系变换到裁剪空间坐标系
+const transformedTriangle = triangle.map(vertex => {
+  const transformedVertex = transformVector(mvpMatrix, [vertex.x, vertex.y, vertex.z, 1.0]);
+  const w = transformedVertex[3];
+  return { x: transformedVertex[0] / w, y: transformedVertex[1] / w, z: transformedVertex[2] / w };
+});
+
+// 渲染三角形
+renderTriangle(transformedTriangle);
+
+```
+
+在这个示例中，我们使用三个矩阵来定义 MVP 矩阵：模型矩阵、视图矩阵和投影矩阵。模型矩阵定义了模型坐标系到世界坐标系的变换，视图矩阵定义了世界坐标系到相机坐标系的变换，投影矩阵定义了相机坐标系到裁剪空间坐标系的变换。将这三个矩阵相乘，就得到了 MVP 矩阵，可以用它将模型坐标系中的顶点坐标变换到裁剪空间坐标系中。
