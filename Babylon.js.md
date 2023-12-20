@@ -6,10 +6,11 @@
 4. v5.0.0   2022 重构了目录结构`packages\dev\core\src\Particles\particle.ts`
 
 ### 获取某公司温度场体积云的shader代码
-1. 注入`<script src="https://greggman.github.io/webgl-helpers/webgl-log-shaders.js"></script>`
-2. 打印出相关的着色器代码(此时已经是条件编译后的, 去掉了源码中很多没用到的条件编译代码)
-3. 进一步用GPT去掉没用到的代码
-4. GPT转three.js的写法
+1. 参考[Particle Demo | Babylon.js Playground --- 粒子演示 | Babylon.js 游乐场](https://www.babylonjs-playground.com/#WBQ8EM)
+2. 注入`<script src="https://greggman.github.io/webgl-helpers/webgl-log-shaders.js"></script>`
+3. 打印出相关的着色器代码(此时已经是条件编译后的, 去掉了源码中很多没用到的条件编译代码)
+4. 进一步用GPT去掉没用到的代码
+5. GPT转three.js的写法
 ### `particles.vertex.fx`如何被使用?
 #### 编译
 1. 引入
