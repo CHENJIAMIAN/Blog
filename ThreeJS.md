@@ -500,6 +500,7 @@ src\renderers\WebGLRenderer.js
 3. 更改position有时并不会生效, 因为用的可能是matrixworld去设置位置, 所以要先obj.updateMatrix() 再 obj.updateMatrixworld()
 4. threejs认识鼠标位置的方式是: 以画布中心点为圆心的单位坐标系
 5. group.add的物体位置是相对父级而言的, 而group.attach的物体的位置相对于原点
+6. opacity的本质是改    vec4 diffuseColor = vec4( diffuse, opacity );
 ## 踩坑
 1. `THREE.NumberKeyframeTrack( '.material.map.offeset.x',`是不支持的, 只支持两级的属性, 如 `THREE.NumberKeyframeTrack( '.material.opacity`
 2. 加载的glb看起来很暗?
