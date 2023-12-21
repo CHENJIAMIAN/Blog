@@ -34,6 +34,7 @@ HMI（Human Machine Interaction）人机界面
 2. CDP 产品立项
 3. 产品开发
 4. 产品线组织与绩效
+5. 系统工程师（ SE ）：SE相当于PDT团队的“技术总工”，是PDT内部的技术负责人
 
 *   IPD: Integrated Product Development, 集成产品开发
 	*   IPMT: Integrated Portfolio Management Team 集成组合管理团队
@@ -50,7 +51,7 @@ HMI（Human Machine Interaction）人机界面
 - 产品质量保证	PQA
 	-  **项目经理**	LPDT
 		1. 项目管理工程师	PME
-		2. **系统工程师**	SE
+		2. **系统工程师**	SE   `SE需要考虑各种DFX(Design For X)元素，确保产品设计不仅满足市场需求，还要考虑制造、组装、成本、质量、可靠性和用户体验等方面`
 			1. 开发代表       RDPDT
 			2. 测试代表	TEPDT
 			3. 制造代表	MNPDT
@@ -60,9 +61,9 @@ HMI（Human Machine Interaction）人机界面
 			7. 销售代表	SALPDT
 			8. 财务代表	FPDT
 
-4. **Charter文件包**  Charter：任务书，Charter文件包：包含《产品包业务计划书》、《项目任务书》、《产品包需求》  
-5. **PDT**  产品开发团队，Product  Development Team  
-6. **TR**  Technology Review，技术评审  
+6. **Charter文件包**  Charter：任务书，Charter文件包：包含《产品包业务计划书》、《项目任务书》、《产品包需求》  
+7. **PDT**  产品开发团队，Product  Development Team  
+8. **TR**  Technology Review，技术评审  
 	1. **TR1**  产品包需求和概念评审  
 	2. **TR2**  产品规格评审  
 	3. **TR3**  概要设计评审  
@@ -70,15 +71,15 @@ HMI（Human Machine Interaction）人机界面
 	5. **TR4A**  性能样机评审  
 	6. **TR5**  生产样机评审  
 	7. **TR6**  小批量样机评审  
-7. **DCP** 决策点
+9. **DCP** 决策点
 	1. **CDCP**  概念决策点，Concept decision check point   (TR1)
 	2. **PDCP**  计划决策点，Plan decision check point   (TR2 TR3)
 	3. **ADCP**  可获得性决策点，Availability decision check point  上市决策点  (TR4 TR4A TR5 TR6)
 	4. **GA**  一般可获得性，General Availability，GA点意味着产品可批量交付给客户  
 	5. **LDCP** 生命周期决策点
-8. **EC**  工程变更，Engineering Change  
-9. **ESP**  早期支持项目，Early support program  
-10. **Beta测试**  是一种客户验证方法，可以通过让最终用户在一段时间内验证该产品，来评估客户对产品的满意度  
+10. **EC**  工程变更，Engineering Change  
+11. **ESP**  早期支持项目，Early support program  
+12. **Beta测试**  是一种客户验证方法，可以通过让最终用户在一段时间内验证该产品，来评估客户对产品的满意度  
 #### CDP(Charter契约/任务书 开发流程)
 ##### IPMT->PL-PMT1----组建---->CDT1 `从上到下`
 - IPMT: 集成 组合(Protfolio) 管理团队
