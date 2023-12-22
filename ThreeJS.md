@@ -503,7 +503,7 @@ src\renderers\WebGLRenderer.js
 6. opacity的本质是改    vec4 diffuseColor = vec4( diffuse, opacity );
 7. layers.mask 的作用
 	1. 例如 mask = 11 （表现为二进制共32位`0000 0000 0000 0000 0000 0000 0000 1011`) 一位代表一个图层
-	2.  >> 某位 !== 0 可以判断某位未被使用(即某层未被使用)
+	2. lastLayer.mask >> 某位 !== 0 可以判断某位被使用(即某层被使用)
 ## 踩坑
 1. `THREE.NumberKeyframeTrack( '.material.map.offeset.x',`是不支持的, 只支持两级的属性, 如 `THREE.NumberKeyframeTrack( '.material.opacity`
 2. 加载的glb看起来很暗?
