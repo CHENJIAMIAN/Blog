@@ -261,7 +261,7 @@ gl.clear(gl.COLOR_BUFFER_BIT)//清除颜色、深度和模板缓存。告诉gl.c
     gl.clearStencil//设置模板缓冲区的清除值
 gl.clearBufferfv(buffer, drawbuffer, values)//将单个浮点型值写入指定的缓存区。
 gl.clearBufferuiv(buffer, drawbuffer, values)//将单个无符号整数值写入指定的缓存区。
-gl.colorMask//设置哪些颜色通道被写入到颜色缓冲区中,要在绘制模型时忽略模型的颜色。在这种情况下，你可以使用 gl.colorMask(false, false, false, false) 告诉 WebGL 渲染器不写入颜色缓冲区中的任何颜色成分。
+
 gl.compileShader//将 GLSL 着色器编译为可执行的着色器
 gl.copyBufferSubData//将源缓冲区的数据复制到目标缓冲区的指定位置
 gl.createBuffer//创建一个缓冲区对象
@@ -273,33 +273,14 @@ gl.createVertexArray//创建一个顶点数组对象
 
 单个物体创建透明物体//如果显示背景，把前景挖掉；如果显示前景，把背景挖掉。如果都有，那么全都渲染了。
 gl.cullFace//设置剔除面的方向,要先gl.enable(gl.FACE_CULLING);
+
 gl.deleteBuffer//删除 WebGL 缓存区对象。
 gl.deleteFramebuffer//删除由 gl.createFramebuffer 创建的帧缓冲区对象。
 gl.deleteRenderbuffer//删除由 gl.createRenderbuffer 创建的渲染缓冲区对象。
 gl.deleteShader//删除由 gl.createShader 创建的着色器对象。
 gl.deleteTexture//删除由 gl.createTexture 创建的纹理对象。
 gl.deleteVertexArray//删除由 gl.createVertexArray 创建的顶点数组对象。
-gl.depthFunc//设置深度缓冲区测试的函数。改变默认的深度测试规则,gl.LESS会作为默认值
-gl.depthMask//设置深度缓冲区写入开关。
-	在 WebGL 中，`gl.depthMask` 和 `gl.enable(gl.DEPTH_TEST)`（或 `gl.disable(gl.DEPTH_TEST)`）
-	通常会被结合使用来处理复杂的渲染场景，尤其是涉及到透明度和物体遮挡的情况。
-	下面是一些常见的结合使用方式：
-	1. **渲染不透明物体**:
-	   - 通常，在渲染不透明物体时，会开启深度测试 (`gl.enable(gl.DEPTH_TEST)`) 并允许深度写入 (`gl.depthMask(true)`)。
-	   - 这确保了正确的物体遮挡（近的物体遮挡远的物体）并且更新了深度缓冲区，以便后续渲染的物体可以正确地进行深度测试。
-	
-	2. **渲染透明物体**:
-	   - 在绘制透明物体时，情况会更复杂。因为透明物体需要考虑与其他物体的深度关系，同时它们本身又不应完全遮挡背后的物体。
-	   - 一种常见的方法是先渲染所有不透明的物体，然后在渲染透明物体时，保持深度测试开启 (`gl.enable(gl.DEPTH_TEST)`)，但禁用深度写入 (`gl.depthMask(false)`)。
-	   - 这样，透明物体在渲染时会考虑已经渲染的不透明物体的深度信息，但它们自己不会更新深度缓冲区，因此不会阻止后面的物体（包括其他透明物体）在同一位置被渲染。
-	
-	3. **特殊效果**:
-	   - 在一些特殊效果，如绘制天空盒或后处理效果时，可能会完全禁用深度测试 (`gl.disable(gl.DEPTH_TEST)`) 并禁用深度写入 (`gl.depthMask(false)`)。
-	   - 这样可以确保这些效果不会被场景中的其他物体遮挡，也不会影响深度缓冲区，从而不会影响后续的渲染操作。
-	
-	4. **先绘制深度**:
-	   - 在一些高级技术中，例如延迟渲染或阴影映射，可能会首先只渲染物体的深度信息（不渲染颜色），此时会开启深度测试和深度写入。
-	   - 然后在后续的渲染步骤中使用这个深度信息进行更复杂的渲染计算。
+
 
 
 gl.disable//关闭指定的功能。
@@ -345,9 +326,10 @@ gl.polygonOffset//设置多边形偏移。
 gl.readBuffer//设置读入缓冲区。
 gl.readPixels//读取像素。
 gl.shaderSource//设置着色器源代码。
-gl.stencilFunc//设置模板测试函数。
-gl.stencilMask//设置模板写入掩码。
-gl.stencilOp//设置模板操作。
+
+
+
+
 gl.texImage2D(gl.TEXTURE_2D, 1, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, mipmapImage);//定义纹理图像
 //如果你想手动提供mipmaps，你需要在调用texImage2D时主动传入一个非0的参数作为函数的第二个参数。
     立体地图创建方式和纹理一样，唯一不同的就是纹理对象：
@@ -642,3 +624,44 @@ WebGL 2.0 引入了更多纹理格式，提供了更广泛的选项，包括更�
 - **基本或非真实感渲染**：对于简单的或非真实感的渲染，可能不需要严格区分 sRGB 和线性纹理。在这种情况下，可以根据纹理的外观和需要达到的效果来做出选择。
 #### 实际操作
 在实际操作中，最好的方法是实验和视觉检查。你可以尝试以不同的格式渲染纹理，并查看哪种方法提供了最满意的结果。通常，正确处理 sRGB 和线性纹理会提供更真实和准确的视觉效果，尤其是在涉及复杂光照和材质的场景中。在 Three.js 等高级框架中，很多这样的细节处理可能已经被抽象化，使得决策过程更加简单。
+
+### mask
+在 WebGL 中，"mask" 通常指的是在渲染过程中用于限制或控制某些数据写入的标志。
+以下是 WebGL 中常见的几种 mask：
+#### 1.**深度 Mask（Depth Mask）**:
+   - 控制是否允许向深度缓冲区写入数据。
+   - 使用 `gl.depthMask(true/false)` 来启用或禁用深度写入。
+```JS
+gl.depthFunc//设置深度缓冲区测试的函数。改变默认的深度测试规则,gl.LESS会作为默认值
+gl.depthMask//设置深度缓冲区写入开关。
+```
+
+`gl.depthMask` 和 `gl.enable(gl.DEPTH_TEST)`通常会被结合使用来处理复杂的渲染场景，尤其是涉及到透明度和物体遮挡的情况。如:
+1. **渲染不透明物体**:
+   - 通常，在渲染不透明物体时，会开启深度测试 (`gl.enable(gl.DEPTH_TEST)`) 并允许深度写入 (`gl.depthMask(true)`)。
+   - 这确保了正确的物体遮挡（近的物体遮挡远的物体）并且更新了深度缓冲区，以便后续渲染的物体可以正确地进行深度测试。
+2. **渲染透明物体**:
+   - 在绘制透明物体时，情况会更复杂。因为透明物体需要考虑与其他物体的深度关系，同时它们本身又不应完全遮挡背后的物体。
+   - 一种常见的方法是先渲染所有不透明的物体，然后在渲染透明物体时，保持深度测试开启 (`gl.enable(gl.DEPTH_TEST)`)，但禁用深度写入 (`gl.depthMask(false)`)。
+   - 这样，透明物体在渲染时会考虑已经渲染的不透明物体的深度信息，但它们自己不会更新深度缓冲区，因此不会阻止后面的物体（包括其他透明物体）在同一位置被渲染。
+3. **特殊效果**:
+   - 在一些特殊效果，如绘制天空盒或后处理效果时，可能会完全禁用深度测试 (`gl.disable(gl.DEPTH_TEST)`) 并禁用深度写入 (`gl.depthMask(false)`)。
+   - 这样可以确保这些效果不会被场景中的其他物体遮挡，也不会影响深度缓冲区，从而不会影响后续的渲染操作。
+4. **先绘制深度**:
+   - 在一些高级技术中，例如延迟渲染或阴影映射，可能会首先只渲染物体的深度信息（不渲染颜色），此时会开启深度测试和深度写入。
+   - 然后在后续的渲染步骤中使用这个深度信息进行更复杂的渲染计算。
+#### 2.**颜色 Mask（Color Mask）**:
+ - 控制是否允许向颜色缓冲区的特定通道（红、绿、蓝、alpha）写入数据。
+- 使用 `gl.colorMask(red, green, blue, alpha)` 来指定每个颜色通道是否应该被写入，其中 `red`、`green`、`blue` 和 `alpha` 参数都是布尔值。
+```JS
+gl.coorMask//设置哪些颜色通道被写入到颜色缓冲区中,要在绘制模型时忽略模型的颜色。
+使用 gl.colorMask(false, false, false, false) 告诉 WebGL 渲染器不写入颜色缓冲区中的任何颜色成分。
+```
+#### 3.**模板 Mask（Stencil Mask）**:
+   - 控制模板缓冲区中的位模式，以便控制哪些位可以被写入。
+   - 使用 `gl.stencilMask(mask)` 来设置模板写入的位掩码。
+```JS
+gl.stencilFunc//设置模板测试函数。
+gl.stencilMask//设置模板写入掩码。
+gl.stencilOp//设置模板操作。
+```
