@@ -229,7 +229,7 @@ gl.blendEquation(gl.FUNC_SUBTRACT) //让中间的加号变减号, Color output =
 gl.blendFunc(gl.ONE, gl.ONE) //让Color output = S * 1 + D * 1，这里将混合因子设置为两个ONE，即将绘制的像素颜色值与原来的像素颜色值进行完全叠加。
 
 gl.blendFuncSeparate(
-	gl.SRC_ALPHA源'颜色'使用Alpha通道作为混合因子, 
+	gl.SRC_ALPHA'源颜色'使用Alpha通道作为混合因子, 
 	gl.ONE_MINUS_SRC_ALPHA'目标颜色'使用1减去Alpha通道作为混合因子, 
 	gl.ONE'源alpha通道和颜色'使用1作为混合因子, 
 	gl.ZERO'目标alpha通道和颜色'使用0作为混合因子)//决定RGB通道和α通道如何混合
