@@ -526,5 +526,5 @@ src\renderers\WebGLRenderer.js
 1. 机柜一团黑, 加了很多光了也有某些角度是一团黑的
 	1. 改色调映射的曝光强度就可以了 toneMappingExposure **但是所有材质的颜色会`*toneMappingExposure的值`如果是线性色调映射的话***
 2. 为什么在 `opacity` 为 0 且 `transparent` 为 `false` 的情况下，物体仍然显示出混合背景色的效果?
-	1. 根据最终着色器代码, 即使 `opacity` 为 0，`outgoingLight` 中的任何非零颜色值都可能导致最终的片段颜色不是完全透明的。这可能是物体显示混合背景色的原因，尤其是当存在环境光或其他光源效果时。
-	2. `canvas.getContext("webgl", { alpha: true })` 
+	1. GPT: 根据最终着色器代码, 即使 `opacity` 为 0，`outgoingLight` 中的任何非零颜色值都可能导致最终的片段颜色不是完全透明的。这可能是物体显示混合背景色的原因，尤其是当存在环境光或其他光源效果时。
+	2. 实践是`canvas.getContext("webgl", { alpha: true })` 导致的
