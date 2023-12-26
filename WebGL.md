@@ -226,13 +226,20 @@ gl.bindFramebuffer(target, framebuffer)//将帧缓存区对象绑定到目标上
 gl.bindVertexArray(array)//绑定顶点数组对象。
 多个物体重叠创建透明物体需要：开启α混合并选择混合函数,/从后往前的渲染物体/
 gl.blendEquation(gl.FUNC_SUBTRACT) //让中间的加号变减号, Color output = S * blendFunc设置的因子1 - D * blendFunc设置的因子2，它使得后绘制的像素颜色值减去先绘制的像素颜色值，然后再与混合颜色相混合。
-gl.blendFunc(gl.ONE, gl.ONE) //让Color output = S * 1 + D * 1，这里将混合因子设置为两个ONE，即将绘制的像素颜色值与原来的像素颜色值进行完全叠加。
 
+,/最终颜色=(源颜色×源因子)+(目标颜色×目标因子)/
+gl.blendFunc(gl.SRC_ALPHA, gl.ONE);//	最终颜色=(源颜色×源Alpha)+(目标颜色×1)
+	
+
+//决定RGB通道和α通道如何混合
 gl.blendFuncSeparate(
-	gl.SRC_ALPHA'源颜色'使用Alpha通道作为混合因子, 
-	gl.ONE_MINUS_SRC_ALPHA'目标颜色'使用1减去Alpha通道作为混合因子, 
-	gl.ONE'源alpha通道和颜色'使用1作为混合因子, 
-	gl.ZERO'目标alpha通道和颜色'使用0作为混合因子)//决定RGB通道和α通道如何混合
+    gl.SRC_ALPHA,             // srcRGB: 使用 Alpha 通道作为颜色的混合因子
+    gl.ONE_MINUS_SRC_ALPHA,   // dstRGB: 使用 1 减去 Alpha 通道作为颜色的混合因子
+    gl.ONE,                   // srcAlpha: 使用 1 作为 Alpha 的混合因子
+    gl.ZERO                   // dstAlpha: 使用 0 作为 Alpha 的混合因子
+);
+	//最终RGB=(源颜色RGB×源Alpha)+(目标颜色RGB×(1−源Alpha))
+	//最终Alpha=(源Alpha×1)+(目标Alpha×0)
 	
 gl.blitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter)//将帧缓存区的一部分拷贝到另一个帧缓存区的一部分。
 
