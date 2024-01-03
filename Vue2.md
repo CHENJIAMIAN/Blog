@@ -418,3 +418,4 @@ vue inspect --rules //查看webpack的rules
 .env.[mode].local   //只在指定的模式中被载入，但会被 git 忽略
     //VUE_APP_XXX = XX 约定可用于客户端, 其他不可以
 ```
+up
