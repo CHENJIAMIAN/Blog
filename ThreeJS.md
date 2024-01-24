@@ -529,3 +529,5 @@ src\renderers\WebGLRenderer.js
 	1. GPT: 根据最终着色器代码, 即使 `opacity` 为 0，`outgoingLight` 中的任何非零颜色值都可能导致最终的片段颜色不是完全透明的。这可能是物体显示混合背景色的原因，尤其是当存在环境光或其他光源效果时。
 	2. 实践是canvas.**getContext("webgl", { alpha: true })** 配置 WebGL 上下文的特性导致的
 	3. 另一个根源是机柜网孔贴图网孔的边缘毛刺是透明的, 经测试,只要是贴图的png图片中透明的部分都会与背景混色
+3. `OrbitControls` 边缩放边旋转
+	1. 新一个 `OrbitControls` 时, 没有调用旧的 `OrbitControls`的 `dispose`方法, 造成监听的方法没有销毁掉, 导致重复执行监听方法
