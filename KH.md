@@ -37,8 +37,8 @@ HMI（Human Machine Interaction）人机界面
 5. 系统工程师（ SE ）：SE相当于PDT团队的“技术总工”，是PDT内部的技术负责人
 
 *   IPD: Integrated Product Development, 集成产品开发
-	*   IPMT: Integrated Portfolio Management Team 集成组合管理团队
-		* LPDT**项目经理**
+	*   **IPMT**: Integrated Portfolio Management Team 集成组合管理团队
+		*  **项目经理**	LPDT
 		* PMT 组合管理团队
 			* PDT: Product Development Team, 产品开发团队
 				* TDT 技术/平台开发团队
