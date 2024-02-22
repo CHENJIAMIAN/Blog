@@ -57,7 +57,7 @@ HMI（Human Machine Interaction）人机界面
 			3. 制造代表	MNPDT
 			4. 采购代表	PRPDT
 			5. 服务代表	TSSPDT
-			6. 市场代表	MKTPDTtrt'rt
+			6. 市场代表	MKTPDT
 			7. 销售代表	SALPDT
 			8. 财务代表	FPDT
 
