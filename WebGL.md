@@ -145,8 +145,6 @@ openlayer缩放原理, 改变u_resolution //u_resolution 是画布尺寸，即�
     uniform vec2 u_mousePos; //鼠标的X和Y坐标
 Transform Feedback是WebGL的一个功能，它允许我们在渲染过程中捕捉顶点着色器输出的结果，对其进行处理和修改，然后将结果传递回GPU进行绘制或存储。
     Transform Feedback可以帮助我们实现一些高级渲染技术，如粒子系统、布料模拟等，通过捕捉每个顶点的运动轨迹，我们可以更加精确地模拟物理效果。
-SSAO：屏幕空间环境光遮蔽，一种用于模拟环境光在场景中的反弹效果的技术。
-SSR：屏幕空间反射，一种用于模拟镜面反射效果的技术，在屏幕空间中计算反射向量并对其采样。
 ```
 ### 矩阵
 ```javascript
