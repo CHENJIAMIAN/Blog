@@ -203,10 +203,37 @@ UNSAFE_开头表示v17可能会废弃它,以为fiber可以中断,造成willXXX�
 ```
 
 在 React v16 之后，props 改变后会触发以下两个生命周期：
-
 - **getDerivedStateFromProps**
 - **shouldComponentUpdate**
+一般来说，可以在 getDerivedStateFromProps 中根据新的 props 更新 state，并在 shouldComponentUpdate 中根据 state 的变化决定是否要更新组件。
+**以下是一个示例：**
+```js
+class MyComponent extends React.Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    // 根据新的 props 更新 state
+    if (nextProps.count !== prevState.count) {
+      return {
+        count: nextProps.count,
+      };
+    }
+    return null;
+  }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    // 根据 state 的变化决定是否要更新组件
+    return nextState.count !== this.state.count;
+  }
+
+  render() {
+    // 渲染组件
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+      </div>
+    );
+  }
+}
+```
 
 
 ---
