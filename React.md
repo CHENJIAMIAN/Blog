@@ -202,7 +202,10 @@ UNSAFE_开头表示v17可能会废弃它,以为fiber可以中断,造成willXXX�
         componentWillUnmount() 
 ```
 
+在 React v16 之后，props 改变后会触发以下两个生命周期：
 
+- **getDerivedStateFromProps**
+- **shouldComponentUpdate**
 
 
 
