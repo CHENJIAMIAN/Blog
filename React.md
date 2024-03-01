@@ -79,12 +79,15 @@ hook  //Hook 不能在 class 组件中使用
         用法2
             const theme = useContext(ThemeContext);
         
-    
+
     
 高阶组件HOC//传入组件, 返回组件的函数
     装饰器写法
     /不要在render里使用HOC,性能差/
     
+- React Context 更适合于管理简单的数据，例如应用程序主题、用户认证信息等。expand_more
+- Redux 更适合于管理复杂的数据，例如购物车中的商品、表单数据等。
+
 跨组件通信传值context//穿透进去
     父创建:
         //用const context = React.createContext(); 
