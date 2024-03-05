@@ -105,6 +105,39 @@ vertexAttribPointer(2, 4, 5121, true, 28, 24)
 
 现在我们可以得到正确的 `stride` 计算：顶点位置大小（12字节）+ 顶点法线大小（12字节）+ 颜色大小（4字节）= 28字节。这与给定的 `stride` 值相符。
 ```
+### GPT4的过人之处至今无其他模型能超越
+**bing的`更有创造力`版本也能做到**
+```js
+// 假设你已经有了raycaster实例，并且已经设置了从相机到屏幕坐标的射线
+var raycaster = new THREE.Raycaster();
+raycaster.setFromCamera(new THREE.Vector2(0, 0), camera); // 屏幕中心点
+
+// 获取射线的方向向量和起点
+var origin = raycaster.ray.origin.clone(); // 射线起点，即相机的位置
+var direction = raycaster.ray.direction.clone(); // 射线方向向量
+
+// 计算射线的远端点，例如设置长度为1000单位
+var length = 1000;
+var endpoint = origin.clone().add(direction.multiplyScalar(length));
+
+// 创建LineGeometry或BufferGeometry来表示射线
+var geometry = new THREE.Geometry();
+geometry.vertices.push(origin, endpoint);
+
+// 创建材质，可以是基本颜色或者透明的
+var material = new THREE.LineBasicMaterial({ color: 0xff0000, opacity: 0.5, transparent: true });
+
+// 创建Line对象并添加到场景
+var line = new THREE.Line(geometry, material);
+scene.add(line);
+---
+在three.js的editor的场景的脚本使用这个代码
+
+
+回答:
+
+	首先，Three.js库在其更新中不再推荐使用`THREE.Geometry`，因为它已经被标记为过时（自r125版本开始）。取而代之的是，推荐使用`THREE.BufferGeometry`来创建几何体，因为它在性能和内存使用方面更加高效。这是一个关键的改进点，特别是对于需要高性能渲染的实时应用程序。
+```
 
 ### 为什么中国在2023年有大量失业？
 
