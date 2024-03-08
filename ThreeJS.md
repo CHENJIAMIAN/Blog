@@ -18,16 +18,6 @@ Three.js中级封装做3D, 万物皆三角形
         import Stats from 'three/examples/jsm/libs/stats.module';
         stats = new Stats();
         document.body.appendChild(stats.dom);
-    滑块实时调参
-        import dat from 'three/examples/jsm/libs/dat.gui.module';    
-        2.const gui = new dat.GUI();
-          const datas= {  X:0, Y:0,Z:0 } //监听项
-          const f1 = gui.addFolder('柜子和门');//分组
-                //最简单  
-                f1.add(mesh.position, 'x', -1000, 1000);
-                //复杂
-                f1 .add(datas, "X", -1000, 1000).name('相机X').onChange(()=> mesh.position.set(datas.positionX, datas.positionY, datas.positionZ)  );                
-                f1.open();
     辅助对象 Helper
         1、ArrowHelper 箭头辅助对象        2、AxesHelper 轴坐标系辅助对象(常用,看原点在哪里)
         3、BoxHelper 包围盒辅助对象        4、Box3Helper 模拟3维包围盒辅助对象
