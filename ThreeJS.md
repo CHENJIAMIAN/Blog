@@ -18,10 +18,12 @@ Three.js中级封装做3D, 万物皆三角形
         import Stats from 'three/examples/jsm/libs/stats.module';
         stats = new Stats();
         document.body.appendChild(stats.dom);
+        
     辅助对象 Helper
         1、ArrowHelper 箭头辅助对象        2、AxesHelper 轴坐标系辅助对象(常用,看原点在哪里)
         3、BoxHelper 包围盒辅助对象        4、Box3Helper 模拟3维包围盒辅助对象
-        5、CameraHelper 相机视锥体辅助对象( camera : Camera被模拟的相机 )        6、DirectionalLightHelper 平行光的辅助对象
+        5、CameraHelper 相机视锥体辅助对象( camera : Camera被模拟的相机 )        
+        6、DirectionalLightHelper 平行光的辅助对象
         7、GridHelper 坐标网格辅助对象        8、PolarGridHelper 极坐标格辅助对象
         9、HemisphereLightHelper 半球形光源网格辅助对象        10、PlaneHelper 平面辅助对象
         11、PointLightHelper 点光源菱形网格辅助对象        12、SpotLightHelper 聚光灯锥形辅助对象
