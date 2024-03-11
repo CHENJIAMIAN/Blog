@@ -62,7 +62,14 @@ pane.addBlade({
   value: "x", // 默认值
 })
 
-
+pane.addBlade({
+  view: "slider",
+  label: "rotationSpeed",
+  min: 0, // 最小值
+  max: 1, // 最大值，根据需要调整
+  step: 0.001, // 步进值，根据需要调整
+  value: 0.01, // 默认值
+});
 ```
 
 
