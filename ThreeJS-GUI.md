@@ -51,7 +51,16 @@ if (ev.target.key === "loop") {
 });
 
 
-
+pane.addBlade({
+  view: "list",
+  label: "rotationAxis",
+  options: [
+    { text: "X", value: "x" },
+    { text: "Y", value: "y" },
+    { text: "Z", value: "z" },
+  ],
+  value: "x", // 默认值
+})
 ```
 
 
