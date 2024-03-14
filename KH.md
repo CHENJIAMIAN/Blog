@@ -72,11 +72,12 @@ HMI（Human Machine Interaction）人机界面
 	6. **TR5**  生产样机评审  
 	7. **TR6**  小批量样机评审  
 9. **DCP** 决策点
-	1. **CDCP**  概念决策点-，Concept decision check point   (TR1)
-	2. **PDCP**  计划决策点，Plan decision check point   (TR2 TR3)
-	3. **ADCP**  可获得性决策点，Availability decision check point  上市决策点  (TR4 TR4A TR5 TR6)
-	4. **GA**  一般可获得性，General Availability，GA点意味着产品可批量交付给客户  
-	5. **LDCP** 生命周期决策点
+	1. **CDCP**  概念决策点-
+	2. ，Concept decision check point   (TR1)
+	3. **PDCP**  计划决策点，Plan decision check point   (TR2 TR3)
+	4. **ADCP**  可获得性决策点，Availability decision check point  上市决策点  (TR4 TR4A TR5 TR6)
+	5. **GA**  一般可获得性，General Availability，GA点意味着产品可批量交付给客户  
+	6. **LDCP** 生命周期决策点
 10. **EC**  工程变更，Engineering Change  
 11. **ESP**  早期支持项目，Early support program  
 12. **Beta测试**  是一种客户验证方法，可以通过让最终用户在一段时间内验证该产品，来评估客户对产品的满意度  
