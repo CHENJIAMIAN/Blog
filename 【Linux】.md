@@ -168,6 +168,19 @@ RPM  //Red-Hat Package Manager（RPM软件包管理器）的缩写    //centos�
     yum  -y  install openssh-clients.x86_64
 ```
 
+**使用包管理器**：大多数Linux发行版都包括至少一个包管理器，用于自动化安装、配置、更新和删除软件包。
+
+- **Debian/Ubuntu及其衍生版本**：
+    
+    - `apt-get`或`apt`命令：例如，要安装nginx，可以使用`sudo apt-get install nginx`或`sudo apt install nginx`。
+- **Fedora/RHEL/CentOS**：
+    
+    - Fedora使用`dnf`命令：例如，`sudo dnf install nginx`。
+    - RHEL和CentOS 7之前版本使用`yum`命令：例如，`sudo yum install nginx`。
+    - CentOS 8及之后版本转向使用`dnf`。
+- **Arch Linux及其衍生版本**：
+    
+    - 使用`pacman`命令：例如，`sudo pacman -S nginx`。
 # 权限
 
 ```python
