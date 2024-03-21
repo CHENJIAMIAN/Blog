@@ -1,3 +1,4 @@
+
 ### 性能
 ```js
 material/geometry.dispose(); //删除材质/几何体
