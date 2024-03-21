@@ -8,8 +8,7 @@
         但是现在,x86 是 64 位芯片上的架构!!! //由于32位芯片的内存使用限制，只能支持4GB的RAM，所以x86后来扩展到64位芯片上, 基本上现在用相同的架构（指令集）来构建一个芯片使用 64bit 来表示一个数字，因此是 64bit 芯片。        最初它被称为 x86-64，后来被简化为 x64，这意味着现在x86 是 64 位芯片上的架构.
 ```
 
-> Windows命令
-
+## Windows命令
 ```javascript
 批量拷贝目录下所有文件夹中的指定文件
     xcopy "D:\Program Files\OpenVPN\config\阿里正式新vpncerts"   "D:\Program Files\OpenVPN\config"  /S /E /Y
@@ -21,8 +20,7 @@
     netstat -ano|findstr "8080"
 ```
 
-
-
+## 常用
 ```javascript
 df -h //查看磁盘信息空间剩余
     du -h --max-depth=1 /usr/data // 查看文件或文件夹的磁盘使用空间/大小
@@ -77,8 +75,7 @@ Systemctl//:一个systemd工具,主要负责控制systemd系统和服务管理�
 systemd//:即为system daemon,是linux下的一种init软件，在Unix中常以“d”作为系统守护进程
 ```
 
-> Vim
-
+## Vim
 ```javascript
 gedit 文件	//用图形文件编辑器编辑，方便！！但通常，在服务器中，没有安装或需要桌面环境。因此，gedit无法启动和显示()
 
@@ -97,15 +94,7 @@ vim编辑器有两种模式，命令模式和编辑模式，通过ESC键来切�
     G //跳至文件的底部
     :set nu //显示行号     :set nonu //取消显示行号
 ```
-
-
-
-
-
-> 目录
-
-> Linux 系统目录结构
-
+## Linux 系统目录结构
 ```javascript
 [root@主机名  路径]$:
     ~ home
@@ -143,8 +132,7 @@ vim编辑器有两种模式，命令模式和编辑模式，通过ESC键来切�
         /srv：存放服务启动后需要提取的数据（不用服务器就是空）
 ```
 
-> 下载与安装
-
+## 下载与安装
 ```javascript
 wget 网址		//获取安装东西wget 是一个从网络上自动下载文件的自由工具
 
@@ -167,22 +155,37 @@ RPM  //Red-Hat Package Manager（RPM软件包管理器）的缩写    //centos�
     //#安装ssh包：		
     yum  -y  install openssh-clients.x86_64
 ```
-
-**使用包管理器**：大多数Linux发行版都包括至少一个包管理器，用于自动化安装、配置、更新和删除软件包。
-
+### 用包管理器安装软件
 - **Debian/Ubuntu及其衍生版本**：
-    
     - `apt-get`或`apt`命令：例如，要安装nginx，可以使用`sudo apt-get install nginx`或`sudo apt install nginx`。
 - **Fedora/RHEL/CentOS**：
-    
-    - Fedora使用`dnf`命令：例如，`sudo dnf install nginx`。
+    - Fedora\ **openEuler**  使用`dnf`命令：例如，`sudo dnf install nginx`。
     - RHEL和CentOS 7之前版本使用`yum`命令：例如，`sudo yum install nginx`。
     - CentOS 8及之后版本转向使用`dnf`。
 - **Arch Linux及其衍生版本**：
-    
     - 使用`pacman`命令：例如，`sudo pacman -S nginx`。
-# 权限
+### DNF
+```js
+1. **更新软件仓库：** 
+   sudo dnf update
 
+2. **搜索软件包：** 
+   sudo dnf search nginx
+
+3. **安装软件包：** 
+   sudo dnf install nginx
+
+4. **卸载软件包：
+   sudo dnf remove 包名
+
+5. **列出已安装的软件包：** 
+   dnf list installed
+
+6. **清理缓存：** 
+   sudo dnf clean all
+```
+
+## 权限
 ```python
 3个num对应: 
     拥有者、群组、其他
@@ -197,9 +200,7 @@ chmod 771 file         #效果相同 chmod ug=rwx,o=x file //u 表示该�
 ```
 
 
-
-> 配置SSH
-
+## 配置SSH
 ```python
 #SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议
 
@@ -233,7 +234,7 @@ service ssh start
 
 
 
-> SHELL
+## SHELL
 
 ```python
 cat /etc/shells #通过 cat 命令来查看当前 Linux 系统的可用 Shell
@@ -260,7 +261,7 @@ echo $your_name
 ```
 
 
-
+## 系统种类
 ```javascript
 Linux 指GNU/Linux，即采用Linux内核的GNU操作系统，包涵 Linux内核 GNU组件 软件，可以被称为GNU/Linux
     GNU组件 可以运行于Linux内核之上，GNU的内核为Hurd
@@ -288,8 +289,7 @@ Linux靠文件名区分文件类型
 控制台(Console) = 一种特殊的终端
 ```
 
->  linux启动读取配置顺序
-
+## linux启动读取配置顺序
 ```javascript
 一般只有/etc/profile --> ~/.bashrc 
 /etc/profile 
@@ -307,8 +307,7 @@ Linux靠文件名区分文件类型
 （6）~/.bash_profile 是交互式、login 方式进入 bash 运行的~/.bashrc 是交互式 non-login 方式进入 bash 运行的通常二者设置大致相同，所以通常前者会调用后者。
 ```
 
-> 文件
-
+## 文件
 ```python
 ls -a /var/  #显示隐藏的文件
 ls -l #详细信息
@@ -331,8 +330,7 @@ ln -s orifile destfile  #生成软链接文件,类似快捷方式               
                         #硬链接相当于复制出一个文件出来了
 ```
 
-# 压缩
-
+## 压缩
 ```python
 #综合起来，在压缩比率上： tar.bz2>tar.gz>tar   #占用空间与压缩比率成反比： tar.bz2<tar.gz<tar
 #耗费时间（打包，解压）#打包：tar.bz2>tar.gz>tar  #解压： tar.bz2>tar>tar.gz
@@ -352,7 +350,6 @@ tar -zcvf #压缩文件名 .tar.gz 被压缩文件名 #压缩
 ```
 
 ## 查找
-
 ```python
 find / -name *.mysql//在指定目录下查找 文件，通配符匹配
 find / -mtime -2 #查找2天内修改的文件，多了一个减号
@@ -368,12 +365,7 @@ systemctl status mysqld.service //mysql服务状态
 #所以locate的查找并不是实时的，而是以数据库的更新为准，一般是系统自己维护，也可以手工升级数据库 ，命令为：locate -u 
 ```
 
-
-
-
-
-> 环境变量
-
+## 环境变量
 ```javascript
 echo $PATH 	//#打印环境变量path
 
@@ -395,12 +387,7 @@ echo $PATH 	//#打印环境变量path
 //  /etc/profile 和 ~/.bashrc 是"父子"继承关系
 ```
 
-
-
-
-
-> NGINX
-
+## NGINX
 ```shell
 URI匹配
     location ^~ /images/ {
