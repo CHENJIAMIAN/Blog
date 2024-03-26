@@ -89,6 +89,7 @@ Three.js中级封装做3D, 万物皆三角形
         TransformControls 控制模型位置，缩放，旋转的控制器
         VRControls 实现VR双屏相机控制器 
 ```
+
 ## Layer/scene/Object
 ```js
 Layer
