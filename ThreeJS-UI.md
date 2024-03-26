@@ -1,11 +1,21 @@
 > 在 Three.js 应用中创建和管理实例化的面板
 
+```js
+fullscreen.tsx
+	root.tsx
+		useCreateGetInstancedPanelGroup
+			const material = createPanelMaterial(materialClass, { type: 'instanced' })
+			instanced-panel-group.ts
+					constructor(private readonly material: Material,... ) 
+					update -> resize -> this.mesh.material = this.material
 button.tsx
 	container.tsx
-	packages/uikit/src/panel/react.tsx 的 InteractionGroup ->  group -> 
-		instanced-panel-group.ts
-				constructor(private readonly material: Material,... ) 
-				update -> resize -> this.mesh.material = this.material
+		packages/uikit/src/panel/react.tsx 的
+		<InteractionGroup 
+			<group 通过const group = groupRef.current 得来
+				<primitive 通过 useInteractionPanel 得来
+```
+
 		
 ### 从 https://github.com/pmndrs/uikit/blob/main/packages/uikit/src/panel  看看panel是怎么实现的?
 Panel 的实现主要依赖于几个核心文件，它们定义了面板的材质、行为和交互逻辑。以下是从这些文件中提取的关键信息：
