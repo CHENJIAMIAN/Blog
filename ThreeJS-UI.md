@@ -1,19 +1,24 @@
 > 在 Three.js 应用中创建和管理实例化的面板
 
 ```js
-fullscreen.tsx
-	root.tsx
-		useCreateGetInstancedPanelGroup
-			const material = createPanelMaterial(materialClass, { type: 'instanced' })
-			instanced-panel-group.ts
-					constructor(private readonly material: Material,... ) 
-					update -> resize -> this.mesh.material = this.material
-button.tsx
-	container.tsx
-		packages/uikit/src/panel/react.tsx 的
-		<InteractionGroup 
-			<group 通过const group = groupRef.current 得来
-				<primitive 通过 useInteractionPanel 得来
+`所有组件都会被放到root.tsx下`
+
+root.tsx
+	useCreateGetInstancedPanelGroup
+		const material = createPanelMaterial(materialClass, { type: 'instanced' })
+			createPanelMaterial
+				parameters.uniforms.data = 
+		instanced-panel-group.ts
+				constructor(private readonly material: Material,... ) 
+				update -> resize -> this.mesh.material = this.material
+
+root.tsx
+	button.tsx
+		container.tsx
+			packages/uikit/src/panel/react.tsx 的
+			<InteractionGroup
+				<group `<group />` 是 `@react-three/fiber` 提供的组件，用于创建 Three.js 的 `Group` 对象
+					<primitive 通过 useInteractionPanel 得来
 ```
 
 		
