@@ -1,7 +1,8 @@
-> 在 Three.js 应用中创建和管理实例化的面板
-
+## pmndrs/uikit
+> 使用@react- Three/Fiber和Yoga为Three.js构建高性能 3D 用户界面，支持嵌套滚动、按钮、输入、下拉菜单、选项卡、复选框等
 ```js
 `所有组件都会被放到root.tsx下`
+`所有组件都基于container这种基本元件组成`
 
 root.tsx
 	useCreateGetInstancedPanelGroup
