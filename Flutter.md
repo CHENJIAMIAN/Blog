@@ -276,4 +276,7 @@ lib.main.main
 - -
 
 ### CORS
-chrome.dart 加入--disable-web-security
+1. 进入flutter\bin\cache目录，删除名为flutter_tools.stamp的文件
+2. 进入flutter\package. \flutter_tools\lib\src\web目录，打开chrome.dart文件
+3. 找到'--disable-extensions'
+4. 添加'--disable-web-security'
