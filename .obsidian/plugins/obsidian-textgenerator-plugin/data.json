@@ -21,8 +21,8 @@
   "context": {
     "customInstructEnabled": true,
     "includeClipboard": true,
-    "customInstruct": " \n收藏块: {{starredBlocks}}\n\t  \n{{tg_selection}}",
-    "contextTemplate": "标题: {{title}}\n\t\n收藏块: {{starredBlocks}}\n\t  \n{{tg_selection}}"
+    "customInstruct": "{{tg_selection}}",
+    "contextTemplate": "Title: {{title}}\n\t\nStarred Blocks: {{starredBlocks}}\n\t  \n{{tg_selection}}"
   },
   "requestTimeout": 300000,
   "options": {
@@ -53,8 +53,8 @@
     "reload": true
   },
   "advancedOptions": {
-    "generateTitleInstructEnabled": true,
-    "generateTitleInstruct": "为当前文档生成标题 (do not use * \" \\ / < > : | ? .):\n{{substring content 0 255}}"
+    "generateTitleInstructEnabled": false,
+    "generateTitleInstruct": "Generate a title for the current document (do not use * \" \\ / < > : | ? .):\n{{substring content 0 255}}"
   },
   "autoSuggestOptions": {
     "customInstructEnabled": true,
