@@ -21,7 +21,7 @@
   "context": {
     "customInstructEnabled": true,
     "includeClipboard": true,
-    "customInstruct": "标题: {{title}}\n  \n收藏块: {{starredBlocks}}\n\t  \n{{tg_selection}}",
+    "customInstruct": " \n收藏块: {{starredBlocks}}\n\t  \n{{tg_selection}}",
     "contextTemplate": "标题: {{title}}\n\t\n收藏块: {{starredBlocks}}\n\t  \n{{tg_selection}}"
   },
   "requestTimeout": 300000,
