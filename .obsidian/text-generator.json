@@ -14,7 +14,7 @@
     "dalle": {
       "packageId": "dalle",
       "name": "OpenAI Dalle Package",
-      "version": "0.0.9",
+      "version": "0.1.0",
       "minTextGeneratorVersion": "0.7.0",
       "description": "The package contains some interessting Dalle-2/Dalle-3 prompt templates",
       "author": "Noureddine Haouari",
