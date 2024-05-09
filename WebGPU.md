@@ -1,10 +1,11 @@
-|       | CUDA                          | OpenCL                           | OpenGL                         | DirectX                                     |
-|-------|-------------------------------|----------------------------------|--------------------------------|----------------------------------------------|
-| 目的  | 用于通用计算，特别针对 NVIDIA GPU   | 用于通用计算，跨平台支持多种设备       | 用于图形渲染和处理                  | 用于游戏和多媒体开发，提供整套解决方案            |
-| 平台支持 | NVIDIA GPU                     | 跨平台，支持多种设备（CPU、GPU等）    | 跨平台，适用于多种操作系统和硬件平台 | 主要针对 Windows 操作系统                    |
-| 编程模型 | 类似 C/C++，提供专门的编程语言和库 | 类似 C/C++，提供专门的编程语言和库    | 基于状态机，使用 OpenGL Shading Language（GLSL） | 基于状态机，使用 High-Level Shading Language（HLSL） |
-| 功能   | 针对 NVIDIA GPU 进行高性能计算    | 跨平台通用计算，支持多种设备        | 图形渲染和处理                      | 游戏开发，提供图形、音频、输入、网络等功能         |
-| 开发者方便性 | 针对 NVIDIA GPU 进行优化，提供更高级别的抽象 | 跨平台，支持多种设备，较高级别的抽象 | 相对较低，需要编写较多的底层代码     | 相对较高，提供更全面的解决方案和简化的开发接口      |
+
+|        | CUDA                         | OpenCL               | OpenGL                                 | DirectX                                    |
+| ------ | ---------------------------- | -------------------- | -------------------------------------- | ------------------------------------------ |
+| 目的     | 用于通用计算，特别针对 NVIDIA GPU       | 用于通用计算，跨平台支持多种设备     | 用于图形渲染和处理                              | 用于游戏和多媒体开发，提供整套解决方案                        |
+| 平台支持   | NVIDIA GPU                   | 跨平台，支持多种设备（CPU、GPU等） | 跨平台，适用于多种操作系统和硬件平台                     | 主要针对 Windows 操作系统                          |
+| 编程模型   | 类似 C/C++，提供专门的编程语言和库         | 类似 C/C++，提供专门的编程语言和库 | 基于状态机，使用 OpenGL Shading Language（GLSL） | 基于状态机，使用 High-Level Shading Language（HLSL） |
+| 功能     | 针对 NVIDIA GPU 进行高性能计算        | 跨平台通用计算，支持多种设备       | 图形渲染和处理                                | 游戏开发，提供图形、音频、输入、网络等功能                      |
+| 开发者方便性 | 针对 NVIDIA GPU 进行优化，提供更高级别的抽象 | 跨平台，支持多种设备，较高级别的抽象   | 相对较低，需要编写较多的底层代码                       | 相对较高，提供更全面的解决方案和简化的开发接口                    |
 
 以上表格对比了CUDA、OpenCL、OpenGL和DirectX的主要特点。CUDA和OpenCL主要用于通用计算，但CUDA专注于 NVIDIA GPU，而OpenCL是跨平台的。OpenGL和DirectX主要用于图形渲染和游戏开发，其中OpenGL跨平台而DirectX主要面向Windows操作系统。它们在编程模型、功能和开发者方便性方面也存在一些差异。
 
@@ -42,4 +43,103 @@ device.importExternalTexture
 device.queue.copyExternalImageToTexture
 device.queue.submit
 device.queue.writeBuffer
+```
+### 最小案例
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGPU Example</title>
+</head>
+<body>
+    <canvas id="gpuCanvas" width="640" height="480"></canvas>
+    <script>
+        // 获取 canvas 和 WebGPU 上下文
+        const canvas = document.getElementById("gpuCanvas");
+        const context = canvas.getContext("webgpu");
+
+        const startWebGPU = async () => {
+            // 检测并请求适配器
+            const adapter = await navigator.gpu.requestAdapter();
+            if (!adapter) {
+                console.error("Failed to get GPU adapter.");
+                return;
+            }
+
+            // 获取设备
+            const device = await adapter.requestDevice();
+
+            // 配置画布格式和大小
+            const format = "bgra8unorm";
+            context.configure({
+                device: device,
+                format: format
+            });
+
+            // 编写渲染管线和着色器
+            const shaderCode = `
+                @stage(vertex)
+                fn vs_main(@builtin(vertex_index) vertexIndex : u32) -> @builtin(position) vec4<f32> {
+                    var pos = array<vec2<f32>, 3>(
+                        vec2<f32>(0.0, 0.5),
+                        vec2<f32>(-0.5, -0.5),
+                        vec2<f32>(0.5, -0.5));
+                    return vec4<f32>(pos[vertexIndex], 0.0, 1.0);
+                }
+
+                @stage(fragment)
+                fn fs_main() -> @location(0) vec4<f32> {
+                    return vec4<f32>(1.0, 0.0, 0.0, 1.0);
+                }
+            `;
+
+            // 创建着色器模块
+            const shaderModule = device.createShaderModule({ code: shaderCode });
+
+            // 创建渲染管线
+            const pipeline = device.createRenderPipeline({
+                vertex: {
+                    module: shaderModule,
+                    entryPoint: 'vs_main'
+                },
+                fragment: {
+                    module: shaderModule,
+                    entryPoint: 'fs_main',
+                    targets: [{
+                        format: format
+                    }]
+                },
+                primitive: {
+                    topology: 'triangle-list'
+                }
+            });
+
+            // 创建命令编码器
+            const commandEncoder = device.createCommandEncoder();
+            const textureView = context.getCurrentTexture().createView();
+            const renderPassDescriptor = {
+                colorAttachments: [{
+                    view: textureView,
+                    loadOp: 'clear',
+                    clearValue: {r: 0.0, g: 0.0, b: 0.0, a: 1.0},
+                    storeOp: 'store'
+                }]
+            };
+
+            // 设置渲染通道
+            const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
+            passEncoder.setPipeline(pipeline);
+            passEncoder.draw(3, 1, 0, 0);
+            passEncoder.end();
+
+            // 提交指令
+            device.queue.submit([commandEncoder.finish()]);
+        };
+
+        startWebGPU();
+    </script>
+</body>
+</html>
 ```
