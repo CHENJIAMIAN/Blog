@@ -34,8 +34,10 @@ ES6的 9个
     7. iterator迭代器是一个实现next的方法：
                 可迭代对象:  //实现[可迭代协议],即内部有[Symbol.iterator]迭代器的实现方法 ,可用for...of
                             //[Symbol.iterator]加中括号是因为它是对象,不加会被以为是标识符
-                    var iterators= [1,2,3][Symbol.iterator]();   //数组内部实现了 *[Symbol.iterator]() {yield x;}。该迭代器可以被 for...of 循环使用。
+                    var iterators= [1,2,3][Symbol.iterator]();   
+	                    //数组内部实现了 *[Symbol.iterator]() {yield x;}。该迭代器可以被 for...of 循环使用。
                          iterators.next(); //{value: 1, done: false}
+				     被 Array.from 转换为数组。
                 迭代器方法: //实现[迭代器协议], 即内部实现了next方法,返回{value, done}, 如上面的iterators                     
                      
     8. generator生成器函数(加了*号的函数)： 
@@ -620,7 +622,74 @@ every() //是否每个都是
 改:
     arr.map(callback(currentValue, index, array), this)
 ```
+### Symbol
+```js
+toStringTag
+	class MyExample {
+	  get [Symbol.toStringTag]() {
+	    return 'MyExample';
+	  }
+	}
+	
+	const example = new MyExample();
+	console.log(example.toString()); // 输出: "[object MyExample]"
+	
 
+私有数据
+	const privateData = Symbol('private');
+	
+	const obj = {
+	  [privateData]: "这是私有数据"
+	};
+	
+	console.log(obj[privateData]); // 输出: "这是私有数据"
+
+
+asyncIterator
+	const asyncIterable = {
+	  async *[Symbol.asyncIterator]() {
+	    yield 1;
+	    yield 2;
+	    yield 3;
+	  }
+	};
+	
+	(async () => {
+	  for await (const value of asyncIterable) {
+	    console.log(value); // 输出: 1, 2, 3
+	  }
+	})();
+
+
+species//用于创建衍生对象时确定构造函数
+	class MyArray extends Array {
+	  static get [Symbol.species]() { return Array; }
+	}
+	
+	const a = new MyArray(1, 2, 3);
+	const mapped = a.map(x => x * x);
+	
+	console.log(mapped instanceof MyArray); // false
+	console.log(mapped instanceof Array); // true
+	
+
+toPrimitive//自定义对象的原始值转换逻辑。当对象需要被转换为原始类型（如字符串、数字或布尔值）时，如果对象有这个属性方法，则会调用它
+	const obj = {
+	  [Symbol.toPrimitive](hint) {
+	    if (hint === 'number') {
+	      return 42;
+	    }
+	    if (hint === 'string') {
+	      return "hello";
+	    }
+	    return true;
+	  }
+	};
+	
+	console.log(+obj);  // 输出: 42
+	console.log(`${obj}`);  // 输出: "hello"
+	console.log(obj > 20);  // 输出: true
+```
 ## 奇淫技巧
 
 ```js

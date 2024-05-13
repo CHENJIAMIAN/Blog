@@ -78,9 +78,6 @@ requestIdleCallback()
       //在当前块作用域中存在a使用let/const声明的情况下，给a赋值10时，只会在当前作用域找变量a，而这时，还未到声明时候，所以控制台Error:a is not defined
     }
 
-ES6 一个数据结构只要具有 Symbol.iterator 属性，那么就可以其认为是可迭代的。可迭代对象的特点：
-    具有 Symbol.iterator 属性，Symbol.iterator() 返回的是一个遍历器对象。    可以使用 for ... of 进行循环。    通过被 Array.from 转换为数组。
-    [1][Symbol.iterator]().next()//{value: 1, done: false}
     
 控制台技巧:
     $_//：返回上一个被执行过的值
