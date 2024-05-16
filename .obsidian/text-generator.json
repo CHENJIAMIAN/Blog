@@ -3,57 +3,62 @@
     "default": {
       "packageId": "default",
       "name": "Default Prompts Package",
-      "version": "0.0.9",
-      "minTextGeneratorVersion": "0.5.0",
+      "version": "0.0.5",
+      "minTextGeneratorVersion": "0.1.0",
       "description": "This is the main package that comes with Text Generator plugin in Obsidian",
       "author": "Noureddine Haouari",
       "tags": "writing, brainstorming",
       "authorUrl": "https://www.buymeacoffee.com/haouarine",
-      "repo": "text-gen/gpt-3-prompt-templates"
+      "repo": "text-gen/gpt-3-prompt-templates",
+      "installed": false
     },
     "dalle": {
       "packageId": "dalle",
       "name": "OpenAI Dalle Package",
-      "version": "0.1.1",
-      "minTextGeneratorVersion": "0.7.0",
+      "version": "0.1.0",
+      "minTextGeneratorVersion": "0.5.0",
       "description": "The package contains some interessting Dalle-2/Dalle-3 prompt templates",
       "author": "Noureddine Haouari",
       "tags": "photo, dalle-2, dalle-3",
       "authorUrl": "https://www.buymeacoffee.com/haouarine",
-      "repo": "text-gen/tg-dalle-package"
+      "repo": "text-gen/tg-dalle-package",
+      "installed": false
     },
     "huggingface": {
       "packageId": "huggingface",
       "name": "Huggingface Prompts Package",
-      "version": "0.0.4",
-      "minTextGeneratorVersion": "0.5.0",
+      "version": "0.0.1",
+      "minTextGeneratorVersion": "0.1.0",
       "description": "Huggingface Prompts comes with Text Generator plugin in Obsidian",
       "author": "Noureddine Haouari",
       "tags": "writing, brainstorming, huggingface",
       "authorUrl": "https://www.buymeacoffee.com/haouarine",
-      "repo": "text-gen/huggingface"
+      "repo": "text-gen/huggingface",
+      "installed": false
     },
     "awesomePrompts": {
       "packageId": "awesomePrompts",
       "name": "Awesome Prompts",
-      "version": "0.0.3",
+      "version": "0.0.2",
       "minTextGeneratorVersion": "0.5.7",
       "description": "This repo includes ChatGPT prompt curation to use ChatGPT better.",
       "author": "f",
       "tags": "writing, brainstorming, awesome",
       "authorUrl": "https://github.com/f/awesome-chatgpt-prompts",
-      "repo": "text-gen/awesome-tg-package"
+      "repo": "text-gen/awesome-tg-package",
+      "installed": false
     },
     "tts": {
       "packageId": "tts",
       "name": "Text To Speech Package",
-      "version": "0.0.3",
+      "version": "0.0.2",
       "minTextGeneratorVersion": "0.6.0",
       "description": "Contains Text To Speech Templates and support for TTS for other templates",
       "author": "Noureddine",
       "tags": "TTS, Speak",
       "authorUrl": "https://www.buymeacoffee.com/haouarine",
-      "repo": "text-gen/TTS"
+      "repo": "text-gen/TTS",
+      "installed": false
     },
     "vision": {
       "packageId": "vision",
@@ -80,13 +85,14 @@
     "Experimental": {
       "packageId": "Experimental",
       "name": "Experimental Package",
-      "version": "0.0.2",
+      "version": "0.0.1",
       "minTextGeneratorVersion": "0.6.6",
       "description": "Contains experimental templates",
       "author": "Noureddine",
       "tags": "experiments",
       "authorUrl": "https://www.buymeacoffee.com/haouarine",
-      "repo": "text-gen/experimental-package"
+      "repo": "text-gen/experimental-package",
+      "installed": false
     },
     "testExtension": {
       "core": true,
@@ -102,8 +108,7 @@
       "repo": "text-gen/gpt-3-prompt-templates",
       "folderName": "testExtension",
       "price": 20,
-      "installed": false,
-      "downloads": 0
+      "installed": false
     },
     "excalidraw": {
       "packageId": "excalidraw",
