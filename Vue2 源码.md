@@ -23,7 +23,6 @@
 - evaluate(): 对 Watcher 求值,并缓存结果.
 - depend(): 依赖收集,将 Watcher 添加到其依赖的所有 Dep 实例的 subs 数组中.
 
-总之,Watcher 是 Vue 响应式系统的核心,它连接了数据和视图
 ,使得数据的变化能够自动触发视图的更新.同时,Watcher 也是任务调度器的重要组成部分
 ,每个 Watcher 实例都可以被推入队列,从而实现异步更新.
 ```javascript
