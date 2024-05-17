@@ -64,7 +64,8 @@
       "author": "Noureddine",
       "tags": "OpenAI,markdown,gpt-4-vision,vision,images",
       "authorUrl": "https://www.buymeacoffee.com/haouarine",
-      "repo": "text-gen/tg-vision"
+      "repo": "text-gen/tg-vision",
+      "downloads": 3906
     },
     "smartConnections": {
       "packageId": "smartConnections",
@@ -75,18 +76,21 @@
       "author": "Noureddine",
       "tags": "smartConnections,smart-connections",
       "authorUrl": "https://www.buymeacoffee.com/haouarine",
-      "repo": "text-gen/tg-smartConnections"
+      "repo": "text-gen/tg-smartConnections",
+      "downloads": 3905
     },
     "Experimental": {
       "packageId": "Experimental",
       "name": "Experimental Package",
-      "version": "0.0.2",
+      "version": "0.0.1",
       "minTextGeneratorVersion": "0.6.6",
       "description": "Contains experimental templates",
       "author": "Noureddine",
       "tags": "experiments",
       "authorUrl": "https://www.buymeacoffee.com/haouarine",
-      "repo": "text-gen/experimental-package"
+      "repo": "text-gen/experimental-package",
+      "installed": false,
+      "downloads": 3753
     },
     "testExtension": {
       "core": true,
@@ -117,7 +121,8 @@
       "repo": "text-gen/tg-excalidraw",
       "core": true,
       "folderName": "excalidrawPackage",
-      "price": 2
+      "price": 2,
+      "downloads": 0
     }
   },
   "resources": {},
