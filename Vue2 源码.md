@@ -1,11 +1,11 @@
 ### Watcher 的分类:
-1. 渲染 Watcher (Render Watcher):
+1. 渲染Watcher               (Render Watcher):
    每个组件都有一个对应的渲染 Watcher,它的作用是观察组件的依赖数据,当数据变化时,触发组件的重新渲染.
 
-2. 计算属性 Watcher (Computed Watcher):
+2. 计算属性Watcher       (Computed Watcher):
    每个计算属性都对应一个 Watcher,它的作用是观察计算属性的依赖数据,当数据变化时,触发计算属性的重新计算,并缓存结果.
 
-3. 侦听器 Watcher (Watch Watcher):
+3. 侦听器Watcher             (Watch Watcher):
    每个 watch 选项都对应一个 Watcher,它的作用是观察特定的数据,当数据变化时,触发相应的回调函数.
 
 ### Watcher 的主要属性和方法:
@@ -22,13 +22,70 @@
 - run(): 实际执行更新的方法,会调用 getAndInvoke 方法.
 - evaluate(): 对 Watcher 求值,并缓存结果.
 - depend(): 依赖收集,将 Watcher 添加到其依赖的所有 Dep 实例的 subs 数组中.
+**每个 Watcher 实例都可以被推入队列,从而实现异步更新**
 
-同时,Watcher 也是任务调度器的重要组成部分
-,每个 Watcher 实例都可以被推入队列,从而实现异步更新.
+### 伪代码描述 任务队列
+```js
+// 任务队列初始化
+queue = []
+has = {}
+waiting = false
+flushing = false
+index = 0
+
+// 添加任务到队列
+function queueWatcher(watcher):
+  if watcher 不在 has 中:
+    添加 watcher 到 has
+    if 没有正在执行队列:
+      将 watcher 添加到 queue
+    else:
+      根据 id 将 watcher 插入到 queue 的合适位置
+    if 没有正在等待的 flushSchedulerQueue 任务:
+      将 flushSchedulerQueue 任务添加到队列
+      waiting = true
+
+// 执行任务队列  
+function flushSchedulerQueue():
+  flushing = true
+  对 queue 按照 id 从小到大排序
+  遍历 queue:
+    执行每个 watcher 的 before 钩子函数(如果有)
+    has[id] = null
+    执行 watcher 的 run 方法
+  处理 activatedQueue 和 updatedQueue
+  重置调度器状态
+
+// nextTick 函数
+function nextTick(cb, ctx):
+  将回调函数 cb 添加到 callbacks 数组
+  if 没有 pending 的 flushCallbacks 任务:
+    pending = true
+    将 flushCallbacks 添加到任务队列(根据环境选择最优方式)
+  if 没有 cb 参数且支持 Promise:
+    返回一个 Promise
+
+// 在下一个 tick 执行所有回调
+function flushCallbacks():
+  pending = false
+  遍历 callbacks 数组并执行回调函数
+  清空 callbacks 数组
+```
+
+1. 初始化任务队列的相关变量
+2. queueWatcher 函数负责将任务添加到队列,并在必要时触发 flushSchedulerQueue
+3. flushSchedulerQueue 函数负责执行队列中的所有任务,更新 DOM
+4. nextTick 函数提供了在下一个 tick 执行回调的能力,支持 Promise 化
+5. flushCallbacks 函数负责在下一个 tick 执行 nextTick 传入的所有回调
+
+1. 利用队列缓冲所有的数据更新任务
+2. 并在下一个 tick 统一执行,最终批量更新 DOM,
+3. 从而提高性能.nextTick 的实现根据环境优雅地降级,
+4. 确保在不同环境都能使用最优的异步方式执行回调.
+
 ```javascript
 调试vue3:"dev":"nodescripts/dev.js--sourcemap"
 ```
-
 
 ```javascript
 加载渲染过程
@@ -44,8 +101,6 @@
             子beforeDestroy->子destroyed    
     ->父destroyed
 ```
-
-
 
 ```javascript
 /vue用es5写不用es6写,因为es5很容易在原型上挂载方法,更容易分散在各个文件去挂载,更方便维护/
