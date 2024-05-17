@@ -1,5 +1,35 @@
 
+在 Vue 中,Watcher 是一个非常重要的类,它是响应式系统的核心.Watcher 的主要职责是观察数据的变化,并在数据变化时触发相应的回调函数,从而实现数据与视图的同步.
 
+Watcher 的位置:
+- src/core/observer/watcher.js: 这个文件定义了 Watcher 类.
+
+Watcher 的分类:
+1. 渲染 Watcher (Render Watcher):
+   每个组件都有一个对应的渲染 Watcher,它的作用是观察组件的依赖数据,当数据变化时,触发组件的重新渲染.
+
+2. 计算属性 Watcher (Computed Watcher):
+   每个计算属性都对应一个 Watcher,它的作用是观察计算属性的依赖数据,当数据变化时,触发计算属性的重新计算,并缓存结果.
+
+3. 侦听器 Watcher (Watch Watcher):
+   每个 watch 选项都对应一个 Watcher,它的作用是观察特定的数据,当数据变化时,触发相应的回调函数.
+
+Watcher 的主要属性和方法:
+- vm: 当前组件的实例.
+- expression: 被观察的表达式.
+- cb: 数据变化时触发的回调函数.
+- value: Watcher 当前的值.
+- dirty: 标识 Watcher 是否需要重新求值.
+- deps: Watcher 依赖的所有 Dep 实例.
+- newDeps: 新一轮依赖收集后 Watcher 依赖的 Dep 实例.
+- get(): 求值,即执行 getter 函数,并重新收集依赖.
+- addDep(dep): 添加一个依赖(Dep 实例).
+- update(): 当数据变化时,调度者会调用这个方法,从而触发 Watcher 的更新.
+- run(): 实际执行更新的方法,会调用 getAndInvoke 方法.
+- evaluate(): 对 Watcher 求值,并缓存结果.
+- depend(): 依赖收集,将 Watcher 添加到其依赖的所有 Dep 实例的 subs 数组中.
+
+总之,Watcher 是 Vue 响应式系统的核心,它连接了数据和视图,使得数据的变化能够自动触发视图的更新.同时,Watcher 也是任务调度器的重要组成部分,每个 Watcher 实例都可以被推入队列,从而实现异步更新.
 ```javascript
 调试vue3:"dev":"nodescripts/dev.js--sourcemap"
 ```
