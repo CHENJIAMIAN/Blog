@@ -1,10 +1,4 @@
-
-在 Vue 中,Watcher 是一个非常重要的类,它是响应式系统的核心.Watcher 的主要职责是观察数据的变化,并在数据变化时触发相应的回调函数,从而实现数据与视图的同步.
-
-Watcher 的位置:
-- src/core/observer/watcher.js: 这个文件定义了 Watcher 类.
-
-Watcher 的分类:
+### Watcher 的分类:
 1. 渲染 Watcher (Render Watcher):
    每个组件都有一个对应的渲染 Watcher,它的作用是观察组件的依赖数据,当数据变化时,触发组件的重新渲染.
 
