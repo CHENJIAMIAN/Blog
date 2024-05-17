@@ -30,7 +30,6 @@
 ```
 
 
-
 ```javascript
 加载渲染过程
     父beforeCreate->父created->父beforeMount->  
