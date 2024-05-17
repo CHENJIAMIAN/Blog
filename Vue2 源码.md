@@ -8,7 +8,7 @@
 3. 侦听器 Watcher (Watch Watcher):
    每个 watch 选项都对应一个 Watcher,它的作用是观察特定的数据,当数据变化时,触发相应的回调函数.
 
-Watcher 的主要属性和方法:
+### Watcher 的主要属性和方法:
 - vm: 当前组件的实例.
 - expression: 被观察的表达式.
 - cb: 数据变化时触发的回调函数.
