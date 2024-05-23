@@ -387,6 +387,12 @@ gl.isFramebuffer//判断对象是否是帧缓冲区。
 gl.linkProgram//链接着色器程序。
 gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);//设置为1翻转图片，如果设置为0不翻转图片。默认翻转
 gl.polygonOffset//设置多边形偏移。
+	gl.enable(gl.POLYGON_OFFSET_FILL);
+	const material = new THREE.MeshBasicMaterial({
+	    polygonOffset: true,
+	    polygonOffsetFactor: 1, // 偏移因子
+	    polygonOffsetUnits: 1   // 偏移单位
+	});
 gl.readBuffer//设置读入缓冲区。
 gl.readPixels//读取像素。
 gl.shaderSource//设置着色器源代码。
