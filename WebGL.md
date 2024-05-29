@@ -1,4 +1,6 @@
 [OpenGL ES 2.0.25 (November 2, 2010)](https://registry.khronos.org/OpenGL/specs/es/2.0/es_full_spec_2.0.pdf#nameddest=section-3.5.2)
+	1. [WebGL Specification](https://registry.khronos.org/webgl/specs/latest/1.0/)
+	2. [WebGL 2.0 规范](https://registry.khronos.org/webgl/specs/latest/2.0/)
 [学习了fem-d/webGL: for webGL learning](https://github.com/fem-d/webGL)
 ```javascript
 离线/实时渲染 //29fps/30fps
