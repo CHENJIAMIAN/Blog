@@ -35,31 +35,16 @@ var publicPropertiesMap = (
     $watch: (i) => __VUE_OPTIONS_API__ ? instanceWatch.bind(i) : NOOP
   })
 );
+```
+### 打印子组件
 
+```js
 const subTree = vm.$.subTree;//（VNode 树）
-function findComponentByName(node, name) {
-  if (node.type.name === name) {
-	return node;
-  }
-  if (node.component && node.component.subTree) {
-	return findComponentByName(node.component.subTree, name);
-  }
-  if (Array.isArray(node.children)) {
-	for (const child of node.children) {
-	  const found = findComponentByName(child, name);
-	  if (found) {
-		return found;
-	  }
-	}
-  }
-  return null;
-}
 
-const parentInstanceNode = findComponentByName(subTree, 'ParentComponent');
-const childInstanceNode = findComponentByName(parentInstanceNode, 'ChildComponent');
-const parentComponentProxy = parentInstanceNode.component.proxy;
-const childComponentProxy = childInstanceNode.component.proxy;
+component 属性
+	用于获取子组件实例, 存储在父组件的 `subTree` 结构中
+subTree 属性
+	一个 VNode, 包含了该组件的所有子节点（包括元素和组件）
 
-console.log('ParentComponent proxy:', parentComponentProxy);
-console.log('ChildComponent proxy:', childComponentProxy);
+打印子组件vm.$.subTree.children.default()[0].children.default()[0].children.default()
 ```
