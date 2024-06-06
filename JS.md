@@ -455,7 +455,7 @@ var p = Object.create(Object.prototype); 等同于 {} 等同于 new Object() //p
         正常在自己的[[scope]]找到this, 它没有自己的[[scope]](作用域), 一级一级往上级的[[scope]]找 
         /箭头函数this 是最近能找到的this/ 
         {  a:1,/*对象没有this*/, fun1:function(){/*函数才有this*/}}
-        箭头函数的绑定直接无法被修改(但是可修改它爸啊)
+        箭头函数的绑定直接无法被修改,''(但是可修改它爸啊)
             var age = 18;
             const Person = {
                 age: 20,  
