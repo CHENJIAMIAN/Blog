@@ -4,7 +4,7 @@
 [学习了fem-d/webGL: for webGL learning](https://github.com/fem-d/webGL)
 ```javascript
 离线/实时渲染 //29fps/30fps
-/打断点在gl.drawArrays打,它通常是绘制前的最后一步/
+,/打断点在gl.drawArrays打,它通常是绘制前的最后一步/
     在绘制之前，需要使用 gl.drawXXX 系列函数来指定要绘制的图形和绘制的方式，例如 gl.drawArrays 和 gl.drawElements。这些函数通常是绘制前的最后一个方法，因为它们会实际执行绘制操作。
 ```
 
