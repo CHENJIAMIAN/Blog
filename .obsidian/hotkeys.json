@@ -192,5 +192,13 @@
       ],
       "key": "ArrowDown"
     }
+  ],
+  "random-note": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "`"
+    }
   ]
 }
