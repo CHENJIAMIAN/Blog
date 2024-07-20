@@ -525,3 +525,18 @@ src\renderers\WebGLRenderer.js
 	3. 另一个根源是机柜网孔贴图网孔的边缘毛刺是透明的, 经测试,只要是贴图的png图片中透明的部分都会与背景混色
 3. `OrbitControls` 边缩放边旋转
 	1. 新一个 `OrbitControls` 时, 没有调用旧的 `OrbitControls`的 `dispose`方法, 造成监听的方法没有销毁掉, 导致重复执行监听方法
+4. 添加带6个材质插槽的立方体
+```js
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const materials = [
+    new THREE.MeshBasicMaterial({ color: 0x3ec1d3, name: '右' }),  // 右侧
+    new THREE.MeshBasicMaterial({ color: 0xf6f7d7, name: '左' }),  // 左侧
+    new THREE.MeshBasicMaterial({ color: 0x355c7d, name: '上' }),  // 上面
+    new THREE.MeshBasicMaterial({ color: 0x6c5b7b, name: '下' }),  // 下面
+    new THREE.MeshBasicMaterial({ color: 0xff165d, name: '前' }),  // 前面
+    new THREE.MeshBasicMaterial({ color: 0xff9a00, name: '后' })   // 后面
+];
+
+const cube = new THREE.Mesh(geometry, materials);
+editor.addObject(cube);
+```
