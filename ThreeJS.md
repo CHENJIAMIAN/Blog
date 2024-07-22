@@ -9,6 +9,8 @@ Three.js中级封装做3D, 万物皆三角形
     坐标系: 世界空间和局部空间
     
 最小例子：https://github1s.com/johnson2heng/GitChat-Three.js/blob/master/01%E7%AC%AC%E4%B8%80%E8%8A%82%20helloWorld/index.html#L50
+
+WebGLRenderer 中的 WebGL 1 支持现已弃用，并将在 r163 中删除。只支持webgl2了
 ```
 ## 调试
 ```js
