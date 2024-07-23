@@ -17,9 +17,13 @@ git clone --depth 1 https://chromium.googlesource.com/chromium/src.git 2024年6�
 
 ### Blink - 渲染引擎
 - **src/third_party/blink/**
-    - **renderer/core/** (核心功能，例如 DOM 操作，事件处理等)
-    - **renderer/modules/** (额外模块，如 WebRTC, WebXR 等)
-    - **renderer/platform/** (底层平台抽象，如文件系统、内存、线程等)
+    - **renderer/core/** 与HTML、CSS和其他基本DOM部分紧密耦合的特性应放在core
+    - **renderer/modules/** - 概念上依赖于“核心”特性的特性应放在modules，如 WebRTC, WebXR 等
+    - **renderer/platform/** 核心”依赖的特性应放在platform, 如文件系统、内存、线程等
+	    - **scheduler/** 实现了Blink发布任务的任务调度器
+    - **renderer/modules/**
+	    - **webgl/** 包含WebGL和WebGL2渲染上下文
+	    - **webgpu/** WebGPU API 是 Web 上 WebGL 和 WebGL 2 图形 API 的后继者。它将提供现代功能，如“GPU 计算”，以及对 GPU 硬件的低开销访问和更好、更可预测的性能。WebGPU 正在由“Web 上的 GPU” W3C 社区小组开发。
 #### 被哪些组件引用
 1. **content/目录**
     - **src/content/browser/**: 管理浏览器进程，调度来自不同 Tab 页面的请求，并维护与渲染进程的通信。
@@ -40,7 +44,7 @@ V8 是 Chromium 的 JavaScript 引擎。它负责编译和执行 JavaScript 代�
 - **src/net/**
 #### 依赖和引用
 - **content/browser**：浏览器进程中的网络请求都会通过这个模块处理。
-- **services/network**：网络服务层，通过 Mojo IPC 进行跨进程通信。
+- **services/network**：网络服务层，通过 **Mojo** IPC 进行跨进程通信。
 ### 3. 插件系统（Pepper Plugin API, PPAPI）
 PPAPI 提供了与操作系统无关的插件接口，可用来开发浏览器插件，像 Flash 曾经使用这种接口。
 - **src/ppapi/**
@@ -66,4 +70,5 @@ GPU 模块负责管理和调度图形处理任务，并提供硬件加速功能�
 - **content/gpu**：GPU 进程的管理。
 - **third_party/blink/renderer/platform/graphics**：使用 GPU 进行页面渲染。
 
-WeblG
+## WebGL
+- **ANGLE**（Almost Native Graphics Layer Engine）是Chromium中WebGL实现的核心部分。它将WebGL调用转换为不同平台的本机图形API调用（如Direct3D、Metal等）。ANGLE的代码位于`third_party/angle`目录中。
