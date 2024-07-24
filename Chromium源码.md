@@ -72,7 +72,8 @@ GPU 模块负责管理和调度图形处理任务，并提供硬件加速功能�
 
 ## WebGL
 - **ANGLE**（Almost Native Graphics Layer Engine）是Chromium中WebGL实现的核心部分。它将WebGL调用转换为不同平台的本机图形API调用（如Direct3D、Metal等）。ANGLE的代码位于`third_party/angle`目录中。
-	- 它允许在不支持 OpenGL ES 3.0 的硬件上运行 WebGL 2.0。它将 OpenGL ES 调用转换为 Direct3D 调用，甚至可以在没有完整的 OpenGL ES 3.0 支持的情况下，通过 Direct3D 提供 WebGL 2 的某些功能。
+	- 它允许在不支持 OpenGL ES 3.0 的硬件上运行 WebGL 2.0。
+	- 它将 OpenGL ES 调用转换为 Direct3D 调用，甚至可以在没有完整的 OpenGL ES 3.0 支持的情况下，通过 Direct3D 提供 WebGL 2 的某些功能。
 - **如果 Chrome 检测到系统上缺乏现代 GPU，它将自动使用 ANGLE 的 SwiftShader 后端**
 	1. 作为 OpenGL ES 驱动程序，SwANGLE（ANGLE + SwiftShader Vulkan）
 	- **--use-gl=angle --use-angle=swiftshader**
