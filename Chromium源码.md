@@ -71,13 +71,39 @@ GPU 模块负责管理和调度图形处理任务，并提供硬件加速功能�
 - **third_party/blink/renderer/platform/graphics**：使用 GPU 进行页面渲染。
 
 ## WebGL
-- **ANGLE**（Almost Native Graphics Layer Engine）是Chromium中WebGL实现的核心部分。它将WebGL调用转换为不同平台的本机图形API调用（如Direct3D、Metal等）。ANGLE的代码位于`third_party/angle`目录中。
-	- 它允许在不支持 OpenGL ES 3.0 的硬件上运行 WebGL 2.0。
-	- 它将 OpenGL ES 调用转换为 Direct3D 调用，甚至可以在没有完整的 OpenGL ES 3.0 支持的情况下，通过 Direct3D 提供 WebGL 2 的某些功能。
-- **如果 Chrome 检测到系统上缺乏现代 GPU，它将自动使用 ANGLE 的 SwiftShader 后端**
-	1. 作为 OpenGL ES 驱动程序，SwANGLE（ANGLE + SwiftShader Vulkan）
-	- **--use-gl=angle --use-angle=swiftshader**
-	2. 作为 WebGL 的后备，SwANGLE（ANGLE + SwiftShader Vulkan）
-	- **--use-gl=angle --use-angle=swiftshader-webgl**
-	3. 作为 Vulkan 驱动程序（需要[enable_swiftshader_vulkan](https://source.chromium.org/chromium/chromium/src/+/main:gpu/vulkan/features.gni;l=16)功能）
-	- **--use-vulkan=swiftshader**
+- **ANGLE**（Almost Native Graphics Layer Engine）是Chromium中WebGL实现的核心部分。
+	- ANGLE的代码位于`third_party/angle`目录中。
+	- 用于在多个平台上实现 OpenGL ES（Open Graphics Library for Embedded Systems）的接口, 从而支持WebGL
+	- 它允许在不支持 OpenGL ES 3.0 的硬件上运行 WebGL 2.0, 如通过 Direct3D 提供 WebGL 2 的某些功能
+	- 支持多个后端(底层图形 API)，用于将 OpenGL ES API 转换为其他底层图形 API。
+		1. Direct3D 后端
+			- **Direct3D 9**：主要用于旧版本的 Windows 系统。
+			- **Direct3D 11**：目前最常用的后端，适用于大多数 Windows 平台。
+		2. Vulkan 后端
+			- **Vulkan**：跨平台的低级别图形 API，适用于高性能和多线程图形渲染。Vulkan 后端使得 ANGLE 可以在支持 Vulkan 的操作系统上运行。
+		3. Metal 后端
+			- **Metal**：Apple 提供的图形 API，适用于 macOS 和 iOS 平台。通过 Metal 后端，ANGLE 可以在 Apple 设备上实现高效的图形渲染。
+		4. OpenGL 后端
+			- **OpenGL**：用于一些特殊情况，但不是主要的后端。
+		5. SwiftShader 后端
+			- **SwiftShader**：纯软件实现的图形渲染器，当没有硬件加速时，通过这个后端提供图形渲染。
+		6. Null 后端
+			- **Null**：一种调试模式，不执行实际渲染，用于测试和调试。
+
+- **SwiftShader** 是一个高性能的 CPU 上的图形渲染器, 它允许在没有图形硬件的环境下运行图形密集型应用程序
+	- **如果 Chrome 检测到系统上缺乏现代 GPU，它将自动使用 ANGLE 的 SwiftShader 后端**
+		1. 作为 OpenGL ES 驱动程序，SwANGLE（ANGLE + SwiftShader Vulkan）
+		- **--use-gl=angle --use-angle=swiftshader**
+		2. 作为 WebGL 的后备，SwANGLE（ANGLE + SwiftShader Vulkan）
+		- **--use-gl=angle --use-angle=swiftshader-webgl**
+		3. 作为 Vulkan 驱动程序（需要[enable_swiftshader_vulkan](https://source.chromium.org/chromium/chromium/src/+/main:gpu/vulkan/features.gni;l=16)功能）
+		- **--use-vulkan=swiftshader**
+ 
+- 指定 Chrome 使用特定的图形 API 来渲染图形内容
+	- `--use-gl=desktop`：使用桌面 OpenGL 模式。
+	- `--use-gl=osmesa`：使用 OSMesa（一个用于 OpenGL 的 Mesa 渲染库）。
+	- `--use-gl=angle`：使用 ANGLE（让 OpenGL ES 代码能够在桌面和移动平台上运行的一个抽象层）。
+- 指定 Chrome 使用 ANGLE 作为其图形渲染层
+	- `--use-angle=d3d`：使用 Direct3D 作为 ANGLE 的后端（通常在 Windows 上使用）。
+	- `--use-angle=vulkan`：使用 Vulkan 作为 ANGLE 的后端（如果你的系统和 Chrome 支持 Vulcan）。
+	- `--use-angle=gl`：使用 OpenGL。
