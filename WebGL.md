@@ -340,6 +340,22 @@ gl.createVertexArray//创建一个顶点数组对象
 
 单个物体创建透明物体//如果显示背景，把前景挖掉；如果显示前景，把背景挖掉。如果都有，那么全都渲染了。
 gl.cullFace//设置剔除面的方向,要先gl.enable(gl.FACE_CULLING);
+	// 启用面剔除
+	gl.enable(gl.CULL_FACE);
+	
+	// 设置剔除的面
+	gl.cullFace(gl.BACK); // 剔除背面
+	// 或者
+	gl.cullFace(gl.FRONT); // 剔除前面
+	// 或者
+	gl.cullFace(gl.FRONT_AND_BACK); // 剔除前面和背面
+
+	### 面的定义
+		在 WebGL 中，面是通过其顶点的顺序定义的。默认情况下，顺时针（CW）顺序的顶点定义为前面，而逆时针（CCW）顺序的顶点定义为背面。
+		gl.frontFace(gl.CCW); // 设置逆时针为前面
+		gl.frontFace(gl.CW); // 设置顺时针为前面
+
+	- 在某些情况下，剔除背面可能会导致物体的一部分不可见，特别是在复杂的几何体或'透明物体'的情况下。
 
 gl.deleteBuffer//删除 WebGL 缓存区对象。
 gl.deleteFramebuffer//删除由 gl.createFramebuffer 创建的帧缓冲区对象。
