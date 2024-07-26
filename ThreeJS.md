@@ -500,6 +500,94 @@ src\renderers\WebGLRenderer.js
 7. layers.mask 的作用
 	1. 例如 mask = 11 （表现为二进制共32位`0000 0000 0000 0000 0000 0000 0000 1011`) 一位代表一个图层
 	2. lastLayer.mask >> 某位 !== 0 可以判断某位被使用(即某层被使用)
+## 渲染原理
+### `this.renderBufferDirect`
+- 功能是将给定的几何体、材质和对象渲染到场景中。
+- 负责处理渲染的各种细节，包括设置着色器程序、处理材质、计算绘制范围、选择渲染模式和执行渲染等。
+
+1. **处理场景参数**：
+```javascript
+   if ( scene === null ) scene = _emptyScene;
+   ```
+   - 如果传入的 `scene` 参数为 `null`，则使用一个空场景 `_emptyScene`。
+2. **确定面朝向**：
+   ```javascript
+   const frontFaceCW = ( object.isMesh && object.matrixWorld.determinant() < 0 );
+   ```
+   - 计算对象的面朝向，判断其是否为顺时针（CW）方向。
+3. **设置着色器程序**：
+   ```javascript
+   const program = setProgram( camera, scene, geometry, material, object );
+   ```
+   - 根据相机、场景、几何体、材质和对象设置当前的着色器程序。
+4. **设置材质状态**：
+   ```javascript
+   state.setMaterial( material, frontFaceCW );
+   ```
+   - 更新渲染状态以使用指定的材质。
+5. **处理索引和绘制范围**：
+   ```javascript
+   let index = geometry.index;
+   let rangeFactor = 1;
+
+   if ( material.wireframe === true ) {
+       index = geometries.getWireframeAttribute( geometry );
+       if ( index === undefined ) return;
+       rangeFactor = 2;
+   }
+   ```
+   - 根据材质的类型（如线框模式）处理几何体的索引和绘制范围。
+6. **计算绘制起始和结束范围**：
+   ```javascript
+   let drawStart = drawRange.start * rangeFactor;
+   let drawEnd = ( drawRange.start + drawRange.count ) * rangeFactor;
+
+   // 进一步调整 drawStart 和 drawEnd
+   ```
+   - 计算实际的绘制起始和结束位置，确保它们在有效范围内。
+7. **设置绑定状态**：
+   ```javascript
+   bindingStates.setup( object, material, program, geometry, index );
+   ```
+   - 设置与对象、材质和程序相关的绑定状态。
+8. **选择渲染器**：
+   ```javascript
+   let renderer = bufferRenderer;
+
+   if ( index !== null ) {
+       attribute = attributes.get( index );
+       renderer = indexedBufferRenderer;
+       renderer.setIndex( attribute );
+   }
+   ```
+   - 根据几何体是否有索引来选择合适的渲染器。
+9. **设置绘制模式**：
+   ```javascript
+   if ( object.isMesh ) {
+       renderer.setMode( material.wireframe === true ? _gl.LINES : _gl.TRIANGLES );
+   } else if ( object.isLine ) {
+       // 处理线的模式
+   } else if ( object.isPoints ) {
+       renderer.setMode( _gl.POINTS );
+   } else if ( object.isSprite ) {
+       renderer.setMode( _gl.TRIANGLES );
+   }
+   ```
+   - 根据对象的类型（网格、线、点或精灵）设置渲染模式。
+10. **执行渲染**：
+    ```javascript
+    if ( object.isBatchedMesh ) {
+        // 处理批量渲染
+    } else if ( object.isInstancedMesh ) {
+        // 处理实例化渲染
+    } else if ( geometry.isInstancedBufferGeometry ) {
+        // 处理实例化缓冲几何体
+    } else {
+        renderer.render( drawStart, drawCount );
+    }
+    ```
+    - 根据对象的类型执行相应的渲染操作，包括批量渲染、实例化渲染或普通渲染。
+
 ## 踩坑
 1. `THREE.NumberKeyframeTrack( '.material.map.offeset.x',`是不支持的, 只支持两级的属性, 如 `THREE.NumberKeyframeTrack( '.material.opacity`
 2. 加载的glb看起来很暗?
