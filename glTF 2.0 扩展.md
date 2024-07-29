@@ -17,7 +17,7 @@ gltf-transform optimize out.glb out_optimize.glb
 ```
 - [cli.ts - donmccurdy/glTF-Transform - GitHub1s](https://github1s.com/donmccurdy/glTF-Transform/blob/HEAD/packages/cli/src/cli.ts#L338)
 - [palette | glTF Transform](https://gltf-transform.dev/modules/functions/functions/palette)
-- 分割glb文件:  [Divide glTF Document](https://gist.github.com/donmccurdy/c718bc71163dcd20f8080e9f0d22c3fe)
+- 分割glb文件:  [Divide glTF Document](https://gist.github.com/donmccurdy/c718bc71163dcd20f8080e9f0d22c3fe) Divide glTF 失败, 转出来顶点混乱
 
 ```shell
 gltf-transform 3.5.0 — glTF Transform SDK的命令行界面（CLI）。
