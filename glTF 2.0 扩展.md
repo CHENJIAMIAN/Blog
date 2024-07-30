@@ -15,9 +15,6 @@ gltf-transform instance out.glb out.glb
 # 优化
 gltf-transform optimize out.glb out_optimize.glb
 
-# 优化 GLTF 文件  
-gltf-transform optimize input.glb output.glb  
-
 # 去除未使用的材质、纹理或场景节点  
 gltf-transform prune input.glb output.glb  
 
