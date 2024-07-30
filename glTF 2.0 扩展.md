@@ -14,6 +14,18 @@ gltf-transform instance out.glb out.glb
 
 # 优化
 gltf-transform optimize out.glb out_optimize.glb
+
+# 优化 GLTF 文件  
+gltf-transform optimize input.glb output.glb  
+
+# 去除未使用的材质、纹理或场景节点  
+gltf-transform prune input.glb output.glb  
+
+# 使用压缩技术减小纹理和其他数据的大小  
+gltf-transform compress input.glb output.glb  
+
+# 展平场景层级，减少多余的节点  
+gltf-transform flatten input.glb output.glb
 ```
 - [cli.ts - donmccurdy/glTF-Transform - GitHub1s](https://github1s.com/donmccurdy/glTF-Transform/blob/HEAD/packages/cli/src/cli.ts#L338)
 - [palette | glTF Transform](https://gltf-transform.dev/modules/functions/functions/palette)
