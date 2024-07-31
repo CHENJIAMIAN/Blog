@@ -12,9 +12,7 @@ gltf-transform optimize out.glb out_optimize.glb
 ```bash
 # 步骤 1: 简化网格，减少顶点数目  
 gltf-transform simplify in.glb out_simplified.glb  
-	gltf-transform simplify in.glb out_simplified.glb --ratio 0 --error 1  # 调用 glTF Transform 工具进行网格简化  
-	# 其中 in.glb 是输入文件，out_simplify.glb 是输出文件  
-	
+	--ratio 0 --error 1
 	--ratio 0  # 设置目标简化比例为 0，意味着尽可能多地减少顶点数量，达到最大简化效果  
 	--error 1  # 设置误差限制为 1，允许误差达到 100%，不再控制视觉质量与原模型的差异
 
@@ -34,13 +32,14 @@ gltf-transform quantize out_draco.glb out_quantized.glb
 gltf-transform metalrough out_quantized.glb out_metalrough.glb  
 
 # 步骤 7: 压缩纹理，调整纹理大小  
-gltf-transform resize out_metalrough.glb out_resized.glb  
+gltf-transform resize out_metalrough.glb out_resized.glb  --power-of-two nearest 
+	--power-of-two #将纹理调整为最接近的2的幂
 
 # 步骤 8: 创建GPU实例，减少内存使用  
 gltf-transform instance out_resized.glb out_instanced.glb  
 
 # 步骤 9: 使用Gzip压缩模型，减少文件大小  
-gltf-transform gzip out_instanced.glb out_optimized.glb
+gltf-transform gzip out_instanced.glb
 ```
 - [cli.ts - donmccurdy/glTF-Transform - GitHub1s](https://github1s.com/donmccurdy/glTF-Transform/blob/HEAD/packages/cli/src/cli.ts#L338)
 - [palette | glTF Transform](https://gltf-transform.dev/modules/functions/functions/palette)
