@@ -127,7 +127,7 @@ three.js在所有地方都使用国际单位制。如果您也使用国际单位
 renderer.gammaFactor = 2.2;
 renderer.outputEncoding = THREE.sRGBEncoding;
 ```
-对于颜色，请执行以下操作：
+rrd对于颜色，请执行以下操作：
 ```js
 const color = new Color(0x800080);
 color.convertSRGBToLinear();
