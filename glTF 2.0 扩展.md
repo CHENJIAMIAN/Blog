@@ -40,6 +40,8 @@ gltf-transform instance out_resized.glb out_instanced.glb
 
 # 步骤 9: 使用Gzip压缩模型，减少文件大小  
 gltf-transform gzip out_instanced.glb
+
+
 ```
 - [cli.ts - donmccurdy/glTF-Transform - GitHub1s](https://github1s.com/donmccurdy/glTF-Transform/blob/HEAD/packages/cli/src/cli.ts#L338)
 - [palette | glTF Transform](https://gltf-transform.dev/modules/functions/functions/palette)
@@ -78,7 +80,20 @@ gltf-transform gzip out_instanced.glb
 - **unweld**: 解索引几何体，断开任何共享顶点。
 - **tangents**: 生成 MikkTSpace 顶点切线。
 - **reorder**: 优化顶点数据，提高参考局部性。
+	`--target`:
+		- `"size"`: 优化传输大小（推荐用于 Web 应用）。
+		- `"performance"`: 优化 GPU 渲染性能。
 - **simplify**: 简化网格，减少顶点数量。
+
+gltf-transform draco in.glb out_draco.glb  # 1. Draco 压缩几何体
+gltf-transform meshopt in.glb out_meshopt.glb  # 2. Meshopt 压缩几何体和动画
+gltf-transform quantize in.glb out_quantize.glb  # 3. 量化处理（减少几何体精度和内存）
+gltf-transform dequantize in.glb out_dequantize.glb  # 4. 反量化几何体
+gltf-transform weld in.glb out_weld.glb  # 5. 合并等效顶点以优化几何体
+gltf-transform unweld in.glb out_unweld.glb  # 6. 解索引几何体，断开任何共享顶点
+gltf-transform tangents in.glb out_tangents.glb  # 7. 在使用法线贴图时，若需确保渲染的一致性和视觉质量，尤其在不同软件之间转换模型时，应使用 `gltf-transform tangents` 生成 MikkTSpace 顶点切线。
+gltf-transform reorder in.glb out_reorder.glb  --target performance # 8. 优化顶点数据的引用局部性是指重新排列顶点数据的顺序(程序访问数据时倾向于访问相邻的、最近使用的数据)
+gltf-transform simplify in.glb out_simplify.glb --percent 50  # 9. 简化网格，减少顶点数量
 
 #### 6. MATERIAL（材质处理）
 - **metalrough**: 将材质从镜面/光泽转为金属/粗糙。
