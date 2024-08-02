@@ -6,7 +6,7 @@ npm install --global @gltf-transform/cli # install
 gltf-transform --help # help
 
 # 利用所有可用的方法优化模型
-gltf-transform optimize out.glb out_optimize.glb
+gltf-transform optimize in.glb out_optimize.glb
 ```
 
 ```bash
