@@ -237,3 +237,183 @@ OrbitControls.addEventListener("change", () => renderer.render(scene, camera));
 1. 不要使用 `TriangleFanDrawMode` ，它很慢。
 2. 当你有数百或数千个相似的几何体时，请使用几何实例化。
 3. 在动画顶点或粒子时，尤其是在GPU上进行动画处理（参考THREE.Bas的一种方法）。
+
+---
+### 实践
+从源码的角度分析drawcall到画面变化的过程可能会涉及相当长的时间,这取决于多个因素和阶段。让我详细解释这个过程及其可能的时间消耗:
+
+1. CPU阶段:
+	a) Draw Call 准备 (几微秒到几毫秒):
+	- 应用程序代码准备渲染命令
+	- 设置着色器参数、纹理、渲染状态等
+	- 可能涉及复杂的场景图遍历和剔除操作
+	
+	b) API调用 (几微秒到几毫秒):
+	- 将渲染命令转换为图形API调用(如OpenGL, DirectX, Vulkan等)
+	- API驱动程序处理这些调用
+	
+	c) 命令缓冲构建 (几微秒到几毫秒):
+	- 驱动程序将API调用转换为GPU可理解的命令
+	- 构建命令缓冲区
+2. GPU处理阶段:
+	a) 命令处理 (几微秒到几毫秒):
+	- GPU从命令缓冲区读取并解析命令
+	
+	b) 几何处理 (取决于复杂度,可能从几微秒到几十毫秒):
+	- 顶点着色器处理
+	- 曲面细分(如果适用)
+	- 几何着色器处理(如果适用)
+	- 裁剪、背面剔除等操作
+	
+	c) 光栅化 (取决于像素数量和复杂度,可能从几微秒到几十毫秒):
+	- 将几何转换为像素
+	- 片段着色器处理每个像素
+	
+	d) 后处理 (几微秒到几毫秒):
+	- 深度测试、模板测试、混合等操作
+	
+	e) 帧缓冲操作 (几微秒到几毫秒):
+	- 将结果写入帧缓冲区
+3. 显示阶段:
+	a) 帧缓冲交换 (依赖于垂直同步设置,最长可达16.7ms @ 60Hz):
+	- 等待显示器刷新间隔
+	- 交换前后缓冲区
+	
+	b) 扫描输出 (依赖于显示器刷新率,通常为16.7ms @ 60Hz):
+	- 显示器从帧缓冲读取数据并显示
+	
+	考虑到所有这些阶段,从drawcall到画面实际变化的整个过程可能持续时间如下:
+	
+	- 最短情况: 几毫秒 (简单场景,高性能硬件,无垂直同步)
+	- 典型情况: 16.7ms到33.3ms (取决于帧率,60FPS或30FPS)
+	- 最长情况: 可能超过100ms (复杂场景,低性能硬件,存在CPU或GPU瓶颈)
+
+需要注意的是,现代图形管线通常是并行工作的,多个drawcall可能同时在不同阶段处理。此外,技术如多线程渲染、异步计算、早期Z测试等可以进一步优化这个过程。
+
+在实际开发中,使用性能分析工具(如GPU Profiler)可以帮助精确定位每个阶段的耗时,从而进行有针对性的优化。
+
+### DrawCall的内容
+
+1. 几何数据
+   - 顶点坐标
+   - 法线
+   - 纹理坐标
+   - 颜色信息（如果有）
+2. 索引数据（如果使用索引绘制）
+3. 渲染状态
+   - 使用的着色器程序
+   - 纹理绑定
+   - 混合模式
+   - 深度测试设置
+   - 剔除设置
+4. Uniform数据
+   - 变换矩阵（模型、视图、投影）
+   - 材质属性
+   - 光照参数
+5. 绘制命令
+   - 图元类型（如三角形、线条、点）
+   - 起始索引
+   - 顶点数量或索引数量
+
+### DrawCall的提交过程
+
+1. 准备阶段
+   - CPU准备上述所有数据
+   - 将几何数据和索引数据上传到GPU内存（通常在初始化时完成）
+2. 设置渲染状态
+   - 激活所需的着色器程序
+   - 设置混合模式、深度测试等状态
+3. 绑定资源
+   - 绑定顶点缓冲对象（VBO）和索引缓冲对象（IBO）
+   - 绑定纹理
+   - 设置顶点属性指针
+4. 更新Uniform数据
+   - 通过API函数将Uniform数据传输到GPU
+5. 发起绘制调用
+   - 调用如glDrawArrays、glDrawElements（OpenGL）或DrawIndexed（DirectX）等函数
+   - 这个调用会将绘制命令提交给GPU命令缓冲区
+6. 命令缓冲
+   - 绘制命令被添加到GPU的命令缓冲区
+   - 在某些API（如Vulkan）中，开发者需要显式管理命令缓冲
+7. GPU执行
+   - GPU从命令缓冲区读取并执行绘制命令
+   - 启动渲染管线处理
+8. 同步（可选）
+   - 如果需要，CPU可以等待GPU完成绘制
+#### 示例代码（使用OpenGL）：
+```cpp
+// 假设我们已经设置好了VAO、VBO和着色器程序
+
+// 激活着色器程序
+glUseProgram(shaderProgram);
+
+// 绑定VAO（包含了顶点数据和属性设置）
+glBindVertexArray(VAO);
+
+// 更新Uniform数据
+glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelMatrix));
+glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMatrix));
+glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projMatrix));
+
+// 设置其他Uniform变量
+glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
+
+// 绑定纹理
+glActiveTexture(GL_TEXTURE0);
+glBindTexture(GL_TEXTURE_2D, textureID);
+
+// 发起绘制调用
+glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+
+// 解绑VAO（可选，但是好习惯）
+glBindVertexArray(0);
+```
+
+### 测量drawcall时长
+```js
+// 获取扩展
+const ext = gl.getExtension('EXT_disjoint_timer_query');
+if (!ext) {
+    console.log('EXT_disjoint_timer_query not supported');
+    return;
+}
+
+// 创建查询对象
+const query = ext.createQueryEXT();
+
+// 开始查询
+ext.beginQueryEXT(ext.TIME_ELAPSED_EXT, query);
+
+// 执行要测量的 GPU 操作
+gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+// 结束查询
+ext.endQueryEXT(ext.TIME_ELAPSED_EXT);
+
+// 稍后检查结果（通常在下一帧或几帧之后）
+function checkQueryResult() {
+    // 检查结果是否可用
+    const available = gl.getQueryParameterEXT(query, gl.QUERY_RESULT_AVAILABLE);
+    if (!available) {
+        // 如果结果还不可用，继续等待
+        requestAnimationFrame(checkQueryResult);
+        return;
+    }
+
+    // 检查是否发生不连续事件
+    const disjoint = gl.getParameter(ext.GPU_DISJOINT_EXT);
+    if (disjoint) {
+        console.log('Timer was disjoint, measurement may be inaccurate');
+    } else {
+        // 获取执行时间（纳秒）
+        const timeElapsed = gl.getQueryParameterEXT(query, gl.QUERY_RESULT);
+        console.log('Operation took ' + timeElapsed + ' nanoseconds');
+    }
+
+    // 清理查询对象
+    ext.deleteQueryEXT(query);
+}
+
+// 开始检查结果
+requestAnimationFrame(checkQueryResult);
+```
