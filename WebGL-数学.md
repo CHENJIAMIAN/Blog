@@ -20,4 +20,178 @@
 4. **dot**: 计算两个向量的点积，常用于计算光照、角度和纹理坐标的相似度。
 5. **normalize**: 将一个向量标准化为单位向量，用于方向和光照计算，确保数值稳定性。
 6. **clamp**: 限制值在特定范围内（例如0到1），用于确保颜色和亮度值不超过有效范围。
+
+```c
+pow() （求x的y次幂）
+y = mod(x,0.5); // 返回 x 对 0.5 取模的值
+//y = fract(x); // 仅仅返回数的小数部分
+//y = ceil(x);  // 向正无穷取整
+//y = floor(x); // 向负无穷取整
+//y = sign(x);  // 提取 x 的正负号
+//y = abs(x);   // 返回 x 的绝对值
+//y = clamp(x,0.0,1.0); // 把 x 的值限制在 0.0 到 1.0
+//y = min(0.0,x);   // 返回 x 和 0.0 中的较小值
+//y = max(0.0,x);   // 返回 x 和 0.0 中的较大值  
+```
+
 ### `uv.xyx` 的意思是构造一个新的 `vec3` 向量
+
+### 风场化函数 makeColor
+```c 
+#define FBM_ITERS 9// 分形布朗运动迭代次数
+
+// 逻辑斯谛函数
+vec2 logistic(vec2 v) {
+    return vec2(16.0 / (1.0 + 10.0 * exp(-0.75 * v.x)),
+                1.0 / (1.0 + 10.0 * exp(-1.95 * v.y)));
+}
+
+// 高斯函数
+vec3 gaussian(float x) {
+    vec3 disp = x - vec3(0.3, 0.6, 0.9);
+    return exp(-16.0 * disp * disp - 4.0);
+}
+
+// 哈希函数
+float hash13(vec3 p) {
+    p = fract(p * 0.3183099 + 0.1);
+    p *= 17.0;
+    return fract(p.x * p.y * p.z * (p.x + p.y + p.z));
+}
+
+// 3D 噪声函数
+float noise3(vec3 x) {
+    vec3 p = floor(x);
+    vec3 f = fract(x);
+    f = f * f * (3.0 - 2.0 * f);
+    
+    return mix(mix(mix(hash13(p + vec3(0,0,0)), 
+                       hash13(p + vec3(1,0,0)), f.x),
+                   mix(hash13(p + vec3(0,1,0)), 
+                       hash13(p + vec3(1,1,0)), f.x), f.y),
+               mix(mix(hash13(p + vec3(0,0,1)), 
+                       hash13(p + vec3(1,0,1)), f.x),
+                   mix(hash13(p + vec3(0,1,1)), 
+                       hash13(p + vec3(1,1,1)), f.x), f.y), f.z);
+}
+
+// 分形布朗运动 (FBM) 函数
+float fbm(vec3 pos) {
+    float result = 0.0;
+    float amplitude = 1.0;
+    for(int i = 0; i < FBM_ITERS; i++) {
+        result += noise3(amplitude * pos) / amplitude;
+        amplitude *= 2.15926535;
+    }
+    return result;
+}
+
+// 生成颜色的主要函数
+vec3 makeColor(vec3 p) {
+    float noiseValue = 100.0 * fbm(5.*p);
+    return noiseValue * vec3(.5,.5,.5) * gaussian((p.x+p.y+p.z)/3.);
+}
+
+ 
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    // 将像素坐标归一化到 [-1, 1] 范围
+    vec2 uv = (fragCoord - 0.5 * iResolution.xy) / iResolution.y;
+    
+    // 创建一个随时间变化的 3D 点
+    vec3 p = 0.5 + 0.5*cos(iTime+uv.xyx+vec3(0,2,4));
+
+    
+    // 使用 makeColor 函数生成颜色
+    vec3 col = makeColor(p);
+    
+    // 输出颜色
+    fragColor = vec4(col, 1.0);
+}
+
+
+```
+### 绘制高斯函数
+![image](https://github.com/user-attachments/assets/61d6eaff-221b-4b2c-b87d-e1dbc0b5fbbd)
+1. 红色 (R) 曲线：对应 `x - 0.3`  
+2. 绿色 (G) 曲线：对应 `x - 0.6`  
+3. 蓝色 (B) 曲线：对应 `x - 0.9`  
+```c
+vec3 gaussian(float x) {
+    vec3 disp = x - vec3(0.3, 0.6, 0.9);
+    return exp(-16.0 * disp * disp - 4.0);
+}
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    // 将坐标原点移到画布中心，并调整比例
+    vec2 uv = (fragCoord - 0.5 * iResolution.xy) / iResolution.y;
+    
+    // 调整 x 的范围，例如 -1 到 1
+    float x = uv.x * 2.0;
+    
+    // 计算高斯函数值
+    vec3 color = gaussian(x + 0.5); // 加0.5是为了将函数向左平移，使其更好地居中
+    
+    // 增加 y 轴的缩放因子
+    float yScale = 11.5; // 你可以调整这个值来改变曲线的高度
+    
+    // 绘制函数图像
+    float thickness = 0.003;
+    vec3 graphColor = vec3(0.1, 0.1, 0.1);  // 深灰色背景
+    
+    if (abs(uv.y - color.r * yScale) < thickness) graphColor.r = 1.0;
+    if (abs(uv.y - color.g * yScale) < thickness) graphColor.g = 1.0;
+    if (abs(uv.y - color.b * yScale) < thickness) graphColor.b = 1.0;
+    
+    // 绘制坐标轴
+    if (abs(uv.x) < thickness || abs(uv.y) < thickness) {
+        graphColor = vec3(0.5);  // 灰色坐标轴
+    }
+    
+    // 输出颜色
+    fragColor = vec4(graphColor, 1.0);
+}
+
+```
+### 绘制逻辑斯谛函数 (输出值在 (0, 1) 之间)
+![download](https://github.com/user-attachments/assets/ff51e1fd-659a-4582-9ab8-6fe1911bc6ec)
+```c
+vec2 logistic(vec2 v) {
+    return vec2(16.0 / (1.0 + 10.0 * exp(-0.75 * v.x)),
+                1.0 / (1.0 + 10.0 * exp(-1.95 * v.y)));
+}
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    // 将坐标原点移到画布中心，并调整比例
+    vec2 uv = (fragCoord - 0.5 * iResolution.xy) / iResolution.y;
+    
+    // 调整 x 的范围，例如 -10 到 10
+    float x = uv.x * 20.0;
+    
+    // 计算 logistic 函数值
+    vec2 output1 = logistic(vec2(x, 0.0));
+    vec2 output2 = logistic(vec2(0.0, x));
+    
+    // 绘制函数图像
+    float thickness = 0.003;
+    vec3 graphColor = vec3(0.1);  // 深灰色背景
+    
+    // 红色曲线表示 x 对第一个输出的影响
+    if (abs(uv.y - output1.x / 16.0) < thickness) graphColor.r = 1.0;
+    
+    // 绿色曲线表示 y 对第二个输出的影响
+    if (abs(uv.y - output2.y) < thickness) graphColor.g = 1.0;
+    
+    // 绘制坐标轴
+    if (abs(uv.x) < thickness || abs(uv.y) < thickness) {
+        graphColor = vec3(0.5);  // 灰色坐标轴
+    }
+    
+    // 输出颜色
+    fragColor = vec4(graphColor, 1.0);
+}
+
+```
+
