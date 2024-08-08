@@ -4,6 +4,8 @@
 如山脉、丘陵
 如水流、波浪、烟雾
 ![download](https://github.com/user-attachments/assets/6d0085de-6e70-4da3-b67b-d49eb459712a)
+![image](https://github.com/user-attachments/assets/16ba709f-fe3b-4010-add7-29c68db8e04f)
+
 ### 着色器中常用的五个函数
 1. **noise/texture**: 用于生成随机噪声或查找纹理，以产生细节、图案或模拟自然现象。如 **fbm**
 	1. **Perlin Noise（柏林噪声）**：
