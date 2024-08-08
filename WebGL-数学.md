@@ -1,4 +1,4 @@
-### fbm
+### 分形布朗运动 fbm
 > FBM（Fractal Brownian Motion，分形布朗运动）实际上通常是由其他基础噪声（如 Perlin 噪声或 Simplex 噪声）组合而成的一种噪声生成技术
 如云层、岩石、木纹
 如山脉、丘陵
