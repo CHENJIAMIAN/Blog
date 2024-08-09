@@ -82,7 +82,6 @@ draw(); // 开始动画
 ### 学习资料与资源
 - **MDN Web Docs**: [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 - **W3Schools**: 提供 HTML5 Canvas 的基础教程和示例。
-在使用 HTML5 Canvas API 进行绘图时，许多操作都需要明确的开始和结束标志。以下是常见的绘图操作及其对应的开始和结束标志。
 ---
 ### 开始和结束标志
 ### 1. 路径绘制
@@ -139,14 +138,51 @@ draw(); // 开始动画
 | 操作                          | 开始                      | 结束                      |
 |-------------------------------|---------------------------|---------------------------|
 | **清空画布**                  | -                         | `ctx.clearRect(0, 0, canvas.width, canvas.height);` |
-### 小结
-以上是 Canvas API 常见的所有开始和结束操作的汇总：
-1. **路径绘制** 和 **矩形绘制** 是绘制图形的基本操作。
-2. **填充/描边样式** 和 **变换相关** 操作用于设置绘图的视觉样式。
-3. **图像操作** 和 **文字绘制** 实现了图形的综合展示。
-4. 贝塞尔曲线用于绘制更复杂的形状。
-5. `clearRect` 可以用于清空整个画布。
-
 ctx.transform(scaleX, skewX, skewY, scaleY, translateX, translateY);  
 ctx.setTransform(scaleX, skewX, skewY, scaleY, translateX, translateY);  
 ctx.scale(sx, sy);
+
+---
+### 渐变
+`CanvasRenderingContext2D` 是 HTML5 Canvas API 的一个接口，它提供了一系列方法来在画布上绘制图形、文本和图像。在 `CanvasRenderingContext2D` 中，渐变是一种重要的填充样式，可以用于绘制丰富的视觉效果。以下是对 `CanvasRenderingContext2D` 中渐变的系统性介绍：
+### 1. 渐变的类型
+在 `CanvasRenderingContext2D` 中，主要有两种类型的渐变：
+- **线性渐变（Linear Gradient）**：
+  - 颜色平滑过渡沿一条直线。
+  - 通过 `createLinearGradient(x0, y0, x1, y1)` 方法创建。
+- **径向渐变（Radial Gradient）**：
+  - 颜色从中心向外扩展，形成一个圆形渐变。
+  - 通过 `createRadialGradient(x0, y0, r0, x1, y1, r1)` 方法创建。
+### 2. 创建渐变
+#### 创建线性渐变
+```javascript
+// 创建一个线性渐变对象
+const gradient = ctx.createLinearGradient(x0, y0, x1, y1);
+// 添加颜色停止
+gradient.addColorStop(0, 'red');    // 渐变开始的位置颜色
+gradient.addColorStop(1, 'blue');   // 渐变结束的位置颜色
+// 使用渐变填充形状
+ctx.fillStyle = gradient;
+ctx.fillRect(10, 10, 200, 100); // 绘制填充矩形
+```
+#### 创建径向渐变
+```javascript
+// 创建一个径向渐变对象
+const radialGradient = ctx.createRadialGradient(x0, y0, r0, x1, y1, r1);
+// 添加颜色停止
+radialGradient.addColorStop(0, 'yellow');  // 中心点颜色
+radialGradient.addColorStop(1, 'black');    // 外边缘颜色
+// 使用渐变填充形状
+ctx.fillStyle = radialGradient;
+ctx.arc(150, 150, 100, 0, Math.PI * 2);  // 绘制圆
+ctx.fill();
+```
+### 3. 添加颜色停止
+- 每个渐变可以包含多个颜色停止，通过 `addColorStop(position, color)` 方法添加。 
+- `position` 的值从 0 到 1，其中 0 表示渐变的起始位置，1 表示结束位置。
+- 示例：
+```javascript
+gradient.addColorStop(0, 'rgba(255, 0, 0, 1)'); // 红色
+gradient.addColorStop(0.5, 'rgba(0, 255, 0, 1)'); // 绿色
+gradient.addColorStop(1, 'rgba(0, 0, 255, 1)'); // 蓝色
+```
