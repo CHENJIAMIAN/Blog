@@ -111,17 +111,17 @@ draw(); // 开始动画
 | **绘制图像**                  | `ctx.drawImage(image, x, y)` | —                        |
 | **保存和恢复状态**            | `ctx.save()`                | `ctx.restore()`           |
 ### 5. 变换相关
-| 操作                           | 开始                      | 结束                      |
-|--------------------------------|---------------------------|---------------------------|
-| **设置变换（旋转、缩放、移动）** | `ctx.save()`              | `ctx.restore()`           |
-| **旋转**                       | `ctx.rotate(angle)`       | —                         |
-| **缩放**                       | `ctx.scale(x, y)`         | —                         |
-| **平移**                       | `ctx.translate(x, y)`      | —                         |
+| 操作                 | 开始                    | 结束              |
+| ------------------ | --------------------- | --------------- |
+| **设置变换（旋转、缩放、移动）** | `ctx.save()`          | `ctx.restore()` |
+| **旋转**             | `ctx.rotate(angle)`   | —               |
+| **缩放**             | `ctx.scale(x, y)`     | —               |
+| **平移**             | `ctx.translate(x, y)` | —               |
 ### 6. 渐变和样式设置
-| 操作                           | 开始                      | 结束                      |
-|--------------------------------|---------------------------|---------------------------|
-| **创建线性渐变**              | `ctx.createLinearGradient()` | 使用 `ctx.fillStyle`   |
-| **创建径向渐变**              | `ctx.createRadialGradient()` | 使用 `ctx.fillStyle`   |
+| 操作         | 开始                           | 结束                 |
+| ---------- | ---------------------------- | ------------------ |
+| **创建线性渐变** | `ctx.createLinearGradient()` | 使用 `ctx.fillStyle` |
+| **创建径向渐变** | `ctx.createRadialGradient()` | 使用 `ctx.fillStyle` |
 ### 7. 文字绘制
 | 操作                           | 开始                      | 结束                      |
 |--------------------------------|---------------------------|---------------------------|
@@ -146,3 +146,7 @@ draw(); // 开始动画
 3. **图像操作** 和 **文字绘制** 实现了图形的综合展示。
 4. 贝塞尔曲线用于绘制更复杂的形状。
 5. `clearRect` 可以用于清空整个画布。
+
+ctx.transform(scaleX, skewX, skewY, scaleY, translateX, translateY);  
+ctx.setTransform(scaleX, skewX, skewY, scaleY, translateX, translateY);  
+ctx.scale(sx, sy);
