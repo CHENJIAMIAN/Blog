@@ -16,3 +16,10 @@ mklink /D C:\ProgramData\Autodesk E:\ProgramData\Autodesk
 5. **验证链接**：
    - 创建链接后，尝试通过资源管理器访问 `C:\ProgramData\Autodesk` 来确认符号链接是否正确指向了 `E:\ProgramData\Autodesk`。
 请在执行这些步骤时格外小心，特别是在使用删除命令时。确保 `E:\ProgramData\Autodesk` 存在并包含所需的数据。这样，依赖于这个文件夹的软件应该能够通过 `C:\ProgramData\Autodesk` 符号链接正常访问到D盘上的文件，而不会意识到文件实际上已经移动了。
+### PowerShell 中列出所有进程并显示它们的完整命令行生成`processes.csv`文件到桌面
+```sh
+# 导出到桌面上的 processes.csv 文件  
+Get-CimInstance Win32_Process |   
+    Select-Object ProcessId, Name, CommandLine |   
+    Export-Csv -Path "$([Environment]::GetFolderPath('Desktop'))\processes.csv" -NoTypeInformation -Encoding UTF8
+```
