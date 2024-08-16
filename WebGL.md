@@ -384,9 +384,10 @@ gl.drawBuffers//指定要写入渲染缓冲区的 帧缓冲的颜色附件(颜�
         //如果在创建图形时有大量重复的点，使用drawArrays是不明智的。重复的vertex信息会引发重复的vertex shader调用从而导致性能下降。
         //不同mode的演示：https://codepen.io/571574085/pen/wvxNvvq
             gl.POINTS: 画单独的点。
-            gl.LINE_STRIP: 画一条直线到下一个顶点。
-            gl.LINE_LOOP: 绘制一条直线到下一个顶点，并将最后一个顶点返回到第一个顶点。
-            gl.LINES: 在一对顶点之间画一条线。
+		线
+            gl.LINE_STRIP: 多段线
+            gl.LINE_LOOP: 闭环
+            gl.LINES: 一条
 		三角形
             gl.TRIANGLE_STRIP 邻接三角形
             gl.TRIANGLE_FAN 扇形
