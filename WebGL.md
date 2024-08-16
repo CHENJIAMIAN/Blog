@@ -45,6 +45,9 @@ p' = (0, √2/2, -√2/2, 0)
 **总结：**
 通过旋转四元数 q = √2/2 + (√2/2, √2/2, 0)，我们可以将向量 p = (1, 0, 0) 绕着 z 轴旋转 90 度，得到旋转后的向量 p' = (0, √2/2, -√2/2, 0)。
 ### 渲染管线(重点)
+![learnwebgl brown37 net_the_big_picture_3d_rendering html)](https://github.com/user-attachments/assets/78d55f98-78bb-43c7-863b-cebea5874b62){ width=300 }{ width=300 }
+
+
 **顶点着色器是有多少顶点，运行了多少次，而片元着色器则是，生成多少片元（像素），运行多少次**
 ```javascript
 三维图形渲染管线（Graphics pipeline）就是将三维场景转化为一幅二维图像的过程。 常说有4个阶段（实际不止）:    
