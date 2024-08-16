@@ -387,9 +387,10 @@ gl.drawBuffers//指定要写入渲染缓冲区的 帧缓冲的颜色附件(颜�
             gl.LINE_STRIP: 画一条直线到下一个顶点。
             gl.LINE_LOOP: 绘制一条直线到下一个顶点，并将最后一个顶点返回到第一个顶点。
             gl.LINES: 在一对顶点之间画一条线。
-            gl.TRIANGLE_STRIP
-            gl.TRIANGLE_FAN
-            gl.TRIANGLES: 为一组三个顶点绘制一个三角形。
+		三角形
+            gl.TRIANGLE_STRIP 邻接三角形
+            gl.TRIANGLE_FAN 扇形
+            gl.TRIANGLES 独立三角形
     gl.drawElementsInstanced//方法与gl.drawElements()方法相似，但是它会多次执行渲染操作, 绘制多个实例，每个实例都是由索引缓冲区描述的。
 gl.enable//启用或禁用 WebGL 渲染状态功能。
 gl.enableVertexAttribArray//启用或禁用着色器属性数组。这样做的原因是，使用顶点属性数组可能会消耗大量的 CPU 资源，如果不使用它们，可以减少不必要的开销。
