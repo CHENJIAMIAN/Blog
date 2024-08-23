@@ -562,11 +562,15 @@ gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
 3. 在渲染阴影时，首先将场景从摄像机的视角渲染到帧缓冲区，同时使用光源的透视矩阵将场景渲染到深度贴图中。
 4. 然后，使用深度贴图对每个像素进行采样，并与当前像素的深度值进行比较。如果当前像素的深度值大于深度贴图中对应位置的深度值，那么当前像素就位于阴影中。
 5. 根据阴影的存在与否，可以调整像素的颜色或透明度，从而实现基础的阴影效果。
-### 实践
-#### 根据program获取shader源码
+### 根据program获取shader源码
 gl.getShaderSource(gl.getAttachedShaders(program)[0])
 gl.getShaderSource(gl.getAttachedShaders(program)[1])
-#### 如何绑定多个bufferData
+### 如何绑定多个bufferData
+在将模型数据上传到缓冲区对象时，您有两种选择。
+- 为每种数据创建一个独立的缓冲区对象，正如之前的课程中所示。每个顶点着色器属性变量都与一个唯一的缓冲区对象相连接。
+	- 你已经看过几个关于第一个选项的例子。对于只有少数模型的简单场景，这种方法是足够的。
+- 为模型的所有数据创建一个统一的缓冲区对象，并将数据交错存储。
+	- 当你想创建包含数百个模型的复杂场景时，交错数据是更有效的选择。
 ```javascript
 // 创建顶点缓冲区对象
 var vertexBuffer = gl.createBuffer();
@@ -590,6 +594,7 @@ gl.vertexAttribPointer(colorLoc, 3, gl.FLOAT, false, 0, 0);
 gl.drawArrays(gl.TRIANGLES, 0, numVertices);
 其中 `vertexLoc` 和 `colorLoc` 分别是顶点和颜色 attribute 变量的位置（通常使用 `gl.getAttribLocation()` 函数来获取），`numVertices` 表示顶点数。
 ```
+
 ### 周期变化
 - "mod"运算符用于计算除法的余数，并将结果限制在一个固定的范围内。它可以实现将数值限制在一个周期内，例如将计数器限制在特定范围内循环计数。
 	- "mod"运算符主要用于计算和控制数值的周期性行为
