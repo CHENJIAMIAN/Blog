@@ -137,6 +137,7 @@ vec4(3.0, 5.0, 7.0, 1.0)
 ```
 这个结果就是将顶点坐标(2.0, 3.0, 4.0)进行了平移变换，并转换回了三维坐标。注意到变换矩阵的右下角元素是1.0，这意味着只进行了平移变换，没有进行旋转或缩放。如果右下角元素是0.0，则意味着只进行了旋转或缩放变换。
 ### 给出所有变换的矩阵模板
+[6.5 - Transformation Matrices — LearnWebGL](https://learnwebgl.brown37.net/transformations2/transformations_matrices.html)
 #### 1.  平移变换矩阵
 ```js
 1 0 0 Tx
