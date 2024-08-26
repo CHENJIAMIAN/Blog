@@ -145,7 +145,7 @@ device.queue.writeBuffer
 // device.createShaderModule(shaderCode)着色器 -> device.createRenderPipeline(vertex,fragment,primitive)管道 ->  device.createCommandEncoder编码器 -> 编码器开始渲染通道 -> device.queue.submit(编码器)
 ```
 ## WebGPUBackend 代码分析
-```markdown
+```js
 这段代码定义了 `WebGPUBackend` 类，它是 Three.js 渲染器的一个后端，用于使用 WebGPU 进行渲染。下面我们来逐段分析其功能：
 
 **1. 构造函数**
