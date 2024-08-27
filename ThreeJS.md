@@ -614,3 +614,4 @@ editor.addObject(cube);
 1. transmissive 物体的透明度问题
 	1. doubleside会有影响
 	2. 都是transmissive才会一起比较
+2. alphaHash解决透明度问题
