@@ -191,3 +191,59 @@ device.queue.writeBuffer
 *   `WebGPUPipelineUtils`：提供管线相关的实用函数。
 *   `WebGPUTextureUtils`：提供纹理相关的实用函数。
 ```
+### WGSL
+
+```c
+// 声明常量  
+const PI: f32 = 3.14159;  
+
+// 函数声明  
+fn add(a: f32, b: f32) -> f32 {  
+    return a + b; // 返回两个浮点数的和  
+}  
+
+// 结构体声明  
+struct VertexInput {  
+    // 顶点位置  
+    @location(0) position: vec3<f32>,   
+    // 顶点颜色  
+    @location(1) color: vec4<f32>,  
+};  
+
+// 结构体声明，用作片段着色器的输出  
+struct FragmentOutput {  
+    // 输出颜色值  
+    @location(0) outColor: vec4<f32>,  
+};  
+
+// 顶点着色器示例  
+@vertex  
+fn vs_main(input: VertexInput) -> @builtin(position) vec4<f32> {  
+    // 变换顶点位置  
+    let transformed_position = vec4<f32>(input.position, 1.0);  
+    return transformed_position; // 返回变换后的顶点位置  
+}  
+
+// 片段着色器示例  
+@fragment  
+fn fs_main(input: VertexInput) -> FragmentOutput {  
+    var output: FragmentOutput;  
+    // 为输出颜色赋值  
+    output.outColor = input.color; // 使用输入颜色作为输出颜色  
+    return output; // 返回片段输出  
+}  
+
+// 计算法线  
+fn compute_normal(normal: vec3<f32>, light_dir: vec3<f32>) -> f32 {  
+    return max(dot(normal, light_dir), 0.0); // 计算光照强度  
+}  
+
+// 主函数示例 (伪)  
+fn main() {  
+    // 模拟应用程序逻辑  
+    let x = add(1.0, 2.0); // 调用加法函数  
+    let normal = vec3<f32>(0.0, 0.0, 1.0); // 定义法线向量  
+    let light_dir = vec3<f32>(1.0, -1.0, 0.0); // 定义光照方向  
+    let intensity = compute_normal(normal, light_dir); // 计算光照强度  
+}
+```
