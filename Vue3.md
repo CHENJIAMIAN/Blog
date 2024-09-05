@@ -216,7 +216,7 @@ ref存在是因为Proxy不支持代理原始类型,要把它包在{value:值}里
 
 ![0ACB95E1FCA746BC9928D885604F3AAD](https://github.com/CHENJIAMIAN/Blog/assets/20126997/7327229d-13f6-4bc9-b736-d6d98ec4c390)
 
-### 频率
+### 高频率使用的API
 ```js
 - element-plus中
 	- computed 744个
@@ -229,6 +229,7 @@ ref存在是因为Proxy不支持代理原始类型,要把它包在{value:值}里
 	- unref 27个
 	- toRef 18个
 	- watchEffect 16个
+	- isRef 15个
 	- toRaw 3个
 	- -
 	- onMounted 67个
@@ -237,4 +238,14 @@ ref存在是因为Proxy不支持代理原始类型,要把它包在{value:值}里
 	- onBeforeMount 3个
 	- onBeforeUnMount 3个
 	- onBeforeUpate|onDeactivated 1个
+```
+### Vue3+TS
+```JS
+withDefaults
+	const props = withDefaults(defineProps<{ foo: string bar?: number }>(), { bar: 42 })
+	- `defineProps<{ foo: string; bar?: number }>()`：定义了一个类型为 `{ foo: string; bar?: number }` 的 props。
+	- `withDefaults()`：该函数接受 `defineProps` 的返回值和一个包含默认值的对象。在这个例子中，`bar` 的默认值被设定为 `42`。
+
+
+使用 `unplugin-auto-import` 这个插件。这个插件能够自动地检测和导入你在文件中使用的 API，无需每次手动导入。
 ```
