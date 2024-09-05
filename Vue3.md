@@ -217,3 +217,24 @@ ref存在是因为Proxy不支持代理原始类型,要把它包在{value:值}里
 ![0ACB95E1FCA746BC9928D885604F3AAD](https://github.com/CHENJIAMIAN/Blog/assets/20126997/7327229d-13f6-4bc9-b736-d6d98ec4c390)
 
 ### 频率
+```js
+- element-plus中
+	- computed 744个
+	- ref 499个
+	- watch 181个
+	- getCurrentInstance 124个
+	- nextTick 101个
+	- reactive 39个
+	- toRef 36个
+	- unref 27个
+	- toRef 18个
+	- watchEffect 16个
+	- toRaw 3个
+	- -
+	- onMounted 67个
+	- onUpdated 9个
+	- onUnMounted 7个
+	- onBeforeMount 3个
+	- onBeforeUnMount 3个
+	- onBeforeUpate|onDeactivated 1个
+```
