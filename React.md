@@ -42,7 +42,7 @@ Fragments 组件:用来包裹多个组件,封装成一个,方便引用
                   setDate(new Date());
                 }, 1000);
                 return () => clearInterval(timer);//相当于componentWillUnmount
-            }, []/*依赖项门, 空的话useEffect只执行一次*/);
+            }, []/*依赖项们, 空的话useEffect只执行一次*/);
                 //每个async函数都会默认返回一个隐式的promise。但是，useEffect不应该返回任何内容,所以useEffect(async () => …) 是不允许的
             
 setState({k:v}) ,/在 setTimeout 和 native事件 中使用是同步的, 其他地方使用如合成事件中 是异步的,更新会合并/
