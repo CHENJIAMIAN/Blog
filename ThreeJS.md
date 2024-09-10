@@ -501,6 +501,12 @@ src\renderers\WebGLRenderer.js
 	1. 例如 mask = 11 （表现为二进制共32位`0000 0000 0000 0000 0000 0000 0000 1011`) 一位代表一个图层
 	2. lastLayer.mask >> 某位 !== 0 可以判断某位被使用(即某层被使用)
 ## 渲染原理
+WebGLRenderer.render (three.module.js:29847)  
+	projectObject
+	renderScene (three.module.js:30031)  
+	renderObjects (three.module.js:30180)  
+	renderObject (three.module.js:30211)  
+		WebGLRenderer.renderBufferDirect (three.module.js:29336)
 ### `this.renderBufferDirect`
 - 功能是将给定的几何体、材质和对象渲染到场景中。
 - 负责处理渲染的各种细节，包括设置着色器程序、处理材质、计算绘制范围、选择渲染模式和执行渲染等。
