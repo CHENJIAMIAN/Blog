@@ -1,5 +1,4 @@
-> 实践
-
+### 实践
 ```javascript
 https://www.typescriptlang.org/zh/play在试验场不断试错就完事了
 有时候一个报错是无厘头的, 不一定真有那个错, 而是报错行上面的代码报错连带造成的!!!!!
@@ -59,11 +58,8 @@ let a= {a:1,b:2,c:3,d:4} as {a:number,b:number} //{xx} as XX表示包容地�
        declare module 'vue' {
             interface ComponentCustomProperties {//扩充vue的实例上挂的对象}
         }
-
 ```
-
-> TS是JS的超集	
-
+### tsconfig.json
 ```typescript
 同名.ts             //是 TypeScript 文件的后缀  
 同名.d.ts           //DefinitelyTyped 用于给非ts的库添加语法提示,骗编译器 , 仅仅会用于编译时的检查 
@@ -91,7 +87,9 @@ tsconfig.json//告诉ts它应该ts文件们在哪
               "@utils/*": ["src/utils/*"]
         } 
      }
-
+```
+### declare/扩展
+```js
 declare ,TypeScript 将不会把它编译成任何代码, 只是用来表述一个其他地方已经存在的代码, 可以放在 .ts 或者 .d.ts 里
     三斜线指令: 早期版本现在不推荐了<reference path="node.d.ts"/> 仅在其包含文件的顶部有效,声明文件的模块的声明在哪里
     /在全局变量的声明文件d.ts中，是不允许出现 import, export 关键字的。一旦出现了，那么他就会被视为一个 npm 包或 UMD 库，就不再是全局变量的声明文件了/
@@ -134,7 +132,9 @@ declare ,TypeScript 将不会把它编译成任何代码, 只是用来表述一
        
     type Name = string;//使用 type 创建string的别名
     type EventNames = 'click' | 'scroll' | 'mousemove';//联合类型(Union Types) ,能取三种字符串中的一种
-
+```
+### 语法
+```js
 
 泛型 //泛型方法,泛型常用 T、U、V 表示。泛型还可以自己起名称,通常以 T 作为泛型名称的前缀
     function GenericsFunc<T>(a: number): Array<T> {//调用: GenericsFunc<string>(3, 'x');
@@ -157,36 +157,6 @@ infer X 某某变量 // 提取某某变量里的所有值作为类型, 赋值给
         它等同:
         let stringType :            "test1" | 1         = "test3";// U是 "test1" | 1
     
-    
-keyof 频率16
-    type PartialProps<T> = {[K in keyof T]?: T[K];}//T传入的是键值对象
-        let a:PartialProps<{a: number;b: string;c: boolean;}> = { a: 1, b: "test", c: undefined ,d:1};//d:1会造成错误
-        
-    let key: keyof IPerson='123'//keyof 顾名思义
-    
-实用程序类型//vite项目中的使用频率如下
-    //定义位于D:/Users/86159/AppData/Local/Programs/Microsoft VS Code/resources/app/extensions/node_modules/typescript/lib/lib.es5.d.ts
-    104  Record<Keys, Type> //概括对象键值对
-            Record<string, string> 表示{a:'1',b:'2'}  
-            let recordAcNumbers : Record< "a" | "c", string> = { a: 1, c: "test"}; //表示a和c都要用到,且都得是string   //a:1会报错
-    9    Omit<Type, Keys> 
-    5    NonNullable<Type> 
-    4    Partial<Type> //用来创建类型的所有属性 T 都是可选的
-    2    ReturnType<Type> 
-    2    Parameters<Type> 
-    2    Exclude<UnionType, ExcludedMembers> 
-    1    ThisType<Type> 
-    1    Required<Type> 
-    1    Readonly<Type> //创建类型的所有属性 T 都是只读的
-    0    ThisParameterType<Type> 
-    0    Pick<Type, Keys> 
-            Pick <{a: number;b: string;c: boolean;},  "a" | "b">; //表示a和b都要用到，但不能用c
-            let pickAbObject : Pick<{ a: number;b: string;c: boolean;},  "a" | "b"> = { a: 1, b: "test",c:true}; //c:true会造成错误
-    0    OmitThisParameter<Type> 
-    0    InstanceType<Type> 
-    0    Extract<Type, Union> 
-    0    ConstructorParameters<Type> 
-
 
 b?: number;//等同于 b: number|undefined;
 &的作用: function func<T, U>(first: T, second: U): T & U //assdf同时拥有类型T和类型U的成员
@@ -266,9 +236,40 @@ Promise写法:
 //双向协变 (Bivariant)：双向协变表示Comp<T>类型与T类型双向兼容。
 //不变 (Invariant)：不变表示Comp<T>类型与T类型双向都不兼容。  
 ```
+### 实用程序类型
+```js
+实用程序类型//vite项目中的使用频率如下
+    //定义位于D:/Users/86159/AppData/Local/Programs/Microsoft VS Code/resources/app/extensions/node_modules/typescript/lib/lib.es5.d.ts
+    104  Record<Keys, Type> //概括对象键值对
+            Record<string, string> 表示{a:'1',b:'2'}  
+            let recordAcNumbers : Record< "a" | "c", string> = { a: 1, c: "test"}; //表示a和c都要用到,且都得是string   //a:1会报错
+    9    Omit<Type, Keys>  //从类型 `T` 中排除了类型 `K`
+    5    NonNullable<Type> 
+    4    Partial<Type> //用来创建类型的所有属性 T 都是可选的
+    2    ReturnType<Type> 
+    2    Parameters<Type> 
+    2    Exclude<UnionType, ExcludedMembers> 
+    1    ThisType<Type> 
+    1    Required<Type> 
+    1    Readonly<Type> //创建类型的所有属性 T 都是只读的
+    0    ThisParameterType<Type> 
+    0    Pick<Type, Keys> 
+            Pick <{a: number;b: string;c: boolean;},  "a" | "b">; //表示a和b都要用到，但不能用c
+            let pickAbObject : Pick<{ a: number;b: string;c: boolean;},  "a" | "b"> = { a: 1, b: "test",c:true}; //c:true会造成错误
+    0    OmitThisParameter<Type> 
+    0    InstanceType<Type> 
+    0    Extract<Type, Union> 
+    0    ConstructorParameters<Type> 
 
-> 装饰器
 
+keyof 频率 16
+    type PartialProps<T> = {[K in keyof T]?: T[K];}//T传入的是键值对象
+        let a:PartialProps<{a: number;b: string;c: boolean;}> = { a: 1, b: "test", c: undefined ,d:1};//d:1会造成错误
+        
+    let key: keyof IPerson='123'//keyof 顾名思义
+```
+
+### 装饰器
 ```javascript
 装饰器(工厂函数)//在运行时(与编译时区分)修改类以注入所需的依赖项,(在声明被装饰的对象前被调用) 
     装饰Class的:
@@ -317,11 +318,7 @@ Promise写法:
 ```
 
 
-
----
-
-> ESLint
-
+### ESLint
 ```javascript
 module.exports = {
     root: true,//ESLint 一旦发现配置文件中有 "root": true，它就会停止在父级目录中寻找
@@ -356,8 +353,7 @@ module.exports = {
 }
 ```
 
-
-
+## ts-loader报错过程
 ```javascript
 ts-loader报错过程:
     createFileDiagnostic (typescript\lib\typescript.js)
