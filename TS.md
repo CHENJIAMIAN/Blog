@@ -391,3 +391,27 @@ ts-loader报错过程:
 ```
 
 ### this
+- this 参数具有特殊的意义和位置，用于指定函数内部的上下文。
+- this 参数不是真正传递给函数的参数，它仅用于进行类型检查。
+- this 参数必须是函数的第一个参数，并且在声明时需要用小括号括起来。
+- 使用 this 参数可以显式地声明函数在被调用时 this 的类型，从而避免因上下文不明确导致的运行时错误。
+
+```ts
+interface Person {  
+    name: string;  
+    age: number;  
+    greet(this: Person): void;  
+}  
+
+const person: Person = {  
+    name: "Alice",  
+    age: 25,  
+    greet(this: Person) {  
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);  
+    }  
+};  
+```
+
+
+person.greet();  // 输出: Hello, my name is Alice and I am 25 years old.  
+上述
