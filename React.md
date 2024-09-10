@@ -33,6 +33,9 @@ SLOT插槽:
 Suspense 使得组件可以“等待”某些操作结束后，再进行渲染。
 Fragments 组件:用来包裹多个组件,封装成一个,方便引用
 
+```
+### 组件 hook
+```js
 组件
     类组件
     函数组件//颗粒度更小,逻辑复用
@@ -79,8 +82,9 @@ hook  //Hook 不能在 class 组件中使用
         用法2
             const theme = useContext(ThemeContext);
         
-
-    
+```
+### 跨组件通信
+```js
 高阶组件HOC//传入组件, 返回组件的函数
     装饰器写法
     /不要在render里使用HOC,性能差/
@@ -112,7 +116,9 @@ ref
     const Form = React.forwardRef(_Form);//转发ref到函数组件(本来不支持的),而非实例值,实例值要用useImperativeHandle
 
 createPortal(jsx,要附加的节点)//插入dom到指定节点下
-
+```
+### 性能
+```js
 fiber//小任务们
     大组件树解析阻塞->拆分任务->requestIdleCallback里根据优先级执行->更流畅
     fiber
@@ -130,12 +136,7 @@ fiber//小任务们
     export default (props)=><div>{props.name}</div>
 ```
 
-
-
----
-
-> 样板
-
+### 样板
 ```javascript
 import * as React from 'react';
 import classNames from 'classnames';
@@ -150,12 +151,16 @@ className=classNames(
 function 组件({children}) {}
 ```
 
-
-
----
-
-> 生命周期(重点)
-
+### 生命周期(重点)
+#### 生命周期函数的最佳实践
+1. **尽量避免在 Render Phase 生命周期函数中进行副作用操作**：
+   - **不要在 `render`, `constructor`, `getDerivedStateFromProps`, `shouldComponentUpdate` 中执行副作用**。这些函数可能会在调和过程（包括调和的多次尝试）中被多次调用。
+2. **把副作用操作放到 Commit Phase 生命周期函数中**：
+   - 使用 `componentDidMount` 和 `componentDidUpdate` 来执行副作用，例如数据获取、DOM 操作等。这样可以确保这些副作用只在 DOM 确定更新后运行。
+3. **特别注意 `shouldComponentUpdate`**：
+   - `shouldComponentUpdate` 用于性能优化，返回 `false` 可以阻止不必要的渲染。它不会阻止子组件的生命周期调用，所以要谨慎使用。
+4. **使用 `getSnapshotBeforeUpdate` 处理 DOM 读取**（仅用于类组件）：
+   - 如果需要在 DOM 更新前进行读取操作，可以使用 `getSnapshotBeforeUpdate`，它是在 DOM 更新前的最后一次机会进行读取操作。
 ```javascript
 UNSAFE_开头表示v17可能会废弃它,以为fiber可以中断,造成willXXX可能被执行多次
 
@@ -170,9 +175,8 @@ UNSAFE_开头表示v17可能会废弃它,以为fiber可以中断,造成willXXX�
             
         
         constructor()//初始化state | 方法绑定
-        
-            /因为Reconciliation阶段是可以被打断的，所以Reconciliation阶段会执行的生命周期函数就可能会出现调用多次的情况，从而引起Bug。/
-            /所以对于Reconciliation阶段调用的几个函数，除了shouldComponentUpdate以外，其他都应该避免去使用/
+            /因为Reconciliation(diff)阶段是可以被打断的，所以Reconciliation(diff)阶段会执行的生命周期函数就可能会出现调用多次的情况，从而引起Bug。/
+            /所以对于Reconciliation(diff)阶段调用的几个函数，除了shouldComponentUpdate以外，其他都应该避免去使用/
             (V17)static getDerivedStateFromProps(props,state) 在新版本用来替代UNSAFE_componentWillReceiveProps,让组件在 props 变化时更新 state
         
         UNSAFE_componentWillMount()   //UNSAFE_开头表示v17可能会废弃它,可以用命令自动加
@@ -238,13 +242,9 @@ class MyComponent extends React.Component {
 }
 ```
 
-
----
-
-> Redux是JavaScript应用程序的可预测状态容器
-
+### 原生redux
 ```javascript
-原生redux:
+原生redux://Redux是JavaScript应用程序的可预测状态容器
     import { createStore } from "redux";
     
     //Reducer: 定义state初始化和修改规则,reducer是一个纯函数
@@ -280,7 +280,9 @@ class MyComponent extends React.Component {
     //函数式组件的使用:
           const [state, dispatch] = useReducer(counterReducer, "0", 这里可以处理一下初始值"0");
 
-
+```
+### react-redux
+```js
 react-redux: //使用 React Redux，你的组件永远不会直接访问store
     //把Provider放在根组件外层，使子组件能获得store
     import { Provider } from "react-redux";
@@ -321,11 +323,7 @@ react-redux: //使用 React Redux，你的组件永远不会直接访问store
 ```
 
 
-
----
-
-> react-router
-
+### react-router
 ```javascript
 import  { BrowserRouter as Router, HashRouter , Link, NavLink ,MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, 
 useHistory, useLocation, useParams, useRouteMatch, withRouter } from 'react-router'; //v5
@@ -359,8 +357,7 @@ Route渲染优先级: /children > component > render/
         //内联函数不要用component, component会调用React.createElement,如果用匿名函数的话每次生成的组件type不一样,会重复卸载挂载,性能不好
 ```
 
-> Next
-
+### Next
 ```javascript
 Next.js:
     执行 next 时,读取next.config.js的堆栈:
@@ -422,14 +419,9 @@ Next.js:
 
 
 
----
-
-> React源码
-
-https://p1.music.126.net/VU37zHp-6hAUfNaZbu3HRw==/109951165071751567.jpg类图
-
-# https://juejin.cn/post/7202085514400038969#heading-23【动图+大白话🍓解析React源码】Render阶段中Fiber树的初始化与对比更新～
-
+### React源码
+- https://p1.music.126.net/VU37zHp-6hAUfNaZbu3HRw==/109951165071751567.jpg类图
+- https://juejin.cn/post/7202085514400038969#heading-23【动图+大白话🍓解析React源码】Render阶段中Fiber树的初始化与对比更新～
 ```javascript
 jsx → React.createElement() → fiber → DOM
 
@@ -442,8 +434,16 @@ nextUnitOfWork //将要更新的下一个fiber
 
 reconciliation协调(也就是diff)
     //算法复杂度O(n) //每个节点都只走一遍
-    render 阶段：这个阶段是可中断的，会找出所有节点的变更
-    commit 阶段：这个阶段是不可中断的，会执行所有的变更
+    render 阶段：这个阶段是可中断的，会找出所有节点的变更, 调用组件的 render 方法，`生成新的虚拟 DOM`
+	    中断: 在 React 18 中引入的并发模式下，React 可能会暂停和恢复这段工作 
+	   - `constructor`
+	   - `static getDerivedStateFromProps`
+	   - `render`
+	   - `shouldComponentUpdate`
+    commit 阶段：这个阶段是不可中断的，会执行所有的变更, `更新真实DOM `
+	   - `componentDidMount`
+	   - `componentDidUpdate`
+	   - `componentWillUnmount`
 
 render时
     createRootFiber
@@ -454,4 +454,3 @@ render时
                 updateHostComponent || updateFunctionComponent
                     reconcileChildren //diff child
 ```
-
