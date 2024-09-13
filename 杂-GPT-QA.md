@@ -139,6 +139,7 @@ scene.add(line);
 
 	首先，Three.js库在其更新中不再推荐使用`THREE.Geometry`，因为它已经被标记为过时（自r125版本开始）。取而代之的是，推荐使用`THREE.BufferGeometry`来创建几何体，因为它在性能和内存使用方面更加高效。这是一个关键的改进点，特别是对于需要高性能渲染的实时应用程序。
 ```
+### GPT4o的过人之处至今无其他模型能超越
 
 ```
 calculateRealLeakPosition(totalLength, inputRatio, multiSegmentConnection)
