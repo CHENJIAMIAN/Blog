@@ -503,11 +503,14 @@ src\renderers\WebGLRenderer.js
 ## 渲染原理
 WebGLRenderer.render (three.module.js:29847)  
 	projectObject
-	render
+	renderTransmissionPass
+		renderObjects (three.module.js:30180)  
+			renderObject (three.module.js:30211)  
+				WebGLRenderer.renderBufferDirect (three.module.js:29336)
 	renderScene (three.module.js:30031)  
-	renderObjects (three.module.js:30180)  
-	renderObject (three.module.js:30211)  
-		WebGLRenderer.renderBufferDirect (three.module.js:29336)
+		renderObjects (three.module.js:30180)  
+			renderObject (three.module.js:30211)  
+				WebGLRenderer.renderBufferDirect (three.module.js:29336)
 ### `this.renderBufferDirect`
 - 功能是将给定的几何体、材质和对象渲染到场景中。
 - 负责处理渲染的各种细节，包括设置着色器程序、处理材质、计算绘制范围、选择渲染模式和执行渲染等。
@@ -519,7 +522,7 @@ WebGLRenderer.render (three.module.js:29847)
    const frontFaceCW = ( object.isMesh && object.matrixWorld.determinant() < 0 );
    - 计算对象的面朝向，判断其是否为顺时针（CW）方向。
 3. **设置着色器程序**：
-   const program = setProgram( camera, scene, geometry, material, object );
+   const program = setProgram( camera, scene, geometry, material, object );//在此通过gl.shaderSource得到glsl源码
    - 根据相机、场景、几何体、材质和对象设置当前的着色器程序。
 4. **设置材质状态**：
    state.setMaterial( material, frontFaceCW );
