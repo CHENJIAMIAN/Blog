@@ -768,3 +768,4 @@ gl.stencilFunc//设置模板测试函数。
 gl.stencilMask//设置模板写入掩码。
 gl.stencilOp//设置模板操作。
 ```
+
