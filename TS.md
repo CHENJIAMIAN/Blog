@@ -146,7 +146,7 @@ extends 
     type numberOrString<T> = T extends number ? number : string; //传入<number>的话,它就是number,否则它就是string  //T extends number表示它T是否有一个number属性
         let pickAbObject: numberOrString<number> = '1'; //错误, 因为 numberOrString<number>等同于 number
     
-infer X 某某变量 // 提取某某变量里的所有值作为类型, 赋值给X            
+infer X 某某变量 // 提取某某变量里的所有[值]作为类似用于枚举的[类型], 赋值给X            
     type InferredAb<T> = T extends { a: infer U, b: infer U } ? U : T; //U的值是传入的a，U的值是传入的b
         let asdf: InferredAb<{ a:123, b:234 }> = 12;//报错Type '12' is not assignable to type '123 | 234'
         等同于 123|234
@@ -261,6 +261,12 @@ Promise写法:
     0    Extract<Type, Union> 
     0    ConstructorParameters<Type> 
 
+TypeScript 提供了一些常用的内置条件类型，例如：
+	Exclude<T, U>：从类型 T 中排除类型 U。
+	Extract<T, U>：从类型 T 中提取与类型 U 交集的类型。
+	NonNullable<T>：从类型 T 中移除 null 和 undefined。
+	ReturnType<T>：获取函数类型 T 的返回值类型。
+	InstanceType<T>：获取构造函数类型 T 的实例类型。
 
 keyof 频率 16
     type PartialProps<T> = {[K in keyof T]?: T[K];}//T传入的是键值对象
@@ -353,7 +359,7 @@ module.exports = {
 }
 ```
 
-## ts-loader报错过程
+### ts-loader报错过程
 ```javascript
 ts-loader报错过程:
     createFileDiagnostic (typescript\lib\typescript.js)
@@ -390,11 +396,9 @@ ts-loader报错过程:
     loader (ts-loader\dist\index.js)
 ```
 
-### this
-- this 参数具有特殊的意义和位置，用于指定函数内部的上下文。
+### this用于显式声明指定函数内部的上下文类型
 - this 参数不是真正传递给函数的参数，它仅用于进行类型检查。
 - this 参数必须是函数的第一个参数，并且在声明时需要用小括号括起来。
-- 使用 this 参数可以显式地声明函数在被调用时 this 的类型，从而避免因上下文不明确导致的运行时错误。
 
 ```ts
 interface Person {  
@@ -410,8 +414,95 @@ const person: Person = {
         console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);  
     }  
 };  
+person.greet();  // 输出: Hello, my name is Alice and I am 25 years old.  
 ```
 
+### 底层机制
+#### 1. 类型推导
+类型推导是 TypeScript 的一种自动推断类型的能力。它可以让开发者在代码中省略类型注解，而编译器会根据上下文自动推断出变量的类型。例如：
+```typescript
+let message = "Hello, TypeScript"; // TypeScript 推断出 message 的类型为 string
+```
+在这种情况下，`message` 的类型会自动推导为 `string`。TypeScript 使用了一种称为“从右向左”的推导规则，也就是首先推导表达式的类型，然后再推导赋值变量的类型。
+##### 类型推导的细节
+TypeScript 主要通过以下几种方式进行类型推导：
+- **初始化推导**：如上例所示，TypeScript 通过变量初始化的值来推断类型。
+- **上下文推导**：例如在事件处理函数中，TypeScript 可以根据事件类型来推导回调函数参数的类型。
+- **默认推导**：在缺少明确类型注解时，TypeScript 会使用默认类型（例如 `any` 或 `unknown`）进行推导。
+#### 2. 类型兼容性检查
+TypeScript 使用结构化类型系统（Structural Type System），也称为“鸭子类型”或“子类型多态”。这种类型系统下，两个类型之间的兼容性由它们的结构决定，而不是由显式的继承关系决定。
+通俗点: 如果一个对象“长得像”某个类型（即具备符合条件的结构和方法），那它就可以被视为该类型
+##### 类型兼容的规则
+TypeScript 通过以下几种方式进行类型兼容性检查：
+- **子类型兼容性**：如果类型 `B` 是类型 `A` 的子类型，则 `B` 可以赋值给 `A`。
+- **宽泛性检查**：例如，在赋值过程中，如果目标类型比源类型具有更宽泛的属性（允许多余属性），那么类型是兼容的。
+- **可选属性的兼容性**：对于对象类型，如果一个类型的可选属性对应另一个类型中的非可选属性，那么它们也是兼容的。
+这种类型检查方式不仅提升了代码的灵活性，还确保了类型安全性。
+#### 3. 条件类型
+条件类型（Conditional Types）允许根据条件生成不同的类型。其语法形式为：
+```typescript
+T extends U ? X : Y
+```
+在这种表达式中，如果 `T` 能赋值给 `U`，则返回类型 `X`，否则返回类型 `Y`。条件类型在泛型编程中非常有用，能让类型定义更加灵活和动态。例如：
+```typescript
+type MessageOf<T> = T extends { message: infer M } ? M : never;
+```
+在这个例子中，`MessageOf<T>` 是一个条件类型，它检查 `T` 是否具有 `message` 属性，如果有，则返回该属性的类型，否则返回 `never`。
+##### 条件类型的处理机制
+在 TypeScript 编译器中，条件类型的处理流程大致如下：
+1. **判断类型约束**：首先检查 `T` 是否满足 `U` 的约束条件。
+2. **类型分配**：根据判断结果，选择合适的类型 `X` 或 `Y`。
+3. **类型推断**：在条件类型中可以使用 `infer` 关键字从类型中推导出具体的类型。例如 `infer M` 会推断出 `message` 属性的类型。
+#### 4. 映射类型（Mapped Types）
+映射类型允许对类型的每个属性应用相同的转换。使用方式如下：
+```typescript
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P];
+};
+```
+这个例子中，`Readonly<T>` 类型会将类型 `T` 的所有属性变为只读属性。映射类型的关键在于遍历 `T` 的所有属性，并应用一定的规则。
+##### 实现
+在编译器中，映射类型通过遍历对象类型的每个属性，并依次应用指定的转换规则来生成新的类型。这种转换可以包括：
+- **增加修饰符**：如 `readonly`、`?`。
+- **修改属性类型**：如 `T[P]` 指定属性的新类型。
+映射类型结合了条件类型和类型推导能力，使得 TypeScript 类型系统具有极大的表达能力。
 
-person.greet();  // 输出: Hello, my name is Alice and I am 25 years old.  
-上述
+---
+### 类型守卫
+在 TypeScript 中，**类型守卫（Type Guards）** 是一种机制，用来在代码运行时通过特定的检查，将值的类型缩小到某个更具体的子集，从而避免类型错误。类型守卫主要用来处理 **联合类型**，确保类型安全，并为开发者提供更强的类型推断。
+类型守卫通常用于函数中，当某个参数可以是多种类型之一时，通过运行时检查来确认它的具体类型，从而让 TypeScript 推断出该值的具体类型。在代码中，常见的类型守卫方式包括 `typeof`、`instanceof`、`in` 关键字以及自定义类型谓词。
+#### 1. `typeof` 类型守卫
+#### 2. `instanceof` 类型守卫
+#### 3. `in` 类型守卫
+#### 4. 自定义类型谓词（Type Predicates）
+自定义类型谓词是一个函数，它返回布尔值，并在函数签名中使用 `x is Type` 语法来明确指出某个值是否属于某种类型。类型谓词非常灵活，适用于复杂类型的判断。
+```typescript
+function isString(value: any): value is string {
+  return typeof value === 'string';
+}
+function printInfo(info: string | number): void {
+  if (isString(info)) {
+    console.log(info.toUpperCase());  // 确定为 string 类型
+  } else {
+    console.log(info.toFixed(2));  // 确定为 number 类型
+  }
+}
+
+在这个例子中，`isString` 函数是一个自定义类型谓词，它检查某个值是否是 `string` 类型。当在 `printInfo` 函数中调用 `isString` 时，TypeScript 可以根据判断结果进一步推断出 `info` 的类型。
+```
+#### 5. `never` 类型与类型守卫 (else的情况)
+**`never` 类型**代表不会发生的情况，通常在类型守卫中，当 TypeScript 已经根据所有条件缩小了类型，但仍然需要处理某种不可能的情况时，可以使用 `never` 作为类型。这对于确保类型安全非常有用。
+```typescript
+function handleValue(value: string | number | boolean): void {
+  if (typeof value === 'string') {
+    console.log('String value:', value);
+  } else if (typeof value === 'number') {
+    console.log('Number value:', value);
+  } else {
+    // 处理 boolean 类型的逻辑
+    console.log('Boolean value:', value);
+  }
+}
+
+假设我们有一个联合类型 `string | number | boolean`，我们通过一系列的 `if` 分支处理了 `string` 和 `number`，那么理论上 `else` 处理的就是剩下的 `boolean` 类型，确保了类型安全。
+```
