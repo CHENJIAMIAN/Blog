@@ -1,4 +1,4 @@
-## 有趣难题
+### 有趣难题
 ```js
 ☢
     function Foo(){
@@ -22,7 +22,7 @@
     })(); 
 ```
 
-## 重排重绘
+### 重排重绘
 ```javascript
 重排: //尺寸的变化时
     1、添加或删除可见的DOM元素   2、元素位置改变 3、元素尺寸改变（盒子模型）  4、内容改变   5、最初的页面渲染    6、浏览器窗口尺寸的改变
@@ -34,7 +34,7 @@
         3对具有复杂动画的元素使用绝对定位
 ```
 
-## requestIdleCallback
+### requestIdleCallback
 ```js
 requestIdleCallback() 
     //空闲时运行:解决因为一些不重要的异步任务（如统计上报）导致用户感觉到卡顿
@@ -53,7 +53,7 @@ requestIdleCallback()
     }
 ```
 
-## 概念
+### 概念
 ```javascript
 [[]][0]++;//0  
         //[0] 的访问返回的是对"[[]]"的 第0个内存位置的引用，而非位于该位置的值"[]"本身，属于Reference类型
@@ -146,7 +146,7 @@ encodeURI('列头柜%#-1-9-1')            //"%E5%88%97%E5%A4%B4%E6%9F%9C    %25#
 ```
 
 
-## bind | 深拷贝 | new | instanceof
+### bind | 深拷贝 | new | instanceof
 ```javascript
 实现bind方法(用apply)
     Function.prototype.mybind = function (context) {
@@ -274,7 +274,7 @@ ES6实现私有变量:
     console.log(ex.name); // undefined
 ```
 
-## 节流防抖
+### 节流防抖
 ```javascript
 节流throttle()： //无论触发了多少次,间隔内都只执行一次(忽略掉每隔一段时间内的多次触发) 每次点都要等flag变true
     用于:DOM 元素的拖拽功能实现 射击游戏 
@@ -328,7 +328,7 @@ ES6实现私有变量:
         }
 ```
 
-## 页面从输入 URL到页面加载显示完成
+### 页面从输入 URL到页面加载显示完成
 ```javascript
 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么 重点
 
@@ -374,7 +374,7 @@ ES6实现私有变量:
 ```
 
 
-## 7种原始类型
+### 7种原始类型
 ```javascript
 7种原始类型//(也就是不用寻址直接能用的)(占有固定大小的空间)有6种:
         Boolean.
@@ -413,7 +413,7 @@ console.log(person)
 ```
 
 
-## 闭包
+### 闭包
 > 定义在外函数内部的内函数,且内函数引用了外函数的变量
 ```javascript
 用处 //在函数外部访问函数内部变量:它可以访问它外部的变量，而外部环境不能访问它内部的变量，可以读取 外函数 的内部变量（并且这些变量的值始终保持在内存中）
@@ -429,7 +429,7 @@ console.log(person)
 ```
 
 
-## --i | i-- | 隐式转换
+### --i | i-- | 隐式转换
 ```javascript
 --i | i-- 的不同:
 function a1() {    var i = 5;    while (i)           console.log(i--)} //5，4，3，2，1   //i进来的值为5，4，3，2，1  //i--打印完再减
@@ -486,7 +486,7 @@ function a4() {    var i = 5;    while (i--)         console.log(array[i])}  //5
 
 
 
-## 技巧
+### 技巧
 ```javascript
 typeof []; //"object" //[]、{} 都是引用数据类型 Object
 
@@ -527,7 +527,7 @@ window.getComputedStyle("要获取样式的元素", "伪元素");//获取当前�
 
 ```
 
-## babel
+### babel
 ```javascript
 babel 7 
     重大变化是把所有 babel-* 重命名为 @babel/*
@@ -609,7 +609,7 @@ webpack //npm install --save-dev babel-loader @babel/core #就完事了其他都
 ![C50988529CA845269C8031A05A3C15FC](https://github.com/CHENJIAMIAN/Blog/assets/20126997/3d5a5709-9aa0-4589-a531-273225bfed03)
 
 
-## CSRF
+### CSRF
 ```javascript
 安全:
     跨站攻击: //Cross-site /重点/
@@ -632,7 +632,7 @@ webpack //npm install --save-dev babel-loader @babel/core #就完事了其他都
         X-Frame-Options:SAMEORIGIN //表示该页面可以在相同域名页面的 frame 中展示
 ```
 
-## Base64规则
+### Base64规则
 ```javascript
 Base64:
     eg:字母M -> 6个6个地取ASCII编码的2进制 /*如M的ASCCI是77即01001101,前6位010011即(19)*/  ->  (19)对应64个[可打印字符]里的T
@@ -642,7 +642,7 @@ Base64:
 ![46D1BE3DFB7C4959A81DDC3740279548](https://github.com/CHENJIAMIAN/Blog/assets/20126997/46654690-4d7d-41e7-bb14-f6b79c8a4d3a)
 
 
-## 浏览器原理
+### 浏览器原理
 ```js
 渲染进程 
     1个 主线程    
@@ -657,3 +657,6 @@ Base64:
     tag(['Hello ', ' world ', ''],  a + b , a * b);  
 ```
 
+
+### 编写JS引擎友好的代码
+**保持稳定，避免动态，作用域尽量小。**
