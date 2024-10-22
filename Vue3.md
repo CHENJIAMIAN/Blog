@@ -249,4 +249,9 @@ withDefaults
 
 使用 `unplugin-auto-import` 这个插件。这个插件能够自动地检测和导入你在文件中使用的 API，无需每次手动导入。
 ```
- 
+
+
+```js
+__v_raw
+__v_isReactive
+```
