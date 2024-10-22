@@ -199,7 +199,7 @@ Event Loop事件循环(重要): //用于等待和发送消息和事件的运行�
 setTimeout(fn,0)的含义: //只要主线程没事了就立即执行它
     注意!//setTimeout用Int32(最大值是2^31-1)一旦超过了最大值，
         //其效果就跟延时值为0的情况一样，也就是马上执行。
-	如果你设置的超时小于 4，嵌套层数超过 5 的话，这个超时会被强制调整为 4
+	为了节省资源,如果你设置的超时小于 4，嵌套层数超过 5 的话，这个超时会被强制调整为 4 https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#:~:text=than%204%2C%20then-,set%20timeout%20to%204,-.
 for(var i = 1; i <= 3; i++) {
                 setTimeout(function() {
                     console.log(i)
