@@ -460,7 +460,7 @@ React 的 Concurrent Mode 是 React 在 16 版本之后引入的一项重要特�
 时间切片是 Concurrent Mode 的一个关键技术，它通过将渲染任务分解为多个小的时间片段，使得 React 可以在浏览器空闲时间内进行渲染，从而避免阻塞用户交互。
 **实现机制**：
 - **requestIdleCallback**: React 早期尝试使用 `requestIdleCallback` 来实现时间切片，但它的缺点是调用频率不可控，且在某些高优先级任务上不适用。
-- **Scheduler**: React 引入了一个独立的调度器 (`scheduler`)，它基于 `requestAnimationFrame` 和 `MessageChannel` 进行任务调度。这使得 React 能够更精确地控制渲染任务的切片，从而在高优先级任务插入时（如用户输入），能够及时打断并处理。
+- **Scheduler**: **React 引入了一个独立的调度器 (`scheduler`)，它基于 `requestAnimationFrame` 和 `MessageChannel` 进行任务调度**。这使得 React 能够更精确地控制渲染任务的切片，从而在高优先级任务插入时（如用户输入），能够及时打断并处理。
 时间切片允许 React 在每个时间片结束时检查是否有更高优先级的任务（例如用户点击或键盘输入）。如果有，React 可以中断当前的渲染任务，并优先处理用户交互。这使得大型应用在渲染时保持流畅和高响应性。
 #### 2. 优先级调度 (Priority Scheduling)
 **优先级分类**：
