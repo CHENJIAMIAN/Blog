@@ -213,7 +213,7 @@ for(var i = 1; i <= 3; i++) {
 ```
 
 ## Promises 异步函数调用
-**Promise A+ 速记公式：状态只变一次，`then` 方法异步执行，成功/失败回调存储等待，链式调用返回新 Promise。**
+**Promise A+ 速记公式**：状态只变一次，`then` 方法异步执行，成功/失败回调存储等待，链式调用返回新 Promise。
 > 异步的发展过程：Callbacks>> Promises>> async/await(ES8)(本质是 Generator 的语法糖)
 ```javascript
 所有的 then() 函数总是会被异步调用, 即使是一个已经变成 resolve 状态的 Promise
