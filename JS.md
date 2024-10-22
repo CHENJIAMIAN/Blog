@@ -40,7 +40,7 @@ ES6的 9个
 				     被 Array.from 转换为数组。
                 迭代器方法: //实现[迭代器协议], 即内部实现了next方法,返回{value, done}, 如上面的iterators                     
                      
-    8. generator生成器函数(加了*号的函数)： 
+    8. generator生成器函数(加了*号的函数)： `Generator比aysnc/awati好在: 可以暂停和恢复执行`
                 function * GeneratorsFunc() {//next() 传参是对(yield表达式整体)的传参，否则yield类似于return //生成器既是迭代器，也是可迭代对象
                   let first = yield 1;//next()返回1, 但first接受next是4
                   let second = yield first + 2;    //因为first接受next是4,即next(4), 所以先执行let first=4;再执行first + 2；返回6
@@ -213,6 +213,7 @@ for(var i = 1; i <= 3; i++) {
 ```
 
 ## Promises 异步函数调用
+**Promise A+ 速记公式：状态只变一次，`then` 方法异步执行，成功/失败回调存储等待，链式调用返回新 Promise。**
 > 异步的发展过程：Callbacks>> Promises>> async/await(ES8)(本质是 Generator 的语法糖)
 ```javascript
 所有的 then() 函数总是会被异步调用, 即使是一个已经变成 resolve 状态的 Promise
