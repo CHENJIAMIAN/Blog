@@ -52,6 +52,7 @@ vue-cli-service build 后, 部署静态资源dist文件夹后,访问的页面是
 4. //以上三点齐全,还不生效,考虑是webpack5持久化缓存的问题 ? 因为有时不进postcss.config.js和tailwind.config.js的断点
 5. 终极解决: npm uninstall tailwindcss postcss autoprefixer 然后 vue add tailwind 
 ### Vue
+**当一个组件以单个元素为根作渲染时，透传的 attribute 会自动被添加到根元素上**
 ```javascript
 : //相当于v-bind:href='js代码/变量' eg：  :href='js代码/变量'
     v-bind="{ id: someProp, 'other-attr': otherProp }" //绑定一个对象, 该对象的属性都作为绑定属性 /内外引号不能都是双引号或都是单引号/    
@@ -242,6 +243,7 @@ new Vue({
         0、provide/inject(跨多多代)  
                 甲组件提供： provide() { return { 变量名: 变量} }  
                 乙组件： inject:{  变量别名: {from: ' 变量名',default: () => 1}  }, //即可通过this.变量别名 获得变量, 如果没有人provide,则this.变量别名 为默认值1
+			'当一个组件以单个元素为根作渲染时，透传的 attribute 会自动被添加到根元素上'
            v-bind="$attrs"：穿透所有属性(data里的数据)给子子孙孙 //祖孙传参 $attrs 
            v-on="$listeners"穿透所有方法给子子孙孙 //祖孙传事件 $listeners
         1、props | $emit/$on
