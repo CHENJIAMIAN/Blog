@@ -177,7 +177,7 @@ GPU 模块负责管理和调度图形处理任务，并提供硬件加速功能�
 		1. Direct3D 后端
 			- **Direct3D 9**：主要用于旧版本的 Windows 系统。
 			- **Direct3D 11**：目前最常用的后端，适用于大多数 Windows 平台。
-		2. Vulkan 后端
+		2. Vulkan 后端(Khronos提出)
 			- **Vulkan**：跨平台的低级别图形 API，适用于高性能和多线程图形渲染。Vulkan 后端使得 ANGLE 可以在支持 Vulkan 的操作系统上运行。
 		3. Metal 后端
 			- **Metal**：Apple 提供的图形 API，适用于 macOS 和 iOS 平台。通过 Metal 后端，ANGLE 可以在 Apple 设备上实现高效的图形渲染。
