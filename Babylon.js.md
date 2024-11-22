@@ -6,6 +6,12 @@
 4. v5.0.0   2022 重构了目录结构`packages\dev\core\src\Particles\particle.ts`
 
 
+```js
+engineFactory.ts
+	Engine(webgl的引擎)
+	WebGPUEngine
+```
+
 ### 获取某公司温度场体积云的shader代码
 1. 参考[Particle Demo | Babylon.js Playground --- 粒子演示 | Babylon.js 游乐场](https://www.babylonjs-playground.com/#WBQ8EM)
 2. 注入`<script src="https://greggman.github.io/webgl-helpers/webgl-log-shaders.js"></script>`
