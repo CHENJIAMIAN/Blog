@@ -14,16 +14,16 @@
 2. 计算完成后，可以将计算结果从GPU内存中读取出来。
 3. 将计算结果传递给OpenGL，使用OpenGL的绘制函数将结果渲染到屏幕上。可以将计算结果作为纹理或顶点数据传递给OpenGL进行渲染。
 ## 非Web端 的 图形API
-| 维度       | Direct3D 12 | Metal       | Vulkan      |
-|------------|-------------|-------------|-------------|
-| 创建组织   | Microsoft   | Apple       | Khronos Group |
-| 平台支持   | Windows, PlayStation | Mac, iPhone | 多平台支持，包括Windows、Mac、Linux和Android等 |
-| 开发语言   | C++         | Objective-C, Swift | C, C++      |
-| 设备支持   | 大部分主流显卡和游戏主机 | Apple设备    | 多种硬件和操作系统支持 |
-| 特性       | 强调低级硬件访问和控制 | 针对苹果生态系统的优化 | 强调跨平台和可移植性 |
-| 性能       | 高性能和低延迟    | 优化的性能和能耗  | 高性能和可扩展性    |
-| 开发工具   | Microsoft Visual Studio | Apple Xcode | 多种开发工具和SDK支持 |
-| 生态系统     | 丰富的游戏开发和工具支持 | 针对苹果生态系统的集成 | 多个平台的广泛应用和支持 |
+| 维度   | Direct3D 12             | Metal              | Vulkan                             |
+| ---- | ----------------------- | ------------------ | ---------------------------------- |
+| 创建组织 | Microsoft               | Apple              | Khronos Group                      |
+| 平台支持 | Windows, PlayStation    | Mac, iPhone        | 多平台支持，包括Windows、Mac、Linux和Android等 |
+| 开发语言 | C++                     | Objective-C, Swift | C, C++                             |
+| 设备支持 | 大部分主流显卡和游戏主机            | Apple设备            | 多种硬件和操作系统支持                        |
+| 特性   | 强调低级硬件访问和控制             | 针对苹果生态系统的优化        | 强调跨平台和可移植性                         |
+| 性能   | 高性能和低延迟                 | 优化的性能和能耗           | 高性能和可扩展性                           |
+| 开发工具 | Microsoft Visual Studio | Apple Xcode        | 多种开发工具和SDK支持                       |
+| 生态系统 | 丰富的游戏开发和工具支持            | 针对苹果生态系统的集成        | 多个平台的广泛应用和支持                       |
 
 [Orillusion/orillusion - GitHub1s](https://github1s.com/Orillusion/orillusion)
 ```js 
