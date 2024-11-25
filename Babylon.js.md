@@ -9,6 +9,7 @@
 ```js
 engineFactory.ts
 	Engine(webgl的引擎)
+		thinEngine.ts 用了WebGL2RenderingContext
 	WebGPUEngine
 ```
 
