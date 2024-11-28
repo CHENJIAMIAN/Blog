@@ -118,3 +118,14 @@ packages.dev.core.src.Materials.effect.Effect._loadShader
 - **性能：** 由于需要更复杂的计算（如每个粒子的3D变换），处理的粒子数量可能会少于标准粒子系统。
 - **自定义程度：** SPS允许对每个粒子进行个别的几何变换（位置、旋转、缩放），并且粒子可以是任何3D对象，提供了更高的自定义能力。
 - **渲染效率：** 每个粒子都是一个完整的3D对象，可能会进行碰撞检测或其他复杂的计算，因此对性能的要求更高。
+
+### MirrorTexture
+>  extends RenderTargetTexture
+```js
+this._groundMirror.mirrorPlane
+this._groundMirror.anisotropicFilteringLevel
+this._groundMirror.wrapU
+this._groundMirror.wrapV
+this._groundMirror.clearColor
+this._groundMirror.adaptiveBlurKernel
+```
