@@ -134,3 +134,4 @@ this._groundMirror.adaptiveBlurKernel
 ```js
 reflectionTexture可设置为MirrorTexture
 ```
+packages\dev\core\src\Shaders\default.fragment
