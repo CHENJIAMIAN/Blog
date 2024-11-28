@@ -134,4 +134,58 @@ this._groundMirror.adaptiveBlurKernel
 ```js
 reflectionTexture可设置为MirrorTexture
 ```
-packages\dev\core\src\Shaders\default.fragment
+### packages\dev\core\src\Materials\standardMaterial
+```js
+                if (this._reflectionTexture && StandardMaterial.ReflectionTextureEnabled) {
+                    if (this._reflectionTexture.isCube) {
+                        effect.setTexture("reflectionCubeSampler", this._reflectionTexture);
+                    } else {
+                        effect.setTexture("reflection2DSampler", this._reflectionTexture);
+                    }
+                }
+```
+### packages\dev\core\src\Shaders\default.fragment
+```js
+**1. 条件判断：**
+
+   - 首先代码判断是否启用反射效果，通过 `#ifdef REFLECTION` 宏控制。
+
+**2. 反射方向向量计算：**
+
+   -  `vec3 vReflectionUVW = computeReflectionCoords(vec4(vPositionW, 1.0), normalW);` 这一行代码用于计算反射方向向量。
+     - `computeReflectionCoords` 函数是一个自定义函数，用于根据世界空间位置 `vPositionW` 和法线向量 `normalW` 计算反射方向向量。
+     - 函数具体实现取决于反射贴图类型，但通常会利用法线向量和视线向量计算反射方向向量。
+   -  `#ifdef REFLECTIONMAP_OPPOSITEZ` 条件判断用于处理 Z 轴方向相反的反射贴图，将反射方向向量的 Z 分量取反。
+
+**3. 反射颜色采样：**
+
+   -  `reflectionColor = textureCube(reflectionCubeSampler, vReflectionUVW);` 这一行代码使用 `textureCube` 函数从立方体贴图 `reflectionCubeSampler` 中采样反射颜色。
+   -  `#ifdef REFLECTIONMAP_3D`  判断是否使用立方体贴图，如果使用则使用 `textureCube` 函数采样。否则用`reflection2DSampler`
+   -  `#ifdef ROUGHNESS` 判断是否使用粗糙度，如果使用则使用 `textureCube` 函数的 `bias` 参数，根据粗糙度进行采样偏移。
+   -  `#else`  块用于处理非立方体贴图的情况，代码中没有展示具体实现，但通常会使用 `texture2D` 函数从 2D 贴图中采样。
+
+**4. 反射颜色修正：**
+
+   -  `#ifdef RGBDREFLECTION` 判断是否使用 RGBD 格式的反射贴图，如果使用则需要将采样的颜色从 RGBD 格式转换为 RGB 格式。
+   -  `#ifdef IS_REFLECTION_LINEAR` 判断是否使用线性空间的反射贴图，如果使用则需要将采样的颜色从线性空间转换为伽马空间。
+   -  `reflectionColor.rgb *= vReflectionInfos.x;`  使用 `vReflectionInfos.x` 参数缩放反射颜色，可以用来调整反射强度的。
+
+**5. 反射菲涅尔计算：**
+
+   -  `#ifdef REFLECTIONFRESNEL`  判断是否使用菲涅尔反射效果，如果使用则使用 `computeFresnelTerm` 函数计算菲涅尔反射系数。
+     - `computeFresnelTerm` 函数根据视线方向 `viewDirectionW`、法线向量 `normalW` 和两个菲涅尔参数 `reflectionRightColor.a`、`reflectionLeftColor.a` 计算菲涅尔反射系数。
+   -  根据计算的菲涅尔反射系数，使用 `reflectionLeftColor` 和 `reflectionRightColor` 混合得到最终的反射颜色。
+
+**6. 合并反射颜色：**
+
+   -  最终的反射颜色会被合并到最终输出颜色中，并根据 `#ifdef EMISSIVEASILLUMINATION` 条件判断决定合并方式。
+
+**总的来说，代码中 Reflection 部分实现了一个简单的反射效果，可以根据反射贴图类型和菲涅尔参数实现不同效果。**
+
+**代码中 Reflection 部分的一些特点:**
+
+- 支持立方体贴图和 2D 贴图。
+- 支持粗糙度参数，可以模拟不同材质的反射效果。
+- 支持菲涅尔反射，可以模拟反射强度的变化。
+- 反射颜色的混合方式可以根据场景需求进行调整。
+```
