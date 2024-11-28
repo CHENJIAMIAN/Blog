@@ -1,6 +1,5 @@
  Paul Henschel ( [@0xca0a )，他是](https://twitter.com/0xca0a?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)[react-three-fiber](https://github.com/pmndrs/react-three-fiber)的主要维护者
-## 类图
-![AECA9D1EA33647C99D4A25A725166B5B](https://github.com/CHENJIAMIAN/Blog/assets/20126997/277600f2-03f5-495c-bec6-7dc3213bcb42)
+## 类图![AECA9D1EA33647C99D4A25A725166B5B](https://github.com/CHENJIAMIAN/Blog/assets/20126997/277600f2-03f5-495c-bec6-7dc3213bcb42)
 
 ## three.js
 ```js
