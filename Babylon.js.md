@@ -129,3 +129,8 @@ this._groundMirror.wrapV
 this._groundMirror.clearColor
 this._groundMirror.adaptiveBlurKernel
 ```
+### reflectionTexture
+> packages.dev.core.src.Materials.standardMaterial.StandardMaterial.reflectionTexture
+```js
+reflectionTexture可设置为MirrorTexture
+```
