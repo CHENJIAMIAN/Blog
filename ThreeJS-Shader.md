@@ -6,7 +6,7 @@
 5. 后期处理和滤镜效果：文章提到了使用postprocessing库中的辉光滤镜和色调映射滤镜来增强渲染效果。
 6. 修改材质的Shader：文章介绍了如何使用three.js的onBeforeCompile方法来修改材质的Shader，以实现自定义的光照效果。
 7. [alphardex/kokomi.js: A growing three.js helper library.](https://github.com/alphardex/kokomi.js#shadertoy-integration) 特效很多
-	1. 参考了[pmndrs/drei：🥉 react-three-fiber](https://github.com/pmndrs/drei)  实现了很多特效, 如[Shaders / MeshReflectorMaterial - Docs ⋅ Storybook](https://drei.pmnd.rs/?path=/docs/shaders-meshreflectormaterial--docs)
+	1. 参考了[pmndrs/drei：🥉 基于react-three-fiber封装的一些控件和类](https://github.com/pmndrs/drei)  实现了很多特效, 如[Shaders / MeshReflectorMaterial - Docs ⋅ Storybook](https://drei.pmnd.rs/?path=/docs/shaders-meshreflectormaterial--docs)
 		1. 官网 [kokomi-js.vercel.app/lp/](https://kokomi-js.vercel.app/lp/)
 		2. 代码 [guohong365/kokomi-playground](https://github1s.com/guohong365/kokomi-playground/blob/HEAD/entries/portfolioPC/frag.glsl#:~:text=portfolioP%20) 100多个shader
 		3. 示例 [kokomi.js examples --- kokomi.js ](https://kokomi-playground.vercel.app/entries/#niceTunnel)
