@@ -1,14 +1,15 @@
 ### [React主要版本的重大API更新](https://react.dev/versions#changelog)
+[react/CHANGELOG.md at main · facebook/react](https://github.com/facebook/react/blob/main/CHANGELOG.md#1830-april-25-2024)
 
-| React 版本 | 发布日期  | 重要API更新                                                                                                                        |
-|------------|-----------|------------------------------------------------------------------------------------------------------------------------------------|
-| **16.0**   | 2017年9月 | - **Fiber架构引入**：提升性能，支持异步渲染<br>- **Error Boundaries**：新增`componentDidCatch`，用于捕获子组件树的运行时错误        |
-| **16.3**   | 2018年3月 | - **生命周期方法更新**：新增`getDerivedStateFromProps`和`getSnapshotBeforeUpdate`，对老方法逐步废弃<br>- 现代化的**Context API**  |
-| **16.6**   | 2018年10月| - **React.memo**：用于高效的React函数组件性能优化<br>- **React.lazy**：实现组件的动态懒加载和代码分割                             |
-| **16.8**   | 2019年2月 | - **React Hooks 引入**：新增`useState`, `useEffect`, `useContext`, `useReducer`, `useRef`, `useCallback`, `useMemo`等Hooks API         |
-| **17.0**   | 2020年10月| - 改善事件委托机制<br>- 新增的事件处理改进，支持`onFocusCapture`和`onBlurCapture`等事件捕获                                        |
-| **18.0**   | 2022年3月 | - 引入 **Concurrent Rendering**：通过`createRoot`取代`render`，利用并发模式提高 UI 响应性<br>- 新增`useTransition`和`useDeferredValue` |
-| **18.2**   | 2022年6月 | - **自动批处理更新（Automatic Batching）**：在多个状态更新时默认启用批量更新机制                                                    |
+| React 版本 | 发布日期     | 重要API更新                                                                                                                  |
+| -------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **16.0** | 2017年9月  | - **Fiber架构引入**：提升性能，支持异步渲染<br>- **Error Boundaries**：新增`componentDidCatch`，用于捕获子组件树的运行时错误                               |
+| **16.3** | 2018年3月  | - **生命周期方法更新**：新增`getDerivedStateFromProps`和`getSnapshotBeforeUpdate`，对老方法逐步废弃<br>- 现代化的**Context API**                  |
+| **16.6** | 2018年10月 | - **React.memo**：用于高效的React函数组件性能优化<br>- **React.lazy**：实现组件的动态懒加载和代码分割   **Suspense**                                   |
+| **16.8** | 2019年2月  | - **React Hooks 引入**：新增`useState`, `useEffect`, `useContext`, `useReducer`, `useRef`, `useCallback`, `useMemo`等Hooks API |
+| **17.0** | 2020年10月 | - 改善事件委托机制<br>- 新增的事件处理改进，支持`onFocusCapture`和`onBlurCapture`等事件捕获                                                        |
+| **18.0** | 2022年3月  | - 引入 **Concurrent Rendering**：通过`createRoot`取代`render`，利用并发模式提高 UI 响应性<br>- 新增`useTransition`和`useDeferredValue`         |
+| **18.2** | 2022年6月  | - **自动批处理更新（Automatic Batching）**：在多个状态更新时默认启用批量更新机制                                                                     |
 
 #### **React 16.3：生命周期和Context API**
 - **新增生命周期方法：**
