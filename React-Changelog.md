@@ -565,7 +565,7 @@
 - 提醒：开发中存在`Hook`顺序不匹配问题。（@threepointone 在 #14585 和 @acdlite 在 `#14591`）
 - 清理函数必须返回 undefined 或函数。不允许返回 null 等其他值。@acdlite 在 #14119
 
-### [React 测试渲染器和测试工具（经过润色）](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-test-renderer-and-test-utils)
+### [React 测试渲染器和测试工具](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-test-renderer-and-test-utils)
 
 - 在浅渲染器中支持`Hook`功能。（@trueadm 在 `#14567`）
 - 修复 Shallow Renderer 中因存在 getDerivedStateFromProps 而出现的错误状态。（在）
