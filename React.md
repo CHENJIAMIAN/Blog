@@ -1,3 +1,42 @@
+### [React主要版本的重大API更新](https://react.dev/versions#changelog)
+
+| React 版本 | 发布日期  | 重要API更新                                                                                                                        |
+|------------|-----------|------------------------------------------------------------------------------------------------------------------------------------|
+| **16.0**   | 2017年9月 | - **Fiber架构引入**：提升性能，支持异步渲染<br>- **Error Boundaries**：新增`componentDidCatch`，用于捕获子组件树的运行时错误        |
+| **16.3**   | 2018年3月 | - **生命周期方法更新**：新增`getDerivedStateFromProps`和`getSnapshotBeforeUpdate`，对老方法逐步废弃<br>- 现代化的**Context API**  |
+| **16.6**   | 2018年10月| - **React.memo**：用于高效的React函数组件性能优化<br>- **React.lazy**：实现组件的动态懒加载和代码分割                             |
+| **16.8**   | 2019年2月 | - **React Hooks 引入**：新增`useState`, `useEffect`, `useContext`, `useReducer`, `useRef`, `useCallback`, `useMemo`等Hooks API         |
+| **17.0**   | 2020年10月| - 改善事件委托机制<br>- 新增的事件处理改进，支持`onFocusCapture`和`onBlurCapture`等事件捕获                                        |
+| **18.0**   | 2022年3月 | - 引入 **Concurrent Rendering**：通过`createRoot`取代`render`，利用并发模式提高 UI 响应性<br>- 新增`useTransition`和`useDeferredValue` |
+| **18.2**   | 2022年6月 | - **自动批处理更新（Automatic Batching）**：在多个状态更新时默认启用批量更新机制                                                    |
+
+#### **React 16.3：生命周期和Context API**
+- **新增生命周期方法：**
+  - `getDerivedStateFromProps(props, state)`：代替`componentWillReceiveProps`，从props中衍生并更新state。
+  - `getSnapshotBeforeUpdate(prevProps, prevState)`：用于在DOM更新前获取快照（如滚动位置）。
+- **新的Context API：**
+  - 提供更加简洁的跨组件传递数据方法，核心API如：`React.createContext`, `<Provider>`, `<Consumer>`。
+#### **React 16.6：优化工具**
+- **`React.memo`**：高阶组件，用于优化函数式组件的性能，相当于`PureComponent`的函数版。
+- **`React.lazy` 和 `Suspense`**：实现动态加载组件配合代码分割，简化Bundle文件的体积。
+#### **React 16.8：Hooks的诞生**
+- **React Hooks**：
+  - 打破了类组件的限制，Hooks能在函数组件中使用状态和生命周期逻辑：
+    - `useState`：管理组件状态值。
+    - `useEffect`：处理副作用，如事件监听、异步调用等。
+    - `useContext`：直接访问Context上下文。
+    - `useReducer`：实现状态复杂时的Redux风格处理方式。
+    - `useRef`：用于访问/存储DOM元素或变量。
+    - `useCallback` 和 `useMemo`：优化性能，避免函数或值的重新创建。
+#### **React 18.0：并发模式和性能提升**
+- **Major API Changes：**
+  - `createRoot(container)`：为新的并发渲染模式提供支持，替代旧的`ReactDOM.render`。
+  - **并发功能：**
+    - `useTransition`：管理用户界面中优先级较低的更新（如切换页面加载状态）。
+    - `useDeferredValue`：降低输入更新的优先级，用于大量数据渲染的优化。
+  - **自动批处理更新**：以往手动调用`ReactDOM.unstable_batchedUpdates`的逻辑，现在在React的所有事件环境中都会自动启用批量更新。
+#### **React 18.2：自动批处理更新扩展**
+- React事件之外也支持自动批处理更新，包含原生事件和异步任务，减少了非必要的重新渲染情况。
 ```javascript
 umi //企业级react应用框架,类似Next.js
     //dva作为umi插件, 底层引入了redux-sagas做异步流程控制，内置了 react-router('dva/router')  
