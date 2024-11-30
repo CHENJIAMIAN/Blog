@@ -11,7 +11,7 @@
 | **18.0** | 2022年3月  | - 引入 **Concurrent Rendering**：通过`createRoot`取代`render`，利用并发模式提高 UI 响应性<br>- 新增`useTransition`和`useDeferredValue`         |
 | **18.2** | 2022年6月  | - **自动批处理更新（Automatic Batching）**：在多个状态更新时默认启用批量更新机制                                                                     |
 
-#### **React 16.3：生命周期和Context API**
+#### **React 16.3：生命周期和 Context API**
 - **新增生命周期方法：**
   - `getDerivedStateFromProps(props, state)`：代替`componentWillReceiveProps`，从props中衍生并更新state。
   - `getSnapshotBeforeUpdate(prevProps, prevState)`：用于在DOM更新前获取快照（如滚动位置）。

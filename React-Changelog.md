@@ -1,5 +1,5 @@
 > [react/CHANGELOG.md 文件位于 main 分支，由 facebook/react 维护 --- react/CHANGELOG.md at main · facebook/react](https://github.com/facebook/react/blob/main/CHANGELOG.md#all-changes)
-## [2024 年 4 月 26 日版本号 18.3.1](https://github.com/facebook/react/blob/main/CHANGELOG.md#1831-april-26-2024)
+## [18.3.1 版本（发布于 2024 年 4 月 26 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1831-april-26-2024)
 
 - 从 React 导出操作 f1338f（优化翻译）
 
@@ -14,7 +14,7 @@
 - 允许向 this.refs 写入以支持字符串引用的代码修改 909071，使翻译更自然易懂
 - 警告：在严格模式外使用已废弃的 findDOMNode 功能 c3b283，翻译更加自然易懂
 - 警告：弃用已过时的 test-utils 方法 d4ea75，请更新代码
-- 警告：在严格模式 415ee0 之外使用已过时的旧版上下文
+- 警告：在严格模式 415ee0 之外使用已过时的旧版Context
 - 警告：在严格模式外使用已废弃的字符串引用 #25383
 - 警告：函数组件的 defaultProps 属性已弃用，请注意更新代码 #25699
 - 提醒：传播密钥 #25697 时请注意
@@ -67,7 +67,7 @@
 - 修复对 bootstrapScriptContent 内容的转义问题。（@gnoff 在#24385 中）
 - 显著提升 renderToPipeableStream . 的性能（gnoff 在 #24291 中）
 
-### [ESLint 插件：React 钩子](https://github.com/facebook/react/blob/main/CHANGELOG.md#eslint-plugin-react-hooks)
+### [ESLint 插件：React `Hook`](https://github.com/facebook/react/blob/main/CHANGELOG.md#eslint-plugin-react-hooks)
 
 - 使用大量分支修复误报错误。（@scyron6 在 `#24287`）
 - 当变量被重新赋值时，不要认为已知的依赖项是稳定的。（@afzalsayed96 在 `#24343`）
@@ -82,21 +82,21 @@
 
 ### [新功能](https://github.com/facebook/react/blob/main/CHANGELOG.md#new-features)
 
-### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-1)
+#### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-1)
 
 - useId 是一个用于在客户端和服务器端生成唯一 ID 的新功能，它能够避免数据同步问题，使翻译更加自然易懂。  
     主要适用于需要与无障碍 API 集成的组件库，并要求具有唯一 ID。该翻译更加自然且易于理解。  
     这解决了 React 17 及以下版本中已经存在的问题，但在 React 18 中尤为重要，因为新的流式服务器渲染器输出的 HTML 顺序被打乱，这一点更加关键。
-- startTransition 和 useTransition 功能让您可以将某些状态更新标记为非紧急处理。默认情况下，其他状态更新会被视为紧急处理。  
+- `startTransition` 和 `useTransition` 功能让您可以将某些状态更新标记为非紧急处理。默认情况下，其他状态更新会被视为紧急处理。  
     React 允许紧急状态更新（如更新文本输入）打断非紧急状态更新（如渲染搜索结果列表），使操作更高效。
-- useDeferredValue 允许您延迟渲染树的非紧急部分。这与节流功能相似，但相比而言具有一些优势。  
+- `useDeferredValue` 允许您延迟渲染树的非紧急部分。这与节流功能相似，但相比而言具有一些优势。  
     没有固定延迟时间，React 将在首次渲染显示在屏幕上后立即尝试进行延迟渲染。延迟渲染可被中断，不会影响用户操作。
 - useSyncExternalStore 是一个新特性，它通过强制同步更新存储来支持外部存储的并发读取。这使得在实现对外部数据源的订阅时无需使用 useEffect，对于需要与 React 外部状态集成的库来说，这是一个推荐的做法。
-- useInsertionEffect 是一个新钩子，它允许 CSS-in-JS 库解决渲染时注入样式的性能问题。除非你已经开发了自己的 CSS-in-JS 库，否则我们不太可能用到这个钩子。  
-    此钩子将在 DOM 发生变更后执行，但在布局效果读取新布局之前。这样的表述更符合中文表达习惯。  
+- useInsertionEffect 是一个新`Hook`，它允许 CSS-in-JS 库解决渲染时注入样式的性能问题。除非你已经开发了自己的 CSS-in-JS 库，否则我们不太可能用到这个`Hook`。  
+    此`Hook`将在 DOM 发生变更后执行，但在布局效果读取新布局之前。这样的表述更符合中文表达习惯。  
     这解决了 React 17 及以下版本中已经存在的问题，但在 React 18 中尤为重要。因为 React 在并发渲染时会将控制权交给浏览器，从而让浏览器有机会重新计算布局，这一点显得尤为重要。
 
-### [React DOM 客户端](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-client)
+#### [React DOM 客户端](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-client)
 
 这些新的 API 现在从`react-dom/client`模块导出：
 
@@ -105,7 +105,7 @@
 
 两者都支持一个名为 onRecoverableError 的新选项，用于在 React 在渲染或挂载过程中从错误中恢复时进行通知。默认情况下，React 会使用 reportError 或者在旧浏览器中使用 console.error 进行错误报告。
 
-### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-2)
+#### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-2)
 
 这些新的 API 现在从 react-dom/server 模块导出，完全支持在服务器端进行流式处理 Suspense 功能
 
@@ -114,7 +114,7 @@
 
 现有的 renderToString 方法依然可用，但已不推荐使用。
 
-## [废弃功能](https://github.com/facebook/react/blob/main/CHANGELOG.md#deprecations)
+### [废弃功能](https://github.com/facebook/react/blob/main/CHANGELOG.md#deprecations)
 
 - react-dom: ReactDOM.render 已被弃用。使用它将触发警告，并使您的应用以 React 17 模式运行。
 - ReactDOM.hydrate 已弃用，使用时会发出警告，并使您的应用以 React 17 模式运行。
@@ -122,9 +122,9 @@
 - react-dom: @0 已被弃用。
 - react-dom/server: `ReactDOMServer.renderToNodeStream` 已被弃用，请更新代码。
 
-## [突破性变更（优化版）](https://github.com/facebook/react/blob/main/CHANGELOG.md#breaking-changes)
+### [突破性变更（优化版）](https://github.com/facebook/react/blob/main/CHANGELOG.md#breaking-changes)
 
-### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-2)
+##### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-2)
 
 - 自动批处理：本版本引入了性能优化，改变了 React 处理更新的方式，使其能够自动进行更多批处理。有关在 React 18 中减少渲染次数的详细信息，请参阅“自动批处理”。在极少数需要关闭此功能的情况下，请将状态更新包裹在`flushSync`函数中。
 - 严格模式：未来，React 将新增一项功能，允许组件在卸载后保持状态。为了适应这一变化，React 18 在开发模式下引入了针对严格模式的检查机制。  
@@ -142,13 +142,13 @@
 - 新的 JS 环境要求：React 现在依赖于现代浏览器功能，包括 Promise、Symbol 和 Object.assign。这些功能是现代浏览器必备的，因此 React 需要运行在支持这些特性的浏览器上。  
     如果您的应用需要支持旧版浏览器和设备，比如不支持现代功能的 Internet Explorer，建议在打包时加入全局 polyfill。这样可以使您的应用兼容性更强。
 
-### [调度器（实验版）](https://github.com/facebook/react/blob/main/CHANGELOG.md#scheduler-experimental)
+#### [调度器（实验版）](https://github.com/facebook/react/blob/main/CHANGELOG.md#scheduler-experimental)
 
 - 移除不稳定的调度和跟踪 API
 
-## [重大变更（经过润色）](https://github.com/facebook/react/blob/main/CHANGELOG.md#notable-changes)
+### [重大变更（经过润色）](https://github.com/facebook/react/blob/main/CHANGELOG.md#notable-changes)
 
-### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-3)
+#### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-3)
 
 - 组件现在能够渲染未定义值：React 不再在组件返回 undefined 时抛出异常。这使得组件允许的返回值与组件树中间允许的值保持一致，使代码更简洁。  
     我们建议使用代码检查工具来避免忘记在 JSX 之前添加返回语句等错误，这样可以使代码更加健壮。
@@ -159,19 +159,19 @@
     如果您已安装 React DevTools，第二个日志的渲染将以灰色显示，并且默认情况下可以关闭显示这些渲染。
 - 改进内存使用：React 在卸载时现在会清理更多内部字段，从而使得应用代码中可能存在的内存泄漏问题的影响变得不那么严重，使翻译更加自然易懂。
 
-### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-3)
+#### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-3)
 
 - 当服务器挂起时，将不再出错。它将输出最近的 边界对应的回退 HTML，随后在客户端重新渲染相同内容。建议您使用类似 renderToPipeableStream 或 renderToReadableStream 的流式 API 进行替换。
 - 当服务器挂起时，将不再报错。它将输出最近的 边界对应的回退 HTML，并在客户端重新尝试渲染。
 
-## [所有变更](https://github.com/facebook/react/blob/main/CHANGELOG.md#all-changes)
+### [所有变更](https://github.com/facebook/react/blob/main/CHANGELOG.md#all-changes)
 
-## [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-4)
+#### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-4)
 
-- 将 useTransition 和 useDeferredValue 添加到独立更新中，以便区分紧急更新与过渡效果。（由 @acdlite、@lunaruan、@rickhanlonii 和 @sebmarkbage 提出，编号 `10426`、`10715`、`15593`、`15272`、`15578`、`15769`、`17058`、`18796`、`19121`、`19703`、`19719`、`19724`、`20672`、`#20976`）
+- 将 `useTransition` 和 `useDeferredValue` 添加到独立更新中，以便区分紧急更新与过渡效果。（由 @acdlite、@lunaruan、@rickhanlonii 和 @sebmarkbage 提出，编号 `10426`、`10715`、`15593`、`15272`、`15578`、`15769`、`17058`、`18796`、`19121`、`19703`、`19719`、`19724`、`20672`、`#20976`）
 - 添加 useId 功能以生成唯一标识符。（由@acdlite、@lunaruan 和@sebmarkbage 发起，`17322`、`18576`、`22644`、`22672`、`#21260`）
 - 添加功能 `Add useSyncExternalStore` 以帮助外部存储库与 React 集成。（由 @acdlite、@bvaughn 和 @drarmstr 提出，相关编号：#15022, #18000, #18771, #22211, #22292, #22239, #22347, `#23150`）
-- 将 startTransition 添加为 useTransition 的一个版本，无需等待反馈确认。（由 @rickhanlonii 提交 `#19696`）
+- 将 `startTransition` 添加为 `useTransition` 的一个版本，无需等待反馈确认。（由 @rickhanlonii 提交 `#19696`）
 - 为 CSS-in-JS 库添加 useInsertionEffect 功能。（由 @rickhanlonii 提出 `21913`，使描述更自然易懂）
 - 当内容重新出现时，重新挂载布局效果，制造悬念。（由 @acdlite、@bvaughn 和 @lunaruan 提出，`19322`、`19374`、`19523`、`20625`、`#21079`）
 - 使 重新运行效果，以检查是否可以恢复状态。（由 @bvaughn 和 @lunaruan 提出 #19523 , `#21418`）
@@ -186,7 +186,7 @@
 - 优化内存使用。（由 bgirard 提交 `#21039`）
 - 如果字符串强制转换引发错误（`Temporal.*`、Symbol 等）（#22064 by @justingrant）——使信息改进更佳
 - 当 MessageChannel 可用时，请优先使用 setImmediate。
-- 修复挂起树中上下文无法传播的问题。（由 @gaearon 提交 `#23095`）
+- 修复挂起树中Context无法传播的问题。（由 @gaearon 提交 `#23095`）
 - 通过移除急切退出机制修复了 useReducer 对错误 props 的观察问题。（由@josephsavona 提交的`#22445`）
 - 修复 Safari 中追加 iframe 时被忽略的 setState 问题。（由@gaearon 发起 `#23111`）
 - 修复在树视图中渲染 ZonedDateTime 时的崩溃问题。（由 @dimaqq 提交 `#20617`）
@@ -198,7 +198,7 @@
 - 允许在 Suspense 边界外挂起。（由用户@acdlite 发起的议题`#23267`）
 - 当加湿失败时，记录一个可恢复的错误。（由 @acdlite 提出 `#23319`）
 
-### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-3)
+#### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-3)
 
 - 添加 createRoot 和 hydrateRoot 功能。 (#10239, #11225, #12117, #13732, #15502, #15532, #17035, #17165, #20669, #20748, #20888, #21072, #21417, #21652, #21687, #23207, #23385 由 @acdlite, @bvaughn, @gaearon, @lunaruan, @rickhanlonii, @trueadm 和 @sebmarkbage 实现)
 - 添加选择性补水功能。（由 @acdlite、@gaearon、@salazarm 和 @sebmarkbage 提出，相关编号：`14717`、`14884`、`16725`、`16880`、`17004`、`22416`、`22629`、`22448`、`22856`、`#23176`）
@@ -209,17 +209,17 @@
 - 修复了未应用 aspectRatio 样式的问题。（由 @gaearon 提出 `#21100`）
 - 警告：如果调用 `renderSubtreeIntoContainer` （由@acdlite 发起的`#23355`）
 
-### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-4)
+#### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-4)
 
 - 添加新的流式渲染器功能。（由 @sebmarkbage 提出，涉及 `14144`、`20970`、`21056`、`21255`、`21200`、`21257`、`21276`、`22443`、`22450`、`23247`、`24025`、#24030 等问题）
-- 修复 SSR 中处理多个请求时的问题上下文提供者，使其更自然易懂。（由@frandiox 发起 `#23171`）
+- 修复 SSR 中处理多个请求时的问题Context提供者，使其更自然易懂。（由@frandiox 发起 `#23171`）
 - 恢复客户端渲染以解决文本不匹配问题。（由 @acdlite 提出 `#23354`）
 - 废弃 renderToNodeStream 功能。（由 @sebmarkbage 提出，`#23359`）
 - 修复新服务器渲染器中出现的虚假错误日志问题。（由@eps1lon 发起 `#24043`）
 - 修复新服务器渲染器中的 bug。（#22617 由@shuding 发起）
 - 忽略服务器中自定义元素内部的函数和符号值。（由 @sebmarkbage 提出 `#21157`）
 
-### [React DOM 测试工具](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-test-utils)
+#### [React DOM 测试工具](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-test-utils)
 
 - 在生产中使用操作时引发异常。（由 @acdlite 提交 `#21686`）
 - 支持禁用不必要的操作警告 `global.IS_REACT_ACT_ENVIRONMENT` . （#22561 由 @acdlite 提出）
@@ -227,20 +227,20 @@
 - 执行批量更新操作。（由 @acdlite 提交 `21797`，使翻译更自然易懂）
 - 移除悬空被动效果的警告。（由 @acdlite 提交 `#22609`）
 
-### [React 刷新](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-refresh)
+#### [React 刷新](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-refresh)
 
 - 跟踪 Fast Refresh 中延迟挂载的根节点。（@anc95 提交的 #22740 问题）
 - 将“exports”字段添加至 package.json 文件中。（由@otakustay 发起 `#23087`）
 
-### [服务器组件（实验性质）](https://github.com/facebook/react/blob/main/CHANGELOG.md#server-components-experimental-1)
+#### [服务器组件（实验性质）](https://github.com/facebook/react/blob/main/CHANGELOG.md#server-components-experimental-1)
 
-- 添加服务器上下文支持功能。（由 @salazarm 提出 `#23244`）
+- 添加服务器Context支持功能。（由 @salazarm 提出 `#23244`）
 - 添加懒加载支持功能。（由 @gnoff 提出 `#24068`）
 - 更新 webpack 插件以适配 webpack 5 版本（由 @michenly 提交的 `#22739`）
 - 修复 Node 加载器中的错误。（由用户 @btea 提交的 #22537 问题）
 - 在边缘环境中，请使用 globalThis 替代 window。（由 @huozhi 提出 `#22777`）
 
-### [调度器（实验版）](https://github.com/facebook/react/blob/main/CHANGELOG.md#scheduler-experimental-1)
+#### [调度器（实验版）](https://github.com/facebook/react/blob/main/CHANGELOG.md#scheduler-experimental-1)
 
 - 移除不稳定的调度/跟踪 API（由 @bvaughn 提交的 `20037`，优化表述）
 
@@ -266,7 +266,7 @@
 
 - 为新 JSX 转换添加 react/jsx-runtime 和 react/jsx-dev-runtime。（@lunaruan 在#18299 中）
 - 从原生错误帧构建组件堆栈。（@sebmarkbage 在 `#18561`）
-- 允许在上下文中指定显示名称，以提升堆栈功能。（@eps1lon 在 `#18224`）
+- 允许在Context中指定显示名称，以提升堆栈功能。（@eps1lon 在 `#18224`）
 - 防止 'use strict' 在 UMD 包中泄露，避免潜在问题。（@koba04 在 `#19614`）
 - 请停止使用 fb.me 进行重定向。（@cylim 在`#19598`）
 
@@ -327,7 +327,7 @@
 - 移除 timeoutMs 参数。（@acdlite 在 `#19703`） - 使翻译更加自然流畅
 - 禁用预渲染功能，改用未来 API 实现。（@acdlite 在 `#18917`）
 - 将不稳定期望加载时间添加至 CPU 密集型 Suspense 树中。（优化翻译）
-- 添加一个实验性的钩子功能。（由 @lunaruan 在 #17322 提出讨论）
+- 添加一个实验性的`Hook`功能。（由 @lunaruan 在 #17322 提出讨论）
 - 添加一个实验性的不稳定启动转换 API。（位于）
 - 在测试渲染器中使用 act 不再触发 Suspense 的回退功能。（@acdlite 在`#18596`）
 - 使用全局渲染超时处理 CPU 挂起。（@sebmarkbage 在#19643 中）
@@ -351,7 +351,7 @@
 
 - 添加对新 JSX 转换器的支持。（由 @lunaruan 在 #18299 提出）
 
-## [2020 年 3 月 19 日发布的 16.13.1 版本](https://github.com/facebook/react/blob/main/CHANGELOG.md#16131-march-19-2020)
+## [16.13.1 版本（发布于 2020 年 3 月 19 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#16131-march-19-2020)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-7)
 
@@ -388,7 +388,7 @@
 - 当在错误优先级下挂起时不要发出警告（@gaearon 在 `#17971`）
 - 修复与合并更新相关的错误（@acdlite 和 @sebmarkbage 在 `17560`、`17510`、`17483`、`#17480`）
 
-## [16.12.0（2019 年 11 月 14 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#16120-november-14-2019)
+## [16.12.0 版本（发布于 2019 年 11 月 14 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#16120-november-14-2019)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-9)
 
@@ -405,13 +405,13 @@
 - 修复嵌套 React 容器内鼠标进入事件处理程序重复触发的问题。@yuanoook 在 #16928
 - 移除并禁用实验性的不稳定 API unstable_createSyncRoot。这些 API 在实验频道中可用，分别为 和 。
 
-## [2019 年 10 月 3 日 16.10.2 版本](https://github.com/facebook/react/blob/main/CHANGELOG.md#16102-october-3-2019)
+## [16.10.2 版本（发布于 2019 年 10 月 3 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#16102-october-3-2019)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-11)
 
 - 通过恢复事件插件提取器中参数顺序修复 react-native-web 的回归问题（@necolas 在`#16978`）
 
-## [2019 年 9 月 28 日版本 16.10.1](https://github.com/facebook/react/blob/main/CHANGELOG.md#16101-september-28-2019)
+## [16.10.1 版本（发布于 2019 年 9 月 28 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#16101-september-28-2019)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-12)
 
@@ -421,7 +421,7 @@
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-13)
 
-- 修复钩子更新未进行缓存的问题。（@sebmarkbage 在 `#16359`）
+- 修复`Hook`更新未进行缓存的问题。（@sebmarkbage 在 `#16359`）
 - 优化确定数据同步时机启发式算法，确保更新过程中不会错误地进行数据同步。（@sebmarkbage 在 `#16739`）
 - 在卸载过程中清除多余的纤维字段，以节省内存资源。（@trueadm 在 `#16807`）
 - 修复 Firefox 中必填文本字段的问题。（@halvves 在`#16578`）
@@ -472,11 +472,11 @@
 - 在严格模式下警告：若效果在 act()调用之外被调度。（@threepointone 在 #15763 和 `#16041`）
 - 警告：在使用错误的渲染器调用 act 时。（@threepointone 在 `#15756`）
 
-### [ESLint 插件：React 钩子](https://github.com/facebook/react/blob/main/CHANGELOG.md#eslint-plugin-react-hooks-1)
+### [ESLint 插件：React `Hook`](https://github.com/facebook/react/blob/main/CHANGELOG.md#eslint-plugin-react-hooks-1)
 
-- 将顶层报告钩子调用视为违规。（来自 gaearon 在 `#16455`）
+- 将顶层报告`Hook`调用视为违规。（来自 gaearon 在 `#16455`）
 
-## [2019 年 3 月 27 日 16.8.6](https://github.com/facebook/react/blob/main/CHANGELOG.md#1686-march-27-2019)
+## [16.8.6 版本（发布于 2019 年 3 月 27 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1686-march-27-2019)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-15)
 
@@ -485,7 +485,7 @@
 - 警告：若将 contextType 设置为 Context.Consumer 而非 Context。（@aweary 在#14831 中）
 - 警告：若 contextType 设置为无效值，请检查。
 
-## [2019 年 3 月 22 日 16.8.5](https://github.com/facebook/react/blob/main/CHANGELOG.md#1685-march-22-2019)
+## [16.8.5 版本（发布于 2019 年 3 月 22 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1685-march-22-2019)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-16)
 
@@ -503,13 +503,13 @@
 - 修复浅渲染器以支持 React.memo，使其更加完善。（@aweary 在#14816 中）
 - 修复浅渲染器，使其支持在 forwardRef 内部使用 Hooks。（@eps1lon 在 `#15100`）
 
-## [2019 年 3 月 5 日 16.8.4](https://github.com/facebook/react/blob/main/CHANGELOG.md#1684-march-5-2019)
+## [16.8.4 版本（发布于 2019 年 3 月 5 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1684-march-5-2019)
 
 ### [React DOM 和其他渲染器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-and-other-renderers)
 
-- 修复了一个 bug，当使用 useContext 钩子的组件被 DevTools 检查时，会引发运行时错误。（@bvaughn 在 `#14940`）
+- 修复了一个 bug，当使用 useContext `Hook`的组件被 DevTools 检查时，会引发运行时错误。（@bvaughn 在 `#14940`）
 
-## [2019 年 2 月 21 日版本 16.8.3](https://github.com/facebook/react/blob/main/CHANGELOG.md#1683-february-21-2019)
+## [16.8.3 版本（发布于 2019 年 2 月 21 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1683-february-21-2019)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-17)
 
@@ -518,13 +518,13 @@
 
 ### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-8)
 
-- 当流在未完成的情况下被销毁时，解除上下文堆栈，以防止在后续渲染中出现错误值。（@overlookmotel 在 `#14706`）
+- 当流在未完成的情况下被销毁时，解除Context堆栈，以防止在后续渲染中出现错误值。（@overlookmotel 在 `#14706`）
 
 ### [ESLint 插件用于 React Hooks](https://github.com/facebook/react/blob/main/CHANGELOG.md#eslint-plugin-for-react-hooks)
 
 - 添加一个新的推荐的全依赖规则。（@gaearon 在 `#14636`）
 
-## [2019 年 2 月 14 日版本 16.8.2](https://github.com/facebook/react/blob/main/CHANGELOG.md#1682-february-14-2019)
+## [16.8.2 版本（发布于 2019 年 2 月 14 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1682-february-14-2019)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-18)
 
@@ -538,7 +538,7 @@
 
 - 将组件堆栈包含到 act()警告中。（@threepointone 在 `#14855`）
 
-## [2019 年 2 月 6 日版本 16.8.1](https://github.com/facebook/react/blob/main/CHANGELOG.md#1681-february-6-2019)
+## [16.8.1 版本（发布于 2019 年 2 月 6 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1681-february-6-2019)
 
 ### [React DOM 与 React Test Renderer](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-and-react-test-renderer)
 
@@ -552,26 +552,26 @@
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-9)
 
-- 添加钩子 —— 一种无需编写类即可使用状态和其他 React 特性的方法。（@acdlite 等人在 `#13968`）
+- 添加`Hook` —— 一种无需编写类即可使用状态和其他 React 特性的方法。（@acdlite 等人在 `#13968`）
 - 改进 useReducer Hook 懒加载 API。（@acdlite 在#14723 中，使翻译更加自然易懂）
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-19)
 
-- 当 useState 和 useReducer 钩子具有相同值时，退出渲染功能。（@acdlite 在 `#14569`）
+- 当 useState 和 useReducer `Hook`具有相同值时，退出渲染功能。（@acdlite 在 `#14569`）
 - 使用 Object.is 算法来比较 useState 和 useReducer 的值。（@Jessidhia 在 `#14752`）
-- 请勿将传递给 useEffect/useMemo/useCallback 钩子的第一个参数进行比较。（@acdlite 在 `#14594`）
+- 请勿将传递给 useEffect/useMemo/useCallback `Hook`的第一个参数进行比较。（@acdlite 在 `#14594`）
 - 支持将同步的 thenables 传递给 React.lazy()。（@gaearon 在#14626 中） - 使其更自然易懂的翻译
 - 在严格模式下（仅开发环境）两次渲染使用 Hooks 的组件，以匹配类行为。（@gaearon 在 `#14654`）
-- 提醒：开发中存在钩子顺序不匹配问题。（@threepointone 在 #14585 和 @acdlite 在 `#14591`）
+- 提醒：开发中存在`Hook`顺序不匹配问题。（@threepointone 在 #14585 和 @acdlite 在 `#14591`）
 - 清理函数必须返回 undefined 或函数。不允许返回 null 等其他值。@acdlite 在 #14119
 
 ### [React 测试渲染器和测试工具（经过润色）](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-test-renderer-and-test-utils)
 
-- 在浅渲染器中支持钩子功能。（@trueadm 在 `#14567`）
+- 在浅渲染器中支持`Hook`功能。（@trueadm 在 `#14567`）
 - 修复 Shallow Renderer 中因存在 getDerivedStateFromProps 而出现的错误状态。（在）
 - 添加 ReactTestRenderer.act() 和批量更新功能，使测试结果更贴近真实行为。（内）
 
-### [ESLint 插件：React 钩子](https://github.com/facebook/react/blob/main/CHANGELOG.md#eslint-plugin-react-hooks-2)
+### [ESLint 插件：React `Hook`](https://github.com/facebook/react/blob/main/CHANGELOG.md#eslint-plugin-react-hooks-2)
 
 - 初始发布。（@calebmer 在 `#13968`） - 翻译已优化，使其在简体中文中更自然易懂。
 - 修复遇到循环后的问题报告，使其更易于理解。（@calebmer 和 @Yurickh 在 `#14661`）
@@ -583,7 +583,7 @@
 
 - 优化 React.lazy 在大量懒加载组件中的性能问题，使其更自然、更易于理解。（@acdlite 在 `#14429`）
 - 在卸载时清除字段，避免内存泄漏，使操作更安全。（@trueadm 在 `#14276`）
-- 修复在使用 react-dom/server@16.6 和 react@<16.6 时混合使用导致的 SSR 和上下文相关 bug。（@gaearon 在#14291 中）
+- 修复在使用 react-dom/server@16.6 和 react@<16.6 时混合使用导致的 SSR 和Context相关 bug。（@gaearon 在#14291 中）
 - 修复在分析模式下的性能回归问题。（@bvaughn 在 `#14383`）
 
 ### [调度器（实验版）](https://github.com/facebook/react/blob/main/CHANGELOG.md#scheduler-experimental-3)
@@ -593,7 +593,7 @@
 - 修复测试环境中回退到 setTimeout 的问题，使其更自然易懂。（@bvaughn 在 `#14358`）
 - 添加调试方法。（由 @mrkev 在 #14053 提出）
 
-## [2018 年 11 月 12 日版本 16.6.3](https://github.com/facebook/react/blob/main/CHANGELOG.md#1663-november-12-2018)
+## [16.6.3 版本（发布于 2018 年 11 月 12 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1663-november-12-2018)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-21)
 
@@ -604,14 +604,14 @@
 
 ### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-9)
 
-- 修复 renderToNodeStream() 调用间上下文状态共享错误问题。 (@sebmarkbage 在 #14182)
-- 添加关于上下文 API 使用错误的警告。（@trueadm 在 `#14033`）
+- 修复 renderToNodeStream() 调用间Context状态共享错误问题。 (@sebmarkbage 在 #14182)
+- 添加关于Context API 使用错误的警告。（@trueadm 在 `#14033`）
 
-## [16.6.2（2018 年 11 月 12 日发布）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1662-november-12-2018)
+## [16.6.2 版本（发布于 2018 年 11 月 12 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1662-november-12-2018)
 
 本次发布处于损坏状态，建议跳过。
 
-## [2018 年 11 月 6 日发布的 16.6.1 版本](https://github.com/facebook/react/blob/main/CHANGELOG.md#1661-november-6-2018)
+## [16.6.1 版本（发布于 2018 年 11 月 6 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1661-november-6-2018)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-22)
 
@@ -631,14 +631,14 @@
 
 - 将 React.memo() 作为 PureComponent 的替代方案添加。（@acdlite 在 `#13748`）
 - 为代码拆分组件添加 React.lazy()。（@acdlite 在 `#13885`）
-- React.StrictMode 现在会提醒您注意遗留的上下文 API 问题。（@bvaughn 在 `#13760`）
+- React.StrictMode 现在会提醒您注意遗留的Context API 问题。（@bvaughn 在 `#13760`）
 - React.StrictMode 现在会提醒开发者关于 findDOMNode 的使用问题。（@sebmarkbage 在 `#13841`）
 - 将其重命名为不稳定_ConcurrentMode。（位于）
 - 将不稳定占位符更名为 Suspense，并将延迟时间参数 delayMs 改为最大持续时间参数 maxDuration。（@gaearon 在#13799 和@sebmarkbage 在`#13922`）
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-23)
 
-- 将 contextType 添加为从类中订阅上下文的更便捷方式。（@bvaughn 在 `#13728`）——使翻译更加自然流畅
+- 将 contextType 添加为从类中订阅Context的更便捷方式。（@bvaughn 在 `#13728`）——使翻译更加自然流畅
 - 为未来异步服务器端渲染器添加捕获错误的 getDerivedStateFromError 生命周期方法，以便更自然地处理错误。（优化后）
 - 当使用而非时发出警告。（@trueadm 在 `#13829`）——使翻译更加自然流畅
 - 修复 iOS Safari 浏览器上的灰色覆盖层问题。（@philipp-spiess 在 `#13778`）
@@ -647,7 +647,7 @@
 ### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-10)
 
 - 支持 React.memo 功能。（@alexmckenley 在`#13855`）
-- 添加对上下文类型支持的功能。（@alexmckenley 和@sebmarkbage 在#13889 中）
+- 添加对Context类型支持的功能。（@alexmckenley 和@sebmarkbage 在#13889 中）
 
 ### [调度器（实验版）](https://github.com/facebook/react/blob/main/CHANGELOG.md#scheduler-experimental-5)
 
@@ -659,7 +659,7 @@
 - 修复交互跟踪中的错误。（@bvaughn 在 `#13590`）
 - 将 envify 转换添加到包中。（@mridgway 在#13766 中提出，使表述更自然易懂）
 
-## [2018 年 9 月 18 日 16.5.2](https://github.com/facebook/react/blob/main/CHANGELOG.md#1652-september-18-2018)
+## [16.5.2 版本（发布于 2018 年 9 月 18 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1652-september-18-2018)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-24)
 
@@ -672,7 +672,7 @@
 - 添加 UMD 生产与性能入口点（@bvaughn 在 `#13642`）
 - 优化了调度方案，移除了一些 React 相关特性，并提升了在延迟更新超时时的性能表现（@acdlite 在 `#13582`）
 
-## [2018 年 9 月 13 日发布的 16.5.1 版本](https://github.com/facebook/react/blob/main/CHANGELOG.md#1651-september-13-2018)
+## [16.5.1 版本（发布于 2018 年 9 月 13 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1651-september-13-2018)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-11)
 
@@ -705,7 +705,7 @@
 - 为支持该事件的浏览器添加 onAuxClick 事件（@jquense 在 `#11571`）
 - 将 movementX 和 movementY 字段添加到鼠标事件中（由 @jasonwilliams 在 #9018 提出）
 - 将切向压力和扭转字段添加到指针事件中（@motiz88 在 `#13374`）
-- 有限支持在事件选择处理中嵌套浏览上下文（iframe），使其更自然易懂
+- 有限支持在事件选择处理中嵌套浏览Context（iframe），使其更自然易懂
 - 支持将布尔值传递给可聚焦的 SVG 属性（@gaearon 在 `#13339`） - 使其更自然易懂的翻译
 - 在客户端加载数据时忽略
 - 修复 gridArea 被正确处理为无单位 CSS 属性的问题（@mgol 在 `#13550`）
@@ -757,7 +757,7 @@
 
 - 新的浏览器环境协同工作调度包。它被 React 内部使用，但公共 API 尚未最终确定。（@flarnie 在 `#12624`）
 
-## [2018 年 8 月 1 日发布的 16.4.2 版本](https://github.com/facebook/react/blob/main/CHANGELOG.md#1642-august-1-2018)
+## [16.4.2 版本（发布于 2018 年 8 月 1 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1642-august-1-2018)
 
 ### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-12)
 
@@ -766,7 +766,7 @@
 - 修复服务器渲染器在调用 hasOwnProperty 属性时发生的崩溃问题。此修复功能仅适用于 react-dom@16.4.2 版本。（@gaearon 提出，详见 `#13303`）
     
 
-## [2018 年 6 月 13 日发布版本 16.4.1](https://github.com/facebook/react/blob/main/CHANGELOG.md#1641-june-13-2018)
+## [16.4.1 版本（发布于 2018 年 6 月 13 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1641-june-13-2018)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-13)
 
@@ -783,7 +783,7 @@
 
 ### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-13)
 
-- 修复由新上下文 API 提供的错误值。（@ericsoderberghp 在`12985`，@gaearon 在`#13019`）
+- 修复由新Context API 提供的错误值。（@ericsoderberghp 在`12985`，@gaearon 在`#13019`）
 
 ### [React 测试渲染器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-test-renderer-1)
 
@@ -800,14 +800,14 @@
 
 - 添加对指针事件规范的支持。（@philipp-spiess 在 `#12507`）
 - 无论重渲染的原因是什么，都应正确调用 `getDerivedStateFromProps()` 。（@acdlite 在#12600 和#12802 中）
-- 修复了在某些情况下阻止上下文传播的 bug。 (@gaearon 在 #12708)
+- 修复了在某些情况下阻止Context传播的 bug。 (@gaearon 在 #12708)
 - 在更深的 setState()上使用 forwardRef()修复组件的重渲染。（@gaearon 在 `#12690`）
 - 修复了某些属性因错误而被从自定义元素节点中移除的问题。（@airamrguez 在 `#12702`）
-- 修复上下文提供者，使其在存在旧版上下文提供者的情况下不会因子上下文提供者而退出。（@gaearon 在 `#12586`）
-- 在上下文提供者组件中指定 propTypes 的能力。（@nicolevy 在 `#12658`）
+- 修复Context提供者，使其在存在旧版Context提供者的情况下不会因子Context提供者而退出。（@gaearon 在 `#12586`）
+- 在Context提供者组件中指定 propTypes 的能力。（@nicolevy 在 `#12658`）
 - 在 . ( in ) 中使用 react-lifecycles-compat 时修复一个误报警告，使其更自然易懂
 - 当 forwardRef() 渲染函数存在 propTypes 或 defaultProps 属性时，发出警告提示。（@bvaughn 在 `#12644`）
-- 改进如何显示组件堆栈中的 forwardRef() 和上下文消费者，使其更易于理解。（@sophiebits 在 `#12777`）
+- 改进如何显示组件堆栈中的 forwardRef() 和Context消费者，使其更易于理解。（@sophiebits 在 `#12777`）
 - 修改内部事件名称。这可能会破坏依赖 React 内部功能（以不支持的方式）的第三方包。（@philipp-spiess 在 `#12629`） - 使翻译更加自然流畅
 
 ### [React 测试渲染器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-test-renderer-2)
@@ -819,7 +819,7 @@
 
 ### [React 艺术设计](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-art-1)
 
-- 修复由 React DOM 管理的树提供的读取上下文问题。（@acdlite 在 `#12779`）——使翻译更加自然流畅
+- 修复由 React DOM 管理的树提供的读取Context问题。（@acdlite 在 `#12779`）——使翻译更加自然流畅
 
 ### [React 调用返回功能（实验性）](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-call-return-experimental)
 
@@ -829,13 +829,13 @@
 
 - 新的主机配置形状扁平，不使用嵌套对象，表述更自然。（@gaearon 在 `#12792`）
 
-## [2018 年 8 月 1 日发布的 16.3.3 版本](https://github.com/facebook/react/blob/main/CHANGELOG.md#1633-august-1-2018)
+## [16.3.3 版本（发布于 2018 年 8 月 1 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1633-august-1-2018)
 
 ### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-14)
 
 - 修复攻击者控制属性名称时的潜在 XSS 漏洞（CVE-2018-6341）。该修复已包含在最新版本中，也适用于之前的受影响版本：react-dom@16.0.1、react-dom@16.1.2、react-dom@16.2.1 和 react-dom@16.3.3。（由@gaearon 在#13302 提交）
 
-## [2018 年 4 月 16 日版本 16.3.2](https://github.com/facebook/react/blob/main/CHANGELOG.md#1632-april-16-2018)
+## [16.3.2 版本（发布于 2018 年 4 月 16 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1632-april-16-2018)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-15)
 
@@ -853,7 +853,7 @@
 
 - 添加 UMD 构建功能。（@bvaughn 在`#12594`）
 
-## [2018 年 4 月 3 日发布版本 16.3.1](https://github.com/facebook/react/blob/main/CHANGELOG.md#1631-april-3-2018)
+## [16.3.1 版本（发布于 2018 年 4 月 3 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1631-april-3-2018)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-16)
 
@@ -877,7 +877,7 @@
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-17)
 
-- 添加一个官方支持的上下文 API。（@acdlite 在 `#11818`）
+- 添加一个官方支持的Context API。（@acdlite 在 `#11818`）
 - 添加一个新的 React.createRef() API，作为回调引用的便捷替代方案。（@trueadm 在 `#12162`）——使翻译更加自然流畅
 - 添加一个新的 React.forwardRef() API，允许组件将它们的引用传递给子组件。（@bvaughn 在 `#12346`）——使翻译更加自然和易于理解
 - 修复在 IE11 中使用 React.Fragment 时出现的误报警告。（@XaveScor 在 `#11823`）
@@ -903,8 +903,8 @@
 - 关于 <option selected=""> 的重复警告信息去重，使其更自然易懂。（@watadarkstar 在 `#11821`）</option>
 - 关于无效回调的重复警告信息去重。（@yenshih 在 `#11833`）
 - 建议弃用，改用 ReactDOM.createPortal()（在）。这样的表达更自然、易懂。
-- 不要为上下文类型生成用户计时条目。（@abhaynikam 在 `#12250`）
-- 当上下文消费者子项非函数时，优化错误提示信息。（@raunofreiberg 在 `#12267`）
+- 不要为Context类型生成用户计时条目。（@abhaynikam 在 `#12250`）
+- 当Context消费者子项非函数时，优化错误提示信息。（@raunofreiberg 在 `#12267`）
 - 优化添加引用到功能组件时的错误信息提示，使其更自然易懂。（@skiritsis 在 `#11782`）
 
 ### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-15)
@@ -918,7 +918,7 @@
 
 - 优化 toTree() 中片段处理的处理方式。（@maciej-ka 在 #12107 和 @gaearon 在 `#12154`）
 - 浅渲染器应将未设置状态的组件的状态设置为 null。这样做可以避免不必要的错误和异常，使组件的行为更加稳定和可预测。（@jwbay 在#11965 中）
-- 浅渲染器应按照 contextTypes 过滤旧版上下文。（@koba04 在 `#11922`）
+- 浅渲染器应按照 contextTypes 过滤旧版Context。（@koba04 在 `#11922`）
 - 为测试异步渲染添加一个不稳定的 API。（@acdlite 在 `#12478`）——使翻译更加自然流畅
 
 ### [React 是一款（新）的库](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-is-new)
@@ -937,14 +937,14 @@
 ### [React reconciler（实验性）](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-reconciler-experimental-1)
 
 - 揭示 `react-reconciler/persistent` 以构建使用持久数据结构的渲染器。（@gaearon 在 `#12156`）
-- 将主机上下文传递给 finalizeInitialChildren() 方法。（入） - 使翻译更加自然流畅
+- 将主机Context传递给 finalizeInitialChildren() 方法。（入） - 使翻译更加自然流畅
 - 请从主机配置中移除 useSyncScheduling。（@acdlite 在 `#11771`）
 
 ### [React 调用返回功能（实验性）](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-call-return-experimental-1)
 
 - 修复更新时出现的崩溃问题。（@rmhartog 在 `#11955`）
 
-## [16.2.1（2018 年 8 月 1 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1621-august-1-2018)
+## [16.2.1 版本（发布于 2018 年 8 月 1 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1621-august-1-2018)
 
 ### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-16)
 
@@ -974,13 +974,13 @@
 
 - 许多测试针对公共 API 进行了重写。感谢每一位的贡献者！
 
-## [16.1.2（2018 年 8 月 1 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1612-august-1-2018)
+## [16.1.2 版本（发布于 2018 年 8 月 1 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1612-august-1-2018)
 
 ### [React DOM 服务器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-server-17)
 
 - 修复攻击者控制属性名称时的潜在 XSS 漏洞（CVE-2018-6341）。该修复已包含在最新版本中，也适用于之前的受影响版本：react-dom@16.0.1、react-dom@16.1.2、react-dom@16.2.1 和 react-dom@16.3.3。（由@gaearon 在#13302 提交）
 
-## [16.1.1（2017 年 11 月 13 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1611-november-13-2017)
+## [16.1.1 版本（发布于 2017 年 11 月 13 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1611-november-13-2017)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-19)
 
@@ -1148,7 +1148,7 @@
 - 支持将 controlList 属性添加到允许的 DOM 属性中（@nhunzaker 在 `#9940`）
 - 修复构造函数中创建带有引用（ref）的元素时未抛出错误的问题。（@iansu 在 `#10025`）
 
-## [2017 年 6 月 14 日版本 15.6.1](https://github.com/facebook/react/blob/main/CHANGELOG.md#1561-june-14-2017)
+## [15.6.1 版本（发布于 2017 年 6 月 14 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1561-june-14-2017)
 
 ### [React DOM](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-dom-36)
 
@@ -1182,7 +1182,7 @@
 - 从 react-linked-input 中移除不必要的依赖。（@gaearon 在 `#9766`）
 - 请将 0#指向新包。（@gaearon 在`#9937`）
 
-## [2017 年 4 月 11 日发布的 15.5.4 版本](https://github.com/facebook/react/blob/main/CHANGELOG.md#1554-april-11-2017)
+## [15.5.4 版本（发布于 2017 年 4 月 11 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1554-april-11-2017)
 
 ### [React 插件（优化版）](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-addons-1)
 
@@ -1193,7 +1193,7 @@
 
 - 通过暴露浅渲染器的 batchedUpdates 来修复与 Enzyme 的兼容性问题。（@gaearon 在 9382）
 
-## [2017 年 4 月 7 日版本 15.5.3](https://github.com/facebook/react/blob/main/CHANGELOG.md#1553-april-7-2017)
+## [15.5.3 版本（发布于 2017 年 4 月 7 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1553-april-7-2017)
 
 **注意：本版本存在重大问题，已被淘汰。请升级至 15.5.4 或更高版本。**
 
@@ -1202,7 +1202,7 @@
 - 修复 `react-addons-create-fragment` 包，确保导出正确的内容。（@gaearon 在 `#9385`）
 - 修复 create-react-class 包，使其包含 loose-envify 转换功能，方便 Browserify 用户使用。（@mridgway 在 `#9642`）
 
-## [2017 年 4 月 7 日版本 15.5.2](https://github.com/facebook/react/blob/main/CHANGELOG.md#1552-april-7-2017)
+## [15.5.2 版本（发布于 2017 年 4 月 7 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1552-april-7-2017)
 
 **注意：本版本存在重大问题，已被淘汰。请升级至 15.5.4 或更高版本。**
 
@@ -1212,7 +1212,7 @@
 - 对生产环境中的单文件构建应用更有效的压缩优化。（@gaearon 在 `#9385`）
 - 将包中缺失的依赖添加，并移除不必要的依赖。（@gaearon 在 `#9385`）
 
-## [2017 年 4 月 7 日版本 15.5.1](https://github.com/facebook/react/blob/main/CHANGELOG.md#1551-april-7-2017)
+## [15.5.1 版本（发布于 2017 年 4 月 7 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1551-april-7-2017)
 
 **注意：本版本存在重大问题，已被淘汰。请升级至 15.5.4 或更高版本。**
 
@@ -1250,7 +1250,7 @@
 - 更新后移除了对 React.createClass 和 React.PropTypes 的引用（@acdlite 在提交 12a96b9 中）
 - react-addons-test-utils 已弃用，请使用 and 替代。（）
 
-## [2017 年 1 月 6 日版本 15.4.2](https://github.com/facebook/react/blob/main/CHANGELOG.md#1542-january-6-2017)
+## [15.4.2 版本（发布于 2017 年 1 月 6 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1542-january-6-2017)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-25)
 
@@ -1270,7 +1270,7 @@
 - 在 RequireJS 和 SystemJS 环境中解决了固定构建问题。（@gaearon 在 `#8686`）
 - 添加了遗漏的软件包依赖项。（@kweiberth 在 `#8467`）
 
-## [2016 年 11 月 22 日版本 15.4.1](https://github.com/facebook/react/blob/main/CHANGELOG.md#1541-november-22-2016)
+## [15.4.1 版本（发布于 2016 年 11 月 22 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1541-november-22-2016)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-26)
 
@@ -1312,7 +1312,7 @@
 - 由于打包方式的变更，现在即使与 React DOM 在同一文件中导入也不会崩溃了。（@sebmarkbage 在 #7164 和 `#7168`）
 - 现在支持使用 `{createNodeMock: element => mock}` 作为可选参数，这样您就可以在快照测试中模拟引用。（由 @Aweary 在 `7649`、#8261 中提出）
 
-## [15.3.2（2016 年 9 月 19 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1532-september-19-2016)
+## [15.3.2 版本（发布于 2016 年 9 月 19 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1532-september-19-2016)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-28)
 
@@ -1340,12 +1340,12 @@
 
 - 确保在出现错误时停止生命周期计时器。（@gaearon 在 `#7548`）
 
-## [2016 年 8 月 19 日发布的 15.3.1 版本](https://github.com/facebook/react/blob/main/CHANGELOG.md#1531-august-19-2016)
+## [15.3.1 版本（发布于 2016 年 8 月 19 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1531-august-19-2016)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-29)
 
 - 以多种方式提升开发构建的性能。（@gaearon 在 `7461`、`7463`、`7483`、`7488`、`7491`、`#7510`）
-- 清理内部钩子，以提升开发构建的性能。（@gaearon 在 `7464`、`7472`、`7481`、`#7496`）
+- 清理内部`Hook`，以提升开发构建的性能。（@gaearon 在 `7464`、`7472`、`7481`、`#7496`）
 - 升级 fbjs 以获取@gaearon 为开发版本带来的另一个性能提升。（@zpao 在`#7532`）
 - 提高 React 在 Node.js 中的启动速度。（@zertosh 在`#7493`）
 - 改进 React.Children.only 的错误信息提示。（@sophiebits 在 `#7514`）
@@ -1402,7 +1402,7 @@
 - 在通过 TestUtils.Simulate.*创建的事件上实现类型属性。（@yaycmyk 在 `#6154`）
 - 修复使用 React 生产构建版本运行 TestUtils 时出现的崩溃问题。（@gaearon 在 `#7246`）
 
-## [15.2.1（2016 年 7 月 8 日发布）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1521-july-8-2016)
+## [15.2.1 版本（发布于 2016 年 7 月 8 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#1521-july-8-2016)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-31)
 
@@ -1413,7 +1413,7 @@
 
 - 将堆栈跟踪添加到空输入值警告中。（@jimfb 在 `#7040`）——使翻译更加自然流畅
 - 修复 web 组件示例。（@jalexanderfox 在#7057 中）
-- 修复 `unstable_renderSubtreeIntoContainer` ，确保在链接到状态时上下文能够正确更新。（@gaearon 在 `#7125`）
+- 修复 `unstable_renderSubtreeIntoContainer` ，确保在链接到状态时Context能够正确更新。（@gaearon 在 `#7125`）
 - 改进空元素的不变表述，使其更自然易懂。（@starkch 在 `#7066`）
 - 确保服务器渲染过程中事件处理器不会引发错误。（@rricard 在 `#7127`）
 - 修复导致提交和重置按钮无值显示的回归问题，并移除浏览器默认文本。（@zpao 在 `#7197`）
@@ -1466,7 +1466,7 @@
 ### [React 性能插件](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-perf-add-on-3)
 
 - 添加 isRunning() API 功能。（由 @nfcampos 提出，在 `#6763`）
-- 提升生命周期钩子触发时间的准确性。（@gaearon 在 `#6858`）
+- 提升生命周期`Hook`触发时间的准确性。（@gaearon 在 `#6858`）
 - 使用 ReactPerf 与 portal 组件时修复内部错误。（@gaearon 在 `#6860`） - 使翻译更加自然流畅
 - 修复性能回归问题。（@sophiebits 在 `#6770`）
 - 在生产环境中添加警告：ReactPerf 功能未开启。（@sashashakun 在 `#6884`）
@@ -1602,7 +1602,7 @@
 
 - 修复了多个小内存泄漏问题。 (@sophiebits 在 #4983 和 @victor-homyakov 在 #6309)
 - 在 IE 10 和 IE 11 浏览器中，输入事件的处理更加稳定可靠；使用占位符后，不再出现误触发的事件。（@jquense 在`#4051`）
-- 当上下文发生变化时，生命周期方法现在被统一调用。（@milesj 在 `#5787`）
+- 当Context发生变化时，生命周期方法现在被统一调用。（@milesj 在 `#5787`）
 - React.cloneElement() 在 React.Children.map() 内部使用时不会给现有键名添加斜杠。（@ianobermiller 在 `#5892`）
 - React DOM 现已支持 cite 和 profile HTML 属性。 (@AprilArcus 在 #6094 和 @saiichihashimoto 在 #6032)
 - React DOM 现已支持 cssFloat、gridRow 和 gridColumn 这三个 CSS 属性。（@stevenvachon 在 #6133 和 @mnordick 在 `#4779`）
@@ -1770,7 +1770,7 @@
 - 在 React DOM 中，自定义元素（标签名中带连字符或带有 is="..." 属性的元素）支持任意属性。这些属性在翻译时已经尽量保持自然和易于理解。
 - React DOM 现已支持音频和视频标签上的这些媒体事件：onAbort（中断）、onCanPlay（可以播放）、onCanPlayThrough（可以流畅播放）、onDurationChange（持续时间改变）、onEmptied（已清空）、onEncrypted（已加密）、onEnded（已结束）、onError（发生错误）、onLoadedData（已加载数据）、onLoadedMetadata（已加载元数据）、onLoadStart（开始加载）、onPause（暂停）、onPlay（播放）、onPlaying（正在播放）、onProgress（正在加载）、onRateChange（播放速率改变）、onSeeked（已查找）、onSeeking（正在查找）、onStalled（已停滞）、onSuspend（暂停）、onTimeUpdate（时间更新）、onVolumeChange（音量改变）、onWaiting（等待中）。
 - 已进行多项小幅度性能优化，使体验更加流畅。
-- 许多警告现在比以前提供了更多的上下文信息。
+- 许多警告现在比以前提供了更多的Context信息。
 - 已将“添加了一个浅比较插件作为 ES6 类中 PureRenderMixin 迁移路径”进行优化，使其在简体中文中更加自然易懂。
 - 添加组件：CSSTransitionGroup 现在支持使用自定义类名，不再需要在过渡名称后附加如 -enter-active 等后缀。
 
@@ -1815,7 +1815,7 @@
 #### [缺陷修复](https://github.com/facebook/react/blob/main/CHANGELOG.md#bug-fixes)
 
 - 危险地放宽了 dangerouslySetInnerHTML 限制，将不再抛出异常（更自然、更易理解）
-- 修复了因使用非纯 getChildContext 导致的固定多余上下文警告，翻译更加自然易懂
+- 修复了因使用非纯 getChildContext 导致的固定多余Context警告，翻译更加自然易懂
 - 确保 replaceState(obj)能够保留 obj 的原型，使其更自然易懂
 
 ### [使用附加组件的 React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-with-add-ons)
@@ -1838,7 +1838,7 @@
 
 #### [缺陷修复](https://github.com/facebook/react/blob/main/CHANGELOG.md#bug-fixes-2)
 
-- 修复了在渲染 null 后重新渲染未正确传递上下文的问题，翻译更加自然流畅
+- 修复了在渲染 null 后重新渲染未正确传递Context的问题，翻译更加自然流畅
 - 修复了在渲染后使用 style={null}重新渲染导致样式未正确更新的问题
 - 更新 uglify 依赖，防止 IE8 出现 bug
 -  改进的警告（更自然、更易理解的表达）
@@ -2266,7 +2266,7 @@
 - 支持在 IE8 中使用（优化翻译）
 - 升级 browserify 后，文件大小减少了约 65KB（压缩后 16KB），翻译更加自然易懂
 
-## [0.5.2, 0.4.2 版本（发布于 2013 年 12 月 18 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#052-042-december-18-2013)
+## [0.5.2 版本, 0.4.2 版本（发布于 2013 年 12 月 18 日）](https://github.com/facebook/react/blob/main/CHANGELOG.md#052-042-december-18-2013)
 
 ### [React](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-43)
 
