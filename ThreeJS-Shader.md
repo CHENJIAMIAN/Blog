@@ -25,3 +25,7 @@
 ### 开源的three.js组态编辑器
 1. [vis-three/vis-three: A web 3D development framework for assembled based on three.js](https://github.com/vis-three/vis-three) vis-three: 策略设计模式的封装
 2. [zhangbo126/Three3d-view：🔥 🎉基于Three3d开发的3D模型可视化编辑系统。 js包含模型加载、模型外部导入、模型背景图、全景图、模型动画、模型光照、模型定位、辅助线、模型发光、模型拖拽、模型拆解、](https://github.com/zhangbo126/Three3d-view)
+### react-three-fiber
+1. `three.js` 是底层三维渲染引擎。
+2. `react-three-fiber` 将 `three.js` 转化为声明式React组件。
+3. `@react-three/drei` 在 `react-three-fiber` 提供的基础上进一步封装常用功能组件。
