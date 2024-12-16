@@ -212,3 +212,4 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 4. `ceil() floor()` 向上/下取整, 如: 格子
 5. `fract` 取小数，因为它在创建重复的模式、波浪、动画等。如: `fract(uv.x)` 会创建一个水平重复的渐变。 `fract(iTime)` 会创建一个在 0 到 1 之间循环的时间值用来创建动画效果。
 6. `min` 裁剪, 取交集
+7. `max` 取并集
