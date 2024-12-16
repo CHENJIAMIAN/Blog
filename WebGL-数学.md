@@ -213,7 +213,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 5. `fract` 取小数，因为它在创建重复的模式、波浪、动画等。如: `fract(uv.x)` 会创建一个水平重复的渐变。 `fract(iTime)` 会创建一个在 0 到 1 之间循环的时间值用来创建动画效果。
 6. `min` 裁剪, 取交集
 7. `max` 取并集, 混合
-8. `clamp()` 将数值限制在特定的最小值和最大值之间，防止超出范围导致错误或不希望的结果
-9. `mix()`
-10. `smoothstep()` 在边缘处变化是缓慢上升或者缓慢下降
+8. `clamp(x,min,max)` 将数值限制在特定的最小值和最大值之间，防止超出范围导致错误或不希望的结果
+9. `mix(color1, color2, blendFactor)`
+10. `smoothstep(edge0, edge1, x)` 在边缘处变化是缓慢上升或者缓慢下降
 11. `step()` 在边缘处变化是骤增或骤降的
