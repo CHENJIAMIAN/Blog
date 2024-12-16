@@ -209,4 +209,6 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 1. `abs()` -> 对称图形, 如: 绘制圆环
 2. `sign` -> 突变的, 有明显分界线的 如: 画圆
 3. `mod()` 用来求余数函数, 循环渐变, 如: 配合`smoothstep`绘制格网
-4. `ceil()` 向上取整
+4. `ceil() floor()` 向上/下取整, 如: 格子
+5. `fract` 取小数，因为它在创建重复的模式、波浪、动画等。如: `fract(uv.x)` 会创建一个水平重复的渐变。 `fract(iTime)` 会创建一个在 0 到 1 之间循环的时间值用来创建动画效果。
+6. `min` 裁剪, 取交集
