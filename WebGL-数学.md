@@ -215,7 +215,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 7. `max` 取并集, 混合
 8. `clamp(x,min,max)` 将数值限制在特定的最小值和最大值之间，防止超出范围导致错误或不希望的结果
 9. `mix(color1, color2, blendFactor)`
-10. `smoothstep(edge0, edge1, x)` 在边缘处变化是缓慢上升或者缓慢下降
+10. `smoothstep(edge0, edge1, x)` 在边缘处变化是缓慢上升或者缓慢下降, 如: 画圆环
 11. `step()` 在边缘处变化是骤增或骤降的
 ## 三角函数
 1. `radians()`：将角度值转换为弧度值，如: 需要弧度值作为参数的三角函数计算，比如旋转变换。
@@ -229,4 +229,5 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	1.  asin(sin(x)) 可以让sin的角**变尖, 折角**
 7. `acos()`：返回一个值的反余弦值（弧度值），定义域为 [-1, 1]，值域为 [0, π]，如: 计算给定余弦值的角度。
 8. `atan(y/x)` (单参数版本): 返回一个值的反正切值（弧度值），值域为 (-π/2, π/2)，如: 获取指定比值的角度。
+	1. 绘制风车 `sin(atan(normalizedCoord.y, normalizedCoord.x) * 5.)`  5个叶片
 9. `atan(y, x)` (双参数版本): 避免因除以零导致的问题,，更精确地处理各个象限的角度。 返回 `y / x` 的反正切值（弧度值），并利用 `x` 和 `y` 的符号来判断象限，值域为 (-π, π]，如:  计算该二维向量与 x 轴正方向之间的夹角
