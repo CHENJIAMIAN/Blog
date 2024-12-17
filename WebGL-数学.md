@@ -255,3 +255,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 2.   `equal(vec x, vec y)` 或 `equal(ivec x, ivec y)`: 对两个向量的每个分量进行相等性比较，返回一个布尔向量，用于判断两个向量对应分量是否相等。  
 3.   `any(bvec x)`: 检查一个布尔向量中是否有任何分量为真，用于判断一组条件中是否至少有一个满足。  
 4.   `lessThan(vec x, vec y)` 或 `lessThan(ivec x, ivec y)`: 对两个向量的每个分量进行小于比较，返回一个布尔向量，用于判断第一个向量的每个分量是否小于第二个向量的对应分量。
+### 矩阵变换函数
+1.   `matrixCompMult(mat x, mat y)`: 对两个矩阵进行逐元素相乘，用于实现非线性矩阵变换或混合效果。  
+2.   `rotate2d(float _angle)`: 创建一个 2x2 旋转矩阵，用于将二维坐标围绕原点旋转指定角度。  
+3.   `box(in vec2 _st, in vec2 _size)`:  在指定位置和大小绘制一个矩形区域，常用于创建 UI 元素或形状。  
+4.   `cross(in vec2 _st, float _size)`:  通过组合两个矩形（一个横向一个纵向）绘制一个十字形状，可用于创建简单的几何图案。  
+5.   `recur(vec2 fragCoord)`:  使用循环和旋转、缩放等变换，递归地生成复杂的图形，形成类似分形的效果。
