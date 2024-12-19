@@ -25,3 +25,22 @@
 
 ### THREE加载GLB多大多少帧量化
 标准:600 个网格和 1,000,000 个顶点。 在我们的 2018 Macbook Pro 上的 Google Chrome 中，它始终以 45+ FPS 的速度运行
+
+### src/objects/Line 和 examples/jsm/lines/Line2
+1. `src/objects/Line` 是 Three.js 的核心模块，默认提供的基本线段渲染功能。它是最常用的 `Line` 实现。
+	  - 使用传统的 WebGL 渲染管线实现。
+	  - 线段是由一个 `BufferGeometry` 和一个 `LineBasicMaterial` 或 `LineDashedMaterial` 来绘制的。
+2. `examples/jsm/lines/Line2` 是 Three.js 的扩展模块，用于增强线段渲染功能，解决某些核心模块中的功能限制。它依赖于 `examples/jsm/lines/LineSegments2`、`LineGeometry` 和 `LineMaterial`。
+- **实现方式：**
+  - 使用自定义的顶点和片段着色器，通过扩展来实现更精细的控制。
+  - 支持宽线，线宽可超过 1 像素。
+  - 支持抗锯齿和其他高级效果。
+
+| 特性                 | `src/objects/Line`                  | `examples/jsm/lines/Line2`        |
+|----------------------|-------------------------------------|-----------------------------------|
+| **线宽**            | 固定（最多 1 个像素，受限于 WebGL） | 可配置宽线，支持任意宽度         |
+| **抗锯齿**          | 不支持                              | 支持                              |
+| **实现复杂度**      | 简单                               | 复杂                              |
+| **性能**            | 性能更高，适合几何较少的场景         | 性能稍低，适合复杂场景            |
+| **适用场景**        | 简单线框模型                        | 高质量线条、路径可视化            |
+| **加载方式**        | 核心库，直接使用                    | 拓展模块，需要加载 `examples`    |
