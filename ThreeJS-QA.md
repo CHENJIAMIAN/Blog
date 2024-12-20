@@ -44,7 +44,7 @@
 | **性能**            | 性能更高，适合几何较少的场景         | 性能稍低，适合复杂场景            |
 | **适用场景**        | 简单线框模型                        | 高质量线条、路径可视化            |
 | **加载方式**        | 核心库，直接使用                    | 拓展模块，需要加载 `examples`    |
-好的，用几句话总结 `three.js` 的 `InterleavedBuffer`：
+### InterleavedBuffer
 
 1. **`InterleavedBuffer` 是一种高效的顶点数据存储方式，将多个顶点属性交错存储在单个缓冲区中。**
 2. **它在底层对应 WebGL 的缓冲区 (`ARRAY_BUFFER`) 和 `vertexAttribPointer` API，通过设定步长和偏移量来读取不同属性的数据。**
