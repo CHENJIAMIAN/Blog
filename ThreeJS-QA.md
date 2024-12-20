@@ -46,8 +46,6 @@
 | **加载方式**        | 核心库，直接使用                    | 拓展模块，需要加载 `examples`    |
 ### InterleavedBuffer
 
-1. **`InterleavedBuffer` 是一种高效的顶点数据存储方式，将多个顶点属性交错存储在单个缓冲区中。**
-2. **它在底层对应 WebGL 的缓冲区 (`ARRAY_BUFFER`) 和 `vertexAttribPointer` API，通过设定步长和偏移量来读取不同属性的数据。**
-3. **`InterleavedBuffer` 提高了渲染性能，减少了内存开销和 GPU 访问数据的延迟，适合处理复杂的几何图形。**
-4. **`three.js` 的 `InterleavedBuffer` 和 `InterleavedBufferAttribute` 提供了一个更易用的抽象层，简化了 WebGL 的底层操作。**
-5. **理解 `InterleavedBuffer` 和其底层 WebGL API 的关系有助于开发者更好地优化 three.js 应用程序的性能。**
+1. `InterleavedBuffer` 是一种高效的顶点数据存储方式，将多个顶点属性交错存储在单个缓冲区中。
+2. 它在底层对应 WebGL 的缓冲区 (`ARRAY_BUFFER`) 和 `vertexAttribPointer` API，通过设定步长和偏移量来读取不同属性的数据。
+3. `InterleavedBuffer` 提高了渲染性能，减少了内存开销和 GPU 访问数据的延迟，适合处理复杂的几何图形。
