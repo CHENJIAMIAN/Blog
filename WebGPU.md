@@ -27,7 +27,7 @@
 
 [Orillusion/orillusion - GitHub1s](https://github1s.com/Orillusion/orillusion)
 ```js 
-根据orillusion得出常用API:
+//根据orillusion得出常用API:
 device.createBindGroup
 device.createBindGroupLayout
 device.createBuffer
@@ -45,7 +45,30 @@ device.queue.submit
 device.queue.writeBuffer
 
 commandEncoder
-		computePass
+	computePass
+		computePipeline
+			shaderModule
+			pipelineLayout
+				bindGroupLayout
+		bindGroup
+			buffer
+	renderPass
+		renderPipeline
+			shaderModule
+			pipelineLayout
+				bindGroupLayout
+		bindGroup
+			buffer
+		
+		textureView
+		
+		renderBundle
+
+	copyExternalImageToTexture//将外部图像复制到纹理
+		importExternalTexture
+			canvas元素
+	
+renderBundleEncoder//用于预先录制一系列渲染命令，可以重复使用
 ```
 ### 最小案例
 ```html
