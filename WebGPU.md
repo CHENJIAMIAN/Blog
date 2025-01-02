@@ -44,7 +44,8 @@ device.queue.copyExternalImageToTexture
 device.queue.submit
 device.queue.writeBuffer
 
-computePass
+commandEncoder
+		computePass
 ```
 ### 最小案例
 ```html
