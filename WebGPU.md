@@ -24,7 +24,9 @@
 | 性能   | 高性能和低延迟                 | 优化的性能和能耗           | 高性能和可扩展性                           |
 | 开发工具 | Microsoft Visual Studio | Apple Xcode        | 多种开发工具和SDK支持                       |
 | 生态系统 | 丰富的游戏开发和工具支持            | 针对苹果生态系统的集成        | 多个平台的广泛应用和支持                       |
-
+|      |                         |                    |                                    |
+### 概念
+workgroup 相当于 分布式计算
 [Orillusion/orillusion - GitHub1s](https://github1s.com/Orillusion/orillusion)
 ```js 
 //根据orillusion得出常用API:
