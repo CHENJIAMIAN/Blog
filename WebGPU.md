@@ -43,6 +43,8 @@ device.importExternalTexture
 device.queue.copyExternalImageToTexture
 device.queue.submit
 device.queue.writeBuffer
+
+computePass
 ```
 ### 最小案例
 ```html
