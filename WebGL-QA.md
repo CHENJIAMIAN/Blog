@@ -76,7 +76,7 @@ glm::vec3 transformedNormal = normalMatrix \* originalNormal;
 *   当进行仿射变换时，法线需要被特别对待。我们需要从Model-View matrix中计算出新的Normal matrix；
 *   Perspective决定了两种基本投影方式：即透视投影和正视投影。
 ### 省略版的OpenGL渲染流水线(透视投影变换矩阵)
-![|100](https://ask.qcloudimg.com/http-save/yehe-1148525/w58bd7ishs.jpeg?imageView2/2/w/2560/h/7000)
+![|1000](https://ask.qcloudimg.com/http-save/yehe-1148525/w58bd7ishs.jpeg?imageView2/2/w/2560/h/7000)
 ### 什么是切线空间
 1. 切线空间（Tangent Space）
 2. 一种坐标系统
