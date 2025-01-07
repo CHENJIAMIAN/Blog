@@ -53,7 +53,6 @@ glm::mat3 normalMatrix = glm::transpose(glm::inverse(glm::mat3(MVMatrix)));
 glm::vec3 transformedNormal = normalMatrix \* originalNormal;
 其中，viewMatrix是视图矩阵，modelMatrix是模型矩阵，originalNormal是原始法线向量，transformedNormal是变换后的法线向量。
 #### 为什么矩阵的**逆转置**，对变换后的点的法线进行变换，就能使得法线朝向正确的方向
-矩阵的逆转置可以将变换矩阵的旋转部分倒转回去，即将变换逆转回去，并将其对应的法线向量进行逆转置变换。这是因为在变换后的坐标系中，法线经过了与顶点相同的变换，如果不将其矩阵逆转置，法线所面向的方向会发生改变，导致光照计算出现错误。通过逆转置操作，可以正确地将法线和变换相对应，确保法线的方向正确性。
 - 如果使用变换矩阵 `M` 变换一个切向量 `t`，得到 `t' = M*t`
 - 如果使用另外一个矩阵 `N` 变换法向量 `n`，得到 `n' = N*n`
 - 因为法向量和切向量垂直，所以点积 `n.t=0`
