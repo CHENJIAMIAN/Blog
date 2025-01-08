@@ -3,13 +3,8 @@ ISCS  综合监控系统 - Integrated Supervisory Control System
 PSCADA 电力监控系统Power Supervisory Control And Data Acquisition 
 BAS 环境与设备监控系统 Building Automation System
 DCOM 指的是“数据中心运营管理”(Data Center Operations Management)
-
 HMI（Human Machine Interaction）人机界面
 
-- [RTU英文全称 Remote Terminal Unit](https://zhuanlan.zhihu.com/p/330528187)
-- [南向接口 高层级 向 低层级 设备的连接接口](https://blog.51cto.com/u_15776384/5658954)
-1. **南向** 是平台 **“向下”** 与 **设备** 打交道，**采集数据** 和 **控制设备**。
-2. **北向** 是平台 **“向上”** 与 **其他系统** 打交道，**提供数据** 和 **接收指令**。
 ### 公司一级流程架构的“三分法” 
 - POS流程: 规划P/运营O/支持S
 1. **战略规划（Strategic Planning）**：
@@ -105,8 +100,10 @@ HMI（Human Machine Interaction）人机界面
 2. **通道** 
 	1. 物理通道（如有线连接或无线传输），也可以是网络通道（如以太网、Wi-Fi、蜂窝网络等)
 	2. 有通道ip地址和端口
-	3. **IEC 104**和**Modbus TCP**通常用于 **RTU** 和采集前置机之间的通信
-	4. **SNMP**常用于`采集前置机`与更高级别的`网络管理系统（如SCADA）`之间的通信
+	3. 南向: **IEC 104**和**Modbus TCP**通常用于 **RTU** 和 **采集前置机** 之间的通信
+		-  **南向** 是平台 **“向下”** 与 **设备** 打交道，**采集数据** 和 **控制设备**。
+	4. 北向: **SNMP**常用于`采集前置机`与更高级别的`网络管理系统（如SCADA）`之间的通信
+		- **北向** 是平台 **“向上”** 与 **其他系统** 打交道，**提供数据** 和 **接收指令**。
 		1. **SNMP 的优势 (在网络管理方面的优势):**
 			1. **专注管理:** SNMP 专门为网络管理而设计，提供了标准的接口和数据模型 (MIB) 用于访问和管理设备。
 			2. **轻量级:** **基于UDP**，资源消耗低，适合嵌入式设备。
