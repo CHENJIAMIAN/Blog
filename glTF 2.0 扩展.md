@@ -56,7 +56,7 @@ gltf-transform gzip out_instanced.glb
 - **validate**: 根据 glTF 规范验证模型。
 
 #### 3. PACKAGE（模型处理）
-- **copy**: 复制模型，进行最小更改。
+- **copy**: 复制模型，进行最小更改。这会有效地解压 Draco 数据
 - **optimize**: 利用所有可用的方法优化模型。
 - **merge**: 将两个或多个模型合并为一个。
 - **partition**: 将二进制数据分离为单独的 .bin 文件。
