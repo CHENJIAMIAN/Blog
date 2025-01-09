@@ -70,3 +70,35 @@
 *   **光照贴图:** 你会使用 `uv1` 坐标和光照贴图
 *   **细节纹理:** 你可能会使用 `uv2` 坐标和细节纹理
 *   **法线贴图:** 你可能会使用和基础颜色纹理一样的`uv`坐标和法线贴图。
+
+### PMREMGenerator
+> 预过滤的、多级纹理映射的环境贴图（Prefiltered, Mipmapped Radiance Environment Map, PMREM）
+```js
+1.  **`pmremGenerator.fromScene(scene)`** (外部调用)
+	*   `_setSize(256)`
+	*   `_allocateTargets()`
+	   *    `_createRenderTarget()`
+	   *    `_dispose()`
+	   *     `_createRenderTarget()`
+	   *    `_createPlanes( _lodMax )`
+	   *     `_getBlurShader()`
+	*   `_sceneToCubeUV(scene, near, far, cubeUVRenderTarget)`
+		*   （在循环中，对每个立方体面进行渲染）：
+		   *     `renderer.setRenderTarget(cubeUVRenderTarget)`
+			*   `renderer.render(backgroundBox, cubeCamera)`
+		   *     `renderer.render(scene, cubeCamera)`
+	*   `_blur(cubeUVRenderTarget, 0, 0, sigma)` （如果 sigma > 0）
+		*   `_halfBlur(cubeUVRenderTarget, pingPongRenderTarget, lodIn, lodOut, sigma, 'latitudinal', poleAxis)`
+			*   `renderer.setRenderTarget(pingPongRenderTarget)`
+		   *  `renderer.render(blurMesh, _flatCamera)`
+		*   `_halfBlur(pingPongRenderTarget, cubeUVRenderTarget, lodOut, lodOut, sigma, 'longitudinal', poleAxis)`
+			 *    `renderer.setRenderTarget(cubeUVRenderTarget)`
+			 * `renderer.render(blurMesh, _flatCamera)`
+	*   `_applyPMREM(cubeUVRenderTarget)`
+		*   （在循环中，对每个 LOD 层级进行模糊处理）
+			*   `_blur(cubeUVRenderTarget, lodIn, lodOut, sigma, poleAxis)`
+				 *    `_halfBlur(...)`
+				 *    `_halfBlur(...)`
+	*   `_cleanup(cubeUVRenderTarget)`
+            *  `renderer.setRenderTarget( _oldTarget, _oldActiveCubeFace, _oldActiveMipmapLevel )`
+```
