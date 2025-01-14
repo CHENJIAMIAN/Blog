@@ -1,5 +1,3 @@
-
-```js
 blog.csdn.net##DIV[class="toolbar-advert"]
 developer.mozilla.org##DIV[class="mdn-cta-container"]
 www.tuituisoft.com##IMG[src="http://photo.tuituisoft.com/20201124/topregad1.jpg"]
@@ -212,4 +210,3 @@ pan.quark.cn##DIV[class="login-banner"]
 aistudio.google.com##H1[class="gmat-headline-large ng-star-inserted"]
 www.sohu.com##DIV[class="article-allsee"]
 www.sohu.com##DIV[class="phone-scan"]
-```
