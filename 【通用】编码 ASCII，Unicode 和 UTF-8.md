@@ -1,4 +1,4 @@
- 一个（\uXXXX）是**Unicode： 字典**索引，一个（UTF-8/UTF-16）是存储方式
+ 一个（\uXXXX）是**Unicode这本字典**中某个汉字的索引，一个（UTF-8/UTF-16）是存储方式
 
 ```javascript
 一、ASCII 码
