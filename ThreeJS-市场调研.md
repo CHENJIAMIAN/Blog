@@ -28,6 +28,7 @@
 	3. 自定义了多个Effect, `ShadersStore.[dynamic2D\effectGround\glowMapMerge2\customHighlight\customStencil\TileGroun\customFilter\ShockWave\ColorSky\CloudColor\Tonemap\colorify\CylinderData\LineData\PointDataSpot\PointDataPolyhedron\EffectFence\EffectCircle]`
 	4. `scene.style.[glowLayer\groundReflection\meteor\shockWaveLayer\snow]`
 		1. `_glowLayer` -> `DualBlurGlowLayer`-> `_dualBlurPostProcessesChain` -> `dualBlur.fragment.fx` -> `Kino/Bloom v2 - Bloom filter for Unity`
+	5. CustomMaterial
 
 |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|
