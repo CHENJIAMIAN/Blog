@@ -24,6 +24,8 @@
 7. [腾讯云图数据可视化 三维模型-操作指南（数据可视化大屏）-文档中心-腾讯云](https://cloud.tencent.com/document/product/665/72209)
 8. 帆软
 	1. 用了Babylon.js 自定义了多个Effect, `ShadersStore.[dynamic2D\effectGround\glowMapMerge2\customHighlight\customStencil\TileGroun\customFilter\ShockWave\ColorSky\CloudColor\Tonemap\colorify\CylinderData\LineData\PointDataSpot\PointDataPolyhedron\EffectFence\EffectCircle]`
+	3. `scene.style.[glowLayer\groundReflection\meteor\shockWaveLayer\snow]`
+		1. `_glowLayer` -> `DualBlurGlowLayer`-> `_dualBlurPostProcessesChain` -> `dualBlur.fragment.fx` -> `Kino/Bloom v2 - Bloom filter for Unity`
 
 |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|
