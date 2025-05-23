@@ -1,3 +1,118 @@
+### 💡 **记住三条黄金法则**
+1. **主进程** = 大管家
+    - 只管开窗口、关窗口、和系统打交道（比如文件操作）。
+    - ❌ 不碰 UI，不碰插件逻辑。
+2. **渲染进程** = 前台
+    - 只负责显示界面（HTML/CSS/JS）。
+    - ❌ 不能直接读文件，必须通过主进程。
+3. **扩展宿主** = 外包团队
+    - 所有插件都在这里运行，和主进程/UI 完全隔离。
+    - 💡 插件想弹个通知？得先写申请（调用 `vscode` API）。
+
+---
+
+### 🌟 语法高亮核心流程（三步走）
+```mermaid1
+sequenceDiagram
+    participant 用户
+    participant 编辑器(standaloneCodeEditor.ts)
+    participant 分词器(monarchLexer.ts)
+    participant 主题服务(standaloneTheme.ts)
+
+    用户->>编辑器: 输入代码
+    编辑器->>分词器: tokenize(line, state)
+    分词器->>monarchCompile.ts: 调用编译后的规则
+    分词器->>主题服务: 获取颜色映射
+    主题服务-->>编辑器: 返回带颜色的Token
+    编辑器->>用户: 渲染高亮效果
+```
+
+---
+
+### 🔑 五个关键文件作用
+| 文件路径 | 核心职责 | 重要程度 |
+|----------|----------|----------|
+| `standaloneCodeEditor.ts` | 编辑器入口，协调模型/视图 | ★★★★★ |
+| `monarchLexer.ts` | 执行分词（词法分析） | ★★★★ |
+| `monarchCompile.ts` | 将 Monarch 规则编译成状态机 | ★★★ |
+| `standaloneTheme.ts` | 管理颜色主题映射 | ★★★★ |
+| `modesRegistry.ts` | 注册语言和分词器 | ★★★ |
+
+---
+
+### 💡 三个黄金调试技巧
+1. **查看实时 Token**  
+   在开发者工具输入：
+   ```js
+   monaco.editor.getModels()[0].getLanguageId()
+   // 输出当前模型的语言ID
+   ```
+
+2. **修改 Monarch 规则**  
+   在 `monarchTypes.ts` 中修改语言定义，立即生效：
+   ```typescript
+   // 示例：修改JS关键字颜色
+   keywords: ['function', 'if', 'return', '你的新关键字']
+   ```
+
+3. **追踪分词过程**  
+   在 `monarchLexer.ts` 的 `_tokenize` 方法打断点，观察每行代码如何被转换为 Token。
+
+---
+
+### 🚀 极简版实现原理
+```typescript
+// 伪代码展示核心逻辑
+class 编辑器 {
+  constructor() {
+    this.分词器 = new Monarch分词器();
+    this.主题服务 = new 主题服务();
+  }
+
+  渲染() {
+    const tokens = this.分词器.分词(代码文本);
+    const 带颜色的tokens = tokens.map(token => {
+      return {
+        ...token,
+        color: this.主题服务.获取颜色(token.type)
+      };
+    });
+    渲染到屏幕(带颜色的tokens);
+  }
+}
+```
+
+---
+
+### ❓ 常见问题速查
+**Q1 如何添加新语言？**  
+→ 调用 `monaco.languages.register({ id: 'yourLang' })`  
+→ 在 `modesRegistry.ts` 中能看到注册逻辑
+
+**Q2 高亮卡顿怎么办？**  
+→ 检查 `monarchCompile.ts` 中的规则是否太复杂  
+→ 使用 `EncodedTokens`（二进制格式）提升性能
+
+**Q3 颜色不生效？**  
+→ 在 `standaloneTheme.ts` 中检查 `tokenColorMap` 映射
+
+---
+
+### 🛠️ 快速实践建议
+1. 在 Chrome 控制台尝试：  
+   ```js
+   // 获取当前编辑器的所有Token
+   monaco.editor.getEditors()[0]._modelData.viewModel.tokenization.getTokens(0)
+   ```
+
+2. 修改一个现成的高亮规则（如把 JavaScript 的 `function` 改成紫色）：
+   ```typescript
+   // 在 monarchTypes.ts 中找到 javascript 定义
+   { type: 'keyword', fontStyle: 'italic' } // 添加字体样式
+   ```
+
+
+---
 VS Code（Visual Studio Code）的架构设计非常精巧，结合了 **Electron** 的跨平台能力和 **Web 技术** 的高效开发体验。以下是其核心架构的详细解析，帮助你从宏观到微观理解它的设计思想。
 
 ---
