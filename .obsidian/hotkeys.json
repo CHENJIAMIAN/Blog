@@ -109,12 +109,6 @@
       "key": "["
     }
   ],
-  "app:toggle-left-sidebar": [
-    {
-      "modifiers": [],
-      "key": "F1"
-    }
-  ],
   "app:open-help": [],
   "app:toggle-right-sidebar": [
     {
@@ -199,6 +193,12 @@
         "Mod"
       ],
       "key": "`"
+    }
+  ],
+  "app:toggle-left-sidebar": [
+    {
+      "modifiers": [],
+      "key": "F1"
     }
   ]
 }
