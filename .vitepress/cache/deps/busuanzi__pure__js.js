@@ -1,6 +1,6 @@
 import {
   __commonJS
-} from "./chunk-RSJERJUL.js";
+} from "./chunk-BUSYA2B4.js";
 
 // node_modules/.pnpm/busuanzi.pure.js@1.0.3/node_modules/busuanzi.pure.js/busuanzi.pure.js
 var require_busuanzi_pure = __commonJS({
@@ -20,8 +20,7 @@ var require_busuanzi_pure = __commonJS({
           return t2.call(this);
         }), this;
       }, e = function() {
-        for (var t2 = 0, e2 = c.length; t2 < e2; t2++)
-          c[t2].apply(document);
+        for (var t2 = 0, e2 = c.length; t2 < e2; t2++) c[t2].apply(document);
         c = [];
       }, n = function() {
         a || (a = true, e.call(window), document.removeEventListener ? document.removeEventListener("DOMContentLoaded", n, false) : document.attachEvent && (document.detachEvent("onreadystatechange", n), window == window.top && (clearInterval(t), t = null)));

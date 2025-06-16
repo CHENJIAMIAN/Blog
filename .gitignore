@@ -9,3 +9,4 @@ __pycache__/
 workspace.json
 node_modules
 docs
+.vitepress/cache

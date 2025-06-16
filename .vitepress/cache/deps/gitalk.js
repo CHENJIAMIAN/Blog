@@ -1,10 +1,10 @@
 import {
   __commonJS
-} from "./chunk-RSJERJUL.js";
+} from "./chunk-BUSYA2B4.js";
 
-// node_modules/.pnpm/gitalk@1.8.0_react-dom@15.7.0_react@15.7.0/node_modules/gitalk/dist/gitalk.js
+// node_modules/.pnpm/gitalk@1.8.0/node_modules/gitalk/dist/gitalk.js
 var require_gitalk = __commonJS({
-  "node_modules/.pnpm/gitalk@1.8.0_react-dom@15.7.0_react@15.7.0/node_modules/gitalk/dist/gitalk.js"(exports, module) {
+  "node_modules/.pnpm/gitalk@1.8.0/node_modules/gitalk/dist/gitalk.js"(exports, module) {
     (function webpackUniversalModuleDefinition(root, factory) {
       if (typeof exports === "object" && typeof module === "object")
         module.exports = factory();
@@ -243,15 +243,13 @@ var require_gitalk = __commonJS({
           /***/
           function(module2, exports2) {
             var core = module2.exports = { version: "2.6.11" };
-            if (typeof __e == "number")
-              __e = core;
+            if (typeof __e == "number") __e = core;
           },
           /* 8 */
           /***/
           function(module2, exports2) {
             var global = module2.exports = typeof window != "undefined" && window.Math == Math ? window : typeof self != "undefined" && self.Math == Math ? self : Function("return this")();
-            if (typeof __g == "number")
-              __g = global;
+            if (typeof __g == "number") __g = global;
           },
           /* 9 */
           /***/
@@ -434,12 +432,10 @@ var require_gitalk = __commonJS({
               var expProto = exports3[PROTOTYPE];
               var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
               var key, own, out;
-              if (IS_GLOBAL)
-                source = name;
+              if (IS_GLOBAL) source = name;
               for (key in source) {
                 own = !IS_FORCED && target && target[key] !== void 0;
-                if (own && has(exports3, key))
-                  continue;
+                if (own && has(exports3, key)) continue;
                 out = own ? target[key] : source[key];
                 exports3[key] = IS_GLOBAL && typeof target[key] != "function" ? source[key] : IS_BIND && own ? ctx(out, global) : IS_WRAP && target[key] == out ? function(C) {
                   var F = function(a, b, c) {
@@ -461,8 +457,7 @@ var require_gitalk = __commonJS({
                 }(out) : IS_PROTO && typeof out == "function" ? ctx(Function.call, out) : out;
                 if (IS_PROTO) {
                   (exports3.virtual || (exports3.virtual = {}))[key] = out;
-                  if (type & $export.R && expProto && !expProto[key])
-                    hide(expProto, key, out);
+                  if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
                 }
               }
             };
@@ -779,8 +774,7 @@ var require_gitalk = __commonJS({
               }
               function createElement() {
                 var args = [], len = arguments.length;
-                while (len--)
-                  args[len] = arguments[len];
+                while (len--) args[len] = arguments[len];
                 upgradeToVNodes(args, 2);
                 return normalizeVNode(__WEBPACK_IMPORTED_MODULE_1_preact__["h"].apply(void 0, args));
               }
@@ -799,8 +793,7 @@ var require_gitalk = __commonJS({
               }
               function cloneElement$1(element, props) {
                 var children = [], len = arguments.length - 2;
-                while (len-- > 0)
-                  children[len] = arguments[len + 2];
+                while (len-- > 0) children[len] = arguments[len + 2];
                 if (!isValidElement(element)) {
                   return element;
                 }
@@ -1096,8 +1089,7 @@ var require_gitalk = __commonJS({
           function(module2, exports2, __webpack_require__) {
             var isObject = __webpack_require__(20);
             module2.exports = function(it) {
-              if (!isObject(it))
-                throw TypeError(it + " is not an object!");
+              if (!isObject(it)) throw TypeError(it + " is not an object!");
               return it;
             };
           },
@@ -1131,15 +1123,12 @@ var require_gitalk = __commonJS({
               anObject(O);
               P = toPrimitive(P, true);
               anObject(Attributes);
-              if (IE8_DOM_DEFINE)
-                try {
-                  return dP(O, P, Attributes);
-                } catch (e) {
-                }
-              if ("get" in Attributes || "set" in Attributes)
-                throw TypeError("Accessors not supported!");
-              if ("value" in Attributes)
-                O[P] = Attributes.value;
+              if (IE8_DOM_DEFINE) try {
+                return dP(O, P, Attributes);
+              } catch (e) {
+              }
+              if ("get" in Attributes || "set" in Attributes) throw TypeError("Accessors not supported!");
+              if ("value" in Attributes) O[P] = Attributes.value;
               return O;
             };
           },
@@ -1553,8 +1542,7 @@ var require_gitalk = __commonJS({
             var aFunction = __webpack_require__(51);
             module2.exports = function(fn, that, length) {
               aFunction(fn);
-              if (that === void 0)
-                return fn;
+              if (that === void 0) return fn;
               switch (length) {
                 case 1:
                   return function(a) {
@@ -1978,8 +1966,7 @@ var require_gitalk = __commonJS({
               var O = this._t;
               var index = this._i;
               var point;
-              if (index >= O.length)
-                return { value: void 0, done: true };
+              if (index >= O.length) return { value: void 0, done: true };
               point = $at(O, index);
               this._i += point.length;
               return { value: point, done: false };
@@ -2273,8 +2260,7 @@ var require_gitalk = __commonJS({
           /***/
           function(module2, exports2) {
             module2.exports = function(it) {
-              if (typeof it != "function")
-                throw TypeError(it + " is not a function!");
+              if (typeof it != "function") throw TypeError(it + " is not a function!");
               return it;
             };
           },
@@ -2294,8 +2280,7 @@ var require_gitalk = __commonJS({
             var has = __webpack_require__(24);
             var TAG = __webpack_require__(9)("toStringTag");
             module2.exports = function(it, tag, stat) {
-              if (it && !has(it = stat ? it : it.prototype, TAG))
-                def(it, TAG, { configurable: true, value: tag });
+              if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
             };
           },
           /* 54 */
@@ -2311,8 +2296,7 @@ var require_gitalk = __commonJS({
               var NAME = DOMIterables[i];
               var Collection = global[NAME];
               var proto = Collection && Collection.prototype;
-              if (proto && !proto[TO_STRING_TAG])
-                hide(proto, TO_STRING_TAG, NAME);
+              if (proto && !proto[TO_STRING_TAG]) hide(proto, TO_STRING_TAG, NAME);
               Iterators[NAME] = Iterators.Array;
             }
           },
@@ -2532,22 +2516,19 @@ var require_gitalk = __commonJS({
             function _interopRequireDefault(obj) {
               return obj && obj.__esModule ? obj : { default: obj };
             }
-            exports2.default = function() {
+            exports2.default = /* @__PURE__ */ function() {
               function defineProperties(target, props) {
                 for (var i = 0; i < props.length; i++) {
                   var descriptor = props[i];
                   descriptor.enumerable = descriptor.enumerable || false;
                   descriptor.configurable = true;
-                  if ("value" in descriptor)
-                    descriptor.writable = true;
+                  if ("value" in descriptor) descriptor.writable = true;
                   (0, _defineProperty2.default)(target, descriptor.key, descriptor);
                 }
               }
               return function(Constructor, protoProps, staticProps) {
-                if (protoProps)
-                  defineProperties(Constructor.prototype, protoProps);
-                if (staticProps)
-                  defineProperties(Constructor, staticProps);
+                if (protoProps) defineProperties(Constructor.prototype, protoProps);
+                if (staticProps) defineProperties(Constructor, staticProps);
                 return Constructor;
               };
             }();
@@ -2567,15 +2548,11 @@ var require_gitalk = __commonJS({
           function(module2, exports2, __webpack_require__) {
             var isObject = __webpack_require__(20);
             module2.exports = function(it, S) {
-              if (!isObject(it))
-                return it;
+              if (!isObject(it)) return it;
               var fn, val;
-              if (S && typeof (fn = it.toString) == "function" && !isObject(val = fn.call(it)))
-                return val;
-              if (typeof (fn = it.valueOf) == "function" && !isObject(val = fn.call(it)))
-                return val;
-              if (!S && typeof (fn = it.toString) == "function" && !isObject(val = fn.call(it)))
-                return val;
+              if (S && typeof (fn = it.toString) == "function" && !isObject(val = fn.call(it))) return val;
+              if (typeof (fn = it.valueOf) == "function" && !isObject(val = fn.call(it))) return val;
+              if (!S && typeof (fn = it.toString) == "function" && !isObject(val = fn.call(it))) return val;
               throw TypeError("Can't convert object to primitive value");
             };
           },
@@ -2599,8 +2576,7 @@ var require_gitalk = __commonJS({
           /***/
           function(module2, exports2) {
             module2.exports = function(it) {
-              if (it == void 0)
-                throw TypeError("Can't call method on  " + it);
+              if (it == void 0) throw TypeError("Can't call method on  " + it);
               return it;
             };
           },
@@ -2628,8 +2604,7 @@ var require_gitalk = __commonJS({
               iframeDocument.write(lt + "script" + gt + "document.F=Object" + lt + "/script" + gt);
               iframeDocument.close();
               createDict = iframeDocument.F;
-              while (i--)
-                delete createDict[PROTOTYPE][enumBugKeys[i]];
+              while (i--) delete createDict[PROTOTYPE][enumBugKeys[i]];
               return createDict();
             };
             module2.exports = Object.create || function create(O, Properties) {
@@ -2639,8 +2614,7 @@ var require_gitalk = __commonJS({
                 result = new Empty();
                 Empty[PROTOTYPE] = null;
                 result[IE_PROTO] = O;
-              } else
-                result = createDict();
+              } else result = createDict();
               return Properties === void 0 ? result : dPs(result, Properties);
             };
           },
@@ -2687,7 +2661,7 @@ var require_gitalk = __commonJS({
           function(module2, exports2, __webpack_require__) {
             var cof = __webpack_require__(43);
             var TAG = __webpack_require__(9)("toStringTag");
-            var ARG = cof(function() {
+            var ARG = cof(/* @__PURE__ */ function() {
               return arguments;
             }()) == "Arguments";
             var tryGet = function(it, key) {
@@ -2708,8 +2682,7 @@ var require_gitalk = __commonJS({
             var ITERATOR = __webpack_require__(9)("iterator");
             var Iterators = __webpack_require__(31);
             module2.exports = __webpack_require__(7).getIteratorMethod = function(it) {
-              if (it != void 0)
-                return it[ITERATOR] || it["@@iterator"] || Iterators[classof(it)];
+              if (it != void 0) return it[ITERATOR] || it["@@iterator"] || Iterators[classof(it)];
             };
           },
           /* 78 */
@@ -2720,8 +2693,7 @@ var require_gitalk = __commonJS({
             function PromiseCapability(C) {
               var resolve, reject;
               this.promise = new C(function($$resolve, $$reject) {
-                if (resolve !== void 0 || reject !== void 0)
-                  throw TypeError("Bad Promise constructor");
+                if (resolve !== void 0 || reject !== void 0) throw TypeError("Bad Promise constructor");
                 resolve = $$resolve;
                 reject = $$reject;
               });
@@ -2752,8 +2724,7 @@ var require_gitalk = __commonJS({
             var defineProperty = __webpack_require__(16).f;
             module2.exports = function(name) {
               var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
-              if (name.charAt(0) != "_" && !(name in $Symbol))
-                defineProperty($Symbol, name, { value: wksExt.f(name) });
+              if (name.charAt(0) != "_" && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
             };
           },
           /* 82 */
@@ -2970,8 +2941,7 @@ var require_gitalk = __commonJS({
                   if (__WEBPACK_IMPORTED_MODULE_1__isSunday_index_js__[
                     "a"
                     /* default */
-                  ](date))
-                    index = index + 5;
+                  ](date)) index = index + 5;
                 }
               }
               return weekends;
@@ -3466,8 +3436,7 @@ var require_gitalk = __commonJS({
             module2.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED) {
               $iterCreate(Constructor, NAME, next);
               var getMethod = function(kind) {
-                if (!BUGGY && kind in proto)
-                  return proto[kind];
+                if (!BUGGY && kind in proto) return proto[kind];
                 switch (kind) {
                   case KEYS:
                     return function keys() {
@@ -3495,8 +3464,7 @@ var require_gitalk = __commonJS({
                 IteratorPrototype = getPrototypeOf($anyNative.call(new Base()));
                 if (IteratorPrototype !== Object.prototype && IteratorPrototype.next) {
                   setToStringTag(IteratorPrototype, TAG, true);
-                  if (!LIBRARY && typeof IteratorPrototype[ITERATOR] != "function")
-                    hide(IteratorPrototype, ITERATOR, returnThis);
+                  if (!LIBRARY && typeof IteratorPrototype[ITERATOR] != "function") hide(IteratorPrototype, ITERATOR, returnThis);
                 }
               }
               if (DEF_VALUES && $native && $native.name !== VALUES) {
@@ -3516,13 +3484,10 @@ var require_gitalk = __commonJS({
                   keys: IS_SET ? $default : getMethod(KEYS),
                   entries: $entries
                 };
-                if (FORCED)
-                  for (key in methods) {
-                    if (!(key in proto))
-                      redefine(proto, key, methods[key]);
-                  }
-                else
-                  $export($export.P + $export.F * (BUGGY || VALUES_BUG), NAME, methods);
+                if (FORCED) for (key in methods) {
+                  if (!(key in proto)) redefine(proto, key, methods[key]);
+                }
+                else $export($export.P + $export.F * (BUGGY || VALUES_BUG), NAME, methods);
               }
               return methods;
             };
@@ -3544,13 +3509,10 @@ var require_gitalk = __commonJS({
               var i = 0;
               var result = [];
               var key;
-              for (key in O)
-                if (key != IE_PROTO)
-                  has(O, key) && result.push(key);
-              while (names.length > i)
-                if (has(O, key = names[i++])) {
-                  ~arrayIndexOf(result, key) || result.push(key);
-                }
+              for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
+              while (names.length > i) if (has(O, key = names[i++])) {
+                ~arrayIndexOf(result, key) || result.push(key);
+              }
               return result;
             };
           },
@@ -3577,8 +3539,7 @@ var require_gitalk = __commonJS({
             var ObjectProto = Object.prototype;
             module2.exports = Object.getPrototypeOf || function(O) {
               O = toObject(O);
-              if (has(O, IE_PROTO))
-                return O[IE_PROTO];
+              if (has(O, IE_PROTO)) return O[IE_PROTO];
               if (typeof O.constructor == "function" && O instanceof O.constructor) {
                 return O.constructor.prototype;
               }
@@ -3594,8 +3555,7 @@ var require_gitalk = __commonJS({
                 return entries ? fn(anObject(value)[0], value[1]) : fn(value);
               } catch (e) {
                 var ret = iterator["return"];
-                if (ret !== void 0)
-                  anObject(ret.call(iterator));
+                if (ret !== void 0) anObject(ret.call(iterator));
                 throw e;
               }
             };
@@ -3654,8 +3614,7 @@ var require_gitalk = __commonJS({
               setTask = function setImmediate(fn) {
                 var args = [];
                 var i = 1;
-                while (arguments.length > i)
-                  args.push(arguments[i++]);
+                while (arguments.length > i) args.push(arguments[i++]);
                 queue[++counter] = function() {
                   invoke(typeof fn == "function" ? fn : Function(fn), args);
                 };
@@ -3720,8 +3679,7 @@ var require_gitalk = __commonJS({
             var newPromiseCapability = __webpack_require__(78);
             module2.exports = function(C, x) {
               anObject(C);
-              if (isObject(x) && x.constructor === C)
-                return x;
+              if (isObject(x) && x.constructor === C) return x;
               var promiseCapability = newPromiseCapability.f(C);
               var resolve = promiseCapability.resolve;
               resolve(x);
@@ -3744,8 +3702,7 @@ var require_gitalk = __commonJS({
             } catch (e) {
             }
             module2.exports = function(exec, skipClosing) {
-              if (!skipClosing && !SAFE_CLOSING)
-                return false;
+              if (!skipClosing && !SAFE_CLOSING) return false;
               var safe = false;
               try {
                 var arr = [7];
@@ -3844,13 +3801,11 @@ var require_gitalk = __commonJS({
             exports2.f = __webpack_require__(17) ? gOPD : function getOwnPropertyDescriptor(O, P) {
               O = toIObject(O);
               P = toPrimitive(P, true);
-              if (IE8_DOM_DEFINE)
-                try {
-                  return gOPD(O, P);
-                } catch (e) {
-                }
-              if (has(O, P))
-                return createDesc(!pIE.f.call(O, P), O[P]);
+              if (IE8_DOM_DEFINE) try {
+                return gOPD(O, P);
+              } catch (e) {
+              }
+              if (has(O, P)) return createDesc(!pIE.f.call(O, P), O[P]);
             };
           },
           /* 120 */
@@ -3879,8 +3834,7 @@ var require_gitalk = __commonJS({
                   configurable: true
                 }
               });
-              if (superClass)
-                _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass;
+              if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass;
             };
           },
           /* 121 */
@@ -3902,14 +3856,12 @@ var require_gitalk = __commonJS({
             }
             var queryParse = exports2.queryParse = function queryParse2() {
               var search = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : window.location.search;
-              if (!search)
-                return {};
+              if (!search) return {};
               var queryString = search[0] === "?" ? search.substring(1) : search;
               var query = {};
               queryString.split("&").forEach(function(queryStr) {
                 var _queryStr$split = queryStr.split("="), _queryStr$split2 = (0, _slicedToArray3.default)(_queryStr$split, 2), key = _queryStr$split2[0], value = _queryStr$split2[1];
-                if (key)
-                  query[decodeURIComponent(key)] = decodeURIComponent(value);
+                if (key) query[decodeURIComponent(key)] = decodeURIComponent(value);
               });
               return query;
             };
@@ -3952,14 +3904,12 @@ var require_gitalk = __commonJS({
                 className[_key - 1] = arguments[_key];
               }
               var yes = false;
-              if (typeof element.className === "undefined")
-                return false;
+              if (typeof element.className === "undefined") return false;
               var classes = element.className.split(" ");
               className.forEach(function(c, i) {
                 yes = yes || classes.indexOf(c) >= 0;
               });
-              if (yes)
-                return yes;
+              if (yes) return yes;
               return element.parentNode && hasClassInParent2(element.parentNode, className);
             };
           },
@@ -4407,8 +4357,7 @@ var require_gitalk = __commonJS({
                 "a"
                 /* default */
               ](dirtyAmount);
-              if (isNaN(amount))
-                return /* @__PURE__ */ new Date(NaN);
+              if (isNaN(amount)) return /* @__PURE__ */ new Date(NaN);
               var hours = date.getHours();
               var sign = amount < 0 ? -1 : 1;
               var fullWeeks = __WEBPACK_IMPORTED_MODULE_2__lib_toInteger_index_js__[
@@ -4422,8 +4371,7 @@ var require_gitalk = __commonJS({
                 if (!__WEBPACK_IMPORTED_MODULE_0__isWeekend_index_js__[
                   "a"
                   /* default */
-                ](date))
-                  restDays -= 1;
+                ](date)) restDays -= 1;
               }
               if (startedOnWeekend && __WEBPACK_IMPORTED_MODULE_0__isWeekend_index_js__[
                 "a"
@@ -4432,13 +4380,11 @@ var require_gitalk = __commonJS({
                 if (__WEBPACK_IMPORTED_MODULE_5__isSaturday_index_js__[
                   "a"
                   /* default */
-                ](date))
-                  date.setDate(date.getDate() + (sign < 0 ? 2 : -1));
+                ](date)) date.setDate(date.getDate() + (sign < 0 ? 2 : -1));
                 if (__WEBPACK_IMPORTED_MODULE_4__isSunday_index_js__[
                   "a"
                   /* default */
-                ](date))
-                  date.setDate(date.getDate() + (sign < 0 ? 1 : -2));
+                ](date)) date.setDate(date.getDate() + (sign < 0 ? 1 : -2));
               }
               date.setHours(hours);
               return date;
@@ -4854,8 +4800,7 @@ var require_gitalk = __commonJS({
               var currentDate = startDate;
               currentDate.setHours(0, 0, 0, 0);
               var step = options && "step" in options ? Number(options.step) : 1;
-              if (step < 1 || isNaN(step))
-                throw new RangeError("`options.step` must be a number greater than 1");
+              if (step < 1 || isNaN(step)) throw new RangeError("`options.step` must be a number greater than 1");
               while (currentDate.getTime() <= endTime) {
                 dates.push(__WEBPACK_IMPORTED_MODULE_0__toDate_index_js__[
                   "a"
@@ -5930,8 +5875,7 @@ var require_gitalk = __commonJS({
                 "a"
                 /* default */
               ](2, arguments);
-              if (!duration || typeof duration !== "object")
-                return /* @__PURE__ */ new Date(NaN);
+              if (!duration || typeof duration !== "object") return /* @__PURE__ */ new Date(NaN);
               var years = "years" in duration ? __WEBPACK_IMPORTED_MODULE_4__lib_toInteger_index_js__[
                 "a"
                 /* default */
@@ -6632,8 +6576,7 @@ var require_gitalk = __commonJS({
               if (unit === "date") {
                 return dateOrdinalNumber(number, localeNumber);
               }
-              if (number > 10 || number === 0)
-                return localeNumber + "তম";
+              if (number > 10 || number === 0) return localeNumber + "তম";
               var rem10 = number % 10;
               switch (rem10) {
                 case 2:
@@ -7088,12 +7031,10 @@ var require_gitalk = __commonJS({
                 value: function render(container, callback) {
                   var node = null;
                   container = container || this.options.container;
-                  if (!container)
-                    throw new Error("Container is required: " + container);
+                  if (!container) throw new Error("Container is required: " + container);
                   if (!(container instanceof HTMLElement)) {
                     node = window.document.getElementById(container);
-                    if (!node)
-                      throw new Error("Container not found, window.document.getElementById: " + container);
+                    if (!node) throw new Error("Container not found, window.document.getElementById: " + container);
                   } else {
                     node = container;
                   }
@@ -8039,71 +7980,51 @@ var require_gitalk = __commonJS({
               }
               function h(nodeName, attributes) {
                 var lastSimple, child, simple, i, children = EMPTY_CHILDREN;
-                for (i = arguments.length; i-- > 2; )
-                  stack.push(arguments[i]);
+                for (i = arguments.length; i-- > 2; ) stack.push(arguments[i]);
                 if (attributes && null != attributes.children) {
-                  if (!stack.length)
-                    stack.push(attributes.children);
+                  if (!stack.length) stack.push(attributes.children);
                   delete attributes.children;
                 }
-                while (stack.length)
-                  if ((child = stack.pop()) && void 0 !== child.pop)
-                    for (i = child.length; i--; )
-                      stack.push(child[i]);
-                  else {
-                    if (child === true || child === false)
-                      child = null;
-                    if (simple = "function" != typeof nodeName) {
-                      if (null == child)
-                        child = "";
-                      else if ("number" == typeof child)
-                        child = String(child);
-                      else if ("string" != typeof child)
-                        simple = false;
-                    }
-                    if (simple && lastSimple)
-                      children[children.length - 1] += child;
-                    else if (children === EMPTY_CHILDREN)
-                      children = [child];
-                    else
-                      children.push(child);
-                    lastSimple = simple;
+                while (stack.length) if ((child = stack.pop()) && void 0 !== child.pop) for (i = child.length; i--; ) stack.push(child[i]);
+                else {
+                  if (child === true || child === false) child = null;
+                  if (simple = "function" != typeof nodeName) {
+                    if (null == child) child = "";
+                    else if ("number" == typeof child) child = String(child);
+                    else if ("string" != typeof child) simple = false;
                   }
+                  if (simple && lastSimple) children[children.length - 1] += child;
+                  else if (children === EMPTY_CHILDREN) children = [child];
+                  else children.push(child);
+                  lastSimple = simple;
+                }
                 var p = new VNode();
                 p.nodeName = nodeName;
                 p.children = children;
                 p.attributes = null == attributes ? void 0 : attributes;
                 p.key = null == attributes ? void 0 : attributes.key;
-                if (void 0 !== options.vnode)
-                  options.vnode(p);
+                if (void 0 !== options.vnode) options.vnode(p);
                 return p;
               }
               function extend(obj, props) {
-                for (var i in props)
-                  obj[i] = props[i];
+                for (var i in props) obj[i] = props[i];
                 return obj;
               }
               function cloneElement(vnode, props) {
                 return h(vnode.nodeName, extend(extend({}, vnode.attributes), props), arguments.length > 2 ? [].slice.call(arguments, 2) : vnode.children);
               }
               function enqueueRender(component) {
-                if (!component.__d && (component.__d = true) && 1 == items.push(component))
-                  (options.debounceRendering || setTimeout)(rerender);
+                if (!component.__d && (component.__d = true) && 1 == items.push(component)) (options.debounceRendering || setTimeout)(rerender);
               }
               function rerender() {
                 var p, list = items;
                 items = [];
-                while (p = list.pop())
-                  if (p.__d)
-                    renderComponent(p);
+                while (p = list.pop()) if (p.__d) renderComponent(p);
               }
               function isSameNodeType(node, vnode, hydrating2) {
-                if ("string" == typeof vnode || "number" == typeof vnode)
-                  return void 0 !== node.splitText;
-                if ("string" == typeof vnode.nodeName)
-                  return !node._componentConstructor && isNamedNode(node, vnode.nodeName);
-                else
-                  return hydrating2 || node._componentConstructor === vnode.nodeName;
+                if ("string" == typeof vnode || "number" == typeof vnode) return void 0 !== node.splitText;
+                if ("string" == typeof vnode.nodeName) return !node._componentConstructor && isNamedNode(node, vnode.nodeName);
+                else return hydrating2 || node._componentConstructor === vnode.nodeName;
               }
               function isNamedNode(node, nodeName) {
                 return node.__n === nodeName || node.nodeName.toLowerCase() === nodeName.toLowerCase();
@@ -8113,9 +8034,7 @@ var require_gitalk = __commonJS({
                 props.children = vnode.children;
                 var defaultProps = vnode.nodeName.defaultProps;
                 if (void 0 !== defaultProps) {
-                  for (var i in defaultProps)
-                    if (void 0 === props[i])
-                      props[i] = defaultProps[i];
+                  for (var i in defaultProps) if (void 0 === props[i]) props[i] = defaultProps[i];
                 }
                 return props;
               }
@@ -8125,61 +8044,41 @@ var require_gitalk = __commonJS({
                 return node;
               }
               function removeNode(node) {
-                if (node.parentNode)
-                  node.parentNode.removeChild(node);
+                if (node.parentNode) node.parentNode.removeChild(node);
               }
               function setAccessor(node, name, old, value, isSvg) {
-                if ("className" === name)
-                  name = "class";
-                if ("key" === name)
-                  ;
+                if ("className" === name) name = "class";
+                if ("key" === name) ;
                 else if ("ref" === name) {
-                  if (old)
-                    old(null);
-                  if (value)
-                    value(node);
-                } else if ("class" === name && !isSvg)
-                  node.className = value || "";
+                  if (old) old(null);
+                  if (value) value(node);
+                } else if ("class" === name && !isSvg) node.className = value || "";
                 else if ("style" === name) {
-                  if (!value || "string" == typeof value || "string" == typeof old)
-                    node.style.cssText = value || "";
+                  if (!value || "string" == typeof value || "string" == typeof old) node.style.cssText = value || "";
                   if (value && "object" == typeof value) {
                     if ("string" != typeof old) {
-                      for (var i in old)
-                        if (!(i in value))
-                          node.style[i] = "";
+                      for (var i in old) if (!(i in value)) node.style[i] = "";
                     }
-                    for (var i in value)
-                      node.style[i] = "number" == typeof value[i] && IS_NON_DIMENSIONAL.test(i) === false ? value[i] + "px" : value[i];
+                    for (var i in value) node.style[i] = "number" == typeof value[i] && IS_NON_DIMENSIONAL.test(i) === false ? value[i] + "px" : value[i];
                   }
                 } else if ("dangerouslySetInnerHTML" === name) {
-                  if (value)
-                    node.innerHTML = value.__html || "";
+                  if (value) node.innerHTML = value.__html || "";
                 } else if ("o" == name[0] && "n" == name[1]) {
                   var useCapture = name !== (name = name.replace(/Capture$/, ""));
                   name = name.toLowerCase().substring(2);
                   if (value) {
-                    if (!old)
-                      node.addEventListener(name, eventProxy, useCapture);
-                  } else
-                    node.removeEventListener(name, eventProxy, useCapture);
+                    if (!old) node.addEventListener(name, eventProxy, useCapture);
+                  } else node.removeEventListener(name, eventProxy, useCapture);
                   (node.__l || (node.__l = {}))[name] = value;
                 } else if ("list" !== name && "type" !== name && !isSvg && name in node) {
                   setProperty(node, name, null == value ? "" : value);
-                  if (null == value || value === false)
-                    node.removeAttribute(name);
+                  if (null == value || value === false) node.removeAttribute(name);
                 } else {
                   var ns = isSvg && name !== (name = name.replace(/^xlink\:?/, ""));
-                  if (null == value || value === false)
-                    if (ns)
-                      node.removeAttributeNS("http://www.w3.org/1999/xlink", name.toLowerCase());
-                    else
-                      node.removeAttribute(name);
-                  else if ("function" != typeof value)
-                    if (ns)
-                      node.setAttributeNS("http://www.w3.org/1999/xlink", name.toLowerCase(), value);
-                    else
-                      node.setAttribute(name, value);
+                  if (null == value || value === false) if (ns) node.removeAttributeNS("http://www.w3.org/1999/xlink", name.toLowerCase());
+                  else node.removeAttribute(name);
+                  else if ("function" != typeof value) if (ns) node.setAttributeNS("http://www.w3.org/1999/xlink", name.toLowerCase(), value);
+                  else node.setAttribute(name, value);
                 }
               }
               function setProperty(node, name, value) {
@@ -8194,10 +8093,8 @@ var require_gitalk = __commonJS({
               function flushMounts() {
                 var c;
                 while (c = mounts.pop()) {
-                  if (options.afterMount)
-                    options.afterMount(c);
-                  if (c.componentDidMount)
-                    c.componentDidMount();
+                  if (options.afterMount) options.afterMount(c);
+                  if (c.componentDidMount) c.componentDidMount();
                 }
               }
               function diff(dom, vnode, context, mountAll, parent, componentRoot) {
@@ -8206,120 +8103,93 @@ var require_gitalk = __commonJS({
                   hydrating = null != dom && !("__preactattr_" in dom);
                 }
                 var ret = idiff(dom, vnode, context, mountAll, componentRoot);
-                if (parent && ret.parentNode !== parent)
-                  parent.appendChild(ret);
+                if (parent && ret.parentNode !== parent) parent.appendChild(ret);
                 if (!--diffLevel) {
                   hydrating = false;
-                  if (!componentRoot)
-                    flushMounts();
+                  if (!componentRoot) flushMounts();
                 }
                 return ret;
               }
               function idiff(dom, vnode, context, mountAll, componentRoot) {
                 var out = dom, prevSvgMode = isSvgMode;
-                if (null == vnode)
-                  vnode = "";
+                if (null == vnode) vnode = "";
                 if ("string" == typeof vnode) {
                   if (dom && void 0 !== dom.splitText && dom.parentNode && (!dom._component || componentRoot)) {
-                    if (dom.nodeValue != vnode)
-                      dom.nodeValue = vnode;
+                    if (dom.nodeValue != vnode) dom.nodeValue = vnode;
                   } else {
                     out = document.createTextNode(vnode);
                     if (dom) {
-                      if (dom.parentNode)
-                        dom.parentNode.replaceChild(out, dom);
+                      if (dom.parentNode) dom.parentNode.replaceChild(out, dom);
                       recollectNodeTree(dom, true);
                     }
                   }
                   out.__preactattr_ = true;
                   return out;
                 }
-                if ("function" == typeof vnode.nodeName)
-                  return buildComponentFromVNode(dom, vnode, context, mountAll);
+                if ("function" == typeof vnode.nodeName) return buildComponentFromVNode(dom, vnode, context, mountAll);
                 isSvgMode = "svg" === vnode.nodeName ? true : "foreignObject" === vnode.nodeName ? false : isSvgMode;
                 if (!dom || !isNamedNode(dom, String(vnode.nodeName))) {
                   out = createNode(String(vnode.nodeName), isSvgMode);
                   if (dom) {
-                    while (dom.firstChild)
-                      out.appendChild(dom.firstChild);
-                    if (dom.parentNode)
-                      dom.parentNode.replaceChild(out, dom);
+                    while (dom.firstChild) out.appendChild(dom.firstChild);
+                    if (dom.parentNode) dom.parentNode.replaceChild(out, dom);
                     recollectNodeTree(dom, true);
                   }
                 }
                 var fc = out.firstChild, props = out.__preactattr_ || (out.__preactattr_ = {}), vchildren = vnode.children;
                 if (!hydrating && vchildren && 1 === vchildren.length && "string" == typeof vchildren[0] && null != fc && void 0 !== fc.splitText && null == fc.nextSibling) {
-                  if (fc.nodeValue != vchildren[0])
-                    fc.nodeValue = vchildren[0];
-                } else if (vchildren && vchildren.length || null != fc)
-                  innerDiffNode(out, vchildren, context, mountAll, hydrating || null != props.dangerouslySetInnerHTML);
+                  if (fc.nodeValue != vchildren[0]) fc.nodeValue = vchildren[0];
+                } else if (vchildren && vchildren.length || null != fc) innerDiffNode(out, vchildren, context, mountAll, hydrating || null != props.dangerouslySetInnerHTML);
                 diffAttributes(out, vnode.attributes, props);
                 isSvgMode = prevSvgMode;
                 return out;
               }
               function innerDiffNode(dom, vchildren, context, mountAll, isHydrating) {
                 var j, c, vchild, child, originalChildren = dom.childNodes, children = [], keyed = {}, keyedLen = 0, min = 0, len = originalChildren.length, childrenLen = 0, vlen = vchildren ? vchildren.length : 0;
-                if (0 !== len)
-                  for (var i = 0; i < len; i++) {
-                    var _child = originalChildren[i], props = _child.__preactattr_, key = vlen && props ? _child._component ? _child._component.__k : props.key : null;
-                    if (null != key) {
-                      keyedLen++;
-                      keyed[key] = _child;
-                    } else if (props || (void 0 !== _child.splitText ? isHydrating ? _child.nodeValue.trim() : true : isHydrating))
-                      children[childrenLen++] = _child;
-                  }
-                if (0 !== vlen)
-                  for (var i = 0; i < vlen; i++) {
-                    vchild = vchildren[i];
-                    child = null;
-                    var key = vchild.key;
-                    if (null != key) {
-                      if (keyedLen && void 0 !== keyed[key]) {
-                        child = keyed[key];
-                        keyed[key] = void 0;
-                        keyedLen--;
-                      }
-                    } else if (!child && min < childrenLen) {
-                      for (j = min; j < childrenLen; j++)
-                        if (void 0 !== children[j] && isSameNodeType(c = children[j], vchild, isHydrating)) {
-                          child = c;
-                          children[j] = void 0;
-                          if (j === childrenLen - 1)
-                            childrenLen--;
-                          if (j === min)
-                            min++;
-                          break;
-                        }
-                    }
-                    child = idiff(child, vchild, context, mountAll);
-                    if (child && child !== dom) {
-                      if (i >= len)
-                        dom.appendChild(child);
-                      else if (child !== originalChildren[i])
-                        if (child === originalChildren[i + 1])
-                          removeNode(originalChildren[i]);
-                        else
-                          dom.insertBefore(child, originalChildren[i] || null);
-                    }
-                  }
-                if (keyedLen) {
-                  for (var i in keyed)
-                    if (void 0 !== keyed[i])
-                      recollectNodeTree(keyed[i], false);
+                if (0 !== len) for (var i = 0; i < len; i++) {
+                  var _child = originalChildren[i], props = _child.__preactattr_, key = vlen && props ? _child._component ? _child._component.__k : props.key : null;
+                  if (null != key) {
+                    keyedLen++;
+                    keyed[key] = _child;
+                  } else if (props || (void 0 !== _child.splitText ? isHydrating ? _child.nodeValue.trim() : true : isHydrating)) children[childrenLen++] = _child;
                 }
-                while (min <= childrenLen)
-                  if (void 0 !== (child = children[childrenLen--]))
-                    recollectNodeTree(child, false);
+                if (0 !== vlen) for (var i = 0; i < vlen; i++) {
+                  vchild = vchildren[i];
+                  child = null;
+                  var key = vchild.key;
+                  if (null != key) {
+                    if (keyedLen && void 0 !== keyed[key]) {
+                      child = keyed[key];
+                      keyed[key] = void 0;
+                      keyedLen--;
+                    }
+                  } else if (!child && min < childrenLen) {
+                    for (j = min; j < childrenLen; j++) if (void 0 !== children[j] && isSameNodeType(c = children[j], vchild, isHydrating)) {
+                      child = c;
+                      children[j] = void 0;
+                      if (j === childrenLen - 1) childrenLen--;
+                      if (j === min) min++;
+                      break;
+                    }
+                  }
+                  child = idiff(child, vchild, context, mountAll);
+                  if (child && child !== dom) {
+                    if (i >= len) dom.appendChild(child);
+                    else if (child !== originalChildren[i]) if (child === originalChildren[i + 1]) removeNode(originalChildren[i]);
+                    else dom.insertBefore(child, originalChildren[i] || null);
+                  }
+                }
+                if (keyedLen) {
+                  for (var i in keyed) if (void 0 !== keyed[i]) recollectNodeTree(keyed[i], false);
+                }
+                while (min <= childrenLen) if (void 0 !== (child = children[childrenLen--])) recollectNodeTree(child, false);
               }
               function recollectNodeTree(node, unmountOnly) {
                 var component = node._component;
-                if (component)
-                  unmountComponent(component);
+                if (component) unmountComponent(component);
                 else {
-                  if (null != node.__preactattr_ && node.__preactattr_.ref)
-                    node.__preactattr_.ref(null);
-                  if (unmountOnly === false || null == node.__preactattr_)
-                    removeNode(node);
+                  if (null != node.__preactattr_ && node.__preactattr_.ref) node.__preactattr_.ref(null);
+                  if (unmountOnly === false || null == node.__preactattr_) removeNode(node);
                   removeChildren(node);
                 }
               }
@@ -8333,12 +8203,8 @@ var require_gitalk = __commonJS({
               }
               function diffAttributes(dom, attrs, old) {
                 var name;
-                for (name in old)
-                  if ((!attrs || null == attrs[name]) && null != old[name])
-                    setAccessor(dom, name, old[name], old[name] = void 0, isSvgMode);
-                for (name in attrs)
-                  if (!("children" === name || "innerHTML" === name || name in old && attrs[name] === ("value" === name || "checked" === name ? dom[name] : old[name])))
-                    setAccessor(dom, name, old[name], old[name] = attrs[name], isSvgMode);
+                for (name in old) if ((!attrs || null == attrs[name]) && null != old[name]) setAccessor(dom, name, old[name], old[name] = void 0, isSvgMode);
+                for (name in attrs) if (!("children" === name || "innerHTML" === name || name in old && attrs[name] === ("value" === name || "checked" === name ? dom[name] : old[name]))) setAccessor(dom, name, old[name], old[name] = attrs[name], isSvgMode);
               }
               function collectComponent(component) {
                 var name = component.constructor.name;
@@ -8355,12 +8221,11 @@ var require_gitalk = __commonJS({
                   inst.render = doRender;
                 }
                 if (list) {
-                  for (var i = list.length; i--; )
-                    if (list[i].constructor === Ctor) {
-                      inst.__b = list[i].__b;
-                      list.splice(i, 1);
-                      break;
-                    }
+                  for (var i = list.length; i--; ) if (list[i].constructor === Ctor) {
+                    inst.__b = list[i].__b;
+                    list.splice(i, 1);
+                    break;
+                  }
                 }
                 return inst;
               }
@@ -8370,31 +8235,21 @@ var require_gitalk = __commonJS({
               function setComponentProps(component, props, opts, context, mountAll) {
                 if (!component.__x) {
                   component.__x = true;
-                  if (component.__r = props.ref)
-                    delete props.ref;
-                  if (component.__k = props.key)
-                    delete props.key;
+                  if (component.__r = props.ref) delete props.ref;
+                  if (component.__k = props.key) delete props.key;
                   if (!component.base || mountAll) {
-                    if (component.componentWillMount)
-                      component.componentWillMount();
-                  } else if (component.componentWillReceiveProps)
-                    component.componentWillReceiveProps(props, context);
+                    if (component.componentWillMount) component.componentWillMount();
+                  } else if (component.componentWillReceiveProps) component.componentWillReceiveProps(props, context);
                   if (context && context !== component.context) {
-                    if (!component.__c)
-                      component.__c = component.context;
+                    if (!component.__c) component.__c = component.context;
                     component.context = context;
                   }
-                  if (!component.__p)
-                    component.__p = component.props;
+                  if (!component.__p) component.__p = component.props;
                   component.props = props;
                   component.__x = false;
-                  if (0 !== opts)
-                    if (1 === opts || options.syncComponentUpdates !== false || !component.base)
-                      renderComponent(component, 1, mountAll);
-                    else
-                      enqueueRender(component);
-                  if (component.__r)
-                    component.__r(component);
+                  if (0 !== opts) if (1 === opts || options.syncComponentUpdates !== false || !component.base) renderComponent(component, 1, mountAll);
+                  else enqueueRender(component);
+                  if (component.__r) component.__r(component);
                 }
               }
               function renderComponent(component, opts, mountAll, isChild) {
@@ -8404,10 +8259,8 @@ var require_gitalk = __commonJS({
                     component.props = previousProps;
                     component.state = previousState;
                     component.context = previousContext;
-                    if (2 !== opts && component.shouldComponentUpdate && component.shouldComponentUpdate(props, state, context) === false)
-                      skip = true;
-                    else if (component.componentWillUpdate)
-                      component.componentWillUpdate(props, state, context);
+                    if (2 !== opts && component.shouldComponentUpdate && component.shouldComponentUpdate(props, state, context) === false) skip = true;
+                    else if (component.componentWillUpdate) component.componentWillUpdate(props, state, context);
                     component.props = props;
                     component.state = state;
                     component.context = context;
@@ -8416,14 +8269,12 @@ var require_gitalk = __commonJS({
                   component.__d = false;
                   if (!skip) {
                     rendered = component.render(props, state, context);
-                    if (component.getChildContext)
-                      context = extend(extend({}, context), component.getChildContext());
+                    if (component.getChildContext) context = extend(extend({}, context), component.getChildContext());
                     var toUnmount, base, childComponent = rendered && rendered.nodeName;
                     if ("function" == typeof childComponent) {
                       var childProps = getNodeProps(rendered);
                       inst = initialChildComponent;
-                      if (inst && inst.constructor === childComponent && childProps.key == inst.__k)
-                        setComponentProps(inst, childProps, 1, context, false);
+                      if (inst && inst.constructor === childComponent && childProps.key == inst.__k) setComponentProps(inst, childProps, 1, context, false);
                       else {
                         toUnmount = inst;
                         component._component = inst = createComponent(childComponent, childProps, context);
@@ -8436,11 +8287,9 @@ var require_gitalk = __commonJS({
                     } else {
                       cbase = initialBase;
                       toUnmount = initialChildComponent;
-                      if (toUnmount)
-                        cbase = component._component = null;
+                      if (toUnmount) cbase = component._component = null;
                       if (initialBase || 1 === opts) {
-                        if (cbase)
-                          cbase._component = null;
+                        if (cbase) cbase._component = null;
                         base = diff(cbase, rendered, context, mountAll || !isUpdate, initialBase && initialBase.parentNode, true);
                       }
                     }
@@ -8454,37 +8303,28 @@ var require_gitalk = __commonJS({
                         }
                       }
                     }
-                    if (toUnmount)
-                      unmountComponent(toUnmount);
+                    if (toUnmount) unmountComponent(toUnmount);
                     component.base = base;
                     if (base && !isChild) {
                       var componentRef = component, t = component;
-                      while (t = t.__u)
-                        (componentRef = t).base = base;
+                      while (t = t.__u) (componentRef = t).base = base;
                       base._component = componentRef;
                       base._componentConstructor = componentRef.constructor;
                     }
                   }
-                  if (!isUpdate || mountAll)
-                    mounts.unshift(component);
+                  if (!isUpdate || mountAll) mounts.unshift(component);
                   else if (!skip) {
                     flushMounts();
-                    if (component.componentDidUpdate)
-                      component.componentDidUpdate(previousProps, previousState, previousContext);
-                    if (options.afterUpdate)
-                      options.afterUpdate(component);
+                    if (component.componentDidUpdate) component.componentDidUpdate(previousProps, previousState, previousContext);
+                    if (options.afterUpdate) options.afterUpdate(component);
                   }
-                  if (null != component.__h)
-                    while (component.__h.length)
-                      component.__h.pop().call(component);
-                  if (!diffLevel && !isChild)
-                    flushMounts();
+                  if (null != component.__h) while (component.__h.length) component.__h.pop().call(component);
+                  if (!diffLevel && !isChild) flushMounts();
                 }
               }
               function buildComponentFromVNode(dom, vnode, context, mountAll) {
                 var c = dom && dom._component, originalComponent = c, oldDom = dom, isDirectOwner = c && dom._componentConstructor === vnode.nodeName, isOwner = isDirectOwner, props = getNodeProps(vnode);
-                while (c && !isOwner && (c = c.__u))
-                  isOwner = c.constructor === vnode.nodeName;
+                while (c && !isOwner && (c = c.__u)) isOwner = c.constructor === vnode.nodeName;
                 if (c && isOwner && (!mountAll || c._component)) {
                   setComponentProps(c, props, 3, context, mountAll);
                   dom = c.base;
@@ -8508,26 +8348,21 @@ var require_gitalk = __commonJS({
                 return dom;
               }
               function unmountComponent(component) {
-                if (options.beforeUnmount)
-                  options.beforeUnmount(component);
+                if (options.beforeUnmount) options.beforeUnmount(component);
                 var base = component.base;
                 component.__x = true;
-                if (component.componentWillUnmount)
-                  component.componentWillUnmount();
+                if (component.componentWillUnmount) component.componentWillUnmount();
                 component.base = null;
                 var inner = component._component;
-                if (inner)
-                  unmountComponent(inner);
+                if (inner) unmountComponent(inner);
                 else if (base) {
-                  if (base.__preactattr_ && base.__preactattr_.ref)
-                    base.__preactattr_.ref(null);
+                  if (base.__preactattr_ && base.__preactattr_.ref) base.__preactattr_.ref(null);
                   component.__b = base;
                   removeNode(base);
                   collectComponent(component);
                   removeChildren(base);
                 }
-                if (component.__r)
-                  component.__r(null);
+                if (component.__r) component.__r(null);
               }
               function Component(props, context) {
                 this.__d = true;
@@ -8551,16 +8386,13 @@ var require_gitalk = __commonJS({
               extend(Component.prototype, {
                 setState: function(state, callback) {
                   var s = this.state;
-                  if (!this.__s)
-                    this.__s = extend({}, s);
+                  if (!this.__s) this.__s = extend({}, s);
                   extend(s, "function" == typeof state ? state(s, this.props) : state);
-                  if (callback)
-                    (this.__h = this.__h || []).push(callback);
+                  if (callback) (this.__h = this.__h || []).push(callback);
                   enqueueRender(this);
                 },
                 forceUpdate: function(callback) {
-                  if (callback)
-                    (this.__h = this.__h || []).push(callback);
+                  if (callback) (this.__h = this.__h || []).push(callback);
                   renderComponent(this, 2);
                 },
                 render: function() {
@@ -8575,10 +8407,8 @@ var require_gitalk = __commonJS({
                 rerender,
                 options
               };
-              if (true)
-                module2.exports = preact;
-              else
-                self.preact = preact;
+              if (true) module2.exports = preact;
+              else self.preact = preact;
             }();
           },
           /* 203 */
@@ -9328,7 +9158,7 @@ var require_gitalk = __commonJS({
           /***/
           function(module2, exports2) {
             var g;
-            g = function() {
+            g = /* @__PURE__ */ function() {
               return this;
             }();
             try {
@@ -9419,8 +9249,7 @@ var require_gitalk = __commonJS({
                   var _this$options = _this.options, clientID = _this$options.clientID, clientSecret = _this$options.clientSecret, perPage = _this$options.perPage;
                   var page = _this.state.page;
                   return _this.getIssue().then(function(issue2) {
-                    if (!issue2)
-                      return;
+                    if (!issue2) return;
                     return _util.axiosGithub.get(issue2.comments_url, {
                       headers: {
                         Accept: "application/vnd.github.v3.full+json"
@@ -9463,8 +9292,7 @@ var require_gitalk = __commonJS({
                     });
                     replyCommentArray.push("");
                     replyCommentArray.push("");
-                    if (comment)
-                      replyCommentArray.unshift("");
+                    if (comment) replyCommentArray.unshift("");
                     _this.setState({ comment: comment + replyCommentArray.join("\n") }, function() {
                       _autosize2.default.update(_this.commentEL);
                       _this.commentEL.focus();
@@ -9523,8 +9351,7 @@ var require_gitalk = __commonJS({
                     return;
                   }
                   _this.setState(function(state) {
-                    if (state.isCreating)
-                      return;
+                    if (state.isCreating) return;
                     _this.createComment().then(function() {
                       return _this.setState({
                         isCreating: false,
@@ -9564,8 +9391,7 @@ var require_gitalk = __commonJS({
                 };
                 _this.handleCommentLoad = function() {
                   var _this$state2 = _this.state, issue = _this$state2.issue, isLoadMore = _this$state2.isLoadMore;
-                  if (isLoadMore)
-                    return;
+                  if (isLoadMore) return;
                   _this.setState({ isLoadMore: true });
                   _this.getComments(issue).then(function() {
                     return _this.setState({ isLoadMore: false });
@@ -9580,14 +9406,12 @@ var require_gitalk = __commonJS({
                 };
                 _this.handleCommentFocus = function(e) {
                   var distractionFreeMode = _this.options.distractionFreeMode;
-                  if (!distractionFreeMode)
-                    return e.preventDefault();
+                  if (!distractionFreeMode) return e.preventDefault();
                   _this.setState({ isInputFocused: true });
                 };
                 _this.handleCommentBlur = function(e) {
                   var distractionFreeMode = _this.options.distractionFreeMode;
-                  if (!distractionFreeMode)
-                    return e.preventDefault();
+                  if (!distractionFreeMode) return e.preventDefault();
                   _this.setState({ isInputFocused: false });
                 };
                 _this.handleSort = function(direction) {
@@ -9750,8 +9574,7 @@ var require_gitalk = __commonJS({
                       }
                       resolve(issue);
                     }).catch(function(err) {
-                      if (err.response.status === 404)
-                        resolve(null);
+                      if (err.response.status === 404) resolve(null);
                       reject(err);
                     });
                   });
@@ -9798,8 +9621,7 @@ var require_gitalk = __commonJS({
                   }
                   if (typeof number === "number" && number > 0) {
                     return this.getIssueById().then(function(resIssue) {
-                      if (!resIssue)
-                        return _this6.getIssueByLabels();
+                      if (!resIssue) return _this6.getIssueByLabels();
                       return resIssue;
                     });
                   }
@@ -9827,10 +9649,8 @@ var require_gitalk = __commonJS({
               }, {
                 key: "getComments",
                 value: function getComments(issue) {
-                  if (!issue)
-                    return;
-                  if (this.accessToken)
-                    return _getComments2.default.call(this, issue);
+                  if (!issue) return;
+                  if (this.accessToken) return _getComments2.default.call(this, issue);
                   return this.getCommentsV3(issue);
                 }
               }, {
@@ -10230,8 +10050,7 @@ var require_gitalk = __commonJS({
                 var i = toInteger(pos);
                 var l = s.length;
                 var a, b;
-                if (i < 0 || i >= l)
-                  return TO_STRING ? "" : void 0;
+                if (i < 0 || i >= l) return TO_STRING ? "" : void 0;
                 a = s.charCodeAt(i);
                 return a < 55296 || a > 56319 || i + 1 === l || (b = s.charCodeAt(i + 1)) < 56320 || b > 57343 ? TO_STRING ? s.charAt(i) : a : TO_STRING ? s.slice(i, i + 2) : (a - 55296 << 10) + (b - 56320) + 65536;
               };
@@ -10265,8 +10084,7 @@ var require_gitalk = __commonJS({
               var length = keys.length;
               var i = 0;
               var P;
-              while (length > i)
-                dP.f(O, P = keys[i++], Properties[P]);
+              while (length > i) dP.f(O, P = keys[i++], Properties[P]);
               return O;
             };
           },
@@ -10282,18 +10100,13 @@ var require_gitalk = __commonJS({
                 var length = toLength(O.length);
                 var index = toAbsoluteIndex(fromIndex, length);
                 var value;
-                if (IS_INCLUDES && el != el)
-                  while (length > index) {
-                    value = O[index++];
-                    if (value != value)
-                      return true;
-                  }
-                else
-                  for (; length > index; index++)
-                    if (IS_INCLUDES || index in O) {
-                      if (O[index] === el)
-                        return IS_INCLUDES || index || 0;
-                    }
+                if (IS_INCLUDES && el != el) while (length > index) {
+                  value = O[index++];
+                  if (value != value) return true;
+                }
+                else for (; length > index; index++) if (IS_INCLUDES || index in O) {
+                  if (O[index] === el) return IS_INCLUDES || index || 0;
+                }
                 return !IS_INCLUDES && -1;
               };
             };
@@ -10329,10 +10142,8 @@ var require_gitalk = __commonJS({
                 this._t = void 0;
                 return step(1);
               }
-              if (kind == "keys")
-                return step(0, index);
-              if (kind == "values")
-                return step(0, O[index]);
+              if (kind == "keys") return step(0, index);
+              if (kind == "values") return step(0, O[index]);
               return step(0, [index, O[index]]);
             }, "values");
             Iterators.Arguments = Iterators.Array;
@@ -10399,8 +10210,7 @@ var require_gitalk = __commonJS({
               return isObject(it) && typeof (then = it.then) == "function" ? then : false;
             };
             var notify = function(promise, isReject) {
-              if (promise._n)
-                return;
+              if (promise._n) return;
               promise._n = true;
               var chain = promise._c;
               microtask(function() {
@@ -10416,15 +10226,12 @@ var require_gitalk = __commonJS({
                   try {
                     if (handler) {
                       if (!ok) {
-                        if (promise._h == 2)
-                          onHandleUnhandled(promise);
+                        if (promise._h == 2) onHandleUnhandled(promise);
                         promise._h = 1;
                       }
-                      if (handler === true)
-                        result = value;
+                      if (handler === true) result = value;
                       else {
-                        if (domain)
-                          domain.enter();
+                        if (domain) domain.enter();
                         result = handler(value);
                         if (domain) {
                           domain.exit();
@@ -10435,22 +10242,17 @@ var require_gitalk = __commonJS({
                         reject(TypeError2("Promise-chain cycle"));
                       } else if (then = isThenable(result)) {
                         then.call(result, resolve, reject);
-                      } else
-                        resolve(result);
-                    } else
-                      reject(value);
+                      } else resolve(result);
+                    } else reject(value);
                   } catch (e) {
-                    if (domain && !exited)
-                      domain.exit();
+                    if (domain && !exited) domain.exit();
                     reject(e);
                   }
                 };
-                while (chain.length > i)
-                  run(chain[i++]);
+                while (chain.length > i) run(chain[i++]);
                 promise._c = [];
                 promise._n = false;
-                if (isReject && !promise._h)
-                  onUnhandled(promise);
+                if (isReject && !promise._h) onUnhandled(promise);
               });
             };
             var onUnhandled = function(promise) {
@@ -10471,8 +10273,7 @@ var require_gitalk = __commonJS({
                   promise._h = isNode || isUnhandled(promise) ? 2 : 1;
                 }
                 promise._a = void 0;
-                if (unhandled && result.e)
-                  throw result.v;
+                if (unhandled && result.e) throw result.v;
               });
             };
             var isUnhandled = function(promise) {
@@ -10490,26 +10291,22 @@ var require_gitalk = __commonJS({
             };
             var $reject = function(value) {
               var promise = this;
-              if (promise._d)
-                return;
+              if (promise._d) return;
               promise._d = true;
               promise = promise._w || promise;
               promise._v = value;
               promise._s = 2;
-              if (!promise._a)
-                promise._a = promise._c.slice();
+              if (!promise._a) promise._a = promise._c.slice();
               notify(promise, true);
             };
             var $resolve = function(value) {
               var promise = this;
               var then;
-              if (promise._d)
-                return;
+              if (promise._d) return;
               promise._d = true;
               promise = promise._w || promise;
               try {
-                if (promise === value)
-                  throw TypeError2("Promise can't be resolved itself");
+                if (promise === value) throw TypeError2("Promise can't be resolved itself");
                 if (then = isThenable(value)) {
                   microtask(function() {
                     var wrapper = { _w: promise, _d: false };
@@ -10556,10 +10353,8 @@ var require_gitalk = __commonJS({
                   reaction.fail = typeof onRejected == "function" && onRejected;
                   reaction.domain = isNode ? process.domain : void 0;
                   this._c.push(reaction);
-                  if (this._a)
-                    this._a.push(reaction);
-                  if (this._s)
-                    notify(this, false);
+                  if (this._a) this._a.push(reaction);
+                  if (this._s) notify(this, false);
                   return reaction.promise;
                 },
                 // 25.4.5.1 Promise.prototype.catch(onRejected)
@@ -10615,8 +10410,7 @@ var require_gitalk = __commonJS({
                     values.push(void 0);
                     remaining++;
                     C.resolve(promise).then(function(value) {
-                      if (alreadyCalled)
-                        return;
+                      if (alreadyCalled) return;
                       alreadyCalled = true;
                       values[$index] = value;
                       --remaining || resolve(values);
@@ -10624,8 +10418,7 @@ var require_gitalk = __commonJS({
                   });
                   --remaining || resolve(values);
                 });
-                if (result.e)
-                  reject(result.v);
+                if (result.e) reject(result.v);
                 return capability.promise;
               },
               // 25.4.4.4 Promise.race(iterable)
@@ -10638,8 +10431,7 @@ var require_gitalk = __commonJS({
                     C.resolve(promise).then(capability.resolve, reject);
                   });
                 });
-                if (result.e)
-                  reject(result.v);
+                if (result.e) reject(result.v);
                 return capability.promise;
               }
             });
@@ -10672,20 +10464,15 @@ var require_gitalk = __commonJS({
               var f = ctx(fn, that, entries ? 2 : 1);
               var index = 0;
               var length, step, iterator, result;
-              if (typeof iterFn != "function")
-                throw TypeError(iterable + " is not iterable!");
-              if (isArrayIter(iterFn))
-                for (length = toLength(iterable.length); length > index; index++) {
-                  result = entries ? f(anObject(step = iterable[index])[0], step[1]) : f(iterable[index]);
-                  if (result === BREAK || result === RETURN)
-                    return result;
-                }
-              else
-                for (iterator = iterFn.call(iterable); !(step = iterator.next()).done; ) {
-                  result = call(iterator, f, step.value, entries);
-                  if (result === BREAK || result === RETURN)
-                    return result;
-                }
+              if (typeof iterFn != "function") throw TypeError(iterable + " is not iterable!");
+              if (isArrayIter(iterFn)) for (length = toLength(iterable.length); length > index; index++) {
+                result = entries ? f(anObject(step = iterable[index])[0], step[1]) : f(iterable[index]);
+                if (result === BREAK || result === RETURN) return result;
+              }
+              else for (iterator = iterFn.call(iterable); !(step = iterator.next()).done; ) {
+                result = call(iterator, f, step.value, entries);
+                if (result === BREAK || result === RETURN) return result;
+              }
             };
             exports2.BREAK = BREAK;
             exports2.RETURN = RETURN;
@@ -10723,24 +10510,20 @@ var require_gitalk = __commonJS({
               var head, last, notify;
               var flush = function() {
                 var parent, fn;
-                if (isNode && (parent = process.domain))
-                  parent.exit();
+                if (isNode && (parent = process.domain)) parent.exit();
                 while (head) {
                   fn = head.fn;
                   head = head.next;
                   try {
                     fn();
                   } catch (e) {
-                    if (head)
-                      notify();
-                    else
-                      last = void 0;
+                    if (head) notify();
+                    else last = void 0;
                     throw e;
                   }
                 }
                 last = void 0;
-                if (parent)
-                  parent.enter();
+                if (parent) parent.enter();
               };
               if (isNode) {
                 notify = function() {
@@ -10765,8 +10548,7 @@ var require_gitalk = __commonJS({
               }
               return function(fn) {
                 var task = { fn, next: void 0 };
-                if (last)
-                  last.next = task;
+                if (last) last.next = task;
                 if (!head) {
                   head = task;
                   notify();
@@ -10788,10 +10570,8 @@ var require_gitalk = __commonJS({
             var hide = __webpack_require__(23);
             module2.exports = function(target, src, safe) {
               for (var key in src) {
-                if (safe && target[key])
-                  target[key] = src[key];
-                else
-                  hide(target, key, src[key]);
+                if (safe && target[key]) target[key] = src[key];
+                else hide(target, key, src[key]);
               }
               return target;
             };
@@ -10807,13 +10587,12 @@ var require_gitalk = __commonJS({
             var SPECIES = __webpack_require__(9)("species");
             module2.exports = function(KEY) {
               var C = typeof core[KEY] == "function" ? core[KEY] : global[KEY];
-              if (DESCRIPTORS && C && !C[SPECIES])
-                dP.f(C, SPECIES, {
-                  configurable: true,
-                  get: function() {
-                    return this;
-                  }
-                });
+              if (DESCRIPTORS && C && !C[SPECIES]) dP.f(C, SPECIES, {
+                configurable: true,
+                get: function() {
+                  return this;
+                }
+              });
             };
           },
           /* 226 */
@@ -10908,8 +10687,7 @@ var require_gitalk = __commonJS({
                 var key;
                 while (length > j) {
                   key = keys[j++];
-                  if (!DESCRIPTORS || isEnum.call(S, key))
-                    T[key] = S[key];
+                  if (!DESCRIPTORS || isEnum.call(S, key)) T[key] = S[key];
                 }
               }
               return T;
@@ -11014,11 +10792,9 @@ var require_gitalk = __commonJS({
               })).a != 7;
             }) ? function(it, key, D) {
               var protoDesc = gOPD(ObjectProto, key);
-              if (protoDesc)
-                delete ObjectProto[key];
+              if (protoDesc) delete ObjectProto[key];
               dP(it, key, D);
-              if (protoDesc && it !== ObjectProto)
-                dP(ObjectProto, key, protoDesc);
+              if (protoDesc && it !== ObjectProto) dP(ObjectProto, key, protoDesc);
             } : dP;
             var wrap = function(tag) {
               var sym = AllSymbols[tag] = _create($Symbol[PROTOTYPE]);
@@ -11031,19 +10807,16 @@ var require_gitalk = __commonJS({
               return it instanceof $Symbol;
             };
             var $defineProperty = function defineProperty(it, key, D) {
-              if (it === ObjectProto)
-                $defineProperty(OPSymbols, key, D);
+              if (it === ObjectProto) $defineProperty(OPSymbols, key, D);
               anObject(it);
               key = toPrimitive(key, true);
               anObject(D);
               if (has(AllSymbols, key)) {
                 if (!D.enumerable) {
-                  if (!has(it, HIDDEN))
-                    dP(it, HIDDEN, createDesc(1, {}));
+                  if (!has(it, HIDDEN)) dP(it, HIDDEN, createDesc(1, {}));
                   it[HIDDEN][key] = true;
                 } else {
-                  if (has(it, HIDDEN) && it[HIDDEN][key])
-                    it[HIDDEN][key] = false;
+                  if (has(it, HIDDEN) && it[HIDDEN][key]) it[HIDDEN][key] = false;
                   D = _create(D, { enumerable: createDesc(0, false) });
                 }
                 return setSymbolDesc(it, key, D);
@@ -11056,8 +10829,7 @@ var require_gitalk = __commonJS({
               var i = 0;
               var l = keys.length;
               var key;
-              while (l > i)
-                $defineProperty(it, key = keys[i++], P[key]);
+              while (l > i) $defineProperty(it, key = keys[i++], P[key]);
               return it;
             };
             var $create = function create(it, P) {
@@ -11065,18 +10837,15 @@ var require_gitalk = __commonJS({
             };
             var $propertyIsEnumerable = function propertyIsEnumerable(key) {
               var E = isEnum.call(this, key = toPrimitive(key, true));
-              if (this === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key))
-                return false;
+              if (this === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key)) return false;
               return E || !has(this, key) || !has(AllSymbols, key) || has(this, HIDDEN) && this[HIDDEN][key] ? E : true;
             };
             var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(it, key) {
               it = toIObject(it);
               key = toPrimitive(key, true);
-              if (it === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key))
-                return;
+              if (it === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key)) return;
               var D = gOPD(it, key);
-              if (D && has(AllSymbols, key) && !(has(it, HIDDEN) && it[HIDDEN][key]))
-                D.enumerable = true;
+              if (D && has(AllSymbols, key) && !(has(it, HIDDEN) && it[HIDDEN][key])) D.enumerable = true;
               return D;
             };
             var $getOwnPropertyNames = function getOwnPropertyNames(it) {
@@ -11085,8 +10854,7 @@ var require_gitalk = __commonJS({
               var i = 0;
               var key;
               while (names.length > i) {
-                if (!has(AllSymbols, key = names[i++]) && key != HIDDEN && key != META)
-                  result.push(key);
+                if (!has(AllSymbols, key = names[i++]) && key != HIDDEN && key != META) result.push(key);
               }
               return result;
             };
@@ -11097,25 +10865,20 @@ var require_gitalk = __commonJS({
               var i = 0;
               var key;
               while (names.length > i) {
-                if (has(AllSymbols, key = names[i++]) && (IS_OP ? has(ObjectProto, key) : true))
-                  result.push(AllSymbols[key]);
+                if (has(AllSymbols, key = names[i++]) && (IS_OP ? has(ObjectProto, key) : true)) result.push(AllSymbols[key]);
               }
               return result;
             };
             if (!USE_NATIVE) {
               $Symbol = function Symbol2() {
-                if (this instanceof $Symbol)
-                  throw TypeError("Symbol is not a constructor!");
+                if (this instanceof $Symbol) throw TypeError("Symbol is not a constructor!");
                 var tag = uid(arguments.length > 0 ? arguments[0] : void 0);
                 var $set = function(value) {
-                  if (this === ObjectProto)
-                    $set.call(OPSymbols, value);
-                  if (has(this, HIDDEN) && has(this[HIDDEN], tag))
-                    this[HIDDEN][tag] = false;
+                  if (this === ObjectProto) $set.call(OPSymbols, value);
+                  if (has(this, HIDDEN) && has(this[HIDDEN], tag)) this[HIDDEN][tag] = false;
                   setSymbolDesc(this, tag, createDesc(1, value));
                 };
-                if (DESCRIPTORS && setter)
-                  setSymbolDesc(ObjectProto, tag, { configurable: true, set: $set });
+                if (DESCRIPTORS && setter) setSymbolDesc(ObjectProto, tag, { configurable: true, set: $set });
                 return wrap(tag);
               };
               redefine($Symbol[PROTOTYPE], "toString", function toString() {
@@ -11137,10 +10900,8 @@ var require_gitalk = __commonJS({
             for (var es6Symbols = (
               // 19.4.2.2, 19.4.2.3, 19.4.2.4, 19.4.2.6, 19.4.2.8, 19.4.2.9, 19.4.2.10, 19.4.2.11, 19.4.2.12, 19.4.2.13, 19.4.2.14
               "hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(",")
-            ), j = 0; es6Symbols.length > j; )
-              wks(es6Symbols[j++]);
-            for (var wellKnownSymbols = $keys(wks.store), k = 0; wellKnownSymbols.length > k; )
-              wksDefine(wellKnownSymbols[k++]);
+            ), j = 0; es6Symbols.length > j; ) wks(es6Symbols[j++]);
+            for (var wellKnownSymbols = $keys(wks.store), k = 0; wellKnownSymbols.length > k; ) wksDefine(wellKnownSymbols[k++]);
             $export($export.S + $export.F * !USE_NATIVE, "Symbol", {
               // 19.4.2.1 Symbol.for(key)
               "for": function(key) {
@@ -11148,11 +10909,8 @@ var require_gitalk = __commonJS({
               },
               // 19.4.2.5 Symbol.keyFor(sym)
               keyFor: function keyFor(sym) {
-                if (!isSymbol(sym))
-                  throw TypeError(sym + " is not a symbol!");
-                for (var key in SymbolRegistry)
-                  if (SymbolRegistry[key] === sym)
-                    return key;
+                if (!isSymbol(sym)) throw TypeError(sym + " is not a symbol!");
+                for (var key in SymbolRegistry) if (SymbolRegistry[key] === sym) return key;
               },
               useSetter: function() {
                 setter = true;
@@ -11191,18 +10949,13 @@ var require_gitalk = __commonJS({
                 var args = [it];
                 var i = 1;
                 var replacer, $replacer;
-                while (arguments.length > i)
-                  args.push(arguments[i++]);
+                while (arguments.length > i) args.push(arguments[i++]);
                 $replacer = replacer = args[1];
-                if (!isObject(replacer) && it === void 0 || isSymbol(it))
-                  return;
-                if (!isArray(replacer))
-                  replacer = function(key, value) {
-                    if (typeof $replacer == "function")
-                      value = $replacer.call(this, key, value);
-                    if (!isSymbol(value))
-                      return value;
-                  };
+                if (!isObject(replacer) && it === void 0 || isSymbol(it)) return;
+                if (!isArray(replacer)) replacer = function(key, value) {
+                  if (typeof $replacer == "function") value = $replacer.call(this, key, value);
+                  if (!isSymbol(value)) return value;
+                };
                 args[1] = replacer;
                 return _stringify.apply($JSON, args);
               }
@@ -11235,30 +10988,24 @@ var require_gitalk = __commonJS({
               } });
             };
             var fastKey = function(it, create) {
-              if (!isObject(it))
-                return typeof it == "symbol" ? it : (typeof it == "string" ? "S" : "P") + it;
+              if (!isObject(it)) return typeof it == "symbol" ? it : (typeof it == "string" ? "S" : "P") + it;
               if (!has(it, META)) {
-                if (!isExtensible(it))
-                  return "F";
-                if (!create)
-                  return "E";
+                if (!isExtensible(it)) return "F";
+                if (!create) return "E";
                 setMeta(it);
               }
               return it[META].i;
             };
             var getWeak = function(it, create) {
               if (!has(it, META)) {
-                if (!isExtensible(it))
-                  return true;
-                if (!create)
-                  return false;
+                if (!isExtensible(it)) return true;
+                if (!create) return false;
                 setMeta(it);
               }
               return it[META].w;
             };
             var onFreeze = function(it) {
-              if (FREEZE && meta.NEED && isExtensible(it) && !has(it, META))
-                setMeta(it);
+              if (FREEZE && meta.NEED && isExtensible(it) && !has(it, META)) setMeta(it);
               return it;
             };
             var meta = module2.exports = {
@@ -11283,9 +11030,7 @@ var require_gitalk = __commonJS({
                 var isEnum = pIE.f;
                 var i = 0;
                 var key;
-                while (symbols.length > i)
-                  if (isEnum.call(it, key = symbols[i++]))
-                    result.push(key);
+                while (symbols.length > i) if (isEnum.call(it, key = symbols[i++])) result.push(key);
               }
               return result;
             };
@@ -11350,8 +11095,7 @@ var require_gitalk = __commonJS({
             var anObject = __webpack_require__(14);
             var check = function(O, proto) {
               anObject(O);
-              if (!isObject(proto) && proto !== null)
-                throw TypeError(proto + ": can't set as prototype!");
+              if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
             };
             module2.exports = {
               set: Object.setPrototypeOf || ("__proto__" in {} ? (
@@ -11366,10 +11110,8 @@ var require_gitalk = __commonJS({
                   }
                   return function setPrototypeOf(O, proto) {
                     check(O, proto);
-                    if (buggy)
-                      O.__proto__ = proto;
-                    else
-                      set(O, proto);
+                    if (buggy) O.__proto__ = proto;
+                    else set(O, proto);
                     return O;
                   };
                 }({}, false)
@@ -11419,7 +11161,7 @@ var require_gitalk = __commonJS({
             Object.defineProperty(exports2, "__esModule", {
               value: true
             });
-            var _slicedToArray = function() {
+            var _slicedToArray = /* @__PURE__ */ function() {
               function sliceIterator(arr, i) {
                 var _arr = [];
                 var _n = true;
@@ -11428,19 +11170,16 @@ var require_gitalk = __commonJS({
                 try {
                   for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
                     _arr.push(_s.value);
-                    if (i && _arr.length === i)
-                      break;
+                    if (i && _arr.length === i) break;
                   }
                 } catch (err) {
                   _d = true;
                   _e = err;
                 } finally {
                   try {
-                    if (!_n && _i["return"])
-                      _i["return"]();
+                    if (!_n && _i["return"]) _i["return"]();
                   } finally {
-                    if (_d)
-                      throw _e;
+                    if (_d) throw _e;
                   }
                 }
                 return _arr;
@@ -11466,22 +11205,19 @@ var require_gitalk = __commonJS({
               }
               return target;
             };
-            var _createClass = function() {
+            var _createClass = /* @__PURE__ */ function() {
               function defineProperties(target, props) {
                 for (var i = 0; i < props.length; i++) {
                   var descriptor = props[i];
                   descriptor.enumerable = descriptor.enumerable || false;
                   descriptor.configurable = true;
-                  if ("value" in descriptor)
-                    descriptor.writable = true;
+                  if ("value" in descriptor) descriptor.writable = true;
                   Object.defineProperty(target, descriptor.key, descriptor);
                 }
               }
               return function(Constructor, protoProps, staticProps) {
-                if (protoProps)
-                  defineProperties(Constructor.prototype, protoProps);
-                if (staticProps)
-                  defineProperties(Constructor, staticProps);
+                if (protoProps) defineProperties(Constructor.prototype, protoProps);
+                if (staticProps) defineProperties(Constructor, staticProps);
                 return Constructor;
               };
             }();
@@ -11511,8 +11247,7 @@ var require_gitalk = __commonJS({
                 throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
               }
               subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });
-              if (superClass)
-                Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+              if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
             }
             var transitionEnd = (0, _domManipulation.whichTransitionEvent)();
             var noBrowserSupport = !transitionEnd;
@@ -11627,8 +11362,7 @@ var require_gitalk = __commonJS({
                       var key = _ref2.key;
                       return key === getKey(child);
                     });
-                    if (!isLeaving || !_this2.props.leaveAnimation)
-                      return;
+                    if (!isLeaving || !_this2.props.leaveAnimation) return;
                     var nextChild = _extends({}, child, { leaving: true });
                     var nextChildIndex = index + numOfChildrenLeaving;
                     updatedChildren.splice(nextChildIndex, 0, nextChild);
@@ -11686,8 +11420,7 @@ var require_gitalk = __commonJS({
                     domNode,
                     styles: this.computeInitialStyles(child)
                   });
-                  if (this.props.onStart)
-                    this.props.onStart(child, domNode);
+                  if (this.props.onStart) this.props.onStart(child, domNode);
                   requestAnimationFrame(function() {
                     requestAnimationFrame(function() {
                       var styles = {
@@ -11716,8 +11449,7 @@ var require_gitalk = __commonJS({
                     return;
                   }
                   var transitionEndHandler = function transitionEndHandler2(ev) {
-                    if (ev.target !== domNode)
-                      return;
+                    if (ev.target !== domNode) return;
                     domNode.style.transition = "";
                     _this5.triggerFinishHooks(child, domNode);
                     domNode.removeEventListener(transitionEnd, transitionEndHandler2);
@@ -11731,8 +11463,7 @@ var require_gitalk = __commonJS({
                 key: "triggerFinishHooks",
                 value: function triggerFinishHooks(child, domNode) {
                   var _this6 = this;
-                  if (this.props.onFinish)
-                    this.props.onFinish(child, domNode);
+                  if (this.props.onFinish) this.props.onFinish(child, domNode);
                   this.remainingAnimations -= 1;
                   if (this.remainingAnimations === 0) {
                     var nextChildren = this.state.children.filter(function(_ref3) {
@@ -12010,22 +11741,19 @@ var require_gitalk = __commonJS({
                 }
                 return target;
               };
-              var _createClass = function() {
+              var _createClass = /* @__PURE__ */ function() {
                 function defineProperties(target, props) {
                   for (var i = 0; i < props.length; i++) {
                     var descriptor = props[i];
                     descriptor.enumerable = descriptor.enumerable || false;
                     descriptor.configurable = true;
-                    if ("value" in descriptor)
-                      descriptor.writable = true;
+                    if ("value" in descriptor) descriptor.writable = true;
                     Object.defineProperty(target, descriptor.key, descriptor);
                   }
                 }
                 return function(Constructor, protoProps, staticProps) {
-                  if (protoProps)
-                    defineProperties(Constructor.prototype, protoProps);
-                  if (staticProps)
-                    defineProperties(Constructor, staticProps);
+                  if (protoProps) defineProperties(Constructor.prototype, protoProps);
+                  if (staticProps) defineProperties(Constructor, staticProps);
                   return Constructor;
                 };
               }();
@@ -12053,8 +11781,7 @@ var require_gitalk = __commonJS({
                   throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
                 }
                 subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });
-                if (superClass)
-                  Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+                if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
               }
               var nodeEnv = void 0;
               try {
@@ -12324,8 +12051,7 @@ var require_gitalk = __commonJS({
                 "-moz-transition": "transitionend",
                 "-webkit-transition": "webkitTransitionEnd"
               };
-              if (typeof document === "undefined")
-                return "";
+              if (typeof document === "undefined") return "";
               var el = document.createElement("fakeelement");
               var match = Object.keys(transitions).find(function(t) {
                 return el.style.getPropertyValue(t) !== void 0;
@@ -12435,7 +12161,7 @@ var require_gitalk = __commonJS({
               }
             })(this, function(exports3, module3) {
               "use strict";
-              var map = typeof Map === "function" ? /* @__PURE__ */ new Map() : function() {
+              var map = typeof Map === "function" ? /* @__PURE__ */ new Map() : /* @__PURE__ */ function() {
                 var keys = [];
                 var values = [];
                 return {
@@ -12473,8 +12199,7 @@ var require_gitalk = __commonJS({
                 };
               }
               function assign(ta) {
-                if (!ta || !ta.nodeName || ta.nodeName !== "TEXTAREA" || map.has(ta))
-                  return;
+                if (!ta || !ta.nodeName || ta.nodeName !== "TEXTAREA" || map.has(ta)) return;
                 var heightOffset = null;
                 var clientWidth = ta.clientWidth;
                 var cachedHeight = null;
@@ -12568,7 +12293,7 @@ var require_gitalk = __commonJS({
                     update2();
                   }
                 };
-                var destroy2 = function(style) {
+                var destroy2 = (function(style) {
                   window.removeEventListener("resize", pageResize, false);
                   ta.removeEventListener("input", update2, false);
                   ta.removeEventListener("keyup", update2, false);
@@ -12578,7 +12303,7 @@ var require_gitalk = __commonJS({
                     ta.style[key] = style[key];
                   });
                   map["delete"](ta);
-                }.bind(ta, {
+                }).bind(ta, {
                   height: ta.style.height,
                   resize: ta.style.resize,
                   overflowY: ta.style.overflowY,
@@ -12709,9 +12434,9 @@ var require_gitalk = __commonJS({
             var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
             (function(root, factory) {
               if (true) {
-                !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+                !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function() {
                   return factory(root);
-                }.apply(exports2, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== void 0 && (module2.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+                }).apply(exports2, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== void 0 && (module2.exports = __WEBPACK_AMD_DEFINE_RESULT__));
               } else if (typeof exports2 === "object") {
                 module2.exports = factory(root);
               } else {
@@ -12729,8 +12454,7 @@ var require_gitalk = __commonJS({
               }
               Polyglot.VERSION = "0.4.3";
               Polyglot.prototype.locale = function(newLocale) {
-                if (newLocale)
-                  this.currentLocale = newLocale;
+                if (newLocale) this.currentLocale = newLocale;
                 return this.currentLocale;
               };
               Polyglot.prototype.extend = function(morePhrases, prefix) {
@@ -12738,8 +12462,7 @@ var require_gitalk = __commonJS({
                 for (var key in morePhrases) {
                   if (morePhrases.hasOwnProperty(key)) {
                     phrase = morePhrases[key];
-                    if (prefix)
-                      key = prefix + "." + key;
+                    if (prefix) key = prefix + "." + key;
                     if (typeof phrase === "object") {
                       this.extend(phrase, key);
                     } else {
@@ -12962,7 +12685,7 @@ var require_gitalk = __commonJS({
             function _interopRequireDefault(obj) {
               return obj && obj.__esModule ? obj : { default: obj };
             }
-            exports2.default = function() {
+            exports2.default = /* @__PURE__ */ function() {
               function sliceIterator(arr, i) {
                 var _arr = [];
                 var _n = true;
@@ -12971,19 +12694,16 @@ var require_gitalk = __commonJS({
                 try {
                   for (var _i = (0, _getIterator3.default)(arr), _s; !(_n = (_s = _i.next()).done); _n = true) {
                     _arr.push(_s.value);
-                    if (i && _arr.length === i)
-                      break;
+                    if (i && _arr.length === i) break;
                   }
                 } catch (err) {
                   _d = true;
                   _e = err;
                 } finally {
                   try {
-                    if (!_n && _i["return"])
-                      _i["return"]();
+                    if (!_n && _i["return"]) _i["return"]();
                   } finally {
-                    if (_d)
-                      throw _e;
+                    if (_d) throw _e;
                   }
                 }
                 return _arr;
@@ -13041,8 +12761,7 @@ var require_gitalk = __commonJS({
             var get = __webpack_require__(77);
             module2.exports = __webpack_require__(7).getIterator = function(it) {
               var iterFn = get(it);
-              if (typeof iterFn != "function")
-                throw TypeError(it + " is not iterable!");
+              if (typeof iterFn != "function") throw TypeError(it + " is not iterable!");
               return anObject(iterFn.call(it));
             };
           },
@@ -13430,7 +13149,7 @@ var require_gitalk = __commonJS({
               }()
             ) : (
               // Non standard browser envs (web workers, react-native) lack needed support.
-              function nonStandardBrowserEnv() {
+              /* @__PURE__ */ function nonStandardBrowserEnv() {
                 return function isURLSameOrigin() {
                   return true;
                 };
@@ -13444,7 +13163,7 @@ var require_gitalk = __commonJS({
             var utils = __webpack_require__(10);
             module2.exports = utils.isStandardBrowserEnv() ? (
               // Standard browser envs support document.cookie
-              function standardBrowserEnv() {
+              /* @__PURE__ */ function standardBrowserEnv() {
                 return {
                   write: function write(name, value, expires, path, domain, secure) {
                     var cookie = [];
@@ -13474,7 +13193,7 @@ var require_gitalk = __commonJS({
               }()
             ) : (
               // Non standard browser env (web workers, react-native) lack needed support.
-              function nonStandardBrowserEnv() {
+              /* @__PURE__ */ function nonStandardBrowserEnv() {
                 return {
                   write: function write() {
                   },
@@ -14635,8 +14354,7 @@ var require_gitalk = __commonJS({
                 "a"
                 /* default */
               ](2, arguments);
-              if (!duration || typeof duration !== "object")
-                return /* @__PURE__ */ new Date(NaN);
+              if (!duration || typeof duration !== "object") return /* @__PURE__ */ new Date(NaN);
               var years = "years" in duration ? __WEBPACK_IMPORTED_MODULE_4__lib_toInteger_index_js__[
                 "a"
                 /* default */
@@ -14884,8 +14602,7 @@ var require_gitalk = __commonJS({
               ](dateLeft) || !__WEBPACK_IMPORTED_MODULE_0__isValid_index_js__[
                 "a"
                 /* default */
-              ](dateRight))
-                return /* @__PURE__ */ new Date(NaN);
+              ](dateRight)) return /* @__PURE__ */ new Date(NaN);
               var calendarDifference = __WEBPACK_IMPORTED_MODULE_3__differenceInCalendarDays_index_js__[
                 "a"
                 /* default */
@@ -15093,8 +14810,7 @@ var require_gitalk = __commonJS({
               var currentDate = startDate;
               currentDate.setMinutes(0, 0, 0);
               var step = options && "step" in options ? Number(options.step) : 1;
-              if (step < 1 || isNaN(step))
-                throw new RangeError("`options.step` must be a number greater than 1");
+              if (step < 1 || isNaN(step)) throw new RangeError("`options.step` must be a number greater than 1");
               while (currentDate.getTime() <= endTime) {
                 dates.push(__WEBPACK_IMPORTED_MODULE_1__toDate_index_js__[
                   "a"
@@ -15271,8 +14987,7 @@ var require_gitalk = __commonJS({
                 "a"
                 /* default */
               ](dirtyDate);
-              if (isNaN(startDate))
-                throw new RangeError("The passed date is invalid");
+              if (isNaN(startDate)) throw new RangeError("The passed date is invalid");
               var endDate = __WEBPACK_IMPORTED_MODULE_2__endOfMonth_index_js__[
                 "a"
                 /* default */
@@ -15304,8 +15019,7 @@ var require_gitalk = __commonJS({
                 "a"
                 /* default */
               ](dirtyDate);
-              if (isNaN(startDate))
-                throw new RangeError("The passed date is invalid");
+              if (isNaN(startDate)) throw new RangeError("The passed date is invalid");
               var endDate = __WEBPACK_IMPORTED_MODULE_2__endOfYear_index_js__[
                 "a"
                 /* default */
@@ -16190,8 +15904,7 @@ var require_gitalk = __commonJS({
               h: function(date, token, localize) {
                 if (token === "ho") {
                   var hours = date.getUTCHours() % 12;
-                  if (hours === 0)
-                    hours = 12;
+                  if (hours === 0) hours = 12;
                   return localize.ordinalNumber(hours, {
                     unit: "hour"
                   });
@@ -16229,8 +15942,7 @@ var require_gitalk = __commonJS({
               // Hour [1-24]
               k: function(date, token, localize) {
                 var hours = date.getUTCHours();
-                if (hours === 0)
-                  hours = 24;
+                if (hours === 0) hours = 24;
                 if (token === "ko") {
                   return localize.ordinalNumber(hours, {
                     unit: "hour"
@@ -16715,8 +16427,7 @@ var require_gitalk = __commonJS({
                 "a"
                 /* default */
               ](1, arguments);
-              if (typeof duration !== "object")
-                throw new Error("Duration must be an object");
+              if (typeof duration !== "object") throw new Error("Duration must be an object");
               var _duration$years = duration.years, years = _duration$years === void 0 ? 0 : _duration$years, _duration$months = duration.months, months = _duration$months === void 0 ? 0 : _duration$months, _duration$days = duration.days, days = _duration$days === void 0 ? 0 : _duration$days, _duration$hours = duration.hours, hours = _duration$hours === void 0 ? 0 : _duration$hours, _duration$minutes = duration.minutes, minutes = _duration$minutes === void 0 ? 0 : _duration$minutes, _duration$seconds = duration.seconds, seconds = _duration$seconds === void 0 ? 0 : _duration$seconds;
               return "P".concat(years, "Y").concat(months, "M").concat(days, "DT").concat(hours, "H").concat(minutes, "M").concat(seconds, "S");
             }
@@ -19783,10 +19494,9 @@ var require_gitalk = __commonJS({
             function parseYear(dateString, additionalDigits) {
               var regex = new RegExp("^(?:(\\d{4}|[+-]\\d{" + (4 + additionalDigits) + "})|(\\d{2}|[+-]\\d{" + (2 + additionalDigits) + "})$)");
               var captures = dateString.match(regex);
-              if (!captures)
-                return {
-                  year: null
-                };
+              if (!captures) return {
+                year: null
+              };
               var year = captures[1] && parseInt(captures[1]);
               var century = captures[2] && parseInt(captures[2]);
               return {
@@ -19795,11 +19505,9 @@ var require_gitalk = __commonJS({
               };
             }
             function parseDate(dateString, year) {
-              if (year === null)
-                return null;
+              if (year === null) return null;
               var captures = dateString.match(dateRegex);
-              if (!captures)
-                return null;
+              if (!captures) return null;
               var isWeekDate = !!captures[4];
               var dayOfYear = parseDateUnit(captures[1]);
               var month = parseDateUnit(captures[2]) - 1;
@@ -19825,8 +19533,7 @@ var require_gitalk = __commonJS({
             }
             function parseTime(timeString) {
               var captures = timeString.match(timeRegex);
-              if (!captures)
-                return null;
+              if (!captures) return null;
               var hours = parseTimeUnit(captures[1]);
               var minutes = parseTimeUnit(captures[2]);
               var seconds = parseTimeUnit(captures[3]);
@@ -19839,11 +19546,9 @@ var require_gitalk = __commonJS({
               return value && parseFloat(value.replace(",", ".")) || 0;
             }
             function parseTimezone(timezoneString) {
-              if (timezoneString === "Z")
-                return 0;
+              if (timezoneString === "Z") return 0;
               var captures = timezoneString.match(timezoneRegex);
-              if (!captures)
-                return 0;
+              if (!captures) return 0;
               var sign = captures[1] === "+" ? -1 : 1;
               var hours = parseInt(captures[2]);
               var minutes = captures[3] && parseInt(captures[3]) || 0;
@@ -27731,8 +27436,7 @@ var require_gitalk = __commonJS({
             };
             function formatRelative(token, date, baseDate, options) {
               var format = formatRelativeLocale[token];
-              if (typeof format === "function")
-                return format(date, baseDate, options);
+              if (typeof format === "function") return format(date, baseDate, options);
               return format;
             }
           },
@@ -33677,8 +33381,7 @@ var require_gitalk = __commonJS({
             };
             function ordinalNumber(dirtyNumber, dirtyOptions) {
               var number = Number(dirtyNumber);
-              if (number <= 0 || number > 10)
-                return number;
+              if (number <= 0 || number > 10) return number;
               var options = dirtyOptions || {};
               var unit = String(options.unit);
               var isFemale = ["year", "hour", "minute", "second"].indexOf(unit) >= 0;
@@ -55114,8 +54817,7 @@ var require_gitalk = __commonJS({
             var getQL = function getQL2(vars, pagerDirection) {
               var cursorDirection = pagerDirection === "last" ? "before" : "after";
               var ql = "\n  query getIssueAndComments(\n    $owner: String!,\n    $repo: String!,\n    $id: Int!,\n    $cursor: String,\n    $pageSize: Int!\n  ) {\n    repository(owner: $owner, name: $repo) {\n      issue(number: $id) {\n        title\n        url\n        bodyHTML\n        createdAt\n        comments(" + pagerDirection + ": $pageSize, " + cursorDirection + ": $cursor) {\n          totalCount\n          pageInfo {\n            " + (pagerDirection === "last" ? "hasPreviousPage" : "hasNextPage") + "\n            " + (cursorDirection === "before" ? "startCursor" : "endCursor") + "\n          }\n          nodes {\n            id\n            databaseId\n            author {\n              avatarUrl\n              login\n              url\n            }\n            bodyHTML\n            body\n            createdAt\n            reactions(first: 100, content: HEART) {\n              totalCount\n              viewerHasReacted\n              pageInfo{\n                hasNextPage\n              }\n              nodes {\n                id\n                databaseId\n                user {\n                  login\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n  ";
-              if (vars.cursor === null)
-                delete vars.cursor;
+              if (vars.cursor === null) delete vars.cursor;
               return {
                 operationName: "getIssueAndComments",
                 query: ql,
@@ -55230,8 +54932,7 @@ var require_gitalk = __commonJS({
                 var index = 0;
                 var iterFn = getIterFn(O);
                 var length, result, step, iterator;
-                if (mapping)
-                  mapfn = ctx(mapfn, aLen > 2 ? arguments[2] : void 0, 2);
+                if (mapping) mapfn = ctx(mapfn, aLen > 2 ? arguments[2] : void 0, 2);
                 if (iterFn != void 0 && !(C == Array && isArrayIter(iterFn))) {
                   for (iterator = iterFn.call(O), result = new C(); !(step = iterator.next()).done; index++) {
                     createProperty(result, index, mapping ? call(iterator, mapfn, [step.value, index], true) : step.value);
@@ -55254,10 +54955,8 @@ var require_gitalk = __commonJS({
             var $defineProperty = __webpack_require__(16);
             var createDesc = __webpack_require__(39);
             module2.exports = function(object, index, value) {
-              if (index in object)
-                $defineProperty.f(object, index, createDesc(0, value));
-              else
-                object[index] = value;
+              if (index in object) $defineProperty.f(object, index, createDesc(0, value));
+              else object[index] = value;
             };
           }
           /******/
