@@ -11,6 +11,5 @@ node_modules
 docs
 .obsidian/plugins/remember-cursor-position/cursor-positions.json
 
-private/
 .obsidian/plugins/copilot/data.json
 .vitepress/cache
