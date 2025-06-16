@@ -18,17 +18,28 @@ jobs:
         with:
           fetch-depth: 0
           ref: gh_action_branch
-      - uses: actions/setup-node@v4
+      
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8 # 使用您项目的 PNPM 版本
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 16
-          cache: npm
-      - run: npm ci
+          cache: 'pnpm' # 修改为 PNPM 缓存
+      
+      # 使用 PNPM 替代 NPM
+      - run: pnpm install --frozen-lockfile # 严格使用 lockfile
       - name: Build
-        run: npm run docs:build
+        run: pnpm run docs:build # 使用 pnpm 运行脚本
+      
       - uses: actions/configure-pages@v2
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
+      
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
