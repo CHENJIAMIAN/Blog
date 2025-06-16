@@ -22,7 +22,7 @@ jobs:
       - name: Install PNPM
         uses: pnpm/action-setup@v2
         with:
-          version: 8 # 使用您项目的 PNPM 版本
+          version: 9 # 使用您项目的 PNPM 版本
       
       - name: Set up Node.js
         uses: actions/setup-node@v4
