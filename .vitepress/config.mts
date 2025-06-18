@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress"
 import { getSideBar } from "vitepress-plugin-autobar"
+import linkProcessorPlugin from './plugins/linkProcessor'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -7,6 +8,10 @@ export default defineConfig({
     lang: "zh",
     title: "CHENJIAMIAN",
     description: "个人博客",
+    vite: {
+        plugins: [linkProcessorPlugin({ debug: true }),
+        ]
+    },
     head: [
         ['meta', { name: 'keywords', content: '技术博客,前端开发,JavaScript,Vue,React,Cesium,WebGL,WebGPU' }],
         ['meta', { property: 'og:type', content: 'website' }],
@@ -14,7 +19,7 @@ export default defineConfig({
         ['meta', { property: 'og:image', content: 'https://chenjiamian.github.io/Blog//og-image.jpg' }],
         ['link', { rel: 'canonical', href: 'https://chenjiamian.github.io/Blog/' }]
     ],
-    
+
     // 站点地图配置
     sitemap: {
         hostname: 'https://chenjiamian.github.io/Blog/',
