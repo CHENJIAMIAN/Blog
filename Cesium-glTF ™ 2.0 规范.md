@@ -1,6 +1,7 @@
 # glTF ™ 2.0 规范
 
 目录
+```markdown
 - [1.前言](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#foreword)
 - [2.简介](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction)
   - [2.1. 一般的](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#introduction-general)
@@ -115,6 +116,7 @@
   - [C.3. 线性插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#interpolation-lerp)
   - [C.4. 球面线性插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#interpolation-slerp)
   - [C.5. 三次样条插值](https://github.com/KhronosGroup/glTF/blob/main/specification/2.0/Specification.adoc#interpolation-cubic)
+```
 
 |   |   |
 |---|---|
