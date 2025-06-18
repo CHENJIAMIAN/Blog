@@ -43,6 +43,7 @@ app.mount('#app');
 ```
 
 ### 编译器宏（compiler macros）
+```markdown
 1. **`defineProps`**
    - 作用：用于声明组件的 props。
    - 示例：
@@ -144,6 +145,8 @@ app.mount('#app');
      const count = ref(0)
      const doubleCount = computed(() => count.value * 2)
      </script>
+```
+
 ### 类型检查
 ```vue
 <script lang="ts">  
