@@ -17,7 +17,7 @@ jobs:
       
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Create temporary folder
         run: |
@@ -28,7 +28,7 @@ jobs:
         run: cp -r * ../tmp111/
         
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: gh_action_branch
 
@@ -45,25 +45,27 @@ jobs:
           git status
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
-          cache: 'npm'
+          node-version: 18
+          cache: 'pnpm' # 修改为 PNPM 缓存
 
       - name: Install dependencies
         run: npm install
 
+      # 使用 PNPM 替代 NPM
+      - run: pnpm install --frozen-lockfile # 严格使用 lockfile
       - name: Build
-        run: npm run docs:build
+        run: pnpm run docs:build # 使用 
 
       - name: Configure Pages
         uses: actions/configure-pages@v2
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
 
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
