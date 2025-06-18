@@ -14,11 +14,7 @@ export default defineConfig({
         ['meta', { property: 'og:image', content: 'https://chenjiamian.github.io/Blog//og-image.jpg' }],
         ['link', { rel: 'canonical', href: 'https://chenjiamian.github.io/Blog/' }]
     ],
-    markdown: {
-        // 禁用 Markdown 文件中的 HTML 标签解析
-        // 这样 HTML 标签将被原样渲染，不会被处理
-        html: false,
-    },
+
     // 站点地图配置
     sitemap: {
         hostname: 'https://chenjiamian.github.io/Blog/',
