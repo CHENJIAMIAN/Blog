@@ -1,78 +1,6 @@
-## Blender
-```javascript
-模型  地编场景 ue交互开发
+ Paul Henschel ( [@0xca0a )，他是](https://twitter.com/0xca0a?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)[react-three-fiber](https://github.com/pmndrs/react-three-fiber)的主要维护者
+## 类图![AECA9D1EA33647C99D4A25A725166B5B](https://github.com/CHENJIAMIAN/Blog/assets/20126997/277600f2-03f5-495c-bec6-7dc3213bcb42)
 
-blender
-    同时修改多个物体数据//选中需要同时修改的物体,修改需要修改的数值,生效瞬间按住Alt即可
-    坐标轴//在中间顶部的工具图标按钮中切换坐标轴 
-    添加新的三维视图//在三维视图跟图层管理的 隔线 也即在三维视图的右上角 鼠标移上去 当鼠标形状变换时即可拖动 添加新的三维视图
-    视图的切换//通过波浪线进行视图的切换 比如切换为俯视图
-    按x键删除物体 
-    有的时候导入模型太小看不见。那么就全选按A键),然后放大20_30次n按S
-```
-## 3D格式
-```javascript
-实际上有数百种 3D 文件类型可用，因为每个 3D 软件程序都有自己的文件类型，并针对该特定软件进行了优化。例如，Blender 有 BLEND，AutoCAD 有 DWG，Clo 有 .zprj，Browzwear 有 .bw，仅举几例。
-
-那如何转换？//用中性（或开源） 3D 文件格式或 FBX。虽然 FBX 是专有格式，但许多软件程序都将其用作交换格式
-
-中性 3D 格式//如果您将 3D 文件转换太多次，就会出现问题。因此，您仍然需要从一开始就选择正确的中性 3d 格式，以避免不必要的转换
-    gLTF/GLB// gLTF/GLB 是一种中立的开源格式。Khronos Group为 3D 网络、AR、VR、游戏和 3D 广告创建了这种格式。这是第一个真正定义明确的 3D 标准。此文件格式支持几何、材料、纹理、颜色和动画。这包括PBR（基于物理的渲染），因此阴影和光线会显得更加逼真。    gLTF 基于 JSON，因此它将一些数据存储在外部文件中，例如纹理（JPEG 或 PNG）、着色器 (GLSL) 或几何和动画数据 (BIN)。GLB 文件在内部存储所有这些数据。Khronos 小组正在不断改进和更新这种文件格式。它正迅速成为 3D 购物的标准。
-    FBX// FBX方案是最好的互导方案,FBX 是专有的 3D 文件格式。Kardara 最初开发了这种格式。AutoDesk 随后于 2006 年购买了它们并继续支持 FBX。它广泛应用于电影和视频游戏行业。它支持几何、外观（颜色和纹理）以及动画（骨骼和变形）。FBX 最常用于动画，用作不同程序（如 Maya、3DSMax、AutoCAD、Roman's CAD 等）之间的交换格式。
-    OBJ//当用作 ASCII 变体时，OBJ 是一种中性 3D 格式。但是，当用作二进制变体时，它是专有的。3D 打印、图形和 3D 扫描都使用这种文件格式，部分原因是它能够存储几何图形以及颜色和纹理信息。此文件格式将颜色和纹理信息存储在扩展名为 .MTL 的单独文件中。OBJ 不支持动画，但它是最流行的 3D 图形交换格式之一。
-    USDZ/USD// Apple 和 Pixar 开发了 USDZ/USD。它是专有的 3D 文件格式，主要用于 iOS 设备上的增强现实。这种文件格式在 3D 商务中最为流行，因为您可以使用这种格式在 iPhone 上放置和试用 3D 模型。
-    STL// 这种 3D 文件格式最常用于 3D 打印。它是一种中性的 3D 文件格式。这种文件格式只存储几何信息。
-    STEP (.STP)//工程和国防工业使用 STEP。它是一种中性的 3D 文件格式。这种文件格式可以存储所有几何形状，包括拓扑和几何公差、材料类型、纹理和其他复杂的产品数据。
-   (.dae)COLLADA//Khronos 集团创建, 另一种中性 3D 文件格式。此文件格式存储几何、外观、场景和动画。它也是少数支持物理和运动学的格式之一。虽然曾经被大量使用，COLLADA由于未能跟上新技术，随着时间的推移变得越来越不受欢迎。Khronos Group 选择不更新此格式，而是创建了新格式 GLTF。
-```
-## 总结Draco的压缩原理
->Draco支持多种3D图形数据格式，包括点云、三角网络格式和多边形网络格式。
-### 核心思想
-```js
-1.  去除冗余信息
-2.  利用数据本身的特征//例如，如果数据中有连续的相同值，可以将这些值替换为一个值和一个计数器，从而减少数据的大小。哈夫曼编码
-```
-### 对不同3D图形数据格式的压缩有什么区别
-```
-1. 对点云数据，压缩算法通常会对所有点进入顺序，然后利用点之间的相似性进入压缩。来说压缩的效果也比较好。
-2. 对三角网数据，压缩算法会优先考量与边缘相近的三角形，因为它更有可能共享顶部点和法锥量。缩小效果也会提高。
-3. 对多边形网络数据，压缩算法会优先考量相关的界面结构，以及界面之间的拓击关系，以方便更好地利用公共网络包容的点、边。数据通用工具有很高的分离率和复杂性，因此压缩算法需要更多的复杂和精细才能取得比较好的压缩效果。
-```
-### 三种3D图形数据格式的压缩原理
-```
-1. 点云数据的压缩原理
-点云数据是一系列的点构成的数据结构，它的压缩通常是基于点的属性和几何形状的局部性，利用点之间的相似性进行压缩。它的原理如下：
-（1）点云数据的排序：点云数据的每一个点都有3D坐标和颜色信息。在数据压缩前，需要对点进行排序，将相邻的点放在一起。排序算法一般采用哈希或BSP树等方法。
-（2）点云数据的精简：由于点云数据本身就比较小，一般不需要精简。如果需要精简，则可以基于点之间的距离、几何形状和表面拓扑关系等进行压缩。常用的压缩方法有基于Octree的压缩和基于RANSAC的压缩。
-
-2.三角网格数据的压缩原理
-三角网格是由一系列三角形构成的数据结构，它的压缩需要考虑各个三角形的拓扑关系，利用共享的点和法矢量进行压缩，其原理如下：
-（1）三角网格的划分：三角网格数据通常被分为许多小块，然后对每个小块进行压缩。
-（2）表面重建：在压缩前，需要对三角网格进行表面重建。表面重建就是从离散的点云数据中还原表面的拓扑结构。表面重建的方法有Marching Cubes算法和Surface Reconstruction算法等。常用的表面重建工具包括CGAL和PCL等。
-（3）三角网格的压缩：三角网格数据的压缩可以基于量化误差和哈夫曼编码等原理。常用的压缩方法有LZ77和LZ78等。
-
-3.多边形网格数据的压缩原理
-多边形网格是由一系列多边形（可以是任意形状）构成的数据结构，它的压缩需要考虑各个面之间的拓扑关系。多边形网格数据通常具有很高的分辨率和复杂性，因此压缩算法需要更加复杂和精细才能取得较好的压缩效果。其原理如下：
-（1）网格数据的分解：将网格数据分解为多个小块，然后分别压缩。
-（2）网格数据的离散化：对网格数据进行离散化，将连续的几何信息转化为离散的数值。一般来说，离散化是基于小块的局部信息进行的，可以选择基于边长、角度和曲率等进行离散化。
-（3）网格数据的压缩：压缩算法可以利用网格数据之间的相似性进行压缩，例如共享的点、边和面等。常用的压缩方法有基于哈夫曼编码和基于小波变换的压缩方法等。
-```
-
-## 类图
-![](images/AECA9D1EA33647C99D4A25A725166B5B.png)
-## Web3D
-```javascript
-HT for Web 提供了一套独特的 WebGL 层抽象，将 Model–View–Presenter (MVP) 的设计模型延伸应用到了 3D 图形领域
-    //和类似的JavaScript库（如three.js）一样，包含ht的js库文件，即可使用ht js API开发。
-    //HT还支持导入IFC格式的BIM模型文件生成场景，此外还支持3D Tiles格式的倾斜摄影模型文件, Map Tiles
-    //BIM模型文件一般较大较重，不利于直接在浏览器中运行。HT 提供了一项高级功能来轻量化 BIM 模型，从而更快地在 Web 上加载。
-    //发动机模型是设计师通过 3ds Max 建模，然后导出 obj 与 .MTL文件来定义材质，在 HT 中解析 obj 与 mtl 文件生成 3D 场景中可用的模型
-    //该 3d 场景中所有的模型均为线段和六面体搭建，相比较通过 3d Max 建模然后通过 obj 导入来说场景中的三角面会少很多，更加的轻量化
-    //HT 的 3d 编辑器进行搭建，场景中的模型有些是通过 HT 建模，有些通过 3dMax 建模，之后导入 HT 中，场景中的地面白色的灯光，是通过 HT 的 3d 编辑器进行地面贴图呈现出来的效果
-    //我们建议客户提供卫星图像、设计草图、物业鸟瞰图、CAD图纸、现场照片等给设计师进行建模。
-    //以前只能靠 Unity3D/Unreal 游戏引擎实现的 3D/VR 项目，现在慢慢能让 Web 开发人员驾驭，更好的与其他 Web 业务系统融合，
-    //毕竟用 Unity3D/Unreal 游戏引擎开发整个业务系统是比较反人类，相信 Web 承担越来越重度的渲染呈现应用是不可逆的趋势
-```
 ## three.js
 ```js
 Three.js中级封装做3D, 万物皆三角形
@@ -81,6 +9,8 @@ Three.js中级封装做3D, 万物皆三角形
     坐标系: 世界空间和局部空间
     
 最小例子：https://github1s.com/johnson2heng/GitChat-Three.js/blob/master/01%E7%AC%AC%E4%B8%80%E8%8A%82%20helloWorld/index.html#L50
+
+WebGLRenderer 中的 WebGL 1 支持现已弃用，并将在 r163 中删除。只支持webgl2了
 ```
 ## 调试
 ```js
@@ -90,20 +20,12 @@ Three.js中级封装做3D, 万物皆三角形
         import Stats from 'three/examples/jsm/libs/stats.module';
         stats = new Stats();
         document.body.appendChild(stats.dom);
-    滑块实时调参
-        import dat from 'three/examples/jsm/libs/dat.gui.module';    
-        2.const gui = new dat.GUI();
-          const datas= {  X:0, Y:0,Z:0 } //监听项
-          const f1 = gui.addFolder('柜子和门');//分组
-                //最简单  
-                f1.add(mesh.position, 'x', -1000, 1000);
-                //复杂
-                f1 .add(datas, "X", -1000, 1000).name('相机X').onChange(()=> mesh.position.set(datas.positionX, datas.positionY, datas.positionZ)  );                
-                f1.open();
+        
     辅助对象 Helper
         1、ArrowHelper 箭头辅助对象        2、AxesHelper 轴坐标系辅助对象(常用,看原点在哪里)
         3、BoxHelper 包围盒辅助对象        4、Box3Helper 模拟3维包围盒辅助对象
-        5、CameraHelper 相机视锥体辅助对象( camera : Camera被模拟的相机 )        6、DirectionalLightHelper 平行光的辅助对象
+        5、CameraHelper 相机视锥体辅助对象( camera : Camera被模拟的相机 )        
+        6、DirectionalLightHelper 平行光的辅助对象
         7、GridHelper 坐标网格辅助对象        8、PolarGridHelper 极坐标格辅助对象
         9、HemisphereLightHelper 半球形光源网格辅助对象        10、PlaneHelper 平面辅助对象
         11、PointLightHelper 点光源菱形网格辅助对象        12、SpotLightHelper 聚光灯锥形辅助对象
@@ -119,6 +41,19 @@ Three.js中级封装做3D, 万物皆三角形
     document.body.appendChild(renderer.domElement);
     动画循环调用renderer.render(scene, camera);
 ```
+### 色调映射 renderer.toneMapping = THREE.ACESFilmicToneMapping;
+1. 一种在渲染过程中将高动态范围（High Dynamic Range, HDR）图像转换为低动态范围（Low Dynamic Range, LDR）图像的技术。
+2. 在计算机图形学中，颜色通常以线性空间进行处理，以准确地表示光照和颜色的叠加、混合和计算。然而，显示设备（例如计算机显示器）通常使用伽马矫正（Gamma Correction）来将线性空间的颜色值转换为非线性空间，以适应人眼对亮度的感知特性。
+	1. 人眼对亮度的感知也是非线性的，较低亮度的变化更为敏感，而较高亮度的变化则相对不太敏感。
+	2. **伽马校正**的目的是将图像的亮度值进行**非线性变换**，以使其在显示设备上呈现出线性感知。
+3. 高动态范围图像捕捉到了现实世界中广泛的亮度和颜色细节，但直接在标准显示设备上显示会导致过曝（Overexposure）或细节丢失。
+4. 算法
+	1. **LinearToneMapping**：线性色调映射保持颜色的原始比例，不进行任何调整。这种映射适合那些已经预调整好颜色的模型，或者在你希望保持最原始颜色时使用。
+	2. **ReinhardToneMapping**：Reinhard色调映射是一种比较自然的映射方式，它能较好地平衡高光和暗部细节。适用于大多数场景，特别是那些需要较为真实感的场景。
+	3. **Uncharted2ToneMapping**：这种映射模仿了游戏《神秘海域2》中的色调映射算法。它提供了一种动态范围广泛且对比度高的效果，适合需要强烈视觉冲击的场景。
+	4. **CineonToneMapping**：这种映射模拟电影胶片的色彩，适合想要电影感或者复古感的场景。
+	5. **ACESFilmicToneMapping**：模拟了ACES工作流中使用的色调映射。它能提供富有电影感的色彩和对比度，适合追求电影级视觉效果的场景。
+
 ## 曲线
 ```js
 曲线
@@ -144,6 +79,7 @@ Three.js中级封装做3D, 万物皆三角形
     OrthographicCamera正交//类似某一方向来个截图
     相机插件//https://github.com/mrdoob/three.js/blob/master/examples/js/controls/OrbitControls.js
         OrbitControls 轨道控制器,让相机可以放近放远, 可以360°绕着物体看, 方便调试'没有它鼠标操作什么反应都没有'
+		   `controls.enableDamping = true;`启用阻尼效果
         DeviceOrientationControls 陀螺仪相机控制器，实现移动端陀螺仪控制相机。
         DragControls 控制鼠标拖拽移动物体的功能。
         EditorControls 实现相机的旋转，缩放，平移功能，相对于OrbitControls的功能差不少，不建议使用
@@ -155,6 +91,7 @@ Three.js中级封装做3D, 万物皆三角形
         TransformControls 控制模型位置，缩放，旋转的控制器
         VRControls 实现VR双屏相机控制器 
 ```
+
 ## Layer/scene/Object
 ```js
 Layer
@@ -213,9 +150,9 @@ Layer
         可以用作scene的背景,
         scene.background = new RGBELoader()
 	        .setPath( 'textures/' )
-	        .load( 'royal_esplanade_1k.hdr', 
-			        ()=>{hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;} 
-				 ); 
+	        .load( 'royal_esplanade_1k.hdr', ()=>{
+				        hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;/*全景反射映射*/
+				}); 
 ```
 ## 精灵Sprite/粒子points
 ```
@@ -251,7 +188,7 @@ Geometry和BufferGeomety内置了一些常用的方法:
     RectAreaLight=> 条形照明或明亮的窗户
     SpotLight=> 聚光灯
     
-    AmbientLight从各个方向向每个对象添加恒定数量的光。
+    AmbientLight环境光从各个方向向每个对象添加恒定数量的光。
         new THREE.AmbientLight( 0x404040 ); // 创建一个灰色的环境光 
     HemisphereLight天空颜色和地面颜色之间的渐变 ，可用于模拟许多常见的照明场景。//环境光会影响场景中的所有对象。因此，无需为场景添加多个环境光
 
@@ -317,6 +254,21 @@ Geometry和BufferGeomety内置了一些常用的方法:
             renderer.render(scene, camera);
         }
 ```
+
+## 选中物体
+在计算机图形学中，通过 GPU 选择物体是一种常见的技术，通常用于处理用户与 3D 场景中的物体进行交互的情况，例如点击或拖动物体。以下是一种常用的方法——颜色编码（Color Picking）方法。
+#### 颜色编码（Color Picking）性能高,但无法处理透明物体
+颜色编码是一种使用 GPU 来选择物体的常用技术。基本步骤如下：
+1. **渲染阶段**：首先，你需要为场景中的每个物体分配一个唯一的颜色。然后，在渲染阶段，你将这些颜色（而不是物体的实际颜色）渲染到一个隐藏的帧缓冲区（不显示给用户）。
+2. **选择阶段**：当用户点击屏幕时，你可以检查隐藏的帧缓冲区在点击位置的颜色。然后，你就可以通过这个颜色找回之前分配给物体的唯一颜色，从而确定用户点击的是哪个物体。
+这种方法的优点是实现简单，执行速度快。但是，**它的缺点是不能处理透明物体**，因为颜色混合会破坏唯一颜色的特性。
+#### 射线追踪（Ray Tracing）性能低
+另一种常见的方法是射线追踪。这种方法不依赖于颜色编码，而是通过几何计算来确定用户点击的物体。步骤如下：
+1. **射线投射**：首先，你需要从相机位置，通过用户点击的屏幕位置，向场景中投射一条射线。
+2. **射线检测**：然后，你需要检查这条射线是否与场景中的任何物体相交。可以使用各种方法来进行检测，例如，对于简单的形状（例如球或方块），可以使用解析方法。对于更复杂的形状，可能需要使用更复杂的算法，例如包围盒或 BVH 树。
+3. **选择物体**：如果射线与多个物体相交，通常选择最近的物体作为用户点击的物体。
+射线追踪方法的优点是可以处理透明物体，而且不受颜色编码方法的颜色数量限制。但是，如果场景中的**物体数量或复杂度很高，射线追踪可能会比颜色编码更消耗计算资源。**
+
 ## 场景交互
 ```js
 场景交互
@@ -398,7 +350,7 @@ Geometry和BufferGeomety内置了一些常用的方法:
             for (let i = 0; i < modelsList.length; i++) {modelsList[i].component.material = modelsList[i].normalMaterial;}
         }
 ```
-## EffectComposer效果合成器
+## EffectComposer
 ```js
 EffectComposer（效果合成器）post-processing//应用一个或多个图形效果，例如景深、发光、胶片微粒或是各种类型的抗锯齿
     //https://r105.threejsfundamentals.org/threejs/lessons/resources/images/threejs-postprocessing.svg
@@ -437,38 +389,17 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
     const lineBasematerial = new THREE.LineBasicMaterial({ color: new THREE.Color(0.1, 0.3, 1), side: THREE.FrontSide, linecap: 'round', linejoin: 'round', });
     const line = new THREE.LineSegments(edges, lineBasematerial);
 
+WebGLRenderTarget 渲染目标: 是一种存在帧缓冲区中的纹理(计算结果)
+```
 
-```
-## 性能
-```js
-性能:
-    material/geometry.dispose(); //删除材质/几何体
-    使用merge方法合并不需要单独操作的模型
-        几何体mesh.updateMatrix(); //提取位置.position、缩放.scale和四元数.quaternion的属性值 转化为 变换矩阵设置本地矩阵属性.matrix        
-        geometry.merge(何体mesh.geometry, 几何体mesh.matrix); //将几何体合并
-    在循环渲染中避免使用更新：
-        //几何体：
-        geometry.verticesNeedUpdate = true; //顶点发生了修改
-        geometry.elementsNeedUpdate = true; //面发生了修改
-        geometry.morphTargetsNeedUpdate = true; //变形目标发生了修改
-        geometry.uvsNeedUpdate = true; //uv映射发生了修改
-        geometry.normalsNeedUpdate = true; //法向发生了修改
-        geometry.colorsNeedUpdate = true; //顶点颜色发生的修改
-        //材质
-        material.needsUpdate = true
-        //纹理
-        texture.needsUpdate = true;
-```
 ## 坐标图
-![](images/969AD33FBF214276B7C464AE4082C7FF.png)
-## 加载器
-![](images/BA0EA8F56EAE409FB3DEEA8B980C5318.png)
+![969AD33FBF214276B7C464AE4082C7FF](https://github.com/CHENJIAMIAN/Blog/assets/20126997/5eee1112-3520-4497-a284-ec5a87e584c5)
 ## 模型加载(重点)
 ```js
-模型加载(重点)//常用的3d格式
-    问题: 导入到场景内的模型无法查看，而且也没有报错?
+问题: 导入到场景内的模型无法查看，而且也没有报错?
         尝试放大一千倍或者缩小一千倍来查看效果, 将模型居中到相机照射的焦点位置查看
-    1.GLTFLoader(官方推荐)//const loadedData = await loader.loadAsync('path/to/yourModel.glb');
+        
+1.GLTFLoader(官方推荐)//const loadedData = await loader.loadAsync('path/to/yourModel.glb');
         //由于glTF专注于传输，因此它的传输和解析的速度都很快。glTF模型功能包括：网格，材质，纹理，蒙皮，骨骼，变形动画，骨骼动画，灯光以及相机。
         在传输到前端的过程中，通常可能传输gltf文件、附属的.bin文件（存储二进制数据）、图片纹理文件（.jpg或.png格式）等
         glTF 导出格式有两种后缀格式可供选择：'.gltf' 和 '.glb'    
@@ -481,12 +412,13 @@ EffectComposer（效果合成器）post-processing//应用一个或多个图形�
     //Draco 是 Google 推出的一个用于 3D 模型压缩和解压缩的工具库    
     
     //如果当前的首选不是glTF格式，那么推荐Three.js定期维护并且流行的格式FBX，OBJ或者COLLADA格式，Three.js也有自己独有的JSON格式
-    2.'.json' new ObjectLoader().parse(obj) //加载.json格式, 3d对象.toJSON()转成JSON
-    3.'.obj'  OBJ格式模型导入      
-        OBJ文件的导出通常会和MTL格式一同导出，MTL作为OBJ文件的附属文件，却有着OBJ文件需要贴图材质        
-    4.FBX模型导入        
-    5.(.dae)COLLADA模型导入      
+2.'.json' new ObjectLoader().parse(obj) //加载.json格式, 3d对象.toJSON()转成JSON
+3.'.obj'  OBJ格式模型导入      
+	OBJ文件的导出通常会和MTL格式一同导出，MTL作为OBJ文件的附属文件，却有着OBJ文件需要贴图材质        
+4.FBX模型导入        
+5.(.dae)COLLADA模型导入  
 ```
+
 ## canvas
 ```javascript
 canvas
@@ -524,19 +456,27 @@ src\renderers\WebGLRenderer.js
 ```
 
 ## PostEffect
-1. MSAA：多重采样抗锯齿，用于平滑图像边缘并减少锯齿。
-2. Color Correction：色彩校正，用于调整图像颜色、亮度和对比度等属性。
-3. Bloom：泛光效果，用于模拟明亮物体周围的光晕效果。
-4. SSAO：屏幕空间环境光遮蔽，用于模拟物体之间的阴影和光线反射效果。
-5. SSR：屏幕空间反射，用于模拟物体表面的反射效果。
-6. DOF：景深效果，用于模拟镜头聚焦和模糊效果。
-7. FXAA：快速近似抗锯齿，用于平滑图像边缘并减少锯齿。
-8. ChromaticAberration：色差，用于模拟镜头成像时不同颜色光线的折射效果。
-9. Vignetting：暗角效果，用于在图像边缘添加暗影效果。
-10. BlurEdge：边缘模糊，用于模拟镜头成像时边缘模糊效果。
-11. Film：胶片效果，用于模拟老式胶片的颜色和质感。
-12. Glow：发光效果，用于模拟物体周围的光晕效果。
-13. Lensflare：镜头光晕，用于模拟镜头成像时光晕效果。
+1. MSAA：多重采样抗锯齿，用于平滑图像边缘并减少锯齿。基于硬件，对性能的影响相对较小。THREE.WebGLRenderer({ antialias: true, });
+2. FXAA：快速近似抗锯齿，用于平滑图像边缘并减少锯齿。对性能的影响较小，但可能会导致一些细节的模糊或失真。
+3.  SMAA (Subpixel Morphological Anti-Aliasing): 亚像素形态抗锯齿，通过组合多种算法来减少锯齿效果。它使用子像素分析和形态滤波等技术来识别和模糊锯齿边缘。SMAA相对于FXAA提供了更高的图像质量，但对性能的要求也更高。
+4. Color Correction：色彩校正，用于调整图像颜色、亮度和对比度等属性。
+5. Bloom：泛光效果，用于模拟明亮物体周围的光晕效果。
+7. SSAO：屏幕空间环境光遮蔽，用于模拟物体之间的阴影和光线反射效果。
+	1. 与光线追踪相比区别是一次渲染和多次渲染
+8. SSR：屏幕空间反射，用于模拟模拟镜面反射效果的反射效果。
+	- **使用镜面纹理**：
+	    - 优点：在平面上呈现完美的反射。
+	    - 缺点：仅限于一个反射方向，并且复杂性根据场景的几何形状而增加。
+	- **SSR后处理的使用**：
+	    - 优点：使所有方向上的所有反射成为可能，并且复杂性仅取决于屏幕分辨率（就像所有后处理一样）。
+	    - 缺点：仅限于相机看到的内容。
+9. DOF：景深效果，用于模拟镜头聚焦和模糊效果。
+10. ChromaticAberration：色差，用于模拟镜头成像时不同颜色光线的折射效果。
+11. Vignetting：暗角效果，用于在图像边缘添加暗影效果。
+12. BlurEdge：边缘模糊，用于模拟镜头成像时边缘模糊效果。
+13. Film：胶片效果，用于模拟老式胶片的颜色和质感。
+14. Glow：发光效果，用于模拟物体周围的光晕效果。
+15. Lensflare：镜头光晕，用于模拟镜头成像时光晕效果。
 
 ## 贴图
 1. 贴图（Texture）：是将图像贴在3D模型表面的一种技术，可以为模型添加颜色、纹理、图案等效果。
@@ -550,3 +490,140 @@ src\renderers\WebGLRenderer.js
 9. 环境贴图（Environment Map）：是一种用于模拟物体周围环境的贴图，可以为模型添加反射和折射效果。
 10. 光照贴图（Light Map）：是一种用于模拟物体表面光照效果的贴图，可以为模型添加阴影和明暗效果。
 11. 环境光遮蔽贴图（Ambient Occlusion Map）：是一种用于模拟物体表面遮蔽效果的贴图，可以为模型添加阴影和明暗效果。
+## 原理
+1. 灯光颜色的作用原理是灯光颜色和物体颜色去乘积
+2. threejs如何判断一个面是正明还是反面? 规定: 看过去的三角形的顶点顺序是逆时针为正面
+3. 更改position有时并不会生效, 因为用的可能是matrixworld去设置位置, 所以要先obj.updateMatrix() 再 obj.updateMatrixworld()
+4. threejs认识鼠标位置的方式是: 以画布中心点为圆心的单位坐标系
+5. group.add的物体位置是相对父级而言的, 而group.attach的物体的位置相对于原点
+6. opacity的本质是改    vec4 diffuseColor = vec4( diffuse, opacity );
+7. layers.mask 的作用
+	1. 例如 mask = 11 （表现为二进制共32位`0000 0000 0000 0000 0000 0000 0000 1011`) 一位代表一个图层
+	2. lastLayer.mask >> 某位 !== 0 可以判断某位被使用(即某层被使用)
+## 渲染原理
+```js
+WebGLRenderer.render (three.module.js:29847)  
+	projectObject
+	renderTransmissionPass
+		renderObjects (three.module.js:30180)  
+			renderObject (three.module.js:30211)  
+				WebGLRenderer.renderBufferDirect (three.module.js:29336)
+	renderScene (three.module.js:30031)  
+		renderObjects (three.module.js:30180)  
+			renderObject (three.module.js:30211)  
+				WebGLRenderer.renderBufferDirect (three.module.js:29336)
+
+### `this.renderBufferDirect`
+- 功能是将给定的几何体、材质和对象渲染到场景中。
+- 负责处理渲染的各种细节，包括设置着色器程序、处理材质、计算绘制范围、选择渲染模式和执行渲染等。
+- 
+1. **处理场景参数**：
+   if ( scene === null ) scene = _emptyScene;
+   - 如果传入的 `scene` 参数为 `null`，则使用一个空场景 `_emptyScene`。
+2. **确定面朝向**：
+   const frontFaceCW = ( object.isMesh && object.matrixWorld.determinant() < 0 );
+   - 计算对象的面朝向，判断其是否为顺时针（CW）方向。
+3. **设置着色器程序**：
+   const program = setProgram( camera, scene, geometry, material, object );//在此通过gl.shaderSource得到glsl源码
+   - 根据相机、场景、几何体、材质和对象设置当前的着色器程序。
+4. **设置材质状态**：
+   state.setMaterial( material, frontFaceCW );
+   - 更新渲染状态以使用指定的材质。
+5. **处理索引和绘制范围**：
+   let index = geometry.index;
+   let rangeFactor = 1;
+
+   if ( material.wireframe === true ) {
+       index = geometries.getWireframeAttribute( geometry );
+       if ( index === undefined ) return;
+       rangeFactor = 2;
+   }
+   - 根据材质的类型（如线框模式）处理几何体的索引和绘制范围。
+6. **计算绘制起始和结束范围**：
+   let drawStart = drawRange.start * rangeFactor;
+   let drawEnd = ( drawRange.start + drawRange.count ) * rangeFactor;
+
+   // 进一步调整 drawStart 和 drawEnd
+   - 计算实际的绘制起始和结束位置，确保它们在有效范围内。
+7. **设置绑定状态**：
+   bindingStates.setup( object, material, program, geometry, index );
+   - 设置与对象、材质和程序相关的绑定状态。
+8. **选择渲染器**：
+   let renderer = bufferRenderer;
+
+   if ( index !== null ) {
+       attribute = attributes.get( index );
+       renderer = indexedBufferRenderer;
+       renderer.setIndex( attribute );
+   }
+   - 根据几何体是否有索引来选择合适的渲染器。
+9. **设置绘制模式**：
+   if ( object.isMesh ) {
+       renderer.setMode( material.wireframe === true ? _gl.LINES : _gl.TRIANGLES );
+   } else if ( object.isLine ) {
+       // 处理线的模式
+   } else if ( object.isPoints ) {
+       renderer.setMode( _gl.POINTS );
+   } else if ( object.isSprite ) {
+       renderer.setMode( _gl.TRIANGLES );
+   }
+   - 根据对象的类型（网格、线、点或精灵）设置渲染模式。
+10. **执行渲染**：
+    if ( object.isBatchedMesh ) {
+        // 处理批量渲染
+    } else if ( object.isInstancedMesh ) {
+        // 处理实例化渲染
+    } else if ( geometry.isInstancedBufferGeometry ) {
+        // 处理实例化缓冲几何体
+    } else {
+        renderer.render( drawStart, drawCount );
+    }
+    - 根据对象的类型执行相应的渲染操作，包括批量渲染、实例化渲染或普通渲染。
+    ```
+
+## 踩坑
+1. `THREE.NumberKeyframeTrack( '.material.map.offeset.x',`是不支持的, 只支持两级的属性, 如 `THREE.NumberKeyframeTrack( '.material.opacity`
+2. 加载的glb看起来很暗?
+	1. 是的，你的理解是正确的。在 `physicallyCorrectLights` 设置为 `false` （默认设置）时，Three.js 会使用一个简化的光照模型。在这个模型中，平行光源（`THREE.DirectionalLight`）的光线强度不会随着距离的增加而衰减。无论光源离物体有多远，光的强度和颜色都保持不变。但是，如果你把 `physicallyCorrectLights` 设为 `true`，Three.js 将使用一个物理光照模型。在这个模型中，光的强度会随着距离的平方增加而减小，这更符合现实世界的光线传播规则。然而，对于平行光源，由于它们模拟的是实际上相当远的光源（例如太阳），因此即使在物理正确的模式下，光强也不会随距离而衰减，因为其光线被视为平行且不衰减。
+3. 都已经obj.material.color.clone()了, 为什么颜色还是变得跟原来不一样了?
+	1. 在 Three.js 中，多个 Mesh 对象可以共享相同的材质。在这种情况下，如果你改变其中一个 Mesh 对象的材质颜色，那么所有使用这个材质的 Mesh 对象的颜色都将改变，因为它们实际上是引用的同一个 Material 对象。
+4. 在同一平面z-fight怎么解决
+	1. 在Three.js中，当使用`polygonOffset`, `polygonOffsetFactor`, 和 `polygonOffsetUnits`属性时，底层实际上调用了WebGL的相关API来实现多边形偏移功能。这些API包括：
+		1. **`glEnable(GL_POLYGON_OFFSET_FILL)`**: 启用多边形偏移填充。在Three.js中，当你将`polygonOffset`设置为`true`时，这个WebGL状态被启用。这告诉WebGL在进行深度测试之前对多边形的深度值进行偏移。
+		2. **`glPolygonOffset(factor, units)`**: 设置多边形偏移的具体参数。在Three.js中，`polygonOffsetFactor`和`polygonOffsetUnits`属性分别对应于这个WebGL函数的`factor`和`units`参数。这个函数决定了深度值的偏移量，其中：
+			- `factor`（对应于`polygonOffsetFactor`）：影响深度偏移量与面相对于摄像机视线的角度的关系。
+			- `units`（对应于`polygonOffsetUnits`）：向最终的深度值添加一个固定的偏移量。
+	2. 简而言之, 设置越小, 越会被优先显示
+1. 更改directionalLight.shadow.mapSize是实时生效的吗
+	- // 设置新的阴影分辨率 
+	  directionalLight.shadow.mapSize.width = 1024; // 新的宽度 
+	  directionalLight.shadow.mapSize.height = 1024; // 新的高度 
+	  // **强制更新阴影贴图** 
+	  directionalLight.shadow.map = null;
+1. 机柜一团黑, 加了很多光了也有某些角度是一团黑的
+	1. 改色调映射的曝光强度就可以了 toneMappingExposure **但是所有材质的颜色会`*toneMappingExposure的值`如果是线性色调映射的话***
+2. 为什么在 `opacity` 为 0 且 `transparent` 为 `false` 的情况下，物体仍然显示出混合背景色的效果?
+	1. GPT: 根据最终着色器代码, 即使 `opacity` 为 0，`outgoingLight` 中的任何非零颜色值都可能导致最终的片段颜色不是完全透明的。这可能是物体显示混合背景色的原因，尤其是当存在环境光或其他光源效果时。
+	2. 实践是canvas.**getContext("webgl", { alpha: true })** 配置 WebGL 上下文的特性导致的
+	3. 另一个根源是机柜网孔贴图网孔的边缘毛刺是透明的, 经测试,只要是贴图的png图片中透明的部分都会与背景混色
+3. `OrbitControls` 边缩放边旋转
+	1. 新一个 `OrbitControls` 时, 没有调用旧的 `OrbitControls`的 `dispose`方法, 造成监听的方法没有销毁掉, 导致重复执行监听方法
+4. 添加带6个材质插槽的立方体
+```js
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const materials = [
+    new THREE.MeshBasicMaterial({ color: 0x3ec1d3, name: '右' }),  // 右侧
+    new THREE.MeshBasicMaterial({ color: 0xf6f7d7, name: '左' }),  // 左侧
+    new THREE.MeshBasicMaterial({ color: 0x355c7d, name: '上' }),  // 上面
+    new THREE.MeshBasicMaterial({ color: 0x6c5b7b, name: '下' }),  // 下面
+    new THREE.MeshBasicMaterial({ color: 0xff165d, name: '前' }),  // 前面
+    new THREE.MeshBasicMaterial({ color: 0xff9a00, name: '后' })   // 后面
+];
+
+const cube = new THREE.Mesh(geometry, materials);
+editor.addObject(cube);
+```
+1. transmissive 物体的透明度问题
+	1. doubleside会有影响
+	2. 都是transmissive才会一起比较
+2. alphaHash解决透明度问题rr

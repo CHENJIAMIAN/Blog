@@ -1,11 +1,12 @@
-name: deploy-pages
+name: Build and Deploy
+
 on:
-  workflow_dispatch: {}
   push:
     branches:
-      - gh_action_branch
+      - master
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -13,10 +14,10 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           ref: gh_action_branch
       
       - name: Install PNPM

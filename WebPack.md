@@ -1,42 +1,4 @@
-
-
-```javascript
-模块联邦：    
-    "在入口文件搜索webpack/sharing/consume/default/"即可看到共享的东西
-    http://localhost:3002/remoteEntry.js 的 getSingletonVersion打断点可以看到共享的react-dom库来自主APP的main.js, 是main.js之前存在__webpack_require__.S[scopeName]的
-    有shared就有__webpack_require__.S,没有就没有  
-    new ModuleFederationPlugin({
-          name: 'app2',
-          filename: 'remoteEntry.js',
-          exposes: {  './Widget': './src/Widget'},
-          shared: { //在shared里声明的了,才会使用主APP共享的库,没声明就用自己的(到时会是两个不同的实例)
-            'react-dom': {
-              requiredVersion: require('./package.json').dependencies['react-dom'],
-              singleton: true, //不允许主APP的react版本是'16.14.0'而子APP是'16.12.0'
-            },
-          },
-    })
-    
-模块读取方式优先级：
-    两个字段可以定义包的入口点：“main”和“exports”//" exports"提供了"main"的现代替代方案， 
-    /“exports”字段优先于 “main”/
-      "exports": {
-        "node": {//"node" - 匹配任何 Node.js 环境。可以是 CommonJS 或 ES 模块文件。
-          "module": "./index.js",
-          "require": "./index.cjs" 
-        },
-      }
-    对于 Node.js，我们总是使用 CommonJs 版本并使用 ESM 包装器在 ESM 中公开命名导出
-```
-
-
-
-```javascript
-babel-eslint -> @babel/eslint-parser
-```
-
-
-
+### 性能
 ```javascript
 性能(重点):  
     调试:  
@@ -51,27 +13,25 @@ babel-eslint -> @babel/eslint-parser
     webpack 3 加入dll
     webpack 4 再使用 dll 收益并不大，HardSourceWebpackPlugin比它更优秀
     webpack 5 HardSourceWebpackPlugin已经默认加进去了    
-    
-    
-热更新原理:
-    websocket->reloadApp->$emit('webpackHotUpdate')->module.hot.check(true).then(function (updatedModules) {})->
-    hotCheck(先插入script,再调用插入的script更新了modules中对应的模块, 再调用一下该模块)
-    .//从 现有的 cache 中 找到当前的 chunkId 对应的旧的数据信息，进行更新并执行当前最新的 chunk 代码，以便于更新 cache，
-     //接着执行对应的 hot.accept 代码来实现 render 操作
+```
+### 热更新原理
+```js
+websocket->reloadApp->$emit('webpackHotUpdate')
+->module.hot.check(true).then(function (updatedModules) {})
+->hotCheck(先插入script,再调用插入的script更新了modules中对应的模块, 再调用一下该模块)
+	从 现有的 cache 中 找到当前的 chunkId 对应的旧的数据信息，进行更新并执行当前最新的 chunk 代码，以便于更新 cache，
+	接着执行对应的 hot.accept 代码来实现 render 操作
 ```
 
-
-
+### 概念
 ```javascript
-MPA:官网、电商类这种对SEO和首屏加载速度要求比较高的项目，可以采用多页面应用结构。或者SSR
-SPA:后台管理系统页面，不对外开放的系统，用单页面应用，这样可以利用第三方框架（Vue、React等）对系统进行组件化
-        //“类单页应用”, 如果系统过大，导致首屏加载缓慢，可以将系统拆分, 实现方式主要有两种：
-        //    1.iframe嵌入  2.微前端合并类单页应用；
-        
-一切皆模块： 正如js文件可以是一个“模块（module）”一样，其他的（如css、image或html）文件也可视作模 块。因此，你可以require(‘myJSfile.js’)亦可以require(‘myCSSfile.css’)。这意味着我们可以将事物（业务）分割成更小的易于管理的片段，从而达到重复利用等的目的。
-按需加载： 传统的模块打包工具（module bundlers）最终将所有的模块编译生成一个庞大的bundle.js文件。但是在真实的app里边，“bundle.js”文件可能有10M到15M之大可能会导致应用一直处于加载中状态。因此Webpack使用许多特性来分割代码然后生成多个“bundle”文件，而且异步加载部分代码以实现按需加载。
-文件管理：每个文件都是一个资源，可以用require/import导入js，每个入口文件会把自己所依赖(即require)的资源全部打包在一起，一个资源多次引用的话，只会打包一份，对于多个入口的情况，其实就是分别独立的执行单个入口情况，每个入口文件不相干(可用CommonsChunkPlugin优化)
-打包原理：把所有依赖打包成一个bundle.js文件，通过代码分割成单元片段并按需加载。
+“类单页应用”, 如果系统过大，导致首屏加载缓慢，可以将系统拆分, 实现方式主要有两种：
+	1.iframe嵌入  2.微前端合并类单页应用；
+
+1.一切皆模块： 正如js文件可以是一个“模块（module）”一样，其他的（如css、image或html）文件也可视作模 块。因此，你可以require(‘myJSfile.js’)亦可以require(‘myCSSfile.css’)。这意味着我们可以将事物（业务）分割成更小的易于管理的片段，从而达到重复利用等的目的。
+2.按需加载： 传统的模块打包工具（module bundlers）最终将所有的模块编译生成一个庞大的bundle.js文件。但是在真实的app里边，“bundle.js”文件可能有10M到15M之大可能会导致应用一直处于加载中状态。因此Webpack使用许多特性来分割代码然后生成多个“bundle”文件，而且异步加载部分代码以实现按需加载。
+3.文件管理：每个文件都是一个资源，可以用require/import导入js，每个入口文件会把自己所依赖(即require)的资源全部打包在一起，一个资源多次引用的话，只会打包一份，对于多个入口的情况，其实就是分别独立的执行单个入口情况，每个入口文件不相干(可用CommonsChunkPlugin优化)
+4.打包原理：把所有依赖打包成一个bundle.js文件，通过代码分割成单元片段并按需加载。
 
 "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
 "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
@@ -87,10 +47,10 @@ __resourceQuery (webpack特有)
     require('file.js?test');
     file.js可以获取到
         __resourceQuery === '?test';
+
+babel-eslint -> @babel/eslint-parser
 ```
-
-
-
+### 输出文件
 ```javascript
 vendor文件
     //webpack 中通常用vendor来命名我们项目中的第三方依赖库的一个合集,默认为整个node_modules文件夹打包而成
@@ -121,15 +81,7 @@ vendor文件
     以0-10+数字开头的 js 文件(如12.a4966396.js)，就是import()每个路由对应的组件构建出来的 bundle。
     只有用户访问对应的路由时，才会加载相应的 bundle，提高页面加载效率
 ```
-
-
-
-
-
----
-
-> webpack.config.js
-
+### webpack.config.js
 ```javascript
 //dev模式输出在内存中,看不到文件的   prod模式输出在目录中,可以看到文件
     sideEffects:false //开启treeshaking
@@ -175,7 +127,6 @@ vendor文件
                 //原理:先转ast,再将a.css、b.css和c.css的样式内容以字符串的形式拼接在一起
             'style-loader',//通过注入<style>标记将CSS添加到DOM     
             loader: 'style-loader!css-loader'//感叹号!用来连接不同的loader， 而且执行顺序是从右到左webpack5已废弃
-            
             }]                
     plugins:[   /增强和优化打包的过程/
                 HtmlWebpackPlugin//简单创建HTML文件并自动注入打包后的资源,用于服务器访问             
@@ -218,24 +169,12 @@ vendor文件
                  
     externals: {jquery: 'jQuery'} //不用打包它,我自己用<script>引入就好
 ```
-
-
-
----
-
-> 编写loader(重点)
-
+### 编写loader(重点)
 ```javascript
 导出一个函数, 入参是源码,返回是处理后的源码
 //用npx webpack来打印输出,调试
 ```
-
-
-
----
-
-> 编写一个plugin(重点)
-
+### 编写一个plugin(重点)
 ```javascript
  class txtwebpackPlugin {
       //如何钩入hooks
@@ -253,13 +192,7 @@ vendor文件
 
 module.exports = txtwebpackPlugin;
 ```
-
-
-
----
-
-> 编写一个webpack(重点说原理)
-
+### 编写一个webpack(重点说原理)
 ```javascript
 const fs = require("fs");
 const path = require("path");
@@ -348,12 +281,7 @@ module.exports = class webpack {
 };
 ```
 
-
-
----
-
-> 单包加载原理
-
+### 单包加载原理
 ```javascript
 原理: //webpack提供浏览器1方法
      webpackJsonp 在分包时才会用到//打包后的chunk文件结构就是一个webpackJsonp方法, 每个chunk都是执行这个函数后的返回结果
@@ -461,8 +389,7 @@ __webpack_require__(2) 表示 util2.js 模块
 exports.util1=util1 模块化的体现，输出该模块
 ```
 
-> 分包加载原理
-
+### 分包加载原理
 ```javascript
 1.先通过__webpack_require__.e加载
 2.再通过webpackJsonp异步加载回调，把模块内容以promise的方式暴露给调用方，从而实现了对code splitting的支持
@@ -497,11 +424,8 @@ exports.util1=util1 模块化的体现，输出该模块
 ```
 
 
-
----
-
 ## 原理流程
-
+1. `NODE_PATH` 是一个环境变量，用于告诉 Node.js 在模块解析过程中额外搜索模块的路径, pnpm会干这件事自动往.bin脚本里加这个参数指定`node_modules\.pnpm\node_modules`等为额外搜索路径
 ```javascript
 compliler = Webpack(config)
 
@@ -514,4 +438,3 @@ compliler = Webpack(config)
 Compilation 实例会调⽤ createHash ⽅法来⽣成这次构建的 hash。
 在 webpack 的配置中，我们可以在 output . filename 中配置 [ hash ] 占位符，最终就会替换成这个 hash
 ```
-

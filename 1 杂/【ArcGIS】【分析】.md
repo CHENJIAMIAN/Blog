@@ -1,35 +1,17 @@
-
-
-
-
----
-
 > 最短路径
-
 ```java
 要有方向，就是告诉你在哪条路转弯的话，就需要有个街道名的字段，并且设置	网络数据集属性-方向-常规-街道字段！！！！
 要用打断工具把	折线	打断成单独的	很多小的独立的直线！！！！！！
 地理坐标系可以量测长度，但无法在字段直接计算几何出要素的长度，要转换成投影坐标系才可以！！！
 如果想要分析完能看到所需的时间，就要在要进行网络分析的图层添加所需时间-字段，也就是某段折线所需的时间。
 ```
-
-
-
-![](images/168D3634E4C842D69B9E222DFC5A45F8.png)
-
-
-
+![168D3634E4C842D69B9E222DFC5A45F8](https://github.com/CHENJIAMIAN/Blog/assets/20126997/326c0f80-4804-4988-853c-afaf1efbc67b)
 ```java
 修改完要进行网络分析的图层后要 重新新建路径 或 重新构建网络数据集 才能生效！！！
 ```
+![3A0AF8C4974D49B292A750E81393E0DE](https://github.com/CHENJIAMIAN/Blog/assets/20126997/466d17dc-7171-492a-a19f-f4b21b3ea024)
 
 
-
-![](images/3A0AF8C4974D49B292A750E81393E0DE.png)
-
-
-
----
 
 ```java
 矢量空间分析
@@ -115,7 +97,7 @@ Contour：等值线（等高线）
 
 
 
-![](images/D394F0383C8349FEAAF30A7E06449526.png)
+![D394F0383C8349FEAAF30A7E06449526](https://github.com/CHENJIAMIAN/Blog/assets/20126997/bff36474-2c5c-42c3-a4b8-519bba431144)
 
 
 
@@ -125,7 +107,7 @@ Contour：等值线（等高线）
 
 
 
-![](images/E65B6819EFB748ECA9E2A83640086CF9.png)
+![E65B6819EFB748ECA9E2A83640086CF9](https://github.com/CHENJIAMIAN/Blog/assets/20126997/78525cd7-453b-4863-8032-2020a0e60514)
 
 
 
@@ -135,7 +117,7 @@ Contour：等值线（等高线）
 
 
 
-![](images/D38E5E8F2C8F4CD7A8516E7F1D27422E.png)
+![D38E5E8F2C8F4CD7A8516E7F1D27422E](https://github.com/CHENJIAMIAN/Blog/assets/20126997/038e06fb-fcfb-48cc-9ef9-b0f15b77721c)
 
 
 
@@ -145,7 +127,7 @@ Contour：等值线（等高线）
 
 
 
-![](images/F05DA6BAF323404794F3D738DB1852BC.png)
+![F05DA6BAF323404794F3D738DB1852BC](https://github.com/CHENJIAMIAN/Blog/assets/20126997/7276e301-c0b8-48d8-aa41-3c7875f609e1)
 
 ```java
 一个盆域是一个大流域，由好多分水岭组成
@@ -178,11 +160,6 @@ Contour：等值线（等高线）
 反地形：abs(dem-2000),原来1400米就变成了600米，原来-500米就变成了2500米！即地形反过来了！！！
 ```
 
-
-
-![](images/0B6B313452194F6B80CBED4CA4247BF7.png)
-
-
+![0B6B313452194F6B80CBED4CA4247BF7](https://github.com/CHENJIAMIAN/Blog/assets/20126997/4ed7db52-d332-4288-b24b-021fb6c29f84)
 
 ---
-

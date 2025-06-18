@@ -1,6 +1,5 @@
 > `ModelExperimental` 这个新架构（2022年5月，此架构正在启动对原 `Model` 类相关架构的替换）的更新而随时可能会更新。2023年4月24日已然更新!
 
-
 ```js
 glTF 数据在几何数据部分有三层：Node ← Mesh ← Primitive。
 其中，Primitive 即 glTF 数据规范中最小的图形单位
@@ -55,9 +54,12 @@ glTF 1.0的嵌入式着色器是一种旧的技术，现已被glTF 2.0的PBR材�
 技术（techniques）包括一组渲染操作，例如定义如何从顶点和纹理坐标生成片元，以及如何应用着色器程序来计算这些片元的颜色。这些操作之间的顺序和具体实现方法等都是技术的一部分。
 
 ## 什么是的组件?
-在 glTF 中，组件是一种基本的概念，表示模型的不同部分，例如网格数据、材质、纹理、动画等。在 Cesium 中，每个组件都会被处理成可用的对象，并根据需要添加到场景中。因此，每个组件都需要经过一系列的处理（如纹理数据需要被加载和解码），在处理完成后才能被添加到场景中。在 Cesium 中，这些处理是通过 Promise 链实现的，以保证处理的顺序和正确性。只有在所有组件都处理完成后，Cesium 才能创建出完整的模型并将其添加到场景中。
+1. 在 glTF 中，组件是一种基本的概念，表示模型的不同部分，例如网格数据、材质、纹理、动画等。
+2. 在 Cesium 中，每个组件都会被处理成可用的对象，并根据需要添加到场景中。
+3. 因此，每个组件都需要经过一系列的处理（如纹理数据需要被加载和解码），在处理完成后才能被添加到场景中。
+4. 在 Cesium 中，这些处理是通过 Promise 链实现的，以保证处理的顺序和正确性。只有在所有组件都处理完成后，Cesium 才能创建出完整的模型并将其添加到场景中。
 
-## components
+## components [[Cesium-3DTiles#'requestTiles (Cesium.js 107407)分支']]
 ```js
 {
     "asset": {        "credits": []    },
@@ -113,18 +115,36 @@ glTF 1.0的嵌入式着色器是一种旧的技术，现已被glTF 2.0的PBR材�
                         "morphTargets": [],
                         "indices": {
                             "count": 360
-                        },
+                        },                       
                         "material": {
-                            "metallicRoughness": {
-                                "baseColorFactor": {"x": 1,"y": 1,"z": 1,"w": 1},
-                                "metallicFactor": 0,
-                                "roughnessFactor": 1
-                            },
-                            "emissiveFactor": {
-                                "x": 0,"y": 0,"z": 0},
-                            "alphaMode": "OPAQUE",
-                            "doubleSided": false,
-                            "unlit": false
+	                        alphaCutoff: undefined
+							alphaMode: "BLEND"
+							doubleSided: true
+							emissiveFactor: Cartesian3 {x: 0, y: 0, z: 0}
+							emissiveTexture: undefined
+							metallicRoughness: {
+							   baseColorTexture: TextureReader{
+								    channels: undefined
+									index: 1
+									texCoord: 0
+									texture: Texture{
+										  _id: 'db32e01e-1e59-4a0c-9468-500edc450574',
+										   _context: Context,
+										   _textureFilterAnisotropic: EXTTextureFilterAnisotropic,
+										   _textureTarget: 3553,
+										   _texture: WebGLTexture,
+										}
+									transform: undefined
+							   },
+							   metallicRoughnessTexture: undefined,
+							   baseColorFactor: Cartesian4{"x": 1,"y": 1,"z": 1,"w": 1},
+							   metallicFactor: 0.1,
+							   roughnessFactor: 0.7,
+							}
+							normalTexture: undefined
+							occlusionTexture: undefined
+							specularGlossiness: undefined
+                            unlit: false
                         },
                         "primitiveType": 4,
                         "featureIds": [],

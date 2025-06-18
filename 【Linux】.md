@@ -1,4 +1,3 @@
-![](https://omnaamelx4.feishu.cn/space/api/box/stream/download/asynccode/?code=OGY4ZDdjNDNmMTcxZjJlNDZmY2NhNDlmNjg4ZDI4N2FfdmNKWkNJeEc3cWxKbWQyb09ISmxPREVUMUdlQ3Q5ZUlfVG9rZW46Ym94Y25RVDhEdVoxVWdiS2p5VUFRdWJjUktjXzE2ODA1OTE5Mjc6MTY4MDU5NTUyN19WNA)
 
 ```javascript
 指令集//x86、ARM v8、MIPS都是指令集的代号。指令集可以被扩展，如x86增加64位支持就有了x86-64
@@ -7,10 +6,14 @@
     x86属于复杂指令集体系，汇编指令较多。属于两种不同的体系。
         x86 是一种“CPU”架构，最初用于 16 位“芯片”，后来扩展用于 32 位芯片。//如果操作系统是 32 位，则意味着它运行的是 x86 CPU 架构芯片。（我这里不考虑ARM）    
         但是现在,x86 是 64 位芯片上的架构!!! //由于32位芯片的内存使用限制，只能支持4GB的RAM，所以x86后来扩展到64位芯片上, 基本上现在用相同的架构（指令集）来构建一个芯片使用 64bit 来表示一个数字，因此是 64bit 芯片。        最初它被称为 x86-64，后来被简化为 x64，这意味着现在x86 是 64 位芯片上的架构.
+
+1. **aarch64**：ARM的64位指令集架构，广泛用于移动设备和高性能计算。
+2. **loongarch64**：龙芯公司设计的64位指令集架构，旨在实现自主可控的计算生态。
+3. **riscv64**：开放的64位指令集架构，特别适用于需要可定制性和开源设计的应用。
+4. **x86_64**：主流的64位指令集架构，广泛应用于个人电脑和服务器，具备强大的软件生态系统。
 ```
 
-> Windows命令
-
+## Windows命令
 ```javascript
 批量拷贝目录下所有文件夹中的指定文件
     xcopy "D:\Program Files\OpenVPN\config\阿里正式新vpncerts"   "D:\Program Files\OpenVPN\config"  /S /E /Y
@@ -22,8 +25,7 @@
     netstat -ano|findstr "8080"
 ```
 
-
-
+## 常用
 ```javascript
 df -h //查看磁盘信息空间剩余
     du -h --max-depth=1 /usr/data // 查看文件或文件夹的磁盘使用空间/大小
@@ -78,8 +80,7 @@ Systemctl//:一个systemd工具,主要负责控制systemd系统和服务管理�
 systemd//:即为system daemon,是linux下的一种init软件，在Unix中常以“d”作为系统守护进程
 ```
 
-> Vim
-
+## Vim
 ```javascript
 gedit 文件	//用图形文件编辑器编辑，方便！！但通常，在服务器中，没有安装或需要桌面环境。因此，gedit无法启动和显示()
 
@@ -98,15 +99,7 @@ vim编辑器有两种模式，命令模式和编辑模式，通过ESC键来切�
     G //跳至文件的底部
     :set nu //显示行号     :set nonu //取消显示行号
 ```
-
-
-
-
-
-> 目录
-
-> Linux 系统目录结构
-
+## Linux 系统目录结构
 ```javascript
 [root@主机名  路径]$:
     ~ home
@@ -144,8 +137,7 @@ vim编辑器有两种模式，命令模式和编辑模式，通过ESC键来切�
         /srv：存放服务启动后需要提取的数据（不用服务器就是空）
 ```
 
-> 下载与安装
-
+## 下载与安装
 ```javascript
 wget 网址		//获取安装东西wget 是一个从网络上自动下载文件的自由工具
 
@@ -168,9 +160,37 @@ RPM  //Red-Hat Package Manager（RPM软件包管理器）的缩写    //centos�
     //#安装ssh包：		
     yum  -y  install openssh-clients.x86_64
 ```
+### 用包管理器安装软件
+- **Debian/Ubuntu及其衍生版本**：
+    - `apt-get`或`apt`命令：例如，要安装nginx，可以使用`sudo apt-get install nginx`或`sudo apt install nginx`。
+- **Fedora/RHEL/CentOS**：
+    - Fedora\ **openEuler**  使用`dnf`命令：例如，`sudo dnf install nginx`。
+    - RHEL和CentOS 7之前版本使用`yum`命令：例如，`sudo yum install nginx`。
+    - CentOS 8及之后版本转向使用`dnf`。
+- **Arch Linux及其衍生版本**：
+    - 使用`pacman`命令：例如，`sudo pacman -S nginx`。
+### DNF
+```js
+1. **更新软件仓库：** 
+   sudo dnf update
 
-# 权限
+2. **搜索软件包：** 
+   sudo dnf search nginx
 
+3. **安装软件包：** 
+   sudo dnf install nginx
+
+4. **卸载软件包：
+   sudo dnf remove 包名
+
+5. **列出已安装的软件包：** 
+   dnf list installed
+
+6. **清理缓存：** 
+   sudo dnf clean all
+```
+
+## 权限
 ```python
 3个num对应: 
     拥有者、群组、其他
@@ -185,9 +205,7 @@ chmod 771 file         #效果相同 chmod ug=rwx,o=x file //u 表示该�
 ```
 
 
-
-> 配置SSH
-
+## 配置SSH
 ```python
 #SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议
 
@@ -221,7 +239,7 @@ service ssh start
 
 
 
-> SHELL
+## SHELL
 
 ```python
 cat /etc/shells #通过 cat 命令来查看当前 Linux 系统的可用 Shell
@@ -248,7 +266,7 @@ echo $your_name
 ```
 
 
-
+## 系统种类
 ```javascript
 Linux 指GNU/Linux，即采用Linux内核的GNU操作系统，包涵 Linux内核 GNU组件 软件，可以被称为GNU/Linux
     GNU组件 可以运行于Linux内核之上，GNU的内核为Hurd
@@ -276,8 +294,7 @@ Linux靠文件名区分文件类型
 控制台(Console) = 一种特殊的终端
 ```
 
->  linux启动读取配置顺序
-
+## linux启动读取配置顺序
 ```javascript
 一般只有/etc/profile --> ~/.bashrc 
 /etc/profile 
@@ -295,8 +312,7 @@ Linux靠文件名区分文件类型
 （6）~/.bash_profile 是交互式、login 方式进入 bash 运行的~/.bashrc 是交互式 non-login 方式进入 bash 运行的通常二者设置大致相同，所以通常前者会调用后者。
 ```
 
-> 文件
-
+## 文件
 ```python
 ls -a /var/  #显示隐藏的文件
 ls -l #详细信息
@@ -319,8 +335,7 @@ ln -s orifile destfile  #生成软链接文件,类似快捷方式               
                         #硬链接相当于复制出一个文件出来了
 ```
 
-# 压缩
-
+## 压缩
 ```python
 #综合起来，在压缩比率上： tar.bz2>tar.gz>tar   #占用空间与压缩比率成反比： tar.bz2<tar.gz<tar
 #耗费时间（打包，解压）#打包：tar.bz2>tar.gz>tar  #解压： tar.bz2>tar>tar.gz
@@ -340,7 +355,6 @@ tar -zcvf #压缩文件名 .tar.gz 被压缩文件名 #压缩
 ```
 
 ## 查找
-
 ```python
 find / -name *.mysql//在指定目录下查找 文件，通配符匹配
 find / -mtime -2 #查找2天内修改的文件，多了一个减号
@@ -356,12 +370,7 @@ systemctl status mysqld.service //mysql服务状态
 #所以locate的查找并不是实时的，而是以数据库的更新为准，一般是系统自己维护，也可以手工升级数据库 ，命令为：locate -u 
 ```
 
-
-
-
-
-> 环境变量
-
+## 环境变量
 ```javascript
 echo $PATH 	//#打印环境变量path
 
@@ -382,89 +391,4 @@ echo $PATH 	//#打印环境变量path
         ~/.bash_logout: 当每次退出系统(退出bash shell)时,执行该文件.
 //  /etc/profile 和 ~/.bashrc 是"父子"继承关系
 ```
-
-
-
-
-
-> NGINX
-
-```shell
-URI匹配
-    location ^~ /images/ {
-        # 前半部分匹配 ^~
-        # 可以使用正则，如：
-        # location ~* \.(gif|jpg|png)$ { }
-    }
-    #语法规则
-    location [ = | ~ | ~* | ^~ ] uri { ... } #后面是要匹配的字符，花括号中是要执行的操作。
-    #修饰符
-    =   表示精确匹配。只有请求的url路径与后面的字符串完全相等时，才会命中。
-    ~  表示该规则是使用正则定义的，区分大小写。
-    ~* 表示该规则是使用正则定义的，不区分大小写。
-    ^~ 表示如果该符号后面的字符是最佳匹配，采用该规则，不再进行后续的查找
-    
-配置CORS跨域
-    在server下加入
-    add_header 'Access-Control-Allow-Origin' '*';
-    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
-    add_header 'Access-Control-Allow-Credentials' 'true';
-    
-配置https
-    server {
-        listen 443 ssl;
-        server_name example.com;
-    
-        ssl_certificate /path/to/cert.pem;
-        ssl_certificate_key /path/to/key.pem;
-    
-        #其他配置项
-    }
-以下是在 Windows 系统上使用 Nginx 常用的命令：
-    start nginx
-    nginx -s stop
-    nginx -s reload
-    nginx -t#检查配置文件语法是否正确
-    nginx -v#显示 Nginx 版本信息
-    nginx -V#显示 Nginx 编译参数
-    请注意，以上命令应该在以管理员身份运行的命令行中执行。
-    如果您在安装 Nginx 时选择了将其添加到系统路径中，则可以在任何位置使用这些命令。
-    如果没有将 Nginx 添加到系统路径中，则需要先导航到 Nginx 的安装目录才能执行这些命令。
-    
-总结 location 加不加/ 和 proxy 加不加/ 的影响
-    在nginx中配置proxy_pass时，当在后面的url加上了/，相当于是绝对根路径，则nginx不会把location中匹配的路径部分代理走;如果没有/，则会把匹配的路径部分也给代理走。      
-     首先是location进行的是模糊匹配
-    1）没有“/”时，location /abc/def可以匹配/abc/defghi请求，也可以匹配/abc/def/ghi等
-    2）而有“/”时，location /abc/def/不能匹配/abc/defghi请求，只能匹配/abc/def/anything这样的请求
-    下面四种情况分别用http://192.168.1.4/proxy/test.html 进行访问。
-    第一种：proxy加/不保留路径
-        location  /proxy/ {
-        proxy_pass http://127.0.0.1:81/;
-        }
-        结论：会被代理到http://127.0.0.1:81/test.html 这个url
-     
-    第二种(相对于第一种，最后少一个 /)
-        location  /proxy/ {
-        proxy_pass http://127.0.0.1:81;
-        }
-        结论：会被代理到http://127.0.0.1:81/proxy/test.html 这个url
-     
-    第三种：
-        location  /proxy/ {
-        proxy_pass http://127.0.0.1:81/ftlynx/;
-        }
-        结论：会被代理到http://127.0.0.1:81/ftlynx/test.html 这个url。
-     
-    第四种(相对于第三种，最后少一个 / )：
-        location  /proxy/ {
-        proxy_pass http://127.0.0.1:81/ftlynx;
-        }
-        结论：会被代理到http://127.0.0.1:81/ftlynxtest.html 这个url
-        
-
-```
-
-
-
-
 

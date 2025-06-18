@@ -50,7 +50,8 @@ GitHub中Fork# 即是 服务端的代码仓库克隆（即 新克隆出来的�
 
 
 
-![](images/9D1276755ACB46B5BC945E124EEF0A16.jpeg)
+![9D1276755ACB46B5BC945E124EEF0A16](https://github.com/CHENJIAMIAN/Blog/assets/20126997/49cbddac-c3a8-4afd-a9a2-810fda13a69d)
+
 
 ```shell
 merge 将产生一个额外的合并提交来保留两个分支以前的的提交记录
@@ -140,4 +141,9 @@ git rm --cached file来停止跟踪这些文件
 ```js
 使用 --depth 参数来防止获取所有提交历史记录
 git clone --depth=30 https://github.com/mrdoob/three.js.git
+```
+
+### 向 `.gitignore` 文件中新增内容但发现它不生效时
+```sh
+ git rm --cached -r . && git add . && git commit -m "Untrack files in .gitignore"
 ```

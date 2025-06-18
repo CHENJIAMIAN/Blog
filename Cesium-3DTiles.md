@@ -6,6 +6,33 @@
 > 3D Tiles 支持多个其他 JSON 文件的 JSON 索引。这是通过使用external tilesets外部瓦片集实现的，外部瓦片集是使用 URL 或相对路径引用其他瓦片集的 JSON 文件。 通过这种方式，单个顶级 tileset JSON 文件可以引用和索引多个其他 tilesets，从而实现大型 3D 数据集的高效组织和管理。每个引用的图块集都可以包含自己的图块集、属性和元数据，并且可以独立于其他图块加载和显示。
 3. [CHENJIAMIAN/xt3d-local-debug: xt3d.js本地调试](https://github.com/CHENJIAMIAN/xt3d-local-debug) 里包含了2023年5月5日最新可用的几个下载器，是我整理归纳的
 
+### 处理与转换
+> [三维模型：人工建模模型转为3DTiles格式 | Mars3D开发教程](http://mars3d.cn/dev/guide/data/tileset.html#_1-%E4%BA%BA%E5%B7%A5%E5%BB%BA%E6%A8%A1%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D)
+#### 1. Github 开源的小工具
+##### 3dtiles压缩/组合/合并/升级/封包, glb/gltf/b3dm/i3dm互转
+1. https://github.com/CesiumGS/3d-tiles-tools 
+	- 官方开源,用ts编写,逻辑清晰,清晰展现b3dm等的原理
+	- npx 3d-tiles-tools b3dmToGlb -i ./specs/data/batchedWithBatchTableBinary.b3dm -o ./output/extracted.glb
+		- 2023年7月5日测试出现'v_texCoord_0' : undeclared identifier的错误
+	- **但要手动计算tileset.json**[3dtiles-tree-generator.js - CrashedBboy/blender-3d-tiler - GitHub1s](https://github1s.com/CrashedBboy/blender-3d-tiler/blob/HEAD/3dtiles-tree-generator.js#L67) 这里有计算方法
+##### gltf/glb互转 1.0/2.0互转
+1. https://github.com/CesiumGS/gltf-pipeline 
+##### obj转3dtile
+https://github.com/PrincessGod/objTo3d-tiles 最后一次更新是19年,2023年7月5日测试有效
+1. 好像不能切成多个b3dm
+##### osgb转3dtiles
+1. [fanvanzh/3dtiles: The fastest tools for 3dtiles convert in the world!](https://github.com/fanvanzh/3dtiles#%E7%AE%80%E4%BB%8B) 2023年5月刚更新
+	1. 要编译出来, 需要安装rust环境(前提是安装vs studio的c++环境)
+	2. 看了源码,只能把OSGB转为3dtiles(readme说可以转fbx,骗人的,issue里作者说一直没开发它)
+2. [Construkted-Reality/3DTG：将 3d 模型转换为 3d tiles](https://github.com/Construkted-Reality/3DTG)目前该工具只接受带纹理的 OBJ 文件
+#### 2. Cesium 官方推出的 Cesium Ion 在线平台（对国内企业来说有点鸡肋）
+- 最简单的办法: [My Assets | Cesium ion --- 我的资产 |铯离子](https://ion.cesium.com/assets/)可以在线免费转3DTiles再下载下来
+- 装个**[cesium-ion-3ds-max-plugin](https://github.com/CesiumGS/cesium-ion-3ds-max-plugin)** , 在3dmax里点击上传,在下载下来
+	- 铯离子需要将所有 Autodesk 材质烘焙为纹理。如果在铯离子上材质未正确渲染，您需要在导出之前将材质烘焙到 3ds Max 中的纹理。
+	- **有个致命的问题: 无法单体选择( cesiumlab转的可以拿到一个mesh一个单体的id(随机)和name(对象名称),一组几个mesh不行,是按mesh不是按组 )**
+#### 3. 一些商家推出的工具集（如 cesiumlab）
+
+
 ## 3DTiles
 ```js
 3DTiles 1.0 规范允许异构数据共存于一个数据集上。3D 瓦片只是空间划分的单元，并不是该块三维空域内的具体三维物体。这些三维物体被称作“瓦片内容”。
@@ -306,10 +333,10 @@ CustomShader渲染堆栈：
             initialize19 (Cesium.js:88021)
             Model (Cesium.js:87953)
             Model.fromB3dm (Cesium.js:89114) 
-	            本质是modelMatrix决定了位置而 ModelSceneGraph.buildDrawCommands 用 ModelDrawCommand 决定了 modelMatrix取决于: 
+	            本质是modelMatrix 决定了位置而 ModelSceneGraph.buildDrawCommands 用 ModelDrawCommand 决定了 modelMatrix 取决于: 
 		            1.this.runtimePrimitive.boundingSphere//取决于GLTF中定义的scene.nodes[i].primitives[j].attributes[k].min|max的xyz坐标  
 					2.this._modelMatrix//取决与我们代码传入的modelMatrix  
-					3.this._boundingVolume //取决于GLTF中定义的scene.nodes[i].primitives[j].attributes[k].min|max的xyz坐标, 但还判断是场景是2D模式还是3D模式
+					3.this._boundingVolume //同this.runtimePrimitive.boundingSphere, 但还判断是场景是2D模式还是3D模式
 	            //是 model._boundingSphere
 	            //是 model._sceneGraph.boundingSphere.center 
 	            //是 ModelSceneGraph.js 的 ModelSceneGraph.buildDrawCommands的model 的 
@@ -358,6 +385,18 @@ CustomShader渲染堆栈：
             Cesium3DTile.update (Cesium.js:105320)
             updateTiles (Cesium.js:107633)
 ```
+### 怎么读取b3dm的纹理下载下来?
+#### 从代码读取? 没走通
+```js
+tileset.root.content.batchTable._features[0].content._model._defaultTexture
+
+tileset.root.content.batchTable._features[0].content._model._sceneGraph.components
+	.scene.nodes[0].primitives[0].material.metallicRoughness.baseColorTexture.texture
+```
+#### 从b3dm提取gltf提取纹理图片
+1. [CHENJIAMIAN/ExtractorGlbFromB3DM: 提取b3dm中的glb文件, 以便获取里面的模型/材质图片等](https://github.com/CHENJIAMIAN/ExtractorGlbFromB3DM/tree/master)
+2. [免费的 GLB 资产提取器](https://products.aspose.app/3d/zh-cn/extractor/glb)
+
 ### 是怎么构造请求b3dm的url?
 ```js
 Cesium3DTile.constructor
@@ -366,9 +405,7 @@ Cesium3DTile.constructor
 
 
 ## BoundingVolume下的region举例
-
 下面是一个 `BoundingVolume` 中 `region` 属性的示例：
-
 ```
 "boundingVolume": {
     "region": [
@@ -491,3 +528,32 @@ b3dm文件（Batched 3D Model）是一种基于glTF格式的3D模型数据格式
 1. 从 2019 开始原软件名称 《BimAngle Forge Engine》更名为《BimAngle Engine》； 
 2. 2019 年 3 月新增 Express 系列，主要是屏蔽了对 Forge 格式的支持
 
+## 在线 3DTiles 数据
+#### Mars3D的所有3DTiles
+```js
+//BIM
+"http://data.mars3d.cn/3dtiles/bim-daxue/tileset.json",   //大学教学楼  
+"http://data.mars3d.cn/3dtiles/bim-ditiezhan/tileset.json",   //轻轨地铁站  
+"http://data.mars3d.cn/3dtiles/bim-qiaoliang/tileset.json",   //桥梁  
+//粗模
+"http://data.mars3d.cn/3dtiles/jzw-hefei/tileset.json",   //合肥市建筑物  
+"http://data.mars3d.cn/3dtiles/jzw-hefei2/tileset.json",   //合肥市建筑物  
+"http://data.mars3d.cn/3dtiles/jzw-shanghai/tileset.json",   //上海市建筑物  
+//精细模型
+"http://data.mars3d.cn/3dtiles/max-daqiao/tileset.json",   // 大桥
+"http://data.mars3d.cn/3dtiles/max-fcfh/tileset.json",   //居民楼(分层分户)  
+"http://data.mars3d.cn/3dtiles/max-fsdzm/tileset.json",   //水利闸门  
+"http://data.mars3d.cn/3dtiles/max-piping/tileset.json",   //地下管网  
+"http://data.mars3d.cn/3dtiles/max-shihua/tileset.json",   //石化工厂精细模型   
+"http://data.mars3d.cn/3dtiles/max-ytlhz/tileset.json",   //油田联合站精细模型 
+//点云
+"http://data.mars3d.cn/3dtiles/pnts-ganta/tileset.json",   //高压线塔杆点云  
+//倾斜摄影
+"http://data.mars3d.cn/3dtiles/qx-dyt/tileset.json",   //大雁塔倾斜摄影  
+"http://data.mars3d.cn/3dtiles/qx-hfdxy/tileset.json",   //合肥大学科技园倾斜摄影  
+"http://data.mars3d.cn/3dtiles/qx-shequ/tileset.json",   //县城社区倾斜摄影  
+"http://data.mars3d.cn/3dtiles/qx-simiao/tileset.json",   //文庙倾斜摄影  
+"http://data.mars3d.cn/3dtiles/qx-teh/tileset.json",   //合肥天鹅湖  
+"http://data.mars3d.cn/3dtiles/qx-xuexiao-dth/tileset.json",   //学校-单体classifytileset
+"http://data.mars3d.cn/3dtiles/qx-xuexiao/tileset.json",   //校园  
+```

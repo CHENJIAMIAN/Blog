@@ -1,5 +1,4 @@
-> 实践
-
+### 实践
 ```javascript
 https://www.typescriptlang.org/zh/play在试验场不断试错就完事了
 有时候一个报错是无厘头的, 不一定真有那个错, 而是报错行上面的代码报错连带造成的!!!!!
@@ -21,7 +20,8 @@ let a= {a:1,b:2,c:3,d:4} as {a:number,b:number} //{xx} as XX表示包容地�
 
 解决Variable 'globalString' is used before being assigned错误
     let globalString: string; 
-    console.log(`globalString : ${globalString!}`);//用!号来表示变量还未赋值
+    //console.log(`globalString : ${globalString!}`); 
+    //用!号来表示变量还未赋值
 
 '类型{ ... }的参数不能赋给类型“Options”的参数 对象文字可以只指定已知属性，并且“title”不在类型“Options”中。ts(2345)'
      //给对象添加它本来没有的属性:
@@ -58,12 +58,8 @@ let a= {a:1,b:2,c:3,d:4} as {a:number,b:number} //{xx} as XX表示包容地�
        declare module 'vue' {
             interface ComponentCustomProperties {//扩充vue的实例上挂的对象}
         }
-
-
 ```
-
-> TS是JS的超集	
-
+### tsconfig.json
 ```typescript
 同名.ts             //是 TypeScript 文件的后缀  
 同名.d.ts           //DefinitelyTyped 用于给非ts的库添加语法提示,骗编译器 , 仅仅会用于编译时的检查 
@@ -91,7 +87,9 @@ tsconfig.json//告诉ts它应该ts文件们在哪
               "@utils/*": ["src/utils/*"]
         } 
      }
-
+```
+### declare/扩展
+```js
 declare ,TypeScript 将不会把它编译成任何代码, 只是用来表述一个其他地方已经存在的代码, 可以放在 .ts 或者 .d.ts 里
     三斜线指令: 早期版本现在不推荐了<reference path="node.d.ts"/> 仅在其包含文件的顶部有效,声明文件的模块的声明在哪里
     /在全局变量的声明文件d.ts中，是不允许出现 import, export 关键字的。一旦出现了，那么他就会被视为一个 npm 包或 UMD 库，就不再是全局变量的声明文件了/
@@ -134,7 +132,9 @@ declare ,TypeScript 将不会把它编译成任何代码, 只是用来表述一
        
     type Name = string;//使用 type 创建string的别名
     type EventNames = 'click' | 'scroll' | 'mousemove';//联合类型(Union Types) ,能取三种字符串中的一种
-
+```
+### 语法
+```js
 
 泛型 //泛型方法,泛型常用 T、U、V 表示。泛型还可以自己起名称,通常以 T 作为泛型名称的前缀
     function GenericsFunc<T>(a: number): Array<T> {//调用: GenericsFunc<string>(3, 'x');
@@ -146,7 +146,7 @@ extends 
     type numberOrString<T> = T extends number ? number : string; //传入<number>的话,它就是number,否则它就是string  //T extends number表示它T是否有一个number属性
         let pickAbObject: numberOrString<number> = '1'; //错误, 因为 numberOrString<number>等同于 number
     
-infer X 某某变量 // 提取某某变量里的所有值作为类型, 赋值给X            
+infer X 某某变量 // 提取某某变量里的所有[值]作为类似用于枚举的[类型], 赋值给X            
     type InferredAb<T> = T extends { a: infer U, b: infer U } ? U : T; //U的值是传入的a，U的值是传入的b
         let asdf: InferredAb<{ a:123, b:234 }> = 12;//报错Type '12' is not assignable to type '123 | 234'
         等同于 123|234
@@ -157,41 +157,13 @@ infer X 某某变量 // 提取某某变量里的所有值作为类型, 赋值给
         它等同:
         let stringType :            "test1" | 1         = "test3";// U是 "test1" | 1
     
-    
-keyof 频率16
-    type PartialProps<T> = {[K in keyof T]?: T[K];}//T传入的是键值对象
-        let a:PartialProps<{a: number;b: string;c: boolean;}> = { a: 1, b: "test", c: undefined ,d:1};//d:1会造成错误
-        
-    let key: keyof IPerson='123'//keyof 顾名思义
-    
-实用程序类型//vite项目中的使用频率如下
-    //定义位于D:/Users/86159/AppData/Local/Programs/Microsoft VS Code/resources/app/extensions/node_modules/typescript/lib/lib.es5.d.ts
-    104  Record<Keys, Type> //概括对象键值对
-            Record<string, string> 表示{a:'1',b:'2'}  
-            let recordAcNumbers : Record< "a" | "c", string> = { a: 1, c: "test"}; //表示a和c都要用到,且都得是string   //a:1会报错
-    9    Omit<Type, Keys> 
-    5    NonNullable<Type> 
-    4    Partial<Type> //用来创建类型的所有属性 T 都是可选的
-    2    ReturnType<Type> 
-    2    Parameters<Type> 
-    2    Exclude<UnionType, ExcludedMembers> 
-    1    ThisType<Type> 
-    1    Required<Type> 
-    1    Readonly<Type> //创建类型的所有属性 T 都是只读的
-    0    ThisParameterType<Type> 
-    0    Pick<Type, Keys> 
-            Pick <{a: number;b: string;c: boolean;},  "a" | "b">; //表示a和b都要用到，但不能用c
-            let pickAbObject : Pick<{ a: number;b: string;c: boolean;},  "a" | "b"> = { a: 1, b: "test",c:true}; //c:true会造成错误
-    0    OmitThisParameter<Type> 
-    0    InstanceType<Type> 
-    0    Extract<Type, Union> 
-    0    ConstructorParameters<Type> 
-
 
 b?: number;//等同于 b: number|undefined;
 &的作用: function func<T, U>(first: T, second: U): T & U //assdf同时拥有类型T和类型U的成员
- 
-as//是ts的关键字,用来限制类型
+
+`尽可能避免使用 as，因为这会导致类型错误的风险增加。`
+	如果你需要将一个值强制转换为另一个类型，即使它们之间没有直接的类型兼容性，那么使用 `as`。
+	如果你需要明确告诉编译器一个值符合某个接口，即使该值没有明确地实现该接口，那么使用 `satisfies`。
      
 0x00_FF_00===65280//true
 
@@ -266,9 +238,46 @@ Promise写法:
 //双向协变 (Bivariant)：双向协变表示Comp<T>类型与T类型双向兼容。
 //不变 (Invariant)：不变表示Comp<T>类型与T类型双向都不兼容。  
 ```
+### 实用程序类型
+```js
+实用程序类型//vite项目中的使用频率如下
+    //定义位于D:/Users/86159/AppData/Local/Programs/Microsoft VS Code/resources/app/extensions/node_modules/typescript/lib/lib.es5.d.ts
+    104  Record<Keys, Type> //概括对象键值对
+            Record<string, string> 表示{a:'1',b:'2'}  
+            let recordAcNumbers : Record< "a" | "c", string> = { a: 1, c: "test"}; //表示a和c都要用到,且都得是string   //a:1会报错
+    9    Omit<Type, Keys>  //从类型 `T` 中排除了类型 `K`
+    5    NonNullable<Type> 
+    4    Partial<Type> //用来创建类型的所有属性 T 都是可选的
+    2    ReturnType<Type> 
+    2    Parameters<Type> 
+    2    Exclude<UnionType, ExcludedMembers> 
+    1    ThisType<Type> 
+    1    Required<Type> 
+    1    Readonly<Type> //创建类型的所有属性 T 都是只读的
+    0    ThisParameterType<Type> 
+    0    Pick<Type, Keys> 
+            Pick <{a: number;b: string;c: boolean;},  "a" | "b">; //表示a和b都要用到，但不能用c
+            let pickAbObject : Pick<{ a: number;b: string;c: boolean;},  "a" | "b"> = { a: 1, b: "test",c:true}; //c:true会造成错误
+    0    OmitThisParameter<Type> 
+    0    InstanceType<Type> 
+    0    Extract<Type, Union> 
+    0    ConstructorParameters<Type> 
 
-> 装饰器
+TypeScript 提供了一些常用的内置条件类型，例如：
+	Exclude<T, U>：从类型 T 中排除类型 U。
+	Extract<T, U>：从类型 T 中提取与类型 U 交集的类型。
+	NonNullable<T>：从类型 T 中移除 null 和 undefined。
+	ReturnType<T>：获取函数类型 T 的返回值类型。
+	InstanceType<T>：获取构造函数类型 T 的实例类型。
 
+keyof 频率 16
+    type PartialProps<T> = {[K in keyof T]?: T[K];}//T传入的是键值对象
+        let a:PartialProps<{a: number;b: string;c: boolean;}> = { a: 1, b: "test", c: undefined ,d:1};//d:1会造成错误
+        
+    let key: keyof IPerson='123'//keyof 顾名思义
+```
+
+### 装饰器
 ```javascript
 装饰器(工厂函数)//在运行时(与编译时区分)修改类以注入所需的依赖项,(在声明被装饰的对象前被调用) 
     装饰Class的:
@@ -317,11 +326,7 @@ Promise写法:
 ```
 
 
-
----
-
-> ESLint
-
+### ESLint
 ```javascript
 module.exports = {
     root: true,//ESLint 一旦发现配置文件中有 "root": true，它就会停止在父级目录中寻找
@@ -356,8 +361,7 @@ module.exports = {
 }
 ```
 
-
-
+### ts-loader报错过程
 ```javascript
 ts-loader报错过程:
     createFileDiagnostic (typescript\lib\typescript.js)
@@ -394,3 +398,113 @@ ts-loader报错过程:
     loader (ts-loader\dist\index.js)
 ```
 
+### this用于显式声明指定函数内部的上下文类型
+- this 参数不是真正传递给函数的参数，它仅用于进行类型检查。
+- this 参数必须是函数的第一个参数，并且在声明时需要用小括号括起来。
+
+```ts
+interface Person {  
+    name: string;  
+    age: number;  
+    greet(this: Person): void;  
+}  
+
+const person: Person = {  
+    name: "Alice",  
+    age: 25,  
+    greet(this: Person) {  
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);  
+    }  
+};  
+person.greet();  // 输出: Hello, my name is Alice and I am 25 years old.  
+```
+
+### 底层机制
+#### 1. 类型推导
+类型推导是 TypeScript 的一种自动推断类型的能力。它可以让开发者在代码中省略类型注解，而编译器会根据上下文自动推断出变量的类型。例如：
+```typescript
+let message = "Hello, TypeScript"; // TypeScript 推断出 message 的类型为 string
+```
+在这种情况下，`message` 的类型会自动推导为 `string`。TypeScript 使用了一种称为“从右向左”的推导规则，也就是首先推导表达式的类型，然后再推导赋值变量的类型。
+##### 类型推导的细节
+TypeScript 主要通过以下几种方式进行类型推导：
+- **初始化推导**：如上例所示，TypeScript 通过变量初始化的值来推断类型。
+- **上下文推导**：例如在事件处理函数中，TypeScript 可以根据事件类型来推导回调函数参数的类型。
+- **默认推导**：在缺少明确类型注解时，TypeScript 会使用默认类型（例如 `any` 或 `unknown`）进行推导。
+#### 2. 类型兼容性检查
+TypeScript 使用结构化类型系统（Structural Type System），也称为“鸭子类型”或“子类型多态”。这种类型系统下，两个类型之间的兼容性由它们的结构决定，而不是由显式的继承关系决定。
+通俗点: 如果一个对象“长得像”某个类型（即具备符合条件的结构和方法），那它就可以被视为该类型
+##### 类型兼容的规则
+TypeScript 通过以下几种方式进行类型兼容性检查：
+- **子类型兼容性**：如果类型 `B` 是类型 `A` 的子类型，则 `B` 可以赋值给 `A`。
+- **宽泛性检查**：例如，在赋值过程中，如果目标类型比源类型具有更宽泛的属性（允许多余属性），那么类型是兼容的。
+- **可选属性的兼容性**：对于对象类型，如果一个类型的可选属性对应另一个类型中的非可选属性，那么它们也是兼容的。
+这种类型检查方式不仅提升了代码的灵活性，还确保了类型安全性。
+#### 3. 条件类型
+条件类型（Conditional Types）允许根据条件生成不同的类型。其语法形式为：
+```typescript
+T extends U ? X : Y
+```
+在这种表达式中，如果 `T` 能赋值给 `U`，则返回类型 `X`，否则返回类型 `Y`。条件类型在泛型编程中非常有用，能让类型定义更加灵活和动态。例如：
+```typescript
+type MessageOf<T> = T extends { message: infer M } ? M : never;
+```
+在这个例子中，`MessageOf<T>` 是一个条件类型，它检查 `T` 是否具有 `message` 属性，如果有，则返回该属性的类型，否则返回 `never`。
+##### 条件类型的处理机制
+在 TypeScript 编译器中，条件类型的处理流程大致如下：
+1. **判断类型约束**：首先检查 `T` 是否满足 `U` 的约束条件。
+2. **类型分配**：根据判断结果，选择合适的类型 `X` 或 `Y`。
+3. **类型推断**：在条件类型中可以使用 `infer` 关键字从类型中推导出具体的类型。例如 `infer M` 会推断出 `message` 属性的类型。
+#### 4. 映射类型（Mapped Types）
+映射类型允许对类型的每个属性应用相同的转换。使用方式如下：
+```typescript
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P];
+};
+```
+这个例子中，`Readonly<T>` 类型会将类型 `T` 的所有属性变为只读属性。映射类型的关键在于遍历 `T` 的所有属性，并应用一定的规则。
+##### 实现
+在编译器中，映射类型通过遍历对象类型的每个属性，并依次应用指定的转换规则来生成新的类型。这种转换可以包括：
+- **增加修饰符**：如 `readonly`、`?`。
+- **修改属性类型**：如 `T[P]` 指定属性的新类型。
+映射类型结合了条件类型和类型推导能力，使得 TypeScript 类型系统具有极大的表达能力。
+
+---
+### 类型守卫
+在 TypeScript 中，**类型守卫（Type Guards）** 是一种机制，用来在代码运行时通过特定的检查，将值的类型缩小到某个更具体的子集，从而避免类型错误。类型守卫主要用来处理 **联合类型**，确保类型安全，并为开发者提供更强的类型推断。
+类型守卫通常用于函数中，当某个参数可以是多种类型之一时，通过运行时检查来确认它的具体类型，从而让 TypeScript 推断出该值的具体类型。在代码中，常见的类型守卫方式包括 `typeof`、`instanceof`、`in` 关键字以及自定义类型谓词。
+#### 1. `typeof` 类型守卫
+#### 2. `instanceof` 类型守卫
+#### 3. `in` 类型守卫
+#### 4. 自定义类型谓词（Type Predicates）
+自定义类型谓词是一个函数，它返回布尔值，并在函数签名中使用 `x is Type` 语法来明确指出某个值是否属于某种类型。类型谓词非常灵活，适用于复杂类型的判断。
+```typescript
+function isString(value: any): value is string {
+  return typeof value === 'string';
+}
+function printInfo(info: string | number): void {
+  if (isString(info)) {
+    console.log(info.toUpperCase());  // 确定为 string 类型
+  } else {
+    console.log(info.toFixed(2));  // 确定为 number 类型
+  }
+}
+
+在这个例子中，`isString` 函数是一个自定义类型谓词，它检查某个值是否是 `string` 类型。当在 `printInfo` 函数中调用 `isString` 时，TypeScript 可以根据判断结果进一步推断出 `info` 的类型。
+```
+#### 5. `never` 类型与类型守卫 (else的情况)
+**`never` 类型**代表不会发生的情况，通常在类型守卫中，当 TypeScript 已经根据所有条件缩小了类型，但仍然需要处理某种不可能的情况时，可以使用 `never` 作为类型。这对于确保类型安全非常有用。
+```typescript
+function handleValue(value: string | number | boolean): void {
+  if (typeof value === 'string') {
+    console.log('String value:', value);
+  } else if (typeof value === 'number') {
+    console.log('Number value:', value);
+  } else {
+    // 处理 boolean 类型的逻辑
+    console.log('Boolean value:', value);
+  }
+}
+
+假设我们有一个联合类型 `string | number | boolean`，我们通过一系列的 `if` 分支处理了 `string` 和 `number`，那么理论上 `else` 处理的就是剩下的 `boolean` 类型，确保了类型安全。
+```

@@ -109,12 +109,6 @@
       "key": "["
     }
   ],
-  "app:toggle-left-sidebar": [
-    {
-      "modifiers": [],
-      "key": "F1"
-    }
-  ],
   "app:open-help": [],
   "app:toggle-right-sidebar": [
     {
@@ -166,6 +160,45 @@
         "Mod"
       ],
       "key": "P"
+    }
+  ],
+  "editor:toggle-strikethrough": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "D"
+    }
+  ],
+  "editor:delete-paragraph": [],
+  "editor:swap-line-up": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "ArrowUp"
+    }
+  ],
+  "editor:swap-line-down": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "ArrowDown"
+    }
+  ],
+  "random-note": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "`"
+    }
+  ],
+  "app:toggle-left-sidebar": [
+    {
+      "modifiers": [],
+      "key": "F1"
     }
   ]
 }

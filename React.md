@@ -1,3 +1,43 @@
+### [React主要版本的重大API更新](https://react.dev/versions#changelog)
+[react/CHANGELOG.md at main · facebook/react](https://github.com/facebook/react/blob/main/CHANGELOG.md#1830-april-25-2024)
+
+| React 版本 | 发布日期     | 重要API更新                                                                                                                  |
+| -------- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **16.0** | 2017年9月  | - **Fiber架构引入**：提升性能，支持异步渲染<br>- **Error Boundaries**：新增`componentDidCatch`，用于捕获子组件树的运行时错误                               |
+| **16.3** | 2018年3月  | - **生命周期方法更新**：新增`getDerivedStateFromProps`和`getSnapshotBeforeUpdate`，对老方法逐步废弃<br>- 现代化的**Context API**                  |
+| **16.6** | 2018年10月 | - **React.memo**：用于高效的React函数组件性能优化<br>- **React.lazy**：实现组件的动态懒加载和代码分割   **Suspense**                                   |
+| **16.8** | 2019年2月  | - **React Hooks 引入**：新增`useState`, `useEffect`, `useContext`, `useReducer`, `useRef`, `useCallback`, `useMemo`等Hooks API |
+| **17.0** | 2020年10月 | - 改善事件委托机制<br>- 新增的事件处理改进，支持`onFocusCapture`和`onBlurCapture`等事件捕获                                                        |
+| **18.0** | 2022年3月  | - 引入 **Concurrent Rendering**：通过`createRoot`取代`render`，利用并发模式提高 UI 响应性<br>- 新增`useTransition`和`useDeferredValue`         |
+| **18.2** | 2022年6月  | - **自动批处理更新（Automatic Batching）**：在多个状态更新时默认启用批量更新机制                                                                     |
+
+#### **React 16.3：生命周期和 Context API**
+- **新增生命周期方法：**
+  - `getDerivedStateFromProps(props, state)`：代替`componentWillReceiveProps`，从props中衍生并更新state。
+  - `getSnapshotBeforeUpdate(prevProps, prevState)`：用于在DOM更新前获取快照（如滚动位置）。
+- **新的Context API：**
+  - 提供更加简洁的跨组件传递数据方法，核心API如：`React.createContext`, `<Provider>`, `<Consumer>`。
+#### **React 16.6：优化工具**
+- **`React.memo`**：高阶组件，用于优化函数式组件的性能，相当于`PureComponent`的函数版。
+- **`React.lazy` 和 `Suspense`**：实现动态加载组件配合代码分割，简化Bundle文件的体积。
+#### **React 16.8：Hooks的诞生**
+- **React Hooks**：
+  - 打破了类组件的限制，Hooks能在函数组件中使用状态和生命周期逻辑：
+    - `useState`：管理组件状态值。
+    - `useEffect`：处理副作用，如事件监听、异步调用等。
+    - `useContext`：直接访问Context上下文。
+    - `useReducer`：实现状态复杂时的Redux风格处理方式。
+    - `useRef`：用于访问/存储DOM元素或变量。
+    - `useCallback` 和 `useMemo`：优化性能，避免函数或值的重新创建。
+#### **React 18.0：并发模式和性能提升**
+- **Major API Changes：**
+  - `createRoot(container)`：为新的并发渲染模式提供支持，替代旧的`ReactDOM.render`。
+  - **并发功能：**
+    - `useTransition`：管理用户界面中优先级较低的更新（如切换页面加载状态）。
+    - `useDeferredValue`：降低输入更新的优先级，用于大量数据渲染的优化。
+  - **自动批处理更新**：以往手动调用`ReactDOM.unstable_batchedUpdates`的逻辑，现在在React的所有事件环境中都会自动启用批量更新。
+#### **React 18.2：自动批处理更新扩展**
+- React事件之外也支持自动批处理更新，包含原生事件和异步任务，减少了非必要的重新渲染情况。
 ```javascript
 umi //企业级react应用框架,类似Next.js
     //dva作为umi插件, 底层引入了redux-sagas做异步流程控制，内置了 react-router('dva/router')  
@@ -33,6 +73,9 @@ SLOT插槽:
 Suspense 使得组件可以“等待”某些操作结束后，再进行渲染。
 Fragments 组件:用来包裹多个组件,封装成一个,方便引用
 
+```
+### 组件 hook
+```js
 组件
     类组件
     函数组件//颗粒度更小,逻辑复用
@@ -42,7 +85,7 @@ Fragments 组件:用来包裹多个组件,封装成一个,方便引用
                   setDate(new Date());
                 }, 1000);
                 return () => clearInterval(timer);//相当于componentWillUnmount
-            }, []/*依赖项门, 空的话useEffect只执行一次*/);
+            }, []/*依赖项们, 空的话useEffect只执行一次*/);
                 //每个async函数都会默认返回一个隐式的promise。但是，useEffect不应该返回任何内容,所以useEffect(async () => …) 是不允许的
             
 setState({k:v}) ,/在 setTimeout 和 native事件 中使用是同步的, 其他地方使用如合成事件中 是异步的,更新会合并/
@@ -79,12 +122,16 @@ hook  //Hook 不能在 class 组件中使用
         用法2
             const theme = useContext(ThemeContext);
         
-    
-    
+```
+### 跨组件通信
+```js
 高阶组件HOC//传入组件, 返回组件的函数
     装饰器写法
     /不要在render里使用HOC,性能差/
     
+- React Context 更适合于管理简单的数据，例如应用程序主题、用户认证信息等。expand_more
+- Redux 更适合于管理复杂的数据，例如购物车中的商品、表单数据等。
+
 跨组件通信传值context//穿透进去
     父创建:
         //用const context = React.createContext(); 
@@ -109,7 +156,9 @@ ref
     const Form = React.forwardRef(_Form);//转发ref到函数组件(本来不支持的),而非实例值,实例值要用useImperativeHandle
 
 createPortal(jsx,要附加的节点)//插入dom到指定节点下
-
+```
+### 性能
+```js
 fiber//小任务们
     大组件树解析阻塞->拆分任务->requestIdleCallback里根据优先级执行->更流畅
     fiber
@@ -127,12 +176,7 @@ fiber//小任务们
     export default (props)=><div>{props.name}</div>
 ```
 
-
-
----
-
-> 样板
-
+### 样板
 ```javascript
 import * as React from 'react';
 import classNames from 'classnames';
@@ -147,12 +191,16 @@ className=classNames(
 function 组件({children}) {}
 ```
 
-
-
----
-
-> 生命周期(重点)
-
+### 生命周期(重点)
+#### 生命周期函数的最佳实践
+1. **尽量避免在 Render Phase 生命周期函数中进行副作用操作**：
+   - **不要在 `render`, `constructor`, `getDerivedStateFromProps`, `shouldComponentUpdate` 中执行副作用**。这些函数可能会在调和过程（包括调和的多次尝试）中被多次调用。
+2. **把副作用操作放到 Commit Phase 生命周期函数中**：
+   - 使用 `componentDidMount` 和 `componentDidUpdate` 来执行副作用，例如数据获取、DOM 操作等。这样可以确保这些副作用只在 DOM 确定更新后运行。
+3. **特别注意 `shouldComponentUpdate`**：
+   - `shouldComponentUpdate` 用于性能优化，返回 `false` 可以阻止不必要的渲染。它不会阻止子组件的生命周期调用，所以要谨慎使用。
+4. **使用 `getSnapshotBeforeUpdate` 处理 DOM 读取**（仅用于类组件）：
+   - 如果需要在 DOM 更新前进行读取操作，可以使用 `getSnapshotBeforeUpdate`，它是在 DOM 更新前的最后一次机会进行读取操作。
 ```javascript
 UNSAFE_开头表示v17可能会废弃它,以为fiber可以中断,造成willXXX可能被执行多次
 
@@ -167,9 +215,8 @@ UNSAFE_开头表示v17可能会废弃它,以为fiber可以中断,造成willXXX�
             
         
         constructor()//初始化state | 方法绑定
-        
-            /因为Reconciliation阶段是可以被打断的，所以Reconciliation阶段会执行的生命周期函数就可能会出现调用多次的情况，从而引起Bug。/
-            /所以对于Reconciliation阶段调用的几个函数，除了shouldComponentUpdate以外，其他都应该避免去使用/
+            /因为Reconciliation(diff)阶段是可以被打断的，所以Reconciliation(diff)阶段会执行的生命周期函数就可能会出现调用多次的情况，从而引起Bug。/
+            /所以对于Reconciliation(diff)阶段调用的几个函数，除了shouldComponentUpdate以外，其他都应该避免去使用/
             (V17)static getDerivedStateFromProps(props,state) 在新版本用来替代UNSAFE_componentWillReceiveProps,让组件在 props 变化时更新 state
         
         UNSAFE_componentWillMount()   //UNSAFE_开头表示v17可能会废弃它,可以用命令自动加
@@ -202,16 +249,42 @@ UNSAFE_开头表示v17可能会废弃它,以为fiber可以中断,造成willXXX�
         componentWillUnmount() 
 ```
 
+在 React v16 之后，props 改变后会触发以下两个生命周期：
+- **getDerivedStateFromProps**
+- **shouldComponentUpdate**
+一般来说，可以在 getDerivedStateFromProps 中根据新的 props 更新 state，并在 shouldComponentUpdate 中根据 state 的变化决定是否要更新组件。
+**以下是一个示例：**
+```js
+class MyComponent extends React.Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    // 根据新的 props 更新 state
+    if (nextProps.count !== prevState.count) {
+      return {
+        count: nextProps.count,
+      };
+    }
+    return null;
+  }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    // 根据 state 的变化决定是否要更新组件
+    return nextState.count !== this.state.count;
+  }
 
+  render() {
+    // 渲染组件
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+      </div>
+    );
+  }
+}
+```
 
-
----
-
-> Redux是JavaScript应用程序的可预测状态容器
-
+### 原生redux
 ```javascript
-原生redux:
+原生redux://Redux是JavaScript应用程序的可预测状态容器
     import { createStore } from "redux";
     
     //Reducer: 定义state初始化和修改规则,reducer是一个纯函数
@@ -247,7 +320,9 @@ UNSAFE_开头表示v17可能会废弃它,以为fiber可以中断,造成willXXX�
     //函数式组件的使用:
           const [state, dispatch] = useReducer(counterReducer, "0", 这里可以处理一下初始值"0");
 
-
+```
+### react-redux
+```js
 react-redux: //使用 React Redux，你的组件永远不会直接访问store
     //把Provider放在根组件外层，使子组件能获得store
     import { Provider } from "react-redux";
@@ -288,11 +363,7 @@ react-redux: //使用 React Redux，你的组件永远不会直接访问store
 ```
 
 
-
----
-
-> react-router
-
+### react-router
 ```javascript
 import  { BrowserRouter as Router, HashRouter , Link, NavLink ,MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, 
 useHistory, useLocation, useParams, useRouteMatch, withRouter } from 'react-router'; //v5
@@ -326,8 +397,7 @@ Route渲染优先级: /children > component > render/
         //内联函数不要用component, component会调用React.createElement,如果用匿名函数的话每次生成的组件type不一样,会重复卸载挂载,性能不好
 ```
 
-> Next
-
+### Next
 ```javascript
 Next.js:
     执行 next 时,读取next.config.js的堆栈:
@@ -388,15 +458,9 @@ Next.js:
 ```
 
 
-
----
-
-> React源码
-
-https://p1.music.126.net/VU37zHp-6hAUfNaZbu3HRw==/109951165071751567.jpg类图
-
-# https://juejin.cn/post/7202085514400038969#heading-23【动图+大白话🍓解析React源码】Render阶段中Fiber树的初始化与对比更新～
-
+### React源码
+- https://p1.music.126.net/VU37zHp-6hAUfNaZbu3HRw==/109951165071751567.jpg类图
+- https://juejin.cn/post/7202085514400038969#heading-23【动图+大白话🍓解析React源码】Render阶段中Fiber树的初始化与对比更新～
 ```javascript
 jsx → React.createElement() → fiber → DOM
 
@@ -409,8 +473,16 @@ nextUnitOfWork //将要更新的下一个fiber
 
 reconciliation协调(也就是diff)
     //算法复杂度O(n) //每个节点都只走一遍
-    render 阶段：这个阶段是可中断的，会找出所有节点的变更
-    commit 阶段：这个阶段是不可中断的，会执行所有的变更
+    render 阶段：这个阶段是可中断的，会找出所有节点的变更, 调用组件的 render 方法，`生成新的虚拟 DOM`
+	    中断: 在 React 18 中引入的并发模式下，React 可能会暂停和恢复这段工作 
+	   - `constructor`
+	   - `static getDerivedStateFromProps`
+	   - `render`
+	   - `shouldComponentUpdate`
+    commit 阶段：这个阶段是不可中断的，会执行所有的变更, `更新真实DOM `
+	   - `componentDidMount`
+	   - `componentDidUpdate`
+	   - `componentWillUnmount`
 
 render时
     createRootFiber
@@ -421,4 +493,24 @@ render时
                 updateHostComponent || updateFunctionComponent
                     reconcileChildren //diff child
 ```
-
+### React 的并发模式
+React 的 Concurrent Mode 是 React 在 16 版本之后引入的一项重要特性，旨在提升大型应用的性能和用户体验。Concurrent Mode 并不是一个单独的 API，而是一套新的渲染机制，使 React 能够更智能地调度和管理渲染任务，从而在用户交互时保持界面的响应性。以下将详细分析其实现原理和核心概念。
+在传统的 React 渲染机制中，一旦渲染开始，它会持续执行直到所有组件更新完毕。在这种模式下，如果一个组件树很大，渲染时间可能会很长，导致浏览器在此期间无法响应用户输入。
+#### 1. 时间切片 (Time Slicing)
+时间切片是 Concurrent Mode 的一个关键技术，它通过将渲染任务分解为多个小的时间片段，使得 React 可以在浏览器空闲时间内进行渲染，从而避免阻塞用户交互。
+**实现机制**：
+- **requestIdleCallback**: React 早期尝试使用 `requestIdleCallback` 来实现时间切片，但它的缺点是调用频率不可控，且在某些高优先级任务上不适用。
+- **Scheduler**: **React 引入了一个独立的调度器 (`scheduler`)，它基于 `requestAnimationFrame` 和 `MessageChannel` 进行任务调度**。这使得 React 能够更精确地控制渲染任务的切片，从而在高优先级任务插入时（如用户输入），能够及时打断并处理。
+时间切片允许 React 在每个时间片结束时检查是否有更高优先级的任务（例如用户点击或键盘输入）。如果有，React 可以中断当前的渲染任务，并优先处理用户交互。这使得大型应用在渲染时保持流畅和高响应性。
+#### 2. 优先级调度 (Priority Scheduling)
+**优先级分类**：
+- **Immediate**: 例如用户输入或点击事件，需要立即响应的任务。
+- **User-blocking**: 影响用户操作的任务，比如动画或界面变化，这些任务应尽快完成。
+- **Normal**: 常规的渲染任务，这类任务可以被打断。
+- **Low**: 低优先级的后台任务，例如预加载数据或非关键组件的渲染。
+- **Idle**: 非关键任务，可以等到浏览器空闲时再执行。
+#### 3. 可中断更新 (Interruptible Updates)
+**工作原理**：
+- 当 React 开始一个渲染任务时，它会在每个时间片结束时检查是否有更高优先级的任务需要处理。
+- 如果有高优先级任务（如用户点击按钮），React 会立即中断当前的渲染并切换到高优先级任务。当高优先级任务完成后，React 可以恢复之前的渲染任务。
+- React 的 Fiber 架构使得这种中断和恢复机制变得可能。Fiber 可以理解为一种可中断的虚拟 DOM，它允许 React 记录和恢复渲染任务的状态，从而使渲染过程具备流动性。

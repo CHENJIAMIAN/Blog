@@ -9,4 +9,7 @@ __pycache__/
 workspace.json
 node_modules
 docs
+.obsidian/plugins/remember-cursor-position/cursor-positions.json
+
+.obsidian/plugins/copilot/data.json
 .vitepress/cache

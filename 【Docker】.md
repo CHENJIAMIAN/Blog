@@ -1,6 +1,7 @@
-## Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接口, 相当于一个虚拟机进程
+> Docker 属于 Linux 容器的一种封装，提供简单易用的容器使用接口, 相当于一个虚拟机进程
 
-![](images/796DAD50E04D4B03810F6C73510AC893.png)
+![796DAD50E04D4B03810F6C73510AC893](https://github.com/CHENJIAMIAN/Blog/assets/20126997/7b47d6b5-156d-4298-a7d2-459dcc725cef)
+
 
 ```javascript
 win10专业版开启 Hyper-V安装 Docker Desktop for Windows即可
@@ -27,8 +28,8 @@ Docker debian apt-get更换国内源解决Dockerfile构建速度过慢 ?? //在D
     //所以应该访问的是:http://192.168.99.100:3333/users/login
 ```
 
-## image（镜像）: Docker把应用程序及其依赖打包在 image 文件可以看作是容器的模板
-
+### image（镜像）
+ > Docker把应用程序及其依赖打包在 image 文件可以看作是容器的模板
 ```python
 docker images		#列出所有镜像
 daemon.json #配置镜像源的文件
@@ -46,8 +47,7 @@ docker build -t [username]/[repository]:[tag]  #构建一下 image 文件
 docker push [username]/[repository]:[tag]      #发布 image 文件到dockerhub
 ```
 
-## container(容器) : 
-
+### container(容器) 
 ```python
 docker ps		 #列出正在运行的容器     <==>  docker container ls --all
 docker ps -a 	 #列出所有容器
@@ -75,8 +75,7 @@ docker cp package.json ff524254:/userauth #复制文件到容器里
 0.0.0.0:49155->5000/tcp 表示本地主机的 49155 被映射到了容器的 5000 端口
 ```
 
-配置centos7解决 docker Failed to get D-Bus connection 报错
-
+### 配置centos7解决 docker Failed to get D-Bus connection 报错
 ```python
 # 在创建docker容器时添加--privileged
 docker run --privileged  -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cgroup  centos  /usr/sbin/init
@@ -89,8 +88,7 @@ docker run --privileged  -ti -e "container=docker"  -v /sys/fs/cgroup:/sys/fs/cg
 docker run --detach --publish 50001:80 --name webserver nginx
 ```
 
-取安装最新 Ubuntu镜像
-
+### 取安装最新 Ubuntu镜像
 ```python
 ctrl+c   #停止 Node 进程
 ctrl+d   #退出容器，等同于exit,  退出容器且关闭, docker ps 查看无 
@@ -112,8 +110,7 @@ ctrl+p+q #退出容器但不关闭, docker ps 查看有
 --rm                        #参数，在容器终止运行后自动删除容器文件
 ```
 
-> docker-compose
-
+### docker-compose
 ```javascript
 文件夹1(包含Dockerfile)
 文件夹2(包含Dockerfile)
@@ -173,10 +170,25 @@ Kubernetes //是Google开源的一个容器编排引擎，它支持自动化部�
         实现对这一组应用实例的管理、发现、访问，而这些细节都不需要运维人员去进行复杂的手工配置和处理。
 ```
 
-
-
+### pm2 
 ```javascript
 pm2-runtime 专为 Docker 容器设计，它将应用程序保持在前台，使容器保持运行，
 pm2 专为在后台发送或运行应用程序的正常使用而设计。
 ```
 
+
+### 国内源
+```bash
+# etc/docker/daemon.json 2024年8月2日
+{
+
+    "registry-mirrors": [
+        "https://dockerproxy.com",
+        "https://mirror.ccs.tencentyun.com",
+        "https://hub.uuuadc.top",
+        "https://dockerhub.icu",
+        "https://docker.awsl9527.cn"
+    ]
+
+}
+```

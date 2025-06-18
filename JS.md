@@ -1,3 +1,6 @@
+##### 踩坑
+1. 另一个窗口改localStorage才会触发这个窗口的`storage`事件,自己是触发不了自己的
+2. 
 ```javascript
 <script>         //html等它下载和执行完再加载
 <script async src=''>   //同加载 同执行 (执行script.js时，html解析暂停,且第二个脚本文件可能会在第一个脚本文件之前执行)
@@ -31,11 +34,13 @@ ES6的 9个
     7. iterator迭代器是一个实现next的方法：
                 可迭代对象:  //实现[可迭代协议],即内部有[Symbol.iterator]迭代器的实现方法 ,可用for...of
                             //[Symbol.iterator]加中括号是因为它是对象,不加会被以为是标识符
-                    var iterators= [1,2,3][Symbol.iterator]();   //数组内部实现了 *[Symbol.iterator]() {yield x;}。该迭代器可以被 for...of 循环使用。
+                    var iterators= [1,2,3][Symbol.iterator]();   
+	                    //数组内部实现了 *[Symbol.iterator]() {yield x;}。该迭代器可以被 for...of 循环使用。
                          iterators.next(); //{value: 1, done: false}
+				     被 Array.from 转换为数组。
                 迭代器方法: //实现[迭代器协议], 即内部实现了next方法,返回{value, done}, 如上面的iterators                     
                      
-    8. generator生成器函数(加了*号的函数)： 
+    8. generator生成器函数(加了*号的函数)： `Generator比aysnc/awati好在: 可以暂停和恢复执行`
                 function * GeneratorsFunc() {//next() 传参是对(yield表达式整体)的传参，否则yield类似于return //生成器既是迭代器，也是可迭代对象
                   let first = yield 1;//next()返回1, 但first接受next是4
                   let second = yield first + 2;    //因为first接受next是4,即next(4), 所以先执行let first=4;再执行first + 2；返回6
@@ -121,9 +126,6 @@ var a = b = 3;    //等同于    b = 3;    var a = b;
 a.x=b=3;          //等同于    a.x=undefined;   b=3; a.x=b;
 
 
-WebAssembly是一种新的编码方式，可以在现代的网络浏览器中运行 － 它是一种低级的类汇编语言，文件后缀名.wasm，可以编译为
-    WebAssembly还没有和<script type='module'>或ES6的import语句集成，也就是说，当前还没有内置的方式让浏览器为你获取模块。
-    当前唯一的方式就是创建一个包含你的WebAssembly模块二进制代码的 ArrayBuffer 并且使用WebAssembly.instantiate()编译它。
     
 /单个\被当成转义字符，是底层的实现，无法进行查找和替换/
     '123253\2345' //输出:"1232535"
@@ -173,7 +175,8 @@ Blob 对象表示一个二进制文件的数据内容，比如一个图片文件
     File 对象代表一个文件，用来读写文件信息。它继承了 Blob 对象，或者说是一种特殊的 Blob 对象，所有可以使用 Blob 对象的场合都可以使用它。
         FileReader 对象用于读取 File 对象或 Blob 对象所包含的文件内容。
 ```
-![](images/C6F35968C7E046ED80E7324398E64BD6.png)
+![C6F35968C7E046ED80E7324398E64BD6](https://github.com/CHENJIAMIAN/Blog/assets/20126997/3a47433d-0a89-4294-8f2f-7f6642d21b8b)
+
 
 
 ## 事件\异步:
@@ -196,7 +199,7 @@ Event Loop事件循环(重要): //用于等待和发送消息和事件的运行�
 setTimeout(fn,0)的含义: //只要主线程没事了就立即执行它
     注意!//setTimeout用Int32(最大值是2^31-1)一旦超过了最大值，
         //其效果就跟延时值为0的情况一样，也就是马上执行。
-        
+	为了节省资源,如果你设置的超时小于 4，嵌套层数超过 5 的话，这个超时会被强制调整为 4 https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#:~:text=than%204%2C%20then-,set%20timeout%20to%204,-.vue
 for(var i = 1; i <= 3; i++) {
                 setTimeout(function() {
                     console.log(i)
@@ -210,6 +213,7 @@ for(var i = 1; i <= 3; i++) {
 ```
 
 ## Promises 异步函数调用
+**Promise A+ 速记公式**：状态只变一次，`then` 方法异步执行，成功/失败回调存储等待，链式调用返回新 Promise。
 > 异步的发展过程：Callbacks>> Promises>> async/await(ES8)(本质是 Generator 的语法糖)
 ```javascript
 所有的 then() 函数总是会被异步调用, 即使是一个已经变成 resolve 状态的 Promise
@@ -452,7 +456,7 @@ var p = Object.create(Object.prototype); 等同于 {} 等同于 new Object() //p
         正常在自己的[[scope]]找到this, 它没有自己的[[scope]](作用域), 一级一级往上级的[[scope]]找 
         /箭头函数this 是最近能找到的this/ 
         {  a:1,/*对象没有this*/, fun1:function(){/*函数才有this*/}}
-        箭头函数的绑定直接无法被修改(但是可修改它爸啊)
+        箭头函数的绑定直接无法被修改,'无法通过apply bind等修改的!!!!'(但是可修改它爸啊)
             var age = 18;
             const Person = {
                 age: 20,  
@@ -619,7 +623,74 @@ every() //是否每个都是
 改:
     arr.map(callback(currentValue, index, array), this)
 ```
+### Symbol
+```js
+toStringTag
+	class MyExample {
+	  get [Symbol.toStringTag]() {
+	    return 'MyExample';
+	  }
+	}
+	
+	const example = new MyExample();
+	console.log(example.toString()); // 输出: "[object MyExample]"
+	
 
+私有数据
+	const privateData = Symbol('private');
+	
+	const obj = {
+	  [privateData]: "这是私有数据"
+	};
+	
+	console.log(obj[privateData]); // 输出: "这是私有数据"
+
+
+asyncIterator
+	const asyncIterable = {
+	  async *[Symbol.asyncIterator]() {
+	    yield 1;
+	    yield 2;
+	    yield 3;
+	  }
+	};
+	
+	(async () => {
+	  for await (const value of asyncIterable) {
+	    console.log(value); // 输出: 1, 2, 3
+	  }
+	})();
+
+
+species//用于创建衍生对象时确定构造函数
+	class MyArray extends Array {
+	  static get [Symbol.species]() { return Array; }
+	}
+	
+	const a = new MyArray(1, 2, 3);
+	const mapped = a.map(x => x * x);
+	
+	console.log(mapped instanceof MyArray); // false
+	console.log(mapped instanceof Array); // true
+	
+
+toPrimitive//自定义对象的原始值转换逻辑。当对象需要被转换为原始类型（如字符串、数字或布尔值）时，如果对象有这个属性方法，则会调用它
+	const obj = {
+	  [Symbol.toPrimitive](hint) {
+	    if (hint === 'number') {
+	      return 42;
+	    }
+	    if (hint === 'string') {
+	      return "hello";
+	    }
+	    return true;
+	  }
+	};
+	
+	console.log(+obj);  // 输出: 42
+	console.log(`${obj}`);  // 输出: "hello"
+	console.log(obj > 20);  // 输出: true
+```
 ## 奇淫技巧
 
 ```js
@@ -642,4 +713,46 @@ queryObjects(Object)
 	//筛选出非Cesium对象
 	keyskeys = keys(Cesium);
 	temp1.filter(i=>!keyskeys.includes(i.constructor.name));
+```
+#### 获取打印整个对象,不管它多大(解除循环引用限制)
+```js
+const cache = new Set();
+
+function safeStringify(key, value) {
+  if (typeof value === "object" && value !== null) {
+    if (cache.has(value)) {
+      // 移除循环引用
+      return;
+    }
+    cache.add(value);
+
+    if (
+      key === "_typedArray" ||
+      key === "_shaders" ||
+      key === "_vertexShaderSource" ||
+      key === "sources" ||
+      key === "keyword" ||
+      key === "_vertexShaderText" ||
+      key === "_fragmentShaderText" ||
+      key === "_shadersByTexturesFlags" ||
+      key === "vertices" ||
+      key === "_html" ||
+      key === "_owner" ||
+      key === "_us" ||
+      key === "primitive" ||
+      key === "primitives"
+    ) {
+      return; // remove unwanted keys
+    }
+
+    return value;
+  }
+}
+try {
+  JSON.stringify(temp1.scene.root, safeStringify);
+} catch (e) {
+  // 如果JSON.stringify失败了，这里捕获异常
+  debugger;
+}
+
 ```

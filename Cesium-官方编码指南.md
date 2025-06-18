@@ -838,7 +838,7 @@ function loadTileset(tileset, tilesJson, done) {
 
 - 🏠: 只有当它可能对最终用户有用时，才将类或函数作为 Cesium API 的一部分；避免将实现细节作为公共 API 的一部分。当某些东西是公开的时，它会使 Cesium API 变得更大，更难学习，以后更难更改，并且需要更多的文档工作。
 - 🎨: 将新类和函数放在 Cesium 堆栈（目录`Source/XXX` ）的右侧部分。从下往上：
- ![gh](https://raw.githubusercontent.com/CHENJIAMIAN/Blog/master/image/16825068650006j94b4.png)
+![16825068650006j94b4](https://github.com/CHENJIAMIAN/Blog/assets/20126997/922417ca-20f3-41f5-8b0b-15896d5dfc75)
   - `Source/Core` - 数字运算。纯数学，例如 [`Cartesian3`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/Cartesian3.js)。纯几何体，例如 [`CylinderGeometry`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/CylinderGeometry.js)。基本算法，例如 [`mergeSort`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/mergeSort.js)。请求辅助函数，例如 [`loadArrayBuffer`](https://github.com/CesiumGS/cesium/blob/main/Source/Core/loadArrayBuffer.js)。
   - `Source/Renderer` - WebGL 抽象，例如 [`ShaderProgram`](https://github.com/CesiumGS/cesium/blob/main/Source/Renderer/ShaderProgram.js) 和特定于 WebGL 的实用程序，例如 [` ShaderCache`](https://github.com/CesiumGS/cesium/blob/main/Source/Renderer/ShaderCache.js)。此目录中的标识符不是公共 Cesium API 的一部分。
   - `Source/Scene` - 图形引擎，包括 [Model](https://github.com/CesiumGS/cesium/blob/main/Source/Scene/Model.js) 等 `primitive`。此目录中的代码通常依赖于 `Renderer`。

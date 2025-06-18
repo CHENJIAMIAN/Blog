@@ -1,5 +1,6 @@
 ## 概念
-
+ 1. 族文件`.rfa` 文件类似`.glb`都是模型文件, 但专注于详细的建筑信息
+ 2. 族可包含族可包含族可无限套娃
 ```js
 CAD//像SU、MS、ArchiCAD、Inventor、Allplan、 VevtorWorks、Civil 3D等软件
     BIM//将以前的CAD图纸转化为立体模型，真到每个窗户都是真实具体尺寸的。具有小场景精细化的业务
@@ -161,5 +162,6 @@ XQuery:
     该查询使用“for”循环遍历 XML 文档中与“//geometry”XPath 表达式匹配的所有元素。“where”子句将元素过滤为仅那些“fme_geometry_name”属性值为“Body”的元素。“return”子句指定应该从查询中返回什么，在这种情况下，是“fme_id”属性的数值。
 ```
 
-
-
+### Autodesk Forge SVF (.rvt转.glb的方式)
+- Autodesk Forge 已更名为 Autodesk Platform Services
+- Autodesk Forge SVF 模型是 Autodesk Forge 平台上的一种核心功能。SVF 代表“简化视图格式”（Simplified Visualization Format），它是一种专为网页应用设计的三维数据格式。通过将三维CAD模型转换为SVF格式，使得这些模型可以轻松地在网页浏览器中查看和交互，而无需安装任何特定的软件或插件。SVF格式支持多种细节级别（LOD），从而优化了加载时间和显示性能，使其适合在线查看大型复杂模型。此外，Autodesk Forge 提供的APIs能够帮助开发者轻松地将SVF模型集成到自己的应用程序中，从而实现更加丰富和交互式的用户体验。

@@ -1,10 +1,11 @@
+现在是2023年7月6日,cesium版本是1.107了
+#### 踩坑
+1. 怎么设置trackedEntity的角度?entity的viewFrom属性是用来设置相机相对于实体的位置
 ## 资源
 [gw3_construkted/construkted.js at master · stefanciorici/gw3_construkted · GitHub](https://github.com/stefanciorici/gw3_construkted/blob/master/wp-content/themes/gowatch-child/js/construkted.js)泄露了官方的测量/距离/面积/模型位置编辑器插件
-[Construkted-Reality/edd6b-Construkted](https://github.com/Construkted-Reality/edd6b-Construkted/tree/ba5418eaa26710e0b63440167c177a5014e046e5)具体分支
+[Construkted-Reality/edd6b-Construkted](https://github.com/Construkted-Reality/edd6b-Construkted/tree/ba5418eaa26710e0b63440167c177a5014e046e5)具体分支 https://construkted.com/asset/qpnur8sroi/ 查看该产品
 [master](https://github1s.com/Construkted-Reality/edd6b-Construkted/blob/master/edd-cesiumjs-customize/includes/js/CesiumIonSDKPlugin.js)
 [Construkted-Reality/3DT-Local-viewer: Local viewer for 3D Tiles --- Construkted-Reality/3DT-Local-viewer：3D Tiles 的本地查看器](https://github.com/Construkted-Reality/3DT-Local-viewer)2023年4月6日尝试了，不可用
-[Construkted-Reality/3DTG：将 3d 模型转换为 3d tiles](https://github.com/Construkted-Reality/3DTG)目前该工具只接受带纹理的 OBJ 文件
-[My Assets | Cesium ion --- 我的资产 |铯离子](https://ion.cesium.com/assets/)可以在线免费转3DTiles再下载下来
 
 ```javascript
 Cesium.Resource.fetchJson(url)
@@ -22,7 +23,8 @@ Scene//是一个Cesium应用程序的根对象，它包含用于场景渲染和�
     Globe//是Scene的一部分，表示在场景中渲染地球的部分。它包括地球的几何形状、地形、图像纹理和其他相关属性，使得场景中的地球可以进行交互和探索。
 ```
 ## 执行流程 与 对象
-![](images/20230424120853.png)
+![20230424120853 | 800](https://github.com/CHENJIAMIAN/Blog/assets/20126997/4d816c11-82a7-4efa-8868-3245e47703c8)
+
 ```javascript
 多源//来源于遥感影像、摄像头、问卷调查、手机信令、GPS追踪等
 异构//结构化数据, 非结构化数据, 时空数据
@@ -123,7 +125,7 @@ GlobeVS：定义所有 3D 地球场景（又名“球体”）上的“顶点着
 GroundAtmosphere: 该类管理和呈现地球大气层。
 HeadingPitchRoll 是由三个实数分别表示方向角、俯仰角、旋转角的类。
 ImageryLayerCollection: 该类表示多个图像图层的集合。
-Instanced3DModel3DTileContent: 该类表示一个可重用的3D模型实例。
+Instanced3D  Model3DTileContent: 该类表示一个可重用的3D模型实例。
 JulianDate: 该类表示一个儒略日日期。
 kdbush: 该类提供了一种使用kd树进行快速空间搜索的方法。
 knockout 用于一个变量跟另一个变量联动，是 JavaScript 的 MVVM 框架，也是Cesium中关键的一部分，是cesium总体架构中，MVC 模式实现MVVM的另一种表现方式。提供相关的工具函数，常常作为依赖注入框架使用。
@@ -157,6 +159,7 @@ when：一个实用工具，对带有错误处理的 promise 进行分装， 允
 
 ## 类图 
 [cesium.jpg (3561×3574)](http://mars3d.cn/dev/img/jiagou/cesium.jpg)
+
 ```javascript
 通用类/空间计算
 	Cartesian3
@@ -434,11 +437,56 @@ createTaskProcessorWorker根据"workerModule"匹配 TaskProcessor根据传入的
 			"canTransferArrayBuffer": true
 		}
 ```
+## 源码-选择物体
+> 根据像素对应颜色匹配
+```js
+存起来:
+	PickId (Context.js:1563)
+	Context.createPickId (Context.js:1618)
+	createPickTexture (BatchTexture.js:466)
+	BatchTexture.update (BatchTexture.js:507)
+	ModelFeatureTable.update (ModelFeatureTable.js:166)
+	---/Model(b3dm等)的_featureTables存在才会继续
+	updateFeatureTables (Model.js:1899)
+	Model.update (Model.js:1785)
+	---
+	Model3DTileContent.update (Model3DTileContent.js:257)
+	updateContent (Cesium3DTile.js:1992)
+	Cesium3DTile.update (Cesium3DTile.js:2036)
+	updateTiles (Cesium3DTileset.js:2915)
+	update (Cesium3DTileset.js:3203)
+	Cesium3DTileset.updateForPass (Cesium3DTileset.js:3303)
+	Cesium3DTileset.update (Cesium3DTileset.js:3246)
+	PrimitiveCollection.update (PrimitiveCollection.js:377)
+	updateAndRenderPrimitives (Scene.js:3339)
+	executeCommandsInViewport (Scene.js:3115)
+	Scene4.updateAndExecuteCommands (Scene.js:2860)
+	---
+	Picking.pick (Picking.js:299)
+	Scene4.pick (Scene.js:3935)
+	pickEntity (Viewer.js:117)
+	pickAndSelectObject (Viewer.js:948)
+	cancelMouseEvent (ScreenSpaceEventHandler.js:295)
+	handleMouseUp (ScreenSpaceEventHandler.js:317)
+	handlePointerUp (ScreenSpaceEventHandler.js:868)
+	listener (ScreenSpaceEventHandler.js:54)
+	
+获取:
+	Context.getObjectByPickColor (Context.js:1556)
+	PickFramebuffer.end (PickFramebuffer.js:96)
+	Picking.pick (Picking.js:302)
+	Scene4.pick (Scene.js:3935)
+	pickEntity (Viewer.js:117)
+	pickAndSelectObject (Viewer.js:948)
+	cancelMouseEvent (ScreenSpaceEventHandler.js:295)
+	handleMouseUp (ScreenSpaceEventHandler.js:317)
+	handlePointerUp (ScreenSpaceEventHandler.js:868)
+	listener (ScreenSpaceEventHandler.js:54)
+```
 
 ## 实践
 ```javascript
 概念
-    Cesium ion是一个提供瓦片图和3D地理空间数据的平台
     使用geojson加载线数据在30万左右，矢量建筑面8万左右尚可
     OSGB//Open Scene Gragh Binary 是模型的二进制表示，所有纹理都包含在一个独立文件中。 OpenSceneGraph 是一个开源的高性能 3D 图形工具包 
 
@@ -623,66 +671,9 @@ Cesium.CallbackProperty //用回调函数传入time,用于处理随时间变化�
 viewer.scene.screenSpaceCameraController.inertiaZoom=0.9 //设置丝滑惯性缩放，默认0.8，越接近1惯性越大
 ```
 
-## 向量
-
-```js
-一个平面可以由两个非平行的向量确定，而这两个向量的叉积即为法线向量
-
-根据向量投影的定义，对于一个向量v和一个单位向量u，v在u方向上的投影向量proj_vu可以通过以下公式计算：
-proj_vu = dot(v, u) * u
-其中dot(v, u)是v和u的点积，表示v在u方向上的投影长度，u是一个单位向量，表示u的长度为1，方向与投影方向相同。
-在这个例子中，杯子的移动向量为向右的单位向量(1,0,0)，桌面法线向量为向上的单位向量(0,1,0)。根据上述公式，投影向量proj_right_up可以计算为：
-proj_right_up = dot((1,0,0), (0,1,0)) * (0,1,0) = 0 * (0,1,0) = (0,0,0)
-
-	我不懂向量运算, dot((1,0,0), (0,1,0)) * (0,1,0) 的具体计算过程是?
-		首先，dot((1,0,0), (0,1,0))表示向量(1,0,0)和向量(0,1,0)的点积，也称为内积。点积的计算公式是将两个向量对应位置的数值相乘，然后将乘积相加，即：		
-		dot((1,0,0), (0,1,0)) = 1*0 + 0*1 + 0*0 = 0		
-		所以，dot((1,0,0), (0,1,0))的结果为0。		
-		接下来，我们将0乘以(0,1,0)。这个操作实际上是将向量(0,1,0)的每个分量都乘以0，得到的结果向量仍然是(0,1,0)本身。因此，		
-		dot((1,0,0), (0,1,0)) * (0,1,0) = 0 * (0,1,0) = (0,0,0)		
-		所以，这个计算的结果是(0,0,0)。		
-		总结一下，这个计算的过程是：将向量(1,0,0)和向量(0,1,0)做点积，得到0，然后将0乘以向量(0,1,0)，得到的结果是(0,0,0)。
-```
-
-
 ## 矩阵
-![](images/20230411101658.png)
 
 ```js
-T如何移动一个点，举例矩阵相乘的详细步骤
-	假设有一个点P(x, y, z)，现在想要将该点沿着X轴平移2个单位，沿着Y轴平移3个单位，沿着Z轴平移4个单位。可以使用变换矩阵来实现这个操作。变换矩阵可以表示为：	
-	T = [1 0 0 2]
-	    [0 1 0 3]
-	    [0 0 1 4]
-	    [0 0 0 1]	
-	其中，第一列表示X轴的变换，第二列表示Y轴的变换，第三列表示Z轴的变换，最后一列表示平移向量。	
-	现在，需要将点P应用该变换矩阵，以实现平移操作。可以按照以下步骤进行矩阵相乘：	
-	1.  将点P表示为一个4维向量，即增加一个齐次坐标分量w=1：	
-	P' = [x]
-	     [y]
-	     [z]
-	     [1]	
-	
-	2.  将变换矩阵T表示为一个4x4的矩阵：		
-	T = [1 0 0 2]
-	    [0 1 0 3]
-	    [0 0 1 4]
-	    [0 0 0 1]	
-	
-	3.  将点P'和变换矩阵T相乘，得到一个新的4维向量P''：		
-	P'' = T * P' = [1 0 0 2]   [x]
-	               [0 1 0 3] * [y]
-	               [0 0 1 4]   [z]
-	               [0 0 0 1]   [1]	
-	
-	4.  对于新的4维向量P''，将其前三个分量（x, y, z）除以最后一个分量（w=1），即可得到平移后的新点坐标：		
-	x' = P''[0] / P''[3] = x + 2
-	y' = P''[1] / P''[3] = y + 3
-	z' = P''[2] / P''[3] = z + 4		
-	综上，通过矩阵相乘的方式，可以将点P沿着X轴平移2个单位，沿着Y轴平移3个单位，沿着Z轴平移4个单位。
-	这种方法非常高效，可以同时对多个点进行平移操作，而且可以方便地组合不同的变换操作。
-
-
 Cesium.Matrix4要注意阅读顺序的问题
 	//不符合直觉的写法
 		const v = [
@@ -758,13 +749,15 @@ Cesium.Matrix4.multiplyByMatrix3(m, rotation, m);替代了Cesium.Matrix4.multipl
 ```
 
 ### 坐标系
-![](images/20230419164035.png)
+![20230419164035 | 400](https://github.com/CHENJIAMIAN/Blog/assets/20126997/f75c59ef-8fd9-42f3-800b-a75c750582f2)
+
 
 ```js
 - 在左手坐标系中，“east”对应笛卡尔坐标系中的x轴，即东方向；“north”对应笛卡尔坐标系中的y轴，即北方向；“up”对应笛卡尔坐标系中的z轴，即垂直于地面向上的方向。
 - 在右手坐标系中，“east”对应笛卡尔坐标系中的x轴，即东方向；“north”对应笛卡尔坐标系中的y轴，即北方向；“up”则与笛卡尔坐标系中的z轴相反，即指向地心的方向。
 ```
-![](images/20230409173031.png)
+![20230409173031 | 400](https://github.com/CHENJIAMIAN/Blog/assets/20126997/3de239ef-5194-4a9d-b487-bbf3ecab04fb)
+
 ```js
 Cesium.Transforms.eastNorthUpToFixedFrame //是回退变换, 在地球上，每个点都有一个本地坐标系，它是以该点为原点，以地球表面的法线方向为z轴建立的一个坐标系。然而，当我们需要在计算机中对地球上的点进行处理时，通常需要将这些点转换为一个固定的坐标系，方便进行计算和可视化。
 	,/eastNorthUp 坐标系主要用于处理经纬度和高度等地理信息数据/
@@ -938,7 +931,8 @@ camera.position//相对于transform的位置
 - `upWC`：相机在世界坐标系中的上向量，即相机坐标系的 y 轴方向在世界坐标系中的方向。
 - `rightWC`：相机在世界坐标系中的右向量，即相机坐标系的 x 轴方向在世界坐标系中的方向。
 ```
-![](images/20230411105231.png)
+![20230411105231 | 600](https://github.com/CHENJIAMIAN/Blog/assets/20126997/6911333b-917b-4558-9d73-8e1b9afe4ed3)
+
  
 ```js
 Ion使用Durandal开发: https://ion.cesium.com/main.js
@@ -1063,8 +1057,10 @@ pass表示渲染过程中的通道，主要用于渲染优化。在Cesium中，�
 
 在这段代码中，pass指定为OPAQUE不透明的通道。这意味着所有不透明的物体（无论是地形、建筑、树木等）都会在这个通道中被渲染。这是渲染的第一个基础阶段，所有不透明的像素（即alpha小于1）都会被绘制。
 ```
-![](images/20230426092257.png)
-![](images/20230426092252.png)
+![20230426092257 | 600](https://github.com/CHENJIAMIAN/Blog/assets/20126997/13bdb9d3-1b99-46a4-8914-eb6ab0eb64c8)
+
+![20230426092252 | 600](https://github.com/CHENJIAMIAN/Blog/assets/20126997/d49ad873-a89e-4fe4-aabd-6d4b6c127343)
+
 ## 着色器源码
 
 ```js
@@ -1078,7 +1074,7 @@ pass表示渲染过程中的通道，主要用于渲染优化。在Cesium中，�
 		在每一帧结束时，  Context.endFrame 通过解除绑定着色器程序、帧缓冲区、绘图缓冲区和纹理来清理状态。这有助于减少渲染器在每次命令执行之间管理的状态量。
 
 czm_material结构体包含以下属性：
-1. diffuse：散射光线对材质表面的影响，均匀地在所有方向上散射。
+1. diffuse：漫反射
 2. specular：镜面反射的强度。
 3. shininess：镜面反射的锐度。数值越大，反射高光区域越小，锐度越高。
 4. normal：表面法线在眼空间中的方向。用于实现法线映射等效果。如果没有被修改，则默认为表面的法线方向。
@@ -1105,7 +1101,7 @@ ArcType.RHUMB
 2. obj转gltf转换:https://qithub.com/AnalyticalGraphicsInc/obi2gltf
 3. 或 https://github.com/PrincessGod/objTo3d-tiles
 4. 或 https://github.com/fanvanzh/3DTiles
-5. gltf内部优化处理: https://github.com/AnalyticalGraphicsInc/altf-pipeline
+5. gltf内部优化处理: https://github.com/AnalyticalGraphicsInc/gltf-pipeline
 
 ## CDN
 ```bash
