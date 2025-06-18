@@ -1354,9 +1354,9 @@
 
 - 避免在更改输入类型时触发浏览器的验证警告。（@nhunzaker 在 `#7333`）
 - 避免在 IE10 中调用合成事件中的`stopPropagation()`方法时出现“成员未找到”异常。（@nhunzaker 在`#7343`）
-- 修复导致移动浏览器中某些<input></input>元素无法更新的问题。（@keyanzhang 在 `#7397`）
+- 修复导致移动浏览器中某些`<input></input>`元素无法更新的问题。（@keyanzhang 在 `#7397`）
 - 修复服务器渲染过程中的内存泄漏问题。（@keyanzhang 在 `#7410`）
-- 修复因更改最小值或最大值而导致的<input></input>控件值无法更新的问题。（@troydemonbreun 在`#7486`）
+- 修复因更改最小值或最大值而导致的`<input></input>`控件值无法更新的问题。（@troydemonbreun 在`#7486`）
 - 添加对新情况的新警告：尝试卸载由不同副本的 React 拥有的容器。（@ventuno 在 `#7456`）
 
 ### [React 测试渲染器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-test-renderer-10)
@@ -1387,7 +1387,7 @@
 - 修复嵌套服务器渲染问题。（@Aweary 在 `#7033`）
 - 将 xmlns 和 xmlnsXlink 添加到支持的 SVG 属性中。（@salzhrani 在 `#6471`）
 - 将 referrerPolicy 添加到支持的 HTML 属性中。（由 @Aweary 在 #7274 提出）
-- 修复因<input></input>初始值四舍五入而产生的问题。（@troydemonbreun 在 `#7251`）
+- 修复因`<input></input>`初始值四舍五入而产生的问题。（@troydemonbreun 在 `#7251`）
 
 ### [React 测试渲染器](https://github.com/facebook/react/blob/main/CHANGELOG.md#react-test-renderer-11)
 
@@ -1459,7 +1459,7 @@
 - 使用 escape-html 提升文本转义性能，性能得到改善。（@aickin 在 `#6862`）
 - 修复与 Internet Explorer 中的 dangerouslySetInnerHTML 和 SVG 相关的问题。
 - 修复 <textarea> 占位符的问题。（@jimfb 在 `#7002`）</textarea>
-- 修复对<input></input>的受控与不受控检测问题（@jimfb 在 `#7003`）
+- 修复对`<input></input>`的受控与不受控检测问题（@jimfb 在 `#7003`）
 - 提升更新文本内容性能。（@trueadm 在 `#7005`）
 - 确保受控的<select>组件在首次渲染和更新时表现一致。（@yiminghe 在 `#5362`）</select>
 
@@ -1550,15 +1550,15 @@
 
 - 初始渲染现在采用 document.createElement 替代直接生成 HTML。以前，我们会生成一大段 HTML 代码，然后进行设置。当时我们认为这种方法比使用 document.createElement 在我们支持的多数浏览器中更快。但随着浏览器技术的不断进步，这一观点已经不再适用。通过使用 document.createElement，我们可以让 React 的其他部分运行得更快。（在）
 - **data-reactid is no longer on every node.**使用 document.createElement 后，我们可以在创建 DOM 节点时预先填充节点缓存，这样我们就可以跳过可能的查找（使用了属性）。根节点将具有属性，服务器生成的标记仍然包含点（.）和括号（）。
-- 没有更多额外的 <span>。ReactDOM 现在将渲染带有分隔注释的纯文本节点。</span>  
-    这使我们能够更新单个文本片段，无需创建额外的嵌套节点。如果您针对这些<span>元素应用 CSS，则需要相应调整。您始终可以在组件中显式渲染它们。（@mwiencek 在`#5753`）</span>
+- 没有更多额外的 `。ReactDOM 现在将渲染带有分隔注释的纯文本节点。`  
+    这使我们能够更新单个文本片段，无需创建额外的嵌套节点。如果您针对这些`元素应用 CSS，则需要相应调整。您始终可以在组件中显式渲染它们。（@mwiencek 在`#5753`）`
 - 现在渲染 null 时使用注释节点，之前 null 会渲染到
 - 功能组件现在可以返回 null 了。React 0.14 版本中，我们支持将无状态组件定义为函数，但仍然允许定义不继承自 React.Component 或使用 React.createClass()的类组件，因此我们无法准确判断组件是函数还是类，也不允许从这类组件中返回 null。这一限制在 React 15 版本中得到了解决，现在无论是类组件还是函数组件，都可以返回 null。（@jimfb 在`#5884`）
 - 改进了 SVG 支持。现在所有 SVG 标签都得到了全面支持。（不常见的 SVG 标签未包含在 React.DOM 元素辅助器中，但 JSX 和 React.createElement 可以处理所有标签名。）所有浏览器支持的 SVG 属性也应得到支持。如发现我们遗漏了任何属性，请在此问题中告知我们。（@zpao 在`#6243`）
 
 ### [突破性变更](https://github.com/facebook/react/blob/main/CHANGELOG.md#breaking-changes-2)
 
--  **没有更多多余的 <span>。</span>**
+-  **没有更多多余的**
 - React.cloneElement() 现在可以解析 defaultProps。我们修复了 React.cloneElement() 中的一个 bug，某些组件可能依赖于它。如果 cloneElement() 收到的某些属性未定义，以前它会返回一个这些属性值为未定义的元素。现在我们将其修改为与 createElement() 保持一致，即所有传递给 cloneElement() 的未定义属性都将映射到对应组件的 defaultProps 上。 (@truongduy134 在 #5997)
 - `ReactPerf.getLastMeasurements()` 是不可见的。这次改动不会影响应用，但可能会影响到某些第三方工具。我们正在对 ReactPerf 进行重构，并计划在 15.x 版本周期内推出。内部性能测量格式可能会发生变化，因此，目前我们认为 `ReactPerf.getLastMeasurements()` 的返回值是一个不应依赖的不透明数据结构。（@gaearon 在 `#6286`）
 
@@ -1570,7 +1570,7 @@
 - 已弃用的插件已被移除：批量更新和带有属性的克隆。（@jimfb 在 `5859`，@zpao 在 `#6016`）
 - 已废弃的组件实例方法已被移除：setProps、replaceProps 和 getDOMNode。（@jimfb 在 `#5570`）。
 - 已废弃的 CommonJS react/addons 入口点已被移除。请记住，您应该使用独立的 react-addons-*包。这仅适用于您使用 CommonJS 构建的情况。（@gaearon 在 `#6285`）
-- 将子元素传递给如<input></input>等空元素的做法已被弃用，现在会引发错误。 （@jonhester 在 `#3372`）
+- 将子元素传递给如`<input></input>`等空元素的做法已被弃用，现在会引发错误。 （@jonhester 在 `#3372`）
 - React 在 DOM 引用上的特定属性（例如 this.refs.div.props）已被弃用，现在已移除。（@jimfb 在#5495 中提到）
 
 ### [新增弃用功能，并附带警告提示](https://github.com/facebook/react/blob/main/CHANGELOG.md#new-deprecations-introduced-with-a-warning)
@@ -1578,7 +1578,7 @@
 这些更改将继续按之前的方式工作，直到 React 16 发布，以便您可以逐步升级您的代码。 这些更改将继续按之前的方式工作，直到 React 16 版本发布，您可以根据需要逐步更新您的代码，以避免一次性进行大量更改。
 
 - LinkedStateMixin 和 valueLink 由于使用率极低现已弃用。如需使用，请使用实现相同功能的包装组件：react-linked-input。（@jimfb 在 `#6127`）
-- React 未来版本会将<input></input>视为清除输入的请求。但 React 0.14 版本忽略了 value={null}。React 15 版本会在输入值为 null 时发出警告，并建议你明确意图。要解决这个警告，你可以明确传递空字符串来清除受控输入，或者传递 undefined 来使输入变为非受控状态。（@antoaravinth 在`#5048`）
+- React 未来版本会将`<input></input>`视为清除输入的请求。但 React 0.14 版本忽略了 value={null}。React 15 版本会在输入值为 null 时发出警告，并建议你明确意图。要解决这个警告，你可以明确传递空字符串来清除受控输入，或者传递 undefined 来使输入变为非受控状态。（@antoaravinth 在`#5048`）
 - ReactPerf.printDOM() 已更名为 `ReactPerf.printOperations()` ， `ReactPerf.getMeasurementsSummaryMap()` 已更名为 ReactPerf.getWasted()。（由 @gaearon 在 #6287 提出）
 
 ### [新增实用警告](https://github.com/facebook/react/blob/main/CHANGELOG.md#new-helpful-warnings)
@@ -2228,7 +2228,7 @@
 - 修复了在 CSSTransitionGroup 退出转换过程中重新添加节点的问题
 - 修复 CSSTransitionGroup 中 transitionLeave 变更的 bug
 - CSSTransitionGroup 性能优化方案
-- 在复选框<input></input>元素上，现在支持 checkedLink 的双向绑定
+- 在复选框`<input></input>`元素上，现在支持 checkedLink 的双向绑定
 
 ### [JSX 编译器及 react-tools 软件包](https://github.com/facebook/react/blob/main/CHANGELOG.md#jsx-compiler-and-react-tools-package)
 
@@ -2345,7 +2345,7 @@
 - 属性改进：验证与默认值。详情请参阅我们的博客文章。
 - 支持对关键属性的支持，可进行更精细的合并控制。请参阅文档了解详细信息...
 - 移除了 React.autoBind 功能。详情请参阅我们的博客文章。
-- 表单优化。我们针对`<input></input>、<textarea>、<option>和<select>`元素编写了封装器，以统一浏览器实现中的众多差异。这包括 defaultValue 的支持、onChange 事件的优化以及电路完成。详情请参阅文档。`</textarea>`
+- 表单优化。我们针对`<input></input>`、`<textarea>、<option>和<select>`元素编写了封装器，以统一浏览器实现中的众多差异。这包括 defaultValue 的支持、onChange 事件的优化以及电路完成。详情请参阅文档。`</textarea>`
 - 我们已实现符合 W3C 规范的改进型合成事件系统
 - 组件更新现在采用批量处理，这可能会大幅提升组件的重新渲染速度。`this.setState` 方法现在可以接受一个可选的回调函数作为第二个参数。如果你之前使用的是 `onClick={this.setState.bind(this, state)}` ，请注意添加第三个参数，以防止事件被错误地当作回调函数处理。
 

@@ -6,13 +6,13 @@ import LayoutIndex from './layout/Index.vue'
 import 'gitalk/dist/gitalk.css'
 
 export default {
-  ...DefaultTheme,
-  Layout: LayoutIndex,
-  enhanceApp({ router }) {
-    if (inBrowser) {
-      router.onAfterRouteChanged = () => {
-        busuanzi.fetch()
-      }
+    ...DefaultTheme,
+    Layout: LayoutIndex,
+    enhanceApp ({ router }) {
+        if (inBrowser) {
+            router.onAfterRouteChanged = () => {
+                busuanzi.fetch()
+            }
+        }
     }
-  }
 }
