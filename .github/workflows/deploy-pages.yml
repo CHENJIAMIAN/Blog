@@ -14,7 +14,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
 
       - name: Copy files to temporary folder
         run: cp -r * ../tmp111/
-        
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -36,7 +36,6 @@ jobs:
         run: |
           # git checkout -b gh_action_branch
           ls -a
-          
 
       - name: Copy files from temporary folder to gh_action_branch branch root
         run: |
@@ -44,33 +43,33 @@ jobs:
           ls -a
           git status
 
-      - name: Install PNPM
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9 # 使用您项目的 PNPM 版本
+      # - name: Install PNPM
+      #   uses: pnpm/action-setup@v2
+      #   with:
+      #     version: 9 # 使用您项目的 PNPM 版本
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'pnpm' # 修改为 PNPM 缓存
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 18
+      #     cache: 'pnpm' # 修改为 PNPM 缓存
 
-      - name: Install dependencies
-        run: npm install
+      # - name: Install dependencies
+      #   run: npm install
 
-      # 使用 PNPM 替代 NPM
-      - run: pnpm install --frozen-lockfile # 严格使用 lockfile
-      - name: Build
-        run: pnpm run docs:build # 使用 
+      # # 使用 PNPM 替代 NPM
+      # - run: pnpm install --frozen-lockfile # 严格使用 lockfile
+      # - name: Build
+      #   run: pnpm run docs:build # 使用
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v2
+      # - name: Configure Pages
+      #   uses: actions/configure-pages@v2
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .vitepress/dist
+      # - name: Upload Pages artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: .vitepress/dist
 
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # - name: Deploy
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
