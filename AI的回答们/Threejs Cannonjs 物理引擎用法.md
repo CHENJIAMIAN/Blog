@@ -6,11 +6,7 @@ tags:
 ---
 # Threejs Cannonjs 物理引擎用法
 
-### 🧑‍💻 User
-
-
-
-three.js cannon的用法
+### 🧑‍💻 User：three.js cannon的用法
 
 
 
@@ -254,11 +250,7 @@ Three.js Cannon.js 的用法可以概括为以下几个核心步骤：
 
 ---
 
-### 🧑‍💻 User
-
-
-
-那我要弹开一个物体，是怎么操作
+### 🧑‍💻 User：那我要弹开一个物体，是怎么操作
 
 
 
@@ -431,11 +423,7 @@ window.addEventListener('click', onMouseClick);
 
 ---
 
-### 🧑‍💻 User
-
-
-
-所以操作的都是虚拟世界的物体，然后通过animate同步到现实世界？
+### 🧑‍💻 User：所以操作的都是虚拟世界的物体，然后通过animate同步到现实世界？
 
 
 
@@ -463,7 +451,7 @@ window.addEventListener('click', onMouseClick);
 
 **所以，简单来说就是：**
 
-**“虚拟世界的物理计算（Cannon.js） -> 计算出物体应该在哪儿，是什么姿态 -> 同步到现实世界的表现（Three.js `Mesh`）上 -> 渲染出来给用户看。”**
+“虚拟世界的物理计算（Cannon.js） -> 计算出物体应该在哪儿，是什么姿态 -> 同步到现实世界的表现（Three.js `Mesh`）上 -> 渲染出来给用户看。”
 
 这种模式非常常见于使用物理引擎进行 3D 渲染的场景中。这是一种“模型-视图”分离的思想，其中物理引擎是模型（数据和逻辑），而 Three.js 的渲染器是视图（表现）。
 
