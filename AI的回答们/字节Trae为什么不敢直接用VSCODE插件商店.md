@@ -3,7 +3,6 @@ title: 字节Trae为什么不敢直接用VSCODE插件商店
 created: 2025-07-01
 source: Cherry Studio
 tags: 
-https://aka.ms/vsmarketplace-ToU
 ---
 ### 🤖 Assistant
 
@@ -11,7 +10,7 @@ https://aka.ms/vsmarketplace-ToU
 
 
 
-根据您提供的 **Microsoft Visual Studio Marketplace and NuGet.org Terms of Use (January 2025)** 原文，核心限制条款定位如下：
+根据您提供的 **Microsoft Visual Studio Marketplace and NuGet.org Terms of Use (January 2025)** https://aka.ms/vsmarketplace-ToU 原文，核心限制条款定位如下：
 
 ---
 
