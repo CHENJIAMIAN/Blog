@@ -9,7 +9,7 @@ import Hls2 from 'hls.js'
 import * as Hls3 from 'hls.js' 
 const Hls = Hls2 || Hls3
 
-为什么经过vue-cli编译变成了:
+为什么经过vue-cli编译变成了以下, 而且hls_js_1["default"]还是undefined? 
 
 var hls_js_1 = __webpack_require__(/*! hls.js */
 "../../node_modules/.pnpm/hls.js@1.6.2/node_modules/hls.js/dist/hls.js");
