@@ -37,7 +37,7 @@ var Hls = hls_js_1["default"] || Hls3;
     *   `import Hls2 from 'hls.js'` 编译后尝试访问 `.default` 属性，得到 `undefined`。
     *   `import * as Hls3 from 'hls.js'` 编译后得到整个 `module.exports`，也就是 `Hls` 类。
 > 现代构建工具通常默认开启了 **esModuleInterop** (ES Module Interoperability) 选项。这个选项就像一个聪明的翻译官：
-> 当 Vite 或配置得当的 Webpack 遇到一个标准的 CJS 模块时，它会自动帮你创建一个“虚拟的” default 导出。它看到 module.exports 的值是 Hls 类，它就会在内部模拟出 { default: HlsClass } 这样的结构，让你的 import Hls2 from 'hls.js' 能够顺利拿到值。
+> 当 Vite 或配置得当的 Webpack 遇到一个标准的 CJS 模块时，它会自动帮你创建一个“虚拟的” default 导出。它看到 module.exports 的值是 Hls 类，它就会在内部模拟出 { default: HlsClass } 这样的结构，让你的 import Hls2 from 'hls.js' 能够顺利拿到值。为啥我这个项目没有？原因未查明
 #### **Vite**
 *   **ESM 优先 (ESM-First)**: Vite 是一个现代化的构建工具，它从一开始就完全拥抱 ES Modules。它的开发服务器直接利用浏览器原生的 ESM 加载能力，生产构建也围绕 ESM 进行优化。
 *   **解析顺序**: Vite 会**优先**查找 `package.json` 中的 `"module"` 字段或 `"exports"` 字段中为 `import` 指定的入口。`hls.js` 的 `"module"` 字段指向 `dist/hls.mjs` —— 一个标准的 **ES Module 文件**。
