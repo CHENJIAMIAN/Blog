@@ -1,5 +1,30 @@
+### 调试
 
-
+```js
+_getWGSLFragmentCode (WGSLNodeBuilder.js:2037)
+buildCode (WGSLNodeBuilder.js:1861)
+build (NodeBuilder.js:2794)
+getForRender (Nodes.js:211)
+getNodeBuilderState (RenderObject.js:379)
+getMonitor (RenderObject.js:390)
+needsRefresh (Nodes.js:797)
+_renderObjectDirect (Renderer.js:2977)
+renderObject (Renderer.js:2925)
+_renderObjects (Renderer.js:2833)
+_renderScene (Renderer.js:1486)
+render (Renderer.js:1197)
+animate (webgpu_reflection_blurred2.html:301)
+update (Animation.js:73)
+requestAnimationFrame
+update (Animation.js:65)
+start (Animation.js:77)
+（匿名） (Renderer.js:803)
+await in （匿名）
+init (Renderer.js:753)
+setAnimationLoop (Renderer.js:1606)
+init (webgpu_reflection_blurred2.html:256)
+（匿名） (webgpu_reflection_blurred2.html:77)
+```
 
 ### Node Material 和 TSL 有着密切的关系：[Search | DeepWiki](https://deepwiki.com/search/nodematrerial-tsl_58f8d7e9-4e34-4192-ba6e-33857a0b39d1)
 
