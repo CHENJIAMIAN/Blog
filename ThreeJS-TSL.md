@@ -1,29 +1,116 @@
 ### 调试
 
 ```js
-_getWGSLFragmentCode (WGSLNodeBuilder.js:2037)
-buildCode (WGSLNodeBuilder.js:1861)
-build (NodeBuilder.js:2794)
-getForRender (Nodes.js:211)
-getNodeBuilderState (RenderObject.js:379)
-getMonitor (RenderObject.js:390)
-needsRefresh (Nodes.js:797)
-_renderObjectDirect (Renderer.js:2977)
-renderObject (Renderer.js:2925)
-_renderObjects (Renderer.js:2833)
-_renderScene (Renderer.js:1486)
-render (Renderer.js:1197)
-animate (webgpu_reflection_blurred2.html:301)
-update (Animation.js:73)
-requestAnimationFrame
-update (Animation.js:65)
-start (Animation.js:77)
-（匿名） (Renderer.js:803)
-await in （匿名）
-init (Renderer.js:753)
-setAnimationLoop (Renderer.js:1606)
-init (webgpu_reflection_blurred2.html:256)
-（匿名） (webgpu_reflection_blurred2.html:77)
+`https://cdn.jsdelivr.net/npm/three/src/nodes/core/NodeBuilder.js`
+	build() {
+
+		const { object, material, renderer } = this;
+
+		if ( material !== null ) {
+
+			nodeMaterial.build
+
+		} else {
+
+			this.addFlow( 'compute', object );
+
+		}
+
+	 ​ 	// setup() -> 阶段 1: 创建可能的 [新] 节点和/或返回一个输出引用节点
+		// analyze()   -> 阶段 2: 分析节点以进行可能的优化和验证
+		// generate()  -> 阶段 3: 生成着色器
+
+		for ( const buildStage of defaultBuildStages ) {
+
+			this.setBuildStage( buildStage );
+
+			if ( this.context.vertex && this.context.vertex.isNode ) {
+
+				this.flowNodeFromShaderStage( 'vertex', this.context.vertex );
+
+			}
+
+			for ( const shaderStage of shaderStages ) {
+
+				this.setShaderStage( shaderStage );
+
+				const flowNodes = this.flowNodes[ shaderStage ];
+
+				for ( const node of flowNodes ) {
+
+					if ( buildStage === 'generate' ) {
+
+						this.flowNode( node );
+
+					} else {
+
+						node.build( this );
+							// 可能会执行(从下到上):
+							flowShaderNode (NodeBuilder.js:2215)
+							buildFunctionCode (WGSLNodeBuilder.js:1022)
+							buildFunctionNode (NodeBuilder.js:2167)
+							call (TSLCore.js:387)
+							setupOutput (TSLCore.js:450)
+							getOutputNode (TSLCore.js:461)
+							build (TSLCore.js:476)
+							build (VarNode.js:158)
+							build (Node.js:711)
+							build (TempNode.js:82)
+							build (VarNode.js:158)
+							build (Node.js:711)
+							build (TempNode.js:82)
+							build (Node.js:711)
+							build (TempNode.js:82)
+							build (VarNode.js:158)
+							build (StackNode.js:328)
+					}
+
+				}
+
+			}
+
+		}
+
+		this.setBuildStage( null );
+		this.setShaderStage( null );
+
+		// stage 4: build code for a specific output
+
+		this.buildCode();
+			_getWGSLFragmentCode (WGSLNodeBuilder.js:2037)
+			buildCode (WGSLNodeBuilder.js:1861)
+			`build (NodeBuilder.js:2794)`对应此处的 `this.buildCode();`
+			getForRender (Nodes.js:211)
+			getNodeBuilderState (RenderObject.js:379)
+			getMonitor (RenderObject.js:390)
+			needsRefresh (Nodes.js:797)
+			_renderObjectDirect (Renderer.js:2977)
+			renderObject (Renderer.js:2925)
+			_renderObjects (Renderer.js:2833)
+			_renderScene (Renderer.js:1486)
+			render (Renderer.js:1197)
+			animate (webgpu_reflection_blurred2.html:301)
+			update (Animation.js:73)
+			requestAnimationFrame
+			update (Animation.js:65)
+			start (Animation.js:77)
+			（匿名） (Renderer.js:803)
+			await in （匿名）
+			init (Renderer.js:753)
+			setAnimationLoop (Renderer.js:1606)
+			init (webgpu_reflection_blurred2.html:256)
+			（匿名） (webgpu_reflection_blurred2.html:77)
+		this.buildUpdateNodes();
+
+		return this;
+
+	}
+
+```
+### 
+
+```markdown
+
 ```
 
 ### Node Material 和 TSL 有着密切的关系：[Search | DeepWiki](https://deepwiki.com/search/nodematrerial-tsl_58f8d7e9-4e34-4192-ba6e-33857a0b39d1)
