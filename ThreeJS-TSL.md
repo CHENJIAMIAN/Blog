@@ -1,34 +1,24 @@
 
 
 
-Node Material 和 TSL 在中有着密切的关系：
+### Node Material 和 TSL 有着密切的关系：[Search | DeepWiki](https://deepwiki.com/search/nodematrerial-tsl_58f8d7e9-4e34-4192-ba6e-33857a0b39d1)
 
-## 核心关系
-
+#### 核心关系
 **NodeMaterial 是基于 TSL 构建的材质系统**。NodeMaterial 作为所有基于节点的材质的基类，广泛使用了 TSL (Three.js Shading Language) 提供的类型和功能。 [1](#0-0) 
-
-## 技术实现
-
+#### 技术实现
 1. **类型系统集成**：NodeMaterial 直接导入并使用 TSL 的基础类型，如 `float`、`vec3`、`vec4`、`bool` 等，这些是构建节点材质的基础构建块。 [1](#0-0) 
-
 2. **材质属性访问**：MaterialNode 类负责创建 TSL 对象来访问材质属性，它使用 TSL 的类型系统来确保类型安全。 [2](#0-1) 
-
 3. **预定义 TSL 对象**：MaterialNode 使用 `nodeImmutable` 函数创建了大量预定义的 TSL 对象，如 `materialColor`、`materialOpacity`、`materialNormal` 等，这些对象可以直接在 NodeMaterial 中使用。 [3](#0-2) 
-
-## TSL 的作用
-
+#### TSL 的作用
 TSL 是一个完整的着色器语言抽象层，提供了数百个函数和类型，涵盖了从基础数学运算到复杂材质属性的所有功能。 [4](#0-3) 
-
-## 使用模式
-
+#### 使用模式
 在 NodeMaterial 中，开发者可以：
 - 使用 TSL 提供的材质访问器来获取当前材质的属性
 - 通过节点组合来构建复杂的材质效果
 - 利用 TSL 的类型安全特性避免着色器编译错误
 
-## Notes
 
-NodeMaterial 和 TSL 的关系可以理解为：TSL 提供了着色器编程的"语言"和"词汇"，而 NodeMaterial 则是使用这套语言来构建材质的"框架"。这种设计使得 Three.js 的新一代材质系统既保持了灵活性，又提供了类型安全和易用性。
+> TSL 提供了着色器编程的"语言"和"词汇"，而 NodeMaterial 则是使用这套语言来构建材质的"框架"
 
 1. **TSL的优势**：
    - TSL的节点本质上是函数，可以被使用、组合和链接以生成最终着色器。
