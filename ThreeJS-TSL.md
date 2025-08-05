@@ -46,6 +46,7 @@
 
 						node.build( this );
 							// 可能会执行(从下到上):
+							flowStagesNode
 							flowShaderNode (NodeBuilder.js:2215)
 							buildFunctionCode (WGSLNodeBuilder.js:1022)
 							buildFunctionNode (NodeBuilder.js:2167)
@@ -107,10 +108,31 @@
 	}
 
 ```
-### 
+### `drawCircle` 函数如何转换为最终的 GLSL 字符串
+```js
+## 转换流程分析
 
-```markdown
+### 1. Fn 函数包装
+`drawCircle` 通过 `Fn` 函数创建，这会将 JavaScript 函数包装成 `ShaderNodeInternal` 对象 [1](#7-0) 。
 
+### 2. 函数调用处理
+当 `drawCircle` 被调用时，会创建 `ShaderCallNodeInternal` 实例，处理参数转换和节点调用 [1](#7-0) 。
+
+### 3. 代码生成过程
+在 `GLSLNodeBuilder.buildFunctionCode()` 中生成 GLSL 函数代码 [2](#7-1) 
+
+### 4. 节点转换细节
+
+每个 TSL 表达式都会转换为对应的 GLSL 代码：
+
+- `length(pos)` → `length(pos)` (数学函数直接映射) [3](#7-2) 
+- `dist1.assign()` → `dist1 = ...` (赋值操作)
+- `color.rgb.mul()` → `color * ...` (向量乘法) [4](#7-3) 
+- `max(sub(0.8, abs(dist2)), 0.0)` → `max(0.8 - abs(dist2), 0.0)`
+
+### 5. 最终集成到片段着色器
+
+生成的函数会被添加到片段着色器的代码段中，通过 `_getGLSLFragmentCode()` 方法组装 [5](#7-4) 
 ```
 
 ### Node Material 和 TSL 有着密切的关系：[Search | DeepWiki](https://deepwiki.com/search/nodematrerial-tsl_58f8d7e9-4e34-4192-ba6e-33857a0b39d1)
