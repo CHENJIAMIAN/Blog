@@ -1,4 +1,7 @@
 
+### 如何调试
+1. 在NodeMaterial.js的onBeforeCompile打日志断点获得shader对象获取fragmentShader代码
+2. 在setValueV1f方法打条件断点`this.id === 'nodeU7'` 获取最终GPU传值
 ```js
 //https://cdn.jsdelivr.net/npm/three@0.134.0/examples/jsm/nodes/core/NodeBuilder.js
 generate (OperatorNode.js:40)
