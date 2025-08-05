@@ -1,28 +1,39 @@
-1. **Three.js Shading Language (TSL)的介绍**：
-   - Three.js宣布引入了一种新的着色语言，能够生成GLSL和WGSL代码。
-2. **背景**：
-   - 3D图形在Web上正经历一场革命，从WebGL过渡到更强大的WebGPU。
-   - WebGPU利用最新的GPU技术，提供更好的性能。
-3. **着色语言的转变**：
-   - WebGL使用GLSL编写着色器，而WebGPU需要使用WGSL。
-   - 两种语言相似，静态类型，与C语言紧密相关，专注于3D图形的复杂向量计算。
-4. **Three.js的更新**：
-   - 为了适应WebGPU，Three.js和其他3D图形库正在更新，包括引入新功能。
-   - 更新需要重写Three.js材料中的许多现有着色器。
-5. **Three.js Shading Language (TSL)的特点**：
-   - TSL采用了基于节点的方法，类似于Unreal Engine的Blueprints、Blender和Unity的Shader Graph。
-   - 这种方法通过将着色器分解为一系列节点来促进着色器开发，每个节点应用特定效果，可以组合生成最终着色器。
-6. **TSL的优势**：
+
+
+
+Node Material 和 TSL 在中有着密切的关系：
+
+## 核心关系
+
+**NodeMaterial 是基于 TSL 构建的材质系统**。NodeMaterial 作为所有基于节点的材质的基类，广泛使用了 TSL (Three.js Shading Language) 提供的类型和功能。 [1](#0-0) 
+
+## 技术实现
+
+1. **类型系统集成**：NodeMaterial 直接导入并使用 TSL 的基础类型，如 `float`、`vec3`、`vec4`、`bool` 等，这些是构建节点材质的基础构建块。 [1](#0-0) 
+
+2. **材质属性访问**：MaterialNode 类负责创建 TSL 对象来访问材质属性，它使用 TSL 的类型系统来确保类型安全。 [2](#0-1) 
+
+3. **预定义 TSL 对象**：MaterialNode 使用 `nodeImmutable` 函数创建了大量预定义的 TSL 对象，如 `materialColor`、`materialOpacity`、`materialNormal` 等，这些对象可以直接在 NodeMaterial 中使用。 [3](#0-2) 
+
+## TSL 的作用
+
+TSL 是一个完整的着色器语言抽象层，提供了数百个函数和类型，涵盖了从基础数学运算到复杂材质属性的所有功能。 [4](#0-3) 
+
+## 使用模式
+
+在 NodeMaterial 中，开发者可以：
+- 使用 TSL 提供的材质访问器来获取当前材质的属性
+- 通过节点组合来构建复杂的材质效果
+- 利用 TSL 的类型安全特性避免着色器编译错误
+
+## Notes
+
+NodeMaterial 和 TSL 的关系可以理解为：TSL 提供了着色器编程的"语言"和"词汇"，而 NodeMaterial 则是使用这套语言来构建材质的"框架"。这种设计使得 Three.js 的新一代材质系统既保持了灵活性，又提供了类型安全和易用性。
+
+1. **TSL的优势**：
    - TSL的节点本质上是函数，可以被使用、组合和链接以生成最终着色器。
    - TSL自动处理适应不同API的适配，无论是WebGL的GLSL还是WebGPU的WGSL。
-7. **实际影响**：
-   - 传统自定义着色器涉及繁琐的字符串操作方法，而新系统更加灵活，保持了代码的可读性和可维护性。
-   - TSL为3D Web开发开辟了新的可能性，承诺提供更可回收和可管理的代码。
-8. **作者的行动计划**：
-   - 作者计划进行直播，共同探索这种新方法。
-   - 文档目前较少，基于初步规范和用户在X上分享的一些例子。
-9. **未来展望**：
-   - Three.js的未来看起来非常有希望，新的着色语言系统不仅将改善我们使用Three.js的工作，而且任何需要着色代码的应用程序都可能使用这个新系统。]
+
 ---
 ### Three.js Shading Language (TSL) 笔记
 #### 1. 引言与目的
