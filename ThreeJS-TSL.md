@@ -1,7 +1,33 @@
 ### 调试
-
+ 
 ```js
-`https://cdn.jsdelivr.net/npm/three/src/nodes/core/NodeBuilder.js`
+创建NodeBuilder:
+	NodeBuilder (NodeBuilder.js:90)
+	WGSLNodeBuilder (WGSLNodeBuilder.js:180)
+	createNodeBuilder (WebGPUBackend.js:1972)
+	`getForRender (Nodes.js:196)` // 创建和构建的分水岭
+	getNodeBuilderState (RenderObject.js:379)
+	getMonitor (RenderObject.js:390)
+	needsRefresh (Nodes.js:797)
+	_renderObjectDirect (Renderer.js:2977)
+	renderObject (Renderer.js:2925)
+	_renderObjects (Renderer.js:2833)
+	_renderScene (Renderer.js:1486)
+	render (Renderer.js:1197)
+	animate (webgpu_reflection_blurred2.html:301)
+	update (Animation.js:73)
+	requestAnimationFrame
+	update (Animation.js:65)
+	start (Animation.js:77)
+	（匿名） (Renderer.js:803)
+	await in （匿名）
+	init (Renderer.js:753)
+	setAnimationLoop (Renderer.js:1606)
+	init (webgpu_reflection_blurred2.html:256)
+	（匿名） (webgpu_reflection_blurred2.html:77)
+
+构建NodeBuilder.build:
+	`https://cdn.jsdelivr.net/npm/three/src/nodes/core/NodeBuilder.js`
 	build() {
 
 		const { object, material, renderer } = this;
@@ -82,25 +108,7 @@
 			buildCode (WGSLNodeBuilder.js:1861)
 			`build (NodeBuilder.js:2794)`对应此处的 `this.buildCode();`
 			getForRender (Nodes.js:211)
-			getNodeBuilderState (RenderObject.js:379)
-			getMonitor (RenderObject.js:390)
-			needsRefresh (Nodes.js:797)
-			_renderObjectDirect (Renderer.js:2977)
-			renderObject (Renderer.js:2925)
-			_renderObjects (Renderer.js:2833)
-			_renderScene (Renderer.js:1486)
-			render (Renderer.js:1197)
-			animate (webgpu_reflection_blurred2.html:301)
-			update (Animation.js:73)
-			requestAnimationFrame
-			update (Animation.js:65)
-			start (Animation.js:77)
-			（匿名） (Renderer.js:803)
-			await in （匿名）
-			init (Renderer.js:753)
-			setAnimationLoop (Renderer.js:1606)
-			init (webgpu_reflection_blurred2.html:256)
-			（匿名） (webgpu_reflection_blurred2.html:77)
+	
 		this.buildUpdateNodes();
 
 		return this;
