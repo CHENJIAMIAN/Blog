@@ -149,14 +149,3 @@ const ClientCard = defineClientComponent(
 | `defineClientComponent(() => import(...), [props, { default: () => h(...) }])` | ✅ 生效 | 正确传递插槽内容，保证客户端渲染正常 |
 | 直接 `import` 组件 | ❌ SSR 报错 | 如果组件依赖浏览器 API，会出错 |
 
----
-
-## 六、参考资料
-
-- [VitePress 官方文档](https://vitepress.dev/)
-- [Vue 官方文档：渲染函数 & JSX](https://vuejs.org/guide/extras/render-function.html)
-- VitePress GitHub 提交记录：Disable slot usage to avoid Hydration Mismatch
-
----
-
-保存这个指南，以后在 VitePress 项目中使用 `defineClientComponent` 时就不会踩坑啦！
