@@ -4,6 +4,7 @@ created: 2025-08-21
 source: Cherry Studio
 tags: 
 ---
+
 ## 🤖 qwen-3-coder-480b | 0304357c-30a5-4067-b405-a9f9f7a4157e
 
 # VitePress 使用 `defineClientComponent` 防坑指南
@@ -79,8 +80,11 @@ const ClientCard = defineClientComponent(
 ```
 
 在这个例子中：
-- 使用了 Vue 的 `h()` 函数创建虚拟 DOM 结构。
-- 插槽内容必须是一个**返回 VNode 的函数**，而不是直接写的标签内容。
+
+-   使用了 Vue 的 `h()` 函数创建虚拟 DOM 结构。
+    
+-   插槽内容必须是一个**返回 VNode 的函数**，而不是直接写的标签内容。
+    
 
 ### 3.2 高级用法（传递复杂内容）
 
@@ -143,9 +147,8 @@ const ClientCard = defineClientComponent(
 
 ## 五、总结
 
-| 使用方式 | 是否生效 | 说明 |
-|----------|-----------|------|
+| 使用方式 | 是否生效 | 说明  |
+| --- | --- | --- |
 | `<ClientComp>插槽内容</ClientComp>` | ❌ 不生效 | SSR 阶段未渲染，导致内容丢失 |
 | `defineClientComponent(() => import(...), [props, { default: () => h(...) }])` | ✅ 生效 | 正确传递插槽内容，保证客户端渲染正常 |
 | 直接 `import` 组件 | ❌ SSR 报错 | 如果组件依赖浏览器 API，会出错 |
-
