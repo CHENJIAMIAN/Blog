@@ -2,12 +2,7 @@
 
 ### 🔍 为什么 `min-width: 0` 能解决问题？——深入理解
 
-在 Flexbox 中，每个子元素（flex item）默认有：
-
-```css
-/* 默认值！关键所在 */
-min-width: auto;
-```
+在 Flexbox 中，每个子元素（flex item）默认有 min-width: auto;
 
 这意味着：**这个元素的最小宽度 = 它内容的“最小不可压缩宽度”**
 
