@@ -205,3 +205,5 @@ GPU 模块负责管理和调度图形处理任务，并提供硬件加速功能�
 	- `--use-angle=d3d`：使用 Direct3D 作为 ANGLE 的后端（通常在 Windows 上使用）。
 	- `--use-angle=vulkan`：使用 Vulkan 作为 ANGLE 的后端（如果你的系统和 Chrome 支持 Vulcan）。
 	- `--use-angle=gl`：使用 OpenGL。
+
+<img width="5604" height="1389" alt="Image" src="https://github.com/user-attachments/assets/15d62038-547a-407a-9de7-2c8a70669b26" />
