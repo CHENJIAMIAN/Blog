@@ -1,5 +1,3 @@
-
-
 ```javascript
 CSP //内容安全策略: 服务器用header来规定哪些域名我能去访问, 防止xss
     1 Content-Security-Policy: default-src 'self';   img-src *;    media-src media1.com media2.com;         script-src userscripts.example.com    
@@ -13,14 +11,10 @@ CSP //内容安全策略: 服务器用header来规定哪些域名我能去访问
     2 移动端(用touch事件\减少输入\按需加载)
 ```
 
-
-
 ```html
 语义HTML:明确定义其内容:
 <header> <footer> <nav> <section> <article> <aside><details><figcaption插图><figure图><header><main><mark><summary摘要><time><form><table>
 ```
-
-
 
 ```javascript
 <!DOCTYPE html> //告诉浏览器
@@ -48,7 +42,7 @@ href="#SomewhereInTheDocument"
        <option value="普通用户">普通用户</option>
      </select> 
      
-空格&nbsp; <br>换行  
+空格  <br>换行  
 
 <table> 
      <tr>行	<th>表头	<td>格单元
@@ -63,8 +57,6 @@ data- //HTML5允许开发者自由为其标签添加属性。如data-toggle指�
    4 <script>//放最后面,防止seo读不懂
    5 超链接扁平化//比如不要用上一页下一页，而是用123...456 页,这样搜索引擎就算想到第6页也是点1次就够了   
 ```
-
-
 
 ```css
 <link href="../../ol.css" rel="stylesheet" type="text01/css" />
@@ -297,7 +289,7 @@ inline-block:使其既具有block的宽度高度特性,又具有inline的同行�
     10000:!important  在css中，!important的权重相当的高，但是由于宽高会被max-width/min-width覆盖，所以!important会失效。
     1000:style=""
     100:#id{}
-    10:.className{} \:hover{伪类}\[type="text"]{属性}\
+    10:.className{} \:hover{伪类}[type="text"]{属性}\
     1:div{标签}\:after{伪元素}\
     0：儿孙选择器: *所有\>儿子\+兄弟(一个)\~兄弟们(多个)
 
@@ -399,9 +391,7 @@ BEM:(CSS选择器命名规范):  /*解决命名空间污染问题,在较小的�
         一个块中元素的类名必须用父级块的名称作为前缀。
 ```
 
-
-
-```javascript
+````javascript
 href和src区别:一个是引用,一个是替换
 <!DOCTYPE html> //声明用标准模式
     有什么用:
@@ -444,12 +434,9 @@ CSS3的动画:
 transition: margin-right 2s;/*过渡动画效果*/
 
 -webkit-perspective /*与子3d元素的视觉距离*/
-```
-
-
+````
 
 ![1049D6D25F004911986D795FE0934639](https://github.com/CHENJIAMIAN/Blog/assets/20126997/b55e5c11-1b20-484a-96ad-d3d26b9aa2a2)
-
 
 ```javascript
 为什么某字体font-size:100px,但是其高度是164px?
@@ -479,8 +466,6 @@ img 标签间距问题的原理以及如何解决 ？
     }
 使用: font-family: FX-LED;
 ```
-
-
 
 ```javascript
 <style>  /* 浮动 */
@@ -521,13 +506,11 @@ img 标签间距问题的原理以及如何解决 ？
 </section>
 ```
 
-
-
 ---
 
 > CSS模块化
 
-```javascript
+````javascript
 演变：
     Less--> SASS--> PostCSS
         --> CSS in JS(使用 JS 语言写 CSS,本质是操作ele.style,postcss实现了这点) 
@@ -601,5 +584,4 @@ TailwindCSS
     @tailwind components;
     @tailwind utilities;
     /* 分三个的作用是用来css实现优先级 */
-```
-
+````
