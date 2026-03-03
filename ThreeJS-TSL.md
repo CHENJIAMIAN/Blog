@@ -1,28 +1,171 @@
-1. **Three.js Shading Language (TSL)的介绍**：
-   - Three.js宣布引入了一种新的着色语言，能够生成GLSL和WGSL代码。
-2. **背景**：
-   - 3D图形在Web上正经历一场革命，从WebGL过渡到更强大的WebGPU。
-   - WebGPU利用最新的GPU技术，提供更好的性能。
-3. **着色语言的转变**：
-   - WebGL使用GLSL编写着色器，而WebGPU需要使用WGSL。
-   - 两种语言相似，静态类型，与C语言紧密相关，专注于3D图形的复杂向量计算。
-4. **Three.js的更新**：
-   - 为了适应WebGPU，Three.js和其他3D图形库正在更新，包括引入新功能。
-   - 更新需要重写Three.js材料中的许多现有着色器。
-5. **Three.js Shading Language (TSL)的特点**：
-   - TSL采用了基于节点的方法，类似于Unreal Engine的Blueprints、Blender和Unity的Shader Graph。
-   - 这种方法通过将着色器分解为一系列节点来促进着色器开发，每个节点应用特定效果，可以组合生成最终着色器。
-6. **TSL的优势**：
+### 调试
+ 
+```js
+创建NodeBuilder:
+	NodeBuilder (NodeBuilder.js:90)
+	WGSLNodeBuilder (WGSLNodeBuilder.js:180)
+	createNodeBuilder (WebGPUBackend.js:1972)
+	`getForRender (Nodes.js:196)` // 创建和构建的分水岭
+	getNodeBuilderState (RenderObject.js:379)
+	getMonitor (RenderObject.js:390)
+	needsRefresh (Nodes.js:797)
+	_renderObjectDirect (Renderer.js:2977)
+	renderObject (Renderer.js:2925)
+	_renderObjects (Renderer.js:2833)
+	_renderScene (Renderer.js:1486)
+	render (Renderer.js:1197)
+	animate (webgpu_reflection_blurred2.html:301)
+	update (Animation.js:73)
+	requestAnimationFrame
+	update (Animation.js:65)
+	start (Animation.js:77)
+	（匿名） (Renderer.js:803)
+	await in （匿名）
+	init (Renderer.js:753)
+	setAnimationLoop (Renderer.js:1606)
+	init (webgpu_reflection_blurred2.html:256)
+	（匿名） (webgpu_reflection_blurred2.html:77)
+
+构建NodeBuilder.build:
+	`https://cdn.jsdelivr.net/npm/three/src/nodes/core/NodeBuilder.js`
+	build() {
+
+		const { object, material, renderer } = this;
+
+		if ( material !== null ) {
+
+			nodeMaterial.build
+
+		} else {
+
+			this.addFlow( 'compute', object );
+
+		}
+
+	 ​ 	// setup() -> 阶段 1: 创建可能的 [新] 节点和/或返回一个输出引用节点
+		// analyze()   -> 阶段 2: 分析节点以进行可能的优化和验证
+		// generate()  -> 阶段 3: 生成着色器
+
+		for ( const buildStage of defaultBuildStages ) {
+
+			this.setBuildStage( buildStage );
+
+			if ( this.context.vertex && this.context.vertex.isNode ) {
+
+				this.flowNodeFromShaderStage( 'vertex', this.context.vertex );
+
+			}
+
+			for ( const shaderStage of shaderStages ) {
+
+				this.setShaderStage( shaderStage );
+
+				const flowNodes = this.flowNodes[ shaderStage ];
+
+				for ( const node of flowNodes ) {
+
+					if ( buildStage === 'generate' ) {
+
+						this.flowNode( node );
+
+					} else {
+
+						node.build( this );
+							// 可能会执行(从下到上):
+							flowStagesNode
+							flowShaderNode (NodeBuilder.js:2215)
+							buildFunctionCode (WGSLNodeBuilder.js:1022)
+							buildFunctionNode (NodeBuilder.js:2167)
+							call (TSLCore.js:387)
+							setupOutput (TSLCore.js:450)
+							getOutputNode (TSLCore.js:461)
+							build (TSLCore.js:476)
+							build (VarNode.js:158)
+							build (Node.js:711)
+							build (TempNode.js:82)
+							build (VarNode.js:158)
+							build (Node.js:711)
+							build (TempNode.js:82)
+							build (Node.js:711)
+							build (TempNode.js:82)
+							build (VarNode.js:158)
+							build (StackNode.js:328)
+					}
+
+				}
+
+			}
+
+		}
+
+		this.setBuildStage( null );
+		this.setShaderStage( null );
+
+		// stage 4: build code for a specific output
+
+		this.buildCode();
+			_getWGSLFragmentCode (WGSLNodeBuilder.js:2037)
+			buildCode (WGSLNodeBuilder.js:1861)
+			`build (NodeBuilder.js:2794)`对应此处的 `this.buildCode();`
+			getForRender (Nodes.js:211)
+	
+		this.buildUpdateNodes();
+
+		return this;
+
+	}
+
+```
+### `drawCircle` 函数如何转换为最终的 GLSL 字符串
+```js
+## 转换流程分析
+
+### 1. Fn 函数包装
+`drawCircle` 通过 `Fn` 函数创建，这会将 JavaScript 函数包装成 `ShaderNodeInternal` 对象 [1](#7-0) 。
+
+### 2. 函数调用处理
+当 `drawCircle` 被调用时，会创建 `ShaderCallNodeInternal` 实例，处理参数转换和节点调用 [1](#7-0) 。
+
+### 3. 代码生成过程
+在 `GLSLNodeBuilder.buildFunctionCode()` 中生成 GLSL 函数代码 [2](#7-1) 
+
+### 4. 节点转换细节
+
+每个 TSL 表达式都会转换为对应的 GLSL 代码：
+
+- `length(pos)` → `length(pos)` (数学函数直接映射) [3](#7-2) 
+- `dist1.assign()` → `dist1 = ...` (赋值操作)
+- `color.rgb.mul()` → `color * ...` (向量乘法) [4](#7-3) 
+- `max(sub(0.8, abs(dist2)), 0.0)` → `max(0.8 - abs(dist2), 0.0)`
+
+### 5. 最终集成到片段着色器
+
+生成的函数会被添加到片段着色器的代码段中，通过 `_getGLSLFragmentCode()` 方法组装 [5](#7-4) 
+```
+
+### Node Material 和 TSL 有着密切的关系：[Search | DeepWiki](https://deepwiki.com/search/nodematrerial-tsl_58f8d7e9-4e34-4192-ba6e-33857a0b39d1)
+
+#### 核心关系
+**NodeMaterial 是基于 TSL 构建的材质系统**。NodeMaterial 作为所有基于节点的材质的基类，广泛使用了 TSL (Three.js Shading Language) 提供的类型和功能。 [1](#0-0) 
+#### 技术实现
+1. **类型系统集成**：NodeMaterial 直接导入并使用 TSL 的基础类型，如 `float`、`vec3`、`vec4`、`bool` 等，这些是构建节点材质的基础构建块。 [1](#0-0) 
+2. **材质属性访问**：MaterialNode 类负责创建 TSL 对象来访问材质属性，它使用 TSL 的类型系统来确保类型安全。 [2](#0-1) 
+3. **预定义 TSL 对象**：MaterialNode 使用 `nodeImmutable` 函数创建了大量预定义的 TSL 对象，如 `materialColor`、`materialOpacity`、`materialNormal` 等，这些对象可以直接在 NodeMaterial 中使用。 [3](#0-2) 
+#### TSL 的作用
+TSL 是一个完整的着色器语言抽象层，提供了数百个函数和类型，涵盖了从基础数学运算到复杂材质属性的所有功能。 [4](#0-3) 
+#### 使用模式
+在 NodeMaterial 中，开发者可以：
+- 使用 TSL 提供的材质访问器来获取当前材质的属性
+- 通过节点组合来构建复杂的材质效果
+- 利用 TSL 的类型安全特性避免着色器编译错误
+
+
+> TSL 提供了着色器编程的"语言"和"词汇"，而 NodeMaterial 则是使用这套语言来构建材质的"框架"
+
+1. **TSL的优势**：
    - TSL的节点本质上是函数，可以被使用、组合和链接以生成最终着色器。
    - TSL自动处理适应不同API的适配，无论是WebGL的GLSL还是WebGPU的WGSL。
-7. **实际影响**：
-   - 传统自定义着色器涉及繁琐的字符串操作方法，而新系统更加灵活，保持了代码的可读性和可维护性。
-   - TSL为3D Web开发开辟了新的可能性，承诺提供更可回收和可管理的代码。
-8. **作者的行动计划**：
-   - 作者计划进行直播，共同探索这种新方法。
-   - 文档目前较少，基于初步规范和用户在X上分享的一些例子。
-9. **未来展望**：
-   - Three.js的未来看起来非常有希望，新的着色语言系统不仅将改善我们使用Three.js的工作，而且任何需要着色代码的应用程序都可能使用这个新系统。]
+
 ---
 ### Three.js Shading Language (TSL) 笔记
 #### 1. 引言与目的
