@@ -182,3 +182,136 @@ openclaw onboard --auth-choice openai-codex
 ```
 openclaw models status
 ```
+
+---
+以下是针对 **OpenClaw** 项目中关于 **浏览器启动时机** 和 **默认启动参数** 的完整总结：
+
+---
+
+### 🧭 浏览器启动时机
+
+OpenClaw 的浏览器在以下几种情况下会被启动：
+
+| 触发方式 | 描述 | 相关代码/文档 |
+|--------|------|-------------|
+| 1. CLI 命令启动 | 执行 `openclaw browser start` 时，向 `/start` 发送 POST 请求，触发浏览器启动 | `browser-cli-manage.ts`, `basic.ts` |
+| 2. Agent 使用 browser 工具 | 当 Agent 调用 `open`, `snapshot` 等 browser 工具操作时，会自动调用 `ensureBrowserAvailable()` 检查并启动浏览器（除非是 `attachOnly` 模式） | `server-context.ts` |
+| 3. 不同 profile 模式的行为 | - `openclaw` profile：启动独立管理的 Chrome 实例（隔离用户数据）<br>- `chrome` profile：通过扩展中继控制现有浏览器标签页，**不启动新浏览器** | `browser.md` |
+| 4. 启动前检查条件 | - `browser.enabled === true`（默认为 true）<br>- 非 `attachOnly` 模式<br>- 远程 CDP 可达（如配置了远程调试） | `server-context.ts`, `browser.md` |
+
+> 🔴 特殊阻断条件：
+> - 如果端口被占用且非 OpenClaw 占用 → 报错提示使用 `reset-profile` 清理。
+> - 如果 `attachOnly=true` 且未连接到目标 → 报错，不会启动浏览器。
+
+---
+
+### ⚙️ 默认启动参数
+
+#### 一、固定 Chrome 启动参数（硬编码）
+
+由 `launchOpenClawChrome()` 函数设置，包括：
+
+```bash
+--remote-debugging-port=${cdpPort}
+--user-data-dir=${userDataDir}
+--no-first-run
+--no-default-browser-check
+--disable-sync
+--disable-background-networking
+--disable-component-update
+--disable-features=Translate,MediaRouter
+--disable-session-crashed-bubble
+--hide-crash-restore-bubble
+--password-store=basic
+--disable-blink-features=AutomationControlled
+about:blank
+```
+
+> ✅ 防检测特性：`--disable-blink-features=AutomationControlled` 可避免网页识别为自动化工具。
+
+#### 二、条件性参数（根据配置或平台添加）
+
+| 条件 | 添加参数 |
+|------|--------|
+| `headless: true` | `--headless=new` `--disable-gpu` |
+| `noSandbox: true` | `--no-sandbox` `--disable-setuid-sandbox` |
+| Linux 平台 | `--disable-dev-shm-usage` |
+| 用户自定义 | 通过 `extraArgs` 添加额外参数，如 `--window-size=1920,1080` |
+
+#### 三、可配置选项（默认值）
+
+| 配置项 | 默认值 | 说明 |
+|-------|-------|------|
+| `enabled` | `true` | 是否启用浏览器控制功能 |
+| `evaluateEnabled` | `true` | 是否允许执行任意 JS（如 `evaluate` 操作） |
+| `defaultProfile` | `"chrome"` | 默认使用的 profile 名称 |
+| `headless` | `false` | 是否以无头模式运行 |
+| `noSandbox` | `false` | 是否禁用沙箱（容器环境常设为 `true`） |
+| `attachOnly` | `false` | 是否仅附加现有浏览器，不启动新实例 |
+| `color` | `"#FF4500"`（橙色） | 显示主题色 |
+| `remoteCdpTimeoutMs` | `1500` ms | 远程 CDP HTTP 检测超时时间 |
+| `remoteCdpHandshakeTimeoutMs` | `max(timeout * 2, 2000)` | WebSocket 握手超时时间 |
+
+#### 四、端口分配规则
+
+| 服务 | 默认端口 | 说明 |
+|------|--------|------|
+| Gateway | `18789` | 主服务端口 |
+| Browser Control Service | `18791` | `gateway.port + 2` |
+| Chrome Extension Relay | `18792` | `gateway.port + 3` |
+| openclaw profile CDP 端口 | `18800` 起 | 每个 profile 独立分配（18800–18899） |
+
+> 💡 用户可通过 `gateway.port` 或 `OPENCLAW_GATEWAY_PORT` 调整基础端口，衍生端口自动偏移保持“家族”关系。
+
+---
+
+### 📁 配置示例
+
+```json5
+{
+  browser: {
+    enabled: true,
+    headless: false,
+    noSandbox: false,
+    attachOnly: false,
+    defaultProfile: "openclaw",
+    color: "#FF4500",
+    executablePath: "/usr/bin/google-chrome",
+    extraArgs: ["--window-size=1920,1080"],
+    profiles: {
+      openclaw: { cdpPort: 18800 },
+      work: { cdpPort: 18801 },
+      remote: { cdpUrl: "http://10.0.0.42:9222" }
+    }
+  }
+}
+```
+
+---
+
+### ❗ 注意事项与最佳实践
+
+- 在 **Linux 容器** 中运行时，建议设置：
+  ```json
+  {
+    "headless": true,
+    "noSandbox": true
+  }
+  ```
+- 若使用 `attachOnly: true`，需确保浏览器已运行且扩展正确附着。
+- 端口冲突时，使用 `openclaw action=reset-profile profile=<name>` 强制释放。
+- 使用 `extraArgs` 可实现更高级配置：UA 伪装、分辨率设置、隐身模式等。
+
+---
+
+### 🔍 相关 Wiki 页面推荐
+
+- [Tools](https://github.com/openclaw/openclaw)：所有可用 browser 工具列表（`snapshot`, `screenshot`, `act`, `open` 等）
+- [browser.md](https://github.com/openclaw/openclaw/blob/main/docs/tools/browser.md)：浏览器工具详细文档
+- [browser-linux-troubleshooting.md](https://github.com/openclaw/openclaw/blob/main/docs/tools/browser-linux-troubleshooting.md)：Linux 环境常见问题解决
+
+---
+
+### ✅ 总结一句话
+
+> OpenClaw 浏览器会在 **显式调用 `start` 命令** 或 **Agent 使用 browser 工具且满足启动条件时自动启动**，默认使用隔离的 `openclaw` profile 启动一个带防检测机制的 Chrome 实例，支持灵活配置启动参数与端口策略。
