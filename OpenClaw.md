@@ -303,11 +303,93 @@ about:blank
 - 使用 `extraArgs` 可实现更高级配置：UA 伪装、分辨率设置、隐身模式等。
 ---
 
-```带headless
+```bash 带headless
 /opt/google/chrome/chrome --remote-debugging-port=18800 --user-data-dir=/root/.openclaw/browser/openclaw/user-data --no-first-run --no-default-browser-check --disable-sync --disable-background-networking --disable-component-update --disable-features=Translate,MediaRouter --disable-session-crashed-bubble --hide-crash-restore-bubble --password-store=basic --disable-gpu --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage --disable-blink-features=AutomationControlled --noerrdialogs --start-maximized about:blank
 ```
 
-```不带headless
+```bash 不带headless
 /opt/google/chrome/chrome --remote-debugging-port=18800 --user-data-dir=/root/.openclaw/browser/openclaw/user-data --no-first-run --no-default-browser-check --disable-sync --disable-background-networking --disable-component-update --disable-features=Translate,MediaRouter --disable-session-crashed-bubble --hide-crash-restore-bubble --password-store=basic--disable-gpu --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage --disable-blink-features=AutomationControlled--noerrdialogs --start-maximized about:blank
 
 ```
+
+```bash
+ # 结束占用 18800 的进程（先正常杀，再强制杀）
+  kill $(ss -ltnp '( sport = :18800 )' | sed -n 's/.*pid=\([0-9]\+\).*/\1/p' | sort -u) 2>/dev/null || true
+  sleep 1
+  kill -9 $(ss -ltnp '( sport = :18800 )' | sed -n 's/.*pid=\([0-9]\+\).*/\1/p' | sort -u) 2>/dev/null || true
+
+  # 检查是否已释放
+  ss -ltnp '( sport = :18800 )'
+```
+# 直接查看浏览器界面
+
+## 方法一：使用 OpenClaw 托管的浏览器
+
+启动一个可见的 OpenClaw 托管浏览器实例 browser.md:34-44 ：
+
+```bash
+# 启动 openclaw 配置文件的浏览器  
+openclaw browser --browser-profile openclaw start    # 打开网页  
+openclaw browser --browser-profile openclaw open https://example.com
+```
+
+这将打开一个独立的 Chrome 窗口，带有橙色主题标识，与你的日常浏览器完全隔离 browser.md:18-32 。
+
+## 方法二：通过 Chrome 扩展控制现有浏览器
+
+如果你想在现有的 Chrome 浏览器中查看操作 chrome-extension.md:10-25 ：
+
+1. **安装扩展**：
+
+```
+openclaw browser extension install
+```
+
+2. **在 Chrome 中加载扩展**：
+    - 打开 `chrome://extensions`
+    - 启用"开发者模式"
+    - 点击"加载已解压的扩展程序"
+    - 选择 `openclaw browser extension path` 显示的目录
+3. **使用扩展**：
+    - 打开你想控制的标签页
+    - 点击扩展图标（徽章显示 `ON` 表示已附加）
+    - 通过 CLI 控制：
+
+```
+openclaw browser --browser-profile chrome tabs
+```
+
+## 配置可见性
+
+确保浏览器不是 headless 模式（默认为 `false`） faq.md:1471-1490 ：
+
+```
+{    browser: { headless: false },    agents: {      defaults: {        sandbox: { browser: { headless: false } },      },    },  }
+```
+
+## 实时查看操作
+
+当智能体执行浏览器操作时，你可以：
+
+1. **直接观察**浏览器窗口中的点击、输入和导航
+2. **使用高亮功能**查看目标元素：
+
+```
+openclaw browser highlight <ref>
+```
+
+3. **查看实时截图**：
+
+```
+openclaw browser screenshot
+```
+
+## Notes
+
+- OpenClaw 托管的浏览器使用独立的用户数据目录，不会影响你的个人浏览器配置 browser.md:285-290
+- 本地浏览器控制服务绑定到 loopback 地址，默认端口从 18800 开始分配 browser.md:82-94
+- 如果使用远程 Gateway，需要在有浏览器的机器上运行节点主机来代理浏览器操作 browser.md:128-133
+
+Wiki pages you might want to explore:
+
+- [Getting Started (openclaw/openclaw)](https://deepwiki.com/openclaw/openclaw/1.1-getting-started)
