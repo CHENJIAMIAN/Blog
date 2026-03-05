@@ -403,8 +403,6 @@ openclaw browser screenshot
   - 这样不用复制文件，仓库更新（git pull）后技能会立刻同步到 Codex 可见路径。
   - 需要重启 Codex，是因为技能列表通常在启动时加载一次。
 ---
-
-
 ## linux显示界面
  - X11：老一代 Linux 图形系统协议（X Window System）。负责“应用和显示服务器怎么通信画界面”。历史久、兼容广。
   - Wayland：新一代图形协议，目标是更简单、更低延迟、更安全。很多现代桌面环境默认走它。
