@@ -188,7 +188,7 @@ openclaw models status
 
 ---
 
-### 🧭 浏览器启动时机
+## 🧭 浏览器启动时机
 
 OpenClaw 的浏览器在以下几种情况下会被启动：
 
@@ -301,17 +301,13 @@ about:blank
 - 若使用 `attachOnly: true`，需确保浏览器已运行且扩展正确附着。
 - 端口冲突时，使用 `openclaw action=reset-profile profile=<name>` 强制释放。
 - 使用 `extraArgs` 可实现更高级配置：UA 伪装、分辨率设置、隐身模式等。
-
 ---
 
-### 🔍 相关 Wiki 页面推荐
+```带headless
+/opt/google/chrome/chrome --remote-debugging-port=18800 --user-data-dir=/root/.openclaw/browser/openclaw/user-data --no-first-run --no-default-browser-check --disable-sync --disable-background-networking --disable-component-update --disable-features=Translate,MediaRouter --disable-session-crashed-bubble --hide-crash-restore-bubble --password-store=basic --disable-gpu --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage --disable-blink-features=AutomationControlled --noerrdialogs --start-maximized about:blank
+```
 
-- [Tools](https://github.com/openclaw/openclaw)：所有可用 browser 工具列表（`snapshot`, `screenshot`, `act`, `open` 等）
-- [browser.md](https://github.com/openclaw/openclaw/blob/main/docs/tools/browser.md)：浏览器工具详细文档
-- [browser-linux-troubleshooting.md](https://github.com/openclaw/openclaw/blob/main/docs/tools/browser-linux-troubleshooting.md)：Linux 环境常见问题解决
+```不带headless
+/opt/google/chrome/chrome --remote-debugging-port=18800 --user-data-dir=/root/.openclaw/browser/openclaw/user-data --no-first-run --no-default-browser-check --disable-sync --disable-background-networking --disable-component-update --disable-features=Translate,MediaRouter --disable-session-crashed-bubble --hide-crash-restore-bubble --password-store=basic--disable-gpu --no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage --disable-blink-features=AutomationControlled--noerrdialogs --start-maximized about:blank
 
----
-
-### ✅ 总结一句话
-
-> OpenClaw 浏览器会在 **显式调用 `start` 命令** 或 **Agent 使用 browser 工具且满足启动条件时自动启动**，默认使用隔离的 `openclaw` profile 启动一个带防检测机制的 Chrome 实例，支持灵活配置启动参数与端口策略。
+```
