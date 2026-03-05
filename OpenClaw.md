@@ -389,7 +389,16 @@ openclaw browser screenshot
 - OpenClaw 托管的浏览器使用独立的用户数据目录，不会影响你的个人浏览器配置 browser.md:285-290
 - 本地浏览器控制服务绑定到 loopback 地址，默认端口从 18800 开始分配 browser.md:82-94
 - 如果使用远程 Gateway，需要在有浏览器的机器上运行节点主机来代理浏览器操作 browser.md:128-133
+## superpowers安装过程就两步：
 
-Wiki pages you might want to explore:
+  1. git clone https://github.com/obra/superpowers.git C:\Users\Administrator\.codex\superpowers
+  2. 创建目录联接（Windows junction）：
+     C:\Users\Administrator\.agents\skills\superpowers -> C:\Users\Administrator\.codex\superpowers\skills
 
-- [Getting Started (openclaw/openclaw)](https://deepwiki.com/openclaw/openclaw/1.1-getting-started)
+  原理是：
+
+  - Codex 会扫描固定的技能发现目录：~/.agents/skills（Windows 即 C:\Users\Administrator\.agents\skills）。
+  - 每个子目录都被当作一个“技能包来源”。
+  - superpowers 仓库里真正的技能在 skills/ 下，所以用联接把它“挂载”到扫描目录里。
+  - 这样不用复制文件，仓库更新（git pull）后技能会立刻同步到 Codex 可见路径。
+  - 需要重启 Codex，是因为技能列表通常在启动时加载一次。
