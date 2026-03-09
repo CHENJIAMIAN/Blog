@@ -1,59 +1,25 @@
-## 飞书
+## 飞书插件
 openclaw官方的飞书插件就是: @m1heng-clawd/feishu
 
-OpenClaw 支持多种对话方式，主要分为三大类：
+## 对话方式
 
-## 1. 界面方式
+### 1. 界面方式
 
 - **Web Control UI (GUI)** - 浏览器控制界面，访问 `http://127.0.0.1:18789/` index.md:121-124
 - **TUI (Terminal UI)** - 终端界面，通过 `openclaw tui` 命令启动 tui.md:20-23
 
-## 2. 聊天渠道
+### 2. 聊天渠道
 
 OpenClaw 支持连接到多种聊天应用 index.md:14-37 ：
 
-### 内置渠道
-
-- WhatsApp
-- Telegram
-- Discord
-- IRC
-- Slack
-- Feishu (飞书)
-- Google Chat
-- Signal
-- BlueBubbles (iMessage推荐)
-- iMessage (旧版)
-- Zalo
-- Zalo Personal
-- WebChat
-
-### 需要插件的渠道
-
-- Mattermost
-- Microsoft Teams
-- Synology Chat
-- LINE
-- Nextcloud Talk
-- Matrix
-- Nostr
-- Tlon
-- Twitch
-
-## 3. CLI 命令行
+### 3. CLI 命令行
 
 - 通过 `openclaw message` 命令直接发送消息 message.md:9-13
 
-## Notes
-
-- 飞书(Feishu)需要单独安装插件：`openclaw plugins install @openclaw/feishu` feishu.md:17-21
-- 所有渠道可以同时运行，OpenClaw 会根据聊天来源自动路由 index.md:41-42
-- 最快的设置方式通常是 Telegram（只需机器人令牌），而 WhatsApp 需要 QR 配对 index.md:42-43
-
 ---
-你可以在聊天会话中向 OpenClaw 发送以下斜杠命令：
+## 聊天会话中的斜杠命令
 
-## 核心命令
+### 核心命令
 
 - `/help` - 显示帮助信息 tui.md:84-88
 - `/status` - 显示会话状态（模型、令牌、成本等） README.md:272-276
@@ -62,7 +28,7 @@ OpenClaw 支持连接到多种聊天应用 index.md:14-37 ：
 - `/agent <id>` 或 `/agents` - 选择代理 tui.md:88-89
 - `/session <key>` 或 `/sessions` - 切换会话 tui.md:89-90
 
-## 会话控制命令
+### 会话控制命令
 
 - `/think <level>` - 设置思考级别（off|minimal|low|medium|high|xhigh） README.md:275-279
 - `/verbose on|off` - 切换详细模式 README.md:276-280
@@ -73,7 +39,7 @@ OpenClaw 支持连接到多种聊天应用 index.md:14-37 ：
 - `/deliver on|off` - 控制是否投递回复 tui.md:100-101
 - `/queue` - 队列模式控制 slash-commands.md:16-18
 
-## 会话生命周期命令
+### 会话生命周期命令
 
 - `/new` 或 `/reset` - 重置会话 README.md:273-278
 - `/abort` - 中止当前运行 tui.md:104-106
@@ -82,7 +48,7 @@ OpenClaw 支持连接到多种聊天应用 index.md:14-37 ：
 - `/settings` - 打开设置面板 tui.md:106-107
 - `/exit` - 退出 TUI tui.md:107-108
 
-## 模型选择命令
+### 模型选择命令
 
 - `/model` - 显示模型选择器 tui.md:90-91
 - `/model list` - 列出可用模型 slash-commands.md:159-162
@@ -90,19 +56,19 @@ OpenClaw 支持连接到多种聊天应用 index.md:14-37 ：
 - `/model <provider/model>` - 直接指定模型 slash-commands.md:170-174
 - `/model status` - 显示模型状态详情 slash-commands.md:170-174
 
-## 上下文相关命令
+### 上下文相关命令
 
 - `/context` - 显示上下文概览 context.md:31-34
 - `/context list` - 显示注入的文件列表 context.md:31-34
 - `/context detail` - 显示详细的上下文分解 context.md:31-34
 
-## 所有者专用命令
+### 所有者专用命令
 
 - `/config` - 配置管理（需要 `commands.config: true`） slash-commands.md:194-198
 - `/debug` - 运行时配置覆盖（需要 `commands.debug: true`） slash-commands.md:175-179
 - `/restart` - 重启网关（群组中仅所有者） README.md:278-283
 
-## 内联快捷命令（仅授权发送者）
+### 内联快捷命令（仅授权发送者）
 
 这些命令可以在普通消息中内联使用： slash-commands.md:25-27
 
@@ -111,27 +77,28 @@ OpenClaw 支持连接到多种聊天应用 index.md:14-37 ：
 - `/status`
 - `/whoami`（别名：`/id`）
 
-## 插件和技能命令
+### 插件和技能命令
 
 插件可以注册额外的斜杠命令 plugin.md:592-608 ，技能也可以作为命令运行 status.test.ts:628-642 。
 
-## 注意事项
+### 注意事项
 
 1. 大多数命令必须作为**独立消息**发送（消息仅包含 `/...`） slash-commands.md:11-12
 2. 指令类命令（如 `/think`、`/verbose`）在独立消息中会持久化会话设置，在普通消息中仅作为单次提示 slash-commands.md:16-21
 3. 某些命令需要特定权限（如 `/config`、`/debug` 需要所有者权限） slash-commands.md:175-179
 4. 群组中的某些命令仅所有者可用（如 `/restart`） README.md:278-283
 
-## Notes
+### Notes
 
 - 斜杠命令由 Gateway 处理，在模型看到消息之前被拦截 context.md:132-143
 - 不同平台（Discord、Telegram、Slack）可能支持原生命令注册 slash-commands.md:52-58
 - Bash 命令使用 `! <cmd>` 格式（`/bash <cmd>` 是别名） slash-commands.md:12-13
 
 ---
-在OpenClaw系统中，LLM提供商和Agent是**使用与被使用**的关系：Agent作为AI代理实例，通过配置选择并使用LLM提供商提供的模型来执行任务。 index.md:11-13
+## LLM提供商和Agent是**使用与被使用**的关系
+> Agent作为AI代理实例，通过配置选择并使用LLM提供商提供的模型来执行任务。 index.md:11-13
 
-## 核心关系
+### 核心关系
 
 ### 1. **Agent选择LLM提供商的模型**
 
@@ -157,7 +124,7 @@ models.md:28-32
 
 multi-agent.md:210-231
 
-## 技术实现
+### 技术实现
 
 ### 模型解析流程
 
@@ -167,7 +134,7 @@ multi-agent.md:210-231
 
 LLM提供商在`models.providers`中配置，包含API端点、认证方式和模型目录。 model-providers.md:266-298
 
-## Notes
+### Notes
 
 - LLM提供商提供AI模型服务（如Anthropic、OpenAI、Ollama等）
 - Agent是具有独立工作区、配置和会话的AI代理实例
@@ -184,11 +151,7 @@ openclaw models status
 ```
 
 ---
-以下是针对 **OpenClaw** 项目中关于 **浏览器启动时机** 和 **默认启动参数** 的完整总结：
-
----
-
-## 🧭 浏览器启动时机
+## 浏览器启动时机
 
 OpenClaw 的浏览器在以下几种情况下会被启动：
 
@@ -413,3 +376,109 @@ openclaw browser screenshot
 
   - X11/Wayland：图形显示“通信协议”
   - XDG：桌面环境“通用规范/约定”
+---
+# 多智能体团队配置与协作
+
+## 核心配置
+
+多智能体团队通过在 `openclaw.json` 中定义多个智能体和绑定规则来实现 multi-agent.md:10-20 。
+
+```
+{    agents: {      list: [        { id: "coordinator", workspace: "~/.openclaw/workspace-coord" },        { id: "worker1", workspace: "~/.openclaw/workspace-worker1" },        { id: "worker2", workspace: "~/.openclaw/workspace-worker2" },      ],    },    bindings: [      { agentId: "coordinator", match: { channel: "slack", teamId: "T123" } },      { agentId: "worker1", match: { channel: "slack", peer: { kind: "channel", id: "C456" } } },      { agentId: "worker2", match: { channel: "slack", peer: { kind: "channel", id: "C789" } } },    ],  }
+```
+
+## 智能体间协作
+
+### 1. 启用智能体间消息传递
+
+在配置中启用 `agentToAgent` 工具 multi-agent.md:354-360 ：
+
+```
+{    tools: {      agentToAgent: {        enabled: true,        allow: ["coordinator", "worker1", "worker2"],      },    },  }
+```
+
+### 2. 协作模式
+
+- **协调者模式**：一个主智能体分配任务给工作智能体
+- **广播模式**：多个智能体同时处理同一消息 channel-routing.md:75-91
+- **子智能体模式**：智能体可以动态创建子智能体处理特定任务 faq.md:1856-1866
+
+### 3. 使用 CLI 管理智能体
+
+```
+# 添加新智能体  openclaw agents add worker1 --workspace ~/.openclaw/workspace-worker1    # 列出所有智能体和绑定  openclaw agents list --bindings    # 设置智能体身份  openclaw agents set-identity --agent coordinator --name "团队协调器"
+```
+
+agents.md:26-31
+
+## 高级配置
+
+### 每智能体沙箱和工具权限
+
+每个智能体可以有独立的安全配置 multi-agent-sandbox-tools.md:18-29 ：
+
+```
+{    agents: {      list: [        {          id: "coordinator",          sandbox: { mode: "off" },  // 完全权限        },        {          id: "worker1",          sandbox: { mode: "all", scope: "agent" },  // 沙箱隔离          tools: {            allow: ["read", "exec"],            deny: ["write", "browser"],          },        },      ],    },  }
+```
+
+### 认证隔离
+
+每个智能体有独立的认证配置文件 multi-agent.md:20-28 ：
+
+- 路径：`~/.openclaw/agents/<agentId>/agent/auth-profiles.json`
+- 认证不会自动共享，需要手动复制
+
+## 注意事项
+
+1. **资源消耗**：多智能体会增加 token 消耗和磁盘使用 faq.md:2013-2019
+2. **会话隔离**：每个智能体有独立的会话存储
+3. **路由优先级**：绑定规则按确定性顺序匹配，最具体的优先 multi-agent.md:172-180
+---
+# Workspace 与多智能体的关系
+
+在多智能体架构中，**workspace 是每个智能体的独立工作目录**，存储智能体的"大脑"和记忆 multi-agent.md:14-18 。
+
+## 核心关系
+
+### 1. 每个智能体拥有独立 workspace
+
+```
+{    agents: {      list: [        { id: "coordinator", workspace: "~/.openclaw/workspace-coord" },        { id: "worker1", workspace: "~/.openclaw/workspace-worker1" },        { id: "worker2", workspace: "~/.openclaw/workspace-worker2" },      ],    },  }
+```
+
+每个 workspace 包含智能体的：
+
+- `AGENTS.md` - 操作指令
+- `SOUL.md` - 人设和边界
+- `USER.md` - 用户档案
+- `memory/` - 记忆文件
+- `skills/` - 技能目录 agent-workspace.md:66-84
+
+### 2. Workspace 与其他目录的区别
+
+|目录|用途|范围|
+|---|---|---|
+|**Workspace**|智能体工作文件和记忆|每智能体独立|
+|**agentDir**|认证配置和模型注册|每智能体独立|
+|**sessions**|聊天历史和路由状态|每智能体独立|
+|**~/.openclaw/**|全局配置和凭证|全局共享 multi-agent.md:40-47|
+
+### 3. Workspace 的隔离特性
+
+- **默认 cwd**：工具的相对路径在此解析 agent-workspace.md:17-22
+- **非硬性沙箱**：绝对路径仍可访问其他位置，除非启用沙箱 multi-agent.md:35-38
+- **记忆隔离**：每个智能体的记忆和人格完全独立
+
+### 4. 路径解析规则
+
+workspace 路径按优先级解析 agent-scope.ts:255-271 ：
+
+1. `agents.list[].workspace`（显式配置）
+2. `agents.defaults.workspace`（默认值）
+3. `~/.openclaw/workspace-<agentId>`（回退方案）
+
+## 实际影响
+
+1. **数据隔离**：每个智能体的"记忆"和"人格"完全独立
+2. **配置灵活性**：可以为不同智能体设置不同的工具和技能
+3. **备份策略**：只需备份 workspace 目录即可保存智能体"大脑" faq.md:1382-1392
