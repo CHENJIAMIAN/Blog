@@ -482,3 +482,52 @@ workspace 路径按优先级解析 agent-scope.ts:255-271 ：
 1. **数据隔离**：每个智能体的"记忆"和"人格"完全独立
 2. **配置灵活性**：可以为不同智能体设置不同的工具和技能
 3. **备份策略**：只需备份 workspace 目录即可保存智能体"大脑" faq.md:1382-1392
+---
+# models.json
+`root/.openclaw/agents/main/agent/models.json` 是 OpenClaw 的模型注册表文件，用于存储自定义模型提供商的配置信息。 models-config.ts:203-244
+!!! **该文件不应手动编辑，应通过配置 `openclaw.json` 中的 `models.providers` 来管理**
+## 主要用途
+
+这个文件存储了以下内容：
+
+- **自定义提供商配置**：包括 baseUrl、apiKey、API 类型（如 openai-completions、anthropic-messages 等）
+- **模型目录**：每个提供商支持的模型列表，包含模型 ID、名称、上下文窗口、最大 token 数等信息
+- **认证信息**：API 密钥或认证配置 configuration-reference.md:1976-2002
+
+## 文件管理
+
+该文件由 `ensureOpenClawModelsJson` 函数自动管理 models-config.ts:203-244 ：
+
+- 当你在 `openclaw.json` 中配置 `models.providers` 时，系统会自动生成或更新此文件
+- 支持两种模式：`merge`（合并模式，默认）和 `replace`（替换模式）
+- 在合并模式下，已存在的 `apiKey` 和 `baseUrl` 会优先保留 models.md:207-217
+
+## 位置结构
+
+文件路径遵循以下模式：
+
+```
+~/.openclaw/agents/<agentId>/agent/models.json  
+```
+
+其中 `main` 是默认的 agent ID。多代理环境下，每个代理都有自己的 `models.json` 文件 faq.md:2387-2391 。
+
+## 配置示例
+
+文件内容格式如下：
+
+```
+{    "providers": {      "custom-proxy": {        "baseUrl": "http://localhost:4000/v1",        "apiKey": "LITELLM_KEY",        "api": "openai-completions",        "models": [          {            "id": "llama-3.1-8b",            "name": "Llama 3.1 8B",            "contextWindow": 128000,            "maxTokens": 32000          }        ]      }    }  }
+```
+
+这个文件是 OpenClaw 模型系统的核心组件，让系统能够与各种 LLM 提供商进行通信。
+
+## Notes
+
+- 该文件不应手动编辑，应通过配置 `openclaw.json` 中的 `models.providers` 来管理
+- 文件权限设置为 600，确保 API 密钥等敏感信息的安全
+- 如果没有配置任何自定义提供商，此文件可能不存在
+
+Wiki pages you might want to explore:
+
+- [Configuration System (openclaw/openclaw)](https://deepwiki.com/openclaw/openclaw/2.3-configuration-system)
