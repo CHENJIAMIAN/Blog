@@ -613,7 +613,66 @@ Wiki pages you might want to explore:
 - 使用 `--profile <name>` 会创建 `~/.openclaw-<profile>/` 目录实现多实例隔离 faq.md:37
 - 所有 `~/.openclaw/` 下的文件都可能包含敏感信息，应保持严格权限（目录 700，文件 600） index.md:842
 
-Wiki pages you might want to explore:
+- ---
+# Workspace 文件完整列表
 
-- [Overview (openclaw/openclaw)](https://deepwiki.com/openclaw/openclaw/1-overview)
-- [Getting Started (openclaw/openclaw)](https://deepwiki.com/openclaw/openclaw/1.1-getting-started)
+OpenClaw workspace 目录包含以下所有文件：
+
+### 核心引导文件（每次会话加载）
+
+- `AGENTS.md` - 智能体操作指令和记忆 agent-workspace.md:68-71
+- `SOUL.md` - 人设、语气和边界 agent-workspace.md:73-75
+- `TOOLS.md` - 本地工具和惯例说明 agent-workspace.md:85-87
+- `IDENTITY.md` - 智能体名称、风格和表情符号 agent-workspace.md:81-83
+- `USER.md` - 用户档案和偏好称呼 agent-workspace.md:77-79
+- `HEARTBEAT.md` - 可选的心跳运行检查清单 agent-workspace.md:89-90
+- `BOOTSTRAP.md` - 一次性首次运行仪式（完成后删除） agent-workspace.md:91-94
+
+### 记忆系统文件
+
+- `memory/YYYY-MM-DD.md` - 每日记忆日志（每天一个文件） agent-workspace.md:96-98
+- `MEMORY.md` 或 `memory.md` - 精选的长期记忆 agent-workspace.md:100-102
+
+### 可选目录和文件
+
+- `skills/` - 工作区特定的 Skills（覆盖托管 Skills） agent-workspace.md:106-108
+- `canvas/` - Canvas UI 文件（如 `canvas/index.html`） agent-workspace.md:110-111
+- `BOOT.md` - Gateway 重启时执行的启动检查清单 agent-workspace.md:87-89
+
+### 系统文件（通常隐藏）
+
+- `.openclaw/workspace-state.json` - 工作区状态文件 workspace.ts:34-35
+- `.git/` - Git 仓库目录（如果使用 Git 备份） doctor-state-integrity.ts:813-814
+
+## 文件加载机制
+
+### 引导文件注入规则
+
+OpenClaw 在每次会话开始时注入这些文件到模型上下文中 context.md:105-113 ：
+
+- 大文件会被截断（默认每个文件最多 20,000 字符） context.md:115
+- 总注入上限为 150,000 字符 context.md:115
+- 缺失文件会注入"文件缺失"标记 agent.md:44
+
+### 记忆文件加载策略
+
+- 主会话加载：今天 + 昨天的 daily memory + `MEMORY.md` AGENTS.md:20-23
+- **共享会话（群聊）：仅加载今天 + 昨天的 daily memory（不加载 `MEMORY.md`） AGENTS.md:38-40**
+
+## 默认位置和配置
+
+- 默认位置：`~/.openclaw/workspace` agent-workspace.md:26
+- 配置方式：通过 `agents.defaults.workspace` 设置 agent-workspace.md:31-36
+- Profile 支持：使用 `OPENCLAW_PROFILE` 时变为 `~/.openclaw/workspace-<profile>` agent-workspace.md:27-28
+
+## 文件缓存机制
+
+系统使用基于文件身份（inode/dev/size/mtime）的缓存机制避免重复读取 workspace.ts:52-54 ，最大文件大小限制为 2MB workspace.ts:40 。
+
+## Notes
+
+- 工作区是智能体的唯一工作目录（cwd），但不是硬沙箱 agent-workspace.md:17-18
+- 建议将工作区设为私有 Git 仓库进行备份 agent-workspace.md:140-141
+- `~/.openclaw/` 目录包含配置、凭证和会话，不应提交到工作区仓库 agent-workspace.md:130-133
+- 可通过 `skipBootstrap: true` 禁用引导文件创建 agent-workspace.md:47-49
+
