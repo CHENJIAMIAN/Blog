@@ -531,3 +531,89 @@ workspace 路径按优先级解析 agent-scope.ts:255-271 ：
 Wiki pages you might want to explore:
 
 - [Configuration System (openclaw/openclaw)](https://deepwiki.com/openclaw/openclaw/2.3-configuration-system)
+---
+# `~/.openclaw` 完整目录结构
+
+## 核心配置和状态文件
+
+|路径|用途|
+|---|---|
+|`openclaw.json`|主配置文件（JSON5 格式） faq.md:1340-1342|
+|`secrets.json`|可选的文件支持的密钥存储 faq.md:1345|
+|`credentials/oauth.json`|旧版 OAuth 导入（首次使用时复制到认证配置文件） faq.md:1343|
+
+## 认证和凭证目录
+
+|路径|用途|
+|---|---|
+|`credentials/`|存储各渠道的认证状态 faq.md:1347|
+|`credentials/whatsapp/<accountId>/creds.json`|WhatsApp 凭证 setup.md:129|
+|`credentials/<channel>-allowFrom.json`|默认账户的配对白名单 setup.md:134|
+|`credentials/<channel>-<accountId>-allowFrom.json`|非默认账户的配对白名单 setup.md:134-135|
+
+## 代理相关目录
+
+|路径|用途|
+|---|---|
+|`agents/`|每个代理的状态目录 faq.md:1348|
+|`agents/<agentId>/agent/`|代理目录（auth-profiles.json、auth.json） faq.md:1348|
+|`agents/<agentId>/agent/auth-profiles.json`|认证配置文件（OAuth、API 密钥） faq.md:1344|
+|`agents/<agentId>/agent/auth.json`|旧版兼容文件（静态 api_key 条目会被清理） faq.md:1346|
+|`agents/<agentId>/sessions/`|对话历史和状态 faq.md:1349|
+|`agents/<agentId>/sessions/sessions.json`|会话元数据 faq.md:1350|
+|`agents/<agentId>/sessions/<sessionId>.jsonl`|会话记录文件 session-management-compaction.md:60-62|
+
+## 工作区和技能目录
+
+|路径|用途|
+|---|---|
+|`workspace/`|默认代理工作区 faq.md:1354|
+|`skills/`|托管的技能（共享技能） agent-workspace.md:133|
+
+## 扩展和插件目录
+
+|路径|用途|
+|---|---|
+|`extensions/`|已安装的插件（包括它们的 node_modules/） index.md:837|
+|`sandboxes/`|工具沙箱工作区 index.md:838|
+
+## 日志和临时文件
+
+|路径|用途|
+|---|---|
+|`logs/`|日志文件目录 setup.md:123|
+|`logs/commands.log`|命令事件审计日志 README.md:41|
+|`.backup/`|配置备份（.json.bak 文件） faq.md:1354|
+
+## QMD 内存系统相关
+
+|路径|用途|
+|---|---|
+|`agents/<agentId>/qmd/`|QMD 配置和数据目录 memory.md:183-184|
+|`agents/<agentId>/qmd/xdg-config/`|QMD XDG 配置目录 memory.md:183|
+|`agents/<agentId>/qmd/xdg-cache/`|QMD XDG 缓存目录 memory.md:184|
+|`agents/<agentId>/qmd/sessions/`|QMD 会话集合目录 memory.md:224-225|
+
+## 工具相关目录
+
+|路径|用途|
+|---|---|
+|`tools/signal-cli/<version>/`|Signal CLI 工具存储 wizard-cli-reference.md:284|
+
+## 环境变量覆盖
+
+可以通过以下环境变量自定义路径：
+
+- `OPENCLAW_STATE_DIR` - 更改整个状态目录位置 OpenClawPaths.swift:18
+- `OPENCLAW_CONFIG_PATH` - 自定义配置文件路径 OpenClawPaths.swift:17
+
+## Notes
+
+- 旧版单代理路径：`~/.openclaw/agent/*`（由 `openclaw doctor` 迁移） faq.md:1352
+- 使用 `--profile <name>` 会创建 `~/.openclaw-<profile>/` 目录实现多实例隔离 faq.md:37
+- 所有 `~/.openclaw/` 下的文件都可能包含敏感信息，应保持严格权限（目录 700，文件 600） index.md:842
+
+Wiki pages you might want to explore:
+
+- [Overview (openclaw/openclaw)](https://deepwiki.com/openclaw/openclaw/1-overview)
+- [Getting Started (openclaw/openclaw)](https://deepwiki.com/openclaw/openclaw/1.1-getting-started)
