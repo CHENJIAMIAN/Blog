@@ -483,3 +483,196 @@ workspace 路径按优先级解析 agent-scope.ts:255-271 ：
 2. **配置灵活性**：可以为不同智能体设置不同的工具和技能
 3. **备份策略**：只需备份 workspace 目录即可保存智能体"大脑" faq.md:1382-1392
 ---
+# models.json
+`root/.openclaw/agents/main/agent/models.json` 是 OpenClaw 的模型注册表文件，用于存储自定义模型提供商的配置信息。 models-config.ts:203-244
+!!! **该文件不应手动编辑，应通过配置 `openclaw.json` 中的 `models.providers` 来管理**
+## 主要用途
+
+这个文件存储了以下内容：
+
+- **自定义提供商配置**：包括 baseUrl、apiKey、API 类型（如 openai-completions、anthropic-messages 等）
+- **模型目录**：每个提供商支持的模型列表，包含模型 ID、名称、上下文窗口、最大 token 数等信息
+- **认证信息**：API 密钥或认证配置 configuration-reference.md:1976-2002
+
+## 文件管理
+
+该文件由 `ensureOpenClawModelsJson` 函数自动管理 models-config.ts:203-244 ：
+
+- 当你在 `openclaw.json` 中配置 `models.providers` 时，系统会自动生成或更新此文件
+- 支持两种模式：`merge`（合并模式，默认）和 `replace`（替换模式）
+- 在合并模式下，已存在的 `apiKey` 和 `baseUrl` 会优先保留 models.md:207-217
+
+## 位置结构
+
+文件路径遵循以下模式：
+
+```
+~/.openclaw/agents/<agentId>/agent/models.json  
+```
+
+其中 `main` 是默认的 agent ID。多代理环境下，每个代理都有自己的 `models.json` 文件 faq.md:2387-2391 。
+
+## 配置示例
+
+文件内容格式如下：
+
+```
+{    "providers": {      "custom-proxy": {        "baseUrl": "http://localhost:4000/v1",        "apiKey": "LITELLM_KEY",        "api": "openai-completions",        "models": [          {            "id": "llama-3.1-8b",            "name": "Llama 3.1 8B",            "contextWindow": 128000,            "maxTokens": 32000          }        ]      }    }  }
+```
+
+这个文件是 OpenClaw 模型系统的核心组件，让系统能够与各种 LLM 提供商进行通信。
+
+## Notes
+
+- 该文件不应手动编辑，应通过配置 `openclaw.json` 中的 `models.providers` 来管理
+- 文件权限设置为 600，确保 API 密钥等敏感信息的安全
+- 如果没有配置任何自定义提供商，此文件可能不存在
+
+Wiki pages you might want to explore:
+
+- [Configuration System (openclaw/openclaw)](https://deepwiki.com/openclaw/openclaw/2.3-configuration-system)
+---
+# `~/.openclaw` 完整目录结构
+
+## 核心配置和状态文件
+
+|路径|用途|
+|---|---|
+|`openclaw.json`|主配置文件（JSON5 格式） faq.md:1340-1342|
+|`secrets.json`|可选的文件支持的密钥存储 faq.md:1345|
+|`credentials/oauth.json`|旧版 OAuth 导入（首次使用时复制到认证配置文件） faq.md:1343|
+
+## 认证和凭证目录
+
+|路径|用途|
+|---|---|
+|`credentials/`|存储各渠道的认证状态 faq.md:1347|
+|`credentials/whatsapp/<accountId>/creds.json`|WhatsApp 凭证 setup.md:129|
+|`credentials/<channel>-allowFrom.json`|默认账户的配对白名单 setup.md:134|
+|`credentials/<channel>-<accountId>-allowFrom.json`|非默认账户的配对白名单 setup.md:134-135|
+
+## 代理相关目录
+
+|路径|用途|
+|---|---|
+|`agents/`|每个代理的状态目录 faq.md:1348|
+|`agents/<agentId>/agent/`|代理目录（auth-profiles.json、auth.json） faq.md:1348|
+|`agents/<agentId>/agent/auth-profiles.json`|认证配置文件（OAuth、API 密钥） faq.md:1344|
+|`agents/<agentId>/agent/auth.json`|旧版兼容文件（静态 api_key 条目会被清理） faq.md:1346|
+|`agents/<agentId>/sessions/`|对话历史和状态 faq.md:1349|
+|`agents/<agentId>/sessions/sessions.json`|会话元数据 faq.md:1350|
+|`agents/<agentId>/sessions/<sessionId>.jsonl`|会话记录文件 session-management-compaction.md:60-62|
+
+## 工作区和技能目录
+
+|路径|用途|
+|---|---|
+|`workspace/`|默认代理工作区 faq.md:1354|
+|`skills/`|托管的技能（共享技能） agent-workspace.md:133|
+
+## 扩展和插件目录
+
+|路径|用途|
+|---|---|
+|`extensions/`|已安装的插件（包括它们的 node_modules/） index.md:837|
+|`sandboxes/`|工具沙箱工作区 index.md:838|
+
+## 日志和临时文件
+
+|路径|用途|
+|---|---|
+|`logs/`|日志文件目录 setup.md:123|
+|`logs/commands.log`|命令事件审计日志 README.md:41|
+|`.backup/`|配置备份（.json.bak 文件） faq.md:1354|
+
+## QMD 内存系统相关
+
+|路径|用途|
+|---|---|
+|`agents/<agentId>/qmd/`|QMD 配置和数据目录 memory.md:183-184|
+|`agents/<agentId>/qmd/xdg-config/`|QMD XDG 配置目录 memory.md:183|
+|`agents/<agentId>/qmd/xdg-cache/`|QMD XDG 缓存目录 memory.md:184|
+|`agents/<agentId>/qmd/sessions/`|QMD 会话集合目录 memory.md:224-225|
+
+## 工具相关目录
+
+|路径|用途|
+|---|---|
+|`tools/signal-cli/<version>/`|Signal CLI 工具存储 wizard-cli-reference.md:284|
+
+## 环境变量覆盖
+
+可以通过以下环境变量自定义路径：
+
+- `OPENCLAW_STATE_DIR` - 更改整个状态目录位置 OpenClawPaths.swift:18
+- `OPENCLAW_CONFIG_PATH` - 自定义配置文件路径 OpenClawPaths.swift:17
+
+## Notes
+
+- 旧版单代理路径：`~/.openclaw/agent/*`（由 `openclaw doctor` 迁移） faq.md:1352
+- 使用 `--profile <name>` 会创建 `~/.openclaw-<profile>/` 目录实现多实例隔离 faq.md:37
+- 所有 `~/.openclaw/` 下的文件都可能包含敏感信息，应保持严格权限（目录 700，文件 600） index.md:842
+
+- ---
+# Workspace 文件完整列表
+
+OpenClaw workspace 目录包含以下所有文件：
+
+### 核心引导文件（每次会话加载）
+
+- `AGENTS.md` - 智能体操作指令和记忆 agent-workspace.md:68-71
+- `SOUL.md` - 人设、语气和边界 agent-workspace.md:73-75
+- `TOOLS.md` - 本地工具和惯例说明 agent-workspace.md:85-87
+- `IDENTITY.md` - 智能体名称、风格和表情符号 agent-workspace.md:81-83
+- `USER.md` - 用户档案和偏好称呼 agent-workspace.md:77-79
+- `HEARTBEAT.md` - 可选的心跳运行检查清单 agent-workspace.md:89-90
+- `BOOTSTRAP.md` - 一次性首次运行仪式（完成后删除） agent-workspace.md:91-94
+
+### 记忆系统文件
+
+- `memory/YYYY-MM-DD.md` - 每日记忆日志（每天一个文件） agent-workspace.md:96-98
+- `MEMORY.md` 或 `memory.md` - 精选的长期记忆 agent-workspace.md:100-102
+
+### 可选目录和文件
+
+- `skills/` - 工作区特定的 Skills（覆盖托管 Skills） agent-workspace.md:106-108
+- `canvas/` - Canvas UI 文件（如 `canvas/index.html`） agent-workspace.md:110-111
+- `BOOT.md` - Gateway 重启时执行的启动检查清单 agent-workspace.md:87-89
+
+### 系统文件（通常隐藏）
+
+- `.openclaw/workspace-state.json` - 工作区状态文件 workspace.ts:34-35
+- `.git/` - Git 仓库目录（如果使用 Git 备份） doctor-state-integrity.ts:813-814
+
+## 文件加载机制
+
+### 引导文件注入规则
+
+OpenClaw 在每次会话开始时注入这些文件到模型上下文中 context.md:105-113 ：
+
+- 大文件会被截断（默认每个文件最多 20,000 字符） context.md:115
+- 总注入上限为 150,000 字符 context.md:115
+- 缺失文件会注入"文件缺失"标记 agent.md:44
+
+### 记忆文件加载策略
+
+- 主会话加载：今天 + 昨天的 daily memory + `MEMORY.md` AGENTS.md:20-23
+- **共享会话（群聊）：仅加载今天 + 昨天的 daily memory（不加载 `MEMORY.md`） AGENTS.md:38-40**
+
+## 默认位置和配置
+
+- 默认位置：`~/.openclaw/workspace` agent-workspace.md:26
+- 配置方式：通过 `agents.defaults.workspace` 设置 agent-workspace.md:31-36
+- Profile 支持：使用 `OPENCLAW_PROFILE` 时变为 `~/.openclaw/workspace-<profile>` agent-workspace.md:27-28
+
+## 文件缓存机制
+
+系统使用基于文件身份（inode/dev/size/mtime）的缓存机制避免重复读取 workspace.ts:52-54 ，最大文件大小限制为 2MB workspace.ts:40 。
+
+## Notes
+
+- 工作区是智能体的唯一工作目录（cwd），但不是硬沙箱 agent-workspace.md:17-18
+- 建议将工作区设为私有 Git 仓库进行备份 agent-workspace.md:140-141
+- `~/.openclaw/` 目录包含配置、凭证和会话，不应提交到工作区仓库 agent-workspace.md:130-133
+- 可通过 `skipBootstrap: true` 禁用引导文件创建 agent-workspace.md:47-49
+
