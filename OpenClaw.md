@@ -677,7 +677,7 @@ OpenClaw 在每次会话开始时注入这些文件到模型上下文中 contex
 - 可通过 `skipBootstrap: true` 禁用引导文件创建 agent-workspace.md:47-49
 
 ---
-当前 33 个本机理论可启用、但现在还未就绪的内置技能如下。我把“做什么”+“缺失条件”一起放在后面。
+# 33个还未就绪的内置技能
 
   - 1password：用 1Password CLI 管理和读取密码、密钥、登录项。缺失条件：缺命令 op
   - blogwatcher：订阅和监控博客、RSS、Atom 更新。缺失条件：缺命令 blogwatcher
