@@ -676,3 +676,169 @@ OpenClaw 在每次会话开始时注入这些文件到模型上下文中 contex
 - `~/.openclaw/` 目录包含配置、凭证和会话，不应提交到工作区仓库 agent-workspace.md:130-133
 - 可通过 `skipBootstrap: true` 禁用引导文件创建 agent-workspace.md:47-49
 
+---
+# 传给gemini的工具请求体
+```js
+[
+    [
+        "read",
+        "读取文件内容。支持文本文件和图片（jpg、png、gif、webp）。图片以附件形式发送。对于文本文件，输出会截断至2000行或50KB（以先到者为准）。大型文件请使用 offset/limit。当需要完整文件时，持续使用 offset 读取直至完成。"
+    ],
+    [
+        "edit",
+        "通过替换精确文本来编辑文件。oldText 必须完全匹配（包括空格）。用于精确、外科式编辑。"
+    ],
+    [
+        "write",
+        "将内容写入文件。若文件不存在则创建，若已存在则覆盖。会自动创建父目录。"
+    ],
+    [
+        "exec",
+        "在后台持续执行 shell 命令。使用 yieldMs/background 以后通过 process 工具继续。需要终端交互的命令请使用 pty=true（如终端 UI、代码代理）。"
+    ],
+    [
+        "process",
+        "管理正在运行的 exec 会话：列出、轮询、获取日志、写入、发送按键、提交、粘贴、结束。"
+    ],
+    [
+        "browser",
+        "通过 OpenClaw 的浏览器控制服务器进行浏览器操作（状态/启动/停止/配置文件/标签页/打开/快照/截图/动作）。浏览器选择：默认不指定配置文件，使用隔离的 OpenClaw 管理的浏览器（「openclaw」）。若需要已登录用户的浏览器，请使用 profile=\"user\"。仅在用户登录/Cookie 重要且用户在场可点击/批准任何浏览器附加提示时使用。若用户提到 Chrome 扩展 / Browser Relay / 工具栏按钮 / “attach tab”，请始终使用 profile=\"chrome-relay\"。否则在用户浏览器任务中优先使用 profile=\"user\"。如果节点托管的浏览器代理可用，工具可能自动路由。使用 node=<id|name> 或 target=\"node\" 锁定节点。用户浏览器流程可能需要用户交互：profile=\"user\" 可能需要批准浏览器附加提示；profile=\"chrome-relay\" 需要用户点击 OpenClaw Browser Relay 工具栏图标（徽标开启）。若用户是否在场不明确，请先询问。使用快照的 refs（如 e12）时保持同一标签页：优先将快照响应中的 targetId 传入后续动作（act/click/type 等）。若需跨调用的稳定自解析 refs，请使用 snapshot + refs=\"aria\"（Playwright aria‑ref id）。默认 refs=\"role\" 基于 role+name。使用 snapshot+act 进行 UI 自动化。默认避免使用 act:wait，仅在没有可靠 UI 状态的极端情况下使用。target 选择浏览器位置（sandbox|host|node），默认 host，host 目标被允许。"
+    ],
+    [
+        "canvas",
+        "控制节点画布（present/hide/navigate/eval/snapshot/A2UI）。使用 snapshot 捕获渲染后的 UI。"
+    ],
+    [
+        "nodes",
+        "发现并控制配对节点（status/describe/pairing/notify/camera/photos/screen/location/notifications/run/invoke）。"
+    ],
+    [
+        "cron",
+        "管理 Gateway 定时任务（status/list/add/update/remove/run/runs）并发送唤醒事件。\n\n操作：\n- status：检查定时调度器状态\n- list：列出任务（使用 includeDisabled:true 包含已停用任务）\n- add：创建任务（需提供 job 对象，见下方 schema）\n- update：修改任务（需 jobId + patch 对象）\n- remove：删除任务（需 jobId）\n- run：立即触发任务（需 jobId）\n- runs：获取任务运行历史（需 jobId）\n- wake：发送唤醒事件（需 text，可选 mode）\n\nJOB SCHEMA（用于 add 动作）：\n{\n  \"name\": \"string（可选）\",\n  \"schedule\": { ... },      // 必填：何时运行\n  \"payload\": { ... },       // 必填：执行内容\n  \"delivery\": { ... },      // 可选：宣布摘要或 webhook POST\n  \"sessionTarget\": \"main\" | \"isolated\",  // 必填\n  \"enabled\": true | false   // 可选，默认 true\n}\n\n调度类型（schedule.kind）：\n- \"at\": 在绝对时间触发一次\n  { \"kind\": \"at\", \"at\": \"<ISO-8601 时间戳>\" }\n- \"every\": 循环间隔\n  { \"kind\": \"every\", \"everyMs\": <间隔毫秒>, \"anchorMs\": <可选起始毫秒> }\n- \"cron\": Cron 表达式\n  { \"kind\": \"cron\", \"expr\": \"<cron 表达式>\", \"tz\": \"<可选时区>\" }\n\nISO 时间戳若未带显式时区，则视为 UTC。\n\npayload 类型（payload.kind）：\n- \"systemEvent\": 将文本注入系统事件到会话中\n  { \"kind\": \"systemEvent\", \"text\": \"<信息>\" }\n- \"agentTurn\": 运行代理并发送消息（仅限 isolated 会话）\n  { \"kind\": \"agentTurn\", \"message\": \"<提示>\", \"model\": \"<可选>\", \"thinking\": \"<可选>\", \"timeoutSeconds\": <可选，0 表示无限> }\n\nDELIVERY（顶层）：\n  { \"mode\": \"none|announce|webhook\", \"channel\": \"<可选>\", \"to\": \"<可选>\", \"bestEffort\": <可选布尔> }\n  - 对于隔离的 agentTurn 任务（未提供 delivery 时）默认 \"announce\"\n  - announce：发送到聊天频道（可选 channel/to 目标）\n  - webhook：完成运行后通过 HTTP POST 将事件发送到 delivery.to（需提供 URL）\n  - 若任务需要发送到特定聊天/收件人，请设置 announce 的 channel/to；不要在运行中调用消息工具。\n\n关键约束：\n- sessionTarget=\"main\" 必须使用 payload.kind=\"systemEvent\"\n- sessionTarget=\"isolated\" 必须使用 payload.kind=\"agentTurn\"\n- webhook 回调请使用 delivery.mode=\"webhook\" 并将 delivery.to 设置为 URL。\n默认：除非用户明确要求 main‑session 系统事件，否则首选 isolated agentTurn 任务。\n\n唤醒模式（wake 动作）：\n- \"next-heartbeat\"（默认）：在下次心跳时唤醒\n- \"now\": 立即唤醒\n\n请使用 jobId 作为唯一标识；id 亦可兼容使用。使用 contextMessages（0‑10）将之前的消息作为上下文加入任务文本。"
+    ],
+    [
+        "message",
+        "发送、删除、管理消息 via channel 插件。支持的操作：send, broadcast, poll, react, reactions, read, edit, delete, pin, unpin, list-pins, permissions, thread-create, thread-list, thread-reply, search, sticker, member-info, role-info, emoji-list, emoji-upload, sticker-upload, channel-info, channel-list, channel-create, channel-edit, channel-delete, channel-move, category-create, category-edit, category-delete, voice-status, event-list, event-create。"
+    ],
+    [
+        "tts",
+        "将文本转换为语音。音频会自动通过工具结果返回——成功调用后请使用 NO_REPLY 以避免重复消息。"
+    ],
+    [
+        "gateway",
+        "重启、检查特定配置模式路径、应用配置，或就地更新网关（SIGUSR1）。在配置编辑前使用 config.schema.lookup 对目标点进行查询。安全的部分更新请使用 config.patch（与现有配置合并）。若要完整替换配置，请使用 config.apply。两者都会在写入后触发重启。请始终通过 `note` 参数传递可读的完成信息，以便系统在重启后向用户呈现。"
+    ],
+    [
+        "agents_list",
+        "列出您可以在 `sessions_spawn` 时使用 `runtime=\"subagent\"` 的 OpenClaw 代理 ID（基于子代理白名单）。"
+    ],
+    [
+        "sessions_list",
+        "列出会话，可选过滤并返回最近消息。"
+    ],
+    [
+        "sessions_history",
+        "获取会话的消息历史。"
+    ],
+    [
+        "sessions_send",
+        "向另一个会话发送消息。使用 sessionKey 或 label 标识目标。"
+    ],
+    [
+        "sessions_yield",
+        "结束您当前的回合。子代理完成后使用，以在下一条消息中接收它们的结果。"
+    ],
+    [
+        "sessions_spawn",
+        "生成一个隔离会话（runtime=\"subagent\" 或 runtime=\"acp\"）。mode=\"run\" 为一次性任务，mode=\"session\" 为持久线程。子代理会自动继承父工作空间目录。"
+    ],
+    [
+        "subagents",
+        "列出、终止或指挥已生成的子代理（本请求会话范围）。用于子代理编排。"
+    ],
+    [
+        "session_status",
+        "显示类似 /status 的会话状态卡（使用情况 + 时间 + 成本（如果可用））。用于模型使用查询（📊 session_status）。可选：为单个会话设定模型覆盖（model=default 重置覆盖）。"
+    ],
+    [
+        "web_search",
+        "使用 Brave Search API 进行网络搜索。支持通过 country 与 language 参数进行地区和语言特化。返回标题、URL 与摘要，便于快速调研。"
+    ],
+    [
+        "web_fetch",
+        "从指定 URL 获取内容并提取可读文本（HTML → markdown/text）。适用于轻量级页面访问，无需浏览器自动化。"
+    ],
+    [
+        "pdf",
+        "使用模型分析一个或多个 PDF 文档。Anthropic 与 Google 模型支持原生 PDF 分析，其他提供商会回落到文本/图像提取。单个 PDF 使用 pdf 参数，多 PDF（最多10）使用 pdfs 参数。提供提示描述要进行的分析。"
+    ],
+    [
+        "feishu_doc",
+        "飞书文档操作。支持的动作：read, write, append, insert, create, list_blocks, get_block, update_block, delete_block, create_table, write_table_cells, create_table_with_values, insert_table_row, insert_table_column, delete_table_rows, delete_table_columns, merge_table_cells, upload_image, upload_file, color_text。"
+    ],
+    [
+        "feishu_app_scopes",
+        "列出当前应用的权限（scopes）。用于调试权限问题或确认可用功能。"
+    ],
+    [
+        "feishu_chat",
+        "飞书聊天操作。支持的动作：members, info。"
+    ],
+    [
+        "feishu_wiki",
+        "飞书知识库操作。支持的动作：spaces, nodes, get, create, move, rename。"
+    ],
+    [
+        "feishu_drive",
+        "飞书云盘操作。支持的动作：list, info, create_folder, move, delete。"
+    ],
+    [
+        "feishu_perm",
+        "飞书权限管理。支持的动作：list, add, remove。"
+    ],
+    [
+        "feishu_bitable_get_meta",
+        "解析 Bitable URL 并获取 app_token、table_id，以及表格列表。首次使用 /wiki/ 或 /base/ URL 时请先调用此函数。"
+    ],
+    [
+        "feishu_bitable_list_fields",
+        "列出 Bitable 表格中所有字段（列）的名称、类型和属性。"
+    ],
+    [
+        "feishu_bitable_list_records",
+        "列出 Bitable 表格中的记录（行），支持分页。"
+    ],
+    [
+        "feishu_bitable_get_record",
+        "根据记录 ID 获取单条 Bitable 记录。"
+    ],
+    [
+        "feishu_bitable_create_record",
+        "在 Bitable 表格中创建新记录（行）。"
+    ],
+    [
+        "feishu_bitable_update_record",
+        "更新 Bitable 表格中已有记录（行）。"
+    ],
+    [
+        "feishu_bitable_create_app",
+        "创建新的 Bitable（多维表格）应用。"
+    ],
+    [
+        "feishu_bitable_create_field",
+        "在 Bitable 表格中创建新字段（列）。"
+    ],
+    [
+        "memory_search",
+        "强制回忆步骤：在回答有关此前工作、决策、日期、人物、偏好或待办事项的问题前，对 MEMORY.md + memory/*.md（以及可选的会话记录）进行语义搜索，返回路径+行号的顶部片段。如果响应中含有 disabled=true，则表示记忆检索功能不可用，需要向用户说明。"
+    ],
+    [
+        "memory_get",
+        "从 MEMORY.md 或 memory/*.md 中安全读取片段，可选 from/lines；在 memory_search 之后使用，仅获取所需行数以保持上下文小。"
+    ],
+    [
+        "voice_call",
+        "通过 voice‑call 插件进行电话呼叫并进行语音对话。"
+    ]
+]
+```
