@@ -676,3 +676,39 @@ OpenClaw 在每次会话开始时注入这些文件到模型上下文中 contex
 - `~/.openclaw/` 目录包含配置、凭证和会话，不应提交到工作区仓库 agent-workspace.md:130-133
 - 可通过 `skipBootstrap: true` 禁用引导文件创建 agent-workspace.md:47-49
 
+---
+当前 33 个本机理论可启用、但现在还未就绪的内置技能如下。我把“做什么”+“缺失条件”一起放在后面。
+
+  - 1password：用 1Password CLI 管理和读取密码、密钥、登录项。缺失条件：缺命令 op
+  - blogwatcher：订阅和监控博客、RSS、Atom 更新。缺失条件：缺命令 blogwatcher
+  - blucli：控制 BluOS 设备的播放、分组、音量等。缺失条件：缺命令 blu
+  - bluebubbles：通过 BlueBubbles 接入 iMessage，发消息和管理会话。缺失条件：缺配置 channels.bluebubbles
+  - camsnap：抓取 RTSP/ONVIF 摄像头画面或短视频。缺失条件：缺命令 camsnap
+  - eightctl：控制 Eight Sleep 智能床垫，查状态、调温、闹钟、计划。缺失条件：缺命令 eightctl
+  - gh-issues：批量拉 GitHub issue、派生子代理修复并开 PR、跟踪 review。缺失条件：allowlist 阻塞
+  - gifgrep：搜索 GIF、下载 GIF、提取静帧或拼图。缺失条件：缺命令 gifgrep
+  - gog：操作 Google Workspace，包括 Gmail、Calendar、Drive、Docs、Sheets。缺失条件：缺命令 gog
+  - goplaces：查 Google Places，获取地点详情、评论、地理信息。缺失条件：缺命令 goplaces，缺环境变量 GOOGLE_PLACES_API_KEY
+  - himalaya：在终端里收发和管理邮件，走 IMAP/SMTP。缺失条件：缺命令 himalaya
+  - nano-pdf：用自然语言编辑 PDF。缺失条件：缺命令 nano-pdf
+  - node-connect：排查 OpenClaw 节点连接、配对、QR 码、远程接入失败。缺失条件：allowlist 阻塞
+  - notion：操作 Notion 页面、数据库、块内容。缺失条件：缺环境变量 NOTION_API_KEY
+  - obsidian：操作 Obsidian 仓库里的笔记和文档。缺失条件：缺命令 obsidian-cli
+  - openai-image-gen：调用 OpenAI 图像接口批量生成图片。缺失条件：缺环境变量 OPENAI_API_KEY
+  - openai-whisper：本地跑 Whisper 做语音转文字。缺失条件：缺命令 whisper
+  - openai-whisper-api：调用 OpenAI Whisper API 做音频转写。缺失条件：缺环境变量 OPENAI_API_KEY
+  - openhue：控制 Philips Hue 灯光和场景。缺失条件：缺命令 openhue
+  - oracle：指导如何使用 oracle CLI，包括 prompt、文件打包、session 等。缺失条件：缺命令 oracle
+  - ordercli：查外卖历史订单和当前订单状态。缺失条件：缺命令 ordercli
+  - sag：用 ElevenLabs 做文字转语音。缺失条件：缺命令 sag，缺环境变量 ELEVENLABS_API_KEY
+  - session-logs：搜索和分析历史会话日志。缺失条件：缺命令 jq
+  - sherpa-onnx-tts：离线文字转语音，不走云服务。缺失条件：缺环境变量 SHERPA_ONNX_RUNTIME_DIR, SHERPA_ONNX_MODEL_DIR
+  - slack：在 Slack 里做操作，比如反应、置顶、取消置顶。缺失条件：缺配置 channels.slack
+  - songsee：把音频生成频谱图和特征可视化。缺失条件：缺命令 songsee
+  - sonoscli：控制 Sonos 音箱，查状态、播放、音量、分组。缺失条件：缺命令 sonos
+  - spotify-player：在终端里控制 Spotify 播放和搜索。缺失条件：缺任一命令 spogo 或 spotify_player
+  - summarize：总结网页、播客、本地文件，也适合转写视频/音频内容。缺失条件：缺命令 summarize
+  - trello：操作 Trello 看板、列表、卡片。缺失条件：缺命令 jq，缺环境变量 TRELLO_API_KEY, TRELLO_TOKEN
+  - voice-call：通过 OpenClaw 的语音通话插件发起语音通话。缺失条件：缺配置 plugins.entries.voice-call.enabled
+  - wacli：通过命令行发送 WhatsApp 消息或同步/搜索历史。缺失条件：缺命令 wacli
+  - xurl：调用 X/Twitter API，发帖、回帖、搜索、私信、媒体上传。缺失条件：缺命令 xurl，allowlist 阻塞
