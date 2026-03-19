@@ -679,36 +679,56 @@ OpenClaw 在每次会话开始时注入这些文件到模型上下文中 contex
 ---
 # 33个还未就绪的内置技能
 
-  - 1password：用 1Password CLI 管理和读取密码、密钥、登录项。缺失条件：缺命令 op
-  - blogwatcher：订阅和监控博客、RSS、Atom 更新。缺失条件：缺命令 blogwatcher
-  - blucli：控制 BluOS 设备的播放、分组、音量等。缺失条件：缺命令 blu
-  - bluebubbles：通过 BlueBubbles 接入 iMessage，发消息和管理会话。缺失条件：缺配置 channels.bluebubbles
-  - camsnap：抓取 RTSP/ONVIF 摄像头画面或短视频。缺失条件：缺命令 camsnap
-  - eightctl：控制 Eight Sleep 智能床垫，查状态、调温、闹钟、计划。缺失条件：缺命令 eightctl
-  - gh-issues：批量拉 GitHub issue、派生子代理修复并开 PR、跟踪 review。缺失条件：allowlist 阻塞
-  - gifgrep：搜索 GIF、下载 GIF、提取静帧或拼图。缺失条件：缺命令 gifgrep
-  - gog：操作 Google Workspace，包括 Gmail、Calendar、Drive、Docs、Sheets。缺失条件：缺命令 gog
-  - goplaces：查 Google Places，获取地点详情、评论、地理信息。缺失条件：缺命令 goplaces，缺环境变量 GOOGLE_PLACES_API_KEY
-  - himalaya：在终端里收发和管理邮件，走 IMAP/SMTP。缺失条件：缺命令 himalaya
-  - nano-pdf：用自然语言编辑 PDF。缺失条件：缺命令 nano-pdf
-  - node-connect：排查 OpenClaw 节点连接、配对、QR 码、远程接入失败。缺失条件：allowlist 阻塞
-  - notion：操作 Notion 页面、数据库、块内容。缺失条件：缺环境变量 NOTION_API_KEY
-  - obsidian：操作 Obsidian 仓库里的笔记和文档。缺失条件：缺命令 obsidian-cli
-  - openai-image-gen：调用 OpenAI 图像接口批量生成图片。缺失条件：缺环境变量 OPENAI_API_KEY
-  - openai-whisper：本地跑 Whisper 做语音转文字。缺失条件：缺命令 whisper
-  - openai-whisper-api：调用 OpenAI Whisper API 做音频转写。缺失条件：缺环境变量 OPENAI_API_KEY
-  - openhue：控制 Philips Hue 灯光和场景。缺失条件：缺命令 openhue
-  - oracle：指导如何使用 oracle CLI，包括 prompt、文件打包、session 等。缺失条件：缺命令 oracle
-  - ordercli：查外卖历史订单和当前订单状态。缺失条件：缺命令 ordercli
-  - sag：用 ElevenLabs 做文字转语音。缺失条件：缺命令 sag，缺环境变量 ELEVENLABS_API_KEY
-  - session-logs：搜索和分析历史会话日志。缺失条件：缺命令 jq
-  - sherpa-onnx-tts：离线文字转语音，不走云服务。缺失条件：缺环境变量 SHERPA_ONNX_RUNTIME_DIR, SHERPA_ONNX_MODEL_DIR
-  - slack：在 Slack 里做操作，比如反应、置顶、取消置顶。缺失条件：缺配置 channels.slack
-  - songsee：把音频生成频谱图和特征可视化。缺失条件：缺命令 songsee
-  - sonoscli：控制 Sonos 音箱，查状态、播放、音量、分组。缺失条件：缺命令 sonos
-  - spotify-player：在终端里控制 Spotify 播放和搜索。缺失条件：缺任一命令 spogo 或 spotify_player
-  - summarize：总结网页、播客、本地文件，也适合转写视频/音频内容。缺失条件：缺命令 summarize
-  - trello：操作 Trello 看板、列表、卡片。缺失条件：缺命令 jq，缺环境变量 TRELLO_API_KEY, TRELLO_TOKEN
-  - voice-call：通过 OpenClaw 的语音通话插件发起语音通话。缺失条件：缺配置 plugins.entries.voice-call.enabled
-  - wacli：通过命令行发送 WhatsApp 消息或同步/搜索历史。缺失条件：缺命令 wacli
-  - xurl：调用 X/Twitter API，发帖、回帖、搜索、私信、媒体上传。缺失条件：缺命令 xurl，allowlist 阻塞
+| 技能                 | 用途                                 | 怎么用                                   | 当前状态 | 缺失条件 / 备注                                           |
+| ------------------ | ---------------------------------- | ------------------------------------- | ---- | --------------------------------------------------- |
+| 1password          | 读取和管理 1Password 里的密码、密钥、条目         | 用 `op` 登录、查条目、取 secret                | 可用   |                                                     |
+| blogwatcher        | 订阅和监控博客 / RSS / Atom 更新            | 用 `blogwatcher` 添加源、检查更新              | 可用   |                                                     |
+| blucli             | 控制 BluOS 设备播放、音量、分组                | 用 `blu` 查设备、播放、暂停、调音量                 | 可用   |                                                     |
+| clawhub            | OpenClaw 自身的技能 / 资源枢纽能力            | 通过 OpenClaw 内部调用技能市场或聚合能力             | 可用   |                                                     |
+| coding-agent       | 代码代理与编程执行辅助                        | 通过 OpenClaw 内代理能力执行编码任务               | 可用   |                                                     |
+| discord            | 与 Discord 相关的消息 / 渠道能力             | 通过 OpenClaw 的 Discord 通道执行操作          | 可用   |                                                     |
+| eightctl           | 控制 Eight Sleep 智能床垫                | 用 `eightctl` 查状态、调温、控制计划              | 可用   |                                                     |
+| gemini             | 使用 Gemini 相关模型 / 能力                | 通过 OpenClaw 内配置的 Gemini 能力调用          | 可用   |                                                     |
+| gh-issues          | 批量处理 GitHub Issues、跟踪修复流程          | 围绕 GitHub issue 拉取、分派、跟踪 review       | 可用   |                                                     |
+| himalaya           | 终端邮件客户端，收发 IMAP/SMTP 邮件            | 用 `himalaya` 列邮件、读邮件、写邮件、发送           | 可用   |                                                     |
+| mcporter           | 媒体 / 内容搬运相关工具能力                    | 通过 OpenClaw 内部调用对应导入导出能力              | 可用   |                                                     |
+| nano-banana-pro    | 图像 / 生成式媒体相关能力                     | 通过 OpenClaw 内部调用对应模型服务                | 可用   |                                                     |
+| nano-pdf           | 用自然语言编辑 PDF                        | 用 `nano-pdf` 对 PDF 做修改、处理、生成          | 可用   |                                                     |
+| node-connect       | 排查 OpenClaw 节点连接、配对、远程接入           | 围绕节点连接失败、配对、QR 等问题诊断                  | 可用   |                                                     |
+| obsidian           | 管理 Obsidian 仓库里的笔记                 | 用 `obsidian-cli` 搜索、创建、修改笔记           | 可用   |                                                     |
+| openai-whisper     | 本地跑 Whisper 做语音转文字                 | 用 `whisper` 本地转写音频                    | 可用   |                                                     |
+| openhue            | 控制 Philips Hue 灯光和场景               | 用 `openhue` 查灯、开关、调色、切场景              | 可用   |                                                     |
+| oracle             | `oracle` CLI 的使用指导与辅助              | 围绕 `oracle` 的 prompt、session、文件打包等    | 可用   |                                                     |
+| ordercli           | 查询外卖 / 订单历史和状态                     | 用 `ordercli` 查订单历史和当前状态               | 可用   |                                                     |
+| sag                | 用 ElevenLabs 做文字转语音                | 用 `sag "文本"`、`sag voices`、`sag speak` | 可用   |                                                     |
+| session-logs       | 搜索和分析历史会话日志                        | 用 `jq` 等工具分析会话日志内容                    | 可用   |                                                     |
+| skill-creator      | 创建和维护 OpenClaw / Codex 技能          | 用于生成、整理、安装或更新技能定义                     | 可用   |                                                     |
+| songsee            | 把音频做频谱和特征可视化                       | 用 `songsee` 生成音频可视化结果                 | 可用   |                                                     |
+| sonoscli           | 控制 Sonos 音箱                        | 用 `sonos` 查状态、播放、调音量、分组               | 可用   |                                                     |
+| spotify-player     | 终端里控制 Spotify                      | 用 `spotify_player` 搜索、播放、暂停、切歌        | 可用   |                                                     |
+| summarize          | 总结网页、播客、本地文件、音视频内容                 | 用 `summarize` 做摘要、提炼重点                | 可用   |                                                     |
+| tmux               | 终端多路复用与会话管理辅助                      | 通过 `tmux` 建会话、分屏、附着会话                 | 可用   |                                                     |
+| video-frames       | 抽取和处理视频帧                           | 从视频里取关键帧、逐帧分析或导出                      | 可用   |                                                     |
+| voice-call         | OpenClaw 语音通话插件能力                  | 通过 `openclaw voicecall` 或插件能力发起通话     | 可用   |                                                     |
+| wacli              | 通过命令行操作 WhatsApp                   | 用 `wacli` 发消息、同步、搜索历史                 | 可用   |                                                     |
+| weather            | 天气查询                               | 通过 OpenClaw 获取天气信息                    | 可用   |                                                     |
+| xurl               | 调用 X / Twitter API                 | 用 `xurl` 发帖、搜索、回帖、私信、上传媒体             | 可用   |                                                     |
+| apple-notes        | 管理 Apple Notes 备忘录                 | 用 `memo` 新建、搜索、读取笔记                   | 未就绪  | 缺 `memo`；仅支持 darwin                                 |
+| apple-reminders    | 管理苹果提醒事项                           | 用 `remindctl` 列表、创建、完成提醒              | 未就绪  | 缺 `remindctl`；仅支持 darwin                            |
+| bear-notes         | 管理 Bear 笔记                         | 用 `grizzly` 搜索、写入、整理笔记                | 未就绪  | 缺 `grizzly`；仅支持 darwin                              |
+| bluebubbles        | 通过 BlueBubbles 接入 iMessage         | 依赖 `channels.bluebubbles` 配好后收发消息     | 未就绪  | 缺配置 `channels.bluebubbles`                          |
+| imsg               | 通过 macOS Messages 管 iMessage / SMS | 用 `imsg` 查会话、发消息                      | 未就绪  | 缺 `imsg`；仅支持 darwin                                 |
+| model-usage        | 统计本地模型使用量和花费                       | 用 `codexbar` 的成本数据做模型 usage 汇总        | 未就绪  | 缺 `codexbar`；仅支持 darwin                             |
+| notion             | 操作 Notion 页面和数据库                   | 用 Notion API 读写页面、数据库、块内容             | 未就绪  | 缺 `NOTION_API_KEY`                                  |
+| openai-image-gen   | 调用 OpenAI 图像生成                     | 用 OpenAI 图像接口生成图片                     | 未就绪  | 缺 `OPENAI_API_KEY`                                  |
+| openai-whisper-api | 调用 OpenAI Whisper API 转写音频         | 走 OpenAI 音频转写接口                       | 未就绪  | 缺 `OPENAI_API_KEY`                                  |
+| peekaboo           | 自动化操作 macOS 图形界面                   | 用 `peekaboo` 看屏幕、点控、抓 UI              | 未就绪  | 缺 `peekaboo`；仅支持 darwin                             |
+| sherpa-onnx-tts    | 离线文字转语音                            | 指向 sherpa runtime 和模型目录后本地合成语音        | 未就绪  | 缺 `SHERPA_ONNX_RUNTIME_DIR`、`SHERPA_ONNX_MODEL_DIR` |
+| slack              | Slack 渠道操作                         | 配好 `channels.slack` 后做消息、置顶、反应等       | 未就绪  | 缺配置 `channels.slack`                                |
+| things-mac         | 管理 Things 3 任务和项目                  | 用 `things` 创建任务、查项目、更新状态              | 未就绪  | 缺 `things`；仅支持 darwin                               |
+| trello             | 操作 Trello 看板、列表、卡片                 | 用 Trello API 读写看板和卡片                  | 未就绪  | 缺 `TRELLO_API_KEY`、`TRELLO_TOKEN`                   |
+
+  - 总数：52
+  - 可用：37
+  - 未就绪：15
+  - 显式禁用：0
