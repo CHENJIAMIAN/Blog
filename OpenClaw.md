@@ -813,58 +813,72 @@ OpenClaw 作为"指挥官"，通过 ACP 协议"雇佣" Codex 这个"专业工具
 
 ---
 # 内置技能
+以下是按 **状态优先级排序**（✅ 可用 → ⚠️ 已禁用 → ❌ 不可用）的工具列表，并在各类别内按工具名称字母顺序排列：
 
-| 工具名称                  | 功能描述                                                                          | 状态        | 原因（如被阻止）                                              |
-| --------------------- | ----------------------------------------------------------------------------- | --------- | ----------------------------------------------------- |
-| 🔐 1password          | 使用 `op` CLI 设置和管理 1Password（安装 CLI、桌面集成、登录单/多账户等）                             | ✅ 可用      | —                                                     |
-| 📝 apple-notes        | 使用 `memo` CLI 管理 Apple Notes（创建、查看、编辑、删除、搜索、移动、导出）                            | ❌ 不可用     | 缺失：bin:memo, os:darwin                                |
-| ⏰ apple-reminders     | 使用 `remindctl` CLI 管理 Apple Reminders（列出、添加、编辑、完成、删除），支持列表、日期过滤、JSON/plain 输出 | ❌ 不可用     | 缺失：bin:remindctl, os:darwin                           |
-| 🐻 bear-notes         | 使用 `grizzly` CLI 创建、搜索、管理 Bear 笔记                                             | ❌ 不可用     | 缺失：bin:grizzly, os:darwin                             |
-| 📰 blogwatcher        | 使用 blogwatcher CLI 监控博客及 RSS/Atom 订阅源的更新                                      | ✅ 可用      | —                                                     |
-| 🫐 blucli             | BluOS CLI（blu）用于设备发现、播放控制、分组、音量调节                                             | ⚠️ 已禁用    | 原因：手动禁用                                               |
-| 🫧 bluebubbles        | 通过 BlueBubbles 发送或管理 iMessage（推荐 iMessage 集成），经由通用消息工具调用                      | ❌ 不可用     | 缺失：config:channels.bluebubbles                        |
-| 📸 camsnap            | 从 RTSP/ONVIF 摄像头捕获帧或视频片段                                                      | ✅ 可用      | —                                                     |
-| clawhub               | 使用 ClawHub CLI 从 clawhub.com 搜索、安装、更新、发布 agent 技能                             | ✅ 可用      | —                                                     |
-| 🧩 coding-agent       | 将编码任务委托给 Codex、Claude Code 或 Pi agent（后台运行），适用于构建新功能或修复 bug                   | ✅ 可用      | —                                                     |
-| 🎮 discord            | 通过消息工具操作 Discord（channel=discord）                                             | ✅ 可用      | —                                                     |
-| 🛌 eightctl           | 控制 Eight Sleep 智能床垫（状态、温度、闹钟、计划）                                              | ⚠️ 已禁用    | 原因：手动禁用                                               |
-| ✨ gemini              | 使用 Gemini CLI 进行问答、摘要生成和内容创作                                                  | ✅ 可用      | —                                                     |
-| gh-issues             | 获取 GitHub issues，启动子 agent 实现修复、发起 PR 并处理评审意见                                 | ✅ 可用      | —                                                     |
-| 🧲 gifgrep            | 使用 CLI/TUI 搜索 GIF 提供商、下载结果、提取静态图或图集                                           | ✅ 可用      | —                                                     |
-| 🐙 github             | 使用 `gh` CLI 进行 GitHub 操作：issues、PR、CI、代码审查、API 查询等                            | ✅ 可用      | —                                                     |
-| 🎮 gog                | Google Workspace CLI，管理 Gmail、日历、Drive、联系人、表格、文档                              | ✅ 可用      | —                                                     |
-| 📍 goplaces           | 使用 goplaces CLI 调用 Google Places API（新）进行地点搜索、详情、解析、评论等                       | ❌ 不可用     | 缺失：bin:goplaces, 环境变量 GOOGLE_PLACES_API_KEY           |
-| healthcheck           | 主机安全加固与 OpenClaw 部署风险配置，用于安全审计、防火墙/SSH/用户检查等                                  | ✅ 可用      | —                                                     |
-| 📧 himalaya           | 使用 `himalaya` CLI 通过 IMAP/SMTP 管理邮件（列出、读取、写入、回复、转发、搜索、组织）                     | ✅ 可用      | —                                                     |
-| 📨 imsg               | 使用 Messages.app 的 CLI 工具管理 iMessage/SMS（聊天、历史记录、发送消息）                         | ❌ 不可用     | 缺失：bin:imsg, os:darwin                                |
-| mcporter              | 使用 mcporter CLI 管理 MCP 服务器（列出、配置、认证、调用，支持 HTTP/stdio 接口）                      | ✅ 可用（管理型） | —                                                     |
-| 📊 model-usage        | 使用 CodexBar CLI 统计本地模型使用成本（Codex/Claude），支持按模型汇总                              | ❌ 不可用     | 缺失：bin:codexbar, os:darwin                            |
-| 🍌 nano-banana-pro    | 使用 Gemini 3 Pro 图像模型生成或编辑图片（“Nano Banana Pro”）                                | ✅ 可用      | —                                                     |
-| 📄 nano-pdf           | 使用自然语言指令编辑 PDF（nano-pdf CLI）                                                  | ✅ 可用      | —                                                     |
-| node-connect          | 诊断 OpenClaw 节点连接问题（Android/iOS/macOS 配对失败、二维码/手动连接等）                          | ✅ 可用      | —                                                     |
-| 📝 notion             | 使用 Notion API 管理页面、数据库、内容块                                                    | ❌ 不可用     | 缺失：环境变量 NOTION_API_KEY                                |
-| 💎 obsidian           | 通过 obsidian-cli 自动化操作 Obsidian 笔记库（纯 Markdown）                                | ✅ 可用      | —                                                     |
-| 🎨 openai-image-gen   | 使用 OpenAI Images API 批量生成图像，含随机提示和 HTML 图库                                    | ❌ 不可用     | 缺失：环境变量 OPENAI_API_KEY                                |
-| 🎤 openai-whisper     | 使用 Whisper CLI 实现本地语音转文字（无需 API 密钥）                                           | ✅ 可用      | —                                                     |
-| 🌐 openai-whisper-api | 使用 OpenAI Audio Transcriptions API（Whisper）进行远程语音转文字                          | ❌ 不可用     | 缺失：环境变量 OPENAI_API_KEY                                |
-| 💡 openhue            | 使用 OpenHue CLI 控制 Philips Hue 灯具和场景                                           | ⚠️ 已禁用    | 原因：手动禁用                                               |
-| 🧿 oracle             | 推荐使用 `oracle` CLI 的最佳实践（提示词打包、引擎选择、会话管理、附件模式）                                 | ✅ 可用      | —                                                     |
-| 🛵 ordercli           | Foodora 专用 CLI（查看历史订单、当前订单状态），Deliveroo 正在开发中                                 | ⚠️ 已禁用    | 原因：手动禁用                                               |
-| 👀 peekaboo           | 使用 Peekaboo CLI 捕获和自动化 macOS UI 操作                                            | ❌ 不可用     | 缺失：bin:peekaboo, os:darwin                            |
-| 🔊 sag                | 使用 ElevenLabs 实现文本转语音，Mac 风格 `say` 命令体验                                       | ✅ 可用      | —                                                     |
-| 📜 session-logs       | 使用 jq 搜索和分析自己的会话日志（旧/父对话记录）                                                   | ✅ 可用      | —                                                     |
-| 🔉 sherpa-onnx-tts    | 使用 sherpa-onnx 实现本地离线文本转语音（无需云端）                                              | ❌ 不可用     | 环境变量缺失：SHERPA_ONNX_RUNTIME_DIR, SHERPA_ONNX_MODEL_DIR |
-| skill-creator         | 创建新技能、修改现有技能、评估技能性能                                                           | ✅ 可用（管理型） | —                                                     |
-| 💬 slack              | 使用 slack 工具控制 Slack（发送消息、回复、钉选、反应等）                                           | ❌ 不可用     | 缺失：config:channels.slack                              |
-| 🌊 songsee            | 使用 songsee CLI 生成音频的频谱图和特征可视化面板                                               | ✅ 可用      | —                                                     |
-| 🔊 sonoscli           | 控制 Sonos 音响（发现、状态、播放、音量、分组）                                                   | ⚠️ 已禁用    | 原因：手动禁用                                               |
-| 🎵 spotify-player     | 通过 spogo（优先）或 spotify_player 实现终端控制 Spotify 播放与搜索                             | ✅ 可用      | —                                                     |
-| 🧾 summarize          | 总结或提取 URL、播客、本地文件中的文本/转录内容，适用于“转录 YouTube 视频”等请求                              | ✅ 可用      | —                                                     |
-| ✅ things-mac          | 使用 `things` CLI 在 macOS 上管理 Things 3（添加/更新项目+任务；读取/搜索本地数据库）                   | ❌ 不可用     | 缺失：bin:things, os:darwin                              |
-| 🧵 tmux               | 通过发送按键和抓取面板输出，远程控制 tmux 会话                                                    | ✅ 可用      | —                                                     |
-| 📋 trello             | 使用 Trello REST API 管理看板、列表和卡片                                                 | ❌ 不可用     | 缺失：TRELLO_API_KEY, TRELLO_TOKEN                       |
-| 🎬 video-frames       | 使用 ffmpeg 从视频中提取帧或短片段                                                         | ✅ 可用      | —                                                     |
-| 📞 voice-call         | 使用 OpenClaw voice-call 插件发起语音通话                                               | ✅ 可用      | —                                                     |
-| 📱 wacli              | 使用 wacli CLI 发送 WhatsApp 消息、搜索/同步 WhatsApp 历史（非普通聊天用途）                        | ⚠️ 已禁用    | 原因：手动禁用                                               |
-| ☔ weather             | 使用 wttr.in 或 Open-Meteo 获取天气与预报信息，适用于查询温度、降水、预测等                              | ⚠️ 已禁用    | 原因：手动禁用                                               |
-| 🐦 xurl               | 使用 CLI 工具对 X（Twitter）API 进行认证请求，可用于发推、回复、引用、搜索、点赞等                            | ✅ 可用      | —                                                     |
+---
+
+### ✅ 可用（共计：17 项）
+
+| 工具名称                | 功能描述                                                                 |
+|----------------------|----------------------------------------------------------------------|
+| 📰 blogwatcher       | 使用 blogwatcher CLI 监控博客及 RSS/Atom 订阅源的更新                            |
+| 📸 camsnap           | 从 RTSP/ONVIF 摄像头捕获帧或视频片段                                           |
+| clawhub              | 使用 ClawHub CLI 从 clawhub.com 搜索、安装、更新、发布 agent 技能                  |
+| 🧩 coding-agent      | 将编码任务委托给 Codex、Claude Code 或 Pi agent（后台运行），适用于构建新功能或修复 bug        |
+| 🎮 discord           | 通过消息工具操作 Discord（channel=discord）                                    |
+| ✨ gemini            | 使用 Gemini CLI 进行问答、摘要生成和内容创作                                       |
+| gh-issues            | 获取 GitHub issues，启动子 agent 实现修复、发起 PR 并处理评审意见                     |
+| 🧲 gifgrep           | 使用 CLI/TUI 搜索 GIF 提供商、下载结果、提取静态图或图集                              |
+| 🐙 github            | 使用 `gh` CLI 进行 GitHub 操作：issues、PR、CI、代码审查、API 查询等               |
+| 🎮 gog               | Google Workspace CLI，管理 Gmail、日历、Drive、联系人、表格、文档                     |
+| 📧 himalaya          | 使用 `himalaya` CLI 通过 IMAP/SMTP 管理邮件（列出、读取、写入、回复、转发、搜索、组织）       |
+| mcporter             | 使用 mcporter CLI 管理 MCP 服务器（列出、配置、认证、调用，支持 HTTP/stdio 接口）         |
+| 🍌 nano-banana-pro   | 使用 Gemini 3 Pro 图像模型生成或编辑图片（“Nano Banana Pro”）                     |
+| 📄 nano-pdf          | 使用自然语言指令编辑 PDF（nano-pdf CLI）                                        |
+| node-connect         | 诊断 OpenClaw 节点连接问题（Android/iOS/macOS 配对失败、二维码/手动连接等）             |
+| 💎 obsidian          | 通过 obsidian-cli 自动化操作 Obsidian 笔记库（纯 Markdown）                     |
+| 🔒 1password         | 使用 `op` CLI 设置和管理 1Password（安装 CLI、桌面集成、登录单/多账户等）              |
+| 🔊 openai-whisper    | 使用 Whisper CLI 实现本地语音转文字（无需 API 密钥）                               |
+| 🔍 oracle            | 推荐使用 `oracle` CLI 的最佳实践（提示词打包、引擎选择、会话管理、附件模式）                    |
+| 🌊 songsee           | 使用 songsee CLI 生成音频的频谱图和特征可视化面板                                    |
+| 🎵 spotify-player    | 通过 spogo（优先）或 spotify_player 实现终端控制 Spotify 播放与搜索                 |
+| 🧾 summarize         | 总结或提取 URL、播客、本地文件中的文本/转录内容，适用于“转录 YouTube 视频”等请求               |
+| 🧵 tmux              | 通过发送按键和抓取面板输出，远程控制 tmux 会话                                        |
+| 🎬 video-frames      | 使用 ffmpeg 从视频中提取帧或短片段                                              |
+| 📞 voice-call        | 使用 OpenClaw voice-call 插件发起语音通话                                      |
+| 🐦 xurl              | 使用 CLI 工具对 X（Twitter）API 进行认证请求，可用于发推、回复、引用、搜索、点赞等              |
+
+---
+
+### ⚠️ 已禁用（共计：6 项）
+
+| 工具名称             | 功能描述                                                   | 原因         |
+|-------------------|--------------------------------------------------------|------------|
+| 🫐 blucli         | BluOS CLI（blu）用于设备发现、播放控制、分组、音量调节                    | 手动禁用       |
+| 🛌 eightctl       | 控制 Eight Sleep 智能床垫（状态、温度、闹钟、计划）                     | 手动禁用       |
+| 💡 openhue        | 使用 OpenHue CLI 控制 Philips Hue 灯具和场景                  | 手动禁用       |
+| 🛵 ordercli       | Foodora 专用 CLI（查看历史订单、当前订单状态），Deliveroo 正在开发中       | 手动禁用       |
+| 🔊 sonoscli       | 控制 Sonos 音响（发现、状态、播放、音量、分组）                          | 手动禁用       |
+| ☔ weather         | 使用 wttr.in 或 Open-Meteo 获取天气与预报信息，适用于查询温度、降水、预测等    | 手动禁用       |
+
+---
+
+### ❌ 不可用（共计：15 项）
+
+| 工具名称             | 功能描述                                                                 | 原因                                           |
+|-------------------|----------------------------------------------------------------------|----------------------------------------------|
+| 📝 apple-notes    | 使用 `memo` CLI 管理 Apple Notes（创建、查看、编辑、删除、搜索、移动、导出）        | 缺失：bin:memo, os:darwin                     |
+| ⏰ apple-reminders| 使用 `remindctl` CLI 管理 Apple Reminders（列出、添加、编辑、完成、删除）         | 缺失：bin:remindctl, os:darwin                |
+| 🐻 bear-notes     | 使用 `grizzly` CLI 创建、搜索、管理 Bear 笔记                                 | 缺失：bin:grizzly, os:darwin                  |
+| 🫧 bluebubbles    | 通过 BlueBubbles 发送或管理 iMessage（推荐 iMessage 集成），经由通用消息工具调用     | 缺失：config:channels.bluebubbles            |
+| 📍 goplaces       | 使用 goplaces CLI 调用 Google Places API（新）进行地点搜索、详情、解析、评论等      | 缺失：bin:goplaces, 环境变量 GOOGLE_PLACES_API_KEY |
+| 📨 imsg           | 使用 Messages.app 的 CLI 工具管理 iMessage/SMS（聊天、历史记录、发送消息）         | 缺失：bin:imsg, os:darwin                     |
+| 📊 model-usage    | 使用 CodexBar CLI 统计本地模型使用成本（Codex/Claude），支持按模型汇总              | 缺失：bin:codexbar, os:darwin                 |
+| 📝 notion         | 使用 Notion API 管理页面、数据库、内容块                                        | 缺失：环境变量 NOTION_API_KEY                  |
+| 🎨 openai-image-gen| 使用 OpenAI Images API 批量生成图像，含随机提示和 HTML 图库                         | 缺失：环境变量 OPENAI_API_KEY                  |
+| 🎙 openai-whisper-api| 使用 OpenAI Audio Transcriptions API（Whisper）进行远程语音转文字             | 缺失：环境变量 OPENAI_API_KEY                  |
+| 👀 peekaboo       | 使用 Peekaboo CLI 捕获和自动化 macOS UI 操作                                  | 缺失：bin:peekaboo, os:darwin                 |
+| ✅ things-mac     | 使用 `things` CLI 在 macOS 上管理 Things 3（添加/更新项目+任务；读取/搜索本地数据库）   | 缺失：bin:things, os:darwin                   |
+| 🔉 sherpa-onnx-tts| 使用 sherpa-onnx 实现本地离线文本转语音（无需云端）                                 | 环境变量缺失：SHERPA_ONNX_RUNTIME_DIR, SHERPA_ONNX_MODEL_DIR |
+| 💬 slack          | 使用 slack 工具控制 Slack（发送消息、回复、钉选、反应等）                             | 缺失：config:channels.slack                   |
+| 📋 trello         | 使用 Trello REST API 管理看板、列表和卡片                                       | 缺失：TRELLO_API_KEY, TRELLO_TOKEN            |
