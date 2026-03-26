@@ -843,57 +843,207 @@ OpenClaw 在每次会话开始时注入这些文件到模型上下文中 contex
 ]
 ```
 # 33个还未就绪的内置技能
+# Canvas
+Canvas 是 OpenClaw 系统中的一个轻量级可视化工作区，用于在连接的节点（Mac、iOS、Android）上显示 HTML/CSS/JavaScript 内容、A2UI 界面和小型交互式应用。 canvas.md:17-19
 
-| 技能                 | 用途                                 | 怎么用                                   | 当前状态 | 缺失条件 / 备注                                           |
-| ------------------ | ---------------------------------- | ------------------------------------- | ---- | --------------------------------------------------- |
-| 1password          | 读取和管理 1Password 里的密码、密钥、条目         | 用 `op` 登录、查条目、取 secret                | 可用   |                                                     |
-| blogwatcher        | 订阅和监控博客 / RSS / Atom 更新            | 用 `blogwatcher` 添加源、检查更新              | 可用   |                                                     |
-| blucli             | 控制 BluOS 设备播放、音量、分组                | 用 `blu` 查设备、播放、暂停、调音量                 | 可用   |                                                     |
-| clawhub            | OpenClaw 自身的技能 / 资源枢纽能力            | 通过 OpenClaw 内部调用技能市场或聚合能力             | 可用   |                                                     |
-| coding-agent       | 代码代理与编程执行辅助                        | 通过 OpenClaw 内代理能力执行编码任务               | 可用   |                                                     |
-| discord            | 与 Discord 相关的消息 / 渠道能力             | 通过 OpenClaw 的 Discord 通道执行操作          | 可用   |                                                     |
-| eightctl           | 控制 Eight Sleep 智能床垫                | 用 `eightctl` 查状态、调温、控制计划              | 可用   |                                                     |
-| gemini             | 使用 Gemini 相关模型 / 能力                | 通过 OpenClaw 内配置的 Gemini 能力调用          | 可用   |                                                     |
-| gh-issues          | 批量处理 GitHub Issues、跟踪修复流程          | 围绕 GitHub issue 拉取、分派、跟踪 review       | 可用   |                                                     |
-| himalaya           | 终端邮件客户端，收发 IMAP/SMTP 邮件            | 用 `himalaya` 列邮件、读邮件、写邮件、发送           | 可用   |                                                     |
-| mcporter           | 媒体 / 内容搬运相关工具能力                    | 通过 OpenClaw 内部调用对应导入导出能力              | 可用   |                                                     |
-| nano-banana-pro    | 图像 / 生成式媒体相关能力                     | 通过 OpenClaw 内部调用对应模型服务                | 可用   |                                                     |
-| nano-pdf           | 用自然语言编辑 PDF                        | 用 `nano-pdf` 对 PDF 做修改、处理、生成          | 可用   |                                                     |
-| node-connect       | 排查 OpenClaw 节点连接、配对、远程接入           | 围绕节点连接失败、配对、QR 等问题诊断                  | 可用   |                                                     |
-| obsidian           | 管理 Obsidian 仓库里的笔记                 | 用 `obsidian-cli` 搜索、创建、修改笔记           | 可用   |                                                     |
-| openai-whisper     | 本地跑 Whisper 做语音转文字                 | 用 `whisper` 本地转写音频                    | 可用   |                                                     |
-| openhue            | 控制 Philips Hue 灯光和场景               | 用 `openhue` 查灯、开关、调色、切场景              | 可用   |                                                     |
-| oracle             | `oracle` CLI 的使用指导与辅助              | 围绕 `oracle` 的 prompt、session、文件打包等    | 可用   |                                                     |
-| ordercli           | 查询外卖 / 订单历史和状态                     | 用 `ordercli` 查订单历史和当前状态               | 可用   |                                                     |
-| sag                | 用 ElevenLabs 做文字转语音                | 用 `sag "文本"`、`sag voices`、`sag speak` | 可用   |                                                     |
-| session-logs       | 搜索和分析历史会话日志                        | 用 `jq` 等工具分析会话日志内容                    | 可用   |                                                     |
-| skill-creator      | 创建和维护 OpenClaw / Codex 技能          | 用于生成、整理、安装或更新技能定义                     | 可用   |                                                     |
-| songsee            | 把音频做频谱和特征可视化                       | 用 `songsee` 生成音频可视化结果                 | 可用   |                                                     |
-| sonoscli           | 控制 Sonos 音箱                        | 用 `sonos` 查状态、播放、调音量、分组               | 可用   |                                                     |
-| spotify-player     | 终端里控制 Spotify                      | 用 `spotify_player` 搜索、播放、暂停、切歌        | 可用   |                                                     |
-| summarize          | 总结网页、播客、本地文件、音视频内容                 | 用 `summarize` 做摘要、提炼重点                | 可用   |                                                     |
-| tmux               | 终端多路复用与会话管理辅助                      | 通过 `tmux` 建会话、分屏、附着会话                 | 可用   |                                                     |
-| video-frames       | 抽取和处理视频帧                           | 从视频里取关键帧、逐帧分析或导出                      | 可用   |                                                     |
-| voice-call         | OpenClaw 语音通话插件能力                  | 通过 `openclaw voicecall` 或插件能力发起通话     | 可用   |                                                     |
-| wacli              | 通过命令行操作 WhatsApp                   | 用 `wacli` 发消息、同步、搜索历史                 | 可用   |                                                     |
-| weather            | 天气查询                               | 通过 OpenClaw 获取天气信息                    | 可用   |                                                     |
-| xurl               | 调用 X / Twitter API                 | 用 `xurl` 发帖、搜索、回帖、私信、上传媒体             | 可用   |                                                     |
-| apple-notes        | 管理 Apple Notes 备忘录                 | 用 `memo` 新建、搜索、读取笔记                   | 未就绪  | 缺 `memo`；仅支持 darwin                                 |
-| apple-reminders    | 管理苹果提醒事项                           | 用 `remindctl` 列表、创建、完成提醒              | 未就绪  | 缺 `remindctl`；仅支持 darwin                            |
-| bear-notes         | 管理 Bear 笔记                         | 用 `grizzly` 搜索、写入、整理笔记                | 未就绪  | 缺 `grizzly`；仅支持 darwin                              |
-| bluebubbles        | 通过 BlueBubbles 接入 iMessage         | 依赖 `channels.bluebubbles` 配好后收发消息     | 未就绪  | 缺配置 `channels.bluebubbles`                          |
-| imsg               | 通过 macOS Messages 管 iMessage / SMS | 用 `imsg` 查会话、发消息                      | 未就绪  | 缺 `imsg`；仅支持 darwin                                 |
-| model-usage        | 统计本地模型使用量和花费                       | 用 `codexbar` 的成本数据做模型 usage 汇总        | 未就绪  | 缺 `codexbar`；仅支持 darwin                             |
-| notion             | 操作 Notion 页面和数据库                   | 用 Notion API 读写页面、数据库、块内容             | 未就绪  | 缺 `NOTION_API_KEY`                                  |
-| openai-image-gen   | 调用 OpenAI 图像生成                     | 用 OpenAI 图像接口生成图片                     | 未就绪  | 缺 `OPENAI_API_KEY`                                  |
-| openai-whisper-api | 调用 OpenAI Whisper API 转写音频         | 走 OpenAI 音频转写接口                       | 未就绪  | 缺 `OPENAI_API_KEY`                                  |
-| peekaboo           | 自动化操作 macOS 图形界面                   | 用 `peekaboo` 看屏幕、点控、抓 UI              | 未就绪  | 缺 `peekaboo`；仅支持 darwin                             |
-| sherpa-onnx-tts    | 离线文字转语音                            | 指向 sherpa runtime 和模型目录后本地合成语音        | 未就绪  | 缺 `SHERPA_ONNX_RUNTIME_DIR`、`SHERPA_ONNX_MODEL_DIR` |
-| slack              | Slack 渠道操作                         | 配好 `channels.slack` 后做消息、置顶、反应等       | 未就绪  | 缺配置 `channels.slack`                                |
-| things-mac         | 管理 Things 3 任务和项目                  | 用 `things` 创建任务、查项目、更新状态              | 未就绪  | 缺 `things`；仅支持 darwin                               |
-| trello             | 操作 Trello 看板、列表、卡片                 | 用 Trello API 读写看板和卡片                  | 未就绪  | 缺 `TRELLO_API_KEY`、`TRELLO_TOKEN`                   |
+## Canvas 的核心功能
 
-  - 总数：52
-  - 可用：37
-  - 未就绪：15
-  - 显式禁用：0
+### 1. 内容展示
+
+- 支持本地 HTML 文件和远程 URL
+- 实时重载功能，文件更改时自动更新 SKILL.md:76-82
+
+### 2. 智能体控制
+
+通过 Gateway WebSocket 接口，智能体可以：
+
+- 显示/隐藏面板
+- 导航到指定路径或 URL
+- 执行 JavaScript
+- 捕获快照图像 canvas.md:48-56
+
+### 3. A2UI 支持
+
+Canvas 支持 A2UI v0.8 协议，可以渲染由智能体推送的 UI 组件 canvas.md:82-91
+
+## 工作原理
+
+### 架构流程
+
+```
+Canvas Host (HTTP服务器) → Node Bridge (TCP服务器) → Node App (Mac/iOS/Android)  
+```
+
+SKILL.md:17-23
+
+### 存储位置
+
+- macOS: `~/Library/Application Support/OpenClaw/canvas/<session>/...` canvas.md:23-25
+- 通过自定义 URL 方案访问：`openclaw-canvas://<session>/<path>` canvas.md:27-35
+
+## 使用示例
+
+### CLI 命令
+
+```
+# 显示 Canvas  openclaw nodes canvas present --node <id>    # 导航到 URL  openclaw nodes canvas navigate --node <id> --url "/"    # 执行 JavaScript  openclaw nodes canvas eval --node <id> --js "document.title"    # 捕获快照  openclaw nodes canvas snapshot --node <id>
+```
+
+canvas.md:57-64
+
+## Notes
+
+- Canvas 可以通过深层链接 `openclaw://agent?...` 触发新的智能体运行 canvas.md:112-120
+- 出于安全考虑，Canvas 方案阻止目录遍历，文件必须位于会话根目录下 canvas.md:124-126
+- 可以从设置中禁用 Canvas 功能 canvas.md:46
+---
+# harness
+在OpenClaw代码库中，"harness"指的是外部编码工具或代理，通过ACP（Agent Client Protocol）协议与OpenClaw集成运行的外部编程助手。 acp-agents.md:14-16
+
+## Harness的具体含义
+
+### 外部编码工具
+
+Harness包括但不限于以下工具：
+
+- Pi
+- Claude Code
+- Codex
+- OpenCode
+- Gemini CLI
+- Kimi CLI SKILL.md:15-16
+
+### ACP Harness的工作方式
+
+当用户要求"在Codex中运行"或"启动Claude Code线程"时，OpenClaw会将请求路由到ACP运行时，而不是原生子代理运行时。 acp-agents.md:16
+
+### 技术实现
+
+Harness通过ACP后端插件运行，使用`sessions_spawn`工具并设置`runtime: "acp"`来创建会话。 acp-agents.md:61
+
+## 测试中的Harness
+
+在测试代码中，"harness"也指测试辅助工具，用于创建模拟环境和测试场景，例如：
+
+- `createHarness`函数用于创建测试环境 translator.cancel-scoping.test.ts:41-77
+- 各种测试harness用于模拟不同的运行时场景
+
+## Notes
+
+"Harness"在这个代码库中有两个主要含义：1) 指外部编码工具/代理，2) 指测试辅助工具。在ACP相关上下文中，主要指第一种含义，即通过ACP协议集成的外部编程助手。
+
+---
+# ACP
+## 🌉 简单理解 ACP
+
+想象一下：
+
+- 你的 IDE 是说"中文"的
+- OpenClaw 网关是说"英文"的
+- ACP 就是中间的翻译官，让它们能互相理解
+
+ACP 是双向的桥接器，有两种使用场景：
+
+### 场景 1：IDE 使用 OpenClaw（我之前说的）
+
+- IDE → ACP → OpenClaw Gateway
+
+### 场景 2：OpenClaw 调用外部工具（你说的）
+
+- OpenClaw → ACP → Codex/Claude Code 等外部 AI
+
+## 🎯 OpenClaw 如何调用 Codex
+
+当你在 OpenClaw 中说"用 Codex 重构这个函数"时：
+
+1. **OpenClaw 识别意图** - 检测到你要使用 Codex SKILL.md:13-18
+2. **启动 ACP 会话** - 调用 `sessions_spawn` 配置 `runtime: "acp"` SKILL.md:64-70
+3. **连接到 Codex** - 通过 acpx 后端启动 Codex 会话 acp-agents.md:14-16
+
+```
+{    "task": "重构这个函数",    "runtime": "acp",    "agentId": "codex",    "thread": true,    "mode": "session"  }
+```
+
+SKILL.md:79-87
+
+## 🛠️ 实际工作流程
+
+OpenClaw 作为"指挥官"，通过 ACP 协议"雇佣" Codex 这个"专业工具"来完成特定任务。
+
+## 💡 为什么这样设计？
+
+- **专业工具** - Codex 在代码任务上更专业
+- **灵活调度** - OpenClaw 可以根据任务类型选择最合适的工具
+- **统一管理** - 所有外部工具都通过 OpenClaw 的 ACP 系统管理
+
+---
+# 内置技能
+以下是按 **状态优先级排序**（✅ 可用 → ⚠️ 已禁用 → ❌ 不可用）的工具列表，并在各类别内按工具名称字母顺序排列：
+
+---
+
+### ✅ 可用（共计：17 项）
+
+| 工具名称                | 功能描述                                                                 |
+|----------------------|----------------------------------------------------------------------|
+| 📰 blogwatcher       | 使用 blogwatcher CLI 监控博客及 RSS/Atom 订阅源的更新                            |
+| 📸 camsnap           | 从 RTSP/ONVIF 摄像头捕获帧或视频片段                                           |
+| clawhub              | 使用 ClawHub CLI 从 clawhub.com 搜索、安装、更新、发布 agent 技能                  |
+| 🧩 coding-agent      | 将编码任务委托给 Codex、Claude Code 或 Pi agent（后台运行），适用于构建新功能或修复 bug        |
+| 🎮 discord           | 通过消息工具操作 Discord（channel=discord）                                    |
+| ✨ gemini            | 使用 Gemini CLI 进行问答、摘要生成和内容创作                                       |
+| gh-issues            | 获取 GitHub issues，启动子 agent 实现修复、发起 PR 并处理评审意见                     |
+| 🧲 gifgrep           | 使用 CLI/TUI 搜索 GIF 提供商、下载结果、提取静态图或图集                              |
+| 🐙 github            | 使用 `gh` CLI 进行 GitHub 操作：issues、PR、CI、代码审查、API 查询等               |
+| 🎮 gog               | Google Workspace CLI，管理 Gmail、日历、Drive、联系人、表格、文档                     |
+| 📧 himalaya          | 使用 `himalaya` CLI 通过 IMAP/SMTP 管理邮件（列出、读取、写入、回复、转发、搜索、组织）       |
+| mcporter             | 使用 mcporter CLI 管理 MCP 服务器（列出、配置、认证、调用，支持 HTTP/stdio 接口）         |
+| 🍌 nano-banana-pro   | 使用 Gemini 3 Pro 图像模型生成或编辑图片（“Nano Banana Pro”）                     |
+| 📄 nano-pdf          | 使用自然语言指令编辑 PDF（nano-pdf CLI）                                        |
+| node-connect         | 诊断 OpenClaw 节点连接问题（Android/iOS/macOS 配对失败、二维码/手动连接等）             |
+| 💎 obsidian          | 通过 obsidian-cli 自动化操作 Obsidian 笔记库（纯 Markdown）                     |
+| 🔒 1password         | 使用 `op` CLI 设置和管理 1Password（安装 CLI、桌面集成、登录单/多账户等）              |
+| 🔊 openai-whisper    | 使用 Whisper CLI 实现本地语音转文字（无需 API 密钥）                               |
+| 🔍 oracle            | 推荐使用 `oracle` CLI 的最佳实践（提示词打包、引擎选择、会话管理、附件模式）                    |
+| 🌊 songsee           | 使用 songsee CLI 生成音频的频谱图和特征可视化面板                                    |
+| 🎵 spotify-player    | 通过 spogo（优先）或 spotify_player 实现终端控制 Spotify 播放与搜索                 |
+| 🧾 summarize         | 总结或提取 URL、播客、本地文件中的文本/转录内容，适用于“转录 YouTube 视频”等请求               |
+| 🧵 tmux              | 通过发送按键和抓取面板输出，远程控制 tmux 会话                                        |
+| 🎬 video-frames      | 使用 ffmpeg 从视频中提取帧或短片段                                              |
+| 📞 voice-call        | 使用 OpenClaw voice-call 插件发起语音通话                                      |
+| 🐦 xurl              | 使用 CLI 工具对 X（Twitter）API 进行认证请求，可用于发推、回复、引用、搜索、点赞等              |
+
+---
+
+### ⚠️ 已禁用（共计：6 项）
+
+| 工具名称             | 功能描述                                                   | 原因         |
+|-------------------|--------------------------------------------------------|------------|
+| 🫐 blucli         | BluOS CLI（blu）用于设备发现、播放控制、分组、音量调节                    | 手动禁用       |
+| 🛌 eightctl       | 控制 Eight Sleep 智能床垫（状态、温度、闹钟、计划）                     | 手动禁用       |
+| 💡 openhue        | 使用 OpenHue CLI 控制 Philips Hue 灯具和场景                  | 手动禁用       |
+| 🛵 ordercli       | Foodora 专用 CLI（查看历史订单、当前订单状态），Deliveroo 正在开发中       | 手动禁用       |
+| 🔊 sonoscli       | 控制 Sonos 音响（发现、状态、播放、音量、分组）                          | 手动禁用       |
+| ☔ weather         | 使用 wttr.in 或 Open-Meteo 获取天气与预报信息，适用于查询温度、降水、预测等    | 手动禁用       |
+
+---
+
+### ❌ 不可用（共计：15 项）
+
+| 工具名称             | 功能描述                                                                 | 原因                                           |
+|-------------------|----------------------------------------------------------------------|----------------------------------------------|
+| 📝 apple-notes    | 使用 `memo` CLI 管理 Apple Notes（创建、查看、编辑、删除、搜索、移动、导出）        | 缺失：bin:memo, os:darwin                     |
+| ⏰ apple-reminders| 使用 `remindctl` CLI 管理 Apple Reminders（列出、添加、编辑、完成、删除）         | 缺失：bin:remindctl, os:darwin                |
+| 🐻 bear-notes     | 使用 `grizzly` CLI 创建、搜索、管理 Bear 笔记                                 | 缺失：bin:grizzly, os:darwin                  |
+| 🫧 bluebubbles    | 通过 BlueBubbles 发送或管理 iMessage（推荐 iMessage 集成），经由通用消息工具调用     | 缺失：config:channels.bluebubbles            |
+| 📍 goplaces       | 使用 goplaces CLI 调用 Google Places API（新）进行地点搜索、详情、解析、评论等      | 缺失：bin:goplaces, 环境变量 GOOGLE_PLACES_API_KEY |
+| 📨 imsg           | 使用 Messages.app 的 CLI 工具管理 iMessage/SMS（聊天、历史记录、发送消息）         | 缺失：bin:imsg, os:darwin                     |
+| 📊 model-usage    | 使用 CodexBar CLI 统计本地模型使用成本（Codex/Claude），支持按模型汇总              | 缺失：bin:codexbar, os:darwin                 |
+| 📝 notion         | 使用 Notion API 管理页面、数据库、内容块                                        | 缺失：环境变量 NOTION_API_KEY                  |
+| 🎨 openai-image-gen| 使用 OpenAI Images API 批量生成图像，含随机提示和 HTML 图库                         | 缺失：环境变量 OPENAI_API_KEY                  |
+| 🎙 openai-whisper-api| 使用 OpenAI Audio Transcriptions API（Whisper）进行远程语音转文字             | 缺失：环境变量 OPENAI_API_KEY                  |
+| 👀 peekaboo       | 使用 Peekaboo CLI 捕获和自动化 macOS UI 操作                                  | 缺失：bin:peekaboo, os:darwin                 |
+| ✅ things-mac     | 使用 `things` CLI 在 macOS 上管理 Things 3（添加/更新项目+任务；读取/搜索本地数据库）   | 缺失：bin:things, os:darwin                   |
+| 🔉 sherpa-onnx-tts| 使用 sherpa-onnx 实现本地离线文本转语音（无需云端）                                 | 环境变量缺失：SHERPA_ONNX_RUNTIME_DIR, SHERPA_ONNX_MODEL_DIR |
+| 💬 slack          | 使用 slack 工具控制 Slack（发送消息、回复、钉选、反应等）                             | 缺失：config:channels.slack                   |
+| 📋 trello         | 使用 Trello REST API 管理看板、列表和卡片                                       | 缺失：TRELLO_API_KEY, TRELLO_TOKEN            |
