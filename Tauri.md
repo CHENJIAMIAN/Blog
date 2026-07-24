@@ -123,3 +123,16 @@ WRY 做的事情是：把各平台 WebView 的 API 差异封装成统一接口�
 **Android**：通过 **JNI** 调用 Android System WebView（Java 层），`jni` crate 提供绑定。 [8](#4-7) 
 
 总结：Tauri 最终产出的二进制**不包含任何 WebView 引擎代码**，运行时通过各平台的原生机制（COM / ObjC runtime / FFI / JNI）调用系统已有的 WebView 组件，这也是 Tauri 应用体积极小的根本原因。
+
+---
+## 宏
+
+|**宏 (Macro)**|**方法 (Method)**|
+|---|---|---|
+|**符号**|`name!()`|`.name()`|
+|**执行时机**|编译时 (compile time)|运行时 (runtime)|
+|**操作对象**|代码本身（生成新代码）|数据（处理值）|
+|**参数数量**|可以任意|固定|
+|**运行后**|宏消失，只剩生成的代码|方法一直在|
+|**常见例子**|`vec!`, `println!`, `format!`|`.to_string()`, `.push()`, `.len()`|
+
