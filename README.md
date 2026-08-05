@@ -1,3 +1,5 @@
+[English](./README.en.md)
+
 <!-- codex-github-rules:bilingual-summary -->
 > **中文简介**：Obsidian 笔记库，通过 GitHub Actions 自动构建 VitePress 博客
 
