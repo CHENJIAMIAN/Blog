@@ -1,3 +1,10 @@
+<!-- codex-github-rules:bilingual-summary -->
+> **中文简介**：Obsidian 笔记库，通过 GitHub Actions 自动构建 VitePress 博客
+
+> **English summary**: An Obsidian vault that automatically builds a VitePress blog with GitHub Actions
+
+---
+
 > 我把我的个人笔记从**有道云笔记**迁移到了**Obsidian**了, 并且配置了**VitePress**+**GithubPage from GithubAction**, 自动生成博客网站。
 	push 到 master 分支时, 自动拷贝所有文件覆盖 gh_action_branch 分支, 并自动构建部署 gh_action_branch 分支, 如此隔离vitepress相关文件以防止Obsidian打开文件太多而卡顿
 ---
